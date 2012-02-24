@@ -103,13 +103,6 @@
     padding: 30px
     width: 380px
     
-    .can_contact
-      label
-        width: 350px
-      margin-top: 10px
-      input[type=checkbox]
-        float: right
-        
     label
       color: #898989
       display: block
@@ -119,21 +112,59 @@
       font-size: 14px
       text-shadow: #000000 1px 1px 1px
       margin-bottom: 5px
+      
+    input.search
+      width: 366px
+      +border-radius(5px)
+      +box-shadow(#ccc 1px 1px 2px 0 inset)
+      border: 1px solid #ccc
+      padding: 5px 5px
+      font-size: 18px
+      font-weight: 300
+      display: block
+      font-family: Helvetica, sans-serif
+      
+    .remove_search
+      position: absolute
+      top: 43px
+      right: 30px
+      width: 25px
+      height: 25px
+      background-repeat: no-repeat
+      &.loading
+        background-image: image-url("shared/icons/waiting.gif")
+      &.active
+        background-image: image-url("shared/icons/cancel.png")
+        cursor: pointer
+      &.inactive
+        background-image: image-url("icons/search.png")
     
-    .neighbor_finder
+    .neighbor_finder, .search_finder
+      margin-top: 10px
       width: 380px
       background: #ac322f
-      -webkit-border-radius: 5px
       overflow-y: scroll
       height: 340px
+      +border-radius(5px)
+      border: 1px solid black
+      
+      .no_results
+        background: white
+        +border-radius(5px)
+        text-align: center
+        margin-top: 10px
+        padding: 5px
+        margin-left: 10px
+        margin-right: 10px
+        .query
+          color: #1b334a
+          font-weight: bold
       
       table 
         font-family: Helvetica
         font-size: 13px
         border-spacing: 10px
         border-collapse: separate
-        -webkit-border-radius: 5px
-        border: 1px solid #511311
         background: white
         
         td

@@ -5,7 +5,7 @@ class BootstrapsController < ApplicationController
 
   layout false
   
-  before_filter :authenticate_user!, :except => :registration
+  before_filter :authenticate_user!, :except => [:registration, :art_project]
 
   def community 
     EventSender.user_visited_main_page

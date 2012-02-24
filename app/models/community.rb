@@ -11,6 +11,7 @@ class Community < ActiveRecord::Base
            :include => [:replies])
 
   has_many :users, :order => "last_name, first_name"
+  has_many :residents
   def organizers
     self.users.select { |u| u.admin }
   end
@@ -247,10 +248,6 @@ class Community < ActiveRecord::Base
   
   def exterior
     CommunityExterior.new(self)
-  end
-
-  def residents
-    $community_residents[self.id.to_s]
   end
 
 end

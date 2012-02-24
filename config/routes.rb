@@ -117,6 +117,8 @@ Commonplace::Application.routes.draw do
       match "account", :to => "bootstraps#application"
       match "find_neighbors", :to => "bootstraps#application"
     end
+    
+    match "/:community/art_project", :to => "bootstraps#art_project"
 
   end
 
@@ -150,6 +152,8 @@ Commonplace::Application.routes.draw do
     end
 
     match "/:community/learn_more", :to => "accounts#learn_more", :via => :get
+    
+    match "/:community/art_project", :to => "bootstraps#art_project"
 
     resources :password_resets
 

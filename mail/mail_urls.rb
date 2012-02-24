@@ -16,6 +16,10 @@ module MailUrls
     url("/#{community.slug}#{path}")
   end
 
+  def community_home_url(path)
+    community_url("")
+  end
+
   def asset_url(path)
     if path.start_with?("http")
       path
@@ -114,6 +118,10 @@ module MailUrls
 
   def inbox_url
     url("/inbox")
+  end
+
+  def copyright_year
+    DateTime.now.strftime("%Y")
   end
 
 end

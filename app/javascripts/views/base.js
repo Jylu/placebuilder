@@ -1,7 +1,45 @@
 var CommonPlace = CommonPlace || {};
 
 CommonPlace.View = Backbone.View.extend({
-  
+
+  page_name: "view",
+  track: false,
+
+  // Statistics logging
+
+  logVisit: function() {
+    if (this.track) {
+      if (CommonPlace.visit_id) {
+        // UPDATE
+        $.ajax({
+          type: "PUT",
+          dataType: "json",
+          url: "/api/stats/update_session",
+          data: JSON.stringify({
+            path: this.page_name,
+            ip_address: CommonPlace.account.get("current_sign_in_ip"),
+            original_visit_id: CommonPlace.visit_id,
+            commonplace_account_id: CommonPlace.account.get("id")
+          })
+        });
+      } else {
+        // CREATE SESSION
+        // SAVE SESSION DATA IN CommonPlace.visit_id
+        $.ajax({
+          type: "POST",
+          dataType: "json",
+          url: "/api/stats/create_session",
+          data: JSON.stringify({
+            path: this.page_name,
+            ip_address: CommonPlace.account.get("current_sign_in_ip"),
+            commonplace_account_id: CommonPlace.account.get("id")
+          }),
+          success: function(response) { CommonPlace.visit_id = response; }
+        });
+      }
+    }
+  },
+
   render: function() {
     var self = this;
     // trigger around, before, and after hooks
@@ -9,7 +47,8 @@ CommonPlace.View = Backbone.View.extend({
       self.beforeRender();
       $(self.el).html(self.renderTemplate(self.getTemplate(), self));
       self.afterRender();
-    });  
+      self.logVisit();
+    });
     return this;
   },
 
@@ -71,7 +110,7 @@ CommonPlace.View = Backbone.View.extend({
   },
 
   //TODO: make this part of the placeholder plugin
-  cleanUpPlaceholders: function() { 
+  cleanUpPlaceholders: function() {
     this.$("[placeholder]").each(function() {
       var input = $(this);
       if (input.val() == input.attr('placeholder')) {
@@ -90,10 +129,10 @@ CommonPlace.View = Backbone.View.extend({
   community_name: function() { return CommonPlace.community.get('name'); },
 
   organizer: function() { return CommonPlace.community.get('admin_name'); },
-  
+
   organizer_email: function() { return CommonPlace.community.get('admin_email'); },
 
-  community_slug: function() { return CommonPlace.community.get('slug'); }
+  community_slug: function() { return CommonPlace.community.get('slug'); },
 
 });
 
