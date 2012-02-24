@@ -344,6 +344,13 @@ ActiveRecord::Schema.define(:version => 20120223164720) do
     t.string   "receive_method", :default => "Daily"
   end
 
+  create_table "swipes", :force => true do |t|
+    t.integer  "feed_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "taggings", :force => true do |t|
     t.integer  "tag_id"
     t.integer  "taggable_id"
