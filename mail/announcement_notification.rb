@@ -7,7 +7,7 @@ class AnnouncementNotification < PostNotification
   end
 
   def subject
-    "#{author_name} posted an new announcement on CommonPlace"
+    "#{author_name} posted a new announcement on CommonPlace"
   end
 
   def reply_to
