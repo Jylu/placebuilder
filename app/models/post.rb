@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   #acts_as_trackable
 
-  CATEGORIES = %w{Request Offer Invitation Announcement Question}  
+  CATEGORIES = %w{help offers neighborhood meetups publicity other}
 
   delegate :neighborhood, :to => :user
   

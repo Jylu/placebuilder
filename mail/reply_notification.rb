@@ -54,14 +54,27 @@ class ReplyNotification < PostNotification
   end
 
   def subject_line
-    post_type = case @post
-                when Message then "a private message"
-                when Post then "a post"
-                when Event then "an event"
-                when Announcement then "an announcement"
-                when GroupPost then "a post on the #{@post.group.name} Group"
-                end
-    "#{author_name} just replied to #{post_type} on CommonPlace."
+
+    adverb = author == @post.user ? "just" : "also"
+    possesive = author == @post.user ? "your" : @post.user.name + "'s"
+    post_text = 
+      case @post
+      when Message then "private message"
+      when Post 
+        case @post.category
+        when "offers" then "offer"
+        when "neighborhood" then "neighborhood update"
+        when "meetups" then "meet-up proposal"
+        when "help" then "request"
+        when "publicity" "post"
+        when "other" then "post"
+        end
+      when Event then "event"
+      when Announcement then "an announcement"
+      when GroupPost then "a post on the #{community_name} #{@post.group.name} Group"
+      end
+    
+    "#{author_name} #{adverb} replied to #{possesive} #{post_text} on CommonPlace."
   end
 
   def tag
