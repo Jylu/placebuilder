@@ -11,7 +11,7 @@ class Invitation < MailBase
   end
 
   def subject
-    "#{inviter_name} invites you to #{community_name}'s CommonPlace"
+    "#{inviter_name} invited you to join The #{community_name} CommonPlace"
   end
 
   def to
@@ -28,6 +28,10 @@ class Invitation < MailBase
 
   def invitee_name
     @name || "Neighbor"
+  end
+
+  def inviter_avatar
+    inviter.avatar? && inviter.avatar_url
   end
 
   def community_register_url
@@ -60,6 +64,10 @@ class Invitation < MailBase
 
   def deliver?
     true
+  end
+
+  def community_slug
+    community.slug 
   end
 
 end

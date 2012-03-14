@@ -29,36 +29,35 @@
                         <tbody>
                           <tr>
                             <td>
-                              <table id="greeting">
-                                <tbody>
-                                  <tr>
-                                    <td>
+                              <table id="invite">
+                                <tr>
+                                  {{#inviter_avatar}}
+                                    <td id="inviter_avatar_td"><img width="100" height="100" src="{{inviter_avatar}}"></td>
+                                  {{/inviter_avatar}}
+                                  <td>
+                                    <div class="p">Dear {{invitee_name}},</div>
 
-                                      <div class="p">Dear {{invitee_name}},</div>
+                                    <div class="p">Congrats! {{inviter_name}} just invited you to join The {{community_name}} CommonPlace.</div>
 
-                                      <div class="p">{{inviter_name}} just invited you to join your neighbors on <a href="community_home_url">The {{community_name}} CommonPlace!</a></div>
+                                    <div class="p"><a href="{{community_home_url}}">The {{community_name}} CommonPlace</a> is an online bulletin board exclusively for Falls Church residents.  It's designed to make it really easy for you to share and connect with your neighbors and community leaders.</div>
 
-                                      <div class="p"><a href="{{community_home_url}}">The {{community_name}} CommonPlace</a> is a web network built exclusively for the {{community_name}} community.</div>
+                                    <div class="p">Use it to:</div>
 
-                                      <div class="p">It takes one minute to sign up, and once you do, you’ll be able to:</div></p>
-                                      <div class="p">
-                                        <ul>
+                                    <div class="p">
+                                      <ul>
+                                        <li><div class="p">Receive updates from the mayor, the schools, and the police</div></li>
+                                        <li><div class="p">Share things with your neighborhood</div></li>
+                                        <li><div class="p">Find babysitters and get recommendations about local services</div></li>
+                                        <li><div class="p">Organize a basketball game, a yard sale, or a book club</div></li>
+                                        <li><div class="p">Find new people and organizations in the {{community_name}} community</div></li>
+                                      </ul>
+                                    </div>
 
-                                          <li><div class="p">Keep track of important community news from the mayor, the schools, the police</div></li>
-                                          <li><div class="p">Organize a basketball game or book club with the people in your community</div></li>
-                                          <li><div class="p">Borrow, share, sell stuff easily</div></li>
-                                          <li><div class="p">See who lives around you</div></li>
-                                          <li><div class="p">Help your neighbors!</div></li>
-                                        </ul>
-                                      </div>
-
-                                      <a href="{{community_home_url}}"><span class="button">ACCEPT INVITATION</span></a>
-
-                                    </td>
-                                  </tr>
-                                </tbody>
+                                    <a href="{{community_home_url}}"><span class="accept-button">ACCEPT INVITATION</span></a>
+                                    <a href="{{community_home_url}}"><span class="find-out-button">FIND OUT MORE<span></a>
+                                  </td>
+                                </tr>
                               </table>
-
                             </td>
                           </tr>
                         </tbody>
