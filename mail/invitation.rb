@@ -27,7 +27,7 @@ class Invitation < MailBase
   end
 
   def invitee_name
-    message || "Neighbor"
+    @name || "Neighbor"
   end
 
   def community_register_url
