@@ -1,9 +1,10 @@
 @import "mail_base" ;
+@import "post_notification";
 
 #footer { text-align: center ; }
 
-p.quote { margin-left: 15px ; font-style: italic ; } 
+div.p.quote { margin-left: 15px ; font-style: italic ; } 
 
-p em { color: #3b6085 ; }
+div.p em { color: #3b6085 ; }
 
-p.link-to-commonplace { text-align: center ; }
+div.p.link-to-commonplace { text-align: center ; }

@@ -1,9 +1,13 @@
 class Invitation < MailBase
 
-  def initialize(email, inviter_id, message = nil)
+  def initialize(email, inviter_id, name = "Neighbor")
     @to = email
     @inviter = User.find(inviter_id)
-    @message = message.present? ? message : nil
+    @name = name
+  end
+
+  def header_image_url
+    asset_url("headers/#{community.slug}.png")
   end
 
   def subject
@@ -18,12 +22,12 @@ class Invitation < MailBase
     @inviter
   end
 
-  def message
-    @message
-  end
-
   def community
     inviter.community
+  end
+
+  def invitee_name
+    message || "Neighbor"
   end
 
   def community_register_url
