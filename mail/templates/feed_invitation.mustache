@@ -6,17 +6,89 @@
   </head>
   <body>
 
-    <table id="body">
-      {{< header}}
-      <tr>
-        <td>
-          {{#t}}body{{/t}}
-        </td>
-      </tr>
-      <tr>
-        <td id="footer">
-        {{< legal }}
-        </td>
-      </tr>
+    <table id="page-wrapper">
+      <tbody>
+        <tr>
+          <td>
+            <center>
+              <table id="email-wrapper">
+                <tbody>
+                  <tr>
+                    <td>
+                      <table id="header">
+                        <tr><td>
+                          <a href="{{community_home_url}}"><img src="{{header_image_url}}"></a>
+                        </td></tr>
+                      </table>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td id="content-td">
+                      <table id="content">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="p">Dear {{invitee_name}},</div>
+
+                              <div class="p">{{inviter_name}} just invited you to subscribe to the {{feed_name}} community page on <a href="{{community_home_url}}"><span>The {{community_name}} CommonPlace</span></a>.</div>
+
+                              <div class="p"><a href="{{community_home_url}}"><span>The {{community_name}} CommonPlace</span></a> is an online bulletin board exclusively for {{community_name}} residents. It's designed to make it really easy for you to share and connect with your neighbors and community leaders.</div>
+
+                              <div class="p">Use it to:</div>
+                              <div class="p">
+                                <ul>
+                                  <li><div class="p">Receive updates from the mayor, the schools, and the police</div></li>
+                                  <li><div class="p">Share things with your neighborhood</div></li>
+                                  <li><div class="p">Find babysitters and get recommendations about local services</div></li>
+                                  <li><div class="p">Organize a basketball game, a yard sale, or a book club</div></li>
+                                  <li><div class="p">Find new people and organizations in the {{community_name}} community.</div></li>
+                                </ul>
+                              </div>
+
+                              <a href="{{community_home_url}}"><span class="accept-button">ACCEPT INVITATION</span></a>
+                              <a href="{{community_home_url}}"><span class="find-out-button">FIND OUT MORE<span></a>
+
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table id="footer">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="p">Improve the {{community_name}} CommonPlace: Click <a href="{{new_invites_url}}"><span>HERE</span></a> to invite more neighbors.</div>
+                              <div class="p">Click <a href="{{settings_url}}"><span>here</span></a> to manage your email settings.</div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <table id="legal-footer">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <div class="p"><a href="{{root_url}}"><span>{{community_slug}}.OurCommonPlace.com</span></a></div>
+                              <div class="p copy">&copy; 2011 CommonPlace</div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </center>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </body>
 </html>

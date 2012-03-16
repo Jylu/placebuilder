@@ -10,6 +10,10 @@ end
 class MailBase < Mustache
   include MailUrls
 
+  def header_image_url
+    asset_url("headers/#{community.slug}.png")
+  end
+
   def self.underscore(classified = name)
     classified = name if classified.to_s.empty?
     classified = superclass.name if classified.to_s.empty?
@@ -41,6 +45,10 @@ class MailBase < Mustache
   end
 
   def community
+  end
+  
+  def community_slug
+    community.slug
   end
 
   def t
