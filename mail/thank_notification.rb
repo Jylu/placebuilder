@@ -22,7 +22,7 @@ class ThankNotification < MailBase
   end
 
   def subject
-    "#{user_name} thanked you on CommonPlace"
+    "#{user_name} thanked you on CommonPlace!"
   end
 
   def short_user_name
