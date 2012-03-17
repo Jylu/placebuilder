@@ -13,9 +13,18 @@ class FeedWelcome < MailBase
   def community
     @community
   end
+  
+
+  def community_name
+    community.name
+  end
 
   def feed
     @feed
+  end
+
+  def feed_slug
+    @feed.slug
   end
 
   def town_name
@@ -47,7 +56,7 @@ class FeedWelcome < MailBase
   end
 
   def subject
-    "Your #{feed_name} feed on The #{town_name} CommonPlace"
+    "Your new community page on The #{community_name} CommonPlace"
   end
 
   def tag
