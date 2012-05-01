@@ -4,6 +4,7 @@
 //= require jquery-ui
 //= require jquery-blockUI
 //= require jquery-badger
+//= require jquery-tokeninput
 //= require highcharts
 //= require actual
 //= require underscore

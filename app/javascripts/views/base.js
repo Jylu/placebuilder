@@ -139,6 +139,8 @@ CommonPlace.View = Backbone.View.extend({
 });
 
 var FormView = CommonPlace.View.extend({
+  postRender: undefined,
+
   initialize: function(options) {
     this.template = (this.options.template || this.template);
     this.modal = new ModalView({form: this.el});
@@ -146,6 +148,8 @@ var FormView = CommonPlace.View.extend({
 
   afterRender: function() {
     this.modal.render();
+    if (this.postRender !== undefined)
+      this.postRender();
   },
 
   events: {
