@@ -301,7 +301,7 @@ class API
       control_access :authenticated
 
       checked_inbox()
-      serialize(paginate(current_user.inbox.reorder("GREATEST(replied_at, created_at) DESC")))
+      serialize(paginate(current_user.message_threads.reorder("GREATEST(replied_at, created_at) DESC")))
     end
 
     # Returns the account's (paginated) outbox

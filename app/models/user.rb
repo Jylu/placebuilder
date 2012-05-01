@@ -377,6 +377,14 @@ class User < ActiveRecord::Base
 WHERE
   end
 
+  def message_threads
+    Message.where(<<WHERE, self.id, self.id)
+    ("messages"."user_id" = ?) OR
+    ("messages"."messagable_type" = 'User' AND
+    "messages"."messagable_id" = ?)
+WHERE
+  end
+
   searchable do
     text :user_name do
       full_name
