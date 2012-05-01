@@ -103,6 +103,7 @@ var Application = Backbone.Router.extend({
     ":community/message/feeds/:id": "messageFeed",
 
     ":community/inbox": "inbox",
+    ":community/inbox/compose": "inboxCompose",
     ":community/outbox": "outbox",
     ":community/feed_inbox": "feed_inbox",
 
@@ -206,6 +207,11 @@ var Application = Backbone.Router.extend({
   },
 
   inbox: function(c) { this.showPage("inbox"); },
+
+  inboxCompose: function(c) {
+    this.showPage("inbox");
+    window.app.pages.inbox.compose();
+  },
 
   outbox: function(c) { this.showPage("outbox"); },
 

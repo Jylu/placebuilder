@@ -29,6 +29,17 @@ var InboxPage = CommonPlace.View.extend({
     });
   },
 
+  setActiveTab: function(klass) {
+    this.$(".current").removeClass("current");
+    this.$("." + klass).addClass("current");
+  },
+
+  compose: function() {
+    this.setActiveTab("compose");
+    var formview = new MessageFormViewUnaddressed();
+    formview.render();
+  },
+
   bind: function() {
     $("body").addClass("inbox");
   },
