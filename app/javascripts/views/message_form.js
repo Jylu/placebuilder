@@ -1,6 +1,6 @@
 var MessageFormView = FormView.extend({
   template: "shared/message-form",
-  goToInbox: false,
+  goToInbox: true,
 
   save: function(callback) {
     var self = this;
