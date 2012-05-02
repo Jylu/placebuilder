@@ -7,7 +7,8 @@ var MessageFormView = FormView.extend({
     var self = this;
     var oldHTML = this.$(".controls").html();
     this.$(".controls button").replaceWith("<img src='/assets/loading.gif' />");
-    if (beforeCreate !== undefined) beforeCreate();
+    if (this.beforeCreate !== undefined) this.beforeCreate();
+    console.log(this.model);
     this.model.save({
       subject: this.$("[name=subject]").val(),
       body: this.$("[name=body]").val()
@@ -44,23 +45,32 @@ var MessageFormViewUnaddressed = MessageFormView.extend({
   },
 
   postRender: function() {
-    //this.$("#recipient").tokenInput('/api/' + CommonPlace.community.get("links")['users'] + "/only_name",
-    this.$("#recipient").tokenInput('/api/' + CommonPlace.community.get("links")['users'],
+    var self = this;
+    this.$("#recipient").tokenInput('/api' + CommonPlace.community.get("links")['users'],
       {
         queryParam: "query",
         propertyToSearch: "name",
         theme: 'facebook',
         resultsFormatter: function(item) {
           result = "<li>" + item.name + "</li>";
-          console.log(result);
           return result;
-        }
+        },
+        onAdd: function(item) {
+          if (self.$("#recipient").tokenInput("get").length > 1)
+            self.$("#recipient").tokenInput("remove", { id: item.id });
+        },
+        spawnListFrom: this.$("#recipient-selector")
       });
-    console.log("Tokenized");
   },
 
   selectedUser: function() {
-    return null;
+    var user_id = this.$("#recipient").tokenInput("get")[0].id;
+    return new User({
+      links: {
+        self: "/users/" + user_id,
+        messages: "/users/" + user_id + "/messages"
+      }
+    });
   }
 
 });
