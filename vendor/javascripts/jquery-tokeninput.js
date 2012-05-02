@@ -50,7 +50,10 @@ var DEFAULT_SETTINGS = {
     onResult: null,
     onAdd: null,
     onDelete: null,
-    onReady: null
+    onReady: null,
+
+    // DOM elements
+    spawnListFrom: "body"
 };
 
 // Default classes to use when theming
@@ -343,7 +346,7 @@ $.TokenList = function (input, url_or_data, settings) {
     // The list to store the dropdown items in
     var dropdown = $("<div>")
         .addClass(settings.classes.dropdown)
-        .appendTo("body")
+        .appendTo(settings.spawnListFrom)
         .hide();
 
     // Magic element to help us resize the text input
@@ -630,9 +633,9 @@ $.TokenList = function (input, url_or_data, settings) {
     function show_dropdown() {
         dropdown
             .css({
-                position: "absolute",
-                top: $(token_list).offset().top + $(token_list).outerHeight(),
-                left: $(token_list).offset().left,
+                //position: "absolute",
+                //top: $(token_list).offset().top + $(token_list).outerHeight(),
+                //left: $(token_list).offset().left,
                 zindex: 999
             })
             .show();
