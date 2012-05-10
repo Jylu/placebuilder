@@ -40,6 +40,10 @@ var MessageFormView = FormView.extend({
 
 var MessageFormViewUnaddressed = MessageFormView.extend({
   template: "shared/message-form-unaddressed",
+  events: {
+    "click #cancel-recipient": "cancelRecipient"
+  },
+
   beforeCreate: function() {
     this.model = new Message({ messagable: this.selectedUser() });
   },
@@ -58,9 +62,20 @@ var MessageFormViewUnaddressed = MessageFormView.extend({
         onAdd: function(item) {
           if (self.$("#recipient").tokenInput("get").length > 1)
             self.$("#recipient").tokenInput("remove", { id: item.id });
+          self.$("#recipient-selector").hide();
+          self.$("#recipient-name").html(item.name);
+          self.$("#recipient-viewer").show();
         },
-        spawnListFrom: this.$("#recipient-selector")
+        spawnListFrom: this.$("#recipient-selector"),
+        hintText: "Type the name of then neighbor you would like to message"
       });
+  },
+
+  cancelRecipient: function() {
+    this.$("#recipient").tokenInput("remove", { id: this.$("#recipient").tokenInput("get")[0].id});
+    this.$("#recipient-name").html('');
+    this.$("#recipient-viewer").hide();
+    this.$("#recipient-selector").show();
   },
 
   selectedUser: function() {

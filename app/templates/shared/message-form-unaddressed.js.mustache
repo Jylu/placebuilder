@@ -2,17 +2,21 @@
   <div class="error"></div>
   <h1>Write a private message</h1>
   <label for="recipient">Recipient:</label>
-  
 
   <span id="recipient-selector">
     <input type="text" id="recipient" name="recipient" />
+  </span>
+
+  <span id="recipient-viewer" style="display: none">
+    <span id="recipient-name"></span>
+    <span id="cancel-recipient">CANCEL</span>
   </span>
 
   <label for="subject">Subject:</label>
   <input name="subject" type="text">
 
   <label for="body">Body:</label>
-  <textarea name="body" rows="3"></textarea>
+  <textarea name="body" rows="6"></textarea>
 
   <div class="controls">
     <a class="cancel" href="#">Cancel</a>
