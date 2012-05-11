@@ -41,7 +41,9 @@ var MessageFormView = FormView.extend({
 var MessageFormViewUnaddressed = MessageFormView.extend({
   template: "shared/message-form-unaddressed",
   events: {
-    "click #cancel-recipient": "cancelRecipient"
+    "click #cancel-recipient": "cancelRecipient",
+    "click form a.cancel": "exit",
+    "submit form": "send"
   },
 
   beforeCreate: function() {
