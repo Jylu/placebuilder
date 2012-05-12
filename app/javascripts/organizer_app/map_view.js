@@ -1,6 +1,14 @@
+// TODO: 
+// Allow them to clear the polygons (finish clearSelection's click event and button)
+
 OrganizerApp.MapView = CommonPlace.View.extend({
 
   template: "organizer_app.map-view",
+
+  events: {
+    "click #add-log-to-selected": "addLogToSelected",
+    "click #clear-selection": "clearSelection"
+  },
 
   afterRender: function() {
     var parentThis = this;
@@ -56,9 +64,10 @@ OrganizerApp.MapView = CommonPlace.View.extend({
         });
       }
 
-      //TODO: tack on community zip code to address
       // geocodes and stores lat and lng into database for residents
 
+
+      /*window.residentLatLngs = [];*/
       /*if (i < 10 && model.address()) {*/
         /*console.log(model.address());*/
         /*var ms = 2500 + new Date().getTime();*/
@@ -120,6 +129,46 @@ OrganizerApp.MapView = CommonPlace.View.extend({
       residentMarkers[closestResidentIndex].setAnimation(google.maps.Animation.BOUNCE);
     });
 
+
+    window.selectedIndices = [];
+    window.polygons = [];
+    google.maps.event.addListener(drawingManager, 'polygoncomplete', function(polygon) {
+      window.polygons.push(polygon);
+      var path = polygon.getPath();
+      console.log(path);
+      window.polygon = [];
+      path.forEach(function(point) {
+        console.log(point);
+        window.polygon.push( {x: point.lat(), y: point.lng()} );
+      });
+      window.polygon.push( {x: path.getAt(0).lat(), y: path.getAt(0).lng()} );
+      console.log(window.polygon);
+      for (var i = 0, l = window.residents.length; i < l; i++) {
+        var x = window.residents[i].latLng.lat();
+        var y = window.residents[i].latLng.lng();
+        if (parentThis.isPointInPoly(window.polygon, {x: x, y: y})) {
+          console.log("point in polygon: " + i);
+          console.log(window.residents[i]);
+          window.selectedIndices.push(i);
+        }
+      }
+
+      console.log(parentThis.options.filePicker);
+      /*parentThis.options.filePicker.filter();*/
+      console.log("collection models: ");
+      console.log(parentThis.options.filePicker.collection.models);
+      var list = parentThis.options.filePicker.collection.filter(function (model) {
+        console.log("model id: " + model.getId());
+        console.log("in selected: " + parentThis.searchSelectedForId(model.getId()));
+        return (parentThis.searchSelectedForId(model.getId()));
+      });
+      console.log("new list: ");
+      console.log(list);
+      parentThis.options.filePicker.renderList(list);
+    });
+
+
+
     google.maps.event.addListener(drawingManager, 'polylinecomplete', function(polyline) {
       var pathMvcArr = polyline.getPath();
       var addresses = [];
@@ -174,6 +223,17 @@ OrganizerApp.MapView = CommonPlace.View.extend({
 
   },
 
+  searchSelectedForId: function(id) {
+    console.log("Looking for " + id);
+    for (var i = 0; i < window.selectedIndices.length; i++) {
+      if (window.residents[selectedIndices[i]].id == id) {
+        console.log("Found it! It is: " + window.residents[selectedIndices[i]].id);
+        return true;
+      }
+    }
+    return false;
+  },
+
   searchMarkers: function(marker) {
     for (var i = 0; i < window.residents.length; i++) {
       if (window.residents[i].marker == marker) {
@@ -182,6 +242,32 @@ OrganizerApp.MapView = CommonPlace.View.extend({
     }
     return -1;
   },
+
+  clearSelection: function() {
+    window.selectedIndices = [];
+    this.options.filePicker.filter();
+    for (var i = 0, l = window.polygons.length; i < l; i++) {
+      window.polygons[i].setVisible(false);
+    }
+    window.polygons = [];
+  },
+
+  addLogToSelected: function() {
+    for (var i = 0, l = window.selectedIndices.length; i < l; i++) {
+      if ($('#map-date').val() && $('#map-text').val()) {
+        console.log([$.trim($('#map-text').val())]);
+        console.log(window.residents[i].model.addLog);
+        window.residents[i].model.addLog({
+          date: $('#map-date').val(),
+          text: $('#map-text').val()
+          /*tags: [$.trim($('#map-text').val())]*/
+        });
+      } else {
+        alert("Please fill out the Date of the activity and Log description.");
+      }
+    }
+  },
+
 
   /*handleNoGeolocation: function(errorFlag) {*/
     /*if (errorFlag) {*/
@@ -274,7 +360,15 @@ OrganizerApp.MapView = CommonPlace.View.extend({
       }
     });
     return success;
-  }
+  },
+
+  isPointInPoly: function(poly, pt) {
+    for(var c = false, i = -1, l = poly.length, j = l - 1; ++i < l; j = i)
+      ((poly[i].y <= pt.y && pt.y < poly[j].y) || (poly[j].y <= pt.y && pt.y < poly[i].y))
+    && (pt.x < (poly[j].x - poly[i].x) * (pt.y - poly[i].y) / (poly[j].y - poly[i].y) + poly[i].x)
+    && (c = !c);
+    return c;
+  } 
 
 });
 

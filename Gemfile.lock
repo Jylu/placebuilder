@@ -1,4 +1,11 @@
 GIT
+  remote: git://github.com/cloudability/resque-statsd.git
+  revision: a07359e81c11058045e2cb59c05f2a1d3389b386
+  specs:
+    resque-statsd (0.0.4)
+      jamster-statsd
+
+GIT
   remote: git://github.com/gdb/embedded-mongo.git
   revision: 06db599985c6a5877fe33508623aa046515523a4
   specs:
@@ -221,6 +228,7 @@ GEM
       multi_json
       multi_xml
     i18n (0.6.0)
+    jamster-statsd (0.1.0)
     jasmine (1.1.2)
       jasmine-core (>= 1.1.0)
       rack (>= 1.1)
@@ -511,6 +519,7 @@ DEPENDENCIES
   resque-cleaner
   resque-exceptional
   resque-scheduler
+  resque-statsd!
   rmagick
   rollout
   rpm_contrib
