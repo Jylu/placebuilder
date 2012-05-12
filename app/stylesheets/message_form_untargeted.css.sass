@@ -1,6 +1,29 @@
 form
+  label
+    width: 80px
+    margin-bottom: 6px
+    float: left
+    clear: both
+    
+  #recipient-selector
+    display: block
+    float: left
+    margin-top: 8px
+    width: 310px
+    .token-input-list-facebook
+      width: 293px
   span#recipient-viewer
+    margin-top: 19px
+    display: block
     span#recipient-name
       font-family: Rockwell, Georgia, Helvetica, Sans-serif
       color: white
+    img
+      cursor: pointer
     #cancel-recipient
+
+.message-modal form span#recipient-selector ul.token-input-list-facebook, .modal-container form span#recipient-selector ul.token-input-list-facebook
+  width: 293px
+  
+.message-modal form span#recipient-selector div, .modal-container form span#recipient-selector div
+  width: 308px
