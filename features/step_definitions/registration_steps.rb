@@ -3,27 +3,21 @@ def log_out
 end
 
 def log_in
-  email = 'testing@man.net'
-  password = 'secretpass'
-  User.new(:email => email, :password => password, :password_confirmation => password).save!
-
   visit '/users/sign_in'
-  fill_in "user_email", :with=>email
-  fill_in "user_password", :with=>password
+  fill_in "user_email", :with=>@user.email
+  fill_in "user_password", :with=>@user.password
   click_button "Sign in"
 end
 
 def community_home_page
-  if Community.count < 1
-    Community.create!(:name => "Test", :slug => "test")
-  end
-  "/#{Community.all.first.slug}"
+  "/#{@community.slug}"
 end
 
 Given /^a default community exists$/ do
-  if Community.count < 1
-    Community.create!(:name => 'Test', :slug => 'test')
-  end
+  @community = FactoryGirl.create(:community)
+  VCR.use_cassette('user_creation') {
+    @user = FactoryGirl.create(:user)
+  }
 end
 
 Given /^I am on the registration page$/ do
@@ -35,17 +29,22 @@ When /^I click (.*)$/ do |selector|
   find(selector).click
 end
 
+Then /^I should see the selector (.*)$/ do |selector|
+  find(selector).visible?
+end
+
 Then /^I should see the sign in dropdown$/ do
   find("#user_sign_in").find("#sign_in_form").find("form").visible?
 end
 
-Given /^I see the sign in dropdown$/ do
+Given /^I see the sign-in drop-down$/ do
+  Given "a default community exists"
   log_out
-  visit community_home_page
-  find("#user_sign_in").click
+  Given "I am on the registration page"
+  find("#sign_in_button").click
 end
 
-When /^I fill in (.*) with (.*)$/ do |field_name, value|
+When /^I fill in (.*) with "(.*)"$/ do |field_name, value|
   fill_in field_name, :with => value
 end
 
