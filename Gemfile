@@ -117,6 +117,7 @@ group :development, :test, :remote_worker do
   gem 'jasmine'
   gem 'cucumber'
   gem 'cucumber-rails'
+  gem 'selenium'
   #gem 'capybara-webkit'
   #gem 'progress_bar'
 end
@@ -133,6 +134,7 @@ end
 
 group :test do
   gem 'rspec-rails' # we use rspec-rails for tests
+  gem 'vcr'
   gem 'fuubar' # we use fuubar for pretty rspec output
   gem 'spork' # we use spork to speed up tests
   gem 'rr' # we use rr for mocking

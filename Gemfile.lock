@@ -190,6 +190,7 @@ GEM
     geocoder (1.0.5)
     gherkin (2.5.1)
       json (>= 1.4.6)
+    git (1.2.5)
     glebm-geokit (1.5.2)
     googlecharts (1.6.8)
     guard (1.0.1)
@@ -229,12 +230,22 @@ GEM
       multi_xml
     i18n (0.6.0)
     jamster-statsd (0.1.0)
+    jar_wrapper (0.1.2)
+      jeweler
+      jeweler
+      zip
+      zip
     jasmine (1.1.2)
       jasmine-core (>= 1.1.0)
       rack (>= 1.1)
       rspec (>= 1.3.1)
       selenium-webdriver (>= 0.1.3)
     jasmine-core (1.1.0)
+    jeweler (1.8.3)
+      bundler (~> 1.0)
+      git (>= 1.2.5)
+      rake
+      rdoc
     journey (1.0.3)
     jquery-rails (2.0.2)
       railties (>= 3.2.0, < 5.0)
@@ -395,6 +406,9 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    selenium (0.2.5)
+      jar_wrapper
+      jeweler
     selenium-webdriver (2.20.0)
       childprocess (>= 0.2.5)
       ffi (~> 1.0)
@@ -438,6 +452,7 @@ GEM
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    vcr (2.1.1)
     vegas (0.1.11)
       rack (>= 1.0.0)
     warden (1.1.1)
@@ -448,6 +463,7 @@ GEM
     xml-simple (1.1.1)
     xpath (0.1.4)
       nokogiri (~> 1.3)
+    zip (2.0.2)
 
 PLATFORMS
   ruby
@@ -529,6 +545,7 @@ DEPENDENCIES
   sanitize
   sass
   sass-rails
+  selenium
   sinatra (~> 1.2.7)
   spork
   sunspot_rails (= 1.3.0)
@@ -539,4 +556,5 @@ DEPENDENCIES
   thin
   turing-contacts!
   uglifier
+  vcr
   webmock
