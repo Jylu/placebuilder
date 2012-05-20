@@ -32,6 +32,7 @@ Capybara.default_selector = :css
 #Capybara.default_driver = :webkit
 #
 Capybara.default_driver = :selenium
+Capybara.javascript_driver = :webkit
 #Capybara.default_host = "localhost"
 #Capybara.server_port = 3000
 #Capybara.app_host = "http://localhost:3000"
