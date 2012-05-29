@@ -32,7 +32,7 @@ var FindMyNeighborsPage = CommonPlace.View.extend({
   },
 
   email_address_contains: function(email, string) {
-    return (email.index(string) != -1);
+    return (email.indexOf(string) != -1);
   },
 
   is_google_user: function(email_address) {
