@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 class FacebookNeighbors
 
   def initialize(access_token, community)
@@ -26,6 +25,6 @@ class FacebookNeighbors
     request = Net::HTTP::Get.new(uri.path) 
     request.set_form_data("access_token" => @access_token)
     request = Net::HTTP::Get.new(uri.path + "?" + request.body)
-    JSON.parse(http.request(request).body)["data"]
+    Array(JSON.parse(http.request(request).body)["data"])
   end
 end

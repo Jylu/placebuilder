@@ -24,7 +24,10 @@ var RegisterNeighborsView = RegistrationModalPage.extend({
     "keyup form.list input.search": "debounceSearch",
     "click form.list .remove_search.active": "removeSearch",
 
-    "submit form.list": "submit"
+    "submit form.list": "submit",
+
+    "click td": "updateKnownNeighbors",
+    "click li.add_neighbor .addb": "addNeighbor"
   },
 
   email_address_contains: function(email, string) {
@@ -91,8 +94,6 @@ var RegisterNeighborsView = RegistrationModalPage.extend({
     this.$("form.add").hide();
     this.$("form.add .error").hide();
 
-
-    
     this.$(".neighbor_finder").scroll(function() {
       if (($(this).scrollTop() + 30) > (5 * this.scrollHeight / 7)) { self.nextPageThrottled(); }
     });
@@ -110,7 +111,15 @@ var RegisterNeighborsView = RegistrationModalPage.extend({
       );
     }, this));
   },
-  
+
+  updateKnownNeighbors: function() {
+    this.$(".neighbor_count").html(this.$("td.checked").length);
+  },
+
+  addNeighbor: function() {
+    alert('foo');
+  },
+
   nextPageTrigger: function() {
     this.nextPageThrottled = _.once(_.bind(function() { this.nextNeighborsPage(); }, this));
   },
@@ -217,7 +226,11 @@ var RegisterNeighborsView = RegistrationModalPage.extend({
 
   facebook: function(e) {
     if (e) { e.preventDefault(); }
-    this.generate("facebook");
+    $.getJSON("/api/account/facebook_neighbors", 
+              _.bind(function(response) {
+                this.neighbors = response;
+                this.generate(false);
+              }, this));
   },
 
   gmail: function(e) {
@@ -377,6 +390,12 @@ var RegisterNeighborsView = RegistrationModalPage.extend({
     events: { "click": "check" },
 
     initialize: function(options) {
+      FB.init({
+        appId : CommonPlace.facebookAppId,
+        status : true,
+        cookie : true,
+        xfbml  : true
+      });
       this._isFacebook = !_.isEmpty(this.options.intersectedUser) && this.options.intersectionType == "facebook";
       this._isGmail = !_.isEmpty(this.options.intersectedUser) && this.options.intersectionType == "gmail";
       this._isYahoo = !_.isEmpty(this.options.intersectedUser) && this.options.intersectionType == "yahoo";
