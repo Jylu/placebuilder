@@ -280,6 +280,22 @@ class API
       end
       halt 200
     end
+
+    # Gets a list of people in the community who are also facebook
+    # friends with the user
+    #
+    # The user must be facebook connected or an access_token must be
+    # passed in. If neither is present, we return an empty list
+    #
+    # Params:
+    #   access_token - A facebook access_token (optional)
+    get "/facebook_neighbors" do
+      control_access :authenticated
+      access_token = (current_user.facebook_user? ?
+        current_user.oauth2_token : params[:access_token])
+
+      serialize FacebookNeighbors.new(access_token, current_user.community).to_a
+    end
     
     # Returns a (paginated) list of the account's swipes
     # 
