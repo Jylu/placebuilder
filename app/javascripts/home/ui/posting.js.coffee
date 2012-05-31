@@ -46,7 +46,12 @@ Home.ui.Posting = Framework.View.extend
     community = router.community 
     posts = new Backbone.Collection()
     posts.url = "/api" + community.get("links").posts
-    posts.create(data)
+    posts.create data,
+      success: (nextModel, resp) ->
+        console.log("Sync triggered successfully. Next model is: #{nextModel} with a response of #{resp}")
+      error: (attribs, response) ->
+        console.log("Error syncing:#{response} with attributes:#{attribs}")
+        
     posts.trigger("sync")
 
   changeCategory: ->
