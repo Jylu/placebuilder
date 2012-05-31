@@ -8,7 +8,7 @@ Home.ui.Posting = Framework.View.extend
 
   show: (klass) ->
     this.klass = klass
-    this.$(".help, .form-container, .links").hide()
+    this.$(".general-help, .form-container, .links").hide()
     this.$("." + klass).show()
     this.$(".help." + klass + ".rounded_corners").hide()
     this.$(".links-" + klass).show()

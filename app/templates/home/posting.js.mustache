@@ -1,27 +1,29 @@
 <div id="newPost" class="container rounded_corners">
   <div class="navigation">
 
-    <div class="links">
+    <div class="links scroll-pane">
 	    <h1>Choose a Post Type:</h1>
       <ul>
-		<li class="conversation"><a onMouseOver="document.getElementById('conversation-help').style.display = 'block';" onMouseOut="document.getElementById('conversation-help').style.display = 'none';"
+		<li class="conversation"><a
         href="create-conversation"
         class="conversation"
         data-remote>Conversation Topic
       </a></li>
-      <li class="request"><a onMouseOver="document.getElementById('request-help').style.display = 'block';" onMouseOut="document.getElementById('request-help').style.display = 'none';"
+      <li class="request"><a
         href="create-request"
         class="request"
         data-remote>Request or Offer
       </a></li>
-      <li class="event"><a onMouseOver="document.getElementById('event-help').style.display = 'block';" onMouseOut="document.getElementById('event-help').style.display = 'none';"
+      <li class="event"><a
         href="create-event"
         class="event"
         data-remote>Event or Meetup
       </a></li>
     </div>
 
-	<div class="links-conversation">
+<!--onMouseOver="document.getElementById('event-help').style.display = 'block';" onMouseOut="document.getElementById('event-help').style.display = 'none';"-->
+
+	<div class="links-conversation scroll-pane">
 		    <h1>Choose a Topic:</h1>
     <form> 
  	<ul>
@@ -80,18 +82,14 @@
       data-remote>Go Back
     </a></div>
 
-    <div class="help rounded_corners" id="conversation-help">
+    <!--<div class="help rounded_corners" id="conversation-help">
       A <strong>Conversation Topic</strong> is like posting to your community bulletin board.
       Choose a topic and discuss it with the rest of your Upper West Side
       neighbors!
-    </div>
+    </div>-->
 
-    <div class="help rounded_corners" id="request-help">
-      request help
-    </div>
-
-    <div class="help rounded_corners" id="event-help">
-      event help
+    <div class="general-help rounded_corners" id="conversation-help">
+      Start by choosing a general topic from above.
     </div>
 
   </div>

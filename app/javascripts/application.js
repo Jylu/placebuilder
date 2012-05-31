@@ -21,6 +21,9 @@
 //= require chosen
 //= require highlight-3
 //= require modernizr
+//= require jquery.mousewheel
+//= require mwheelntent
+//= require jquery.jscrollpane
 
 //= require config
 //= require feature_switches
