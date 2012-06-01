@@ -11,6 +11,9 @@ Home.ui.Posting = Framework.View.extend
   render: ->
     this.$el.html this.renderTemplate()
 
+  remove: ->
+    this.$(".navigation, .form-container, .container").hide()
+
   show: (klass) ->
     this.klass = klass
     this.$(".general-help, .form-container, .links").hide()
@@ -25,6 +28,7 @@ Home.ui.Posting = Framework.View.extend
     this.$(".links ." + klass).addClass "current"
 
   createPost: (e) ->
+    e.preventDefault()
     title     = this.$("[name="+this.klass+"-title]").val()
     body      = this.$("[name="+this.klass+"-post]").val()
     price     = this.$("[name="+this.klass+"-price]").val()
@@ -58,6 +62,8 @@ Home.ui.Posting = Framework.View.extend
         console.log("Error syncing:#{response} with attributes:#{attribs}")
         
     posts.trigger("sync")
+    router.navigate(community.get("slug") + "/home", {"trigger": true, "replace": true})
+    this.remove()
 
   changeCategory: ->
     category = this.$("[name='category']:checked")
