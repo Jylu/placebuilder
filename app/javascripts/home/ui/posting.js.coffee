@@ -3,6 +3,11 @@ Home.ui.Posting = Framework.View.extend
   klass: "conversation"
   category: "Conversation"
 
+  initialize: ->
+    this.$(document).ready(
+      -> $('[class*="scroll-pane"]').jScrollPane()
+    )
+
   render: ->
     this.$el.html this.renderTemplate()
 

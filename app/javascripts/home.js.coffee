@@ -1,5 +1,7 @@
 #= require framework
-
+#= require mwheelIntent
+#= require jquery.mousewheel
+#= require jquery.jscrollpane
 #= require time_ago_in_words
 
 #= require_self
