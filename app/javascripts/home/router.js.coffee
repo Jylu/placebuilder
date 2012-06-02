@@ -8,7 +8,10 @@ Home.Router = Backbone.Router.extend
 
   home: ->
     header = new Home.ui.Header el: $("header")
-    header.render()
+    header.render(
+      "H1": "Herp Derp"
+      "H2": "All Recent Posts"
+    )
 
     sidebar = new Home.ui.Sidebar el: $("#sidebar")
     sidebar.render()
