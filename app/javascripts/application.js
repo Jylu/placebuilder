@@ -22,7 +22,7 @@
 //= require highlight-3
 //= require modernizr
 //= require jquery.mousewheel
-//= require mwheelntent
+//= require mwheelIntent
 //= require jquery.jscrollpane
 
 //= require config
