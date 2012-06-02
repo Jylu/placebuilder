@@ -9,6 +9,9 @@ a
   margin-right: auto
   margin-left: auto
 
+#posting_navlinks
+  overflow: hidden
+
 #newPost   
   width: 725px
   height: 320px
@@ -19,7 +22,6 @@ a
   margin-right: auto
   margin-left: 150px
   position: fixed
-  overflow: hidden
 
   div.navigation   
     width: 250px 
@@ -28,15 +30,18 @@ a
 
     div.links-conversation
       display: none
-
+      height: 250px
+      width: 249px
+	
       form
         height: 230px
         font-family: "Rockwell STD"
         color: $blue
+        overflow: hidden
  
         ul li.conversation a
           position: relative
-          top: 3px
+          top: 2px
 
         ul li.conversation a.current
           color: $red
@@ -52,6 +57,7 @@ a
         height: 230px
         font-family: "Rockwell STD"
         color: $blue
+        overflow: scroll
 
         ul li.request a
           position: relative
@@ -67,6 +73,7 @@ a
       display: none
 
       form
+        overflow: scroll
         width: 250px
         height: 230px
         font-family: "Rockwell STD"
@@ -164,11 +171,6 @@ a
       input
         position: relative
         top: 16px
- 
-  #posting_right
-    overflow: hidden
-    width: 450px
-    height: 320px
 
   div.tabs div.form-container   
     padding: 10px  
@@ -236,7 +238,10 @@ textarea
 #disclaimer   
   width: 174px  
   color: $dark-tan  
-  top: 7px  
+  top: 0px
+  right: 0px
+  bottom: 0px
+  left: 0px  
   position: relative  
   text-shadow: #fffeff 2px 1px 0  
   font: 11.4px/16px Helvetica  
@@ -255,8 +260,11 @@ textarea
       position: relative
       top: 6px
 
-#posting_navlinks
-  overflow: hidden
+    .disclaimerLabel input
+      position: relative
+      right: 0px
+      bottom: 0px
+      left: 0px
 
 .jspContainer
   overflow: hidden
@@ -337,12 +345,14 @@ textarea
 * html .jspCorner
   margin: 0 -3px 0 0
 
+#posting_right
+  width: 725px
+  height: 320px
+
 #your-pages-list li a
   font-family: RockwellSTD, Rockwell, sans-serif
   color: #1b334a
   list-style-type: none
-  padding-top: 10px
-  padding-bottom: 10px
 
 #your-pages-list
   margin-top: 15px
@@ -351,4 +361,3 @@ textarea
 #your-pages-list li
   margin-bottom: 15px
   margin-top: 15px
-
