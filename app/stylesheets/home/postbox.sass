@@ -11,6 +11,7 @@ a
 
 #posting_navlinks
   overflow: hidden
+  height: 116px
 
 #newPost   
   width: 725px
@@ -30,18 +31,18 @@ a
 
     div.links-conversation
       display: none
-      height: 250px
+      height: 140px
       width: 249px
 	
       form
-        height: 230px
+        height: 133px
         font-family: "Rockwell STD"
         color: $blue
         overflow: hidden
  
         ul li.conversation a
           position: relative
-          top: 2px
+          top: 3px
 
         ul li.conversation a.current
           color: $red
@@ -54,7 +55,7 @@ a
 
       form
         width: 250px
-        height: 230px
+        height: 100px
         font-family: "Rockwell STD"
         color: $blue
         overflow: scroll
@@ -75,7 +76,7 @@ a
       form
         overflow: scroll
         width: 250px
-        height: 230px
+        height: 100px
         font-family: "Rockwell STD"
         color: $blue
 
@@ -94,9 +95,11 @@ a
       color: $red
       text-decoration: none
       text-transform: uppercase
+      position: relative
+      top: 9px
       font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
 
-    div.links ul li a.conversation:hover .general-help
+    div.links ul li a.conversation:hover help
       display: inline
 
     div.links-event
@@ -105,7 +108,7 @@ a
     div.links-request
       display: none
 
-  div.general-help   
+  div.help   
     position: relative  
     top: 10px  
     padding: 25px 20px 15px 20px         
@@ -143,6 +146,7 @@ a
 
   div.links-conversation
     @extend div.links
+    height: 140px
 
   div.links-request
     @extend div.links
@@ -158,7 +162,7 @@ a
       top: 30px
    
   div.tabs div.form-container.default
-    opacity: 0.2
+    opacity: 1
     
     form
       position: relative
@@ -171,6 +175,10 @@ a
       input
         position: relative
         top: 16px
+        background: $dark-tan
+
+      textarea
+        background: $dark-tan
 
   div.tabs div.form-container   
     padding: 10px  
@@ -209,10 +217,10 @@ strong
   border-radius: 5px  
  
 ::-webkit-input-placeholder
-  color: #000
+  color: #e0dfe0
 
 ::-moz-placeholder
-  color: #000
+  color: #e0dfe0
 
 input   
   width: 374px  
@@ -258,7 +266,8 @@ textarea
 
     p.disclaimer_text
       position: relative
-      top: 6px
+      top: 3px
+      right: 5px
 
     .disclaimerLabel input
       position: relative
