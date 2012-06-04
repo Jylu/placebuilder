@@ -5,11 +5,25 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-conversation": "createConvo"
     ":community/home/create-event": "createEvent"
     ":community/home/create-request": "createRequest"
+    ":community/home/pages/:page": "showPage"
 
   home: ->
     header = new Home.ui.Header el: $("header")
     header.render(
       "H1": "Herp Derp"
+      "H2": "All Recent Posts"
+    )
+
+    sidebar = new Home.ui.Sidebar el: $("#sidebar")
+    sidebar.render()
+
+    content = new Home.ui.CommunityContent el: $("#content")
+    content.render()
+
+  showPage: (page) ->
+    header = new Home.ui.Header el: $("header")
+    header.render(
+      "H1": page
       "H2": "All Recent Posts"
     )
 
