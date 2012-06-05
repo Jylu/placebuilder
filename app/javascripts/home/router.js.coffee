@@ -20,29 +20,31 @@ Home.Router = Backbone.Router.extend
     content = new Home.ui.CommunityContent el: $("#content")
     content.render()
 
-  createPost: ->
+  createPost: (community) ->
     posting = new Home.ui.Posting()
-    posting.render()
+    posting.render(
+      "create-post-link": "/" + community + "/home/create-post"
+    )
     modal = new Home.ui.Modal(el: $("#modal"), view: posting)
     modal.render()
     return posting
 
-  createDefault: ->
-    posting = this.createPost()
+  createDefault: (community) ->
+    posting = this.createPost(community)
     posting.showDefault "default"
 
-  createDiscussion: ->
-    posting = this.createPost()
+  createDiscussion: (community) ->
+    posting = this.createPost(community)
     posting.show "discussion"
 
-  createRequests: ->
-    posting = this.createPost()
+  createRequests: (community) ->
+    posting = this.createPost(community)
     posting.show "requests"
 
-  createEvents: ->
-    posting = this.createPost()
+  createEvents: (community) ->
+    posting = this.createPost(community)
     posting.show "events"
 
-  createShare: ->
-    posting = this.createPost()
+  createShare: (community) ->
+    posting = this.createPost(community)
     posting.show "share"

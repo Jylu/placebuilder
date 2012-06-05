@@ -1,15 +1,9 @@
 Home.ui.Posting = Framework.View.extend
   template: "home.posting"
-  klass: "conversation"
-  category: "Conversation"
+  klass: "discussion"
 
-  initialize: ->
-    this.$(document).ready(
-      -> $('[class*="scroll-pane"]').jScrollPane()
-    )
-
-  render: ->
-    this.$el.html this.renderTemplate()
+  render: (params) ->
+    this.$el.html this.renderTemplate(params)
 
   remove: ->
     this.$(".form-container, .container").hide()
@@ -37,7 +31,9 @@ Home.ui.Posting = Framework.View.extend
     endtime   = this.$("[name="+this.klass+"-endtime]").val()
     venue     = this.$("[name="+this.klass+"-venue]").val()
     address   = this.$("[name="+this.klass+"-address]").val()
-    category  = this.category
+    category  = this.$("[name=topics]").val()
+    if category is "default"
+      category = "Discussion"
 
     params = 
       "title"    : title
@@ -65,15 +61,11 @@ Home.ui.Posting = Framework.View.extend
     router.navigate(community.get("slug") + "/home/share", {"trigger": true, "replace": true})
     this.remove()
 
-  changeCategory: ->
-    category = this.$("[name='category']:checked")
-    this.category = category.val()
-    klass = category.parent().attr("class")
-    if klass isnt undefined
-      this.show(klass)
+  sharePost: (e) ->
+    e.preventDefault()
+    router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
+    this.remove()
 
   events:
-    "click button": "createPost"
-    "click .links-conversation li": "changeCategory"
-    "click .links-request li": "changeCategory" 
-    "click .links-event li": "changeCategory" 
+    "click .red-button": "createPost"
+    "click .green-button": "sharePost"

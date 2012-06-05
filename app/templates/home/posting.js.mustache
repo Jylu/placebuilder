@@ -29,15 +29,15 @@
       <form>
 		<select name="topics">
 			<option value="default">What discussion page do you want to contribute to?</option>
-			<option value="volunteering">Volunteering</option>
-			<option value="city-problems">City Problems</option>
-			<option value="safety">Safety</option>
-			<option value="news">News</option>
-			<option value="health-wellness">Health and Wellness</option>
-			<option value="schools">Schools</option>	
+			<option value="Volunteering">Volunteering</option>
+			<option value="City Problems">City Problems</option>
+			<option value="Safety">Safety</option>
+			<option value="News">News</option>
+			<option value="Health and Wellness">Health and Wellness</option>
+			<option value="Schools">Schools</option>	
 		</select>
-        <input placeholder="Post Title" name="conversation-title" class="rounded_corners">
-        <textarea placeholder="Write your post here!" name="conversation-post" rows="15" cols="55" class="rounded_corners"></textarea>
+        <input placeholder="Post Title" name="discussion-title" class="rounded_corners">
+        <textarea placeholder="Write your post here!" name="discussion-post" rows="15" cols="55" class="rounded_corners"></textarea>
 
 	<div id="business">
 			Are you adverstising on behalf of a business or organizations?<br />		
@@ -111,11 +111,11 @@
 			<li><a href="#">Email This Post to Friends</a></li>
 		</ul>
 		<form>
-        <input placeholder="Type an email address (seperate with commas)" name="request-title" class="rounded_corners">
+        <input placeholder="Type an email address (seperate with commas)" name="share-email" class="rounded_corners">
 		<a href="#" class="share rounded_corners">Connect your Email</a>
 		<br /><br /><br /><br />
 		<h3>Copy public link</h3>
-        <input placeholder="http://ourcommonplace.com/marquette/dogs/12359" name="request-title" class="rounded_corners">
+        <input placeholder="http://ourcommonplace.com/marquette/dogs/12359" name="share-link" class="rounded_corners">
 		<a href="#" class="share rounded_corners">Copy to Clipboard</a>
 
 
@@ -126,6 +126,6 @@
     </div>
 
 <div class="go-back"><a
-  href="/marquette/home/create-post"
+  href={{create-post-link}}
   data-remote>Go Back
 </a></div>
