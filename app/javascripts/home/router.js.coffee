@@ -2,9 +2,10 @@ Home.Router = Backbone.Router.extend
   routes:
     ":community/home" : "home"
     ":community/home/create-post": "createDefault"
-    ":community/home/create-conversation": "createConvo"
-    ":community/home/create-event": "createEvent"
-    ":community/home/create-request": "createRequest"
+    ":community/home/create-conversation": "createDiscussion"
+    ":community/home/create-event": "createEvents"
+    ":community/home/create-request": "createRequests"
+    ":community/home/share": "createShare"
 
   home: ->
     header = new Home.ui.Header el: $("header")
@@ -30,14 +31,18 @@ Home.Router = Backbone.Router.extend
     posting = this.createPost()
     posting.showDefault "default"
 
-  createConvo: ->
+  createDiscussion: ->
     posting = this.createPost()
-    posting.show "conversation"
+    posting.show "discussion"
 
-  createEvent: ->
+  createRequests: ->
     posting = this.createPost()
-    posting.show "event"
+    posting.show "requests"
 
-  createRequest: ->
+  createEvents: ->
     posting = this.createPost()
-    posting.show "request"
+    posting.show "events"
+
+  createShare: ->
+    posting = this.createPost()
+    posting.show "share"

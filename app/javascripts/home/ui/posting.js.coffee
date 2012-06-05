@@ -12,7 +12,7 @@ Home.ui.Posting = Framework.View.extend
     this.$el.html this.renderTemplate()
 
   remove: ->
-    this.$(".navigation, .form-container, .container").hide()
+    this.$(".form-container, .container").hide()
 
   show: (klass) ->
     this.klass = klass
@@ -62,7 +62,7 @@ Home.ui.Posting = Framework.View.extend
         console.log("Error syncing:#{response} with attributes:#{attribs}")
         
     posts.trigger("sync")
-    router.navigate(community.get("slug") + "/home", {"trigger": true, "replace": true})
+    router.navigate(community.get("slug") + "/home/share", {"trigger": true, "replace": true})
     this.remove()
 
   changeCategory: ->

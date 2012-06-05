@@ -11,41 +11,41 @@ a
 
 #posting_navlinks
   overflow: hidden
-  height: 116px
+
+ul li a
+  position: relative
+  top: 3px
+  text-decoration: none
+  color: #1b334a
+  position: relative
+  top: 3px
+  font: 20px/30px RockwellSTD, Rockwell, sans-serif
+  padding-left: 10px
 
 #newPost   
-  width: 725px
-  height: 320px
-  background-color: white
+  width: 450px
+  background-color: $off-grey  
   border: 12px solid #bcbbae
   z-index: 1000
-  margin-top: 150px
+  margin-top: 100px
   margin-right: auto
-  margin-left: 150px
+  margin-left: 250px
+  margin-bottom: 30px
   position: fixed
 
   div.navigation   
-    width: 250px 
+    width: 409px 
     float: left   
     padding: 20px
 
     div.links-conversation
       display: none
-      height: 140px
-      width: 249px
+      height: 350px	
 	
       form
-        height: 133px
         font-family: "Rockwell STD"
         color: $blue
         overflow: hidden
- 
-        ul li.conversation a
-          position: relative
-          top: 3px
-
-        ul li.conversation a.current
-          color: $red
 
         ul input
           display: none
@@ -60,13 +60,6 @@ a
         color: $blue
         overflow: scroll
 
-        ul li.request a
-          position: relative
-          top: 3px
-
-        ul li.request a.current
-          color: $red
-
       ul input
         display: none
 
@@ -80,24 +73,8 @@ a
         font-family: "Rockwell STD"
         color: $blue
 
-        ul li.event a
-          position: relative
-          top: 3px
-
-        ul li.event a.current
-          color: $red
-
       ul input
         display: none
-
-
-    div.go-back a
-      color: $red
-      text-decoration: none
-      text-transform: uppercase
-      position: relative
-      top: 9px
-      font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
 
     div.links ul li a.conversation:hover help
       display: inline
@@ -119,12 +96,14 @@ a
     background: url(post-help-box.png) no-repeat
   
   h1   
-    font: bold 16px RockwellSTD, Rockwell, sans-serif  
-    text-shadow: 1px 1px 1px white  
-    color: $blue  
+    font: 22px RockwellSTD, Rockwell, sans-serif
+    text-shadow: 1px 1px 1px white
+    color: #1b334a
+    margin-bottom: 10px
     
   div.links   
     margin-top: 10px
+    padding: 30px
 
     ul li   
       list-style-type: none  
@@ -133,35 +112,8 @@ a
       text-shadow: black 0 0 0  
       padding-left: 30px  
       background: url(bullet-quote.png) left center no-repeat
-        
-      a   
-        font: 16px RockwellSTD, Rockwell, sans-serif  
-        text-decoration: none  
-        color: $blue
-        position: relative
-        top: 3px
-            
-      a.current   
-        color: $red
-
-  div.links-conversation
-    @extend div.links
-    height: 140px
-
-  div.links-request
-    @extend div.links
-
-  div.links-event
-    @extend div.links
-    
-    .go-back a
-      text-decoration: none
-      color: #f00
-      font-weight: bold
-      position: relative
-      top: 30px
    
-  div.tabs div.form-container.default
+  div.form-container.default
     opacity: 1
     
     form
@@ -180,14 +132,14 @@ a
       textarea
         background: $dark-tan
 
-  div.tabs div.form-container   
-    padding: 10px  
-    float: right  
-    background-color: $off-grey  
-    height: 300px  
+  div.form-container   
+    padding: 17px    
     border-left: 1px solid $dark-tan  
     width: 414px 
     overflow: auto
+    position: relative
+    right: 2px
+    margin-bottom: 15
 
     form   
       margin-top: 9px
@@ -200,6 +152,19 @@ a
         width: 185px
         height: 39px
         text-decoration: none
+
+        a
+          text-decoration: none
+
+      button.green-button   
+        float: right
+        margin-right: 10px
+        font-size: 20px
+        padding: 10px 5px
+        width: 405px
+        height: 39px
+        text-decoration: none
+        margin-bottom: 15px
 
         a
           text-decoration: none
@@ -217,10 +182,10 @@ strong
   border-radius: 5px  
  
 ::-webkit-input-placeholder
-  color: #e0dfe0
+  color: #000000
 
 ::-moz-placeholder
-  color: #e0dfe0
+  color: #000000
 
 input   
   width: 374px  
@@ -370,3 +335,159 @@ textarea
 #your-pages-list li
   margin-bottom: 15px
   margin-top: 15px
+
+div.posting
+  padding: 40px
+
+  ul li
+    list-style-type: none
+    padding-top: 10px
+    padding-bottom: 10px
+    text-shadow: white 1 1 0
+    padding-left: 30px
+    background: url(bullet-quote.png) left center no-repeat
+
+    a
+      font: 18px/40px RockwellSTD, Rockwell, sans-serif
+      color: $blue
+      position: relative
+      top: 4px
+
+    a:hover
+      color: $red
+
+  ul li:hover
+    list-style-type: none
+    padding-top: 10px
+    padding-bottom: 10px
+    text-shadow: white 1 1 0
+    padding-left: 30px
+    background: url(bullet-quote2.png) left center no-repeat
+
+    a
+      font: 18px/40px RockwellSTD, Rockwell, sans-serif
+      color: $blue
+      position: relative
+      top: 4px
+
+    a:hover
+      color: $red
+
+div.go-back a
+  color: $red
+  text-decoration: none
+  text-transform: uppercase
+  position: relative
+  bottom: 15px
+  left: 20px
+  font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
+
+#newPost div.form-container form button.red-button
+  width: 150px
+  height: 50px
+  padding-top: 17px
+
+#business
+  width: 225px
+  float: left
+  font: 12px RockwellSTD, Rockwell, sans-serif
+  color: $blue
+  
+  ul
+    height: 23px
+    position: relative
+    bottom: 7px
+    margin-bottom: 10px
+
+  ul li
+    display: inline-block
+    margin-right: 30px
+
+    input
+      width: 25px
+      height: 25px
+      position:  relative
+      top: 5px
+
+#request
+  width: 350px
+  font: 14px RockwellSTD, Rockwell, sans-serif
+  color: $blue
+  margin-bottom: 20px
+
+  ul
+    height: 23px
+    position: relative
+    bottom: 7px
+    margin-bottom: 10px
+
+  ul li
+    display: inline-block
+    margin-right: 30px
+
+    input
+      width: 25px
+      height: 25px
+      position:  relative
+      top: 5px
+
+#business2
+  width: 325px
+  font: 14px RockwellSTD, Rockwell, sans-serif
+  color: $blue
+
+  ul
+    height: 23px
+    position: relative
+    bottom: 7px
+    margin-bottom: 10px
+
+  ul li
+    display: inline-block
+    margin-right: 30px
+
+    input
+      width: 25px
+      height: 25px
+      position:  relative
+      top: 5px
+
+
+form select
+  width: 404px
+  margin-bottom: 12px
+
+div.form-container.share ul li   
+  list-style-type: none  
+  padding-top: 10px  
+  padding-bottom: 10px  
+  text-shadow: black 0 0 0  
+  padding-left: 30px  
+  background: url(bullet-quote.png) left center no-repeat
+
+  a
+    font: 18px/20px RockwellSTD, Rockwell, sans-serif
+    color: $blue
+    position: relative
+    top: 4px
+
+  a:hover
+    color: $red
+
+h3   
+  font: 18px RockwellSTD, Rockwell, sans-serif
+  text-shadow: 1px 1px 1px white
+  color: #1b334a
+  margin-bottom: 10px
+
+a.share
+  color: #1b334a
+  text-decoration: none
+  text-transform: uppercase
+  position: relative
+  font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
+  padding: 8px
+  float: right
+  bottom: 15px
+  margin: 10px
+  background-color: #c6b7ac
