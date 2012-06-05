@@ -15,6 +15,8 @@ Home.ui.Posting = Framework.View.extend
     this.$(".help." + klass + ".rounded_corners").hide()
     this.$(".links-" + klass).show()
     this.$(".links ." + klass).addClass "current"
+    if klass is "share"
+      this.$("#share_facebook").hide()
 
   showDefault: (klass) ->
     this.$(".go-back, .form-container").hide()
@@ -66,6 +68,10 @@ Home.ui.Posting = Framework.View.extend
     router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
     this.remove()
 
+  showFacebook: (e) ->
+    this.$("#share_facebook").toggle()
+
   events:
     "click .red-button": "createPost"
     "click .green-button": "sharePost"
+    "click #facebookshare": "showFacebook" 
