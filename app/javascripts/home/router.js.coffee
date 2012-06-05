@@ -21,17 +21,17 @@ Home.Router = Backbone.Router.extend
     content.render()
 
   showPage: (community, page) ->
-    header = new Home.ui.Header el: $("header")
-    header.render(
-      "H1": community.charAt(0).toUpperCase() + community.slice(1)
-      "H2": page.charAt(0).toUpperCase() + page.slice(1)
+    self = this
+    groups = this.community.get("links").groups
+    $.getJSON("/api/" + groups, (group) ->
+      $.getJSON("/api/feeds/"+page, (response) ->
+        page_feed = new Home.model.Page response
+
+        page_view = new Home.ui.Page model: page_feed, community: self.community, account: self.account, name: page
+        page_view.render()
+      )
     )
-
-    sidebar = new Home.ui.Sidebar el: $("#sidebar")
-    sidebar.render()
-
-    content = new Home.ui.CommunityContent el: $("#content")
-    content.render()
+    
 
   createPost: ->
     posting = new Home.ui.Posting()
