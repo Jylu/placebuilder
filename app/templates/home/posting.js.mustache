@@ -1,5 +1,4 @@
 <div id="newPost" class="container rounded_corners">
-  <div class="navigation">
 
     <div class="links scroll-pane">
 	    <h1>What would you like to post?</h1>
@@ -24,124 +23,64 @@
 </ul>
     	</div>
 </div>
-
-<!--onMouseOver="document.getElementById('event-help').style.display = 'block';" onMouseOut="document.getElementById('event-help').style.display = 'none';"-->
-
-	<div class="scroll-pane links-conversation">
-		    <h1>Which Discussion Board?</h1>
-     <div id="posting_navlinks">
- 		<form class="scroll-pane"> 
- 	<ul>
-		<li class="conversation"><input type="radio" name="category" id="volunteering" value="Volunteering">
-        <a href="#volunteering" onClick="document.getElementById('volunteering').checked = true;">Volunteering</a>
-      </li>
-      <li class="conversation"><input type="radio" name="category" value="City Problems" id="cityproblems">
-        <a href="#cityproblems" onClick="document.getElementById('cityproblems').checked = true;" >City Problems</a>
-	  </li>
-      <li class="conversation"><input type="radio" name="category" value="Safety" id="safety">
-		<a href="#safety" onClick="document.getElementById('safety').checked = true;" class="">Safety</a>
-      </li>
-      <li class="conversation"><input type="radio" name="category" value="News" id="news">
-		<a href="#news" id="newsLink" onClick="document.getElementById('news').checked = true;" class="">News</a>
-      </li>
-      <li class="conversation"><input type="radio" name="category" value="Health and Wellness" id="healthandwellness">
-		<a href="#healthandwellness" onClick="document.getElementById('healthandwellness').checked = true;" class="">Health and Wellness</a>
-      </li>
-      <li class="conversation"><input type="radio" name="category" value="Schools" id="schools">
-		<a href="#schools" onClick="document.getElementById('schools').checked = true;" >Schools</a>
-	  </li>
-	</ul>
-	</form>
-	</div>
-    </div>
-
-	<div class="links-request">
-		    <h1>Is this a Request or Offer?</h1>
-    <form> 
- 	<ul>
-		<li class="request"><input type="radio" name="category" id="request" value="Request">
-        <a href="#request" onClick="document.getElementById('request').checked = true;" >Request</a>
-      </li>
-      <li class="offer"><input type="radio" name="category" value="Offer" id="offer">
-        <a href="#offer" onClick="document.getElementById('offer').checked = true;" >Offer</a>
-	  </li>
-	</ul>
-	</form>
-    </div>
-
-	<div class="links-event">
-		    <h1>Is this an Event or Meet-Up?</h1>
-    <form> 
- 	<ul>
-		<li class="event"><input type="radio" name="category" id="event" value="Event">
-        <a href="#event" onClick="document.getElementById('event').checked = true;" >Event</a>
-      </li>
-      <li class="meetup"><input type="radio" name="category" value="Meetup" id="meetup">
-        <a href="#meetup" onClick="document.getElementById('meetup').checked = true;" >Meetup</a>
-	  </li>
-	</ul>
-	</form>
-    </div>
-
-	<div class="go-back"><a
-      href="create-post"
-      data-remote>Go Back
-    </a></div>
-
-    <div class="help rounded_corners" id="conversation-help">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris id mauris a dui accumsan convallis vel in arcu. 
-    </div>
-
-  </div>
-
-  <div class="tabs">
-   <div id="posting_right">
-    <div class="form-container default">
-      <form>
-        <input disabled="disabled" placeholder="Post Title" class="rounded_corners">
-        <textarea placeholder="Write your post here!" disabled="disabled" rows="15" cols="55" class="rounded_corners"></textarea>
-
-        <button class="red-button">POST NOW</button>
-
-        <div id="disclaimer"><label class="disclaimerLabel"><input disabled="disabled" type="checkbox"><p class="disclaimer_text">I am not advertising on behalf of any business or organization</p></label></div>
-      </form>
-    </div>
-
-    <div class="form-container conversation">
+   
+    <div class="form-container discussion">
+	<h1>Start a Discussion</h1>
       <form>
+		<select name="topics">
+			<option value="default">What discussion page do you want to contribute to?</option>
+			<option value="volunteering">Volunteering</option>
+			<option value="city-problems">City Problems</option>
+			<option value="safety">Safety</option>
+			<option value="news">News</option>
+			<option value="health-wellness">Health and Wellness</option>
+			<option value="schools">Schools</option>	
+		</select>
         <input placeholder="Post Title" name="conversation-title" class="rounded_corners">
         <textarea placeholder="Write your post here!" name="conversation-post" rows="15" cols="55" class="rounded_corners"></textarea>
 
-        <button class="red-button">POST NOW</button>
+	<div id="business">
+			Are you adverstising on behalf of a business or organizations?<br />		
+		<ul>
+			<li><input type="radio" name="business" value="yes">Yes</li>
+			<li><input type="radio" name="business" value="no">No</li>
+		</ul>
+	</div>
 
-        <div id="disclaimer"><label class="disclaimerLabel"><input type="checkbox" name="conversation-disclaimer"><p class="disclaimer_text">I am not advertising on behalf of
-          any business or organization</p></label></div>
+        <button class="red-button">POST NOW</button>
       </form>
     </div>
 
-    <div class="form-container request">
-      <form>
+    <div class="form-container requests">
+      	<h1>Make a Request or Offer</h1>
+		<form>
         <input placeholder="Request Title" name="request-title" class="rounded_corners">
         <textarea placeholder="Request Message" name="request-post" class="rounded_corners"></textarea>		
 
+		<div id="request">
+			How would you categorize this post?<br />			
+			<ul>
+				<li><input type="radio" name="request" value="resquest">Request</li>
+				<li><input type="radio" name="request" value="offer">Offer</li>
+			</ul>
+		</div>
+		
+		<div id="business2">
+			Are you adverstising on behalf of a business or organizations?<br />			
+			<ul>
+				<li><input type="radio" name="business" value="yes">Yes</li>
+				<li><input type="radio" name="business" value="no">No</li>
+			</ul>
+		</div>
+
         <button class="red-button">POST NOW</button>
 
       </form>
 
     </div>
 
-	<div class="form-container offer">
-      <form>
-        <input placeholder="Offer Title" name="offer-title" class="rounded_corners">
-        <textarea placeholder="Offer Message" name="offer-post" class="rounded_corners"></textarea>		
-
-        <button class="red-button">POST NOW</button>
-
-      </form>
-
-    </div>
-
-    <div class="form-container event">
+    <div class="form-container events">
+	<h1>Publicize an Event or Meetup</h1>
       <form>
         <input placeholder="Event Name" name="event-title" class="rounded_corners">
         <textarea placeholder="Description of your event" name="event-post" class="rounded_corners"></textarea>
@@ -149,7 +88,15 @@
         <input placeholder="Starts At" name="event-starttime" class="rounded_corners">
         <input placeholder="Ends At" name="event-endtime" class="rounded_corners">
         <input placeholder="Venue" name="event-venue" class="rounded_corners">
-        <input placeholder="Address`" name="event-address" class="rounded_corners">		
+        <input placeholder="Address" name="event-address" class="rounded_corners">		
+
+		<div id="business">
+			Are you adverstising on behalf of a business or organizations?<br />
+			<ul>
+				<li><input type="radio" name="business" value="yes">Yes</li>
+				<li><input type="radio" name="business" value="no">No</li>
+			</ul>
+		</div>
 
         <a href="../home"><button class="red-button">POST NOW</button></a>
 
@@ -157,22 +104,28 @@
 
     </div>
 
-    <div class="form-container meetup">
-      <form>
-        <input placeholder="Meetup Name" name="meetup-title" class="rounded_corners">
-        <textarea placeholder="Description of your meetup" name="meetup-post" class="rounded_corners"></textarea>
-        <input placeholder="Date (Monday April 9, 2012)" name="meetup-date" class="rounded_corners">
-        <input placeholder="Starts At" name="meetup-starttime" class="rounded_corners">
-        <input placeholder="Ends At" name="meetup-endtime" class="rounded_corners">
-        <input placeholder="Venue" name="meetup-venue" class="rounded_corners">
-        <input placeholder="Address`" name="meetup-address" class="rounded_corners">		
+	<div class="form-container share">
+      	<h1>Share with More People?</h1>
+		<ul class="share">
+			<li><a href="#">My Facebook Friends</a></li>
+			<li><a href="#">Email This Post to Friends</a></li>
+		</ul>
+		<form>
+        <input placeholder="Type an email address (seperate with commas)" name="request-title" class="rounded_corners">
+		<a href="#" class="share rounded_corners">Connect your Email</a>
+		<br /><br /><br /><br />
+		<h3>Copy public link</h3>
+        <input placeholder="http://ourcommonplace.com/marquette/dogs/12359" name="request-title" class="rounded_corners">
+		<a href="#" class="share rounded_corners">Copy to Clipboard</a>
 
-        <a href="../home"><button class="red-button">POST NOW</button></a>
+
+        <button class="green-button">All Done!</button>
 
       </form>
 
     </div>
 
-</div>
-
-</div>
+<div class="go-back"><a
+  href="/marquette/home/create-post"
+  data-remote>Go Back
+</a></div>
