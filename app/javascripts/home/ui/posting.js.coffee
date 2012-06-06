@@ -17,7 +17,10 @@ Home.ui.Posting = Framework.View.extend
     this.$(".links ." + klass).addClass "current"
     if klass is "share"
       this.$("#share_facebook").hide()
-
+      this.$("#share_email").hide()
+      this.$("#share_link").hide()
+      this.$(".go-back").hide()
+	
   showDefault: (klass) ->
     this.$(".go-back, .form-container").hide()
     this.$("." + klass).show()
@@ -71,7 +74,15 @@ Home.ui.Posting = Framework.View.extend
   showFacebook: (e) ->
     this.$("#share_facebook").toggle()
 
+  showEmail: (e) ->
+    this.$("#share_email").toggle()
+
+  showLink: (e) ->
+    this.$("#share_link").toggle()
+
   events:
     "click .red-button": "createPost"
     "click .green-button": "sharePost"
-    "click #facebookshare": "showFacebook" 
+    "click #facebookshare": "showFacebook"
+    "click #emailshare": "showEmail"
+    "click #linkshare": "showLink"

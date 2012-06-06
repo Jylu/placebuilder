@@ -40,7 +40,7 @@
         <textarea placeholder="Write your post here!" name="discussion-post" rows="15" cols="55" class="rounded_corners"></textarea>
 
 	<div id="business">
-			Are you adverstising on behalf of a business or organizations?<br />		
+			Are you advertising on behalf of a business or organizations?<br />		
 		<ul>
 			<li><input type="radio" name="business" value="yes">Yes</li>
 			<li><input type="radio" name="business" value="no">No</li>
@@ -66,7 +66,7 @@
 		</div>
 		
 		<div id="business2">
-			Are you adverstising on behalf of a business or organizations?<br />			
+			Are you advertising on behalf of a business or organizations?<br />			
 			<ul>
 				<li><input type="radio" name="business" value="yes">Yes</li>
 				<li><input type="radio" name="business" value="no">No</li>
@@ -87,11 +87,11 @@
         <input placeholder="Date (Monday April 9, 2012)" name="event-date" class="rounded_corners">
         <input placeholder="Starts At" name="event-starttime" class="rounded_corners">
         <input placeholder="Ends At" name="event-endtime" class="rounded_corners">
-        <input placeholder="Venue" name="event-venue" class="rounded_corners">
+        <input placeholder="Venue Name" name="event-venue" class="rounded_corners">
         <input placeholder="Address" name="event-address" class="rounded_corners">		
 
 		<div id="business">
-			Are you adverstising on behalf of a business or organizations?<br />
+			Are you advertising on behalf of a business or organizations?<br />
 			<ul>
 				<li><input type="radio" name="business" value="yes">Yes</li>
 				<li><input type="radio" name="business" value="no">No</li>
@@ -105,21 +105,28 @@
     </div>
 
 	<div class="form-container share">
-      	<h1>Share with More People?</h1>
+		<h1>Thanks for Posting!</h1>
+      	<h3>Would you like to share with more people?</h3>
 		<ul class="share">
 			<li><div id="facebookshare">My Facebook Friends</div></li>
 			<div id="share_facebook"><h3>Whatever Facebook Code Stuff Here!!!</h3></div>
-			<li><a href="#">Email This Post to Friends</a></li>
+			
+			<li><div id="emailshare">Email This Post to Friends</div></li>
+			<div id="share_email">
+				<form>
+	        <input placeholder="Type an email address (seperate with commas)" name="share-email" class="rounded_corners">
+			<a href="#" class="share rounded_corners">Connect your Email</a>
+			</form><br /><br />
+			</div>
+	
+			<li><div id="linkshare">Copy Public Link</div></li>
+			<div id="share_link">
+				<form>
+					<input placeholder="http://ourcommonplace.com/marquette/dogs/12359" name="share-link" class="rounded_corners">
+				</form>
+			</div>
 		</ul>
-		<form>
-        <input placeholder="Type an email address (seperate with commas)" name="share-email" class="rounded_corners">
-		<a href="#" class="share rounded_corners">Connect your Email</a>
-		<br /><br /><br /><br />
-		<h3>Copy public link</h3>
-        <input placeholder="http://ourcommonplace.com/marquette/dogs/12359" name="share-link" class="rounded_corners">
-		<a href="#" class="share rounded_corners">Copy to Clipboard</a>
-
-
+			<br /><br />
         <button class="green-button">All Done!</button>
 
       </form>

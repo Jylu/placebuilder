@@ -12,6 +12,9 @@ a
 #posting_navlinks
   overflow: hidden
 
+  ul li a
+    font: 18px rockwellSTD, Rockwell, sans-serif
+
 ul li a
   position: relative
   top: 3px
@@ -20,7 +23,10 @@ ul li a
   position: relative
   top: 3px
   font: 20px/30px RockwellSTD, Rockwell, sans-serif
-  padding-left: 10px
+  padding-left: 6px
+
+ul li a:hover
+  color: $red
 
 #newPost   
   width: 450px
@@ -76,15 +82,6 @@ ul li a
       ul input
         display: none
 
-    div.links ul li a.conversation:hover help
-      display: inline
-
-    div.links-event
-      display: none
-
-    div.links-request
-      display: none
-
   div.help   
     position: relative  
     top: 10px  
@@ -104,6 +101,7 @@ ul li a
   div.links   
     margin-top: 10px
     padding: 30px
+    margin-left: 35px
 
     ul li   
       list-style-type: none  
@@ -112,6 +110,9 @@ ul li a
       text-shadow: black 0 0 0  
       padding-left: 30px  
       background: url(bullet-quote.png) left center no-repeat
+
+    ul li:hover
+      font-color: $red
    
   div.form-container.default
     opacity: 1
@@ -134,11 +135,10 @@ ul li a
 
   div.form-container   
     padding: 17px    
-    border-left: 1px solid $dark-tan  
     width: 414px 
     overflow: auto
     position: relative
-    right: 2px
+    left: 2px
     margin-bottom: 15
 
     form   
@@ -152,22 +152,24 @@ ul li a
         width: 185px
         height: 39px
         text-decoration: none
+        cursor: pointer
 
         a
           text-decoration: none
 
-      button.green-button   
-        float: right
-        margin-right: 10px
-        font-size: 20px
-        padding: 10px 5px
-        width: 405px
-        height: 39px
+    button.green-button   
+      float: right
+      margin-right: 10px
+      font-size: 20px
+      padding: 10px 5px
+      width: 405px
+      height: 39px
+      text-decoration: none
+      margin-bottom: 15px
+      cursor: pointer
+
+      a
         text-decoration: none
-        margin-bottom: 15px
-
-        a
-          text-decoration: none
 
     label.disclaimerLabel input
       width: 25px
@@ -206,7 +208,7 @@ textarea
   font: 14px Arial, "Sans Serif"
   padding: 15px  
   color: #000
-  box-shadow: inset 2px 2px 4px 0px #dddddd  
+  //box-shadow: inset 2px 2px 4px 0px #dddddd  
 
 #disclaimer   
   width: 174px  
@@ -464,6 +466,7 @@ div.form-container.share ul li
   text-shadow: black 0 0 0  
   padding-left: 30px  
   background: url(bullet-quote.png) left center no-repeat
+  cursor: pointer
 
   div
     font: 18px/20px RockwellSTD, Rockwell, sans-serif
@@ -492,3 +495,14 @@ a.share
   bottom: 15px
   margin: 10px
   background-color: #c6b7ac
+
+div.share
+  text-decoration: none
+
+  h3
+    font: 16px RockwellSTD, Rockwell, sans-serif
+
+#site_overlay
+  background-color: black
+  width:  1000px
+  height:  1000px
