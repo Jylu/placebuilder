@@ -39,11 +39,11 @@ Home.Router = Backbone.Router.extend
 
   createRequests: (community) ->
     posting = this.createPost(community)
-    posting.show "requests"
+    posting.show "request"
 
   createEvents: (community) ->
     posting = this.createPost(community)
-    posting.show "events"
+    posting.show "event"
 
   createShare: (community) ->
     posting = this.createPost(community)

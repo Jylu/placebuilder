@@ -38,7 +38,7 @@ Home.ui.Posting = Framework.View.extend
     address   = this.$("[name="+this.klass+"-address]").val()
     category  = this.$("[name=topics]").val()
     if category is "default"
-      category = "Discussion"
+      category = this.klass
 
     params = 
       "title"    : title
