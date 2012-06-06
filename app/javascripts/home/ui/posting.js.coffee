@@ -36,9 +36,9 @@ Home.ui.Posting = Framework.View.extend
     endtime   = this.$("[name="+this.klass+"-endtime]").val()
     venue     = this.$("[name="+this.klass+"-venue]").val()
     address   = this.$("[name="+this.klass+"-address]").val()
-    category  = this.$("[name=topics]").val()
+    category  = this.$("[name=topics]").val().toLowerCase()
     if category is "default"
-      category = this.klass
+      category = this.klass.toLowerCase()
 
     params = 
       "title"    : title

@@ -9,9 +9,9 @@ Home.model.Community = Backbone.Model.extend
     neighbors.fetch params
 
 
-  getPosts: (params) ->
+  getPosts: (params, category = "") ->
     posts = new Backbone.Collection()
-    posts.url = "/api" + this.get("links").posts
+    posts.url = "/api" + this.get("links").posts + "/" + category
     posts.fetch params
 
 

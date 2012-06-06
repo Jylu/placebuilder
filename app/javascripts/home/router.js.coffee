@@ -7,6 +7,8 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-request": "createRequests"
     ":community/home/share": "createShare"
 
+  content: undefined
+
   home: ->
     header = new Home.ui.Header el: $("header")
     header.render(
@@ -17,8 +19,9 @@ Home.Router = Backbone.Router.extend
     sidebar = new Home.ui.Sidebar el: $("#sidebar")
     sidebar.render()
 
-    content = new Home.ui.CommunityContent el: $("#content")
-    content.render()
+    if this.content is undefined
+      this.content = new Home.ui.CommunityContent el: $("#content")
+    this.content.render()
 
   createPost: (community) ->
     posting = new Home.ui.Posting()
