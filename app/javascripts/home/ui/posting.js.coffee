@@ -28,17 +28,19 @@ Home.ui.Posting = Framework.View.extend
 
   createPost: (e) ->
     e.preventDefault()
-    title     = this.$("[name="+this.klass+"-title]").val()
-    body      = this.$("[name="+this.klass+"-post]").val()
-    price     = this.$("[name="+this.klass+"-price]").val()
-    date      = this.$("[name="+this.klass+"-date]").val()
-    starttime = this.$("[name="+this.klass+"-starttime]").val()
-    endtime   = this.$("[name="+this.klass+"-endtime]").val()
-    venue     = this.$("[name="+this.klass+"-venue]").val()
-    address   = this.$("[name="+this.klass+"-address]").val()
-    category  = this.$("[name=topics]").val().toLowerCase()
-    if category is "default"
-      category = this.klass.toLowerCase()
+    title        = this.$("[name="+this.klass+"-title]").val()
+    body         = this.$("[name="+this.klass+"-post]").val()
+    price        = this.$("[name="+this.klass+"-price]").val()
+    date         = this.$("[name="+this.klass+"-date]").val()
+    starttime    = this.$("[name="+this.klass+"-starttime]").val()
+    endtime      = this.$("[name="+this.klass+"-endtime]").val()
+    venue        = this.$("[name="+this.klass+"-venue]").val()
+    address      = this.$("[name="+this.klass+"-address]").val()
+    category     = this.klass.toLowerCase()
+
+    subcategory  = this.$("[name=topics]").val().toLowerCase()
+    if subcategory is "default"
+      subcategory = this.klass.toLowerCase()
 
     params = 
       "title"    : title
