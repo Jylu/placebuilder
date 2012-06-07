@@ -1,8 +1,8 @@
 Home.ui.Neighbors = Framework.View.extend
   template: "home.neighbors"
 
-  render: ->
-    this.$el.html this.renderTemplate()
+  render: (params) ->
+    this.$el.html this.renderTemplate(params)
 
     router.community.getNeighbors
       data: { limit: 3 }

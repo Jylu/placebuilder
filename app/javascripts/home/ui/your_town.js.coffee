@@ -1,7 +1,8 @@
 Home.ui.YourTown = Framework.View.extend
   template: "home.your-town"
 
-  render: -> this.$el.html this.renderTemplate()
+  render: (params) -> 
+    this.$el.html this.renderTemplate(params)
 
   showPosts: (e) ->
     e.preventDefault()

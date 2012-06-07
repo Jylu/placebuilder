@@ -1,13 +1,13 @@
 Home.ui.YourPages = Framework.View.extend
   template: "home.your-pages"
 
-  render: -> 
+  render: (params) -> 
     account = router.account
     community = router.community
     subscriptions = account.get("feed_subscriptions")
     this.addFeedPageLink(feed_id) for feed_id in subscriptions
     
-    this.$el.html this.renderTemplate()
+    this.$el.html this.renderTemplate(params)
 
   addFeedPageLink: (feed_id) ->
     $.ajax '/api/feeds/'+feed_id,
