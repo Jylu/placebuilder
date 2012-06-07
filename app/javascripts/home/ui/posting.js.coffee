@@ -4,6 +4,8 @@ Home.ui.Posting = Framework.View.extend
 
   render: (params) ->
     this.$el.html this.renderTemplate(params)
+    this.$("select.dk").dropkick()	
+    this.$("input.date", this.el).datepicker dateFormat: "yy-mm-dd"
 
   remove: ->
     this.$(".form-container, .container").hide()
