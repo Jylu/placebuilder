@@ -15,19 +15,14 @@ Home.ui.Sidebar = Framework.View.extend
       "header_class": this.links_header_class
       "links_id"    : "your-pages-links"
 
-    town_params = 
-      "title"       : "Your Town"
-      "header_class": this.links_header_class
-      "links_id"    : "your-town-links"
-
-    this.neighbors = new Home.ui.Neighbors(el: this.$("#neighbors"))
+    this.neighbors = new Home.ui.Neighbors(el: this.$("#directory_content"))
     this.neighbors.render(neighbors_params)
 
-    this.yourPages = new Home.ui.YourPages(el: this.$("#your-pages"))
-    this.yourPages.render(pages_params)
+    #this.yourPages = new Home.ui.YourPages(el: this.$("#directory_content"))
+    #this.yourPages.render(pages_params)
 
     this.yourTown = new Home.ui.YourTown(el: this.$("#your-town"))
-    this.yourTown.render(town_params)
+    this.yourTown.render()
 
   toggleLinks: (e) ->
     e.preventDefault()
