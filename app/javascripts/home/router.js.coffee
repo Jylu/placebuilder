@@ -5,6 +5,7 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-conversation": "createDiscussion"
     ":community/home/create-event": "createEvents"
     ":community/home/create-request": "createRequests"
+    ":community/home/create-meetup": "createMeetups"
     ":community/home/share": "createShare"
 
   content: undefined
@@ -47,6 +48,10 @@ Home.Router = Backbone.Router.extend
   createEvents: (community) ->
     posting = this.createPost(community)
     posting.show "event"
+
+  createMeetups: (community) ->
+    posting = this.createPost(community)
+    posting.show "meetup"
 
   createShare: (community) ->
     posting = this.createPost(community)

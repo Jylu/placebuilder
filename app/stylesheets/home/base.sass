@@ -165,7 +165,7 @@ header
         display: block
         text-indent: -9999px
 aside
-  width: 330px
+  width: 295px
   background: $off-grey image-url("shared/redesign/background.gif") center
   position: fixed
   display: block
@@ -205,7 +205,6 @@ aside
   #your-town
     width: 85%
     margin: 0 auto
-      top: 20px
     h3
       font-family: $heading
       font-size: 15px
@@ -215,7 +214,6 @@ aside
       padding-bottom: 5px
     .your-town 
       padding-top: 15px
-      border-top: 1px solid white
       li
         padding: 8px 0
         a
@@ -223,46 +221,57 @@ aside
           font-family: $heading
           color: $blue
           text-shadow: 1px 1px 1px white
-          font-size: 15px
-          padding-top: 2px
-          padding-left: 26px
+          font-size: 18px
+          padding-top: 10px
+          padding-bottom: 8px
+          padding-left: 42px
           background: image-url("shared/redesign/sidebar-icon.png") no-repeat left
-          line-height: 16px
+          line-height: 26px
 
-
-  #your-pages
+  #directories
     width: 85%
     margin: 0 auto
-      top: 20px
-    .your-pages-list
-      padding-top: -15px
-      border-top: 1px solid white
-      li
-        padding: 0px 0
-        a
-          text-decoration: none
-          font-family: $heading
-          color: $blue
-          text-shadow: 1px 1px 1px white
-          padding-left: 26px
-          padding-top: 2px
-          background: image-url("shared/redesign/sidebar-icon.png") no-repeat left
-          font-size: 15px
-          line-height: 16px
-          margin-left: 0px
-
-    h3.sidebar-links
+    h3
+      display: inline
+      float: left
       font-family: $heading
       font-size: 15px
       color: $blue
       text-shadow: 1px 1px 1px white
-      border-bottom: 1px solid #c5c2b5
-      padding-bottom: 5px
+      margin-bottom: 5px
+      padding: 12px 12px 7px
+      margin-top: 20px
+      background: $dark-tan
+      border-radius: 4px
+    li.directory_listing
+      padding: 8px 0
+      a
+        text-decoration: none
+        font-family: $heading
+        color: $blue
+        text-shadow: 1px 1px 1px white
+        font-size: 18px
+        padding-top: 10px
+        padding-bottom: 8px
+        padding-left: 42px
+        background: image-url("shared/redesign/missing.png") no-repeat left
+        line-height: 26px
+
+#directory_nav 
+  height: 70px
+  h3
+    margin-right: 6px
+
+#directory_content
+  height: 410px
+  overflow: scroll
 
   .your-neighbors
     width: 85%
     margin: 0 auto
-      top: 20px
+    top: 20px
+    img
+      height: 36px
     h3
       font-family: $heading
       font-size: 15px
@@ -271,12 +280,11 @@ aside
       border-bottom: 1px solid #c5c2b5
       padding-bottom: 5px
     .list
-      border-top: 1px solid white
     .neighbor
       border-bottom: 1px solid
       border-color: lighten($dark-grey, 30%)
       padding-bottom: 10px
-      padding-top: 15px
+      padding-top: 5px
       height: 45px
       &:last-child
         border-bottom: none
@@ -291,26 +299,9 @@ aside
         color: lighten($black, 10%)
         margin-top: 5px
       img
-        height: 40px
-        width: 40px
         padding-right: 8px
         float: left
-  .town-map
-    width: 85%
-    margin: 0 auto
-      top: 20px
-    h3
-      font-family: $heading
-      font-size: 15px
-      color: $blue
-      text-shadow: 1px 1px 1px white
-      border-bottom: 1px solid #c5c2b5
-      padding-bottom: 5px
-    img
-      margin-top: 15px
-      border: 1px solid
-      border-color: lighten($dark-grey, 20%)
-      
+ 
 .main
   overflow: hidden
   position: relative

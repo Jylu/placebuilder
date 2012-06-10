@@ -5,11 +5,6 @@
     
   <div id="posting_navlinks">
 	<ul>
-		<li class="conversation"><a
-        href="create-conversation"
-        class="conversation"
-        data-remote>Town Discussion Topic
-      </a></li>
       <li class="request"><a
         href="create-request"
         class="request"
@@ -18,7 +13,17 @@
       <li class="event"><a
         href="create-event"
         class="event"
-        data-remote>Event or Meetup
+        data-remote>Publicize an Event
+      </a></li>
+	<li class="conversation"><a
+        href="create-conversation"
+        class="conversation"
+        data-remote>Town Discussion Topic
+      </a></li>
+      <li class="meetup"><a
+        href="create-meetup"
+        class="meetup"
+        data-remote>Meet-up Idea
       </a></li>
 </ul>
     	</div>
@@ -168,6 +173,29 @@
       </form>
 
     </div>
+
+	<div class="form-container meetup">
+      	<h1>Propose a Meet-up</h1>
+		<form>
+				
+        <div class="meetup_lets"><p>Let's</p><input placeholder="Start a pickup game, create a book club..." name="request-title" class="rounded_corners"></div>
+        <textarea placeholder="Propose a meet-up, group, or mew idea with people in the community" name="request-post" class="rounded_corners"></textarea>		
+		
+		<div id="business">
+				<select name="advertising" id="advertising" class="dk" tabindex="1">
+					<option value="">Advertising on behalf of a business or organization?</option
+					<option value="Yes">Yes</option>
+					<option value="Yes">Yes</option>
+					<option value="No">No</option>	
+				</select>
+		</div>
+
+        <button class="red-button">POST NOW</button>
+
+      </form>
+
+    </div>
+
 
 	<div class="form-container share">
 		<h1>Thanks for Posting!</h1>
