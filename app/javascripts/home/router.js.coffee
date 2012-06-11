@@ -7,6 +7,7 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-request": "createRequests"
     ":community/home/create-meetup": "createMeetups"
     ":community/home/share": "createShare"
+    ":community/home/pages/:page": "showPage"
 
   content: undefined
 
@@ -20,9 +21,28 @@ Home.Router = Backbone.Router.extend
     sidebar = new Home.ui.Sidebar el: $("#sidebar")
     sidebar.render()
 
+    this.createContent()
+    this.content.render("home")
+
+  showPage: (community, page) ->
+    self = this
+    #$("html").css("background-image", "url('/assets/shared/redesign/pages/" + community + "/" + page + ".jpg')")
+
+    header = new Home.ui.Header el: $("header")
+    header.render(
+      "H1": "Herp Derp"
+      "H2": page
+    )
+
+    sidebar = new Home.ui.Sidebar el: $("#sidebar")
+    sidebar.render()
+
+    this.createContent()
+    this.content.render("page", page)
+
+  createContent: ->
     if this.content is undefined
       this.content = new Home.ui.CommunityContent el: $("#content")
-    this.content.render()
 
   createPost: (community) ->
     posting = new Home.ui.Posting()
