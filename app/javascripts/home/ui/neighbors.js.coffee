@@ -7,7 +7,8 @@ Home.ui.Neighbors = Framework.View.extend
     router.community.getNeighbors
       success: (neighbors) =>
         neighbors.each (n) =>
-          html = this.renderTemplate("home.neighbors.neighbor", n.toJSON())
+          neighbor = n.toJSON()
+          html = this.renderTemplate("home.neighbor", neighbor)
           this.$(".list").append html
 
 
