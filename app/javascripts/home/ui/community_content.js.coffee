@@ -5,10 +5,13 @@ Home.ui.CommunityContent = Framework.View.extend
   category: ""
   categories: ["discussion", "request", "event"]
 
-  render: (category) ->
+  render: (type, category) ->
     console.log "content render"
     this.$el.html this.renderTemplate()
-    this.showPosts(category)
+    if type is "page"
+      this.showPage(category)
+    else
+      this.showPosts(category)
 
   showPosts: (category) ->
     if category
@@ -25,4 +28,13 @@ Home.ui.CommunityContent = Framework.View.extend
           this.$(".list").append(view.el)
       , category
 
+  showPage: (page) ->
+    router.community.getPage
+      limit: 5
+      success: (posts) =>
+        posts.each (p) =>
+          view = new Home.ui.Post(model: p)
+          view.render()
+          this.$(".list").append(view.el)
+      , page
 
