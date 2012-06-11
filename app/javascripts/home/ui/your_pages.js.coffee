@@ -14,6 +14,6 @@ Home.ui.YourPages = Framework.View.extend
       dataType: 'json'
       success: (data, textStatus, jqXHR) ->
         name = data.name
-        url = "/home"+data.url
-        $('#your-pages-list').append "<li><a href='#{url}'>#{name}</a></li>"
+        url = "home"+data.url
+        $('#your-pages-list').append "<li><a href='#{url}' data-remote>#{name}</a></li>"
 
