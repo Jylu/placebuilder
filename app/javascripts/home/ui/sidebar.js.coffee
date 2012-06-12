@@ -13,6 +13,7 @@ Home.ui.Sidebar = Framework.View.extend
 
     #show the your pages tab by default
     this.showPages()
+    this.$('[title="pages"]').addClass('current_tab')
 
   showNeighbors: ->
     neighbors_params = 
@@ -52,6 +53,8 @@ Home.ui.Sidebar = Framework.View.extend
   switchTabs: (e) ->
     e.preventDefault()
     title = this.$(e.currentTarget).attr("title")
+    this.$('.sidebar-links').removeClass('current_tab')
+    this.$(e.currentTarget).addClass('current_tab')
     if title is "pages"
       this.showPages()
     else if title is "neighbors"
