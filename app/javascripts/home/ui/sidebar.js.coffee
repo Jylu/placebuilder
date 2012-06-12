@@ -46,7 +46,8 @@ Home.ui.Sidebar = Framework.View.extend
       height = body.clientHeight
     
     offset = this.$("#"+this.content_div).offset()
-    this.$("#"+this.content_div).height((height - offset.top)+"px")
+    directory_height = height - offset.top - 10
+    this.$("#"+this.content_div).height(directory_height+"px")
 
   switchTabs: (e) ->
     e.preventDefault()

@@ -11,10 +11,10 @@ Home.Router = Backbone.Router.extend
 
   content: undefined
 
-  home: ->
+  home: (community) ->
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": "Herp Derp"
+      "H1": community
       "H2": "All Recent Posts"
     )
 
@@ -30,7 +30,7 @@ Home.Router = Backbone.Router.extend
 
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": "Herp Derp"
+      "H1": community
       "H2": page
     )
 
