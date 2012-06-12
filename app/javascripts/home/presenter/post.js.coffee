@@ -10,7 +10,7 @@ class Home.presenter.Post
     else if category is undefined
       category = "discussion"
     _.extend(@post.toJSON(),
-      wireCategoryClass: "sports"
+      wireCategoryClass: category
       wireCategoryName: (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
       timeAgo: timeAgoInWords(@post.get("published_at")))
 

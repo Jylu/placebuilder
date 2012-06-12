@@ -9,11 +9,12 @@ Home.ui.YourPages = Framework.View.extend
     this.$el.html this.renderTemplate(params)
 
   addFeedPageLink: (feed_id) ->
-    $.ajax '/api/feeds/'+feed_id,
-      type: 'GET'
-      dataType: 'json'
-      success: (data, textStatus, jqXHR) ->
-        name = data.name
-        url = "home"+data.url
-        $('#your-pages-list').append "<li class=\"directory_listing\"><a href='#{url}' data-remote>#{name}</a></li>"
-
+    router.community.getPage
+      success: (data) =>
+        data.each (p) =>
+          page = p.toJSON()
+          page.url = "home"+page.url
+          page.about.trim()
+          html = this.renderTemplate("home.page", page)
+          this.$('#your-pages-list').append html
+      , feed_id
