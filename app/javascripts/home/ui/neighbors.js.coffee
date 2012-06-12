@@ -8,6 +8,8 @@ Home.ui.Neighbors = Framework.View.extend
       success: (neighbors) =>
         neighbors.each (n) =>
           neighbor = n.toJSON()
+          if neighbor.about isnt null
+            neighbor.about.trim()
           html = this.renderTemplate("home.neighbor", neighbor)
           this.$(".list").append html
 
