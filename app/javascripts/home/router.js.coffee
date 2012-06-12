@@ -14,7 +14,7 @@ Home.Router = Backbone.Router.extend
   home: (community) ->
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": community
+      "H1": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
       "H2": "All Recent Posts"
     )
 
@@ -30,8 +30,8 @@ Home.Router = Backbone.Router.extend
 
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": community
-      "H2": page
+      "H1": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
+      "H2": (page.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
     )
 
     sidebar = new Home.ui.Sidebar el: $("#sidebar")
