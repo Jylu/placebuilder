@@ -15,5 +15,5 @@ Home.ui.YourPages = Framework.View.extend
       success: (data, textStatus, jqXHR) ->
         name = data.name
         url = "home"+data.url
-        $('#your-pages-list').append "<li><a href='#{url}' data-remote>#{name}</a></li>"
+        $('#your-pages-list').append "<li class=\"directory_listing\"><a href='#{url}' data-remote>#{name}</a></li>"
 
