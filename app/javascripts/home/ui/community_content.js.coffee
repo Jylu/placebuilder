@@ -37,13 +37,15 @@ Home.ui.CommunityContent = Framework.View.extend
           view = new Home.ui.Post(model: p)
           view.render()
           this.$(".list").append(view.el)
-        this.masonize()
+        this.multiColumn()
         $(window).scroll(() =>
           this.updateHeader()
         )
       , page
 
-  masonize: () ->
+  multiColumn: () ->
+    $(".main").addClass("multi-column")
+    $(".list").addClass("multi-column").removeClass("one-column")
     container = $("#content").find(".list")
     container.imagesLoaded( () ->
       container.masonry({
