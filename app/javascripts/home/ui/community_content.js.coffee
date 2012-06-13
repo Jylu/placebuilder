@@ -26,6 +26,7 @@ Home.ui.CommunityContent = Framework.View.extend
           view = new Home.ui.Post(model: p)
           view.render()
           this.$(".list").append(view.el)
+        #this.masonize()
       , category
 
   showPage: (page) ->
@@ -36,5 +37,29 @@ Home.ui.CommunityContent = Framework.View.extend
           view = new Home.ui.Post(model: p)
           view.render()
           this.$(".list").append(view.el)
+        this.multiColumn()
+        $(window).scroll(() =>
+          this.updateHeader()
+        )
       , page
+
+  multiColumn: () ->
+    $(".main").addClass("multi-column")
+    $(".list").addClass("multi-column").removeClass("one-column")
+    container = $("#content").find(".list")
+    container.imagesLoaded( () ->
+      container.masonry({
+        containerStyle: 'margin: 0 auto',
+        itemSelector: '.wire',
+        isFitWidth: true,
+        isResizable: true
+        #columnWidth: 350
+      })
+    )
+
+  updateHeader: () ->
+    $(".wire").each(() ->
+      if($(this).offset().top < $(window).scrollTop())
+        $("h2").html($(this).find(".wire-top").attr("data-time-ago"))
+    )
 

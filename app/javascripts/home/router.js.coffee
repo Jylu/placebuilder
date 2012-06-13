@@ -1,6 +1,7 @@
 Home.Router = Backbone.Router.extend
   routes:
     ":community/home" : "home"
+    ":community/home/register" : "register"
     ":community/home/create-post": "createDefault"
     ":community/home/create-conversation": "createDiscussion"
     ":community/home/create-event": "createEvents"
@@ -24,13 +25,19 @@ Home.Router = Backbone.Router.extend
     this.createContent()
     this.content.render("home")
 
+  register: (community) ->
+    registration = new Home.ui.Registration()
+    registration.render(
+      "community": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
+    )
+
   showPage: (community, page) ->
     self = this
     #$("html").css("background-image", "url('/assets/shared/redesign/pages/" + community + "/" + page + ".jpg')")
 
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": page.split('-').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join(' ')
+      "H1": page.split('-').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
       "H2": ""
     )
 

@@ -364,15 +364,24 @@ aside
   height: auto
   width: 750px
   left: 296px
+  width: 670px
+  &.multi-column
+    width: 760px
+  left: 320px
   top: 64px
   background-color: rgba(27, 51, 74, 0.4)
+  .one-column
+    width: 630px
+    margin: 20px
+  .multi-column
+    .wire
+      width: 350px
+      margin: 10px
+      float: left
   .wire
     min-height: 100px
-    width: 350px
-    float: left
     background: white
     border-radius: 4px
-    margin: 12px
     .wire-top
       height: 30px
       border-radius: 4px
