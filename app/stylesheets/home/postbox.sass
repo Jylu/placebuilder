@@ -111,6 +111,22 @@ ul li a:hover
       padding-left: 30px  
       background: url(bullet-quote.png) left center no-repeat
 
+    ul li.request
+      background: url(shared/redesign/request-offer-icon.png) left center no-repeat
+      background-size: 26px
+
+    ul li.event
+      background: url(shared/redesign/event-icon.png) left center no-repeat
+      background-size: 26px
+
+    ul li.conversation
+      background: url(shared/redesign/discussions-icon.png) left center no-repeat
+      background-size: 26px
+
+    ul li.meetup
+      background: url(shared/redesign/announcements-icon.png) left center no-repeat
+      background-size: 26px
+
     ul li:hover
       font-color: $red
    
@@ -376,10 +392,11 @@ div.go-back a
   font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
 
 #newPost div.form-container form button.red-button
-  width: 403px
-  height: 40px
-  padding-top: 12px
-  margin-top: 55px
+  width: 160px
+  height: 60px
+  padding-top: 16px
+  position: relative
+  bottom: 25px
 
 #business
   width: 400px
@@ -492,3 +509,51 @@ div.meetup_lets
   input
     width: 312px
     float: left
+
+//New Code
+
+#business
+  width: 225px
+  float: left
+  font: 12px RockwellSTD, Rockwell, sans-serif
+  color: $blue
+
+  ul
+    height: 23px
+    position: relative
+    bottom: 7px
+    margin-bottom: 10px
+
+  ul li
+    display: inline-block
+    margin-right: 30px
+
+    input
+      width: 25px
+      height: 25px
+      position:  relative
+      top: 5px
+
+div.form-container   
+  padding: 17px 17px 0    
+  width: 414px 
+  overflow: auto
+  position: relative
+  left: 2px
+  margin-bottom: -46px
+
+  form   
+    margin-top: 9px
+
+    button.red-button   
+      float: right
+      margin-right: 10px
+      font-size: 20px
+      padding: 10px 5px
+      width: 185px
+      height: 39px
+      text-decoration: none
+      cursor: pointer
+
+#dk_container_categorize
+  width: 404px
