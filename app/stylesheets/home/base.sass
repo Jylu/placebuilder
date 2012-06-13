@@ -363,7 +363,7 @@ aside
   overflow: hidden
   position: relative
   height: auto
-  width: 750px
+  width: 760px
   left: 296px
   &.multi-column
     width: 760px
@@ -371,12 +371,19 @@ aside
   background-color: rgba(27, 51, 74, 0.4)
   .one-column
     .wire
-      width: 630px
       margin: 20px
   .multi-column
-    .wire
+    .wire, .wire-header
       width: 350px
-      margin: 10px
+      margin-top: 20px
+      margin-left: 20px
+      margin-bottom: 0px
+      float: left
+    .wire-header
+      width: 720px
+      margin-top: 20px
+      margin-left: 20px
+      margin-bottom: 0px
       float: left
   .wire
     min-height: 100px
@@ -417,6 +424,7 @@ aside
         margin-left: 60px
         font-family: $body
         color: $black
+        overflow: hidden
       h3 
         font-size: 18px
         font-weight: bold
@@ -567,8 +575,17 @@ aside
         &:focus
           box-shadow: 0 0 5px $red
           -webkit-transition: box-shadow 150ms ease-in
-  .wire-separator
-    width: 730px
-    margin: 10px
-    .separator-time
-      // todo format centering, text, etc.
+  .wire-header
+    height: 40px
+    border-radius: 4px
+    background: $light-grey image-url("shared/redesign/background.gif")
+    box-shadow: inset 0px 1px 0px 0px white
+    border-bottom: 1px solid 
+    border-color: lighten($dark-grey, 20%)
+    h3
+      font-family: $heading
+      text-align: center
+      color: $blue
+      font-size: 18px
+      background-position: 5px 5px
+      padding-top: 11px
