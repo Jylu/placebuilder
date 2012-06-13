@@ -38,8 +38,8 @@ Home.Router = Backbone.Router.extend
 
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": community.split('-|\\ |\\_').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
-      "H2": page.split('-|\\ |\\_').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
+      "H1": community.split(/[\s-_]+/).map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
+      "H2": page.split(/[\s-_]+/).map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
       "home_link": "/"+router.community.get("slug")+"/home"
     )
 
