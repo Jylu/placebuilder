@@ -95,7 +95,7 @@ header
     left: none
     right: none
   .community-name
-    width: 270px
+    width: 258px
     float: left
     padding-left: 15px
     background: image-url("shared/redesign/commonplace-icon.png") no-repeat
@@ -115,7 +115,7 @@ header
   .right
     width: 113px    
   .top-bar
-    width: 666px
+    width: 678px
     float: right
     border-left: 1px solid $light-blue
     height: 60px
@@ -228,6 +228,18 @@ aside
           background: image-url("shared/redesign/sidebar-icon.png") no-repeat left
           line-height: 26px
 
+        #request
+          background: image-url("shared/redesign/request-offer-icon.png") no-repeat left
+
+        #event
+          background: image-url("shared/redesign/event-icon.png") no-repeat left
+
+        #discussion
+          background: image-url("shared/redesign/discussions-icon.png") no-repeat left
+
+        #announcement
+          background: image-url("shared/redesign/announcements-icon.png") no-repeat left       
+
   #directories
     width: 85%
     margin: 0 auto
@@ -243,6 +255,8 @@ aside
       margin-top: 20px
       background: $dark-tan
       border-radius: 4px 4px 0px 0px
+      cursor: pointer
+
     li.directory_listing
       padding: 8px 0
       a
@@ -257,27 +271,32 @@ aside
         background: image-url("shared/redesign/missing.png") no-repeat left
         line-height: 26px
 
+
+#directory_nav h3.sidebar-links.current_tab
+
 #directory_nav 
   height: 70px
+  cursor: pointer
   h3
     margin-right: 6px
+    cursor: pointer
+  h3.sidebar-links.current_tab
+    background: #fff
+    color: $red
 
 #directory_content
   height: 100%
   width: 235px
-  background: #fffdf7
+  background: #fff
   padding-top: 15px
   padding-left: 8px
   padding-right: 2px
   position: relative
-  bottom: 15px
+  bottom: 16px
 
   .your-neighbors
-    width: 85%
-    margin: 0 auto
-    top: 20px
     img
-      height: 36px
+      height: 32px
     h3
       font-family: $heading
       font-size: 15px
@@ -287,11 +306,13 @@ aside
       padding-bottom: 5px
     .list
     .neighbor
+      margin-left: 12px
       border-bottom: 1px solid
       border-color: lighten($dark-grey, 30%)
       padding-bottom: 10px
       padding-top: 5px
       height: 50px
+      width: 85%
       overflow: hidden
       &:last-child
         border-bottom: none
@@ -309,11 +330,13 @@ aside
         padding-right: 8px
         float: left
   .page
+    margin-left: 12px
     border-bottom: 1px solid
     border-color: lighten($dark-grey, 30%)
     padding-bottom: 10px
     padding-top: 5px
     height: 50px
+    width: 85%
     overflow: hidden
     &:last-child
       border-bottom: none
@@ -335,8 +358,8 @@ aside
   overflow: hidden
   position: relative
   height: auto
-  width: 670px
-  left: 330px
+  width: 678px
+  left: 320px
   top: 64px
   background-color: rgba(27, 51, 74, 0.4)
   .wire
