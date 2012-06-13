@@ -26,7 +26,7 @@ Home.ui.CommunityContent = Framework.View.extend
           view = new Home.ui.Post(model: p)
           view.render()
           this.$(".list").append(view.el)
-        this.masonize()
+        #this.masonize()
       , category
 
   showPage: (page) ->
