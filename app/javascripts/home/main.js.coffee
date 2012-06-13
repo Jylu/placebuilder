@@ -30,7 +30,8 @@ $ ->
           alert "we couldn't load the community"
 
     error: ->
-      alert "you're not logged in. Go log in somewhere and come back"
+      #router.navigate(slug + "/home/register", {"trigger": true, "replace": true})
+      router.register(slug)
 
 
 
