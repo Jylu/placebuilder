@@ -11,10 +11,10 @@ Home.Router = Backbone.Router.extend
 
   content: undefined
 
-  home: ->
+  home: (community) ->
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": "Herp Derp"
+      "H1": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
       "H2": "All Recent Posts"
     )
 

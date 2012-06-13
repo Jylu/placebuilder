@@ -13,6 +13,7 @@ Home.ui.Sidebar = Framework.View.extend
 
     #show the your pages tab by default
     this.showPages()
+    this.$('[title="pages"]').addClass('current_tab')
 
   showNeighbors: ->
     neighbors_params = 
@@ -23,6 +24,7 @@ Home.ui.Sidebar = Framework.View.extend
     if this.neighbors is undefined
       this.neighbors = new Home.ui.Neighbors(el: this.$("#"+this.content_div))
     this.neighbors.render(neighbors_params)
+    this.resizeDirectory()
 
   showPages: ->
     pages_params = 
@@ -32,15 +34,41 @@ Home.ui.Sidebar = Framework.View.extend
     if this.yourPages is undefined
       this.yourPages = new Home.ui.YourPages(el: this.$("#"+this.content_div))
     this.yourPages.render(pages_params)
+    this.resizeDirectory()
+
+  resizeDirectory: ->
+    height = 0
+    body = window.document.body
+    if window.innerHeight isnt undefined
+      height = window.innerHeight
+    else if body.parentElement.clientHeight isnt undefined
+      height = body.parentElement.clientHeight
+    else if body and body.clientHeight
+      height = body.clientHeight
     
+    offset = this.$("#"+this.content_div).offset()
+    directory_height = height - offset.top - 10
+    this.$("#"+this.content_div).height(directory_height+"px")
 
   switchTabs: (e) ->
     e.preventDefault()
     title = this.$(e.currentTarget).attr("title")
+    this.$('.sidebar-links').removeClass('current_tab')
+    this.$(e.currentTarget).addClass('current_tab')
     if title is "pages"
       this.showPages()
     else if title is "neighbors"
       this.showNeighbors()
 
+  showScrollBar: (e) ->
+    e.preventDefault()
+    this.$(e.currentTarget).css({"overflow": "auto"})
+
+  hideScrollBar: (e) ->
+    e.preventDefault()
+    this.$(e.currentTarget).css({"overflow": "hidden"})
+
   events:
     "click .sidebar-links": "switchTabs"
+    "mouseover .scroll": "showScrollBar"
+    "mouseout .scroll": "hideScrollBar"

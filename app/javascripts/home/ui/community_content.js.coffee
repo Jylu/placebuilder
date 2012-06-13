@@ -29,7 +29,7 @@ Home.ui.CommunityContent = Framework.View.extend
       , category
 
   showPage: (page) ->
-    router.community.getPage
+    router.community.getPageContent
       limit: 5
       success: (posts) =>
         posts.each (p) =>
