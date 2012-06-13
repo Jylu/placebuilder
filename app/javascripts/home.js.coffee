@@ -5,6 +5,7 @@
 #= require time_ago_in_words
 #= require dropkick
 #= require jquery-ui
+#= require jquery.masonry
 
 
 #= require_self
