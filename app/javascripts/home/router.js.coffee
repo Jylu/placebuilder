@@ -30,7 +30,7 @@ Home.Router = Backbone.Router.extend
 
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": page.split('-').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join(' ')
+      "H1": page.split('-').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
       "H2": ""
     )
 
