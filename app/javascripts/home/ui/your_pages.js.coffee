@@ -13,7 +13,7 @@ Home.ui.YourPages = Framework.View.extend
       success: (data) =>
         data.each (p) =>
           page = p.toJSON()
-          page.url = "home"+page.url
+          page.url = "/"+router.community.get("slug")+"/home"+page.url
           page.about.trim()
           html = this.renderTemplate("home.page", page)
           this.$('#your-pages-list').append html
