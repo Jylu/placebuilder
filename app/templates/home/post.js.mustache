@@ -19,10 +19,10 @@
 <div class="post-interaction">
   <div class="interaction">
     <p class="thanked">
-      <span class="blue">2 people</span> thanked this post: 
-      <span class="blue">Mark Malazarte </span>
-      and 
-      <span class="blue">Jackie Chilles</span>
+      <span class="blue">{{num_thanks}} {{thank_people}}</span> thanked this post: 
+      {{#thanks}}
+      <span class="blue">{{thanker}} </span>
+      {{/thanks}}
     </p>
     <p class="publicized">
       <span class="blue">2 people</span> shared this post: 
@@ -34,14 +34,20 @@
 </div>
 
 <div class="post-replies">
-  <img src="https://s3.amazonaws.com/commonplace-avatars-production/missing.png">  
-  <p class="author">Jeane Doe</p>
-  <p class="reply-text">Lalalala This is a derp reply.</p>
-  <p class="reply-actions">
-  <span class="reply-time">30 minutes ago &bull;</span>
-  <span class="reply-thank">Thank</span>
-  <span class="many-thanks">&bull; 1 person thanked</span>
-  </p>  
+  <p class="replies">
+    <span class="blue">{{num_replies}} {{reply_people}}</span> replied to this post: 
+  </p>
+  <ul id="post-replies">{{#replies}}
+    <li><img src="{{avatar_url}}">  
+      <p class="author">{{author}}</p>
+      <p class="reply-text">{{body}}</p>
+      <p class="reply-actions">
+        <span class="reply-time">{{time_ago}} &bull;</span>
+        <span class="reply-thank">Thank</span>
+        <span class="many-thanks">&bull; {{num_thanks}} {{thank_people}} thanked</span>
+      </p>  
+  </li>
+  {{/replies}}</ul>
   
 </div>
 
