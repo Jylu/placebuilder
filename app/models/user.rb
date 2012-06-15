@@ -606,7 +606,7 @@ WHERE
       end
 
       street.email = email.email
-      street.add_tags(email.tags)
+      # street.add_tags(email.tags)
       email.destroy
 
       return street
@@ -628,7 +628,7 @@ WHERE
       end
 
       street.email = email.email
-      street.add_tags(email.tags)
+      # street.add_tags(email.tags)
       email.destroy
     else
       return emails.first

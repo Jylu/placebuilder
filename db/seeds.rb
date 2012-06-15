@@ -12,6 +12,10 @@ neighborhood = Neighborhood.create!(:name => "n1",
                                     :community => community,
                                     :bounds => [[42.29337, -71.16252], [42.29061, -71.16827], [42.28391, -71.16162], [42.28163, -71.16004], [42.28077, -71.15819], [42.2848, -71.15669], [42.28614, -71.1548], [42.29061, -71.15999]])
 
+resident = Resident.create!(:first_name => "test", :last_name => "dev",
+                           :email => "test@example.com",
+                           :community => community)
+
 address = StreetAddress.create!(:address => "221B Baker St.", 
                                 :unreliable_name => "test dev")
 
