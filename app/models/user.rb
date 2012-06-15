@@ -558,7 +558,7 @@ WHERE
       matched = create_st_address
     else
       # We somehow...have the same street address more than once D=
-      # merge (matched) goes here, where merge merges table entries into 1 entry
+      # This should never happen
     end
 
     return matched
@@ -570,34 +570,76 @@ WHERE
     if !(address_components.first =~ /^[-+]?[0-9]+$/) 
       address_components.shift if address_components.first == "#"
       # TODO: add PO BOX case
-      matched = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.first + "%", self.last_name)
+      matched_street = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.first + "%", self.last_name)
       # TODO: add unsure address tag
     else
-      matched = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.take(2).join(" ") + "%", self.last_name)
+      matched_street = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.take(2).join(" ") + "%", self.last_name)
     end
 
-    # TODO: FIRST LETTER OF FIRST NAME
+    # Match by e-mail address
+    # E-mail addresses should be unique in that no two Resident files should
+    # have the same e-mail address
+    matched_email = Resident.where("email ILIKE ? AND last_name ILIKE ?", self.email, self.last_name)
 
-    # if any of address and last name don't match, make a new Resident for the user
-    # return nil if matched.count == 0
-    # if address and last name and first letter of first name match one Resident, use this Resident (first name can be a nickname or the actual name)
-    return matched.first if matched.count == 1
+    # Merge "duplicate" Resident files on this user if there are any
+    return resident = merge(matched_street, matched_email)
+  end
 
-    # match email address
-    matched_email = matched.select { |resident| resident.email == self.email }
+  def merge(streets, emails)
 
-    return matched_email.first if matched_email.count == 1
+    # No street address match. Return e-mail match [if any]
+    if streets.count == 0
+      return emails.first
+    end
 
-    # check user first name /first name's first letter
-    # check if resident returned has a user already
-    # add 'unsure because only address and last name match' tag and 'address, last name, and first letter of first name match'
+    if streets.count == 1
+      # No e-mail match. Return street address match
+      if emails.count == 0
+        return streets.first
+      end
 
-    matched_first_name = matched.select {|resident| resident.first_name == self.first_name}
-    # if address and last name and first name match, use the first resident for whom all these match (shouldn't be more than 1 though, really)
-    return matched_first_name.first if matched_first_name.count >= 1
+      # One of each. Merge them if they're not the same file
+      street = streets.first
+      email = emails.first
+      if street == email
+        return street
+      end
 
-    # if address and last name and first letter of first name match MULTIPLE Residents but the full first name doesn't, make a new Resident for the user
-    nil
+      street.email = email.email
+      street.add_tags(email.tags)
+      email.destroy
+
+      return street
+    end
+
+    # Multiple street address match. Search by name
+    #
+    # The odds of two people with the same exact first AND last name
+    # living at the same address is low enough to be negligible.
+    if street = streets.select { |resident| resident.first_name == self.first_name }
+
+      if emails.count == 0
+        return street
+      end
+
+      email = emails.first
+      if street == email
+        return street
+      end
+
+      street.email = email.email
+      street.add_tags(email.tags)
+      email.destroy
+    else
+      return emails.first
+    end
+
+    # None of the names matched
+    if emails.count > 0
+      return emails.first
+    end
+
+    return nil
   end
 
   def create_st_address
@@ -611,8 +653,15 @@ WHERE
   def correlate
     addr = find_st_address
     if r = find_resident
+      if !r.street_address?
+        r.street_address = addr
+      end
+
+      if !r.email?
+        r.email = self.email
+      end
+
       r.user = self
-      r.street_address = addr
       r.save
     else
       Resident.create(

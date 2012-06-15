@@ -11,6 +11,10 @@ class Resident < ActiveRecord::Base
     self.user_id?
   end
 
+  def street_address?
+    self.street_address_id?
+  end
+
   def friends_on_commonplace?
     [false, true].sample
   end
