@@ -23,7 +23,6 @@ community.add_default_groups
 user.admin = true
 user.save!
 
-user.correlate
 post = Post.create(:body => "This is a test post",
                     :user => user,
                     :subject => "Subject",
