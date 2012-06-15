@@ -570,21 +570,27 @@ WHERE
     if !(address_components.first =~ /^[-+]?[0-9]+$/) 
       address_components.shift if address_components.first == "#"
       # TODO: add PO BOX case
-      matched_street = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.first + "%", self.last_name)
+      matched = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.first + "%", self.last_name)
       # TODO: add unsure address tag
     else
-      matched_street = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.take(2).join(" ") + "%", self.last_name)
+      matched = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.take(2).join(" ") + "%", self.last_name)
     end
+
+    # Don't want to match with Resident files that already have a User
+    matched_street = matched.select { |resident| !resident.on_commonplace? }
 
     # Match by e-mail address
     # E-mail addresses should be unique in that no two Resident files should
     # have the same e-mail address
-    matched_email = Resident.where("email ILIKE ? AND last_name ILIKE ?", self.email, self.last_name)
+    matched = Resident.where("email ILIKE ? AND last_name ILIKE ?", self.email, self.last_name)
 
-    # Merge "duplicate" Resident files on this user if there are any
+    # Don't want to match with Resident files that already have a User
+    matched_email = matched.select { |resident| !resident.on_commonplace? }
+
     return resident = merge(matched_street, matched_email)
   end
 
+  # Merge "duplicate" Resident files of this user, if there are any
   def merge(streets, emails)
 
     # No street address match. Return e-mail match [if any]
