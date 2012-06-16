@@ -311,6 +311,9 @@ GEM
     permanent_records (2.1.2)
       activerecord
     pg (0.13.2)
+    pg_search (0.5)
+      activerecord (>= 3)
+      activesupport (>= 3)
     plucky (0.4.4)
       mongo (~> 1.5)
     polyglot (0.3.3)
@@ -519,6 +522,7 @@ DEPENDENCIES
   paperclip (~> 2.4.4)
   permanent_records
   pg
+  pg_search
   premailer
   rack-cache
   rack-contrib
