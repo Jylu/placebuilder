@@ -3,6 +3,7 @@ Home.ui.Registration = Framework.View.extend
 
   events:
     "click .nav-tabs": "switchTab"
+    "click .next1": "subscribe"
 
   render: (params) ->
     header = new Home.ui.RegistrationHeader el: $("header")
@@ -24,3 +25,7 @@ Home.ui.Registration = Framework.View.extend
     $(e.currentTarget).addClass('selected')
     false
 
+  subscribe: (e) ->
+    e.preventDefault()
+    page2 = new Home.ui.Subscribe(el: this.$("#registration_content"))
+    page2.render()
