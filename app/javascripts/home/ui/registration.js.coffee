@@ -1,14 +1,11 @@
 Home.ui.Registration = Framework.View.extend
   template: "home.registration"
 
-  events:
-    "click .nav-tabs": "switchTab"
-    "click .next1": "subscribe"
-
   render: (params) ->
     header = new Home.ui.RegistrationHeader el: $("header")
     header.render(params)
-    $(".full-width").append this.renderTemplate(params)
+    $(".main").append this.renderTemplate(params)
+    $("#next").on("click", this.subscribe)
     $(document).ready ->
       $("#full-name").focus()
       $(".drop").toggle(
@@ -26,6 +23,11 @@ Home.ui.Registration = Framework.View.extend
     false
 
   subscribe: (e) ->
-    e.preventDefault()
-    page2 = new Home.ui.Subscribe(el: this.$("#registration_content"))
+    if e
+      e.preventDefault()
+    page2 = new Home.ui.Subscribe(el: $("#registration_content"))
     page2.render()
+
+  events:
+    "click .nav-tabs": "switchTab"
+    "click button": "subscribe"
