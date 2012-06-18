@@ -14,6 +14,7 @@ class Community < ActiveRecord::Base
   has_many :users, :order => "last_name, first_name"
   has_many :mets, :through => :users
   has_many :residents
+  has_many :street_addresses
   def organizers
     self.users.select { |u| u.admin }
   end

@@ -587,7 +587,8 @@ WHERE
     # Don't want to match with Resident files that already have a User
     matched_email = matched.select { |resident| !resident.on_commonplace? }
 
-    return resident = merge(matched_street, matched_email)
+    resident = merge(matched_street, matched_email)
+    return resident
   end
 
   # Merge "duplicate" Resident files of this user, if there are any

@@ -1,4 +1,9 @@
 class StreetAddress < ActiveRecord::Base
+  include PgSearch
+  pg_search_scope :kinda_spelled_like,
+    :against => :name,
+    :using => :trigram
+
   serialize :metadata, Hash
   serialize :logs, Array
 
@@ -34,8 +39,8 @@ class StreetAddress < ActiveRecord::Base
     split_name = unreliable_name.to_s.split(" ")
     Resident.create(
       :community => self.community,
-      :first_name => split_name.shift.to_s.capitalize,
-      :last_name => split_name.pop.to_s.capitalize,
+      :first_name => split_name.shift.to_s,
+      :last_name => split_name.pop.to_s,
       :address => self.address,
       :street_address => self)
   end
