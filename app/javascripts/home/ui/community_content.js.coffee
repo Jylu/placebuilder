@@ -37,54 +37,85 @@ Home.ui.CommunityContent = Framework.View.extend
           view.render()
           this.$(".list").append(view.el)
         this.timeHeaders()
-        this.multiColumn()
-        $(window).scroll(() =>
-          this.updateHeader()
-        )
+        this.multiColumn($("#content").find(".list"), ".wire")
+        this.dynamicHeader("h2", ".wire")
       , page
 
   timeHeaders: () ->
-    previousN = 0
-    previousUnit = "recent"
+    # if a post is more than a week old, it does not go under the "Recent Posts" header
     notRecent = ["week", "weeks", "month", "months", "year", "years"]
+    
+    # initialize external vars
+    header = ""
+    jqStack = $([])
+    superThis = this
+
+    # iterate through posts
     $(".wire").each(() ->
-      headerName = false
-      tAgo = $(this).find(".wire-top").attr("data-time-ago")
-      tSplit = tAgo.split(" ")
-      currentN = tSplit[0]
-      currentUnit = tSplit[1]
-      if $.inArray(currentUnit, notRecent) == -1
-        currentUnit = "recent"
-      if previousUnit == currentUnit
-        if previousN == 0
-          headerName = "Recent Posts"
-        else if previousN != currentN
-          headerName = tAgo
-      else
-        headerName = tAgo
-      if (headerName)
-        $(this).before("<div class='wire-header'><h3>#{headerName}</h3></div>")
-      previousN = currentN
-      previousUnit = currentUnit
+      # get publishedAt string, granular to "this week" else month-of-posting
+      publishedAtISO = $(this).find(".wire-top").attr("data-published-at")
+      publishedAt = timeAgoThisWeekThenMonths(publishedAtISO)
+      $(this).attr("data-header", publishedAt)
+
+      # if header and publishedAt do not match we need a new group
+      needNew = false
+      if publishedAt != header
+        needNew = true
+      
+      if needNew
+        # if current stack exists, wrap with group
+        if jqStack.length > 0
+          superThis.wrapHeaderGroup(jqStack, header)
+        # reset jqStack, update header
+        jqStack = $([])
+        header = publishedAt
+
+      # push current post onto stack
+      jqStack = jqStack.add($(this))
     )
 
-  multiColumn: () ->
-    $(".main").addClass("multi-column")
-    $(".list").addClass("multi-column").removeClass("one-column")
-    container = $("#content").find(".list")
+    # finally, wrap any posts left on the stack
+    if jqStack.length > 0
+      this.wrapHeaderGroup(jqStack, header)
+
+  wrapHeaderGroup: (jqStack, header) ->
+    jqStack.wrapAll(
+      "<div class='wire-group' data-header='" + header + "' />"
+    )
+    ###
+    # inserts physical headers
+    jqStack.first().before(
+      "<div class='wire-header'>
+        <div class='header-display'>
+          <h3>#{header}</h3>
+        </div>
+      </div>"
+    )
+    jqStack.wrapAll(
+      "<div class='wires' />"
+    )###
+
+  multiColumn: (container, selector) ->
+    $(".main").add(container).add(container.find(selector)).addClass("multi-column")
+    
     container.imagesLoaded( () ->
       container.masonry({
-        #containerStyle: 'margin: 0 auto',
-        itemSelector: '.wire, .wire-header'
-        #isFitWidth: true,
-        #isResizable: true,
         columnWidth: 370
+        isResizable: true,
+        itemSelector: selector
       })
     )
 
-  updateHeader: () ->
-    $(".wire-header").each(() ->
-      if($(this).offset().top < $(window).scrollTop())
-        $("h2").html($(this).find("h3").html())
+  dynamicHeader: (header, messenger) ->
+    $(header).append("<span class='subheader'></span>")
+    this.updateHeader(".subheader", messenger)
+    $(window).scroll(() =>
+      this.updateHeader(".subheader", messenger)
+    )
+
+  updateHeader: (header, messenger) ->
+    $(messenger).each(() ->
+      if($(this).offset().top < $(window).scrollTop() + 100)
+        $(header).html(" &bull; " + $(this).attr("data-header"))
     )
 

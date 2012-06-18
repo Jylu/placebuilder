@@ -113,7 +113,7 @@ header
       margin-top: 22px
       font-family: $heading
       a
-        underline: nnone
+        underline: none
         color: white
 
   .right
@@ -309,7 +309,6 @@ aside
       text-shadow: 1px 1px 1px white
       border-bottom: 1px solid #c5c2b5
       padding-bottom: 5px
-    .list
     .neighbor
       margin-left: 12px
       border-bottom: 1px solid
@@ -365,32 +364,17 @@ aside
   height: auto
   width: 760px
   left: 296px
-  &.multi-column
-    width: 760px
   top: 64px
   background-color: rgba(27, 51, 74, 0.4)
-  .one-column
-    .wire
-      margin: 20px
-  .multi-column
-    .wire, .wire-header
-      width: 350px
-      margin-top: 20px
-      margin-left: 20px
-      margin-bottom: 0px
-      float: left
-    .wire-header
-      width: 720px
-      margin-top: 20px
-      margin-left: 20px
-      margin-bottom: 0px
-      float: left
   .wire
     min-height: 100px
     background: white
     border-radius: 4px
-    margin-bottom: 15px
-    margin-left: 70px
+    margin: 20px
+    &.multi-column
+      margin: 20px 0px 0px 20px
+      float: left
+      width: 350px
     .wire-top
       height: 30px
       border-radius: 4px
@@ -575,17 +559,23 @@ aside
         &:focus
           box-shadow: 0 0 5px $red
           -webkit-transition: box-shadow 150ms ease-in
+  .wire-group
+    width: 100%
+    float: left
   .wire-header
+    margin: 20px 20px 0px
     height: 40px
-    border-radius: 4px
-    background: $light-grey image-url("shared/redesign/background.gif")
-    box-shadow: inset 0px 1px 0px 0px white
-    border-bottom: 1px solid 
-    border-color: lighten($dark-grey, 20%)
-    h3
-      font-family: $heading
-      text-align: center
-      color: $blue
-      font-size: 18px
-      background-position: 5px 5px
-      padding-top: 11px
+    .header-display
+      margin: auto
+      border-radius: 4px
+      background: $light-grey image-url("shared/redesign/background.gif")
+      box-shadow: inset 0px 1px 0px 0px white
+      border-bottom: 1px solid 
+      border-color: lighten($dark-grey, 20%)
+      h3
+        font-family: $heading
+        text-align: center
+        color: $blue
+        font-size: 18px
+        background-position: 5px 5px
+        padding: 11px

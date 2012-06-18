@@ -38,7 +38,9 @@ class Home.presenter.Post
     _.extend(@post.toJSON(),
       wireCategory: category
       wireCategoryName: (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
-      timeAgo: timeAgoInWords(@post.get("published_at")))
+      publishDate = @post.get("published_at")
+      timeAgoISO: publishDate
+      timeAgoWords: timeAgoNamedDays(publishDate))
 
 
 
