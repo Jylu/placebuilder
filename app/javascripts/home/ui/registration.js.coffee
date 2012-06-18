@@ -28,6 +28,12 @@ Home.ui.Registration = Framework.View.extend
     page2 = new Home.ui.Subscribe(el: $("#registration_content"))
     page2.render()
 
+  findNeighbors: (e) ->
+    if e
+      e.preventDefault()
+    page2 = new Home.ui.findNeighbors(el: $("#registration_content"))
+    page2.render()
+
   events:
     "click .nav-tabs": "switchTab"
-    "click button": "subscribe"
+    "click button": "findNeighbors"
