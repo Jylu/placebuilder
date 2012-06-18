@@ -3,14 +3,40 @@ class Home.presenter.Post
   constructor: (@post) ->
 
 
+  processReply: (reply) ->
+   reply.time_ago = timeAgoInWords(reply.published_at) 
+   reply.num_thanks = reply.thanks.length
+   if reply.num_thanks is 1
+      reply.thank_people = "person"
+   else
+      reply.thank_people = "people"
+
   toJSON: ->
-    category = this.post.attributes.category
+    category = @post.get("category")
     if category is null
       category = "discussion"
     else if category is undefined
       category = "discussion"
+    
+    num_thanks = @post.get("thanks").length
+    @post.set("num_thanks", num_thanks)
+    if num_thanks is 1
+      @post.set("thank_people", "person")
+    else
+      @post.set("thank_people", "people")
+
+
+    replies = @post.get("replies")
+    num_replies = replies.length
+    @post.set("num_replies", num_replies)
+    if num_replies is 1
+      @post.set("reply_people", "person")
+    else
+      @post.set("reply_people", "people")
+    this.processReply(reply) for reply in replies
+
     _.extend(@post.toJSON(),
-      wireCategoryClass: category
+      wireCategory: category
       wireCategoryName: (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
       publishDate = @post.get("published_at")
       timeAgoISO: publishDate
