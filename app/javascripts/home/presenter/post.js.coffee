@@ -4,7 +4,7 @@ class Home.presenter.Post
 
 
   processReply: (reply) ->
-   reply.time_ago = timeAgoInWords(reply.published_at) 
+   reply.time_ago = timeAgoNamedDays(reply.published_at)
    reply.num_thanks = reply.thanks.length
    if reply.num_thanks is 1
       reply.thank_people = "person"
