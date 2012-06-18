@@ -582,10 +582,7 @@ WHERE
     # Match by e-mail address
     # E-mail addresses should be unique in that no two Resident files should
     # have the same e-mail address
-    matched = Resident.where("email ILIKE ? AND last_name ILIKE ?", self.email, self.last_name)
-
-    # Don't want to match with Resident files that already have a User
-    matched_email = matched.select { |resident| !resident.on_commonplace? }
+    matched_email = Resident.where("email ILIKE ? AND last_name ILIKE ?", self.email, self.last_name)
 
     resident = merge(matched_street, matched_email)
     return resident
@@ -599,44 +596,32 @@ WHERE
       return emails.first
     end
 
-    if streets.count == 1
-      # No e-mail match. Return street address match
-      if emails.count == 0
-        return streets.first
-      end
-
-      # One of each. Merge them if they're not the same file
-      street = streets.first
-      email = emails.first
-      if street == email
-        return street
-      end
-
-      street.email = email.email
-      # street.add_tags(email.tags)
-      email.destroy
-
-      return street
-    end
-
     # Multiple street address match. Search by name
     #
     # The odds of two people with the same exact first AND last name
     # living at the same address is low enough to be negligible.
     if street = streets.select { |resident| resident.first_name == self.first_name }
+      if street.count > 1
+        # Well, what are the odds? =(
+      end
 
+      street = street.first
       if emails.count == 0
         return street
       end
 
+      # Check to see if they're the same file
       email = emails.first
       if street == email
         return street
       end
 
+      # Merge them if they're not the same file
       street.email = email.email
       # street.add_tags(email.tags)
       email.destroy
+
+      return street
     else
       return emails.first
     end
@@ -660,6 +645,10 @@ WHERE
   def correlate
     addr = find_st_address
     if r = find_resident
+      if !r.address?
+        r.address = self.address
+      end
+
       if !r.street_address?
         r.street_address = addr
       end

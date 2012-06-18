@@ -1,7 +1,7 @@
 class StreetAddress < ActiveRecord::Base
   include PgSearch
   pg_search_scope :kinda_spelled_like,
-    :against => :name,
+    :against => :address,
     :using => :trigram
 
   serialize :metadata, Hash

@@ -16,10 +16,24 @@ address = StreetAddress.create!(:address => "221B Baker St.",
                                 :unreliable_name => "test dev",
                                 :community => community)
 
+StreetAddress.create!(:address => "22 Mott St.",
+                      :unreliable_name => "John Smith",
+                      :community => community)
+
 resident = Resident.create!(:first_name => "test",
                             :last_name => "dev",
                             :email => "test@example.com",
                             :community => community)
+
+Resident.create!(:first_name => "John",
+                 :last_name => "Smith",
+                 :email => "johnsmith@example.com",
+                 :community => community)
+
+Resident.create!(:first_name => "Will",
+                 :last_name => "Smith",
+                 :address => "22 Mott St.",
+                 :community => community)
 
 user = User.create!(:first_name => "test", :last_name => "dev",
                     :email => "test@example.com", :address => "221B Baker St.",
