@@ -33,12 +33,13 @@ Home.Router = Backbone.Router.extend
 
   showPage: (community, page) ->
     self = this
-    #$("html").css("background-image", "url('/assets/shared/redesign/pages/" + community + "/" + page + ".jpg')")
+    # todo: make sure image exists before setting it; let redesign/bg.jpg remain default
+    $("html").css("background-image", "url('/assets/shared/redesign/pages/" + community + "/" + page + ".jpg')")
 
     header = new Home.ui.Header el: $("header")
     header.render(
-      "H1": page.split('-').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
-      "H2": ""
+      "H1": community.split(' ').map((word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
+      "H2": page.split('-').map((word) -> (word[0].toUpperCase() + word[1..-1].toLowerCase())).join ' '
     )
 
     sidebar = new Home.ui.Sidebar el: $("#sidebar")
