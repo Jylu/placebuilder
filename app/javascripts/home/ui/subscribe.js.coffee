@@ -3,3 +3,4 @@ Home.ui.Subscribe = Framework.View.extend
 
   render: () ->
     this.$el.html this.renderTemplate()
+

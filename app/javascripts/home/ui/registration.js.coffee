@@ -1,19 +1,14 @@
 Home.ui.Registration = Framework.View.extend
   template: "home.registration"
+  reg_page: undefined
+
+  initialize: ->
+    @reg_page = 1
 
   render: (params) ->
+    this.$el.html this.renderTemplate(params)
     header = new Home.ui.RegistrationHeader el: $("header")
     header.render(params)
-    $(".main").append this.renderTemplate(params)
-    $("#next").on("click", this.subscribe)
-    $(document).ready ->
-      $("#full-name").focus()
-      $(".drop").toggle(
-        ->
-          $('dropdown').css("opacity", "1")
-        ->
-          $('dropdown').css("opacity", "0")
-      )
 
   switchTab: (e) ->
     e.preventDefault()
@@ -22,18 +17,19 @@ Home.ui.Registration = Framework.View.extend
     $(e.currentTarget).addClass('selected')
     false
 
-  subscribe: (e) ->
+  nextPage: (e) ->
     if e
       e.preventDefault()
-    page2 = new Home.ui.Subscribe(el: $("#registration_content"))
-    page2.render()
-
-  findNeighbors: (e) ->
-    if e
-      e.preventDefault()
-    page2 = new Home.ui.findNeighbors(el: $("#registration_content"))
-    page2.render()
+    @reg_page = if @reg_page is undefined then 2 else @reg_page + 1
+    switch this.reg_page
+      when 2
+        page2 = new Home.ui.Subscribe(el: $("#registration_content"))
+        page2.render()
+      when 3
+        page3 = new Home.ui.findNeighbors(el: $("#registration_content"))
+        page3.render()
+        this.reg_page = 1  #call this on the last registration page
 
   events:
     "click .nav-tabs": "switchTab"
-    "click button": "findNeighbors"
+    "click .next-button": "nextPage"
