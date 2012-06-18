@@ -4,8 +4,9 @@ Home.ui.Post = Home.ui.WireItem.extend
   className: "wire"
 
   events:
-    "click .post-replies": "toggleReplies"
+    "click .reply": "toggleReplies"
     "click .thank": "thank"
+    "click #post-reply-button": "reply"
 
   render: ->
     presenter = new Home.presenter.Post(this.model)
