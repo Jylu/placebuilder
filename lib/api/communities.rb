@@ -305,7 +305,7 @@ CONDITION
     #
     # term - the term to find auto-completed
     get "/:id/address_completions" do
-      serialize(find_community.residents
+      serialize(find_community.street_addresses
       .where("address ILIKE ?", "%#{params[:term]}%").pluck(:address))
     end
 
