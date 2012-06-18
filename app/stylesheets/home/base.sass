@@ -370,10 +370,6 @@ aside
     background: white
     border-radius: 4px
     margin: 20px
-    &.multi-column
-      margin: 20px 0px 0px 20px
-      float: left
-      width: 350px
     .wire-top
       height: 30px
       border-radius: 4px
@@ -418,7 +414,6 @@ aside
         font-weight: bold
         margin-bottom: 15px
       p.post-text
-        margin-left: 10px
         font-size: 14px
         line-height: 18px
       img
@@ -430,7 +425,7 @@ aside
       padding: 10px
         top: 0
         bottom: 0
-      margin-left: 0px
+      margin-left: 60px
       font-family: $body
       font-size: 10px
       text-transform: uppercase
@@ -482,7 +477,7 @@ aside
           padding-left: 31px
           background-position: 11px 14px
     .post-interaction
-      margin-left: 0px
+      margin-left: 60px
       font-size: 11px
       .interaction
         padding: 14px 0
@@ -511,7 +506,7 @@ aside
       padding: 10px
         bottom: 20px
       p
-        margin-left: 35px
+        margin-left: 60px
         padding-top: 10px
       p.author
         font-size: 12px
@@ -540,7 +535,7 @@ aside
         padding-top: 10px
         height: 25px
         float: left
-        margin-left: 0px
+        margin-left: 25px
     .reply
       margin-left: 60px
       padding: 10px
@@ -558,6 +553,22 @@ aside
         &:focus
           box-shadow: 0 0 5px $red
           -webkit-transition: box-shadow 150ms ease-in
+    &.multi-column
+      margin: 20px 0px 0px 20px
+      float: left
+      width: 350px
+      .post-content
+        p.post-text
+          margin-left: 10px
+      .post-action
+        margin-left: 0px
+      .post-interaction
+        margin-left: 0px
+      .post-replies
+        p
+          margin-left: 35px
+        img
+          margin-left: 0px
   .wire-group
     width: 100%
     float: left
