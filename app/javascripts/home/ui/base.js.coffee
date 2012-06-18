@@ -15,18 +15,31 @@ Home.ui.WireItem = Framework.View.extend
       this.markThanked()
       $.post("/api" + this.model.get("links").thank, _.bind(
         (response) ->
-          #this.model.set(response)
-          #this.render()
-          #need to figure out how to re-render the post
-        )
+          this.model.set(response)
+          this.render()
+      ,this)
       )
   
   isThanked: ->
     thanks = _.map(this.model.get("thanks"), (thank) ->
         thank.thanker
-    _.include(thanks, router.account.get("name"))
     )
-    if thanks.length is 0
-      return false
-    else
-      return true 
+    _.include(thanks, router.account.get("name"))
+
+  reply: (e) ->
+    if e
+      e.preventDefault()
+    reply = this.$("#post-reply").val()
+    data =
+      "body" : reply
+    if reply isnt undefined
+      replies = new Backbone.Collection()
+      replies.url = "/api" + this.model.get("links").replies
+      replies.create data,
+        success: _.bind(
+          (response) ->
+            replies = this.model.get("replies")
+            replies.push(response.toJSON())
+            this.render()
+          , this)
+      replies.trigger("sync")
