@@ -6,6 +6,7 @@ Home.ui.Post = Home.ui.WireItem.extend
   events:
     "click .reply": "toggleReplies"
     "click .thank": "thank"
+    "click .help": "publicize"
     "click #post-reply-button": "reply"
 
   render: ->
