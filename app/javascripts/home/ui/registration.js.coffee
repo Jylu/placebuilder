@@ -26,7 +26,7 @@ Home.ui.Registration = Framework.View.extend
         page2 = new Home.ui.Verification(el: $("#registration_content"))
         page2.render()
       when 3
-        page3 = new Home.ui.Welcome(el: $("registration_content"))
+        page3 = new Home.ui.Welcome(el: $("#registration_content"))
         page3.render()
       when 4
         page4 = new Home.ui.Subscribe(el: $("#registration_content"))
@@ -37,5 +37,4 @@ Home.ui.Registration = Framework.View.extend
         this.reg_page = 1  #call this on the last registration page
 
   events:
-    "click .nav-tabs": "switchTab"
     "click .next-button": "nextPage"
