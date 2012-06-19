@@ -27,12 +27,6 @@ class Home.presenter.Post
 
 
     replies = @post.get("replies")
-    num_replies = replies.length
-    @post.set("num_replies", num_replies)
-    if num_replies is 1
-      @post.set("reply_people", "person")
-    else
-      @post.set("reply_people", "people")
     this.processReply(reply) for reply in replies
 
     _.extend(@post.toJSON(),
