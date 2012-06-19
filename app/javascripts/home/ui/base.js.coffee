@@ -43,3 +43,12 @@ Home.ui.WireItem = Framework.View.extend
             this.render()
           , this)
       replies.trigger("sync")
+
+  publicize: (e) ->
+    if e
+      e.preventDefault()
+    share = new Home.ui.Share()
+    share.render()
+
+    modal = new Home.ui.Modal(el: $("#modal"), view: share)
+    modal.render()
