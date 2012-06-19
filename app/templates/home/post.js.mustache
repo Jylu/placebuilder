@@ -18,12 +18,14 @@
 </div>
 <div class="post-interaction">
   <div class="interaction">
+    {{#num_thanks}}
     <p class="thanked">
       <span class="blue">{{num_thanks}} {{thank_people}}</span> thanked this post: 
       {{#thanks}}
       <span class="blue">{{thanker}} </span>
       {{/thanks}}
     </p>
+    {{/num_thanks}}
     <p class="publicized">
       <span class="blue">2 people</span> shared this post: 
       <span class="blue">Mark Malazarte </span>
@@ -36,9 +38,6 @@
 <div class="post-replies">
   <input id="post-reply" placeholder="Reply to this post">
   <button id="post-reply-button">Reply</button>
-  <p class="replies">
-    <span class="blue">{{num_replies}} {{reply_people}}</span> replied to this post: 
-  </p>
   <ul id="post-replies">{{#replies}}
     <li><img src="{{avatar_url}}">  
       <p class="author">{{author}}</p>
