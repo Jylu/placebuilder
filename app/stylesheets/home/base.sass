@@ -317,6 +317,7 @@ aside
   .your-neighbors
     img
       height: 32px
+      width: 32px
     h3
       font-family: $heading
       font-size: 15px
@@ -483,17 +484,32 @@ aside
             border-right: none 
         li.reply
           margin-left: 0
-          background: image-url("shared/redesign/convo.png") no-repeat
+          background: image-url("shared/redesign/reply.png") no-repeat
           padding-left: 21px
           background-position: 0 14px
+          &:hover, &:focus, &:active
+            background: image-url("shared/redesign/replied.png") no-repeat
+            padding-left: 21px
+            background-position: 0 14px
+            color: $dark-grey
         li.help
           background: image-url("shared/redesign/publicize.png") no-repeat
           padding-left: 31px
           background-position: 10px 12px
+          &:hover, &:focus, &:active
+            background: image-url("shared/redesign/publicized.png") no-repeat
+            padding-left: 31px
+            background-position: 10px 12px
+            color: $dark-grey
         li.thank
           background: image-url("shared/redesign/thank.png") no-repeat
           padding-left: 33px
           background-position: 11px 15px
+          &:hover, &:focus, &:active
+            background: image-url("shared/redesign/thanked.png") no-repeat
+            padding-left: 33px
+            background-position: 11px 15px
+            color: $dark-grey
         li.flag
           background: image-url("shared/redesign/flag.png") no-repeat
           padding-left: 31px
