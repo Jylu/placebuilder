@@ -3,7 +3,7 @@ Home.ui.Registration = Framework.View.extend
   reg_page: undefined
 
   initialize: ->
-    @reg_page = 1
+    @reg_page = 3 #this should start at 1, changed to 3 temporarily for demo
 
   render: (params) ->
     this.$el.html this.renderTemplate(params)
