@@ -157,6 +157,29 @@ CONDITION
       end)
     end
 
+    # Add a new resident
+    #
+    # Requires admin
+    #
+    post "/:id/files/newresident" do 
+       control_access :admin
+
+       find_community.residents.create(:first_name => request_body['first_name'],
+                                       :last_name => request_body['last_name'],
+                                       :email => request_body['email'],
+                                       :phone => request_body['phone'],
+                                       :organization => request_body['organization'],
+                                       :position => request_body['position'],
+                                       :notes => request_body['notes'],
+                                       :address => request_body['address'],
+                                       :sector_tags => request_body['sector_tags'],
+                                       :type_tags => request_body['type_tags']
+                                       )
+    
+       #find_community.residents.last.add_sector_tags(request_body['sector_tags'])#.add_type_tags(request_body['type_tags'])
+       
+    end
+
     # Updates a community resident file
     #
     # Requires admin
