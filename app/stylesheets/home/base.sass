@@ -23,7 +23,7 @@ $dark-tan: #bcbbae
 
 
 /* Woo Fonts */
-$heading: "Rokkitt", RockwellSTD, Rockwell, sans-serif
+$heading: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
 $body: Helvetica Neue, Helvetica, Tahoma, serif
 
 /* Woo Shadows */
@@ -33,21 +33,29 @@ $black-shadow: 0px 2px 1px black
 .red-button
   background: $red
   border-radius: 4px
-  color: #eeecdf
+  color: #fff
   text-shadow: 1px 1px 1px black
   font-weight: bold
   height: 18px
   font-family: $heading
   +linear-gradient(color-stops(#d0413d, #ac322f), top)
   display: block
-  font-size: 20px
+  font-size: 22px
   text-decoration: none
   border: 1px solid
   border-color: #ac322f
   box-shadow: inset 0px 1px 1px #e28986
   padding: 15px
-    top: 13px
-    bottom: 13px
+    top: 8px
+    bottom: 16px
+  &:hover, &:focus
+    color: #fff
+    +linear-gradient(color-stops(#d0413d, #ac322f), bottom)
+    text-shadow: -1px -1px -1px #8f2825
+  &:active
+    +linear-gradient(color-stops(#ab3330, #8f2825), top)
+    color: #eeecdf
+    text-shadow: none 
 
 .green-button
   background: $red
@@ -76,7 +84,9 @@ $black-shadow: 0px 2px 1px black
 .clear
   clear: both
 .full-width
-  width: 1047px
+  width: 70%
+  min-width: 800px
+  max-width: 1024px
   margin: 0 auto
 
 html
@@ -97,7 +107,6 @@ header
   .community-name
     width: 233px
     float: left
-    padding-left: 15px
     background: image-url("shared/redesign/commonplace-icon.png") no-repeat
     padding-left: 60px
     height: 60px
@@ -109,28 +118,28 @@ header
     h1
       color: white
       text-shadow: $black-shadow
-      font-size: 20px
-      margin-top: 22px
+      font-size: 22px
+      margin-top: 20px
       font-family: $heading
       a
         underline: none
         color: white
 
   .right
-    width: 113px    
-  .top-bar
-    width: 750px
+    width: 113px
     float: right
+  .top-bar
+    min-width: 503px
     border-left: 1px solid $light-blue
     height: 60px
     border-right: 1px solid $light-blue
     box-shadow: inset -1px 0px 0px 0px $dark-blue
     h2
       float: left
-      margin-top: 21px
+      margin-top: 20px
       color: white
       text-shadow: $black-shadow
-      font-size: 20px
+      font-size: 22px
       font-family: $heading
       margin-left: 20px
     .right
@@ -174,10 +183,10 @@ aside
   position: fixed
   display: block
   height: 100%
-  margin-top: 64px
+  margin-top: 60px
   z-index: 999
   .red-button
-    width: 77%
+    width: 78%
     text-align: center
     vertical-align: center
     font-weight: normal
@@ -207,8 +216,9 @@ aside
         font-weight: normal
         font-size: 14px
   #your-town
-    width: 85%
+    width: 90%
     margin: 0 auto
+    padding: 10px 0px
     h3
       font-family: $heading
       font-size: 15px
@@ -217,21 +227,24 @@ aside
       border-bottom: 1px solid #c5c2b5
       padding-bottom: 5px
     .your-town 
-      padding-top: 15px
-      padding-left: 9px
+      padding: 0px
       li
-        padding: 8px 0
+        padding: 7px 7px 10px 7px
+        &:hover, &:focus, &:active
+          background-color: rgba(255, 255, 255, 0.4)
         a
           text-decoration: none
           font-family: $heading
           color: $blue
           text-shadow: 1px 1px 1px white
-          font-size: 18px
+          font-size: 20px
           padding-top: 10px
           padding-bottom: 8px
           padding-left: 42px
           background: image-url("shared/redesign/sidebar-icon.png") no-repeat left
           line-height: 26px
+          &:hover, &:focus, &:active
+            color: $red
 
         #request
           background: image-url("shared/redesign/request-offer-icon.png") no-repeat left
@@ -246,21 +259,24 @@ aside
           background: image-url("shared/redesign/announcements-icon.png") no-repeat left       
 
   #directories
-    width: 85%
+    width: 90%
     margin: 0 auto
     h3
-      display: inline
+      display: inline-block
       float: left
       font-family: $heading
-      font-size: 15px
-      color: $blue
-      text-shadow: 1px 1px 1px white
-      margin-bottom: 5px
-      padding: 12px 12px 7px
-      margin-top: 20px
+      font-size: 18px
+      color: $dark-grey
+      padding: 10px 8px
+      margin: 19px 0px 0px 0px
       background: $dark-tan
       border-radius: 4px 4px 0px 0px
       cursor: pointer
+      width: 116px
+      text-align: center
+      text-shadow: none
+      &:hover
+        color: $red
 
     li.directory_listing
       padding: 8px 0
@@ -280,24 +296,23 @@ aside
 #directory_nav h3.sidebar-links.current_tab
 
 #directory_nav 
-  height: 70px
+  height: 57px
   cursor: pointer
   h3
     margin-right: 6px
     cursor: pointer
   h3.sidebar-links.current_tab
-    background: #F7F6EF
+    background-color: rgba(255, 255, 255, 0.4)
     color: $red
 
 #directory_content
   height: 100%
   width: 235px
-  background: #F7F6EF
-  padding-top: 15px
-  padding-left: 8px
-  padding-right: 2px
+  background-color: rgba(255, 255, 255, 0.4)
+  padding: 10px 10px 0px 20px
   position: relative
-  bottom: 16px
+  bottom: 0px
+  overflow:hidden
 
   .your-neighbors
     img
@@ -335,20 +350,23 @@ aside
         float: left
   .page
     margin-left: 0px
-    border-bottom: 1px solid
+    border-bottom: 1px dotted
     border-color: lighten($dark-grey, 30%)
-    padding-bottom: 2px
-    padding-top: 9px
-    height: 50px
-    width: 97%
+    padding-bottom: 10px
+    padding-top: 10px
+    height: 65px
+    width: auto
     overflow: hidden
     &:last-child
       border-bottom: none
     h4
-      font-family: $body
+      font-family: $heading
       color: $blue
       font-weight: bold
-      font-size: 13px
+      font-size: 18px
+      line-height: 16px
+      margin-bottom: 5px
+      margin-right: 10px
     p
       font-family:  $body
       font-size: 13px
@@ -357,15 +375,19 @@ aside
     img
       padding-right: 8px
       float: left
+      width: 32px
+      margin-bottom: 30px
+      height: 32px
+      overflow: hidden
  
 .main
   overflow: hidden
   position: relative
   height: auto
-  width: 760px
-  left: 296px
+  width: auto
+  margin-left: 295px
   top: 64px
-  background-color: rgba(27, 51, 74, 0.4)
+  background-color: rgba(0, 0, 0, 0.25)
   .wire
     min-height: 100px
     background: white
@@ -413,7 +435,7 @@ aside
         font-size: 12px
         color: $blue
         font-weight: bold
-        margin-bottom: 15px
+        margin-bottom: 20px
       p.post-text
         font-size: 14px
         line-height: 18px
@@ -423,7 +445,7 @@ aside
         border-radius: 4px
         float: left
     .post-action
-      padding: 10px
+      padding: 15px
         top: 0
         bottom: 0
       margin-left: 60px
@@ -432,7 +454,6 @@ aside
       text-transform: uppercase
       font-weight: bold
       color: $red
-      margin-top: 5px
       height: 40px
       span.thank
         color: $dark-grey
@@ -445,12 +466,12 @@ aside
         text-transform: none
         font-size: 11px
       .actions
-        border-top: 1px solid
-        border-bottom: 1px solid
+        border-top: 1px dotted
+        border-bottom: 1px dotted
         height: 40px
         border-color: lighten($dark-grey, 37%)
         li
-          border-right: 1px solid
+          border-right: 1px dotted
           border-color: lighten($dark-grey, 37%)
           float: left
           font-size: 12px
@@ -481,11 +502,10 @@ aside
       margin-left: 60px
       font-size: 11px
       .interaction
-        padding: 14px 0
+        padding: 15px 0
         border-bottom: 1px solid
         border-color: lighten($dark-grey, 37%)
-        margin-left: 10px
-        margin-right: 10px
+        margin: 0px 20px
         font-family: $body
         color: darken($dark-grey, 20%)
         .blue
@@ -504,7 +524,7 @@ aside
           height: 15px
           padding-top: 3px
     .post-replies
-      padding: 10px
+      padding: 10px 20px 20px 20px
         bottom: 20px
       p
         margin-left: 60px
