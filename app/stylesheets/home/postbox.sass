@@ -13,15 +13,14 @@ a
   overflow: hidden
 
   ul li a
-    font: 18px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+    font: 20px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
 
 ul li a
   position: relative
-  top: 3px
+  top: 1px
   text-decoration: none
-  color: #1b334a
+  color: $blue
   position: relative
-  top: 3px
   font: 20px/30px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
   padding-left: 6px
 
@@ -93,10 +92,11 @@ ul li a:hover
     background: url(post-help-box.png) no-repeat
   
   h1   
-    font: 22px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+    font: 24px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
     text-shadow: 1px 1px 1px white
-    color: #1b334a
-    margin-bottom: 10px
+    color: $blue
+    margin-bottom: 15px
+    font-weight: bold
     
   div.links   
     margin-top: 10px
@@ -124,7 +124,7 @@ ul li a:hover
       background-size: 26px
 
     ul li.meetup
-      background: url(shared/redesign/announcements-icon.png) left center no-repeat
+      background: url(shared/redesign/meetup-icon.png) left center no-repeat
       background-size: 26px
 
     ul li:hover
@@ -150,11 +150,10 @@ ul li a:hover
         background: $dark-tan
 
   div.form-container   
-    padding: 17px    
-    width: 414px 
+    padding: 20px    
+    width: 415px 
     position: relative
-    left: 5px
-    margin-bottom: 15
+    left: -2px
 
     form   
       margin-top: 9px
@@ -210,20 +209,20 @@ strong
   color: #000000
 
 input   
-  width: 374px  
+  width: 382px  
   background-color: #fefffe  
-  height: 13px  
-  margin-bottom: 10px  
+  height: 7px  
+  margin-bottom: 15px  
   border: 1px solid $dark-tan  
-  font: 14px Arial, "Sans Serif"
+  font: 14px Helvetica, Arial, "Sans Serif"
   padding: 15px  
   color: #000
 
 textarea   
-  width: 374px  
+  width: 382px  
   background-color: #fefffe  
   height: 150px  
-  margin-bottom: 10px  
+  margin-bottom: 15px  
   border: 1px solid $dark-tan  
   font: 14px Arial, "Sans Serif"
   padding: 15px  
@@ -381,7 +380,10 @@ div.posting
 
     a:hover
       color: $red
-
+div.go-back
+  margin-bottom: -40px
+  bottom: 45px
+  position: relative
 div.go-back a
   color: $red
   text-decoration: none
@@ -392,11 +394,14 @@ div.go-back a
   font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
 
 #newPost div.form-container form button.red-button
-  width: 160px
+  width: 200px
   height: 60px
   padding-top: 16px
   position: relative
   bottom: 25px
+  font-size: 26px
+  float: right
+  margin-right: 0px
 
 #business
   width: 400px
@@ -481,7 +486,7 @@ div.share
   height:  1000px
 
 #discussion_dk
-  width: 400px
+  width: 412px
 
 #start_at_time
   width:  115px
@@ -493,32 +498,34 @@ div.share
   float: left
 
 #event_date input
-  width:  120px
+  width: 132px
   height: 5px
   float: left
   margin-right:  10px
 
 div.meetup_lets
-  font: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+  font-family: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
   color: $blue
   display: inline
 
   p
     float: left
-    margin-right: 10px
-    padding-top: 12px
+    margin-right: 12px
+    padding-top: 8px
+    font-size: 22px
 
   input
-    width: 312px
+    width: 328px
     float: left
 
 //New Code
 
 #business
-  width: 225px
+  width: 200px
   float: left
   font: 12px Helvetica, Arial, sans-serif
   color: #6e6e65
+  text-align: left
 
   ul
     height: 23px
@@ -528,22 +535,21 @@ div.meetup_lets
 
   ul li
     display: inline-block
-    margin-left: 21px
+    margin-left: -4px
+    margin-right: 20px
     color: #6e6e65
 
     input
       width: 25px
       height: 25px
-      position:  relative
-      top: 5px
+      position: relative
+      top: 7px
 
 div.form-container   
   padding: 17px 17px 0    
-  width: 414px 
+  width: 415px 
   overflow: auto
   position: relative
-  left: 2px
-  margin-bottom: -46px
 
   form   
     margin-top: 9px
@@ -559,4 +565,5 @@ div.form-container
       cursor: pointer
 
 #dk_container_categorize
-  width: 404px
+  width: 414px
+  margin-bottom: 5px

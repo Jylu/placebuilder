@@ -190,7 +190,7 @@ aside
     text-align: center
     vertical-align: center
     font-weight: normal
-    padding-bottom: 10px
+    padding: 12px 10px 15px 10px
     margin: 0 auto
       top: 25px
   ul.post-box
@@ -269,14 +269,14 @@ aside
       color: $dark-grey
       padding: 10px 8px
       margin: 19px 0px 0px 0px
-      background: $dark-tan
+      background: #dad8ca
       border-radius: 4px 4px 0px 0px
       cursor: pointer
       width: 116px
       text-align: center
       text-shadow: none
       &:hover
-        color: $red
+        color: $blue
 
     li.directory_listing
       padding: 8px 0
@@ -301,6 +301,8 @@ aside
   h3
     margin-right: 6px
     cursor: pointer
+    &:hover
+      background-color: #e2e0d5
   h3.sidebar-links.current_tab
     background-color: rgba(255, 255, 255, 0.4)
     color: $red
@@ -407,20 +409,18 @@ aside
         font-family: $heading
         float: left
         color: $blue
-        font-size: 14px
+        font-size: 16px
         padding-left: 30px
         background: image-url("shared/redesign/wire-icon.png") left no-repeat
         background-position: 5px 5px
-        padding-top: 11px
+        padding: 8px 0px 2px 30px
       p
         font-family: $heading
-        font-size: 12px
+        font-size: 16px
         color: darken($dark-grey, 10%)
-        font-weight: bold
         text-shadow: 1px 1px 1px white
         float: right
-        padding-top: 11px
-        padding-right: 10px
+        padding: 8px 10px 0px 0px
     .post-content
       padding: 15px
       h3, p
@@ -446,7 +446,7 @@ aside
         border-radius: 4px
         float: left
     .post-action
-      padding: 15px
+      padding: 15px 20px 15px 15px
         top: 0
         bottom: 0
       margin-left: 60px
@@ -514,9 +514,14 @@ aside
           background: image-url("shared/redesign/flag.png") no-repeat
           padding-left: 31px
           background-position: 11px 14px
+          &:hover, &:focus, &:active
+            background: image-url("shared/redesign/flagged.png") no-repeat
+            padding-left: 31px
+            background-position: 11px 14px
+            color: $dark-grey
     .post-interaction
       margin-left: 60px
-      font-size: 11px
+      font-size: 12px
       .interaction
         padding: 15px 0
         border-bottom: 1px solid
@@ -534,7 +539,6 @@ aside
           height: 13px
           background-position-y: 2px
         .publicized
-          margin-top: 10px
           padding-left: 22px
           background: image-url("shared/redesign/publicized.png") no-repeat
           height: 15px
@@ -542,6 +546,8 @@ aside
     .post-replies
       padding: 10px 20px 20px 20px
         bottom: 20px
+      margin-top: -1px
+      border-top: 1px solid #fff
       p
         margin-left: 60px
         padding-top: 10px
@@ -649,12 +655,11 @@ aside
 
 
 #content div.list div.wire div.post-interaction
-  border-bottom: 2px dotted #e4e4e4
-  width: 639px
+  border-bottom: 1px dotted #e4e4e4
+  margin-right: 20px
   margin-left: 70px
   padding-left: 0
-  border-top: 2px dotted #e4e4e4
-  margin-top: 2px
+  border-top: 1px dotted #e4e4e4
 
 #content div.list div.wire div.post-replies p.replies
   display: none
@@ -663,10 +668,10 @@ input::-webkit-input-placeholder
   color: #a2a2a2
 
 .main .wire .post-interaction .interaction
-  padding: 14px 0
+  padding: 15px 0
   border-color: #e6e6e6
   margin-left: 0
-  margin-right: 10px
+  margin-right: 20px
   font-family: Helvetica Neue, Helvetica, Tahoma, serif
   color: #555555
   border-bottom-style: none
@@ -675,16 +680,14 @@ input::-webkit-input-placeholder
 .wire div.post-replies #post-reply 
   border-radius: 4px
   height: 0
-  margin-left: 59px
-  width: 560px
+  margin-left: 50px
+  width: 85%
 
 .wire div.post-replies #post-reply-button
   color: #fffefe
   text-decoration: none
   text-transform: uppercase
   position: relative
-  bottom: 15px
-  left: 20px
   font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
   background-color: #ac322f
   width: 90px
@@ -694,7 +697,7 @@ input::-webkit-input-placeholder
   border-color: #ac322f
   float: right
   margin-top: 0
-  margin-bottom: 16px
+  margin-bottom: 15px
 
 ul.actions li
   cursor: pointer
