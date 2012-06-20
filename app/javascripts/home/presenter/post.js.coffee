@@ -25,6 +25,17 @@ class Home.presenter.Post
     else
       @post.set("thank_people", "people")
 
+    shares = new Array(
+      {"sharer": "Mark Malazarte"},
+      {"sharer": "Jackie Chilles"}
+    )
+    num_shares = shares.length
+    @post.set("num_shares", num_shares)
+    @post.set("shares", shares)
+    if num_shares is 1
+      @post.set("share_people", "person")
+    else
+      @post.set("share_people", "people")
 
     replies = @post.get("replies")
     this.processReply(reply) for reply in replies

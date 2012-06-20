@@ -26,12 +26,14 @@
       {{/thanks}}
     </p>
     {{/num_thanks}}
+    {{#num_shares}}
     <p class="publicized">
-      <span class="blue">2 people</span> shared this post: 
-      <span class="blue">Mark Malazarte </span>
-      and 
-      <span class="blue">Jackie Chilles</span>
+      <span class="blue">{{num_shares}} {{share_people}}</span> shared this post: 
+      {{#shares}}
+      <span class="blue">{{sharer}}</span>
+      {{/shares}}
     </p>
+    {{/num_shares}}
   </div>
 </div>
 
