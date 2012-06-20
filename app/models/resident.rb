@@ -1,6 +1,8 @@
 class Resident < ActiveRecord::Base
   serialize :metadata, Hash
   serialize :logs, Array
+  serialize :sector_tags, Array
+  serialize :type_tags, Array  
 
   belongs_to :community
 
@@ -55,9 +57,29 @@ class Resident < ActiveRecord::Base
     self.save
   end
 
+
+  def add_sector_tags(tags)
+    sectortags = tags.split(',')
+    self.sector_tags ||= []
+    self.sector_tags |= sectortags
+    #self.community.add_resident_tags(tags)
+    self.save
+  end
+
+
+  def add_type_tags(tag_or_tags)
+    typetags = Array(tag_or_tags)
+    self.type_tags ||= []
+    self.type_tags |= typetags
+    #self.community.add_resident_tags(tags)
+    self.save
+  end
+
   searchable do
     integer :community_id
     string :tags, :multiple => true
+    string :sector_tags, :multiple => true
+    string :type_tags, :multiple => true
     string :first_name
     string :last_name
   end
