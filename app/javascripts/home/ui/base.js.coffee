@@ -29,7 +29,7 @@ Home.ui.WireItem = Framework.View.extend
   reply: (e) ->
     if e
       e.preventDefault()
-    reply = this.$("#post-reply").val()
+    reply = this.$(".post-reply").val()
     data =
       "body" : reply
     if reply isnt undefined

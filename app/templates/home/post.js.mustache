@@ -38,8 +38,6 @@
 </div>
 
 <div class="post-replies">
-  <input id="post-reply" placeholder="Reply to this post">
-  <button id="post-reply-button">Reply</button>
   <ul id="post-replies">{{#replies}}
     <li><img src="{{avatar_url}}">  
       <p class="author">{{author}}</p>
@@ -51,6 +49,8 @@
       </p>  
   </li>
   {{/replies}}</ul>
+  <input class="post-reply" placeholder="Reply to this post">
+  <button class="post-reply-button">Reply</button>
   
 </div>
 
