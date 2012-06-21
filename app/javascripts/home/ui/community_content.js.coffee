@@ -110,7 +110,7 @@ Home.ui.CommunityContent = Framework.View.extend
     header.append("<span class='subheader'></span>")
     this.updateHeader($(".subheader"), messenger)
     $(window).scroll(() =>
-      this.updateHeader(".subheader", messenger)
+      this.updateHeader($(".subheader"), messenger)
     )
 
   updateHeader: (header, messenger) ->
