@@ -21,6 +21,7 @@ $off-grey: #eeecdf
 $search-box: #b7c3cf
 $dark-tan: #bcbbae
 
+
 /* Woo Fonts */
 $heading: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
 $body: Helvetica Neue, Helvetica, Tahoma, serif
@@ -121,6 +122,7 @@ header
       a
         underline: none
         color: white
+
   .right
     width: 113px
     float: right
@@ -154,6 +156,7 @@ header
         background-position-x: 143px
       input::-webkit-input-placeholder
         color: $blue
+      
       .messages
         background: image-url("shared/redesign/mail-icon.png") no-repeat
         width: 29px
@@ -172,7 +175,6 @@ header
         float: left
         display: block
         text-indent: -9999px
-
 aside
   width: 295px
   background: $off-grey image-url("shared/redesign/background.gif") center
@@ -211,20 +213,7 @@ aside
       .number-of
         font-weight: normal
         font-size: 14px
-  #avatar
-    margin: 25px auto 18px
-    width: 85%
-    img
-      display: block
-      margin: auto
-      width: 150px
-  #about h3
-    margin: 0px 22px
-    color: $blue
-    font-size: 15px
-  #contact a
-    margin-top: 18px
-  #filters
+  #your-town
     width: 90%
     margin: 0 auto
     padding: 15px 0px 0px 0px
@@ -236,7 +225,7 @@ aside
       text-shadow: 1px 1px 1px white
       border-bottom: 1px solid #c5c2b5
       padding-bottom: 5px
-    .filters
+    .your-town 
       padding: 0px
       li
         padding: 7px 7px 10px 20px
@@ -255,14 +244,19 @@ aside
           line-height: 26px
           &:hover, &:focus, &:active
             color: $red
+
         #request
           background: image-url("shared/redesign/request-offer-icon.png") no-repeat left
+
         #event
           background: image-url("shared/redesign/event-icon.png") no-repeat left
+
         #discussion
           background: image-url("shared/redesign/discussions-icon.png") no-repeat left
+
         #announcement
-          background: image-url("shared/redesign/announcements-icon.png") no-repeat left
+          background: image-url("shared/redesign/announcements-icon.png") no-repeat left       
+
   #directories
     width: 90%
     margin: 0 auto
@@ -282,6 +276,7 @@ aside
       text-shadow: none
       &:hover
         color: $blue
+
     li.directory_listing
       padding: 8px 0
       a
@@ -295,90 +290,97 @@ aside
         padding-left: 42px
         background: image-url("shared/redesign/missing.png") no-repeat left
         line-height: 26px
-    #directory_nav 
-      height: 57px
-      cursor: pointer
-      h3
-        margin-right: 6px
-        cursor: pointer
-        &:hover
-          background-color: #e2e0d5
-      h3.sidebar-links.current_tab
-        background-color: rgba(255, 255, 255, 0.4)
-        color: $red
-    #directory_content
-      height: 100%
-      width: 235px
-      background-color: rgba(255,255,255,0.4)
-      padding: 10px 15px
-      position: relative
-      bottom: 0px
-      .your-neighbors
-        img
-          height: 32px
-          width: 32px
-        h3
-          font-family: $heading
-          font-size: 15px
-          color: $blue
-          text-shadow: 1px 1px 1px white
-          border-bottom: 1px solid #c5c2b5
-          padding-bottom: 5px
-        .neighbor
-          margin-left: 12px
-          border-bottom: 1px solid
-          border-color: lighten($dark-grey, 30%)
-          padding-bottom: 10px
-          padding-top: 5px
-          height: 50px
-          width: 85%
-          overflow: hidden
-          &:last-child
-            border-bottom: none
-          h4
-            font-family: $body
-            color: $blue
-            font-weight: bold
-            font-size: 13px
-          p
-            font-family:  $body
-            font-size: 13px
-            color: lighten($black, 10%)
-            margin-top: 5px
-          img
-            padding-right: 8px
-            float: left
-      .page
-        margin-left: 0px
-        border-bottom: 1px dotted
-        border-color: lighten($dark-grey, 30%)
-        padding-bottom: 10px
-        padding-top: 10px
-        height: 65px
-        width: auto
-        overflow: hidden
-        &:last-child
-          border-bottom: none
-        h4
-          font-family: $heading
-          color: $blue
-          font-weight: bold
-          font-size: 18px
-          line-height: 16px
-          margin-bottom: 5px
-          margin-right: 10px
-        p
-          font-family:  $body
-          font-size: 13px
-          color: lighten($black, 10%)
-          margin-top: 5px
-        img
-          padding-right: 8px
-          float: left
-          width: 32px
-          margin-bottom: 30px
-          height: 32px
-          overflow: hidden
+
+
+#directory_nav h3.sidebar-links.current_tab
+
+#directory_nav 
+  height: 57px
+  cursor: pointer
+  h3
+    margin-right: 6px
+    cursor: pointer
+    &:hover
+      background-color: #e2e0d5
+  h3.sidebar-links.current_tab
+    background-color: rgba(255, 255, 255, 0.4)
+    color: $red
+
+#directory_content
+  height: 100%
+  width: 235px
+  background-color: rgba(255, 255, 255, 0.4)
+  padding: 10px 15px
+  position: relative
+  bottom: 0px
+  overflow:hidden
+
+  .your-neighbors
+    img
+      height: 32px
+      width: 32px
+    h3
+      font-family: $heading
+      font-size: 15px
+      color: $blue
+      text-shadow: 1px 1px 1px white
+      border-bottom: 1px solid #c5c2b5
+      padding-bottom: 5px
+    .neighbor
+      margin-left: 12px
+      border-bottom: 1px solid
+      border-color: lighten($dark-grey, 30%)
+      padding-bottom: 10px
+      padding-top: 5px
+      height: 50px
+      width: 85%
+      overflow: hidden
+      &:last-child
+        border-bottom: none
+      h4
+        font-family: $body
+        color: $blue
+        font-weight: bold
+        font-size: 13px
+      p
+        font-family:  $body
+        font-size: 13px
+        color: lighten($black, 10%)
+        margin-top: 5px
+      img
+        padding-right: 8px
+        float: left
+  .page
+    margin-left: 0px
+    border-bottom: 1px dotted
+    border-color: lighten($dark-grey, 30%)
+    padding-bottom: 10px
+    padding-top: 10px
+    height: 65px
+    width: auto
+    overflow: hidden
+    &:last-child
+      border-bottom: none
+    h4
+      font-family: $heading
+      color: $blue
+      font-weight: bold
+      font-size: 18px
+      line-height: 16px
+      margin-bottom: 5px
+      margin-right: 10px
+    p
+      font-family:  $body
+      font-size: 13px
+      color: lighten($black, 10%)
+      margin-top: 5px
+    img
+      padding-right: 8px
+      float: left
+      width: 32px
+      margin-bottom: 30px
+      height: 32px
+      overflow: hidden
  
 .main
   overflow: hidden

@@ -9,7 +9,6 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-meetup": "createMeetups"
     ":community/home/share": "createShare"
     ":community/home/pages/:page": "showPage"
-    ":community/home/pages/:page/create-post": "createPagePost"
 
   content: undefined
 
@@ -22,7 +21,7 @@ Home.Router = Backbone.Router.extend
     )
 
     sidebar = new Home.ui.Sidebar el: $("#sidebar")
-    sidebar.render("home")
+    sidebar.render()
 
     this.createContent()
     this.content.render("home")
@@ -45,7 +44,7 @@ Home.Router = Backbone.Router.extend
     )
 
     sidebar = new Home.ui.Sidebar el: $("#sidebar")
-    sidebar.render("page", page)
+    sidebar.render()
 
     this.createContent()
     this.content.render("page", page)
@@ -86,6 +85,3 @@ Home.Router = Backbone.Router.extend
   createShare: (community) ->
     posting = this.createPost(community)
     posting.show "share"
-
-  createPagePost: (community, page) ->
-    alert("great!")

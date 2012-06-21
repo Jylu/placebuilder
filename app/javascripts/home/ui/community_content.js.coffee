@@ -38,7 +38,7 @@ Home.ui.CommunityContent = Framework.View.extend
           this.$(".list").append(view.el)
         this.timeHeaders()
         this.multiColumn($("#content").find(".list"), ".wire")
-        this.dynamicHeader($(".top-bar h2"), ".wire")
+        this.dynamicHeader("h2", ".wire")
       , page
 
   timeHeaders: () ->
@@ -107,8 +107,8 @@ Home.ui.CommunityContent = Framework.View.extend
     )
 
   dynamicHeader: (header, messenger) ->
-    header.append("<span class='subheader'></span>")
-    this.updateHeader($(".subheader"), messenger)
+    $(header).append("<span class='subheader'></span>")
+    this.updateHeader(".subheader", messenger)
     $(window).scroll(() =>
       this.updateHeader(".subheader", messenger)
     )
@@ -116,6 +116,6 @@ Home.ui.CommunityContent = Framework.View.extend
   updateHeader: (header, messenger) ->
     $(messenger).each(() ->
       if($(this).offset().top < $(window).scrollTop() + 100)
-        header.html(" &bull; " + $(this).attr("data-header"))
+        $(header).html(" &bull; " + $(this).attr("data-header"))
     )
 
