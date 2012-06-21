@@ -1,0 +1,193 @@
+<%
+  def cutbody(body)
+    if body.to_str.length>15
+       body.to_str[0,15]+"..."
+    else
+       body.to_str 
+    end
+  end
+  
+  def sortbytime(actions)
+    actions.sort{|a,b| b.created_at<=>a.created_at}
+  end
+%>
+
+<style>
+table{
+    border:1px solid #000;
+    border-width:1px 0 0 1px;
+    margin:2px 0 2px 0;
+    text-align:center;
+    border-collapse:collapse;
+}
+td,th{
+    border:1px solid #000;
+    border-width:0 1px 1px 0;
+    margin:2px 0 2px 0;
+    text-align:left;
+}
+th{
+    text-align:center;
+    font-weight:600;
+    font-size:12px;
+    background-color:#F4F4F4;
+}
+</style>
+<table  >
+
+<%  
+  case @type 
+     when "all"        
+       #@all=@user.posts+@user.messages+@user.replies+@user.events+@user.essays
+       @sitevisits= Array(SiteVisit.where(:commonplace_account_id => @user.id))
+       @createdevents=Event.where(:owner_id=>@user.id,:owner_type=>"User")
+       @all=@user.posts+@user.replies+@sitevisits+@createdevents
+       @user.posts.each do |post|
+         @all+= Array(Reply.where(:repliable_id=> post.id))
+       end
+       @feeds=Array(Feed.where(:user_id=>@user.id))
+       @feeds.each do |feed|
+         @all+= Array(Announcement.where(:owner_id=>feed.id))+Array(Event.where(:owner_id=>feed.id,:owner_type=>"Feed"))
+       end
+       @all+= Array(Invite.where(:inviter_id=> @user.id))+@feeds
+
+       @all_ordered=@all.sort{|a,b| b.created_at<=>a.created_at} %>
+       
+         <tr> <th>Action</th> <th>Time</th> </tr>
+         
+         <% @all_ordered.each do |action| %>
+         <tr>
+	   <td> <%=
+	          case action.class.name
+	            when "SiteVisit"
+	               "Log in"
+	            when "Reply"
+	              if action.user_id!=@user.id
+	                "Be replied"
+	              else 
+	                "Reply"
+	              end
+	            when "Feed"
+	              "Create feed"
+	            else
+	              action.class.name
+	           end     
+	        %>
+           <td> <%= action.created_at.to_formatted_s(:db) %> </td>
+         </tr>
+         <% end %>
+       
+     <% when "sitevisit" %> 
+     <h4>Amount: <%@sitevisits= Array(SiteVisit.where(:commonplace_account_id => @user.id)) %> 
+                 <%= SiteVisit.where(:commonplace_account_id => @user.id).count %></h4>
+         <tr> <th>Time</th></tr>
+         <tr>
+         <% sortbytime(@sitevisits).each do |sitevisit| %>
+         <tr>
+           <td> <%= sitevisit.created_at.to_formatted_s(:db) %> </td>
+         </tr>
+         <% end %>
+         </tr>
+         
+     <% when "announcement" %>
+     <h4>Amount: <% @feeds=Array(Feed.where(:user_id=>@user.id))
+                    @announcements = Array.new
+                    @feeds.each do |feed|
+                      @announcements+= Array(Announcement.where(:owner_id=>feed.id))
+                    end %> 
+                 <%= @announcements.size %></h4>
+
+	  <tr> <th>Time</th> <th>Feed</th> <th>Content</th> </tr>
+	  <tr>
+	  <% sortbytime(@announcements).each do |announcement| %>
+	    <tr>
+	    <td> <%= announcement.created_at.to_formatted_s(:db) %> </td>
+	    <td> <%= Feed.where(:id=>announcement.owner_id).first.name %> </td>
+	    <td> <%= cutbody(announcement.body) %>
+	    </td>
+	    </tr>
+	  <% end %>
+	  </tr>
+
+      <% when "event" %>
+      <h4>Amount: <% @events=Event.where(:owner_id=>@user.id,:owner_type=>"User")
+                     @feeds=Array(Feed.where(:user_id=>@user.id))
+                     @feeds.each do |feed|
+                       @events+= Array(Event.where(:owner_id=>feed.id,:owner_type=>"Feed"))
+                     end%>
+      <%= @events.size %></h4>
+
+	  <tr> <th>Time</th> <th>Where</th> <th>Content</th> </tr>
+	  <tr>
+	  <% sortbytime(@events).each do |event| %>
+	    <tr>
+	    <td> <%= event.created_at.to_formatted_s(:db) %> </td>
+	    <td> <%= if event.owner_type=="User"
+	                "Neighborhood"
+	             else
+	                "Feed: "+Feed.where(:id=>event.owner_id).first.name
+	             end %> 
+	    </td>
+	    <td> <%= cutbody(event.body) %> 
+	    </td>
+	    </tr>
+	  <% end %>
+	  </tr>
+
+      <% when "reply" %>
+      <h4>Amount: <% @replies= Array.new
+                     @user.posts.each do |post|
+                       @replies+= Array(Reply.where(:repliable_id=> post.id))
+                       @replies-= Array(Reply.where(:repliable_id=> post.id, :user_id=>@user.id))
+                     end 
+                     @replies+=@user.replies
+                     %> 
+      <%= @replies.count %></h4>
+
+	  <tr> <th>Time</th> <th>Type</th> <th>Content</th> </tr>
+	  <tr>
+	  <% sortbytime(@replies).each do |reply| %>
+	    <tr>
+	    <td> <%= reply.created_at.to_formatted_s(:db) %> </td>
+	    <td> <%= if reply.user_id!=@user.id
+	                "Be replied"
+	             else
+	                "Reply"
+	             end %> 
+	    </td>
+	    <td> <%= cutbody(reply.body) %> 
+	    </td>
+	    </tr>
+	  <% end %>
+	  </tr>
+
+      <% when "post" %>
+      <h4>Amount: <%= @user.posts.count %></h4>
+
+	  <tr> <th>Time</th> <th>Category</th> <th>Content</th> </tr>
+	  <tr>
+	  <% sortbytime(@user.posts).each do |post| %>
+	    <tr>
+	    <td> <%= post.created_at.to_formatted_s(:db) %> </td>
+	    <td> <%= post.category%> </td>
+	    <td> <%= cutbody(post.body) %> </td>
+	    </tr>
+	  <% end %>
+	  </tr>
+	  
+      <% when "invite" %>
+      <h4>Amount: <% @invitations=Array(Invite.where(:inviter_id=> @user.id)) %>
+                  <%= @invitations.count %></h4>
+
+	  <tr> <th>Time</th></tr>
+         <tr>
+         <% sortbytime(@invitations).each do |invite| %>
+         <tr>
+           <td> <%= invite.created_at.to_formatted_s(:db) %> </td>
+         </tr>
+         <% end %>
+         </tr>
+
+<% end %>
+
+</table>

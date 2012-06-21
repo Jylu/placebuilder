@@ -1,7 +1,7 @@
 
 OrganizerApp.FileViewer = CommonPlace.View.extend({
 
-  template: "organizer_app.file-viewer",
+  template: "organizer_app.viewer",
 
   events: {
     "submit form#add-log": "addLog",
@@ -16,8 +16,13 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       this.model.addLog();
     }, this));
     this.$("#log-date").datepicker();
+    this.allactions();
   },
 
+  ifuser: function() {
+    return this.model.get("on_commonplace");
+  },
+  
   full_name: function() {
     var name = this.model.full_name();
     if (name === undefined) {
@@ -33,6 +38,60 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return "No address in our records";
     } else {
       return address;
+    }
+  },
+  
+  phone: function() {
+    var phone = this.model.get('phone');
+    if (!phone) {
+      return "No phone in our records";
+    } else {
+      return phone;
+    }
+  },
+  
+  organization: function() {
+    var organization = this.model.get('organization');
+    if (!organization) {
+      return "No organization in our records";
+    } else {
+      return organization;
+    }
+  },
+  
+  position: function() {
+    var position = this.model.get('position');
+    if (!position) {
+      return "No position in our records";
+    } else {
+      return position;
+    }
+  },
+  
+  notes: function() {
+    var notes = this.model.get('notes');
+    if (!notes) {
+      return "No notes in our records";
+    } else {
+      return notes;
+    }
+  },
+  
+  sector: function() {
+    var sector = this.model.get('sector');
+    if (!sector) {
+      return "No sector in our records";
+    } else {
+      return sector;
+    }
+  },
+  
+  type: function() {
+    var type = this.model.get('type');
+    if (!type) {
+      return "No type in our records";
+    } else {
+      return type;
     }
   },
 
@@ -100,6 +159,25 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     } else {
       return "No tags in our records yet.";
     }
+  },
+  
+  allactions: function() {
+    //this.$("#action-count").empty();
+    //this.$("#action-count").append("<p>here</p>");
+    if(!this.model.get("on_commonplace")){
+      this.$("#action-count").before("Not a user yet");
+    }
+    else{
+      this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("id")+"/all"); 
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/all\" target=\"content\" >All</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/sitevisit\" target=\"content\" >Log In Time</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/post\" target=\"content\" >Post</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/announcement\" target=\"content\" >Announcement</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/reply\" target=\"content\" >Reply</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/event\" target=\"content\" >Event</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/invite\" target=\"content\" >Invite</a>");
+    }
+    
   },
 
   possibleTags: function() { return possTags; }
