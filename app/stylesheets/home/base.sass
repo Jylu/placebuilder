@@ -436,23 +436,23 @@ aside
         float: right
         padding: 8px 10px 0px 0px
     .post-content
-      padding: 15px
+      padding: 15px 15px 10px 15px
       h3, p
         margin-left: 65px
         font-family: $body
         color: $black
         overflow: hidden
       h3 
-        font-size: 18px
+        font-size: 24px
         font-weight: bold
-        padding-bottom: 7px
+        padding-bottom: 10px
       p.author
         font-size: 12px
         color: $blue
         font-weight: bold
-        margin-bottom: 20px
+        padding-bottom: 10px
       p.post-text
-        font-size: 14px
+        font-size: 13px
         line-height: 18px
       img
         height: 50px
@@ -469,7 +469,7 @@ aside
       text-transform: uppercase
       font-weight: bold
       color: $red
-      height: 40px
+      height: 35px
       span.thank
         color: $dark-grey
       p
@@ -483,7 +483,7 @@ aside
       .actions
         border-top: 1px dotted
         border-bottom: 1px dotted
-        height: 40px
+        height: 35px
         border-color: lighten($dark-grey, 37%)
         li
           border-right: 1px dotted
@@ -491,7 +491,7 @@ aside
           float: left
           font-size: 12px
           text-transform: capitalize
-          padding: 14px 10px 14px 10px
+          padding: 10px 10px 12px 10px
           &:first-child
             padding-left: 0
           &:last-child
@@ -500,7 +500,7 @@ aside
           margin-left: 0
           background: image-url("shared/redesign/reply.png") no-repeat
           padding-left: 21px
-          background-position: 0 14px
+          background-position: 0 10px
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/replied.png") no-repeat
             padding-left: 21px
@@ -509,7 +509,7 @@ aside
         li.help
           background: image-url("shared/redesign/publicize.png") no-repeat
           padding-left: 31px
-          background-position: 10px 12px
+          background-position: 10px 8px
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/publicized.png") no-repeat
             padding-left: 31px
@@ -518,7 +518,7 @@ aside
         li.thank
           background: image-url("shared/redesign/thank.png") no-repeat
           padding-left: 33px
-          background-position: 11px 15px
+          background-position: 10px 10px
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/thanked.png") no-repeat
             padding-left: 33px
@@ -527,7 +527,7 @@ aside
         li.flag
           background: image-url("shared/redesign/flag.png") no-repeat
           padding-left: 31px
-          background-position: 11px 14px
+          background-position: 10px 10px
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/flagged.png") no-repeat
             padding-left: 31px
@@ -536,11 +536,10 @@ aside
     .post-interaction
       margin-left: 80px
       font-size: 12px
-      border-bottom: 1px dotted #e4e4e4
       border-top: 1px dotted #e4e4e4
       margin-right: 20px
       .interaction
-        padding: 15px 0
+        padding: 8px 0
         border-color: #e6e6e6
         margin-left: 0
         margin-right: 0
@@ -564,10 +563,7 @@ aside
           height: 15px
           padding-top: 3px
     .post-replies
-      padding: 10px 20px 20px 20px
-        bottom: 20px
-      margin-top: -1px
-      border-top: 1px solid #fff
+      padding: 10px 20px 5px 20px
       p
         margin-left: 60px
         padding-top: 10px
@@ -659,7 +655,7 @@ aside
   display: none
 
 .main .wire .post-action .actions
-  height: 40px
+  height: 35px
   border-color: #e6e6e6
   border-top-style: dotted
   border-bottom-width: 1px
@@ -671,7 +667,7 @@ aside
     float: left
     font-size: 12px
     text-transform: capitalize
-    padding: 14px 10px 14px 10px
+    padding: 10px 10px 12px 10px
     border-right-style: dotted
     border-right-width: 1px
 
@@ -699,13 +695,13 @@ input::-webkit-input-placeholder
   border-bottom-style: none
   border-bottom-width: 1px
 
-.wire div.post-replies #post-reply 
+.wire div.post-replies .post-reply 
   border-radius: 4px
   height: 0
-  margin-left: 55px
-  width: 595px
+  margin-left: 60px
+  width: 635px
 
-.wire div.post-replies #post-reply-button
+.wire div.post-replies .post-reply-button
   color: #fffefe
   text-decoration: none
   text-transform: uppercase
