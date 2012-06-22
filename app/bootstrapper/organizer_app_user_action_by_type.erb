@@ -50,7 +50,7 @@ th{
          @all+= Array(Announcement.where(:owner_id=>feed.id))+Array(Event.where(:owner_id=>feed.id,:owner_type=>"Feed"))
        end
        @all+= Array(Invite.where(:inviter_id=> @user.id))+@feeds
-
+       @all+= Array( SentEmail.where(:recipient_email=>@user.email))
        @all_ordered=@all.sort{|a,b| b.created_at<=>a.created_at} %>
        
          <tr> <th>Action</th> <th>Time</th> </tr>
@@ -69,6 +69,8 @@ th{
 	              end
 	            when "Feed"
 	              "Create feed"
+	            when "SiteVisit"
+	              "Sent Email"
 	            else
 	              action.class.name
 	           end     
@@ -130,6 +132,24 @@ th{
 	    </td>
 	    <td> <%= cutbody(event.body) %> 
 	    </td>
+	    </tr>
+	  <% end %>
+	  </tr>
+       
+       <% when "email" %>
+      <h4>Amount: <% @emails= Array( SentEmail.where(:recipient_email=>@user.email))
+                     %>
+      <%= @emails.size %></h4>
+
+	  <tr> <th>Time</th>  <th>If Opened</th> </tr>
+	  <tr>
+	  <% sortbytime(@emails).each do |email| %>
+	    <tr>
+	    <td> <%= email.created_at.to_formatted_s(:db) %> </td>
+	    
+	    <td> <%= email.status %> 
+	    </td>
+	    
 	    </tr>
 	  <% end %>
 	  </tr>

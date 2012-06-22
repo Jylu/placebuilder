@@ -1,26 +1,65 @@
+<script type="text/javascript">
+function display(id){ 
+var traget=document.getElementById(id); 
+    if(traget.style.display=="none"){ 
+       traget.style.display="";
+    }else{ 
+       traget.style.display="none"; 
+    } 
+}
+
+</script>
+
+
 
 <div id="person-viewer">
 
-  <h3 id="name">{{ full_name }}</h3>
+  <h3 id="name">{{ full_name }} <button onclick="">Edit Info</button></h3>
   <span id="person-viewer-left"> 
      <table>
        <tr>
-	<td>Email</td> <td>{{ email }}</td>
-       </tr>
-	<!--	<form id="add-email" autocomplete="off">
-		<input id="email-text" type="text" placeholder="john@example.com">
-		<input id="email-add" type="submit" value="Change Email">
-		</form> -->
+	<td>Email<button onclick="display('email-text');display('email-add');">Edit</button></td> <td>{{email}} 
+       
+	    <form id="add-email" autocomplete="off">
+		<input id="email-text" type="text" style="display:none" placeholder="john@example.com">
+		<input id="email-add" type="submit" style="display:none" value="Save">
+	    </form> 
+	    </td></tr>
        <tr>
-	<td>Phone</td></td> <td>{{phone}}</td>
+	<td>Phone<button onclick="display('phone-text');display('phone-add');">Edit</button></td></td> <td>{{phone}} 
+	<form id="add-phone" autocomplete="off">
+		<input id="phone-text" type="text" style="display:none" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="1234567890">
+		<input id="phone-add" type="submit" style="display:none" value="Save">
+	    </form> 
+	</td>
        </tr><tr>	
-	<td>Organization</td> <td>{{organization}}</td>
+	<td>Organization<button onclick="display('organization-text');display('organization-add');">Edit</button></td> <td>{{organization}}  
+	<form id="add-organization" autocomplete="off">
+		<input id="organization-text" type="text" style="display:none" >
+		<input id="organization-add" type="submit" style="display:none" value="Save">
+	    </form> 
+	</td>
        </tr><tr>
-	<td>Position</td> <td>{{position}}</td>
+	<td>Position<button onclick="display('position-text');display('position-add');">Edit</button></td> <td>{{position}}  
+	<form id="add-position" autocomplete="off">
+		<input id="position-text" type="text" style="display:none" >
+		<input id="position-add" type="submit" style="display:none" value="Save">
+	    </form> 
+	</td>
        </tr><tr>
-	<td>Address</td> <td>{{ address }}</td>
+	<td>Address<button onclick="display('address-text');display('address-add');">Edit</button></td> <td>{{ address }} 
+	        <form id="add-address" autocomplete="off">
+		  <input id="address-text" type="text" style="display:none" placeholder="125 Western Avenue, Allston, MA 02134">
+		  <input id="address-add" type="submit" style="display:none" value="Save">
+		</form> 
+	</td>
        </tr><tr>
-	<td>Notes</td> <td>{{notes}}</td>
+	<td>Notes<button onclick="display('notes-text');display('notes-add');">Edit</button></td> <td>{{notes}}  
+	<form id="add-notes" autocomplete="off">
+		  <textarea id="notes-text"  style="display:none" />
+		  <input id="notes-add" type="submit" style="display:none" value="Save">
+		</form> 
+	</td>
        </tr><tr>
 	<td>Sector</td> <td><ul id="sector-tags">
                  {{#sector}}<li>{{.}}</li>{{/sector}}
@@ -31,11 +70,8 @@
                 </ul></td>
        </tr></table>
         
-	<!--	<form id="add-address" autocomplete="off">
-		<input id="address-text" type="text" placeholder="125 Western Avenue, Allston, MA 02134">
-		<input id="address-add" type="submit" value="Change address">
-		</form> 
-        <br>
+ 	
+        <!--
         Current tags: <br>
     <ul id="resident-tags">
     {{#tags}}<li>{{.}}</li>{{/tags}}
