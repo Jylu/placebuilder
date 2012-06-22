@@ -5,16 +5,51 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
 
   events: {
     "click li": "onClickFile",
+    "click :checkbox": "toggle",
     "click #filter-button": "filter",
     "click .tag-filter": "cycleFilter",
+    "click #add-tag" : "addTag",
     "click #map-button": "showMapView",
     "click #new-resident" : "addResident",
     //"click #new-street" : "addStreet"
   },
   
+  initialize: function() {
+    checklist = [];
+  },
+
   onClickFile: function(e) {
     e.preventDefault();
+    //console.log($(e.currentTarget));
     this.options.fileViewer.show($(e.currentTarget).data('model'));
+  },
+
+  // This seems like not the right way to implement checkboxes...=|
+  toggle: function(e) {
+
+    //console.log(this);
+    //console.log($(e.currentTarget));
+    //console.log($(e.currentTarget).data('model').getId());
+
+    c = $(e.currentTarget).data('model').getId();
+    if(typeof checklist[c] === "undefined")
+      checklist[c] = false;
+
+    checklist[c] = !checklist[c];
+    this.afterRender();
+  },
+
+  addTag: function() {
+    _.map(this.collection.models, _.bind(function(model) {
+      if(checklist[model.getId()]) {
+        var tag = this.$("#tag-input").val(); 
+
+        console.log(model.getId());
+
+        model.addTag(tag, _.bind(this.render, this));
+      }
+    }, this));
+    location.reload();
   },
 
   addResident: function(e) {
@@ -42,6 +77,8 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         console.log(model);
         console.log("model url: ", model.url());*/
         var li = $("<li/>", { text: model.full_name(), data: { model: model } })[0];
+        var cb = $("<input/>", { type: "checkbox", checked: checklist[model.getId()], value: model.getId(), data: { model: model } })[0];
+        $(li).prepend(cb);
         $(li).addClass("pick-resident");
         return li;
       }, this))); 

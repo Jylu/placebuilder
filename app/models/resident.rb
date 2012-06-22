@@ -84,4 +84,69 @@ class Resident < ActiveRecord::Base
     string :last_name
   end
 
+  # Correlates Resident with existing Users
+  # and StreetAddresses [if possible]
+  #
+  # Since Users are always associated with a Resident,
+  # this function simply adds tags to the existing
+  # Resident file if a correlation exists and
+  # does nothing otherwise, if given only an e-mail
+  #
+  # @return boolean, depending on whether a correlation was found or not
+  # If true, destroy this [redundant] Resident file
+  def correlate
+    if self.address?
+      matched_street = User.where("address ILIKE ? AND last_name ILIKE ?", self.address)
+
+      if matched_street.count > 1
+        matched = matched_street.select { |resident| resident.first_name == self.first_name }
+
+        if matched.count > 1
+          # Well, what are the odds? =(
+        end
+
+        if matched.count == 1
+          # matched.first.add_tags(self.tags)
+          return true
+        else
+          # No match, but should match with a StreetAddress file
+          matched_addr = StreetAddress.where("address ILIKE ?","%#{self.address}%")
+
+          if matched_addr.count == 1
+            street = matched_addr.first
+            if street.unreliable name == "#{self.first_name} #{self.last_name}"
+              # add tags
+              return true
+            end
+
+            # Not the property owner
+            self.street_address = street
+          end
+
+          return false
+        end
+      end
+    elsif self.email?
+      matched_email = User.where("email ILIKE ? AND last_name ILIKE ?", self.email, self.last_name)
+
+      if matched_email.count > 1
+        # We have a problem; No two Users should have the same e-mail D=
+      end
+
+      # Add whatever was inputted to the existing Residents file
+      if matched_email.count == 1
+        # matched_email.first.add_tags(self.tags)
+        return true
+      else
+        return false
+      end
+    else
+      # A name isn't really much to work with.
+      # Don't let this happen in a higher level function?
+
+      # Until then, destroy as a contingency plan
+      return true
+    end
+  end
+
 end

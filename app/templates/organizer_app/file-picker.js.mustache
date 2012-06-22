@@ -1,5 +1,8 @@
 <div id="file-picker-filters">
-<button id="new-resident">New Resident</button><br>
+<button id="new-resident">New Resident</button>
+<input type="text" placeholder="tag" id="tag-input">
+<button id="add-tag">Add tag</button>
+<br>
   {{#tags}}
     <a class="tag-filter" data-state="neutral" data-tag="{{.}}">{{.}}</a>
   {{/tags}}

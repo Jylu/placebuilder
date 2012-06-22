@@ -24,6 +24,22 @@ OrganizerApp.File = Backbone.Model.extend({
     return this.get('longitude');
   },
 
+  addTag: function(tag, callback) {
+    var self = this;
+
+    /*$.post(this.url() + "/tags", {tags: tag},
+        function() { self.fetch({success: callback}) });*/
+	  $.ajax({
+		  type: 'POST',
+		  url: this.url() + "/tags",
+		  data: {tags: tag},
+		  cache: 'false',
+		  success: function() {
+        self.fetch({success: callback});
+      }
+	  });
+  },
+
   addEmail: function(email, callback) {
     var self = this;
 	  $.ajax({
