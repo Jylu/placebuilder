@@ -53,8 +53,7 @@ class Resident < ActiveRecord::Base
     tags = Array(tag_or_tags)
     self.metadata[:tags] ||= []
     self.metadata[:tags] |= tags
-    # How does adding a tag to a specific Resident affect the community?
-    # self.community.add_resident_tags(tags)
+    self.community.add_resident_tags(tags)
     self.save
   end
 

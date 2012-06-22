@@ -1,12 +1,18 @@
 
 OrganizerApp.FileViewer = CommonPlace.View.extend({
 
+  //template: "organizer_app.file-viewer",
   template: "organizer_app.viewer",
 
   events: {
+    "click :checkbox" : "test",
     "submit form#add-log": "addLog",
     "submit form#add-address": "addAddress",
     "submit form#add-email": "addEmail"
+  },
+
+  test: function() {
+    console.log("clicked...and changed o_O");
   },
 
   show: function(model) {
@@ -102,7 +108,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       alert("Please enter a non-empty address.");
     } else {
       this.model.save({address: address}, {success: _.bind(this.render, this)});
-      location.reload();
+      //location.reload();
     }
   },
 
@@ -125,7 +131,8 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       alert("Please enter a valid email address.");
     } else {
       this.model.save({email: email}, {success: _.bind(this.render, this)});
-      location.reload();
+      //this.model.addEmail({email: email}, {success: _.bind(this.render, this)});
+      //location.reload();
     }
   },
   
