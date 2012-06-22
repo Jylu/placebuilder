@@ -5,14 +5,9 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
   template: "organizer_app.viewer",
 
   events: {
-    "click :checkbox" : "test",
     "submit form#add-log": "addLog",
     "submit form#add-address": "addAddress",
     "submit form#add-email": "addEmail"
-  },
-
-  test: function() {
-    console.log("clicked...and changed o_O");
   },
 
   show: function(model) {
