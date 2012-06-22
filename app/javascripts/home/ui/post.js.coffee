@@ -11,15 +11,15 @@ Home.ui.Post = Home.ui.WireItem.extend
 
   initialize: ->
     _.bindAll(this)
-    @reply_text = "post-reply"
-    @reply_button = "post-reply-button"
+    @reply_text_class = "post-reply"
+    @reply_button_class = "post-reply-button"
 
   render: ->
     presenter = new Home.presenter.Post(this.model)
     this.$el.html this.renderTemplate(presenter.toJSON())
 
-    @reply_text = this.$("."+@reply_text)
-    @reply_button = this.$("."+@reply_button)
+    @reply_text = this.$("."+@reply_text_class)
+    @reply_button = this.$("."+@reply_button_class)
     this.checkThanked()
     this.hideReplyButton()
     @reply_text.focus(this.showReplyButton)
