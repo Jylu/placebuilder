@@ -36,13 +36,20 @@ module Serializer
         "first_name" => o.first_name, 
         "last_name" => o.last_name,
         "address" => o.address,
+        "phone" => o.phone,
+        "organization" => o.organization,
+        "position" => o.position,
+        "notes" => o.notes,
+        "sector" => o.sector_tags,
+        "type" => o.type_tags,
         "latitude" => o.latitude,
         "longitude" => o.longitude,
         "email" => o.email,
         "logs" => o.logs,
         "tags" => o.tags,
         "avatar_url" => o.avatar_url,
-        "on_commonplace" => o.on_commonplace?
+        "on_commonplace" => o.on_commonplace?,
+        "community_id" => o.community_id
       }
 
       when User
