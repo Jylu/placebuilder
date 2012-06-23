@@ -7,14 +7,22 @@ $Ultra: 'Ultra'
 $Yellowtail: 'Yellowtail'
 $Rokkitt: 'Rokkitt'
 
-header
+.full-width-reg
+  width: 1000px
+  background: none
+  margin-left: auto
+  margin-right: auto
+#registration_content
+  background:none
+  width: 1000px
+.registration
   top: 0
   .right
     width: 430px
   .community-name
     width: 400px
     padding-left: 20px
-    border-right: none
+    border-style: none
     h1
       background: url("../images/logo2.png") left no-repeat
       font-weight: normal
@@ -34,7 +42,7 @@ header
       color: $red
   .top-bar
     width: 500px
-    border-left: none
+    border-style: none
     h3
       color: white
       font-size: 14px
@@ -125,9 +133,10 @@ header
       color: #565656
       font-weight: bold
       &:hover
-        text-decoration: underline 
-.content
-  .full-width
+        text-decoration: underline
+
+#registration_content
+  .registration1
     margin-top: 250px
   .left 
     width: 50%
@@ -135,7 +144,7 @@ header
     h1
       color: #eeecdf
       font-family: $Yellowtail
-      background: url("../images/red-bg.png")
+      background: url("shared/redesign/red-bg.png")
       width: 253px
       text-shadow: 4px 4px 1px $blue
       font-size: 42px
@@ -166,7 +175,7 @@ header
       &:first-child
         display: block
     .navbar
-      background: url("../images/blue-bg.png")
+      background: url("shared/redesign/blue-bg.png")
       margin-top: 20px
       height: 40px 
       width: 500px
@@ -207,7 +216,7 @@ header
         height: 100%
         -webkit-backface-visibility: hidden
       .front
-        background: $red url("../images/red-bg.png")
+        background: $red url("shared/redesign/red-bg.png")
         display: block
       .back 
         background: $blue
@@ -217,7 +226,7 @@ header
         font-size: 42px
         margin-top: 20px
         width: 100%
-        background: url("../images/stars.png") no-repeat center
+        background: url("shared/redesign/stars.png") no-repeat center
         text-align: center
         font-family: $Yellowtail
         text-shadow: 4px 4px 1px $blue
@@ -260,7 +269,7 @@ header
       text-align: left
       a 
         cursor: pointer
-        background: url("../images/fb.png") no-repeat center
+        background: url("shared/redesign/fbreg.png") no-repeat center
         text-indent: -9999px
         height: 32px
         display: block
