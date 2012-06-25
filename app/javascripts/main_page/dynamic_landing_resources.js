@@ -106,7 +106,7 @@ var DynamicLandingResources = CommonPlace.View.extend({
     });
     
     sorted = _.sortBy(sorted, function(wire) {
-      return parseDate(wire.collection.first().get("published_at"));
+      return wire.collection.first().get("published_at");
     });
     
     sorted.reverse();

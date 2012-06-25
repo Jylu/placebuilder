@@ -6,7 +6,7 @@
 #= require dropkick
 #= require jquery-ui
 #= require jquery.masonry
-
+#= require facebook
 
 #= require_self
 

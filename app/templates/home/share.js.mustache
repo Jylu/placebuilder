@@ -1,9 +1,14 @@
-<div class="form-container share">
-  <h3>Share this post with more people!</h3>
+<div id="newPost" class="form-container share">
+  {{#header}}<h1>{{header}}</h1>{{/header}}
+  {{#message}}<h3>{{message}}</h3>{{/message}}
   <ul class="share">
-    <li><div id="facebookshare">My Facebook Friends</div></li>
-    <div id="share_facebook"><h3>Whatever Facebook Code Stuff Here!!!</h3></div>
-    
+    <li><div id="facebookshare"
+      data-name="{{item_name}}"
+      data-url="{{share_url}}"
+      data-picture="{{avatar_url}}"
+      data-caption="Join {{community_name}} CommonPlace to share with your neighborhood."
+      data-description=""
+      data-message="Check out this post from my neighbors...">My Facebook Friends</div></li> 
     <li><div id="emailshare">Email This Post to Friends</div></li>
     <div id="share_email">
       <form>
@@ -20,6 +25,5 @@
     </div>
   </ul>
   <br /><br />
-  <button class="green-button">Share!</button>
-  <button class="red-button">Close</button>
+  <button class="green-button">All Done!</button>
 </div>
