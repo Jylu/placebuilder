@@ -27,7 +27,7 @@ Home.Router = Backbone.Router.extend
     this.content.render("home")
 
   register: (community) ->
-    registration = new Home.ui.Registration el:$("#content")
+    registration = new Home.ui.Registration el:$("#registration_content")
     registration.render(
       "community": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
     )
