@@ -26,16 +26,12 @@ Home.ui.Post = Home.ui.WireItem.extend
     @reply_text.blur(this.hideReplyButton)
 
   showReply: (e) ->
-    #this.$(".post-reply").focus()
     @reply_text.focus()
 
   showReplyButton: (e) ->
-    #reply_button = this.$(".post-reply-button")
     @reply_button.show()
     
   hideReplyButton: (e) ->
-    #if this.$(".post-reply").val().length is 0
-      #this.$(".post-reply-button").hide()
     if @reply_text.val().length is 0
       @reply_button.hide()
     

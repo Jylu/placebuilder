@@ -7,7 +7,7 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-event": "createEvents"
     ":community/home/create-request": "createRequests"
     ":community/home/create-meetup": "createMeetups"
-    ":community/home/share": "createShare"
+    ":community/home/share": "share"
     ":community/home/pages/:page": "showPage"
 
   content: undefined
@@ -58,6 +58,10 @@ Home.Router = Backbone.Router.extend
     posting = new Home.ui.Posting()
     posting.render(
       "create-post-link": "/" + community + "/home/create-post"
+      "share_url": "http://www.ourcommonplace.com"
+      "avatar_url": "http://localhost:3000/system/feeds/881/avatar/normal.jpeg"
+      "item_name": "test"
+      "community_name": community
     )
     modal = new Home.ui.Modal(el: $("#modal"), view: posting)
     modal.render()
@@ -83,6 +87,17 @@ Home.Router = Backbone.Router.extend
     posting = this.createPost(community)
     posting.show "meetup"
 
-  createShare: (community) ->
-    posting = this.createPost(community)
-    posting.show "share"
+  share: (community, params=undefined) ->
+    share = new Home.ui.Share()
+    if params is undefined
+      params =
+        "share_url": "http://www.ourcommonplace.com"
+        "header": "Thanks for posting!"
+        "message": "Share this post with more people!"
+        "avatar_url": "http://localhost:3000/system/feeds/881/avatar/normal.jpeg"
+        "item_name": "test"
+        "community_name": community
+    share.render(params)
+    modal = new Home.ui.Modal(el: $("#modal"), view: share)
+    modal.render()
+    return share
