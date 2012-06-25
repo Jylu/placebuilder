@@ -79,8 +79,12 @@ function facebook_connect_user_picture(options) {
 }
 
 function fbAsyncInit() {
+  var app_id = 102571013152856;
+  if (typeof CommonPlace != 'undefined') {
+    app_id = CommonPlace.facebookAppId;
+  }
   FB.init({
-    appId : CommonPlace.facebookAppId,
+    appId : app_id,
     status : true,
     cookie : true,
     xfbml  : true

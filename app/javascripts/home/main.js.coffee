@@ -11,7 +11,11 @@ $ ->
 
   account = new Home.model.Account
 
-
+  e = document.createElement('script')
+  e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js'
+  e.async = true
+  fb_root = document.getElementById('fb-root')
+  fb_root.appendChild(e)
 
   (new Home.model.Account).fetch
 
@@ -30,7 +34,6 @@ $ ->
           alert "we couldn't load the community"
 
     error: ->
-      #router.navigate(slug + "/home/register", {"trigger": true, "replace": true})
       router.register(slug)
 
 

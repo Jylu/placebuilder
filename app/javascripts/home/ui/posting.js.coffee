@@ -63,6 +63,9 @@ Home.ui.Posting = Framework.View.extend
     posts.create data,
       success: (nextModel, resp) ->
         console.log("Sync triggered successfully. Next model is: #{nextModel} with a response of #{resp}")
+        # put code in here to generate the public link of the post?
+        # model.url? - http://localhost:3000/Marquette/show/posts/<id>
+        # Have this code call the share modal? - router.share(community, params) ?
       error: (attribs, response) ->
         console.log("Error syncing:#{response} with attributes:#{attribs}")
         
@@ -70,23 +73,5 @@ Home.ui.Posting = Framework.View.extend
     router.navigate(community.get("slug") + "/home/share", {"trigger": true, "replace": true})
     this.remove()
 
-  sharePost: (e) ->
-    e.preventDefault()
-    router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
-    this.remove()
-
-  showFacebook: (e) ->
-    this.$("#share_facebook").toggle()
-
-  showEmail: (e) ->
-    this.$("#share_email").toggle()
-
-  showLink: (e) ->
-    this.$("#share_link").toggle()
-
   events:
     "click .red-button": "createPost"
-    "click .green-button": "sharePost"
-    "click #facebookshare": "showFacebook"
-    "click #emailshare": "showEmail"
-    "click #linkshare": "showLink"
