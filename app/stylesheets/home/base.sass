@@ -131,7 +131,7 @@ header
     width: 113px
     float: right
   .top-bar
-    min-width: 503px
+    width: 803px
     border-left: 1px solid $light-blue
     height: 60px
     border-right: 1px solid $light-blue
@@ -267,20 +267,21 @@ aside
     margin: 0 auto
     h3
       display: inline-block
-      float: left
       font-family: $heading
       font-size: 18px
-      color: $dark-grey
       padding: 10px 8px
       margin: 19px 0px 0px 0px
-      background: #dad8ca
+      background-color: rgba(225, 225, 225, 0.3)
+      color: $red
       border-radius: 4px 4px 0px 0px
       cursor: pointer
-      width: 116px
+      width: 114px
       text-align: center
       text-shadow: none
       &:hover
-        color: $red
+        color: $blue
+        background-color: rgba(255, 255, 255, 0.4)
+        cursor: pointer
 
     li.directory_listing
       padding: 8px 0
@@ -303,7 +304,6 @@ aside
   height: 57px
   cursor: pointer
   h3
-    margin-right: 6px
     cursor: pointer
     &:hover
       background-color: #e2e0d5
@@ -507,7 +507,7 @@ aside
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/replied.png") no-repeat
             padding-left: 21px
-            background-position: 0 14px
+            background-position: 0 10px
             color: $dark-grey
         li.help
           background: image-url("shared/redesign/publicize.png") no-repeat
@@ -516,7 +516,7 @@ aside
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/publicized.png") no-repeat
             padding-left: 31px
-            background-position: 10px 12px
+            background-position: 10px 8px
             color: $dark-grey
         li.thank
           background: image-url("shared/redesign/thank.png") no-repeat
@@ -525,7 +525,7 @@ aside
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/thanked.png") no-repeat
             padding-left: 33px
-            background-position: 11px 15px
+            background-position: 10px 10px
             color: $dark-grey
         li.flag
           background: image-url("shared/redesign/flag.png") no-repeat
@@ -534,7 +534,7 @@ aside
           &:hover, &:focus, &:active
             background: image-url("shared/redesign/flagged.png") no-repeat
             padding-left: 31px
-            background-position: 11px 14px
+            background-position: 10px 10px
             color: $dark-grey
     .post-interaction
       margin-left: 80px
