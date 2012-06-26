@@ -10,6 +10,7 @@ class StreetAddress < ActiveRecord::Base
   belongs_to :community
 
   has_many :residents
+  has_many :flags
 
   after_create :create_default_resident
 

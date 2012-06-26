@@ -9,6 +9,8 @@ class Resident < ActiveRecord::Base
   belongs_to :user
   belongs_to :street_address
 
+  has_many :flags
+
   def on_commonplace?
     self.user_id?
   end
@@ -51,6 +53,9 @@ class Resident < ActiveRecord::Base
 
   def add_tags(tag_or_tags)
     tags = Array(tag_or_tags)
+    tags.each do |flag|
+      self.flags.create(name: flag, next_flag: nil) 
+    end
     self.metadata[:tags] ||= []
     self.metadata[:tags] |= tags
     self.community.add_resident_tags(tags)

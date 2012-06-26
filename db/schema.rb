@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120619224822) do
+ActiveRecord::Schema.define(:version => 20120626010440) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -212,6 +212,14 @@ ActiveRecord::Schema.define(:version => 20120619224822) do
     t.integer  "kind"
     t.string   "password"
     t.string   "background_file_name"
+  end
+
+  create_table "flags", :force => true do |t|
+    t.string   "name"
+    t.string   "next_flag"
+    t.integer  "resident_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "group_posts", :force => true do |t|
