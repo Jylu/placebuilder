@@ -6,6 +6,10 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
 
   events: {
     "submit form#add-log": "addLog",
+    "submit form#add-phone": "addPhone",/*
+    "submit form#add-organization": "addOrganization",
+    "submit form#add-position": "addPosition",
+    "submit form#add-notes": "addNotes",*/
     "submit form#add-address": "addAddress",
     "submit form#add-email": "addEmail"
   },
@@ -106,6 +110,20 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       //location.reload();
     }
   },
+  
+  addPhone: function(e) {
+    e.preventDefault();
+    var phone = this.$("#phone-text").val();
+    if (!phone) {
+      alert("Please enter a non-empty phone number.");
+    } else {
+      //this.model.set({phone: phone});
+      //this.model.save();
+      //alert(this.model.get('phone'));
+      this.model.save({phone: 123}, {success: _.bind(this.render, this)});
+      location.reload();
+    }
+  },
 
   email: function() {
     var email = this.model.get('email');
@@ -113,7 +131,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     if (!email) {
       return "No email in our records";
     } else {
-      return email;
+      return email
     }
   },
 
@@ -172,6 +190,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     else{
       this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("id")+"/all"); 
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/all\" target=\"content\" >All</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/email\" target=\"content\" >Emails Sent</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/sitevisit\" target=\"content\" >Log In Time</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/post\" target=\"content\" >Post</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/announcement\" target=\"content\" >Announcement</a>  ||  ");
