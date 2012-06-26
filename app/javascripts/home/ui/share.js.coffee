@@ -1,7 +1,7 @@
 Home.ui.Share = Framework.View.extend
   template: "home.share"
 
-  #Do we need to pass in the post object when we create this?
+  #Do we need to pass in the post object when we create this? - maybe, still working on that
 
   events:
     "click .green-button": "close"
