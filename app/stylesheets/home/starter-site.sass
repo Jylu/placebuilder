@@ -11,24 +11,12 @@ $Rokkitt: 'Rokkitt'
   width: 1100px
   background: none
   margin: 0 auto
-#registration_content
-  background:none
-  width: 1000px
-  overflow: hidden
-  position: relative
-  height: auto
-  margin-left: auto
-  margin-right: auto
-.registration
-  top: 0
-  .right
-    width: 430px
   .community-name
     width: 400px
     padding-left: 20px
     border-style: none
     h1
-      background: url("../images/logo2.png") left no-repeat
+      background: url("shared/redesign/logo2.png") left no-repeat
       font-weight: normal
       font-size: 33px
       float: left
@@ -44,100 +32,114 @@ $Rokkitt: 'Rokkitt'
       margin-top: 19px
       font-family: $Rokkitt
       color: $red
-  .top-bar
-    width: 500px
-    border-style: none
-    h3
-      color: white
-      font-size: 14px
-      text-shadow: 1px 1px 1px black
-      margin-right: 10px
-      float: left 
-      margin-top: 23px
-      font-family: $heading
-    .button
-      padding: 5px 
-        top: 9px
-        bottom: 7px
-      border-radius: 5px 
-      box-shadow: inset 0 1px 1px rgba(255,255,255,.4)
-      cursor: pointer
-      width: 70px
-      float: left
-      margin-top: 13px
-      font-family: $heading
-      font-size: 14px
-      color: white
-      border: 1px solid black
-      text-align: center
-    .blue
-      margin-right: 20px
-      +linear-gradient(color-stops(#2e5274, #1b334a))
-    .red
-      background: $red
-      +linear-gradient(color-stops(#cc4441, #ac322f))
-  .dropdown
-    opacity: 0
-    -webkit-transition: opacity 500ms ease
-    width: 270px
-    background: #EEECDF
+#registration_content
+  background:none
+  width: 1000px
+  overflow: hidden
+  position: relative
+  height: auto
+  margin-left: auto
+  margin-right: auto
+.registration_right
+  top: 0
+  width: 390px
+  float: right
+.top-bar
+  width: 300px
+  border-style: none
+  border-right: none
+  float: right
+  h3
+    color: white
+    font-size: 14px
+    text-shadow: 1px 1px 1px black
+    margin-right: 10px
+    float: left 
+    margin-top: 23px
+    font-family: $heading
+  .button
+    padding: 5px 
+    top: 9px
+    bottom: 7px
+    border-radius: 5px 
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.4)
+    cursor: pointer
+    width: 70px
+    float: left
+    margin-top: 13px
+    font-family: $heading
+    font-size: 14px
+    color: white
+    border: 1px solid black
     text-align: center
-    +border-radius(4px)
-    height: 200px 
+  .blue
+    margin-right: 20px
+    +linear-gradient(color-stops(#2e5274, #1b334a))
+  .red
+    background: $red
+    +linear-gradient(color-stops(#cc4441, #ac322f))
+.dropdown
+  opacity: 0
+  -webkit-transition: opacity 500ms ease
+  width: 270px
+  background: #EEECDF
+  text-align: center
+  +border-radius(4px)
+  height: 200px 
+  position: absolute
+  box-shadow: black 0px 1px 1px
+  right: 247px
+  top: 63px
+  .arrow
+    width: 150px
+    height: 20px
+    background: url("../images/arrow.png") no-repeat
+    background-position: 105px 12px
     position: absolute
-    box-shadow: black 0px 1px 1px
-    right: 247px
-    top: 63px
-    .arrow
-      width: 150px
-      height: 20px
-      background: url("../images/arrow.png") no-repeat
-      background-position: 105px 12px
-      position: absolute
-      top: -20px 
-      display: block
-      right: 0
-    input
-      width: 215px
-      -webkit-appearance: none
-      border: 0 
-      font-size: 17px
-      padding: 7px 
-      margin-top: 10px
-      font-family: $Rokkitt
-      border: 1px solid #e2e2e2
-      &:focus
-        outline: none
-    .email
-      margin-top: 22px
-    button.signin
-      text-align: center
-      float: right
-      width: 90px
-      +linear-gradient(color-stops(#2e5274, #1b334a))
-      font-weight: bold
-      font-size: 15px
-      margin-right: 20px
-      padding-top: 10px
-      padding-bottom: 6px
-      margin-top: 10px
-    button.signin.facebook
-      width: 127px
-      margin-right: 12px
-      font-size: 13px
-      padding: 12px 0 6px 0
-      +linear-gradient(color-stops(#4e6fb6, #3b5998))
-    p 
-      clear: both
-      margin-left: 20px
-      padding-top: 15px
-      text-align: left
-      font-family: $Rokkitt
-      cursor: pointer
-      color: #565656
-      font-weight: bold
-      &:hover
-        text-decoration: underline
+    top: -20px 
+    display: block
+    right: 0
+  input
+    width: 215px
+    -webkit-appearance: none
+    border: 0 
+    font-size: 17px
+    padding: 7px 
+    margin-top: 10px
+    font-family: $Rokkitt
+    border: 1px solid #e2e2e2
+    &:focus
+      outline: none
+  .email
+    margin-top: 22px
+  button.signin
+    text-align: center
+    float: right
+    width: 90px
+    +linear-gradient(color-stops(#2e5274, #1b334a))
+    font-weight: bold
+    font-size: 15px
+    margin-right: 20px
+    padding-top: 10px
+    padding-bottom: 6px
+    margin-top: 10px
+  button.signin.facebook
+    width: 127
+    margin-right: 12px
+    font-size: 13px
+    padding: 12px 0 6px 0
+    +linear-gradient(color-stops(#4e6fb6, #3b5998))
+  p 
+    clear: both
+    margin-left: 20px
+    padding-top: 15px
+    text-align: left
+    font-family: $Rokkitt
+    cursor: pointer
+    color: #565656
+    font-weight: bold
+    &:hover
+      text-decoration: underline
 
 #registration_content
   .registration1
@@ -182,7 +184,7 @@ $Rokkitt: 'Rokkitt'
       background: url("shared/redesign/blue-bg.png")
       margin-top: 20px
       height: 40px 
-      width: 500px
+      width: 503px
       ul 
         padding-top: 11px
         padding-left: 15px
@@ -279,6 +281,7 @@ $Rokkitt: 'Rokkitt'
         display: block
         margin-left: 100px
         width: 245px
+        font-size: 18px
         text-transform: uppercase
       p
         color: white
@@ -286,7 +289,6 @@ $Rokkitt: 'Rokkitt'
         padding-top: 6px
         float: left
         font-size: 18px
-
 
 .tab-content
   overflow: hidden
@@ -300,3 +302,16 @@ $Rokkitt: 'Rokkitt'
   display: block
   width: 500px
   float: left
+
+#registration_content .left .navbar ul li 
+  margin-top: -7px
+  a
+    text-decoration: none
+    color: white
+    font-size: 19px
+
+div.full-width-reg 
+  div.community-name
+    border-right: none
+  div.top-bar
+    border-left: none
