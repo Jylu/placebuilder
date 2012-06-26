@@ -47,8 +47,13 @@ Home.ui.WireItem = Framework.View.extend
   publicize: (e) ->
     if e
       e.preventDefault()
-    share = new Home.ui.Share()
-    share.render()
-
-    modal = new Home.ui.Modal(el: $("#modal"), view: share)
-    modal.render()
+    community_name = router.community.get("slug")
+    params =
+        "share_url": "http://www.ourcommonplace.com"
+        "header": "Share this post!"
+        "message": "Share this post with more people!"
+        "avatar_url": "http://localhost:3000/system/feeds/881/avatar/normal.jpeg"
+        "item_name": "test"
+        "community_name": community_name
+    share = router.share(community_name, params)
+      
