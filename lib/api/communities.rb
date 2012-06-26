@@ -195,6 +195,18 @@ CONDITION
       )
     end
 
+    # Returns a specific resident file
+    #
+    # This is being called somewhere in the organizer app,
+    # though I'm not sure where.
+    # This is here to stop the 404 error, though it seems like
+    # a harmless error
+    get "/:id/files/:file_id" do
+      control_access :admin
+
+      Resident.find(params[:file_id])
+    end
+
     # Add a log to a community resident file
     # 
     # Requires admin

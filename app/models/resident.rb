@@ -51,14 +51,46 @@ class Resident < ActiveRecord::Base
     tags
   end
 
+  def add_flags(flags)
+    tags = []
+    flags.each do |flag|
+      if !self.flags.find_by_name(flag)
+        f = Flag.create(:name => flag, :resident => self) 
+        more_tag = f.check_chain_rules
+        if more_tag.first
+          tags |= Array(more_tag[1])
+        else
+          remove_tag(more_tag[1])
+        end
+      end
+    end
+
+    if false
+    tags.each do |flag|
+      f = Flag.create(:name => flag, :resident => self)
+      f.check_chain_rules
+    end
+    end
+
+    return tags
+  end
+
   def add_tags(tag_or_tags)
     tags = Array(tag_or_tags)
-    tags.each do |flag|
-      self.flags.create(name: flag, next_flag: nil) 
-    end
+    tags |= add_flags(tags)
     self.metadata[:tags] ||= []
     self.metadata[:tags] |= tags
     self.community.add_resident_tags(tags)
+    self.save
+  end
+
+  def remove_tag(tag)
+    if flag = self.flags.find_by_name(tag)
+      flag.destroy
+    end
+    tags = Array(tag)
+    self.metadata[:tags] ||= []
+    self.metadata[:tags] -= tags
     self.save
   end
 

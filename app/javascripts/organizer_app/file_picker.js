@@ -39,6 +39,11 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     this.afterRender();
   },
 
+  /*
+   * For some reason, reloading the location causes a race condition
+   * where it's not guaranteed for all of the checked names to have
+   * the tag applied to the file
+   */
   addTag: function() {
     _.map(this.collection.models, _.bind(function(model) {
       if(checklist[model.getId()]) {
@@ -49,7 +54,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         model.addTag(tag, _.bind(this.render, this));
       }
     }, this));
-    location.reload();
+    //location.reload();
   },
 
   addResident: function(e) {
