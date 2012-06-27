@@ -55,21 +55,17 @@ class Resident < ActiveRecord::Base
     tags = []
     flags.each do |flag|
       if !self.flags.find_by_name(flag)
-        f = Flag.create(:name => flag, :resident => self) 
-        more_tag = f.check_chain_rules
-        if more_tag.first
+        f = self.flags.create(:name => flag) 
+        if more_tag = f.check_chain_rules
+          remove_tag(more_tag[0])
           tags |= Array(more_tag[1])
-        else
-          remove_tag(more_tag[1])
         end
       end
     end
 
-    if false
     tags.each do |flag|
-      f = Flag.create(:name => flag, :resident => self)
+      f = self.flags.create(:name => flag)
       f.check_chain_rules
-    end
     end
 
     return tags
