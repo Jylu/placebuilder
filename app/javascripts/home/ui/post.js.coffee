@@ -5,6 +5,7 @@ Home.ui.Post = Home.ui.WireItem.extend
 
   events:
     "click .reply": "showReply"
+    "click .post-reply": "showReply"
     "click .thank": "thank"
     "click .help": "publicize"
     "click .post-reply-button": "reply"
@@ -22,16 +23,16 @@ Home.ui.Post = Home.ui.WireItem.extend
     @reply_button = this.$("."+@reply_button_class)
     this.checkThanked()
     this.hideReplyButton()
-    @reply_text.focus(this.showReplyButton)
     @reply_text.blur(this.hideReplyButton)
 
   showReply: (e) ->
+    this.showReplyButton()
     @reply_text.focus()
 
   showReplyButton: (e) ->
     @reply_button.show()
-    
+
   hideReplyButton: (e) ->
     if @reply_text.val().length is 0
       @reply_button.hide()
-    
+
