@@ -4,14 +4,13 @@
 		var leftpart = a[1], pPad = a[2], pJustify = a[3], pMinLength = a[4];
 		var pPrecision = a[5], pType = a[6], rightPart = a[7];
 
-		
+
 		numMatches++;
 		if (pType == '%') {
 			subst = '%';
 		} else {
 			numSubstitutions++;
 			if (numSubstitutions >= arguments.length) {
-				alert('Error! Not enough function arguments (' + (arguments.length - 1) + ', excluding the string)\nfor the number of substitution parameters in string (' + numSubstitutions + ' so far).');
 			}
 			var param = arguments[numSubstitutions];
 			var pad = '';
