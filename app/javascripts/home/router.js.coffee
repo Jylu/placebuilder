@@ -97,6 +97,10 @@ Home.Router = Backbone.Router.extend
         "item_name": "test"
         "community_name": community
     share.render(params)
-    modal = new Home.ui.Modal(el: $("#modal"), view: share)
+    if params.model is undefined
+      modal = new Home.ui.Modal(el: $("#modal"), view: share)
+    else
+      modal = new Home.ui.Modal(el: $("#modal"), view: share, model: params.model)
+      
     modal.render()
     return share

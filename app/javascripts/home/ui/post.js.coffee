@@ -7,7 +7,7 @@ Home.ui.Post = Home.ui.WireItem.extend
     "click .reply": "showReply"
     "click .post-reply": "showReply"
     "click .thank": "thank"
-    "click .help": "publicize"
+    "click .help": "share"
     "click .post-reply-button": "reply"
 
   initialize: ->
