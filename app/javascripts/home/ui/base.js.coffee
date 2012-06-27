@@ -44,7 +44,7 @@ Home.ui.WireItem = Framework.View.extend
           , this)
       replies.trigger("sync")
 
-  publicize: (e) ->
+  share: (e) ->
     if e
       e.preventDefault()
     community_name = router.community.get("slug")
@@ -55,5 +55,6 @@ Home.ui.WireItem = Framework.View.extend
         "avatar_url": "http://localhost:3000/system/feeds/881/avatar/normal.jpeg"
         "item_name": "test"
         "community_name": community_name
+        "model": this.model
     share = router.share(community_name, params)
       
