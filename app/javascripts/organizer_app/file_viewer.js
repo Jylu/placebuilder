@@ -1,8 +1,8 @@
 
 OrganizerApp.FileViewer = CommonPlace.View.extend({
 
-  template: "organizer_app.file-viewer",
-  //template: "organizer_app.viewer",
+  //template: "organizer_app.file-viewer",
+  template: "organizer_app.viewer",
 
   events: {
     "submit form#add-log": "addLog",

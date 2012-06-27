@@ -3,7 +3,6 @@ class CreateFlags < ActiveRecord::Migration
     create_table :flags do |t|
 
       t.string :name
-      t.string :next_flag
       t.integer :resident_id
 
       t.timestamps
