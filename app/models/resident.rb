@@ -2,7 +2,7 @@ class Resident < ActiveRecord::Base
   serialize :metadata, Hash
   serialize :logs, Array
   serialize :sector_tags, Array
-  serialize :type_tags, Array  
+  serialize :type_tags, Array
 
   belongs_to :community
 
@@ -22,7 +22,7 @@ class Resident < ActiveRecord::Base
   def friends_on_commonplace?
     [false, true].sample
   end
-  
+
   def in_commonplace_organization?
     [false, true].sample
   end
@@ -51,6 +51,11 @@ class Resident < ActiveRecord::Base
     tags
   end
 
+  def manually_added
+    self.metadata[:todos] ||= []
+    self.metadata[:todos] |= ["send nomination email"]
+  end
+
   def todos
     todos = []
     todos |= self.metadata[:todos] if self.metadata[:todos]
@@ -65,7 +70,7 @@ class Resident < ActiveRecord::Base
     remove = []
     flags.each do |flag|
       if !self.flags.find_by_name(flag)
-        f = self.flags.create(:name => flag) 
+        f = self.flags.create(:name => flag)
         if rule = Flag.get_rule(f.name)
           remove |= rule[0]
           add |= rule[1]

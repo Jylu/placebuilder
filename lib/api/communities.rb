@@ -3,7 +3,7 @@ class API
 
     helpers do
 
-      # Finds the community by params[:id] or returns 404 
+      # Finds the community by params[:id] or returns 404
       def find_community
         @community ||= case params[:id]
                        when /^\d+/
@@ -15,7 +15,7 @@ class API
       end
 
       # Performs a Sunspot search for the given PostLike(s), params, and community
-      # 
+      #
       # Returns a JSON string of the results
       def search(klass, params, community_id)
         keywords = phrase(params["query"])
@@ -27,9 +27,9 @@ class API
         end
         serialize(search)
       end
-      
+
       # Performs a search like #search, but ordered most recent first
-      # 
+      #
       # Returns a JSON string of the results
       def chronological_search(klass, params, community_id)
         keywords = phrase(params["query"])
@@ -42,7 +42,7 @@ class API
         end
         serialize(search)
       end
-      
+
       # Why is this not scoped by community? (appears to be intentional)
       def auth_search(klass, params)
         keywords = phrase(params["query"])
@@ -54,7 +54,7 @@ class API
         end
         serialize(search)
       end
-      
+
       # Returns a chronological list of the given classes for the given community
       def chronological(klass, params, community_id)
         search = Sunspot.search(klass) do
@@ -79,10 +79,10 @@ class API
       end
 
       # Turns a string into a array to be used as a search phrase
-      # 
+      #
       # Example:
       #   phrase(%{foo "baz baz" qux})
-      #   # => ["foo", "\"bax baz\"", "qux"] 
+      #   # => ["foo", "\"bax baz\"", "qux"]
       #
       # Note: is returning those escaped quotes proper behavior?
       def phrase(string)
@@ -94,7 +94,7 @@ class API
     end
 
     # Returns the serialized community, found by slug or id
-    get "/:id" do 
+    get "/:id" do
       control_access :public
 
       serialize find_community
@@ -105,7 +105,7 @@ class API
     # Requires community membership
     get "/:id/wire" do
       control_access :community_member, find_community
-      
+
       serialize find_community.wire
     end
 
@@ -119,7 +119,7 @@ class API
     #   page - the page
     get "/:id/residents" do
       control_access :community_member, find_community
-      
+
       residents = find_community.residents.includes(:user)
       residents = paginate(residents)
       residents = residents.order("first_name ASC, last_name ASC")
@@ -133,15 +133,15 @@ CONDITION
     end
 
     # Returns community's resident files
-    # 
+    #
     # Requires admin
-    # 
+    #
     # Query params:
     #   with - find files tagged with tags in this list
     #   without - but not tagged with tags in this list
     get "/:id/files" do
       control_access :admin
-      
+
       serialize(Sunspot.search(Resident) do
         paginate :page => 1, :per_page => 9001
         order_by :last_name
@@ -161,35 +161,36 @@ CONDITION
     #
     # Requires admin
     #
-    post "/:id/files/newresident" do 
-       control_access :admin
+    post "/:id/files/newresident" do
+      control_access :admin
 
-       find_community.residents.create(:first_name => request_body['first_name'],
-                                       :last_name => request_body['last_name'],
-                                       :email => request_body['email'],
-                                       :phone => request_body['phone'],
-                                       :organization => request_body['organization'],
-                                       :position => request_body['position'],
-                                       :notes => request_body['notes'],
-                                       :address => request_body['address'],
-                                       :sector_tags => request_body['sector_tags'],
-                                       :type_tags => request_body['type_tags']
-                                       )
-    
+      r = find_community.residents.create(:first_name => request_body['first_name'],
+                                      :last_name => request_body['last_name'],
+                                      :email => request_body['email'],
+                                      :phone => request_body['phone'],
+                                      :organization => request_body['organization'],
+                                      :position => request_body['position'],
+                                      :notes => request_body['notes'],
+                                      :address => request_body['address'],
+                                      :sector_tags => request_body['sector_tags'],
+                                      :type_tags => request_body['type_tags']
+                                      )
+      r.manually_added
+
        #find_community.residents.last.add_sector_tags(request_body['sector_tags'])#.add_type_tags(request_body['type_tags'])
-       
+
     end
 
     # Updates a community resident file
     #
     # Requires admin
-    # 
+    #
     # Request params:
     #   email - set the file's email to this (optional)
     #   address - set the files address to this (optional)
     put "/:id/files/:file_id" do
       control_access :admin
-      
+
       Resident.find(params[:file_id]).update_attributes(
         request_body.slice("email", "address")
       )
@@ -208,7 +209,7 @@ CONDITION
     end
 
     # Add a log to a community resident file
-    # 
+    #
     # Requires admin
     #
     # Request params:
@@ -226,7 +227,7 @@ CONDITION
     end
 
     # Add tags to a community resident file
-    # 
+    #
     # Requires admin
     #
     # Request params:
@@ -246,7 +247,7 @@ CONDITION
     #   title - the post subject
     #   body - the post body
     #   category - the post category
-    # 
+    #
     # When successful we kick off a notification job and return
     # the serialized post
     # When unsuccessful we return a 400 response
@@ -275,13 +276,13 @@ CONDITION
     #   body - the announcement body
     #   group_ids - the announcement groups
     #   feed - the feed that is creating the announcement
-    # 
+    #
     # When successful we kick off a notification job and return
     # the serialized announcement
     # When unsuccessful we return a 400 response
     post "/:id/announcements" do
       control_access :community_member, find_community
-      
+
       announcement = Announcement.new(:owner => Feed.find(request_body['feed']),
                                       :subject => request_body['title'],
                                       :body => request_body['body'],
@@ -313,10 +314,10 @@ CONDITION
     #
     # Returns serialized event if save is succesfull
     # Returns 400 if unsuccessfull
-    
+
     post "/:id/events" do
       control_access :community_member, find_community
-      
+
       event = Event.new(:owner => current_user,
                         :name => request_body['title'],
                         :description => request_body['about'],
@@ -345,7 +346,7 @@ CONDITION
     end
 
     # Returns the community's posts, possibly a search result
-    # 
+    #
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/posts" do
@@ -359,7 +360,7 @@ CONDITION
         serialize(paginate(find_community.posts.includes(:user, :replies)))
       end
     end
-    
+
     # Returns the community's posts and group_posts, possibly a search result
     #
     # Query params:
@@ -373,16 +374,16 @@ CONDITION
         chronological([Post, GroupPost], params, find_community.id)
       end
     end
-    
+
     # Returns the community's posts in a category, possibly a search result
-    # 
+    #
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/posts/:category" do
       control_access :community_member, find_community
 
       last_modified_by_replied_at(Post)
-      
+
       if params["query"].present?
         chronological_search(Post, params, find_community.id) do |search|
           search.with(:category, params[:category])
@@ -520,7 +521,7 @@ CONDITION
 
       # only search
       halt [200, {}, "[]"] if params["query"].blank?
-      
+
       if current_user.admin
         auth_search([Feed, Group, User], params)
       else
@@ -550,14 +551,14 @@ CONDITION
     post "/:id/invites" do
       control_access :community_member, find_community
 
-      kickoff.deliver_user_invite(request_body['emails'], 
-                                  current_user, 
+      kickoff.deliver_user_invite(request_body['emails'],
+                                  current_user,
                                   request_body['message'])
       [ 200, {}, "" ]
     end
 
     # Sends a share
-    # 
+    #
     # Request params:
     #   data_type - shared Postlike class
     #   id - id of the shared Postlike
@@ -572,7 +573,7 @@ CONDITION
     end
 
     # Sends a question to us
-    # 
+    #
     # Request params:
     #  email - email of the question asker
     #  message - the question

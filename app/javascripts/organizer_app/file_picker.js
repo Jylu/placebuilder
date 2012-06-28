@@ -14,7 +14,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click #new-resident" : "addResident",
     //"click #new-street" : "addStreet"
   },
-  
+
   initialize: function() {
     checklist = [];
     all_check = false;
@@ -54,7 +54,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   addTag: function() {
     _.map(this.collection.models, _.bind(function(model) {
       if(checklist[model.getId()]) {
-        var tag = this.$("#tag-input").val(); 
+        var tag = this.$("#tag-input").val();
 
         console.log(model.getId());
 
@@ -67,7 +67,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   addResident: function(e) {
     new OrganizerApp.AddResident({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
   },
-/*  
+/*
   addStreet: function(e) {
     new OrganizerApp.AddStreet({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
   },
@@ -95,21 +95,21 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         $(li).prepend(cb);
         $(li).addClass("pick-resident");
         return li;
-      }, this))); 
+      }, this)));
   },
 
   filter: function() {
     var params = {
-      "with": _.map(this.$(".tag-filter[data-state=on]").toArray(), function(e) { 
+      "with": _.map(this.$(".tag-filter[data-state=on]").toArray(), function(e) {
         return $(e).attr("data-tag");
       }).join(","),
-      without: _.map(this.$(".tag-filter[data-state=off]").toArray(), function(e) { 
+      without: _.map(this.$(".tag-filter[data-state=off]").toArray(), function(e) {
         return $(e).attr("data-tag");
       }).join(","),
       query: this.$("#query-input").val()
     };
-    
-    this.collection.fetch({ 
+
+    this.collection.fetch({
       data: params,
       success: _.bind(this.afterRender, this)
     });
@@ -125,5 +125,5 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     var newState = { neutral: "on", on: "off", off: "neutral"}[state];
     $(e.currentTarget).attr("data-state", newState);
   }
-    
+
 });
