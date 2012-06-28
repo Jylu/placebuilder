@@ -1,8 +1,8 @@
 
 OrganizerApp.FileViewer = CommonPlace.View.extend({
 
-  template: "organizer_app.file-viewer",
-  //template: "organizer_app.viewer",
+  //template: "organizer_app.file-viewer",
+  template: "organizer_app.viewer",
 
   events: {
     "submit form#add-log": "addLog",
@@ -196,7 +196,8 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/announcement\" target=\"content\" >Announcement</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/reply\" target=\"content\" >Reply</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/event\" target=\"content\" >Event</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/invite\" target=\"content\" >Invite</a>");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/invite\" target=\"content\" >Invite</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/tags\" target=\"content\" >Tags</a>");
     }
     
   },

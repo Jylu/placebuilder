@@ -39,9 +39,10 @@ th{
   case @type 
      when "all"        
        #@all=@user.posts+@user.messages+@user.replies+@user.events+@user.essays
+       @flags = Array(Flag.where(:resident_id=>@user.resident.id))
        @sitevisits= Array(SiteVisit.where(:commonplace_account_id => @user.id))
        @createdevents=Event.where(:owner_id=>@user.id,:owner_type=>"User")
-       @all=@user.posts+@user.replies+@sitevisits+@createdevents
+       @all=@user.posts+@user.replies+@sitevisits+@createdevents+@flags
        @user.posts.each do |post|
          @all+= Array(Reply.where(:repliable_id=> post.id))
        end
@@ -71,6 +72,8 @@ th{
 	              "Create feed"
 	            when "SiteVisit"
 	              "Sent Email"
+              when "Flag"
+                "Tag"
 	            else
 	              action.class.name
 	           end     
@@ -79,6 +82,20 @@ th{
          </tr>
          <% end %>
        
+     <% when "tags" %>
+     <h4>Amount: <%@flags= Array(Flag.where(:resident_id=>@user.resident.id)) %> 
+                 <%= @flags.count %></h4>
+
+	  <tr> <th>Tag</th> <th>Time</th> </tr>
+	  <tr>
+	  <% sortbytime(@flags).each do |flag| %>
+	    <tr>
+	    <td> <%= flag.name %> </td>
+	    <td> <%= flag.created_at.to_formatted_s(:db) %> </td>
+	    </tr>
+	  <% end %>
+	  </tr>
+
      <% when "sitevisit" %> 
      <h4>Amount: <%@sitevisits= Array(SiteVisit.where(:commonplace_account_id => @user.id)) %> 
                  <%= SiteVisit.where(:commonplace_account_id => @user.id).count %></h4>

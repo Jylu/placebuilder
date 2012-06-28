@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
 
   geocoded_by :normalized_address
 
+  has_one :resident
   belongs_to :community
   belongs_to :neighborhood
   has_many :thanks, :dependent => :destroy
