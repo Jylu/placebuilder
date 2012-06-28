@@ -1,6 +1,18 @@
 Home.ui.Registration = Framework.View.extend
   template: "home.registration"
   reg_page: undefined
+  referrers: [
+    "Flyer at my door",
+      "Someone knocked on my door",
+      "In a meeting with the community organizer",
+      "At a table or booth at an event",
+      "In an email",
+      "On Facebook or Twitter",
+      "On another website",
+      "In the news",
+      "Word of mouth",
+      "Other"
+    ]
 
   initialize: ->
     @reg_page = 1
@@ -39,23 +51,25 @@ Home.ui.Registration = Framework.View.extend
       when 2
         @user_info.name = this.$('.name').val()
         @user_info.email = this.$('.email').val()
-        @user_info.address = this.$('.address').val()
+        @user_info.password = this.$('.password').val()
         page2 = new Home.ui.Verification(el: $("#registration_content"))
         params =
           "community": @community
+          "referrers": @referrers
         page2.render(params)
       when 3
-        address = this.$('input.address')
-        if @user_info.address is undefined
-          @user_info.address = address.val()
-        else 
-          if @user_info.address isnt address.val()
-            alert "address mismatch"
-        page3 = new Home.ui.Welcome(el: $("#registration_content"))
-        params =
-          "name": @user_info.name.split(" ")[0]
-          "community": @community
-        page3.render(params)
+        @user_info.address = this.$('input.address')
+        referral = this.$(':selected').val()
+        if referral is "default"
+          alert "Please tell us how you heard about CommonPlace"
+          @reg_page--
+        else
+          @user_info.referrer = referral
+          page3 = new Home.ui.Welcome(el: $("#registration_content"))
+          params =
+            "name": @user_info.name.split(" ")[0]
+            "community": @community
+          page3.render(params)
       when 4
         page4 = new Home.ui.Subscribe(el: $("#registration_content"))
         page4.render()
