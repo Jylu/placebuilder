@@ -5,63 +5,40 @@ class Flag < ActiveRecord::Base
 
   # TODO Initialize with actual flags [load from text file or...?]
   def self.init
-    {"tested"=>[nil, "not staged"], "staged"=>["not staged", nil]}
+    {"sent nomination email" => [["send nomination email"], ["schedule a call"]],
+      "scheduled a call" => [["schedule a call"], ["call"]],
+      "called" => [["schedule a call", "call"], ["send thanks for call"]],
+      "sent thanks for call" => [["schedule a call", "call", "send thanks for call"], []],
+      "agreed to civic hero membership" => [[], ["add to civic hero list"]],
+      "member of civic hero" => [["add to civic hero list"], []]
+    }
   end
 
   def self.get_rule(flag)
+    @@rules ||= init
+
     @@rules[flag]
   end
 
   def self.get_rules
     @@rules ||= init
 
-    @@rules
+    list = @@rules.to_a
+
+    list.each do |flag|
+      puts flag.to_s
+    end
+
+    nil
   end
 
   # Creates rules for flags to follow
-  def self.create_rule(prev_flag, from_flag, to_flag)
+  def self.create_rule(done, flag, to_do)
     @@rules ||= init
-    @@rules[from_flag] = [prev_flag, to_flag]
+    @@rules[flag] = [done, to_do]
   end
 
-  # Creates a chain of rules given a list of flags
-  # The chain rules are stored in a hash of the form {from => [remove, add]}
-  #
-  # e.g. [a, b, c] => {a => [nil, b], b => [~b, c], c => [~c, nil]}
   def self.create_rules(flag_list)
-    flags = Array(flag_list)
-    start = flags.first
-    last = flags.last
-
-    if flags.count == 2
-      create_rule(nil, start, "not "+last)
-      create_rule("not "+last, last, nil)
-    else
-
-      # Create starting rule
-      create_rule(nil, start, "not "+flags[1])
-
-      # Create chain rules
-      flags.each_with_index do |flag, i|
-        next if flag == start || flag == last
-        create_rule("not "+flag, flag, flags[i+1])
-      end
-
-      # Create terminal rule
-      create_rule("not "+last, last, nil)
-    end
-  end
-
-  # Checks if a rule exists for this flag
-  # TODO Actually have a table of rules or something stored somewhere
-  def check_chain_rules
-
     @@rules ||= init
-
-    if chain = @@rules[name]
-
-      return chain
-    end
   end
-
 end

@@ -51,29 +51,46 @@ class Resident < ActiveRecord::Base
     tags
   end
 
+  def todos
+    todos = []
+    todos |= self.metadata[:todos] if self.metadata[:todos]
+    todos
+  end
+
+  # Creates tags associated with the resident
+  #
+  # Returns a list of todos
   def add_flags(flags)
-    tags = []
+    add = []
+    remove = []
     flags.each do |flag|
       if !self.flags.find_by_name(flag)
         f = self.flags.create(:name => flag) 
-        if more_tag = f.check_chain_rules
-          remove_tag(more_tag[0])
-          tags |= Array(more_tag[1])
+        if rule = Flag.get_rule(f.name)
+          remove |= rule[0]
+          add |= rule[1]
         end
       end
     end
 
-    tags.each do |flag|
-      f = self.flags.create(:name => flag)
-      f.check_chain_rules
-    end
+    [remove, add]
+  end
 
-    return tags
+  def test(tags)
+    todos = add_flags(tags)
+
+    todos
   end
 
   def add_tags(tag_or_tags)
     tags = Array(tag_or_tags)
-    tags |= add_flags(tags)
+
+    # Edit todo list
+    self.metadata[:todos] ||= []
+    todos ||= add_flags(tags)
+    self.metadata[:todos] |= todos[1]
+    self.metadata[:todos] -= todos[0]
+
     self.metadata[:tags] ||= []
     self.metadata[:tags] |= tags
     self.community.add_resident_tags(tags)
