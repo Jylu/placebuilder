@@ -3,9 +3,11 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
+@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700)
+@import url(http://fonts.googleapis.com/css?family=Ultra)
+@import url(http://fonts.googleapis.com/css?family=Yellowtail)
 @import "compass/reset"
 @import "compass/css3/gradient"
-@import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700)
 
 /* Woo colors */
 
@@ -271,19 +273,19 @@ aside
       font-family: $heading
       font-size: 18px
       padding: 10px 8px
-      margin: 19px 0px 0px 0px
+      margin: 19px 1px 0px 0px
       background-color: rgba(225, 225, 225, 0.3)
       color: $red
       border-radius: 4px 4px 0px 0px
       cursor: pointer
-      width: 113px
+      width: 112px
       text-align: center
       text-shadow: none
       border: 1px solid #D7D5C6
-      border-bottom: 0px
+      border-bottom: 1px solid #efeee7
       &:hover
         color: $blue
-        background-color: rgba(255, 255, 255, 0.4)
+        background-color: #efeee7
         cursor: pointer
 
     li.directory_listing
@@ -312,19 +314,20 @@ aside
     &:hover
       background-color: #e2e0d5
   h3.sidebar-links.current_tab
-    background-color: rgba(255, 255, 255, 0.4)
+    background-color: #efeee7
     color: $red
+    position: relative
+    z-index: 999
 
 #directory_content
   height: 100%
-  width: 244px
-  background-color: rgba(255, 255, 255, 0.4)
+  width: 243px
+  background-color: #efeee7
   padding: 10px
   position: relative
   bottom: 0px
   overflow: hidden
   border: 1px solid #D7D5C6
-  border-top: 0px
 
   .your-neighbors
     img
@@ -456,7 +459,7 @@ aside
         font-weight: bold
         padding-bottom: 10px
       p.author
-        font-size: 12px
+        font-size: 13px
         color: $blue
         font-weight: bold
         padding-bottom: 10px
@@ -466,7 +469,7 @@ aside
       img
         height: 50px
         width: 50px
-        border-radius: 4px
+        border-radius: 0px
         float: left
     .post-action
       padding: 15px 20px 15px 15px
@@ -545,10 +548,8 @@ aside
     .post-interaction
       margin-left: 80px
       font-size: 12px
-      border-top: 1px dotted #e4e4e4
       margin-right: 20px
       .interaction
-        padding: 8px 0
         border-color: #e6e6e6
         margin-left: 0
         margin-right: 0
@@ -561,35 +562,38 @@ aside
           font-weight: bold
         .thanked
           padding-left: 22px
-          padding-top: 2px
+          padding-top: 13px
           background: image-url("shared/redesign/thanked.png") no-repeat
           height: 13px
-          background-position-y: 2px
-          margin-bottom: 10px
+          background-position-y: 13px
+          margin-bottom: 13px
+          border-top: 1px dotted #e4e4e4
         .publicized
           padding-left: 22px
           background: image-url("shared/redesign/publicized.png") no-repeat
           height: 15px
           padding-top: 3px
+          border-top: 1px dotted #e4e4e4
     .post-replies
-      padding: 10px 20px 5px 20px
+      padding: 0px 20px 5px 20px
       p
         margin-left: 60px
         padding-top: 10px
       p.author
-        font-size: 12px
+        font-size: 13px
         color: $blue
         font-weight: bold
         font-family: $body
         float: left
-        margin-left: 10px
+        margin-left: 15px
         margin-right: 10px
         vertical-align: bottom
       p.reply-text
         font-size: 13px
         font-family: $body
+        border-top: 1px dotted #E4E4E4
       p.reply-actions
-        margin-top: 5px
+        margin: 5px 0px 10px 60px
         font-size: 12px
         font-family: $body
         padding-top: 0
@@ -603,7 +607,7 @@ aside
         padding-top: 10px
         height: 25px
         float: left
-        margin-left: 25px
+        margin-left: 20px
     .reply
       margin-left: 60px
       padding: 10px
@@ -633,7 +637,7 @@ aside
       .post-interaction
         margin-left: 0px
       .post-replies
-        #post-reply
+        .post-reply
           width: 250px
         p
           margin-left: 35px
@@ -701,11 +705,16 @@ input::-webkit-input-placeholder
   border-bottom-style: none
   border-bottom-width: 1px
 
-.wire div.post-replies .post-reply 
-  border-radius: 4px
+.wire div.post-replies .post-reply
   height: 0
   margin-left: 60px
-  width: 635px
+  margin-top: 10px
+  width: 650px
+  font-size: 13px
+  padding: 15px 7px
+  border: 1px solid $light-grey
+  &:hover, &:focus, &:active
+    border: 1px solid #bababa
 
 .wire div.post-replies .post-reply-button
   color: #fffefe

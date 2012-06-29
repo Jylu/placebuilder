@@ -17,24 +17,23 @@ $ ->
   fb_root = document.getElementById('fb-root')
   fb_root.appendChild(e)
 
-  (new Home.model.Account).fetch
+  (new Home.model.Community(slug: slug)).fetch
+    success: (community) ->
 
-    success: (account) ->
+      router.community = community
+      (new Home.model.Account).fetch
 
-      router.account = account
+        success: (account) ->
 
-      (new Home.model.Community(slug: slug)).fetch
-        success: (community) ->
-
-          router.community = community
+          router.account = account
 
           Backbone.history.start(pushState: true)
 
         error: ->
-          alert "we couldn't load the community"
+          router.register(slug)
 
     error: ->
-      router.register(slug)
+      alert "we couldn't load the community"
 
 
 
