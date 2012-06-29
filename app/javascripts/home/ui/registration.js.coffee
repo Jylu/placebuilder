@@ -16,8 +16,10 @@ Home.ui.Registration = Framework.View.extend
 
   initialize: ->
     @reg_page = 1
-    @user_info = {}
+    @user_info =
+      "isFacebook": false
     @community = window.location.pathname.split("/")[1]
+    _.bindAll(this)
 
   render: (params) ->
     this.$el.html this.renderTemplate(params)
@@ -43,40 +45,93 @@ Home.ui.Registration = Framework.View.extend
         return false
     )
 
+  showVerificationPage: ->
+    page2 = new Home.ui.Verification(el: $("#registration_content"))
+    params =
+      "community": @community
+      "referrers": @referrers
+    page2.render(params)
+
+  showWelcomePage: ->
+    page3 = new Home.ui.Welcome(el: $("#registration_content"))
+    params =
+      "name": @user_info.full_name.split(" ")[0]
+      "community": @community
+    page3.render(params)
+
   nextPage: (e) ->
     if e
       e.preventDefault()
     @reg_page = if @reg_page is undefined then 2 else @reg_page + 1
     switch this.reg_page
       when 2
-        @user_info.name = this.$('.name').val()
+        @user_info.full_name = this.$('.name').val()
         @user_info.email = this.$('.email').val()
         @user_info.password = this.$('.password').val()
-        page2 = new Home.ui.Verification(el: $("#registration_content"))
-        params =
-          "community": @community
-          "referrers": @referrers
-        page2.render(params)
+       
+        fields = ["full_name", "email"] 
+        this.validate(@user_info, fields, this.showVerificationPage)
       when 3
-        @user_info.address = this.$('input.address')
+        @user_info.address = this.$('input.address').val()
         referral = this.$(':selected').val()
         if referral is "default"
           alert "Please tell us how you heard about CommonPlace"
           @reg_page--
         else
-          @user_info.referrer = referral
-          page3 = new Home.ui.Welcome(el: $("#registration_content"))
-          params =
-            "name": @user_info.name.split(" ")[0]
-            "community": @community
-          page3.render(params)
+          @user_info.referral_source = referral
+
+          # create new user, on success show page 3
+          fields = ["address"]
+          this.validate(@user_info, fields, this.createUser)
       when 4
         page4 = new Home.ui.Subscribe(el: $("#registration_content"))
         page4.render()
       when 5
         page5 = new Home.ui.findNeighbors(el: $("#registration_content"))
-        page5.render()
-        this.reg_page = 1  #call this on the last registration page
+        params =
+          "name": @user_info.full_name.split(" ")[0]
+          "community": @community
+        page5.render(params)
+      else
+        @reg_page = 1
+        router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
+
+  validate: (info, fields, onSuccess) ->
+    validate_api = "/api/registration/"+router.community.id+"/validate"
+    $.getJSON(validate_api, info, _.bind((response) ->
+      valid = true
+      if not _.isEmpty(response.facebook)
+        window.location.pathname = "/users/auth/facebook"
+      else
+        _.each(["full_name", "email"], _.bind((field) ->
+          if not _.isEmpty(response[field])
+            error_message = _.reduce(response[field], (a, b) ->
+              a + "and" + b
+            )
+            alert error_message
+            valid = false
+        , this))
+
+        if valid
+          if onSuccess
+            onSuccess()
+        else
+          @reg_page--
+    , this))
+
+  createUser: ->
+    if @user_info.isFacebook
+      create_user_api = "/api/registration/"+router.community.id+"/facebook"
+    else
+      create_user_api = "/api/registration/"+router.community.id+"/new"
+    $.post(create_user_api, @user_info, _.bind((response) ->
+      if response.success is true or response.id
+        router.account = new Home.model.Account response
+        this.showWelcomePage()
+      else
+        @reg_page--
+        console.log "Error processing request: "
+    , this))
 
   events:
     "click .next-button": "nextPage"
