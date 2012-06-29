@@ -2,7 +2,7 @@ class Reply < ActiveRecord::Base
   #track_on_creation
   
   belongs_to :repliable, :polymorphic => true
-  after_create :touch_repliable_replied_at
+  after_create :touch_repliable_replied_at, :update_user_replied_count
   belongs_to :user, :counter_cache => true
   
   validates_presence_of :repliable
@@ -20,6 +20,12 @@ class Reply < ActiveRecord::Base
   def touch_repliable_replied_at
     self.repliable.update_attribute(:replied_at, DateTime.now)
     self.repliable.increment!(:replies_count)
+    
+  end
+  
+  def update_user_replied_count
+    @user=User.find(repliable.user_id)
+    @user.update_attribute(:replied_count, @user.replied_count+1)  
   end
   
   def community

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120626010440) do
+ActiveRecord::Schema.define(:version => 20120630022163) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -212,6 +212,7 @@ ActiveRecord::Schema.define(:version => 20120626010440) do
     t.integer  "kind"
     t.string   "password"
     t.string   "background_file_name"
+    t.integer  "announcements_count",  :default => 0,      :null => false
   end
 
   create_table "flags", :force => true do |t|
@@ -506,8 +507,8 @@ ActiveRecord::Schema.define(:version => 20120626010440) do
     t.text     "skills"
     t.boolean  "attempted_geolocating"
     t.datetime "last_checked_inbox"
-    t.integer  "replies_count"
-    t.integer  "posts_count"
+    t.integer  "replies_count",                    :default => 0
+    t.integer  "posts_count",                      :default => 0
     t.integer  "sign_in_count",                    :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -521,6 +522,12 @@ ActiveRecord::Schema.define(:version => 20120626010440) do
     t.datetime "reset_password_sent_at"
     t.boolean  "disabled",                         :default => false
     t.string   "organizations"
+    t.string   "integer"
+    t.integer  "announcements_count",              :default => 0,       :null => false
+    t.integer  "feeds_count",                      :default => 0,       :null => false
+    t.integer  "invite_count",                     :default => 0,       :null => false
+    t.integer  "events_count",                     :default => 0,       :null => false
+    t.integer  "replied_count",                    :default => 0,       :null => false
   end
 
   add_index "users", ["oauth2_token"], :name => "index_users_on_oauth2_token"

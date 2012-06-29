@@ -1,16 +1,36 @@
 <div id="file-picker-filters">
-<button id="new-resident">New Resident</button>
+<button id="new-resident">New Resident</button><br>
 <input type="text" placeholder="tag" id="tag-input">
-<button id="add-tag">Add tag</button>
+<button id="add-tag">Add tag</button><br>
+  <select id="haveornot" name="haveornot" >
+    <option value="yes" selected=true> Have
+    <option value="no"> Haven't
+  </select>
+  <select id="filter-tags" name="filter-tags">
+    <option value="post" selected=true> Posted
+    <option value="email" > Open Email
+    <option value="reply" > Replied
+    <option value="replied" > Be replied
+    <option value="invite" > Invited
+    <option value="announcement" > Announcements
+    <option value="event" > Event  
+    <option value="sitevisit" > Logged in
+  </select>
+<button id="filter">Filt</button>
+<!--
 <br>
   {{#tags}}
     <a class="tag-filter" data-state="neutral" data-tag="{{.}}">{{.}}</a>
   {{/tags}}
-
+-->
   <input type="text" placeholder="search" id="query-input">
   <button id="filter-button">Find these residents!</button>
 <br>
   <input type="checkbox" id="check-all">Check all shown</input>
+<br>
+  <button id="filter-order">Order by</button>
+<input type="radio"  name="order" value="time"> Time
+<input type="radio"  name="order" value="quantity"> Quantity
 </div>
 
 <ul id="file-picker-list">

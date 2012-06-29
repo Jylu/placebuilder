@@ -90,7 +90,101 @@ class API
           i.odd? ? %{"#{object}"} : object.split(" ")
         }.flatten
       end
-
+      
+      def filter_users_by_tag(tag,haveornot)
+        case tag
+              when "post"
+                @ids=Post.all.map {|a| a.user_id}.uniq
+              when "email"
+                @emails=SentEmail.where(:status=>"opened").map {|a| a.recipient_email}.uniq
+                @ids=User.where(:email=>@emails).map &:id
+              when "sitevisit"
+                @ids=SiteVisit.all.map {|a| a.commonplace_account_id}.uniq
+              when "announcement"
+                @ids=Announcement.where(:owner_type=>"User").map {|a| a.owner_id}.uniq
+                @announcements=Announcement.where(:owner_type=>"Feed").map {|a| a.owner_id}.uniq
+                @ids+=Feed.where(:id=>@announcements).map {|a|a.user_id}.uniq
+              when "event"
+                @ids=Event.where(:owner_type=>"User").map {|a| a.owner_id}.uniq
+                @events=Event.where(:owner_type=>"Feed").map {|a| a.owner_id}.uniq
+                @ids+=Event.where(:id=>@events).map {|a|a.user_id}.uniq
+              when "reply"
+                @ids=Reply.all.map {|a| a.user_id}.uniq
+              when "replied"
+                @ids=Reply.all.map {|a| a.repliable_id}.uniq
+              when "invite"
+                @ids=Invite.all.map {|a| a.inviter_id}.uniq
+          end          
+          if haveornot=="yes"
+            serialize(User.where(:id=>@ids))   
+          else
+            if @ids.empty?
+              serialize(User.all)
+            else
+              serialize(User.where("id not in (?)",@ids))   
+          end
+        end
+      end
+      
+      def order_users_by_time_of_tag(tag)
+        case tag
+              when "post"
+                @ids=Post.order("created_at DESC").map {|a| a.user_id}.uniq
+              when "email"
+                @emails=SentEmail.sort("created_at DESC").where(:status=>"opened").map {|a| a.recipient_email}.uniq
+                @ids=User.where(:email=>@emails).map &:id
+              when "sitevisit"
+                @ids=SiteVisit.sort("created_at DESC").map {|a| a.commonplace_account_id}.uniq
+              when "announcement"
+                @ids=Announcement.order("created_at DESC").where(:owner_type=>"User").map {|a| a.owner_id}.uniq
+                @announcements=Announcement.order("created_at DESC").where(:owner_type=>"Feed").map {|a| a.owner_id}.uniq
+                @ids+=Feed.where(:id=>@announcements).map {|a|a.user_id}.uniq
+              when "event"
+                @ids=Event.order("created_at DESC").where(:owner_type=>"User").map {|a| a.owner_id}.uniq
+                @events=Event.order("created_at DESC").where(:owner_type=>"Feed").map {|a| a.owner_id}.uniq
+                @ids+=Event.order("created_at DESC").where(:id=>@events).map {|a|a.user_id}.uniq
+              when "reply"
+                @ids=Reply.order("created_at DESC").map {|a| a.user_id}.uniq
+              when "replied"
+                @postsids=Reply.order("created_at DESC").map {|a| a.repliable_id}.uniq
+                @ids=Post.where(:id=>@postsids).map {|a| a.user_id}.uniq
+              when "invite"
+                @ids=Invite.order("created_at DESC").map {|a| a.inviter_id}.uniq
+          end          
+          @ids.uniq!
+          #@users=User.find(:all,:conditions=>{:id=>@ids })
+          @users=nil
+          @users=User.where(:id=>@ids[0])
+          for @k in 1..@ids.size-1 do
+            if User.find(@ids[@k])
+              @users<< User.find(@ids[@k])
+            end
+          end
+          serialize(@users)
+      end
+      
+      def order_users_by_quantity_of_tag(tag)
+        @need=false
+        case tag
+          when "post"
+            @users=User.order("posts_count DESC")           
+          when "reply"
+            @users=User.order("replies_count DESC")
+          when "sitevisit"
+            @users=User.order("sign_in_count DESC")
+          when "announcement"
+            @users=User.order("announcements_count DESC")
+          when "feed"
+            @users=User.order("feeds_count DESC")
+          when "replied"
+            @users=User.order("replied_count DESC")
+          when "invite"
+            @users=User.order("invite_count DESC")
+          when "event"
+            @users=User.order("events_count DESC")
+        end
+        serialize(@users)
+      end
     end
 
     # Returns the serialized community, found by slug or id
@@ -142,19 +236,31 @@ CONDITION
     get "/:id/files" do
       control_access :admin
       
-      serialize(Sunspot.search(Resident) do
-        paginate :page => 1, :per_page => 9001
-        order_by :last_name
-        all_of do
-          with :community_id, params[:id]
-          Array(params[:with].try(:split, ",")).each do |w|
-            with :tags, w
-          end
-          Array(params[:without].try(:split, ",")).each do |w|
-            without :tags, w
+      if params[:search]=="filter"
+        if !params[:order]
+          filter_users_by_tag(params[:tag],params[:have])
+        else
+          if params[:order]=="time"    
+             order_users_by_time_of_tag(params[:tag])         
+          else
+             order_users_by_quantity_of_tag(params[:tag])                
           end
         end
-      end)
+      else
+      serialize(Sunspot.search(Resident) do
+          paginate :page => 1, :per_page => 9001
+          order_by :last_name
+          all_of do
+            with :community_id, params[:id]
+            Array(params[:with].try(:split, ",")).each do |w|
+              with :tags, w
+            end
+            Array(params[:without].try(:split, ",")).each do |w|
+              without :tags, w
+            end
+          end
+        end)
+      end
     end
 
     # Add a new resident

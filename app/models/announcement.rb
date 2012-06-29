@@ -4,7 +4,7 @@ class Announcement < ActiveRecord::Base
 
   has_many :replies, :as => :repliable, :order => :created_at, :dependent => :destroy
   has_many :repliers, :through => :replies, :uniq => true, :source => :user
-  belongs_to :owner, :polymorphic => true
+  belongs_to :owner, :polymorphic => true,:counter_cache => true
   belongs_to :community
   
   has_many :thanks, :as => :thankable, :dependent => :destroy
@@ -28,7 +28,8 @@ class Announcement < ActiveRecord::Base
   scope :this_week, :conditions => ["announcements.created_at between ? and ?", DateTime.now.at_beginning_of_week, DateTime.now]
 
   default_scope where(:deleted_at => nil)
-
+  after_create :update_user_announcements_counter
+  
   def has_reply
     self.replies.present?
   end
@@ -82,6 +83,13 @@ class Announcement < ActiveRecord::Base
       replies.map { |r| r.user.id }
     end
     time :created_at
+  end
+  
+  def update_user_announcements_counter
+    if self.owner_type=="Feed"
+      @user=User.find(owner.user_id)
+      @user.update_attribute(:announcements_count, @user.announcements_count+1)
+    end
   end
 
 end
