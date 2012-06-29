@@ -68,9 +68,11 @@ Home.ui.Registration = Framework.View.extend
         @user_info.full_name = this.$('.name').val()
         @user_info.email = this.$('.email').val()
         @user_info.password = this.$('.password').val()
-       
-        fields = ["full_name", "email"] 
-        this.validate(@user_info, fields, this.showVerificationPage)
+        page2 = new Home.ui.Verification(el: $("#registration_content"))
+        params =
+          "community": @community
+          "referrers": @referrers
+        page2.render(params).animate({'margin-left' : '0px'}, 800)
       when 3
         @user_info.address = this.$('input.address').val()
         referral = this.$(':selected').val()
@@ -78,14 +80,15 @@ Home.ui.Registration = Framework.View.extend
           alert "Please tell us how you heard about CommonPlace"
           @reg_page--
         else
-          @user_info.referral_source = referral
-
-          # create new user, on success show page 3
-          fields = ["address"]
-          this.validate(@user_info, fields, this.createUser)
+          @user_info.referrer = referral
+          page3 = new Home.ui.Welcome(el: $("#registration_content"))
+          params =
+            "name": @user_info.name.split(" ")[0]
+            "community": @community
+          page3.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       when 4
         page4 = new Home.ui.Subscribe(el: $("#registration_content"))
-        page4.render()
+        rendered = page4.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       when 5
         page5 = new Home.ui.findNeighbors(el: $("#registration_content"))
         params =
