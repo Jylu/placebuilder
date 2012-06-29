@@ -11,6 +11,7 @@ $Rokkitt: 'Rokkitt'
   width: 1100px
   background: none
   margin: 0 auto
+  position: relative
   .community-name
     width: 400px
     padding-left: 20px
@@ -33,7 +34,7 @@ $Rokkitt: 'Rokkitt'
       color: $red
 #registration_content
   background:none
-  width: 1000px
+  width: 1070px
   overflow: hidden
   position: relative
   height: auto
@@ -55,14 +56,14 @@ $Rokkitt: 'Rokkitt'
     text-shadow: 1px 1px 1px black
     margin-right: 10px
     float: left 
-    margin-top: 23px
+    margin-top: 20px
     font-family: $heading
   .button
     padding: 5px 
     height: 22px
     top: 9px
     bottom: 7px
-    border-radius: 5px 
+    border-radius: 4px 
     box-shadow: inset 0 1px 1px rgba(255,255,255,.4)
     cursor: pointer
     width: 70px
@@ -88,15 +89,14 @@ $Rokkitt: 'Rokkitt'
   z-index: 400
   display:none
   +border-radius(4px)
-  height: 200px 
   position: absolute
   box-shadow: black 0px 1px 1px
-  right: 170px
+  right: 15px
   top: 63px
   .arrow
     width: 150px
     height: 20px
-    background: url("../images/arrow.png") no-repeat
+    background: url("arrow.png") no-repeat
     background-position: 105px 12px
     position: absolute
     top: -20px 
@@ -106,15 +106,16 @@ $Rokkitt: 'Rokkitt'
     width: 215px
     -webkit-appearance: none
     border: 0 
-    font-size: 17px
-    padding: 7px 
-    margin-top: 10px
+    font-size: 16px
+    padding: 7px
+    height: auto
+    margin-top: 5px
     font-family: $Rokkitt
     border: 1px solid #e2e2e2
     &:focus
       outline: none
   .email
-    margin-top: 22px
+    margin: 20px 0px 10px 0px
   button.signin
     text-align: center
     float: right
@@ -124,18 +125,20 @@ $Rokkitt: 'Rokkitt'
     font-size: 15px
     margin-right: 20px
     padding-top: 10px
-    padding-bottom: 6px
-    margin-top: 10px
+    padding-bottom: 8px
+    margin-top: 5px
+    height: auto
   button.signin.facebook
-    width: 127
+    width: 127px
+    height: auto
     margin-right: 12px
-    font-size: 13px
-    padding: 12px 0 6px 0
+    font-size: 15px
+    padding: 10px 0 8px 0
     +linear-gradient(color-stops(#4e6fb6, #3b5998))
   p 
     clear: both
     margin-left: 20px
-    padding-top: 15px
+    padding: 10px 0px 15px 0px
     text-align: left
     font-family: $Rokkitt
     cursor: pointer
@@ -148,7 +151,7 @@ $Rokkitt: 'Rokkitt'
   .registration1
     margin-top: 250px
   .left 
-    width: 50%
+    width: 55%
     float: left
     h1
       color: #eeecdf
@@ -187,7 +190,7 @@ $Rokkitt: 'Rokkitt'
       background: url("shared/redesign/blue-bg.png")
       margin-top: 20px
       height: 40px 
-      width: 503px
+      width: auto
       ul 
         padding-top: 11px
         padding-left: 15px
@@ -207,7 +210,7 @@ $Rokkitt: 'Rokkitt'
             color: $red
   .right 
     width: 450px
-    height: 375px
+    height: 385px
     position: relative
     -webkit-perspective: 800px
     float: right
@@ -240,7 +243,8 @@ $Rokkitt: 'Rokkitt'
         font-family: $Yellowtail
         text-shadow: 4px 4px 1px $blue
         color: #eeecdf
-        margin-bottom: 25px
+        margin-bottom: 17px
+        padding-bottom: 12px
       input
         width: 379px
         height: 20px
@@ -268,13 +272,15 @@ $Rokkitt: 'Rokkitt'
         font-size: 20px
         border: 1px solid #151f28
         color: white
+        text-transform: uppercase
         +linear-gradient(color-stops(#2e5274, #1b334a))
         box-shadow: 1px 1px 1px rgba(0,0,0,.5)
         text-shadow: 1px 2px 3px rgba(0,0,0,.5)
         cursor: pointer
+        margin-top: 0px
     .facebook
       margin: 0 auto
-        top: 10px
+        top: 15px
       width: 345px
       text-align: left
       a 
@@ -297,14 +303,14 @@ $Rokkitt: 'Rokkitt'
 .tab-content
   overflow: hidden
   height: auto
-  width: 500px
+  width: 100%
 .strip
   width: 2000px
   position: relative
   height: auto
 .tab-pane
   display: block
-  width: 500px
+  width: 100%
   float: left
 
 #registration_content .left .navbar ul li 
