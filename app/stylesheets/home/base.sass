@@ -323,7 +323,7 @@ aside
   height: 100%
   width: 244px
   background-color: #efeee7
-  padding: 10px
+  padding: 0px 10px 10px 10px
   position: relative
   bottom: 0px
   overflow: hidden
@@ -345,11 +345,13 @@ aside
       margin-left: 0px
       border-bottom: 1px dotted
       border-color: lighten($dark-grey, 30%)
-      padding-bottom: 10px
-      padding-top: 10px
-      height: 65px
+      padding-bottom: 15px
+      padding-top: 15px
+      height: 30px
       width: auto
       overflow: hidden
+      white-space: nowrap
+      cursor: pointer
       &:last-child
         border-bottom: none
       &:hover
@@ -363,17 +365,21 @@ aside
         line-height: 16px
         margin-bottom: 5px
         margin-right: 10px
+        text-overflow: ellipsis
+        overflow: hidden
         text-transform: capitalize
       p
         font-family:  $body
         font-size: 13px
         color: lighten($black, 10%)
+        text-overflow: ellipsis
+        overflow: hidden
         margin-top: 5px
       img
         padding-right: 10px
         float: left
         width: 32px
-        margin-bottom: 30px
+        margin-bottom: 10px
         height: 32px
         overflow: hidden
   .page
@@ -385,6 +391,8 @@ aside
     height: 65px
     width: 100%
     overflow: hidden
+    white-space: nowrap
+    cursor: pointer
     &:last-child
       border-bottom: none
     &:hover
@@ -398,17 +406,21 @@ aside
       line-height: 16px
       margin-bottom: 5px
       margin-right: 10px
+      text-overflow: ellipsis
+      overflow: hidden
       text-transform: capitalize
     p
       font-family:  $body
       font-size: 13px
       color: lighten($black, 10%)
       margin-top: 5px
+      //text-overflow: ellipsis
+      //overflow: hidden
     img
       padding-right: 10px
       float: left
       width: 32px
-      margin-bottom: 30px
+      margin-bottom: 10px
       height: 32px
       overflow: hidden
  
