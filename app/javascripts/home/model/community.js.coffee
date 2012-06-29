@@ -24,3 +24,7 @@ Home.model.Community = Backbone.Model.extend
     posts.url = "/api/feeds/" + page
     posts.fetch params
 
+  getAllPages: (params) ->
+    pages = new Backbone.Collection()
+    pages.url = "/api" + this.get("links").feeds
+    pages.fetch params
