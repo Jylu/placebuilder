@@ -56,7 +56,7 @@ Home.ui.Registration = Framework.View.extend
         params =
           "community": @community
           "referrers": @referrers
-        page2.render(params)
+        page2.render(params).animate({'margin-left' : '0px'}, 800)
       when 3
         @user_info.address = this.$('input.address')
         referral = this.$(':selected').val()
@@ -69,13 +69,13 @@ Home.ui.Registration = Framework.View.extend
           params =
             "name": @user_info.name.split(" ")[0]
             "community": @community
-          page3.render(params)
+          page3.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       when 4
         page4 = new Home.ui.Subscribe(el: $("#registration_content"))
-        page4.render()
+        rendered = page4.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       when 5
         page5 = new Home.ui.findNeighbors(el: $("#registration_content"))
-        page5.render()
+        page5.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
         this.reg_page = 1  #call this on the last registration page
 
   events:
