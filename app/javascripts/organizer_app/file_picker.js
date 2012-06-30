@@ -5,14 +5,12 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
 
   events: {
     "click li": "onClickFile",
-
     "click .cb": "toggle",
     "click #filter": "filterUsers",
     "click #filter-order" :"filterUsers",
     "click :checkbox": "toggle",
     "click #filter-button": "filter",
     "click .tag-filter": "cycleFilter",
-    "click #filter-button": "filter",
     "click #check-all": "checkall",
     "click #add-tag" : "addTag",
     "click #map-button": "showMapView",
