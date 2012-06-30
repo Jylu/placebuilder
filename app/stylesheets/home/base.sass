@@ -64,7 +64,7 @@ $black-shadow: 0px 2px 1px black
     text-shadow: -1px -1px -1px #cb5450
 
 .green-button
-  background: $red
+  background: green
   border-radius: 4px
   color: #eeecdf
   text-shadow: 1px 1px 1px black
@@ -81,6 +81,13 @@ $black-shadow: 0px 2px 1px black
   padding: 15px
     top: 13px
     bottom: 13px
+  &:hover, &:focus
+    color: #fff
+    +linear-gradient(color-stops(#62AF46, #569E3F), top)
+    box-shadow: 0px 2px 4px #adab9f
+  &:active
+    color: #fff
+    +linear-gradient(color-stops(#62AF46, #569E3F), bottom) 
     
 /* Overall Styles */
 .right

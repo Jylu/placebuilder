@@ -1,65 +1,90 @@
 @import "compass/reset"
-@import base.sass
 
 .ui-datepicker
-  border: 1px solid #ddd
+  border: 1px solid #BCBBAE
   display: none
   background-color: white
-  width: 240px
-  +border-radius(5px)
-
+  width: 413px
+  min-height: 228px
+  +border-radius(4px)
+  margin-top: 15px
+  font-family: Helvetica, Arial, sans-serif
+  a
+    color: $red
+    
   .ui-datepicker-header
-    background-color: $blue
-    +border-radius(5px)
-    padding: 7px
-    font-size: 14px
-    margin: 5px
+    background-color: $red
+    padding: 8px
+    margin: 10px
+    font-size: 22px
+    font-family: "Rokkitt", Rockwell, Helvetica, Arial, sans-serif
     color: white
     .ui-datepicker-prev
       float: left
+      margin-top: 1px
     .ui-datepicker-next
       float: right
+      margin-top: 1px
     .ui-datepicker-next, .ui-datepicker-prev
       font-size: 12px
-      color: white
+      text-transform: uppercase
+      font-weight: bold
+      color: $red - #555
       cursor: pointer
-      padding: 0 4px
+      padding: 5px
+      font-family: Helvetica, Arial, sans-serif
       +border-radius(4px)
       &:hover
         text-decoration: none
-        background-color:  $blue + #222
+        background-color:  $blue
+        color: white
     .ui-datepicker-title
       text-align: center
     .ui-datepicker-month
     .ui-datepicker-year  
   .ui-datepicker-calendar
     border-collapse: collapse
-    margin: 5px
-    font-size: 12px
+    margin: 0px 10px 10px 10px
+    font-size: 13px
+    width: 95%
     td, th
-      width: 28.5px
-      padding: 4px      
+      width: auto
+      padding: 5px      
       text-align: center
     td
-      border: 2px solid white
+      border: 1px dotted #ddd
     th
       font-weight: bold
-      background-color: #ddd
+      color: $blue
+      padding-bottom: 10px
     td
       &:hover
-        background-color: #fafaaa
+        background-color: #eee
+        cursor: pointer
     .ui-datepicker-week-end
     .ui-datepicker-today
-      background-color: #ddd
+      background-color: #eee
+      border: 1px solid #eee
+      a
+        color: $black
     .ui-datepicker-current-day
-      background-color: #fafaaa
+      background-color: $blue
+      border: 1px solid $blue
+      a
+        color: white
+      &:hover
+        background-color: $blue
+        a
+          color: white
     .ui-state-default
       +inline-block
     a.ui-state-default
-      text-decoration: underline
+      text-decoration: none
     .ui-datepicker-other-month
-      color: #888
+      background-color: white
+      border: 0px none
       &:hover
+        cursor: default
         background-color: white
       &.ui-datepicker-today
         &:hover
