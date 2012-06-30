@@ -50,14 +50,14 @@ Home.ui.Registration = Framework.View.extend
     params =
       "community": @community
       "referrers": @referrers
-    page2.render(params)
+    page2.render(params).animate({'margin-left' : '0px'}, 800)
 
   showWelcomePage: ->
     page3 = new Home.ui.Welcome(el: $("#registration_content"))
     params =
       "name": @user_info.full_name.split(" ")[0]
       "community": @community
-    page3.render(params)
+    page3.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
 
   nextPage: (e) ->
     if e
@@ -88,13 +88,16 @@ Home.ui.Registration = Framework.View.extend
           page3.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       when 4
         page4 = new Home.ui.Subscribe(el: $("#registration_content"))
-        rendered = page4.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+        page4.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       when 5
-        page5 = new Home.ui.findNeighbors(el: $("#registration_content"))
+        page5 = new Home.ui.civicProfile(el: $("#registration_content"))
+        page5.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+      when 6
+        page6 = new Home.ui.findNeighbors(el: $("#registration_content"))
         params =
           "name": @user_info.full_name.split(" ")[0]
           "community": @community
-        page5.render(params)
+        page6.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       else
         @reg_page = 1
         router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
