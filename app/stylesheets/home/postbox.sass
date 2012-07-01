@@ -28,7 +28,6 @@ ul li a:hover
   color: $red
 
 #newPost   
-  width: 450px
   background-color: $off-grey  
   border: 12px solid #bcbbae
   z-index: 1000
@@ -37,7 +36,8 @@ ul li a:hover
   margin-left: 250px
   margin-bottom: 30px
   position: fixed
-
+  border-radius: 4px
+  
   div.navigation   
     width: 409px 
     float: left   
@@ -99,9 +99,8 @@ ul li a:hover
     font-weight: bold
     
   div.links   
-    margin-top: 10px
-    padding: 30px
-    margin-left: 35px
+    padding: 40px 80px
+    margin: 0px auto
 
     ul li   
       list-style-type: none  
@@ -110,6 +109,7 @@ ul li a:hover
       text-shadow: black 0 0 0  
       padding-left: 30px  
       background: url(bullet-quote.png) left center no-repeat
+      
 
     ul li.request
       background: url(shared/redesign/request-offer-icon.png) left center no-repeat
@@ -128,7 +128,9 @@ ul li a:hover
       background-size: 26px
 
     ul li:hover
-      font-color: $red
+      color: $red
+      clear: both
+      background-color: rgba(255, 255, 255, 0.4)
    
   div.form-container.default
     opacity: 1
@@ -150,10 +152,9 @@ ul li a:hover
         background: $dark-tan
 
   div.form-container   
-    padding: 20px    
+    padding: 40px    
     width: 415px 
     position: relative
-    left: -2px
 
     form   
       margin-top: 9px
@@ -188,19 +189,19 @@ ul li a:hover
     label.disclaimerLabel input
       width: 25px
       float: left
-
+    
 strong   
   font-weight: bold  
   
 .rounded_corners   
-  -moz-border-radius: 5px  
-  -webkit-border-radius: 5px  
-  border-radius: 5px  
+  -moz-border-radius: 4px  
+  -webkit-border-radius: 4px  
+  border-radius: 4px  
  
 .half_rounded_corners   
-  -moz-border-radius: 5px 5px 0px 0px  
-  -webkit-border-radius: 5px 5px 0px 0px  
-  border-radius: 5px 5px 0px 0px  
+  -moz-border-radius: 4px 4px 0px 0px  
+  -webkit-border-radius: 4px 4px 0px 0px  
+  border-radius: 4px 4px 0px 0px  
 
 ::-webkit-input-placeholder
   color: #a2a2a2
@@ -209,23 +210,23 @@ strong
   color: #a2a2a2
 
 input   
-  width: 382px  
-  background-color: #fefffe  
-  height: 7px  
+  width: 397px  
+  background-color: #fefffe
   margin-bottom: 15px  
   border: 1px solid $dark-tan  
   font: 14px Helvetica, Arial, "Sans Serif"
-  padding: 15px  
+  padding: 10px 8px
   color: #333
 
 textarea   
-  width: 382px  
+  width: 397px  
   background-color: #fefffe  
   height: 150px  
   margin-bottom: 15px  
   border: 1px solid $dark-tan  
-  font: 14px Arial, "Sans Serif"
-  padding: 15px  
+  font: 14px Helvetica, Arial, "Sans Serif"
+  padding: 10px 8px
+  line-height: 18px  
   color: #333
   //box-shadow: inset 2px 2px 4px 0px #dddddd  
 
@@ -437,6 +438,8 @@ form select
   width: 404px
   margin-bottom: 12px
 
+div.form-container.share ul
+  
 div.form-container.share ul li   
   list-style-type: none  
   padding-top: 10px  
@@ -445,6 +448,9 @@ div.form-container.share ul li
   padding-left: 30px  
   background: url(bullet-quote.png) left center no-repeat
   cursor: pointer
+  clear: both
+  &:hover, &:focus, &:active
+    background-color: rgba(255, 255, 255, 0.4)
 
   div
     font: 18px/20px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
@@ -452,10 +458,24 @@ div.form-container.share ul li
     position: relative
     top: 3px
     margin-left: 5px
-
+    &:hover, &:focus, &:active
+      color: $red
   a:hover
     color: $red
-
+div.form-container.share
+  width: 285px
+  padding: 40px 80px
+  #share_email
+    input
+      width: 267px
+      padding: 10px 8px
+      margin-bottom: 15px
+  #share_link
+    input
+      width: 267px
+      padding: 10px 8px
+      margin: 0px
+  
 h3   
   font: 18px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
   text-shadow: 1px 1px 1px white
@@ -463,7 +483,7 @@ h3
   margin-bottom: 10px
 
 a.share
-  color: #1b334a
+  color: $red
   text-decoration: none
   text-transform: uppercase
   position: relative
@@ -471,14 +491,28 @@ a.share
   padding: 8px
   float: right
   bottom: 15px
-  margin: 10px
-  background-color: #c6b7ac
+  background-color: #D7D5C6
+  margin-top: 10px
+  &:hover, &:focus, &:active
+    background-color: $red
+    color: white
 
 div.share
   text-decoration: none
 
   h3
     font: 16px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+    margin: 20px 0px 10px 0px
+  
+  button.green-button   
+    float: left
+    font-size: 20px
+    padding: 10px 5px
+    width: 100%
+    height: 40px
+    text-decoration: none
+    cursor: pointer
+    text-transform: uppercase
 
 #site_overlay
   background-color: black
@@ -486,22 +520,22 @@ div.share
   height:  1000px
 
 #discussion_dk
-  width: 412px
+  width: 414px
 
 #start_at_time
-  width:  115px
+  width: 114px
   float: left
-  margin-right: 10px
+  margin-right: 14px
 
 #end_at_time
-  width:  115px
+  width: 114px
   float: left
 
 #event_date input
-  width: 132px
-  height: 5px
+  width: 141px
   float: left
-  margin-right:  10px
+  margin-right: 10px
+  margin-top: 0px
 
 div.meetup_lets
   font-family: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
@@ -544,7 +578,7 @@ div.meetup_lets
       height: 25px
       position: relative
       top: 7px
-
+      
 div.form-container   
   padding: 17px 17px 0    
   width: 415px 
@@ -563,7 +597,3 @@ div.form-container
       height: 39px
       text-decoration: none
       cursor: pointer
-
-#dk_container_categorize
-  width: 414px
-  margin-bottom: 5px

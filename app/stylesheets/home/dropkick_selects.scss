@@ -14,7 +14,7 @@
 
 /* One container to bind them... */
 .dk_container {
-    width: 100%;
+    width: auto;
 }
 .dk_container:focus {
     outline: 0;
@@ -31,34 +31,26 @@
      * Help: Arrow image not appearing
      * Try updating this property to your correct dk_arrows.png path
      */
-    padding: 10px 3% 9px;
-    width: 94%;
+    padding: 10px 0px 10px 8px;
+    width: auto;
     display: block;
 }
 
 a.dk_toggle {
-    color: #888;
     display: block;
     background: white;
     border: none;
     width: 100%;
     @include border-radius(4px);
-    margin: 0 0 3% 0;
+    margin: 0 0 15px 0;
     resize: none;
     position: relative;
     z-index: 9999;
-  	border: 1px solid $dark-tan; 
-  	font: 14px Arial, "Sans Serif";
-    color: #1B334A;
-    text-indent: 5px;
-
-
-    
+  	 border: 1px solid $dark-tan; 
+  	 font: 14px Helvetica, Arial, "Sans Serif";
+    color: #333;
 }
 
-.dk_toggle:hover {
-    
-}
 /* Applied when the dropdown is focused */
 .dk_focus .dk_toggle {
     
@@ -85,7 +77,7 @@ a.dk_toggle {
     z-index: 1;
     @include border-radius(0 0 4px 4px);
     background: white; 
-    width: 99.9%;
+    width: 100%;
     display: block;
     @include box-shadow(0 1px 2px #666);
     padding-top: 4px;
@@ -93,9 +85,14 @@ a.dk_toggle {
     font-family: Rokkitt, Rockwell;
     font-weight: bold;
     color: #1B334A;
+    left: 1px
+}
+#dk_container_categorize .dk_toggle,
+#dk_container_discussion_topic .dk_toggle {
+   width: 405px !important;
 }
 .dk_options a {
-    padding: 10px 13px;
+    padding: 10px 8px;
 }
 .dk_options li:last-child a {
     @include border-radius(0 0 4px 4px);
@@ -121,18 +118,10 @@ a.dk_toggle {
 /***** Critical to the continued enjoyment of working dropdowns ******/
 
 .dk_container {
-    float: left;
     position: relative;
 }
 .dk_container a {
     outline: 0;
-}
-
-.dk_toggle {
-    display: block;
-    position: relative;
-    zoom: 1;
-    width: 94%;
 }
 
 .dk_open {
@@ -147,9 +136,9 @@ a.dk_toggle {
 
 .dk_options {
     display: none;
-    margin-top: -1px;
+    margin-top: -2px;
     position: absolute;
-    left: 0;
+    left: 1px;
 }
 .dk_options a,
 .dk_options a:link,
@@ -178,9 +167,8 @@ a.dk_toggle {
 
 a.dk_toggle {
     span.dk_arrow {
-        float: right;
-        height: 14px;
-		width: 15px;
+        height: 17px;
+		width: 17px;
         line-height: 27px;
         font-size: 13px;
         display: block;
@@ -193,14 +181,20 @@ a.dk_toggle {
         border: none;
         text-indent: 3px;
         font-weight: bold;
-        padding: 10px 13px 11px 9px;
-        margin: -10px -3.5% 0 0;
+        padding: 14px 13px 7px 10px;
+        margin: 0px;
         position: relative;
-        right: 0px;
+        right: -1px;
+        top: -1px;
         @include background-image(linear-gradient(#294d6f 0%, #1b334a 50%));
         border-radius: 0px 4px 4px 0px;
         text-decoration: none;
+        position: absolute;
     }
+}
+
+#dk_container_categorize, #dk_container_discussion_topic {
+   width: 413px;
 }
 
 /** Critical to the continued enjoyment of working dropdowns ******/

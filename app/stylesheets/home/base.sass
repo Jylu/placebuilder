@@ -64,7 +64,7 @@ $black-shadow: 0px 2px 1px black
     text-shadow: -1px -1px -1px #cb5450
 
 .green-button
-  background: $red
+  background: green
   border-radius: 4px
   color: #eeecdf
   text-shadow: 1px 1px 1px black
@@ -81,6 +81,13 @@ $black-shadow: 0px 2px 1px black
   padding: 15px
     top: 13px
     bottom: 13px
+  &:hover, &:focus
+    color: #fff
+    +linear-gradient(color-stops(#62AF46, #569E3F), top)
+    box-shadow: 0px 2px 4px #adab9f
+  &:active
+    color: #fff
+    +linear-gradient(color-stops(#62AF46, #569E3F), bottom) 
     
 /* Overall Styles */
 .right
@@ -133,7 +140,7 @@ header
     width: 113px
     float: right
   .top-bar
-    width: 450px
+    width: 803px
     border-left: 1px solid $light-blue
     height: 60px
     border-right: 1px solid $light-blue
@@ -235,7 +242,7 @@ aside
     .your-town 
       padding: 0px
       li
-        padding: 7px 10px 10px 10px
+        padding: 7px 10px 10px 12px
         &:hover, &:focus, &:active
           background-color: rgba(255, 255, 255, 0.4)
         a
@@ -266,19 +273,19 @@ aside
           background: image-url("shared/redesign/announcements-icon.png") no-repeat left       
 
   #directories
-    width: 90%
+    width: 264px
     margin: 0 auto
     h3
       display: inline-block
       font-family: $heading
       font-size: 18px
       padding: 10px 8px
-      margin: 19px 1px 0px 0px
+      margin: 19px 0px 0px 0px
       background-color: rgba(225, 225, 225, 0.3)
       color: $red
       border-radius: 4px 4px 0px 0px
       cursor: pointer
-      width: 112px
+      width: 113px
       text-align: center
       text-shadow: none
       border: 1px solid #D7D5C6
@@ -321,9 +328,9 @@ aside
 
 #directory_content
   height: 100%
-  width: 243px
+  width: 244px
   background-color: #efeee7
-  padding: 10px
+  padding: 0px 10px 10px 10px
   position: relative
   bottom: 0px
   overflow: hidden
@@ -340,15 +347,18 @@ aside
       text-shadow: 1px 1px 1px white
       border-bottom: 1px solid #c5c2b5
       padding-bottom: 5px
+      text-transform: capitalize
     .neighbor
       margin-left: 0px
       border-bottom: 1px dotted
       border-color: lighten($dark-grey, 30%)
-      padding-bottom: 10px
-      padding-top: 10px
-      height: 65px
+      padding-bottom: 15px
+      padding-top: 15px
+      height: 30px
       width: auto
       overflow: hidden
+      white-space: nowrap
+      cursor: pointer
       &:last-child
         border-bottom: none
       &:hover
@@ -362,16 +372,21 @@ aside
         line-height: 16px
         margin-bottom: 5px
         margin-right: 10px
+        text-overflow: ellipsis
+        overflow: hidden
+        text-transform: capitalize
       p
         font-family:  $body
         font-size: 13px
         color: lighten($black, 10%)
+        text-overflow: ellipsis
+        overflow: hidden
         margin-top: 5px
       img
         padding-right: 10px
         float: left
         width: 32px
-        margin-bottom: 30px
+        margin-bottom: 10px
         height: 32px
         overflow: hidden
   .page
@@ -383,6 +398,8 @@ aside
     height: 65px
     width: 100%
     overflow: hidden
+    white-space: nowrap
+    cursor: pointer
     &:last-child
       border-bottom: none
     &:hover
@@ -396,16 +413,21 @@ aside
       line-height: 16px
       margin-bottom: 5px
       margin-right: 10px
+      text-overflow: ellipsis
+      overflow: hidden
+      text-transform: capitalize
     p
       font-family:  $body
       font-size: 13px
       color: lighten($black, 10%)
       margin-top: 5px
+      //text-overflow: ellipsis
+      //overflow: hidden
     img
       padding-right: 10px
       float: left
       width: 32px
-      margin-bottom: 30px
+      margin-bottom: 10px
       height: 32px
       overflow: hidden
  
@@ -422,7 +444,8 @@ aside
     background: white
     border-radius: 4px
     margin: 20px
-    box-shadow: 0px 4px 10px #333
+    position: relative
+    box-shadow: 0px 0px 5px #666
     .wire-top
       height: 30px
       border-radius: 4px
@@ -578,7 +601,7 @@ aside
       padding: 0px 20px 5px 20px
       p
         margin-left: 60px
-        padding-top: 10px
+        padding-top: 13px
       p.author
         font-size: 13px
         color: $blue
@@ -604,7 +627,7 @@ aside
           color: lighten($dark-grey, 15%)
       img
         width: 25px
-        padding-top: 10px
+        padding-top: 13px
         height: 25px
         float: left
         margin-left: 20px
@@ -643,6 +666,29 @@ aside
           margin-left: 35px
         img
           margin-left: 0px
+  .post-shadow
+    width: 100%
+    height: 35px
+    position: absolute
+    bottom: -15px
+    .shadow_left
+      float: left
+      width: 50%
+      height: 15px
+      background: image-url("shared/redesign/post-shadow-left.png") no-repeat
+      background-position: bottom left
+      position: absolute
+      bottom: 0px
+      left: 5px
+    .shadow_right
+      float: right
+      width: 50%
+      height: 15px
+      background: image-url("shared/redesign/post-shadow-right.png") no-repeat
+      background-position: bottom right
+      position: absolute
+      bottom: 0px
+      right: 5px
   .wire-group
     width: 100%
     float: left
