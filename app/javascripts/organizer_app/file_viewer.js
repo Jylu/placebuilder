@@ -27,7 +27,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
   ifuser: function() {
     return this.model.get("on_commonplace");
   },
-  
+
   full_name: function() {
     var name = this.model.full_name();
     if (name === undefined) {
@@ -45,7 +45,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return address;
     }
   },
-  
+
   phone: function() {
     var phone = this.model.get('phone');
     if (!phone) {
@@ -54,7 +54,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return phone;
     }
   },
-  
+
   organization: function() {
     var organization = this.model.get('organization');
     if (!organization) {
@@ -63,7 +63,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return organization;
     }
   },
-  
+
   position: function() {
     var position = this.model.get('position');
     if (!position) {
@@ -72,7 +72,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return position;
     }
   },
-  
+
   notes: function() {
     var notes = this.model.get('notes');
     if (!notes) {
@@ -81,7 +81,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return notes;
     }
   },
-  
+
   sector: function() {
     var sector = this.model.get('sector');
     if (!sector) {
@@ -90,7 +90,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return sector;
     }
   },
-  
+
   type: function() {
     var type = this.model.get('type');
     if (!type) {
@@ -110,7 +110,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       //location.reload();
     }
   },
-  
+
   addPhone: function(e) {
     e.preventDefault();
     var phone = this.$("#phone-text").val();
@@ -148,14 +148,14 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       //location.reload();
     }
   },
-  
+
   addLog: function(e) {
     e.preventDefault();
     console.log({
       date: $("#log-date").val(),
       text: $("#log-text").val(),
     });
-    this.model.addLog({ 
+    this.model.addLog({
       date: $("#log-date").val(),
       text: $("#log-text").val(),
       //TODO: include tags. They are checkboxes and not CSVs now
@@ -172,7 +172,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     }
   },
 
-  tags: function() { 
+  tags: function() {
     var tags = this.model.get('tags');
     if (tags) {
       return tags
@@ -180,7 +180,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return "No tags in our records yet.";
     }
   },
-  
+
   allactions: function() {
     //this.$("#action-count").empty();
     //this.$("#action-count").append("<p>here</p>");
@@ -188,7 +188,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       this.$("#action-count").before("Not a user yet");
     }
     else{
-      this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("id")+"/all"); 
+      this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("id")+"/all");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/all\" target=\"content\" >All</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/email\" target=\"content\" >Emails Sent</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/sitevisit\" target=\"content\" >Log In Time</a>  ||  ");
@@ -199,9 +199,10 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/invite\" target=\"content\" >Invite</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/tags\" target=\"content\" >Tags</a>");
     }
-    
+
   },
 
-  possibleTags: function() { return possTags; }
+  possibleTags: function() { return possTags; },
+  possibleTodos: function() { return possTodos; }
 
 });

@@ -66,6 +66,7 @@ class Community < ActiveRecord::Base
     t.add lambda {|c| $interests }, :as => :interests
     t.add :resident_tags
     t.add :manual_tags
+    t.add :resident_todos
     t.add :zip_code
   end
 
@@ -264,9 +265,21 @@ class Community < ActiveRecord::Base
     self.save
   end
 
+  def add_resident_todos(todos)
+    self.metadata[:resident_todos] ||= []
+    self.metadata[:resident_todos] |= todos
+    self.save
+  end
+
+  def resident_todos
+    todos = Flag.init_todo.keys
+    todos |= self.metadata[:resident_todos] if self.metadata[:resident_todos]
+    todos
+  end
+
   def resident_tags
-    tags = []
-    tags +=  self.metadata[:resident_tags] if self.metadata[:resident_tags]
+    tags = Flag.init.keys
+    tags |=  self.metadata[:resident_tags] if self.metadata[:resident_tags]
     tags << "registered"
     tags << "email"
     tags << "address"

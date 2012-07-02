@@ -2,7 +2,7 @@ class Resident < ActiveRecord::Base
   serialize :metadata, Hash
   serialize :logs, Array
   serialize :sector_tags, Array
-  serialize :type_tags, Array  
+  serialize :type_tags, Array
 
   belongs_to :community
 
@@ -22,7 +22,7 @@ class Resident < ActiveRecord::Base
   def friends_on_commonplace?
     [false, true].sample
   end
-  
+
   def in_commonplace_organization?
     [false, true].sample
   end
@@ -51,29 +51,51 @@ class Resident < ActiveRecord::Base
     tags
   end
 
+  # Created via Organizer App
+  def manually_added
+    todo = ["send nomination email"]
+    self.metadata[:todos] ||= []
+    self.metadata[:todos] |= todo
+    self.community.add_resident_todos(todo)
+
+    self.metadata[:manually_added] = true
+  end
+
+  def todos
+    todos = []
+    todos |= self.metadata[:todos] if self.metadata[:todos]
+    todos
+  end
+
+  # Creates tags associated with the resident
+  #
+  # Returns a list of todos
   def add_flags(flags)
-    tags = []
+    add = []
+    remove = []
     flags.each do |flag|
       if !self.flags.find_by_name(flag)
-        f = self.flags.create(:name => flag) 
-        if more_tag = f.check_chain_rules
-          remove_tag(more_tag[0])
-          tags |= Array(more_tag[1])
+        f = self.flags.create(:name => flag)
+        if rule = Flag.get_rule(f.name)
+          remove |= rule[0]
+          add |= rule[1]
         end
       end
     end
 
-    tags.each do |flag|
-      f = self.flags.create(:name => flag)
-      f.check_chain_rules
-    end
-
-    return tags
+    [remove, add]
   end
 
   def add_tags(tag_or_tags)
     tags = Array(tag_or_tags)
-    tags |= add_flags(tags)
+
+    # Edit todo list
+    self.metadata[:todos] ||= []
+    todos ||= add_flags(tags)
+    self.metadata[:todos] |= todos[1]
+    self.metadata[:todos] -= todos[0]
+
+    # Add to tag list
     self.metadata[:tags] ||= []
     self.metadata[:tags] |= tags
     self.community.add_resident_tags(tags)

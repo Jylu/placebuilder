@@ -550,12 +550,12 @@ WHERE
   end
 
   # Finds StreetAddress with same address
-  # 
+  #
   # Note: This should find an exact match because of address verification
   # upon User registration [!!verify_address does not exist yet]
   # ...Unless one is in the dev-environment where there's no real data
   def find_st_address
-    matched = StreetAddress.where("address ILIKE ?", "%#{self.address}%") 
+    matched = StreetAddress.where("address ILIKE ?", "%#{self.address}%")
 
     return matched.first if matched.count == 1
 
@@ -573,7 +573,7 @@ WHERE
   def find_resident
     address_components = self.address.split(" ")
     # if first word of address is not a number
-    if !(address_components.first =~ /^[-+]?[0-9]+$/) 
+    if !(address_components.first =~ /^[-+]?[0-9]+$/)
       address_components.shift if address_components.first == "#"
       # TODO: add PO BOX case
       matched = Resident.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.first + "%", self.last_name)

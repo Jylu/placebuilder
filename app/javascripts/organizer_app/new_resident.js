@@ -1,6 +1,6 @@
 
 OrganizerApp.AddResident = CommonPlace.View.extend({
-  
+
   template: "organizer_app.new-resident",
 
   events: {
@@ -39,10 +39,10 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
         }),
 	cache: 'false',
 	success: function() { //this.show("Added");
-        alert("Added. Refresh to see new residents"); 
+        alert("Added. Refresh to see new residents");
       }
     });
-    
+
     this.options.filePicker.render();
   },
 

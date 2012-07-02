@@ -14,10 +14,11 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click #check-all": "checkall",
     "click #add-tag" : "addTag",
     "click #map-button": "showMapView",
-    "click #new-resident" : "addResident",
+    "click #new-resident": "addResident",
+    "click #todo-list": "gotoTodo"
     //"click #new-street" : "addStreet"
   },
-  
+
   initialize: function() {
     checklist = [];
     all_check = false;
@@ -57,7 +58,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   addTag: function() {
     _.map(this.collection.models, _.bind(function(model) {
       if(checklist[model.getId()]) {
-        var tag = this.$("#tag-input").val(); 
+        var tag = this.$("#tag-input").val();
 
         console.log(model.getId());
 
@@ -67,10 +68,14 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     //location.reload();
   },
 
+  gotoTodo: function (e) {
+    new OrganizerApp.TodoList({el: $('#file-viewer'), community: this.options.community,  collection: this.collection, filePicker: this}).render();
+  },
+
   addResident: function(e) {
     new OrganizerApp.AddResident({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
   },
-/*  
+/*
   addStreet: function(e) {
     new OrganizerApp.AddStreet({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
   },
@@ -98,25 +103,25 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         $(li).prepend(cb);
         $(li).addClass("pick-resident");
         return li;
-      }, this))); 
+      }, this)));
   },
 
   filter: function() {
     var params = {
-      "with": _.map(this.$(".tag-filter[data-state=on]").toArray(), function(e) { 
+      "with": _.map(this.$(".tag-filter[data-state=on]").toArray(), function(e) {
         return $(e).attr("data-tag");
       }).join(","),
-      without: _.map(this.$(".tag-filter[data-state=off]").toArray(), function(e) { 
+      without: _.map(this.$(".tag-filter[data-state=off]").toArray(), function(e) {
         return $(e).attr("data-tag");
       }).join(","),
       query: this.$("#query-input").val()
     };
 
-    this.collection.fetch({ 
+    this.collection.fetch({
       data: params,
       success: _.bind(this.afterRender, this)
     });
-    this.showMapView();
+    //this.showMapView();
   },
 
   tags: function() { possTags = this.options.community.get('resident_tags'); return this.options.community.get('resident_tags'); },
@@ -140,7 +145,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     });
     return actions;
   },
-  
+
   filterUsers: function(e){
     switch(e.target.id){
       case "filter":
@@ -150,12 +155,12 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           "tag": this.$("#filter-tags").val()
         };
         //console.log(params["search"]);
-        this.collection.fetch({ 
+        this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)
         });
         break;
-      case "filter-order":  
+      case "filter-order":
         var params={
           "search": "filter",
           //"have": this.$("#haveornot").val(),
@@ -163,13 +168,13 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           "order": this.$("input[name='order']:checked").val()
         };
         //alert(params['order']);
-        this.collection.fetch({ 
+        this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)
         });
         console.log(params["tag"]);
-        break; 
+        break;
     }
   }
-    
+
 });

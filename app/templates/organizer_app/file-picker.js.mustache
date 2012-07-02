@@ -1,7 +1,15 @@
 <div id="file-picker-filters">
-<button id="new-resident">New Resident</button><br>
-<input type="text" placeholder="tag" id="tag-input">
-<button id="add-tag">Add tag</button><br>
+<button id="new-resident">New Resident</button>
+<button id="todo-list">TODO List</button>
+<br><br>
+<select name="add-tag">
+<option></option>
+{{#tags}}
+<option class="tag-adding">{{.}}</option>
+{{/tags}}
+</select>
+<button id="add-tag">Add tag</button>
+<br><br>
   <select id="haveornot" name="haveornot" >
     <option value="yes" selected=true> Have
     <option value="no"> Haven't
@@ -12,15 +20,13 @@
   {{/dropdowns}}
 </select>
 <button id="filter">Filt</button>
-<!--
-<br>
+<br><br>
+<select name="tags">
+  <option></option>
   {{#tags}}
-    <a class="tag-filter" data-state="neutral" data-tag="{{.}}">{{.}}</a>
+    <option class="tag-filter" data-state="neutral" data-tag="{{.}}">{{.}}</option>
   {{/tags}}
--->
-
-
-
+</select>
   <input type="text" placeholder="search" id="query-input">
   <button id="filter-button">Find these residents!</button>
 <br>
