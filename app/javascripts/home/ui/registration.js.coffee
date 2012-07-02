@@ -1,6 +1,7 @@
 Home.ui.Registration = Framework.View.extend
   template: "home.registration"
   reg_page: undefined
+  pages: []
   referrers: [
     "Flyer at my door",
       "Someone knocked on my door",
@@ -45,24 +46,25 @@ Home.ui.Registration = Framework.View.extend
         return false
     )
 
-  showVerificationPage: ->
-    page2 = new Home.ui.Verification(el: $("#registration_content"))
+  showVerificationPage: (index) ->
+    @pages[index] = new Home.ui.Verification(el: $("#registration_content"))
     params =
       "community": @community
       "referrers": @referrers
-    page2.render(params).animate({'margin-left' : '0px'}, 800)
+    @pages[index].render(params).animate({'margin-left' : '0px'}, 800)
 
-  showWelcomePage: ->
-    page3 = new Home.ui.Welcome(el: $("#registration_content"))
+  showWelcomePage: (index) ->
+    @pages[index] = new Home.ui.Welcome(el: $("#registration_content"))
     params =
       "name": @user_info.full_name.split(" ")[0]
       "community": @community
-    page3.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+    @pages[index].render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
 
   nextPage: (e) ->
     if e
       e.preventDefault()
     @reg_page = if @reg_page is undefined then 2 else @reg_page + 1
+    @prev_page = @reg_page-1
     switch this.reg_page
       when 2
         @user_info.full_name = this.$('.name').val()
@@ -74,30 +76,33 @@ Home.ui.Registration = Framework.View.extend
           "referrers": @referrers
         page2.render(params).animate({'margin-left' : '0px'}, 800)
       when 3
+        #Kevin - implement slide out here
+        #if @prev_page of @pages 
+          #makes sure the previous page is in the array
+          #@pages[@prev_page].slideOut()
+        @pages[@reg_page] = new Home.ui.civicProfile(el: $("#registration_content"))
+        @pages[@reg_page].render(@user_info).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+      when 4
         @user_info.address = this.$('input.address').val()
         referral = this.$(':selected').val()
         if referral is "default"
           alert "Please tell us how you heard about CommonPlace"
           @reg_page--
         else
-          @user_info.referrer = referral
-          page3 = new Home.ui.Welcome(el: $("#registration_content"))
-          params =
-            "name": @user_info.name.split(" ")[0]
-            "community": @community
-          page3.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
-      when 4
-        page4 = new Home.ui.Subscribe(el: $("#registration_content"))
-        page4.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+          @user_info.referral_source = referral
+
+          # create new user, on success show welcome page
+          fields = ["address"]
+          this.validate(@user_info, fields, this.createUser)
       when 5
-        page5 = new Home.ui.civicProfile(el: $("#registration_content"))
-        page5.render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+        @pages[@reg_page] = new Home.ui.Subscribe(el: $("#registration_content"))
+        @pages[@reg_page].render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       when 6
-        page6 = new Home.ui.findNeighbors(el: $("#registration_content"))
+        @pages[@reg_page] = new Home.ui.findNeighbors(el: $("#registration_content"))
         params =
           "name": @user_info.full_name.split(" ")[0]
           "community": @community
-        page6.render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+        @pages[@reg_page].render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
       else
         @reg_page = 1
         router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
@@ -109,7 +114,7 @@ Home.ui.Registration = Framework.View.extend
       if not _.isEmpty(response.facebook)
         window.location.pathname = "/users/auth/facebook"
       else
-        _.each(["full_name", "email"], _.bind((field) ->
+        _.each(fields, _.bind((field) ->
           if not _.isEmpty(response[field])
             error_message = _.reduce(response[field], (a, b) ->
               a + "and" + b
@@ -120,7 +125,7 @@ Home.ui.Registration = Framework.View.extend
 
         if valid
           if onSuccess
-            onSuccess()
+            onSuccess(@reg_page)
         else
           @reg_page--
     , this))
@@ -133,8 +138,16 @@ Home.ui.Registration = Framework.View.extend
     $.post(create_user_api, @user_info, _.bind((response) ->
       if response.success is true or response.id
         router.account = new Home.model.Account response
-        this.showWelcomePage()
+        this.showWelcomePage(@reg_page)
       else
+        _.each(["full_name","email","address","password"], _.bind((field) ->
+          if not _.isEmpty(response[field])
+            error_message = _.reduce(response[field], (a, b) ->
+              a + "and" + b
+            )
+            alert error_message
+            valid = false
+        , this))
         @reg_page--
         console.log "Error processing request: "
     , this))
