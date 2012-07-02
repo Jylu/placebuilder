@@ -60,6 +60,15 @@ Home.ui.Registration = Framework.View.extend
       "community": @community
     @pages[index].render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
 
+  showProfilePage: (index) ->
+    #Kevin - implement slide out here
+    prev_page = index-1
+    #if prev_page of @pages 
+      #makes sure the previous page is in the array
+      #@pages[prev_page].slideOut()
+    @pages[index] = new Home.ui.civicProfile(el: $("#registration_content"))
+    @pages[index].render(@user_info).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+
   nextPage: (e) ->
     if e
       e.preventDefault()
@@ -76,13 +85,6 @@ Home.ui.Registration = Framework.View.extend
           "referrers": @referrers
         page2.render(params).animate({'margin-left' : '0px'}, 800)
       when 3
-        #Kevin - implement slide out here
-        #if @prev_page of @pages 
-          #makes sure the previous page is in the array
-          #@pages[@prev_page].slideOut()
-        @pages[@reg_page] = new Home.ui.civicProfile(el: $("#registration_content"))
-        @pages[@reg_page].render(@user_info).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
-      when 4
         @user_info.address = this.$('input.address').val()
         referral = this.$(':selected').val()
         if referral is "default"
@@ -91,9 +93,11 @@ Home.ui.Registration = Framework.View.extend
         else
           @user_info.referral_source = referral
 
-          # create new user, on success show welcome page
           fields = ["address"]
-          this.validate(@user_info, fields, this.createUser)
+          this.validate(@user_info, fields, this.showProfilePage)
+      when 4
+          #get the info from the profile page
+          this.createUser()
       when 5
         @pages[@reg_page] = new Home.ui.Subscribe(el: $("#registration_content"))
         @pages[@reg_page].render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
