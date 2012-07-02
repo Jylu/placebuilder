@@ -14,6 +14,16 @@ class Flag < ActiveRecord::Base
     }
   end
 
+  # Creates a 1:1 mapping of todo with "logical" next flag
+  def self.init_todo
+    {"send nomination email" => ["sent nomination email"],
+      "schedule a call" => ["scheduled a call"],
+      "call" => ["called"],
+      "send thanks for call" => ["sent thanks for call"],
+      "add to civic hero list" => ["member of civic hero"]
+    }
+  end
+
   def self.get_rule(flag)
     @@rules ||= init
 

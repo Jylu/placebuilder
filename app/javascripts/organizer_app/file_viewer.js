@@ -202,6 +202,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
 
   },
 
-  possibleTags: function() { return possTags; }
+  possibleTags: function() { return possTags; },
+  possibleTodos: function() { return possTodos; }
 
 });

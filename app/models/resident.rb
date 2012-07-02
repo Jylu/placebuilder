@@ -51,9 +51,14 @@ class Resident < ActiveRecord::Base
     tags
   end
 
+  # Created via Organizer App
   def manually_added
+    todo = ["send nomination email"]
     self.metadata[:todos] ||= []
-    self.metadata[:todos] |= ["send nomination email"]
+    self.metadata[:todos] |= todo
+    self.community.add_resident_todos(todo)
+
+    self.metadata[:manually_added] = true
   end
 
   def todos
@@ -81,12 +86,6 @@ class Resident < ActiveRecord::Base
     [remove, add]
   end
 
-  def test(tags)
-    todos = add_flags(tags)
-
-    todos
-  end
-
   def add_tags(tag_or_tags)
     tags = Array(tag_or_tags)
 
@@ -96,6 +95,7 @@ class Resident < ActiveRecord::Base
     self.metadata[:todos] |= todos[1]
     self.metadata[:todos] -= todos[0]
 
+    # Add to tag list
     self.metadata[:tags] ||= []
     self.metadata[:tags] |= tags
     self.community.add_resident_tags(tags)

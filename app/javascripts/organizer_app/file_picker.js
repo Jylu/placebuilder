@@ -11,7 +11,8 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click #check-all": "checkall",
     "click #add-tag" : "addTag",
     "click #map-button": "showMapView",
-    "click #new-resident" : "addResident",
+    "click #new-resident": "addResident",
+    "click #todo-list": "gotoTodo"
     //"click #new-street" : "addStreet"
   },
 
@@ -64,6 +65,10 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     //location.reload();
   },
 
+  gotoTodo: function (e) {
+    new OrganizerApp.TodoList({el: $('#file-viewer'), community: this.options.community,  collection: this.collection, filePicker: this}).render();
+  },
+
   addResident: function(e) {
     new OrganizerApp.AddResident({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
   },
@@ -113,7 +118,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
       data: params,
       success: _.bind(this.afterRender, this)
     });
-    this.showMapView();
+    //this.showMapView();
   },
 
   tags: function() { possTags = this.options.community.get('resident_tags'); return this.options.community.get('resident_tags'); },
