@@ -14,16 +14,11 @@
     <option value="yes" selected=true> Have
     <option value="no"> Haven't
   </select>
-  <select id="filter-tags" name="filter-tags">
-    <option value="post" selected=true> Posted
-    <option value="email" > Open Email
-    <option value="reply" > Replied
-    <option value="replied" > Be replied
-    <option value="invite" > Invited
-    <option value="announcement" > Announcements
-    <option value="event" > Event
-    <option value="sitevisit" > Logged in
-  </select>
+<select id="filter-tags" name="filter-tags">
+  {{#dropdowns}}
+        <option value="{{tag}}" > {{val}}
+  {{/dropdowns}}
+</select>
 <button id="filter">Filt</button>
 <br><br>
 <select name="tags">

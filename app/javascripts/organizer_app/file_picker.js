@@ -133,6 +133,18 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     var newState = { neutral: "on", on: "off", off: "neutral"}[state];
     $(e.currentTarget).attr("data-state", newState);
   },
+  
+  dropdowns: function(){
+    //var tags=["post","email","reply","replied","invite","announcement","event","sitevisit"];
+    //var alltags=tags.concat(possTags);
+    var actions=[{tag:"post",val:"Post"},{tag:"email",val:"Email"},{tag:"reply",val:"Reply"},{tag:"replied",val:"Be replied"},
+              {tag:"invite",val:"Invite"},{tag:"announcement",val:"Announcement"},{tag:"event",val:"Event"},{tag:"sitevisit",val:"Log in"}         ];
+    possTags=this.options.community.get('manual_tags');
+    _.map(possTags, function(residenttag) {
+      actions.push({tag:residenttag,val:residenttag});
+    });
+    return actions;
+  },
 
   filterUsers: function(e){
     switch(e.target.id){

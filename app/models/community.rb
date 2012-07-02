@@ -65,6 +65,7 @@ class Community < ActiveRecord::Base
     t.add lambda {|c| $skills }, :as => :skills
     t.add lambda {|c| $interests }, :as => :interests
     t.add :resident_tags
+    t.add :manual_tags
     t.add :resident_todos
     t.add :zip_code
   end
@@ -283,5 +284,9 @@ class Community < ActiveRecord::Base
     tags << "email"
     tags << "address"
     tags
+  end
+  
+  def manual_tags
+    tags=Flag.all.map &:name
   end
 end

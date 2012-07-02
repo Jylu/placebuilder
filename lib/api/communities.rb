@@ -111,19 +111,39 @@ class API
               when "reply"
                 @ids=Reply.all.map {|a| a.user_id}.uniq
               when "replied"
-                @ids=Reply.all.map {|a| a.repliable_id}.uniq
+                @postsids=Reply.all.map {|a| a.repliable_id}.uniq                
+                @ids=Post.where(:id=>@postsids).map {|a| a.user_id}.uniq
               when "invite"
                 @ids=Invite.all.map {|a| a.inviter_id}.uniq
+              else
+                @ids=Flag.where(:name=>tag).map &:resident_id
+                @resident=true
+          end 
+          if !@resident         
+            if haveornot=="yes"
+              serialize(User.where(:id=>@ids))   
+            else
+              if @ids.empty?
+                serialize(User.all)
+              else
+                serialize(User.where("id not in (?)",@ids)) 
+              end  
+            end
           end
           if haveornot=="yes"
             serialize(User.where(:id=>@ids))
           else
-            if @ids.empty?
-              serialize(User.all)
+            if haveornot=="yes"
+              serialize(Resident.where(:id=>@ids))   
             else
+              if @ids.empty?
+                serialize(Resident.all)
+              else
+                serialize(Resident.where("id not in (?)",@ids))   
+              end
+            end
               serialize(User.where("id not in (?)",@ids))
           end
-        end
       end
 
       def order_users_by_time_of_tag(tag)
