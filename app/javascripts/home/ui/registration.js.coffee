@@ -94,8 +94,14 @@ Home.ui.Registration = Framework.View.extend
           fields = ["address"]
           this.validate(@user_info, fields, this.showProfilePage)
       when 4
-          #get the info from the profile page
-          this.createUser()
+        #get the info from the profile page
+        @user_info.about = this.$('#about').val()
+        @user_info.status = this.$('#status').val()
+        @user_info.goods = this.$('#goods').val()
+        @user_info.skills = this.$('#skills').val()
+        @user_info.interests = this.$('#interests').val()
+        @user_info.organizations = this.$('#organizations').val()
+        this.createUser()
       when 5
         @pages[@reg_page] = new Home.ui.Subscribe(el: $("#registration_content"))
         @pages[@reg_page].render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
