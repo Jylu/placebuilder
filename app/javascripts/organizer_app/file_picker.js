@@ -6,8 +6,11 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   events: {
     "click li": "onClickFile",
     "click .cb": "toggle",
-    "click .tag-filter": "cycleFilter",
+    "click #filter": "filterUsers",
+    "click #filter-order" :"filterUsers",
+    "click :checkbox": "toggle",
     "click #filter-button": "filter",
+    "click .tag-filter": "cycleFilter",
     "click #check-all": "checkall",
     "click #add-tag" : "addTag",
     "click #map-button": "showMapView",
@@ -129,6 +132,37 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     var state = $(e.currentTarget).attr("data-state");
     var newState = { neutral: "on", on: "off", off: "neutral"}[state];
     $(e.currentTarget).attr("data-state", newState);
+  },
+
+  filterUsers: function(e){
+    switch(e.target.id){
+      case "filter":
+        var params={
+          "search": "filter",
+          "have": this.$("#haveornot").val(),
+          "tag": this.$("#filter-tags").val()
+        };
+        //console.log(params["search"]);
+        this.collection.fetch({
+          data: params,
+          success: _.bind(this.afterRender, this)
+        });
+        break;
+      case "filter-order":
+        var params={
+          "search": "filter",
+          //"have": this.$("#haveornot").val(),
+          "tag": this.$("#filter-tags").val(),
+          "order": this.$("input[name='order']:checked").val()
+        };
+        //alert(params['order']);
+        this.collection.fetch({
+          data: params,
+          success: _.bind(this.afterRender, this)
+        });
+        console.log(params["tag"]);
+        break;
+    }
   }
 
 });

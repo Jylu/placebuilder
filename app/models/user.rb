@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
   end
 
   after_create :correlate
+  
   before_validation :geocode, :if => :address_changed?
   before_validation :place_in_neighborhood, :if => :address_changed?
 
@@ -198,6 +199,10 @@ class User < ActiveRecord::Base
     t.add lambda {|u| u.replies.count}, :as => :reply_count
     t.add lambda {|u| "true" }, :as => :success
     t.add :unread
+  end
+
+  def announcement_count
+    self.announcements.count
   end
 
   def links
@@ -671,7 +676,7 @@ WHERE
         :user => self)
     end
   end
-
+  
   private
 
   def is_transitional_user

@@ -15,7 +15,7 @@ class Event < ActiveRecord::Base
 
   has_many :event_notes
 
-  belongs_to :owner, :polymorphic => true
+  belongs_to :owner, :polymorphic => true,:counter_cache => true
   belongs_to :community
   
   has_many :thanks, :as => :thankable, :dependent => :destroy
