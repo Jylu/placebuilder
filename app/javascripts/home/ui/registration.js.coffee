@@ -79,11 +79,9 @@ Home.ui.Registration = Framework.View.extend
         @user_info.full_name = this.$('.name').val()
         @user_info.email = this.$('.email').val()
         @user_info.password = this.$('.password').val()
-        page2 = new Home.ui.Verification(el: $("#registration_content"))
-        params =
-          "community": @community
-          "referrers": @referrers
-        page2.render(params).animate({'margin-left' : '0px'}, 800)
+       
+        fields = ["full_name", "email"] 
+        this.validate(@user_info, fields, this.showVerificationPage)
       when 3
         @user_info.address = this.$('input.address').val()
         referral = this.$(':selected').val()
