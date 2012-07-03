@@ -1,9 +1,9 @@
 <div id="file-picker-filters">
 <button id="new-resident">New Resident</button>
-<button id="todo-list">TODO List</button>
+<button id="todo-list">Task List</button>
 <br><br>
 <select name="add-tag">
-<option></option>
+<option>Tag List</option>
 {{#tags}}
 <option class="tag-adding">{{.}}</option>
 {{/tags}}
@@ -22,7 +22,7 @@
 <button id="filter">Filt</button>
 <br><br>
 <select name="tags">
-  <option></option>
+  <option>Tag Filter</option>
   {{#tags}}
     <option class="tag-filter" data-state="neutral" data-tag="{{.}}">{{.}}</option>
   {{/tags}}

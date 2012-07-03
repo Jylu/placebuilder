@@ -1,8 +1,12 @@
 <div id="todo-viewer">
-  <h3>Placeholder</h3>
+  <h3>Task List</h3>
 
   {{#todos}}
     <h4>{{.}}</h4>
-    <br>
+    <ul class="todo-specific" value="{{.}}">
+    {{#profiles}}
+      <input type="checkbox" name="{{.}}">{{.}}<br>
+    {{/profiles}}
+    </ul>
   {{/todos}}
 </div>

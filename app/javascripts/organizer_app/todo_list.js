@@ -2,19 +2,26 @@
 OrganizerApp.TodoList = CommonPlace.View.extend({
 
   template: "organizer_app.todo-list",
-  //template: "organizer_app.new-resident",
 
   events: {
   },
 
-  show: function(){
-    //return this.filePicker.url();
-    collection.each(function(model) {
-      console.log(model.full_name());
-    });
-    //return this.collection.url();
-    //return result;
-    //return this.filepicker.reload();
+  initialize: function() {
+    models = this.collection.models;
+  },
+
+  profiles: function() {
+   // alert(this.$().attr('name'));
+    var todos = possTodos;
+    var tagged = _.filter(models, _.bind(function(model) {
+      return true;
+    }, this));
+
+    var names = _.map(tagged, _.bind(function(model) {
+      return model.full_name();
+    }, this));
+    
+    return names;
   },
 
   todos: function() {

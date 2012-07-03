@@ -27,6 +27,10 @@ class Resident < ActiveRecord::Base
     [false, true].sample
   end
 
+  def manually_added?
+    self.metadata[:manually_added] ||= false
+  end
+
 
   def add_log(date, text, tags)
     self.add_tags(tags)
