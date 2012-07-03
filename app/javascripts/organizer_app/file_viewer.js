@@ -6,12 +6,17 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
 
   events: {
     "submit form#add-log": "addLog",
-    "submit form#add-phone": "addPhone",/*
+    "submit form#add-phone": "addPhone",
     "submit form#add-organization": "addOrganization",
     "submit form#add-position": "addPosition",
-    "submit form#add-notes": "addNotes",*/
+    "submit form#add-notes": "addNotes",
     "submit form#add-address": "addAddress",
-    "submit form#add-email": "addEmail"
+    "submit form#add-email": "addEmail",
+    "click #edit-resident":"editResident"
+  },
+
+  editResident: function(){
+    new OrganizerApp.AddResident({el: $('#file-viewer'), model: this.model, fileViewer: this, edit:true}).render();  
   },
 
   show: function(model) {
@@ -113,17 +118,60 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
 
   addPhone: function(e) {
     e.preventDefault();
-    var phone = this.$("#phone-text").val();
-    if (!phone) {
+    var newphone = this.$("#phone-text").val();
+    if (!newphone) {
       alert("Please enter a non-empty phone number.");
     } else {
       //this.model.set({phone: phone});
       //this.model.save();
       //alert(this.model.get('phone'));
-      this.model.save({phone: 123}, {success: _.bind(this.render, this)});
+      this.model.save({phone: newphone}, {success: _.bind(this.render, this)});
       location.reload();
     }
   },
+
+  addOrganization: function(e) {
+    e.preventDefault();
+    var organization = this.$("#organization-text").val();
+    if (!organization) {
+      alert("Please enter a non-empty organization.");
+    } else {
+      //this.model.set({phone: phone});
+      //this.model.save();
+      //alert(this.model.get('phone'));
+      this.model.save({organization: organization}, {success: _.bind(this.render, this)});
+      location.reload();
+    }
+  },
+  
+  addNotes: function(e) {
+    e.preventDefault();
+    var notes = this.$("#notes-text").val();
+    if (!notes) {
+      alert("Please enter a non-empty notes.");
+    } else {
+      //this.model.set({phone: phone});
+      //this.model.save();
+      //alert(this.model.get('phone'));
+      this.model.save({notes: notes}, {success: _.bind(this.render, this)});
+      location.reload();
+    }
+  },
+  
+  addPosition: function(e) {
+    e.preventDefault();
+    var position = this.$("#position-text").val();
+    if (!position) {
+      alert("Please enter a non-empty position.");
+    } else {
+      //this.model.set({phone: phone});
+      //this.model.save();
+      //alert(this.model.get('phone'));
+      this.model.save({position: position}, {success: _.bind(this.render, this)});
+      location.reload();
+    }
+  },
+
 
   email: function() {
     var email = this.model.get('email');

@@ -1,40 +1,61 @@
+<script  type="text/javascript">
+var ids=new Array();
+var currentid=1;
+function show(id){
+//var select=$(".multiselect").clone(false);
+if(ids.indexOf(id)>=0){
+  return;
+}
+else{
+  ids.push(id);
+  var newid=currentid++;
+  var newselect=$("<select id="+newid+" name=\"filter-tags\" style=\"width:130px\" onchange=\"show()\"><option></option> {{#dropdowns}}<option value=\"{{tag}}\">{{val}}{{/dropdowns}}</select><br>");
+newselect.insertBefore("#filter");
+console.log(newid);
+}
+
+}
+</script>
 <div id="file-picker-filters">
 <button id="new-resident">New Resident</button>
 <button id="todo-list">TODO List</button>
-<br><br>
-<select name="add-tag">
-<option></option>
-{{#tags}}
-<option class="tag-adding">{{.}}</option>
-{{/tags}}
-</select>
-<button id="add-tag">Add tag</button>
-<br><br>
-  <select id="haveornot" name="haveornot" >
+<br>
+  <input type="text" placeholder="search" id="query-input" size=23>
+  <button id="filter-button">Search</button>
+
+<select id="haveornot" name="haveornot" >
     <option value="yes" selected=true> Have
-    <option value="no"> Haven't
+    <option value="no"> Not
   </select>
-  <select id="filter-tags" name="filter-tags">
+<select id="1" name="filter-tags" style="width:130px" onchange="show(this.id)">
+  <option></option>
   {{#dropdowns}}
         <option value="{{tag}}" > {{val}}
   {{/dropdowns}}
 </select>
-<button id="filter">Filt</button>
-<br><br>
-<select name="tags">
+<button id="filter">Filter</button><br>
+
+<select name="add-tag" style="width:198px">
   <option></option>
-  {{#tags}}
-    <option class="tag-filter" data-state="neutral" data-tag="{{.}}">{{.}}</option>
+   {{#tags}}
+     <option class="tag-adding">{{.}}</option>
   {{/tags}}
 </select>
-  <input type="text" placeholder="search" id="query-input">
-  <button id="filter-button">Find these residents!</button>
-<br>
-  <input type="checkbox" id="check-all">Check all shown</input>
+<button id="add-tag">Add tag</button>  
 <br>
   <button id="filter-order">Order by</button>
-<input type="radio"  name="order" value="time"> Time
-<input type="radio"  name="order" value="quantity"> Quantity
+  <select id="order-tags" name="order-tags" style="width:130px">
+  <option></option>
+  {{#dropdowns}}
+        <option value="{{tag}}" > {{val}}
+  {{/dropdowns}}
+</select>
+<select id="order">
+  <option value=time>Time</option>
+  <option value=quantity>Quantity</option>
+</select>
+<br>
+<input type="checkbox" id="check-all">Check all shown</input>
 </div>
 
 <ul id="file-picker-list">

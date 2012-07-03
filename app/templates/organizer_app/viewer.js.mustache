@@ -14,11 +14,11 @@ var target=document.getElementById(id);
 
 <div id="person-viewer">
 
-  <h3 id="name">{{ full_name }} <button onclick="">Edit Info</button></h3>
+  <h3 id="name">{{ full_name }} <button id="edit-resident" onclick="">Edit Info</button></h3>
   <span id="person-viewer-left"> 
      <table>
        <tr>
-	<td>Email<button onclick="display('email-text');display('email-add');">Edit</button></td> <td>{{email}} 
+	<td>Email<img src="../assets/edit.png" onclick="display('email-text');display('email-add');" /></td> <td>{{email}} 
        
 	    <form id="add-email" autocomplete="off">
 		<input id="email-text" type="text" style="display:none" placeholder="john@example.com">
@@ -26,35 +26,35 @@ var target=document.getElementById(id);
 	    </form> 
 	    </td></tr>
        <tr>
-	<td>Phone<button onclick="display('phone-text');display('phone-add');">Edit</button></td></td> <td>{{phone}} 
+	<td>Phone<img src="../assets/edit.png" onclick="display('phone-text');display('phone-add');" /></td></td> <td>{{phone}} 
 	<form id="add-phone" autocomplete="off">
 		<input id="phone-text" type="text" style="display:none" onkeyup="this.value=this.value.replace(/[^0-9]/g,'')" placeholder="1234567890">
 		<input id="phone-add" type="submit" style="display:none" value="Save">
 	    </form> 
 	</td>
        </tr><tr>	
-	<td>Organization<button onclick="display('organization-text');display('organization-add');">Edit</button></td> <td>{{organization}}  
+	<td><nobr>Organization<img src="../assets/edit.png" onclick="display('organization-text');display('organization-add');" /></nobr></td> <td>{{organization}}  
 	<form id="add-organization" autocomplete="off">
 		<input id="organization-text" type="text" style="display:none" >
 		<input id="organization-add" type="submit" style="display:none" value="Save">
 	    </form> 
 	</td>
        </tr><tr>
-	<td>Position<button onclick="display('position-text');display('position-add');">Edit</button></td> <td>{{position}}  
+	<td>Position<img src="../assets/edit.png" onclick="display('position-text');display('position-add');" /></td> <td>{{position}}  
 	<form id="add-position" autocomplete="off">
 		<input id="position-text" type="text" style="display:none" >
 		<input id="position-add" type="submit" style="display:none" value="Save">
 	    </form> 
 	</td>
        </tr><tr>
-	<td>Address<button onclick="display('address-text');display('address-add');">Edit</button></td> <td>{{ address }} 
+	<td>Address<img src="../assets/edit.png" onclick="display('address-text');display('address-add');" /></td> <td>{{ address }} 
 	        <form id="add-address" autocomplete="off">
 		  <input id="address-text" type="text" style="display:none" placeholder="125 Western Avenue, Allston, MA 02134">
 		  <input id="address-add" type="submit" style="display:none" value="Save">
 		</form> 
 	</td>
        </tr><tr>
-	<td>Notes<button onclick="display('notes-text');display('notes-add');">Edit</button></td> <td>{{notes}}  
+	<td>Notes<img src="../assets/edit.png" onclick="display('notes-text');display('notes-add');" /></td> <td>{{notes}}  
 	<form id="add-notes" autocomplete="off">
 		  <textarea id="notes-text"  style="display:none" />
 		  <input id="notes-add" type="submit" style="display:none" value="Save">

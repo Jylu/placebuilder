@@ -92,6 +92,7 @@ class API
       end
 
       def filter_users_by_tag(tag,haveornot)
+        @resident=false
         case tag
               when "post"
                 @ids=Post.all.map {|a| a.user_id}.uniq
@@ -119,30 +120,27 @@ class API
                 @ids=Flag.where(:name=>tag).map &:resident_id
                 @resident=true
           end 
+          @ids.uniq!
           if !@resident         
             if haveornot=="yes"
-              serialize(User.where(:id=>@ids))   
+              User.where(:id=>@ids)
             else
               if @ids.empty?
-                serialize(User.all)
+                User.all
               else
-                serialize(User.where("id not in (?)",@ids)) 
+                User.where("id not in (?)",@ids)
               end  
             end
-          end
-          if haveornot=="yes"
-            serialize(User.where(:id=>@ids))
           else
             if haveornot=="yes"
-              serialize(Resident.where(:id=>@ids))   
+              Resident.where(:id=>@ids)
             else
               if @ids.empty?
-                serialize(Resident.all)
+                Resident.all
               else
-                serialize(Resident.where("id not in (?)",@ids))   
+                Resident.where("id not in (?)",@ids)
               end
             end
-              serialize(User.where("id not in (?)",@ids))
           end
       end
 
@@ -170,6 +168,9 @@ class API
                 @ids=Post.where(:id=>@postsids).map {|a| a.user_id}.uniq
               when "invite"
                 @ids=Invite.order("created_at DESC").map {|a| a.inviter_id}.uniq
+              else
+                @ids=Flag.where(:name=>tag).order("created_at DESC").map &:resident_id
+                @resident=true
           end
           @ids.uniq!
           #@users=User.find(:all,:conditions=>{:id=>@ids })
@@ -177,9 +178,10 @@ class API
           @users=User.where(:id=>@ids[0])
           for @k in 1..@ids.size-1 do
             if User.find(@ids[@k])
-              @users<< User.find(@ids[@k])
+              @users << User.find(@ids[@k])
             end
           end
+          @users.uniq!
           serialize(@users)
       end
 
@@ -203,6 +205,7 @@ class API
           when "event"
             @users=User.order("events_count DESC")
         end
+        @users.uniq!
         serialize(@users)
       end
     end
@@ -257,7 +260,16 @@ CONDITION
       control_access :admin
       if params[:search]=="filter"
         if !params[:order]
-          filter_users_by_tag(params[:tag],params[:have])
+          if params[:tag].size>1
+            @users=filter_users_by_tag(params[:tag][0],params[:have])
+            @final=@users&filter_users_by_tag(params[:tag][1],params[:have])     
+            for @k in 1..params[:tag].size-1 do
+                @final=@final&filter_users_by_tag(params[:tag][@k],params[:have])
+            end
+            serialize(@final)
+          else
+            serialize(filter_users_by_tag(params[:tag][0],params[:have]))
+          end     
         else
           if params[:order]=="time"
              order_users_by_time_of_tag(params[:tag])
@@ -317,7 +329,7 @@ CONDITION
       control_access :admin
 
       Resident.find(params[:file_id]).update_attributes(
-        request_body.slice("email", "address")
+        request_body.slice("email", "address","phone","organization","notes","position","first_name","last_name","sector_tags","type_tags")
       )
     end
 
