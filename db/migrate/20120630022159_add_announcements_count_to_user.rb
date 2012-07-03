@@ -1,6 +1,5 @@
 class AddAnnouncementsCountToUser < ActiveRecord::Migration
   def self.up
-    remove_column :users, :announcements_count
     add_column :users, :announcements_count, :integer, null:false, :default => 0
     @amount=0
     User.find_each do |user|

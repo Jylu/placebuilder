@@ -506,8 +506,8 @@ ActiveRecord::Schema.define(:version => 20120630022163) do
     t.text     "skills"
     t.boolean  "attempted_geolocating"
     t.datetime "last_checked_inbox"
-    t.integer  "replies_count",                    :default => 0
-    t.integer  "posts_count",                      :default => 0
+    t.integer  "replies_count"
+    t.integer  "posts_count"
     t.integer  "sign_in_count",                    :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -521,7 +521,6 @@ ActiveRecord::Schema.define(:version => 20120630022163) do
     t.datetime "reset_password_sent_at"
     t.boolean  "disabled",                         :default => false
     t.string   "organizations"
-    t.string   "integer"
     t.integer  "announcements_count",              :default => 0,       :null => false
     t.integer  "feeds_count",                      :default => 0,       :null => false
     t.integer  "invite_count",                     :default => 0,       :null => false

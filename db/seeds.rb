@@ -24,6 +24,7 @@ resident = Resident.create!(:first_name => "test",
                             :last_name => "dev",
                             :email => "test@example.com",
                             :community => community)
+resident.manually_added
 
 Resident.create!(:first_name => "John",
                  :last_name => "Smith",

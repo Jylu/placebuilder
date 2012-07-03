@@ -49,7 +49,7 @@ class User < ActiveRecord::Base
   end
 
   after_create :correlate
-  
+
   before_validation :geocode, :if => :address_changed?
   before_validation :place_in_neighborhood, :if => :address_changed?
 
@@ -676,7 +676,7 @@ WHERE
         :user => self)
     end
   end
-  
+
   private
 
   def is_transitional_user

@@ -19,30 +19,23 @@ console.log(newid);
 <div id="file-picker-filters">
 <button id="new-resident">New Resident</button>
 <button id="todo-list">TODO List</button>
+<button id="todo-list">Task List</button>
 <br>
   <input type="text" placeholder="search" id="query-input" size=23>
   <button id="filter-button">Search</button>
 
-<select id="haveornot" name="haveornot" >
+<br>
+  <select id="haveornot" name="haveornot" >
     <option value="yes" selected=true> Have
     <option value="no"> Not
   </select>
 <select id="1" name="filter-tags" style="width:130px" onchange="show(this.id)">
-  <option></option>
+<option></option>
   {{#dropdowns}}
         <option value="{{tag}}" > {{val}}
   {{/dropdowns}}
 </select>
 <button id="filter">Filter</button><br>
-
-<select name="add-tag" style="width:198px">
-  <option></option>
-   {{#tags}}
-     <option class="tag-adding">{{.}}</option>
-  {{/tags}}
-</select>
-<button id="add-tag">Add tag</button>  
-<br>
   <button id="filter-order">Order by</button>
   <select id="order-tags" name="order-tags" style="width:130px">
   <option></option>
@@ -55,6 +48,15 @@ console.log(newid);
   <option value=quantity>Quantity</option>
 </select>
 <br>
+<select name="add-tag" style="width:198px">
+  <option></option>
+   {{#tags}}
+     <option class="tag-adding">{{.}}</option>
+  {{/tags}}
+</select>
+<button id="add-tag">Add tag</button>  
+<br>
+
 <input type="checkbox" id="check-all">Check all shown</input>
 </div>
 

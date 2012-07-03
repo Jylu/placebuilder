@@ -112,7 +112,7 @@ class API
               when "reply"
                 @ids=Reply.all.map {|a| a.user_id}.uniq
               when "replied"
-                @postsids=Reply.all.map {|a| a.repliable_id}.uniq                
+                @postsids=Reply.all.map {|a| a.repliable_id}.uniq
                 @ids=Post.where(:id=>@postsids).map {|a| a.user_id}.uniq
               when "invite"
                 @ids=Invite.all.map {|a| a.inviter_id}.uniq
@@ -124,21 +124,29 @@ class API
           if !@resident         
             if haveornot=="yes"
               User.where(:id=>@ids)
+          end
+          if !@resident
+            if haveornot=="yes"
+              serialize(User.where(:id=>@ids))
             else
               if @ids.empty?
                 User.all
               else
                 User.where("id not in (?)",@ids)
               end  
+                serialize(User.where("id not in (?)",@ids))
+              end
             end
           else
             if haveornot=="yes"
               Resident.where(:id=>@ids)
+              serialize(Resident.where(:id=>@ids))
             else
               if @ids.empty?
                 Resident.all
               else
                 Resident.where("id not in (?)",@ids)
+                serialize(Resident.where("id not in (?)",@ids))
               end
             end
           end
