@@ -3,6 +3,13 @@
 
   {{#todos}}
     <h4>{{.}}</h4>
+    <select name="add-tag">
+    <option>Tag List</option>
+    {{#tags}}
+    <option class="tag-adding">{{.}}</option>
+    {{/tags}}
+    </select>
+    <button id="add-tag">Add tag</button>
     <ul class="todo-specific" value="{{.}}">
     {{#profiles}}
       <input type="checkbox" name="{{.}}">{{.}}<br>
