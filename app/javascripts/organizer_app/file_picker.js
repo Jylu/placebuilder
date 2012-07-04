@@ -15,8 +15,18 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click #add-tag" : "addTag",
     "click #map-button": "showMapView",
     "click #new-resident": "addResident",
-    "click #todo-list": "gotoTodo"
+    "click #todo-list": "gotoTodo",
+    //"click #filter-tags": "addNewselect"
     //"click #new-street" : "addStreet"
+  },
+
+  addNewselect: function(){
+    
+    var select=this.$(".multiselect").clone();
+    alert("!");
+    //this.$('span[name=tcol1]').append();
+    this.$("#new-selects").append(select);
+    //alert("!!");
   },
 
   initialize: function() {
@@ -137,7 +147,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     //var alltags=tags.concat(possTags);
     var actions=[{tag:"post",val:"Post"},{tag:"email",val:"Email"},{tag:"reply",val:"Reply"},{tag:"replied",val:"Be replied"},
               {tag:"invite",val:"Invite"},{tag:"announcement",val:"Announcement"},{tag:"event",val:"Event"},{tag:"sitevisit",val:"Log in"}         ];
-    possTags=this.options.community.get('manual_tags');
+    possTags=this.options.community.get('resident_tags');
     _.map(possTags, function(residenttag) {
       actions.push({tag:residenttag,val:residenttag});
     });
@@ -145,14 +155,22 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   },
 
   filterUsers: function(e){
+    var tag=new Array();
+    _.map(this.$("select[name=filter-tags]"), function(select) {
+      if(select.value){ 
+        tag.push(select.value);
+      }    
+    });
+    //console.log(tag);
+    
     switch(e.target.id){
       case "filter":
         var params={
           "search": "filter",
           "have": this.$("#haveornot").val(),
-          "tag": this.$("#filter-tags").val()
+          "tag": tag
         };
-        //console.log(params["search"]);
+        console.log(params["tag"].length);
         this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)
@@ -162,15 +180,15 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         var params={
           "search": "filter",
           //"have": this.$("#haveornot").val(),
-          "tag": this.$("#filter-tags").val(),
-          "order": this.$("input[name='order']:checked").val()
+          "tag": this.$("#order-tags").val(),
+          "order": this.$("#order").val()
         };
-        //alert(params['order']);
+        
         this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)
         });
-        console.log(params["tag"]);
+        console.log(params["order"]);
         break;
     }
   }
