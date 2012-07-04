@@ -119,8 +119,8 @@ class API
               else
                 @ids=Flag.where(:name=>tag).map &:resident_id
                 @resident=true
-          end 
-          @ids.uniq!          
+          end
+          @ids.uniq!
           if !@resident
             if haveornot=="yes"
               User.where(:id=>@ids)
@@ -128,7 +128,7 @@ class API
               if @ids.empty?
                 User.all
               else
-                User.where("id not in (?)",@ids)             
+                User.where("id not in (?)",@ids)
               end
             end
           else
@@ -262,14 +262,14 @@ CONDITION
         if !params[:order]
           if params[:tag].length>1
             @users=filter_users_by_tag(params[:tag][0],params[:have])
-            @final=@users&filter_users_by_tag(params[:tag][1],params[:have])     
+            @final=@users&filter_users_by_tag(params[:tag][1],params[:have])
             for @k in 2..params[:tag].size-1 do
                 @final=@final&filter_users_by_tag(params[:tag][@k],params[:have])
             end
             serialize(@final)
           else
             serialize(filter_users_by_tag(params[:tag][0],params[:have]))
-          end     
+          end
         else
           if params[:order]=="time"
              order_users_by_time_of_tag(params[:tag])

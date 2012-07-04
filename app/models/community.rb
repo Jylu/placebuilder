@@ -285,7 +285,7 @@ class Community < ActiveRecord::Base
     tags << "address"
     tags
   end
-  
+
   def manual_tags
     tags=Flag.all.map &:name
   end
