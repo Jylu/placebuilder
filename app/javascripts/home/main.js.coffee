@@ -27,6 +27,9 @@ $ ->
 
           router.account = account
 
+          _kmq.push(['identify', account.get('email')]);
+          _kmq.push(['record', 'logged in']);
+
           Backbone.history.start(pushState: true)
 
         error: ->
