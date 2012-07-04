@@ -104,8 +104,9 @@ Home.ui.Registration = Framework.View.extend
         this.createUser()
       when 5
         @pages[@reg_page] = new Home.ui.Subscribe(el: $("#registration_content"))
-        @pages[@reg_page].render().hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+        @pages[@reg_page].render()
       when 6
+        this.subscribeToPages()
         @pages[@reg_page] = new Home.ui.findNeighbors(el: $("#registration_content"))
         params =
           "name": @user_info.full_name.split(" ")[0]
@@ -159,6 +160,13 @@ Home.ui.Registration = Framework.View.extend
         @reg_page--
         console.log "Error processing request: "
     , this))
+
+  subscribeToPages: ->
+    feeds = _.map(this.$("input[name=feeds_list]:checked"), (feed) ->
+      return $(feed).val()
+    )
+    if not _.isEmpty(feeds)
+      router.account.subscribeToFeed(feeds)
 
   events:
     "click .next-button": "nextPage"

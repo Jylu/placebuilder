@@ -8,6 +8,9 @@ Home.ui.Subscribe = Framework.View.extend
       success: (pages) =>
         pages.each (p) =>
           page = p.toJSON()
-          this.$(".subscribe_pages").append("<li><a href='#'><img src='"+page.avatar_url+"' class='page_img'><h4>"+page.name.trim()+"</h4><span class='page_text'>"+page.about.trim()+"</span></a></li>")
-        
+          page.about.trim()
+          page.name.trim()
+          page_view = new Home.ui.RegistrationPage({model: page})
+          page_view.render(page)
+          $("ul.subscribe_pages").append(page_view.el)
 
