@@ -261,14 +261,15 @@ CONDITION
       if params[:search]=="filter"
         if !params[:order]
           if params[:tag].length>1
-            @users=filter_users_by_tag(params[:tag][0],params[:have])
-            @final=@users&filter_users_by_tag(params[:tag][1],params[:have])     
+            @users=filter_users_by_tag(params[:tag][0],params[:have][0])
+            @final=@users&filter_users_by_tag(params[:tag][1],params[:have][1])     
             for @k in 2..params[:tag].size-1 do
-                @final=@final&filter_users_by_tag(params[:tag][@k],params[:have])
+                @final=@final&filter_users_by_tag(params[:tag][@k],params[:have][@k])
             end
             serialize(@final)
           else
-            serialize(filter_users_by_tag(params[:tag][0],params[:have]))
+            puts params[:have][0]
+            serialize(filter_users_by_tag(params[:tag][0],params[:have][0]))
           end     
         else
           if params[:order]=="time"
