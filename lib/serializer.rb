@@ -41,6 +41,7 @@ module Serializer
         "position" => o.position,
         "notes" => o.notes,
         "sector" => o.sector_tags,
+        "todos" => o.todos,
         "type" => o.type_tags,
         "latitude" => o.latitude,
         "longitude" => o.longitude,
