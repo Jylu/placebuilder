@@ -16,7 +16,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
   },
 
   editResident: function(){
-    new OrganizerApp.AddResident({el: $('#file-viewer'), model: this.model, fileViewer: this, edit:true}).render();  
+    new OrganizerApp.AddResident({el: $('#file-viewer'), model: this.model, fileViewer: this, edit:true}).render();
   },
 
   show: function(model) {
@@ -143,7 +143,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       location.reload();
     }
   },
-  
+
   addNotes: function(e) {
     e.preventDefault();
     var notes = this.$("#notes-text").val();
@@ -157,7 +157,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       location.reload();
     }
   },
-  
+
   addPosition: function(e) {
     e.preventDefault();
     var position = this.$("#position-text").val();

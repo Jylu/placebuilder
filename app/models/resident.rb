@@ -136,6 +136,7 @@ class Resident < ActiveRecord::Base
 
   searchable do
     integer :community_id
+    string :todos, :multiple => true
     string :tags, :multiple => true
     string :sector_tags, :multiple => true
     string :type_tags, :multiple => true

@@ -15,14 +15,33 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
   addTag: function() {
   },
 
-  profiles: function() {
-   // alert(this.$().attr('name'));
-    var todos = possTodos;
-    var tagged = _.filter(models, function(model) {
-      return true;
-    });
+  afterRender: function() {
+    _.each(this.$(".todo-specific"), function(list) {
+      var value = $(list).attr('value');
+      var profiles = _.filter(models, function(model) {
+        console.log(model.get('type'));
+        console.log(model.get('tags'));
+        return true;
+      });
 
-    var names = _.map(tagged, function(model) {
+      $(list).empty();
+      $(list).append(
+        _.map(profiles, function(model) {
+          var li = $("<li/>",{ text: model.full_name(), data: { model: model } })[0];
+          var cb = $("<input/>", { type: "checkbox", value: model.getId(), data: { model: model } })[0];
+          $(cb).addClass("cb");
+          $(li).prepend(cb);
+
+          return li;
+        }));
+      //console.log($(list).attr('value'));
+    });
+  },
+
+  profiles: function() {
+    var todos = possTodos;
+
+    var names = _.map(models, function(model) {
       return model.full_name();
     });
     

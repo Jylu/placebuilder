@@ -4,7 +4,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   template: "organizer_app.file-picker",
 
   events: {
-    "click li": "onClickFile",
+    "click .pick-resident": "onClickFile",
     "click .cb": "toggle",
     "click #filter": "filterUsers",
     "click #filter-order" :"filterUsers",

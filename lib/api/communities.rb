@@ -119,8 +119,8 @@ class API
               else
                 @ids=Flag.where(:name=>tag).map &:resident_id
                 @resident=true
-          end 
-          @ids.uniq!          
+          end
+          @ids.uniq!
           if !@resident
             if haveornot=="yes"
               User.where(:id=>@ids)
@@ -128,7 +128,7 @@ class API
               if @ids.empty?
                 User.all
               else
-                User.where("id not in (?)",@ids)             
+                User.where("id not in (?)",@ids)
               end
             end
           else
