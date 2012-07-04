@@ -170,7 +170,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           "have": this.$("#haveornot").val(),
           "tag": tag
         };
-        //console.log(params["tag"]);
+        console.log(params["tag"].length);
         this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)

@@ -120,33 +120,25 @@ class API
                 @ids=Flag.where(:name=>tag).map &:resident_id
                 @resident=true
           end 
-          @ids.uniq!
-          if !@resident         
-            if haveornot=="yes"
-              User.where(:id=>@ids)
-          end
+          @ids.uniq!          
           if !@resident
             if haveornot=="yes"
-              serialize(User.where(:id=>@ids))
+              User.where(:id=>@ids)
             else
               if @ids.empty?
                 User.all
               else
-                User.where("id not in (?)",@ids)
-              end  
-                serialize(User.where("id not in (?)",@ids))
+                User.where("id not in (?)",@ids)             
               end
             end
           else
             if haveornot=="yes"
               Resident.where(:id=>@ids)
-              serialize(Resident.where(:id=>@ids))
             else
               if @ids.empty?
                 Resident.all
               else
                 Resident.where("id not in (?)",@ids)
-                serialize(Resident.where("id not in (?)",@ids))
               end
             end
           end
@@ -268,10 +260,10 @@ CONDITION
       control_access :admin
       if params[:search]=="filter"
         if !params[:order]
-          if params[:tag].size>1
+          if params[:tag].length>1
             @users=filter_users_by_tag(params[:tag][0],params[:have])
             @final=@users&filter_users_by_tag(params[:tag][1],params[:have])     
-            for @k in 1..params[:tag].size-1 do
+            for @k in 2..params[:tag].size-1 do
                 @final=@final&filter_users_by_tag(params[:tag][@k],params[:have])
             end
             serialize(@final)
