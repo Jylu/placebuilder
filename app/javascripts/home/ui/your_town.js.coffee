@@ -9,6 +9,7 @@ Home.ui.YourTown = Framework.View.extend
     category = this.$(e.currentTarget).attr("id")
     content = router.content
     if content isnt undefined
+      _kmq.push(['record', 'Wire Engagement', { 'Type': 'Tab', 'Tab': category }]);
       content.render(category)
 
   events:

@@ -11,3 +11,16 @@ Then /^I should see a link named "([^"]*)"(?: in the "([^"]*)" section)?$/ do |t
     page.should have_link(text)
   end
 end
+
+When /^I visit the home page$/ do
+  page.visit "/#{@user.community.slug}/home"
+end
+
+When /^I click on "(.*)"$/ do |text|
+  page.should have_content text
+  page.find(text).click
+end
+
+Then /^I should see "(.*)"$/ do |text|
+  page.should have_content text
+end

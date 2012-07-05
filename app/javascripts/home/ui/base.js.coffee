@@ -15,6 +15,7 @@ Home.ui.WireItem = Framework.View.extend
       this.markThanked()
       $.post("/api" + this.model.get("links").thank, _.bind(
         (response) ->
+          _kmq.push(['record', 'Wire Engagement', {'Type': 'Thank'}]);
           this.model.set(response)
           this.render()
       ,this)
@@ -57,4 +58,5 @@ Home.ui.WireItem = Framework.View.extend
         "community_name": community_name
         "model": this.model
     share = router.share(community_name, params)
+    _kmq.push(['record', 'Wire Engagement', {'Type': 'Share'}]);
       
