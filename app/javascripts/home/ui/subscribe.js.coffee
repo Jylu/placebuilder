@@ -1,8 +1,20 @@
 Home.ui.Subscribe = Framework.View.extend
   template: "home.subscribe"
 
+  #Business, Municipal, Organization, News, Personal, Discussion - kinds from template
+  kinds: [
+    "Non-profit",
+    "Community Group",
+    "Business",
+    "Municipal",
+    "News",
+    "Other"
+  ]
+
   render: () ->
-    this.$el.html this.renderTemplate()
+    params = 
+      "categories": @kinds
+    this.$el.html this.renderTemplate(params)
 
     router.community.getAllPages
       success: (pages) =>
@@ -12,5 +24,6 @@ Home.ui.Subscribe = Framework.View.extend
           page.name.trim()
           page_view = new Home.ui.RegistrationPage({model: page})
           page_view.render(page)
-          $("ul.subscribe_pages").append(page_view.el)
+          category = "#" + @kinds[page.kind]
+          $(category).append(page_view.el)
 

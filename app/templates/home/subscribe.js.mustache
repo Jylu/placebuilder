@@ -4,18 +4,16 @@
 <img src="/assets/shared/redesign/subscribe_title.png" alt="Find Your Neighbors" class="find_title">
 
 <ul class="subscribe_categories">
-	<li><a href="#">Business</li>
-	<li><a href="#">Municipal</li>
-	<li><a href="#">Organization</li>
-	<li><a href="#">News</li>
-	<li><a href="#">Personal</li>
-	<li><a href="#">Discussion</li>										
+  {{#categories}}
+	<li><a href="#{{.}}">{{.}}</a></li>
+  {{/categories}}
 </ul>
 
 <div id="subscribe_pages">
-<ul class="subscribe_pages">
-	<li><a href="#"><img src="/assets/shared/redesign/missing.png" class="page_img"><h4>Some Bakery</h4><span class="page_text">Whatever is baking in this oven is going to be delish!</span></a></li>
-</ul>
+  {{#categories}}
+  <a name="{{.}}"><h2>{{.}}</h2></a>
+  <ul class="subscribe_pages" id="{{.}}"></ul>
+  {{/categories}}
 </div>
 
 <div id="find_bottom">
