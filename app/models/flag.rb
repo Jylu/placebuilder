@@ -5,7 +5,9 @@ class Flag < ActiveRecord::Base
 
   # TODO Initialize with actual flags [load from text file or...?]
   def self.init
-    {"sent nomination email" => [["send nomination email"], ["schedule a call"]],
+    {
+      "nominate" =>[[], ["send nomination email"]],
+      "sent nomination email" => [["send nomination email"], ["schedule a call"]],
       "scheduled a call" => [["schedule a call"], ["call"]],
       "called" => [["schedule a call", "call"], ["send thanks for call"]],
       "sent thanks for call" => [["schedule a call", "call", "send thanks for call"], []],
@@ -16,7 +18,8 @@ class Flag < ActiveRecord::Base
 
   # Creates a 1:1 mapping of todo with "logical" next flag
   def self.init_todo
-    {"send nomination email" => ["sent nomination email"],
+    {
+      "send nomination email" => ["sent nomination email"],
       "schedule a call" => ["scheduled a call"],
       "call" => ["called"],
       "send thanks for call" => ["sent thanks for call"],
