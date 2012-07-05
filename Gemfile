@@ -131,7 +131,8 @@ group :development, :test, :remote_worker do
   gem 'cucumber-rails'
   gem 'selenium'
   gem 'trollop'
-  #gem 'capybara-webkit'
+  gem 'capybara-webkit'
+  gem 'pry'
   #gem 'progress_bar'
 end
 

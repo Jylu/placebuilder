@@ -31,7 +31,12 @@ Capybara.default_selector = :css
 #end
 #Capybara.default_driver = :webkit
 #
-Capybara.default_driver = :selenium
+Capybara.register_driver :chrome do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
+
+Capybara.javascript_driver = :chrome
+# Capybara.default_driver = :selenium
 #Capybara.default_host = "localhost"
 #Capybara.server_port = 3000
 #Capybara.app_host = "http://localhost:3000"
