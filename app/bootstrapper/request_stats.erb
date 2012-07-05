@@ -1,0 +1,9 @@
+<% if flash.present? and flash[:notice].present? %>
+  <%= flash[:notice] %>
+<% end %>
+
+<h1>Full Statistics</h1>
+
+<form action="/administration/request_stats/full" method="post">
+  <input type="submit" name="request_full_stats" value="Request" />
+</form>
