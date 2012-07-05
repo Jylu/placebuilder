@@ -73,7 +73,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     _.map(this.collection.models, _.bind(function(model) {
       if(checklist[model.getId()]) {
 
-        //model.addTag(tag, _.bind(this.render, this));
+        model.addTag(tag, _.bind(this.render, this));
       }
     }, this));
   },
