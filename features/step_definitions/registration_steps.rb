@@ -3,13 +3,12 @@ def log_out
 end
 
 def log_in
-  email = 'testing@man.net'
-  password = 'secretpass'
-  User.new(:email => email, :password => password, :password_confirmation => password).save!
+  @user_password = "Password1234"
+  @user = FactoryGirl.create(:user, password: @user_password, password_confirmation: @user_password)
 
   visit '/users/sign_in'
-  fill_in "user_email", :with=>email
-  fill_in "user_password", :with=>password
+  fill_in "user_email", :with=>@user.email
+  fill_in "user_password", :with=>@user_password
   click_button "Sign in"
 end
 
@@ -31,7 +30,7 @@ Given /^I am on the registration page$/ do
   visit community_home_page
 end
 
-When /^I click (.*)$/ do |selector|
+When /^I click "(.*)"$/ do |selector|
   find(selector).click
 end
 
@@ -51,4 +50,8 @@ end
 
 Then /^I should see the main page$/ do
 
+end
+
+Given /^a logged in user$/ do
+  log_in
 end
