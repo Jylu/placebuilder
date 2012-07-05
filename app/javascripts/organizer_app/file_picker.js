@@ -157,22 +157,21 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   },
 
   filterUsers: function(e){
-    var tag=new Array();
-    _.map(this.$("select[name=filter-tags]"), function(select) {
-      if(select.value){
-        tag.push(select.value);
-      }
+    var haves=new Array();
+    _.map(this.$("select[name=haveornot]"), function(select) {
+      if(select.value){ 
+        haves.push(select.value);
+      }    
     });
-    //console.log(tag);
-
+    
     switch(e.target.id){
       case "filter":
         var params={
           "search": "filter",
-          "have": this.$("#haveornot").val(),
+          "have": haves,
           "tag": tag
         };
-        console.log(params["tag"].length);
+        console.log(params["have"]);
         this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)
