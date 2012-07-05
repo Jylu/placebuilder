@@ -310,10 +310,9 @@ CONDITION
                                       :notes => request_body['notes'],
                                       :address => request_body['address'],
                                       :sector_tags => request_body['sector_tags'],
-                                      :type_tags => request_body['type_tags']
+                                      :type_tags => request_body['type_tags'],
+                                      :manually_added => true
                                       )
-      r.manually_added
-
        #find_community.residents.last.add_sector_tags(request_body['sector_tags'])#.add_type_tags(request_body['type_tags'])
 
     end

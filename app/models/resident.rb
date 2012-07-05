@@ -11,6 +11,8 @@ class Resident < ActiveRecord::Base
 
   has_many :flags
 
+  after_create :manual_add
+
   def on_commonplace?
     self.user_id?
   end
@@ -26,11 +28,6 @@ class Resident < ActiveRecord::Base
   def in_commonplace_organization?
     [false, true].sample
   end
-
-  def manually_added?
-    self.metadata[:manually_added] ||= false
-  end
-
 
   def add_log(date, text, tags)
     self.add_tags(tags)
@@ -56,13 +53,14 @@ class Resident < ActiveRecord::Base
   end
 
   # Created via Organizer App
-  def manually_added
-    todo = ["send nomination email"]
+  def manual_add
     self.metadata[:todos] ||= []
-    self.metadata[:todos] |= todo
-    self.community.add_resident_todos(todo)
-
-    self.metadata[:manually_added] = true
+    if self.manually_added
+      self.manually_added = true
+      todo = ["send nomination email"]
+      self.metadata[:todos] |= todo
+      self.community.add_resident_todos(todo)
+    end
   end
 
   def todos

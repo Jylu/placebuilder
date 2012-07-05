@@ -9,7 +9,7 @@ class AddAnnouncementsCountToUser < ActiveRecord::Migration
       user.update_attribute(:announcements_count, user.announcements.length+@amount)
       user.save
     end
-    
+
   end
   def self.down
     remove_column :users, :announcements_count

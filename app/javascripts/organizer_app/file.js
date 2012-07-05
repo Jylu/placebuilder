@@ -12,6 +12,14 @@ OrganizerApp.File = Backbone.Model.extend({
     return this.get('first_name') + ' ' + this.get('last_name');
   },
 
+  email: function() {
+    return this.get('email');
+  },
+
+  phone: function() {
+    return this.get('phone');
+  },
+
   address: function () {
     return this.get('address');
   },
@@ -67,7 +75,7 @@ OrganizerApp.File = Backbone.Model.extend({
         self.fetch({success: callback});
       }
 	  });
-  }, 
+  },
 });
 
 OrganizerApp.Files = Backbone.Collection.extend({
@@ -77,10 +85,10 @@ OrganizerApp.Files = Backbone.Collection.extend({
   initialize: function(models, options) {
     this.community = options.community;
   },
-  
+
   url: function() {
     return "/api/communities/" + this.community.id + "/files";
   }
 
-  
+
 });
