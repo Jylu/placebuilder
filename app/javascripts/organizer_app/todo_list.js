@@ -4,37 +4,79 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
   template: "organizer_app.todo-list",
 
   events: {
+    "click .cb": "toggle",
     "click #add-tag" : "addTag",
   },
 
   initialize: function() {
+    checklist = [];
+    all_check = false;
     models = this.collection.models;
     community = this.options.community;
   },
 
+  toggle: function(e) {
+
+    c = this.$(e.currentTarget).data('model').getId();
+
+    if(typeof checklist[c] === "undefined")
+      checklist[c] = false;
+
+    checklist[c] = !checklist[c];
+
+    console.log("toggle");
+    console.log(c);
+    console.log(checklist[c]);
+    this.render();
+  },
+
   addTag: function() {
+    var tag = this.$("#tag-list option:selected").val();
+
+    if(tag == "Tag List")
+      return;
+
+    _.map(models, _.bind(function(model) {
+      if(checklist[model.getId()]) {
+        console.log(model);
+
+        model.addTag(tag, _.bind(this.render, this));
+      }
+    }, this));
   },
 
   afterRender: function() {
     _.each(this.$(".todo-specific"), function(list) {
       var value = $(list).attr('value');
       var profiles = _.filter(models, function(model) {
-        console.log(model.get('type'));
-        console.log(model.get('tags'));
-        return true;
+        todo = model.get('todos');
+        return $.inArray(value, todo) > -1;
       });
 
       $(list).empty();
       $(list).append(
         _.map(profiles, function(model) {
-          var li = $("<li/>",{ text: model.full_name(), data: { model: model } })[0];
-          var cb = $("<input/>", { type: "checkbox", value: model.getId(), data: { model: model } })[0];
+          var name = model.full_name();
+          var email = model.email();
+          var phone = model.phone();
+
+          if(email == null) {
+            email = "No email";
+          }
+
+          if(phone == null) {
+            phone = "No phone";
+          }
+
+          var info = name + " | " + email + " | "+phone;
+
+          var li = $("<li/>",{ text: info, data: { model: model } })[0];
+          var cb = $("<input/>", { type: "checkbox", checked: checklist[model.getId()], value: model.getId(), data: { model: model } })[0];
           $(cb).addClass("cb");
           $(li).prepend(cb);
 
           return li;
         }));
-      //console.log($(list).attr('value'));
     });
   },
 
@@ -44,7 +86,7 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
     var names = _.map(models, function(model) {
       return model.full_name();
     });
-    
+
     return names;
   },
 

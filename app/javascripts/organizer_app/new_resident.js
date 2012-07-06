@@ -25,9 +25,9 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
   addResident: function(e){
     e.preventDefault();
     if(this.model){
-      
+
       var params= {};
-      
+
       if(this.$("#phone").val())
         params.phone=this.$("#phone").val();
       if(this.$("#organization").val())
@@ -44,7 +44,7 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
         params.first_name=this.$("#first-name").val();
       if(this.$("#last-name").val())
         params.last_name=this.$("#last-name").val();
-      
+
       var sectortags = document.getElementsByName('sector-tag');
 	    var sectorvalue = new Array();
 	    for(var i = 0; i < sectortags.length; i++){
@@ -61,7 +61,7 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
         params.sector_tags=sectorvalue;
       if(typevalue.length>0)
         params.type_tags=typevalue;
-        
+
       this.model.save(params, {success: _.bind(this.render, this)});
       //alert(params['first_name']);
     }

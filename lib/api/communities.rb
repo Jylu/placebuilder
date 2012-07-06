@@ -271,7 +271,7 @@ CONDITION
         if !params[:order]
           if params[:tag].length>1
             @users=filter_users_by_tag(params[:tag][0],params[:have][0])
-            @final=@users&filter_users_by_tag(params[:tag][1],params[:have][1])     
+            @final=@users&filter_users_by_tag(params[:tag][1],params[:have][1])
             for @k in 2..params[:tag].size-1 do
                 @final=@final&filter_users_by_tag(params[:tag][@k],params[:have][@k])
             end
@@ -279,7 +279,7 @@ CONDITION
           else
             puts params[:have][0]
             serialize(filter_users_by_tag(params[:tag][0],params[:have][0]))
-          end     
+          end
         else
           if params[:order]=="time"
              order_users_by_time_of_tag(params[:tag])
@@ -321,9 +321,12 @@ CONDITION
                                       :notes => request_body['notes'],
                                       :address => request_body['address'],
                                       :sector_tags => request_body['sector_tags'],
-                                      :type_tags => request_body['type_tags']
+                                      :type_tags => request_body['type_tags'],
+                                      :manually_added => true
                                       )
+
       r.manually_added
+
 
     end
 

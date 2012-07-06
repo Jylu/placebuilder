@@ -8,7 +8,6 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click .cb": "toggle",
     "click #filter": "filterUsers",
     "click #filter-order" :"filterUsers",
-    "click :checkbox": "toggle",
     "click #filter-button": "filter",
     "click .tag-filter": "cycleFilter",
     "click #check-all": "checkall",
@@ -21,7 +20,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   },
 
   addNewselect: function(){
-    
+
     var select=this.$(".multiselect").clone();
     alert("!");
     //this.$('span[name=tcol1]').append();
@@ -66,14 +65,17 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
    * the tag applied to the file
    */
   addTag: function() {
+    var tag = this.$("#tag-list option:selected").val();
+
+    if(tag == "")
+      return;
+
     _.map(this.collection.models, _.bind(function(model) {
       if(checklist[model.getId()]) {
-        var tag = this.$("#tag-input").val();
 
         model.addTag(tag, _.bind(this.render, this));
       }
     }, this));
-    //location.reload();
   },
 
   gotoTodo: function (e) {
@@ -142,7 +144,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     var newState = { neutral: "on", on: "off", off: "neutral"}[state];
     $(e.currentTarget).attr("data-state", newState);
   },
-  
+
   dropdowns: function(){
     //var tags=["post","email","reply","replied","invite","announcement","event","sitevisit"];
     //var alltags=tags.concat(possTags);
@@ -156,12 +158,6 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   },
 
   filterUsers: function(e){
-    var tag=new Array();
-    _.map(this.$("select[name=filter-tags]"), function(select) {
-      if(select.value){ 
-        tag.push(select.value);
-      }    
-    });
     var haves=new Array();
     _.map(this.$("select[name=haveornot]"), function(select) {
       if(select.value){ 
@@ -190,7 +186,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           "tag": this.$("#order-tags").val(),
           "order": this.$("#order").val()
         };
-        
+
         this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)

@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20120705225133) do
 
   create_table "active_admin_comments", :force => true do |t|
@@ -399,6 +400,7 @@ ActiveRecord::Schema.define(:version => 20120705225133) do
     t.text    "sector_tags"
     t.text    "type_tags"
     t.string  "notes"
+    t.boolean "manually_added",    :default => false
   end
 
   create_table "sent_emails", :force => true do |t|
