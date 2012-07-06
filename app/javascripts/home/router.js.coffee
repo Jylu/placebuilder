@@ -34,7 +34,7 @@ Home.Router = Backbone.Router.extend
     )
 
   about: (community) ->
-    about = new Home.ui.About el:$("#about")
+    about = new Home.ui.About el:$("#content")
     about.render(
       "community": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
     )
