@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   before_save :ensure_authentication_token
 
   serialize :metadata, Hash
+  serialize :actions_tags, Array
   serialize :private_metadata, Hash
 
   #track_on_creation
@@ -199,6 +200,8 @@ class User < ActiveRecord::Base
     t.add lambda {|u| u.replies.count}, :as => :reply_count
     t.add lambda {|u| "true" }, :as => :success
     t.add :unread
+    t.add lambda {|u| "User"}, :as => :classtype
+    t.add lambda {|u| u.actions_tags}, :as => :actionstags
   end
 
   def announcement_count

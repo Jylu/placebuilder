@@ -56,7 +56,7 @@ OrganizerApp.File = Backbone.Model.extend({
 
   addLog: function(log, callback) {
     var self = this;
-    console.log("addLog's URL: ", this.url());
+    //console.log("addLog's URL: ", this.url());
 	  $.ajax({
 		  type: 'POST',
           contentType: "application/json",
@@ -68,6 +68,13 @@ OrganizerApp.File = Backbone.Model.extend({
       }
 	  });
   }, 
+  
+  manualtags: function(){
+    return this.get('manualtags');
+  },
+  actionstags: function(){
+    return this.get('actionstags');
+  }
 });
 
 OrganizerApp.Files = Backbone.Collection.extend({
@@ -80,7 +87,50 @@ OrganizerApp.Files = Backbone.Collection.extend({
   
   url: function() {
     return "/api/communities/" + this.community.id + "/files";
-  }
+  },
 
-  
+  commontags: function(){
+    var tags= new Array();
+    var actions= [];    
+    actions= actions.concat(this.models[0].actionstags());
+    //console.log(this.models[0].get('classtype'));
+    if(this.models[0].get('classtype')=="Resident"){
+      tags=tags.concat(this.models[0].manualtags());
+      _.map(this.models, function(model){ 
+        if((t=model.manualtags()).length>0){
+        //console.log(model.manualtags());
+          intersect={},res=[];
+          for (var i=tags.length-1; i>=0; i--) {	
+	    for ( var j=0; j<t.length; j++) {	
+		if (tags[i]==t[j]) {
+			intersect[tags[i]]=true;
+		}
+	    }
+          }
+        tags= new Array();
+        for(var k in intersect)
+	  tags.push(k);
+        }
+      });
+    }
+    
+    _.map(this.models, function(model){ 
+      if((t=model.actionstags()).length>0){
+        //console.log(model.manualtags());
+        intersect={},res=[];
+        for (var i=actions.length-1; i>=0; i--) {	
+	  for ( var j=0; j<t.length; j++) {	
+		if (actionss[i]==t[j]) {
+			intersect[actionss[i]]=true;
+		}
+	  }
+        }
+      actionss= new Array();
+      for(var k in intersect)
+	actions.push(k);
+      }
+    });
+    var all=tags.concat(actions);
+    return all;
+  }
 });

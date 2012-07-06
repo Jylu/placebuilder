@@ -31,7 +31,6 @@ class Resident < ActiveRecord::Base
     self.metadata[:manually_added] ||= false
   end
 
-
   def add_log(date, text, tags)
     self.add_tags(tags)
     self.logs << [date, ": ", text].join
@@ -49,10 +48,24 @@ class Resident < ActiveRecord::Base
   def tags
     tags = []
     tags += self.metadata[:tags] if self.metadata[:tags]
+=begin
     tags << "registered" if self.user.present?
     tags << "email" if self.email?
     tags << "address" if self.address?
+=end
     tags
+  end
+  
+  def manualtags
+    self.flags.map &:name
+  end
+  
+  def actionstags
+    if self.on_commonplace?
+      User.find(self.user_id).actions_tags
+    else
+      []
+    end
   end
 
   # Created via Organizer App

@@ -33,6 +33,8 @@ module Serializer
       when Resident
       { 
         "id" => o.id,
+        "classtype" => o.class.name,
+        "user_id" => o.user_id,
         "first_name" => o.first_name, 
         "last_name" => o.last_name,
         "address" => o.address,
@@ -48,6 +50,8 @@ module Serializer
         "email" => o.email,
         "logs" => o.logs,
         "tags" => o.tags,
+        "manualtags" => o.manualtags,
+        "actionstags" => o.actionstags,
         "avatar_url" => o.avatar_url,
         "on_commonplace" => o.on_commonplace?,
         "community_id" => o.community_id

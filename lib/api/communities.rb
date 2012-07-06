@@ -145,6 +145,7 @@ class API
       end
 
       def order_users_by_time_of_tag(tag)
+        @resident=false
         case tag
               when "post"
                 @ids=Post.order("created_at DESC").map {|a| a.user_id}.uniq
@@ -173,12 +174,20 @@ class API
                 @resident=true
           end
           @ids.uniq!
-          #@users=User.find(:all,:conditions=>{:id=>@ids })
           @users=nil
-          @users=User.where(:id=>@ids[0])
-          for @k in 1..@ids.size-1 do
-            if User.find(@ids[@k])
-              @users << User.find(@ids[@k])
+          if !@resident          
+            @users=User.where(:id=>@ids[0])
+            for @k in 1..@ids.size-1 do
+              if User.find(@ids[@k])
+                @users << User.find(@ids[@k])
+              end
+            end
+          else
+            @users=Resident.where(:id=>@ids[0])
+            for @k in 1..@ids.size-1 do
+              if Resident.find(@ids[@k])
+                @users << Resident.find(@ids[@k])
+              end
             end
           end
           @users.uniq!
@@ -295,6 +304,7 @@ CONDITION
       end
     end
 
+
     # Add a new resident
     #
     # Requires admin
@@ -314,8 +324,6 @@ CONDITION
                                       :type_tags => request_body['type_tags']
                                       )
       r.manually_added
-
-       #find_community.residents.last.add_sector_tags(request_body['sector_tags'])#.add_type_tags(request_body['type_tags'])
 
     end
 

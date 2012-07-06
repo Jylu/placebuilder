@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120630022163) do
+ActiveRecord::Schema.define(:version => 20120705225133) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -217,6 +217,7 @@ ActiveRecord::Schema.define(:version => 20120630022163) do
 
   create_table "flags", :force => true do |t|
     t.string   "name"
+    t.string   "next_flag"
     t.integer  "resident_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
@@ -521,11 +522,13 @@ ActiveRecord::Schema.define(:version => 20120630022163) do
     t.datetime "reset_password_sent_at"
     t.boolean  "disabled",                         :default => false
     t.string   "organizations"
+    t.string   "integer"
     t.integer  "announcements_count",              :default => 0,       :null => false
     t.integer  "feeds_count",                      :default => 0,       :null => false
     t.integer  "invite_count",                     :default => 0,       :null => false
     t.integer  "events_count",                     :default => 0,       :null => false
     t.integer  "replied_count",                    :default => 0,       :null => false
+    t.text     "actions_tags"
   end
 
   add_index "users", ["oauth2_token"], :name => "index_users_on_oauth2_token"

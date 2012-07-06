@@ -27,6 +27,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     }, this));
     this.$("#log-date").datepicker();
     this.allactions();
+    console.log(this.model.full_name()+":"+this.model.getId());
   },
 
   ifuser: function() {
@@ -175,7 +176,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
 
   email: function() {
     var email = this.model.get('email');
-    console.log(email);
+    //console.log(email);
     if (!email) {
       return "No email in our records";
     } else {
@@ -221,7 +222,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
   },
 
   tags: function() {
-    var tags = this.model.get('tags');
+    var tags = this.model.get('manualtags');
     if (tags) {
       return tags
     } else {
@@ -237,7 +238,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     }
     else{
       this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("id")+"/all");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/all\" target=\"content\" >All</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/all\" target=\"content\" >All</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/email\" target=\"content\" >Emails Sent</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/sitevisit\" target=\"content\" >Log In Time</a>  ||  ");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/post\" target=\"content\" >Post</a>  ||  ");
