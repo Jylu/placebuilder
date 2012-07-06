@@ -9,6 +9,7 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-meetup": "createMeetups"
     ":community/home/share": "share"
     ":community/home/pages/:page": "showPage"
+    ":community/home/about": "about"
 
   content: undefined
 
@@ -88,6 +89,18 @@ Home.Router = Backbone.Router.extend
   createMeetups: (community) ->
     posting = this.createPost(community)
     posting.show "meetup"
+
+  about: (community) ->
+    header = new Home.ui.Header el: $("header")
+    header.render(
+      "H1": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
+      "H2": ""
+      "home_link": "/"+router.community.get("slug")+"/home"
+    )
+    about = new Home.ui.About el:$("#registration_content")
+    about.render(
+      "form goes here": "FORM"
+    )
 
   share: (community, params=undefined) ->
     share = new Home.ui.Share()
