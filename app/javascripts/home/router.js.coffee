@@ -2,6 +2,7 @@ Home.Router = Backbone.Router.extend
   routes:
     ":community/home" : "home"
     ":community/home/register" : "register"
+    ":community/home/about" : "about"
     ":community/home/create-post": "createDefault"
     ":community/home/create-conversation": "createDiscussion"
     ":community/home/create-event": "createEvents"
@@ -29,6 +30,12 @@ Home.Router = Backbone.Router.extend
   register: (community) ->
     registration = new Home.ui.Registration el:$("#registration_content")
     registration.render(
+      "community": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
+    )
+
+  about: (community) ->
+    about = new Home.ui.About el:$("#about")
+    about.render(
       "community": (community.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join ' '
     )
 
