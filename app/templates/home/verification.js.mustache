@@ -6,12 +6,15 @@
     <input type="input" type="text" class="address" placeholder="Please enter your {{community}} street address*" /><br />
     <img src="http://placehold.it/388x130" />
     <p class="caption">*We won't share your address with anyone</p>
-    <select>
+    <form>
+	<select name="hear" id="hear" class="dk" tabindex="1">
       <option disabled="true" selected="true" value="default">How did you hear about CommonPlace?</option>
       {{#referrers}}
       <option value="{{.}}">{{.}}</option>
       {{/referrers}}
     </select>
+    </form>
+
 	<div id="find_button">
 		<a href="#" class="blue-button next-button">Continue</a>
 	</div>

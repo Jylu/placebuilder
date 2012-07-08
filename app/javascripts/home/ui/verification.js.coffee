@@ -3,3 +3,5 @@ Home.ui.Verification = Framework.View.extend
 
   render: (params) ->
     this.$el.html this.renderTemplate(params)
+    this.$("select.dk").dropkick()	
+
