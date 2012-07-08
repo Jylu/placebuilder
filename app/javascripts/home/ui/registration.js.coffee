@@ -51,14 +51,17 @@ Home.ui.Registration = Framework.View.extend
     params =
       "community": @community
       "referrers": @referrers
-    @pages[index].render(params).animate({'margin-left' : '0px'}, 800)
+    @pages[index].render(params).show("slide", { direction: "right" }, 1000)
 
   showWelcomePage: (index) ->
     @pages[index] = new Home.ui.Welcome(el: $("#registration_content"))
     params =
       "name": @user_info.full_name.split(" ")[0]
       "community": @community
-    @pages[index].render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+    prev_page = index-1
+    if prev_page of @pages
+      @pages[prev_page].hide("slide", { direction: "left" }, 1000)
+    @pages[index].render(params).hide("slide", { direction: "left" }, 1000).show("slide", { direction: "right" }, 1000)
 
   showProfilePage: (index) ->
     #Kevin - implement slide out here
@@ -67,7 +70,7 @@ Home.ui.Registration = Framework.View.extend
       #makes sure the previous page is in the array
       #@pages[prev_page].slideOut()
     @pages[index] = new Home.ui.civicProfile(el: $("#registration_content"))
-    @pages[index].render(@user_info).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+    @pages[index].render(@user_info).hide("slide", { direction: "left" }, 1000).show("slide", { direction: "right" }, 1000)
 
   nextPage: (e) ->
     if e
@@ -111,7 +114,7 @@ Home.ui.Registration = Framework.View.extend
         params =
           "name": @user_info.full_name.split(" ")[0]
           "community": @community
-        @pages[@reg_page].render(params).hide().animate({'margin-left' : '-800px'}, 10).show().animate({'margin-left' : '0px'}, 800)
+        @pages[@reg_page].render(params).hide("slide", { direction: "left" }, 1000).show("slide", { direction: "right" }, 1000)
       else
         @reg_page = 1
         router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
