@@ -82,6 +82,7 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
 	      if(typetags[i].checked)
 		 typevalue.push(typetags[i].value);
 	    }
+	    console.log(this.$("#last-name").val());
 	    $.ajax({
 		type: 'POST',
 		contentType: "application/json",

@@ -328,6 +328,7 @@ CONDITION
       r.manually_added
 
 
+
     end
 
     # Updates a community resident file
