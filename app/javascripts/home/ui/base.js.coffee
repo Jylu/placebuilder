@@ -50,7 +50,7 @@ Home.ui.WireItem = Framework.View.extend
       e.preventDefault()
     community_name = router.community.get("slug")
     params =
-        "share_url": "http://www.ourcommonplace.com"
+        "share_url": this.getPublicUrl()
         "header": "Share this post!"
         "message": "Share this post with more people!"
         "avatar_url": "http://localhost:3000/system/feeds/881/avatar/normal.jpeg"
@@ -60,3 +60,6 @@ Home.ui.WireItem = Framework.View.extend
     share = router.share(community_name, params)
     _kmq.push(['record', 'Wire Engagement', {'Type': 'Share'}]);
       
+  getPublicUrl: ->
+    router.community.get("links").base+"/home/show/"+this.model.get("schema") + "/" + this.model.get("id")
+    

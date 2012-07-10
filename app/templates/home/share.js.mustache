@@ -2,13 +2,10 @@
   {{#header}}<h1>{{header}}</h1>{{/header}}
   {{#message}}<h3>{{message}}</h3>{{/message}}
   <ul class="share">
-    <li><div id="facebookshare"
-      data-name="{{item_name}}"
-      data-url="{{share_url}}"
-      data-picture="{{avatar_url}}"
-      data-caption="Join {{community_name}} CommonPlace to share with your neighborhood."
-      data-description=""
-      data-message="Check out this post from my neighbors...">My Facebook Friends</div></li> 
+    <li>
+      <div id="facebookshare">My Facebook Friends</div>
+      <iframe src="//www.facebook.com/plugins/like.php?href=http%3A%2F%2F{{share_url}}&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;action=like&amp;colorscheme=light&amp;font&amp;height=21&amp;appId=102571013152856" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:21px;" allowTransparency="true"></iframe> 
+    </li>
     <li><div id="emailshare">Email This Post to Friends</div></li>
     <div id="share_email">
       <form>
