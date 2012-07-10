@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   serialize :actions_tags, Array
   serialize :private_metadata, Hash
 
+  acts_as_taggable
+  
+  acts_as_taggable_on :skills, :interests, :goods
   #track_on_creation
   include Geokit::Geocoders
 
@@ -397,7 +400,7 @@ WHERE
     integer :community_id
     time :created_at
   end
-
+=begin
   def skill_list
     (self.skills || "").split(", ")
   end
@@ -436,7 +439,7 @@ WHERE
       self.interests = interest_list
     end
   end
-
+=end
   def send_reset_password_instructions
     generate_reset_password_token! if should_generate_reset_token?
     kickoff.deliver_password_reset(self)

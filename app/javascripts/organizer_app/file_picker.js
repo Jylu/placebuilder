@@ -97,7 +97,12 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   afterRender: function() {
     $("#check-all").attr("checked", all_check);
     this.renderList(this.collection.models);
+    this.amount();
     this.produceOrdertags();
+  },
+  
+  amount: function(){
+    return this.collection.models.length;
   },
 
   renderList: function(list) {
@@ -203,8 +208,6 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   },
   
   produceOrdertags: function(){
-    //this.collection.commontags();
-    //console.log(this.collection.commontags());
     var obj = this.$("#order-tags").empty(); 
     _.map(this.collection.commontags(),function(tag){
       this.$("#order-tags").append('<option value='+tag+'>'+tag+'</option>');
