@@ -66,7 +66,7 @@ Home.ui.Registration = Framework.View.extend
   showProfilePage: (index) ->
     #Kevin - implement slide out here
     prev_page = index-1
-    #if prev_page of @pages 
+    #if prev_page of @pages
       #makes sure the previous page is in the array
       #@pages[prev_page].slideOut()
     @pages[index] = new Home.ui.civicProfile(el: $("#registration_content"))
@@ -82,8 +82,8 @@ Home.ui.Registration = Framework.View.extend
         @user_info.full_name = this.$('.name').val()
         @user_info.email = this.$('.email').val()
         @user_info.password = this.$('.password').val()
-       
-        fields = ["full_name", "email"] 
+
+        fields = ["full_name", "email"]
         this.validate(@user_info, fields, this.showVerificationPage)
       when 3
         @user_info.address = this.$('input.address').val()
