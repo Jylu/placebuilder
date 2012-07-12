@@ -55,29 +55,12 @@ var RegisterNewUserView = RegistrationModalPage.extend({
     
     this.data.full_name = this.$("input[name=full_name]").val();
     this.data.email = this.$("input[name=email]").val();
-    this.data.address = this.$("input[name=street_address]").val();
-    
-    var validate_api = "/api" + this.communityExterior.links.registration.validate;
-    $.getJSON(validate_api, this.data, _.bind(function(response) {
-      this.$(".error").hide();
-      var valid = true;
-      
-      if (!_.isEmpty(response.facebook)) {
-        window.location.pathname = this.communityExterior.links.facebook_login;
-      } else {
-        _.each(["full_name", "email", "address"], _.bind(function(field) {
-          if (!_.isEmpty(response[field])) {
-            var error = this.$(".error." + field);
-            var errorText = _.reduce(response[field], function(a, b) { return a + " and " + b; });
-            error.text(errorText);
-            error.show();
-            valid = false;
-          }
-        }, this));
-          
-        if (valid) { this.nextPage("profile", this.data); }
-      }
-    }, this));
+    this.data.password = this.$("input[name=password]").val();
+
+    params = ["full_name", "email"];
+    this.validate_registration(params, _.bind(function() {
+      this.nextPage("address", this.data);
+    },this));
   },
   
   facebook: function(e) {

@@ -33,6 +33,7 @@ var RegistrationRouter = Backbone.Router.extend({
   },
   
   new_user: function() { this.modal.showPage("new_user"); },
+  address: function() { this.modal.showPage("address"); },
   profile: function() { this.modal.showPage("profile"); },
   crop: function() { this.modal.showPage("crop"); },
   feed: function() { this.modal.showPage("feed"); },
@@ -75,6 +76,14 @@ var RegistrationModal = CommonPlace.View.extend({
           slideIn: slideIn,
           communityExterior: self.communityExterior,
           data: data
+        });
+      },
+      address: function() {
+        return new RegisterAddressView({
+          nextPage: nextPage,
+          data: data,
+          slideIn: slideIn,
+          communityExterior: self.communityExterior
         });
       },
       profile: function() {
@@ -198,5 +207,31 @@ var RegistrationModalPage = CommonPlace.View.extend({
     if (options.data && options.data.isFacebook && this.facebookTemplate) {
       this.template = this.facebookTemplate;
     }
+  },
+
+  validate_registration: function(params, callback) {
+    var validate_api = "/api" + this.communityExterior.links.registration.validate;
+    $.getJSON(validate_api, this.data, _.bind(function(response) {
+      this.$(".error").hide();
+      var valid = true;
+      
+      if (!_.isEmpty(response.facebook)) {
+        window.location.pathname = this.communityExterior.links.facebook_login;
+      } else {
+        _.each(params, _.bind(function(field) {
+          if (!_.isEmpty(response[field])) {
+            var error = this.$(".error." + field);
+            var errorText = _.reduce(response[field], function(a, b) { return a + " and " + b; });
+            error.text(errorText);
+            error.show();
+            valid = false;
+          }
+        }, this));
+          
+        if (valid && callback) { 
+          callback();
+        }
+      }
+    }, this));
   }
 });

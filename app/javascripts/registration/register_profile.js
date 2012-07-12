@@ -1,11 +1,12 @@
 var RegisterProfileView = RegistrationModalPage.extend({
-  template: "registration.profile",
+  template: "registration.home_profile",
   facebookTemplate: "registration.facebook_profile",
 
   events: {
     "click input.continue": "submit",
     "submit form": "submit",
-    "click img.facebook": "facebook"
+    "click img.facebook": "facebook",
+    "click .next-button": "submit"
   },
 
   afterRender: function() {
@@ -42,9 +43,8 @@ var RegisterProfileView = RegistrationModalPage.extend({
   submit: function(e) {
     if (e) { e.preventDefault(); }
     this.$(".error").hide();
-    this.data.password = this.$("input[name=password]").val();
     this.data.about = this.$("textarea[name=about]").val();
-    this.data.organizations = this.$("textarea[name=organizations]").val();
+    this.data.organizations = this.$("input[name=organizations]").val();
 
     _.each(["interests", "skills", "goods"], _.bind(function(listname) {
       var list = this.$("select[name=" + listname + "]").val();
