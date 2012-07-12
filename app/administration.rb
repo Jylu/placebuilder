@@ -1,12 +1,22 @@
 class Administration < Sinatra::Base
 
   set :views, Rails.root.join("app", "administration")
-  
+
   # Make sure the current user is an admin
   before do
     @account = env['warden'].user(:user)
     redirect "/" unless @account && @account.admin?
-  end 
+  end
+
+  get "/request_stats" do
+    haml :request_stats
+  end
+
+  post "/request_stats/:type" do |type|
+    k = KickOff.new
+    k.enqueue_statistics_generation_job(type, @account)
+    haml :request_stats_generating
+  end
 
   # Show all the messages passing through CommonPlace
   get "/view_messages" do
@@ -29,6 +39,14 @@ class Administration < Sinatra::Base
     else
       attachment "#{community}.csv"
       response.write StatisticsAggregator.generate_statistics_csv_for_community(Community.find_by_slug(params[:community]))
+    end
+  end
+
+  get "/network_health_stats/:frequency" do |frequency|
+    response.headers['content_type'] = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+    if frequency == 'weekly'
+      attachment('network_health.xlsx')
+      response.write StatisticsNetworkHealthCsvGenerator.current_value
     end
   end
 
@@ -56,7 +74,7 @@ class Administration < Sinatra::Base
     haml :download_csv
   end
 
-  # Become a user 
+  # Become a user
   #
   # Params: id - the user to become
   get "/become" do

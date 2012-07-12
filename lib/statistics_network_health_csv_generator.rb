@@ -76,8 +76,6 @@ class NetworkHealthStats
   end
 end
 
-
-
 class StatisticsNetworkHealthCsvGenerator
   @queue = :statistics
 
@@ -101,19 +99,35 @@ class StatisticsNetworkHealthCsvGenerator
     7
   end
 
+  def self.frequency
+    "weekly"
+  end
+
   def self.filename
     "network_health_weekly.xlsx"
   end
 
-  def self.perform
+  def self.copy_redis_values(original_redis, new_redis)
+    keys = [
+      "statistics:network_health_#{frequency}",
+    ]
+    keys.each do |redis_key|
+      new_redis.set(redis_key, original_redis.get(redis_key))
+    end
+  end
+
+  def self.current_value(redis = Resque.redis)
+    redis.get "statistics:network_health_#{frequency}"
+  end
+
+  def self.perform(redis = Resque.redis)
     require 'simple_xlsx'
 
     original_start_date = start_date
     original_end_date = end_date
 
-    SimpleXlsx::Serializer.new("public/internal/network_health/#{filename}") do |doc|
-
-      doc.add_sheet("Network Health") do |sheet|
+    SimpleXlsx::Serializer.new("/tmp/network_health_#{frequency}.xlsx") do |document|
+      document.add_sheet("Network Health") do |sheet|
         sheet.add_row([
           "BY COMMUNITY",
           "Total Users",
@@ -212,24 +226,9 @@ class StatisticsNetworkHealthCsvGenerator
           # NetworkHealthStats.platform_engagement(start_date + 4.weeks, end_date + 4.weeks)
         # ])
       end
-
-      doc.add_sheet("Metadata") do |sheet|
-        sheet.add_row([
-          "Global Start Date",
-          "Global End Date",
-          "Days Elapsed"
-        ])
-
-        sheet.add_row([
-          original_start_date.to_date.to_s,
-          original_end_date.to_date.to_s,
-          days_elapsed
-        ])
-      end
     end
-
-    if Rails.env.production?
-      KickOff.new.deliver_network_health_stats_document(filename, :weekly)
-    end
+    str = File.open("/tmp/network_health_#{frequency}.xlsx", "rb").read
+    redis.set("statistics:network_health_#{frequency}", str)
+    `rm -rf /tmp/network_health_#{frequency}.xlsx`
   end
 end
