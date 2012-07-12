@@ -57,93 +57,12 @@ var RegisterNewUserView = RegistrationModalPage.extend({
 
     this.data.full_name = this.$("input[name=full_name]").val();
     this.data.email = this.$("input[name=email]").val();
-    this.data.address = this.$("input[name=street_address]").val();
+    this.data.password = this.$("input[name=password]").val();
 
-    var valid = true;
-    var validate_api = "/api" + this.communityExterior.links.registration.validate;
-    $.getJSON(validate_api, this.data, _.bind(function(response) {
-      this.$(".error").hide();
-
-      if (!_.isEmpty(response.facebook)) {
-        window.location.pathname = this.communityExterior.links.facebook_login;
-      } else {
-        _.each(["full_name", "email", "address"], _.bind(function(field) {
-          if (!_.isEmpty(response[field])) {
-            var error = this.$(".error." + field);
-            var errorText = _.reduce(response[field], function(a, b) { return a + " and " + b; });
-            error.text(errorText);
-            error.show();
-            valid = false;
-          }
-        }, this));
-
-
-        if(this.$("#suggested_address").is(":hidden")) {
-
-
-          var url = '/api/communities/'+this.communityExterior.id+'/address_approximate';
-          this.data.term = this.data.address;
-
-          $.get(url, this.data, _.bind(function(response) {
-            var radio = this.$("input.address_verify_radio");
-            var span = this.$("span.address_verify_radio");
-            var addr = this.$("#suggested_address");
-            /*
-            radio.hide();
-            span.hide();
-            addr.hide();
-            */
-
-            if(response[0] != -1) {
-
-              if(valid) {
-                this.$("input[name=full_name]").hide();
-                this.$("input[name=email]").hide();
-              }
-
-              if(response[1].length < 1 || response[0] < 0.84) {
-                valid = false;
-
-                var error = this.$(".error.address");
-                error.text("Please enter a valid address");
-                error.show();
-
-              }
-              else if(response[0] < 0.94) {
-                valid = false;
-                var verify = this.$("#verify_text");
-
-                this.data.suggest = response[1];
-
-                verify.empty();
-                addr.empty();
-
-                verify.text("Verify this address");
-                addr.text(response[1]);
-                radio.show();
-                span.show();
-                addr.show();
-              }
-              else if(valid) {
-                this.data.address = response[1];
-
-                this.nextPage("profile", this.data);
-              }
-            }
-            else if(valid) { this.nextPage("profile", this.data); }
-          }, this));
-        }
-        else {
-          if (valid) {
-            if(this.$("#suggested_radio").is(':checked')) {
-              this.data.address = this.data.suggest;
-            }
-
-            this.nextPage("profile", this.data);
-          }
-        }
-      }
-    }, this));
+    params = ["full_name", "email"];
+    this.validate_registration(params, _.bind(function() {
+      this.nextPage("address", this.data);
+    },this));
   },
 
   facebook: function(e) {
