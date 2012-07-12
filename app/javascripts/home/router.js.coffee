@@ -97,7 +97,7 @@ Home.Router = Backbone.Router.extend
       "H2": ""
       "home_link": "/"+router.community.get("slug")+"/home"
     )
-    about = new Home.ui.About el:$("#registration_content")
+    about = new Home.ui.About el:$(".full-width")
     about.render(
       "form goes here": "FORM"
     )
