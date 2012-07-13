@@ -1,12 +1,12 @@
 var RegisterNewUserView = RegistrationModalPage.extend({
-  template: "registration.new",
+  template: "registration.home_new",
   facebookTemplate: "registration.facebook",
 
   events: {
-    "click a.show-video": "showVideo",
     "click input.sign_up": "submit",
     "submit form": "submit",
-    "click img.facebook": "facebook",
+    "click .next-button": "submit",
+    "click img.facebook": "facebook"
   },
 
   afterRender: function() {
@@ -14,6 +14,24 @@ var RegisterNewUserView = RegistrationModalPage.extend({
       this.slideIn(this.el);
       this.current = true;
     }
+    
+    var tabs = this.$('ul.nav-tabs > a');
+    $('.tab-content > div').hide().filter("#home").fadeIn("500","linear");
+    $('ul.nav-tabs a').each(function() {
+      if (this.pathname == window.location.pathname) {
+        tabs.push(this);
+      }
+    });
+
+    this.$(tabs).click(function() {
+        //hide all tabs
+        $('.tab-content > div').hide().filter(this.hash).fadeIn("500","linear");
+
+        //set up selected tab
+        $(tabs).removeClass('selected');
+        $(this).addClass('selected');
+        return false;
+    });
 
     this.$("input[placeholder]").placeholder();
 
@@ -38,11 +56,6 @@ var RegisterNewUserView = RegistrationModalPage.extend({
     });
     });
 
-    var url = '/api/communities/'+this.communityExterior.id+'/address_completions'
-    this.$("input[name=street_address]").autocomplete({ source: url , minLength: 1 });
-
-    fbAsyncInit();
-    this.$(".facebook_registration").show();
   },
 
   community_name: function() { return this.communityExterior.name; },
