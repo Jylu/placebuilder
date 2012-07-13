@@ -13,7 +13,8 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     "submit form#add-address": "addAddress",
     "submit form#add-email": "addEmail",
     "click #edit-resident":"editResident",
-    "click .pick-user": "onClickFile",
+    //"click .pick-user": "onClickFile",
+    "click .interests": "filterByinterest",
     "click #related-users": "getRelated"
   },
 
@@ -51,6 +52,11 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     //this.renderList(users);
   },
   
+  filterByinterest: function(e){
+  //  console.log("!");
+    this.filePicker.filtByinterest($(e.currentTarget).text());
+  },
+  
   renderList: function(list) {
     this.$("#user-picker-list").empty();
     this.$("#user-picker-list").append(
@@ -65,8 +71,9 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     this.renderList(this.collection.models);
   },
 
-  show: function(model,community,collection) {
+  show: function(model,community,collection,filePicker) {
     this.model = model;
+    this.filePicker=filePicker;
     this.community = community;
     this.collection=collection;
     this.render();
@@ -75,7 +82,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     }, this));
     this.$("#log-date").datepicker();
     this.allactions();
-    console.log(this.model.full_name()+":"+this.model.getId());
+    //console.log(this.model.full_name()+":"+this.model.getId());
   },
 
   ifuser: function() {

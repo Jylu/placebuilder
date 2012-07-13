@@ -37,7 +37,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   onClickFile: function(e) {
     e.preventDefault();
     //console.log($(e.currentTarget));
-    this.options.fileViewer.show($(e.currentTarget).data('model'), this.options.community, this.collection);
+    this.options.fileViewer.show($(e.currentTarget).data('model'), this.options.community, this.collection,this);
   },
 
   checkall: function(e) {
@@ -222,6 +222,18 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         console.log(params["tag"]);
         break;
     }
+  },
+  
+  filtByinterest: function(interest){
+   var params={
+          "search": "byinterest",
+          "tag": interest
+        };
+
+        this.collection.fetch({
+          data: params,
+          success: _.bind(this.afterRender, this)
+        });
   },
   
   produceOrdertags: function(){
