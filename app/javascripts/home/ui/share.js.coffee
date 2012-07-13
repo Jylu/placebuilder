@@ -5,7 +5,6 @@ Home.ui.Share = Framework.View.extend
 
   events:
     "click .green-button": "close"
-    "click #facebookshare": "shareFacebook"
     "click #emailshare": "showEmail"
     "click #linkshare": "showLink"
 
@@ -19,21 +18,6 @@ Home.ui.Share = Framework.View.extend
       e.preventDefault()
     router.navigate(router.community.get("slug") + "/home", {"trigger": true, "replace": true})
     this.remove()
-
-  shareFacebook: (e) ->
-    if e
-      e.preventDefault()
-    #this.$("#share_facebook").toggle()
-    link = $(e.target)
-    FB.ui({
-      method: 'feed',
-      name: link.attr("data-name"),
-      link: link.attr("data-url"),
-      picture: link.attr("data-picture"),
-      caption: link.attr("data-caption"),
-      description: link.attr("data-description"),
-      message: link.attr("data-message")
-    }, $.noop)
 
   showEmail: (e) ->
     if e
