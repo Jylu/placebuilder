@@ -58,7 +58,9 @@ class CommunityExterior
       {
         "id" => feed.id,
         "name" => feed.name,
-        "avatar_url" => feed.avatar_url(:normal)
+        "avatar_url" => feed.avatar_url(:normal),
+        "kind" => feed.kind,
+        "about" => feed.about
       }
     end
   end

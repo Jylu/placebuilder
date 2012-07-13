@@ -1,9 +1,19 @@
 var RegisterFeedListView = RegistrationModalPage.extend({
-  template: "registration.feed",
+  template: "registration.home_feed",
   
+  feed_kinds: [
+    "Non-profit",
+    "Community Group",
+    "Business",
+    "Municipal",
+    "News",
+    "Other"
+  ],
+
   events: {
     "click input.continue": "submit",
-    "submit form": "submit"
+    "submit form": "submit",
+    "click .next-button": "submit"
   },
 
   afterRender: function() {
@@ -13,7 +23,8 @@ var RegisterFeedListView = RegistrationModalPage.extend({
     _.each(feeds, _.bind(function(feed) {
       var itemView = new this.FeedItem({ model: feed });
       itemView.render();
-      $ul.append(itemView.el);
+      category = "#" + this.feed_kinds[feed.kind];
+      this.$(category).append(itemView.el);
     }, this));
     
     this.slideIn(this.el);
@@ -27,6 +38,7 @@ var RegisterFeedListView = RegistrationModalPage.extend({
   },
   
   community_name: function() { return this.communityExterior.name; },
+  categories: function() { return this.feed_kinds; },
   
   submit: function(e) {
     if (e) { e.preventDefault(); }
@@ -40,11 +52,11 @@ var RegisterFeedListView = RegistrationModalPage.extend({
   },
   
   finish: function() {
-    this.nextPage("group", this.data);
+    this.nextPage("neighbors", this.data);
   },
   
   FeedItem: CommonPlace.View.extend({
-    template: "registration.feed-item",
+    template: "registration.home_feed-item",
     tagName: "li",
     
     events: { "click": "check" },
@@ -56,7 +68,9 @@ var RegisterFeedListView = RegistrationModalPage.extend({
     feed_id: function() { return this.model.id; },
     
     feed_name: function() { return this.model.name; },
-    
+   
+    feed_about: function() { return this.model.about; },
+
     check: function(e) {
       if (e) { e.preventDefault(); }
       var $checkbox = this.$("input[type=checkbox]");
