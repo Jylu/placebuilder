@@ -12,15 +12,63 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     "submit form#add-notes": "addNotes",
     "submit form#add-address": "addAddress",
     "submit form#add-email": "addEmail",
-    "click #edit-resident":"editResident"
+    "click #edit-resident":"editResident",
+    "click .pick-user": "onClickFile",
+    "click #related-users": "getRelated"
   },
 
   editResident: function(){
     new OrganizerApp.AddResident({el: $('#file-viewer'), model: this.model, fileViewer: this, edit:true}).render();
   },
+  
+  onClickFile: function(e) {
+    e.preventDefault();
+    //console.log($(e.currentTarget));
+    this.show($(e.currentTarget).data('model'), this.community, this.collection);
+  },
+  
+  interests: function(){
+    return this.model.get('interest_list');
+  },
+  
+  getRelated: function(){
+    if(!this.model.get('on_commonplace') && this.model.get('classtype')=="Resident"){
+      this.$("#person-relation-viewer").empty();
+      this.$("#person-relation-viewer").append("Not a user yet");
+    }
+    else{    
+      if(this.model.get('classtype')=="Resident"){
+        var params={"search":"linked","resident_id":this.model.get('id')};
+      }
+      else{
+        var params={"search":"linked","user_id":this.model.get('id')}
+      }
+      this.collection.fetch({
+        data:params,
+        success: _.bind(this.afterRender, this)
+      });
+    }
+    //this.renderList(users);
+  },
+  
+  renderList: function(list) {
+    this.$("#user-picker-list").empty();
+    this.$("#user-picker-list").append(
+      _.map(list, _.bind(function(model) {
+        var li = $("<li/>", { text: model.full_name(), data: { model: model } })[0];
+        $(li).addClass("pick-user");
+        return li;
+      }, this)));
+  },
 
-  show: function(model) {
+  afterRender: function() {
+    this.renderList(this.collection.models);
+  },
+
+  show: function(model,community,collection) {
     this.model = model;
+    this.community = community;
+    this.collection=collection;
     this.render();
     this.$("#log-add").click($.proxy(function() {
       this.model.addLog();
@@ -237,16 +285,16 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       this.$("#action-count").before("Not a user yet");
     }
     else{
-      this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("id")+"/all");
+      this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("user_id")+"/all");
       this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/all\" target=\"content\" >All</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/email\" target=\"content\" >Emails Sent</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/sitevisit\" target=\"content\" >Log In Time</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/post\" target=\"content\" >Post</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/announcement\" target=\"content\" >Announcement</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/reply\" target=\"content\" >Reply</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/event\" target=\"content\" >Event</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/invite\" target=\"content\" >Invite</a>  ||  ");
-      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/tags\" target=\"content\" >Tags</a>");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/email\" target=\"content\" >Emails Sent</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/sitevisit\" target=\"content\" >Log In Time</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/post\" target=\"content\" >Post</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/announcement\" target=\"content\" >Announcement</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/reply\" target=\"content\" >Reply</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/event\" target=\"content\" >Event</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/invite\" target=\"content\" >Invite</a>  ||  ");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("user_id")+"/tags\" target=\"content\" >Tags</a>");
     }
 
   },

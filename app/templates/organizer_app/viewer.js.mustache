@@ -12,9 +12,19 @@ var target=document.getElementById(id);
 
 
 
-<div id="person-viewer">
 
-  <h3 id="name">{{ full_name }} <button id="edit-resident" onclick="">Edit Info</button></h3>
+
+  <h3 id="name">{{ full_name }} 
+  <button id="edit-resident" onclick="">Edit Info</button>
+  <button id="related-users" onclick="display('person-relation-viewer');display('person-viewer-left');display('person-viewer-right');">Linked Data</button>
+  </h3>  
+  <div id="person-viewer">
+  <span id="person-relation-viewer" style="display:none; ">
+    Interests: {{interests}}
+    <ul id="user-picker-list" style= "list-style:none; ">
+      <li>Loading...</li>
+    </ul>
+  </span>
   <span id="person-viewer-left"> 
      <table>
        <tr>
@@ -75,32 +85,6 @@ var target=document.getElementById(id);
        </tr>
        </table>
         
- 	
-        <!--
-        Current tags: <br>
-    <ul id="resident-tags">
-    {{#tags}}<li>{{.}}</li>{{/tags}}
-    </ul>
-  
-    Organizer Logs:
-    <ul id="organizer-logs">
-      {{#logs}}
-        <li>{{.}}</li>
-      {{/logs}}
-    </ul>
-  
-    <br />
-    <form id="add-log">
-      Add Log:
-  	  <input id="log-date" type="text" placeholder="Date (MM/DD/YYYY)"><br />
-      <textarea id="log-text" name="log-text" placeholder="description" cols="40"></textarea><br />
-
-	  Tag as: <br />
-      {{#possibleTags}}
-      <input type="checkbox" value="{{.}}" />{{.}}<br />
-      {{/possibleTags}}
-      <input id="log-add" type="submit" value="Add log">
-    </form> -->
     </span>
     <span id="person-viewer-right">
     Actions <br>

@@ -128,12 +128,12 @@ OrganizerApp.Files = Backbone.Collection.extend({
         intersect={},res=[];
         for (var i=actions.length-1; i>=0; i--) {	
 	  for ( var j=0; j<t.length; j++) {	
-		if (actionss[i]==t[j]) {
-			intersect[actionss[i]]=true;
+		if (actions[i]==t[j]) {
+			intersect[actions[i]]=true;
 		}
 	  }
         }
-      actionss= new Array();
+      actions= new Array();
       for(var k in intersect)
 	actions.push(k);
       }

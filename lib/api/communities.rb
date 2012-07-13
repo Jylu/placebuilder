@@ -287,6 +287,14 @@ CONDITION
              order_users_by_quantity_of_tag(params[:tag])
           end
         end
+      elsif params[:search]=="byinterest"
+        serialize(User.tagged_with(params[:tag],:on=>:interests))
+      elsif params[:search]=="linked"
+        if params[:resident_id]
+          serialize(User.find(Resident.find(params[:resident_id]).user_id).find_related_interests)
+        else
+          serialize(User.find(params[:user_id]).find_related_interests)
+        end
       else
       serialize(Sunspot.search(Resident) do
           paginate :page => 1, :per_page => 9001
@@ -356,6 +364,16 @@ CONDITION
       control_access :admin
 
       Resident.find(params[:file_id])
+    end
+    
+    # Returns related users of specific resident file
+    # according to interests
+    get "/:id/files/:file_id/relatedusers" do
+      control_access :admin
+      user_id=Resident.find(params[:file_id]).user_id
+      user=User.find(user_id)
+      serialize(user.find_related_interests)
+      
     end
 
     # Add a log to a community resident file

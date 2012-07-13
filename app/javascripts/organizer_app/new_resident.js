@@ -82,7 +82,7 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
 	      if(typetags[i].checked)
 		 typevalue.push(typetags[i].value);
 	    }
-	    console.log(this.$("#last-name").val());
+	    //console.log("!");
 	    $.ajax({
 		type: 'POST',
 		contentType: "application/json",
@@ -111,13 +111,10 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
   },
 
   show: function(){
-    //return this.filePicker.url();
     collection.each(function(model) {
       console.log(model.full_name());
     });
-    //return this.collection.url();
-    //return result;
-    //return this.filepicker.reload();
+    
   }
 
 });

@@ -15,6 +15,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click #map-button": "showMapView",
     "click #new-resident": "addResident",
     "click #todo-list": "gotoTodo",
+    "click #interest-picker": "interestPicker"
     //"click #filter-tags": "addNewselect"
     //"click #new-street" : "addStreet"
   },
@@ -36,7 +37,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   onClickFile: function(e) {
     e.preventDefault();
     //console.log($(e.currentTarget));
-    this.options.fileViewer.show($(e.currentTarget).data('model'));
+    this.options.fileViewer.show($(e.currentTarget).data('model'), this.options.community, this.collection);
   },
 
   checkall: function(e) {
@@ -90,6 +91,10 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     new OrganizerApp.AddStreet({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
   },
 */
+  interestPicker: function(e) {
+    new OrganizerApp.InterestPicker({el: $('#file-viewer'), community: this.options.community, collection: this.collection, filePicker: this}).render();
+  },
+
   showMapView: function(e) {
     new OrganizerApp.MapView({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
   },
@@ -98,6 +103,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     $("#check-all").attr("checked", all_check);
     this.renderList(this.collection.models);
     this.amount();
+    this.$("#amount").text(this.collection.models.length);
     this.produceOrdertags();
   },
   
@@ -159,14 +165,25 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     _.map(possTags, function(residenttag) {
       actions.push({tag:residenttag,val:residenttag});
     });
+    interests=this.options.community.get('interests');
+    for(i=0;i<interests.length;i++){
+      actions.push({tag:i,val:interests[i]});
+    }
     return actions;
   },
 
   filterUsers: function(e){
     var tag=new Array();
+    var Search="filter";
     _.map(this.$("select[name=filter-tags]"), function(select) {
-      if(select.value){ 	
-        tag.push(select.value);	  	
+      if(select.value){
+        if(!isNaN(select.value)){ 	
+          tag.push(interests[select.value]);
+          Search="byinterest";
+        }
+        else{
+          tag.push(select.value);	  	
+        }
       }
     });
     var haves=new Array();
@@ -175,11 +192,11 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         haves.push(select.value);
       }    
     });
-    
+
     switch(e.target.id){
       case "filter":
         var params={
-          "search": "filter",
+          "search": Search,
           "have": haves,
           "tag": tag
         };

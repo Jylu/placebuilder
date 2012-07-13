@@ -195,7 +195,7 @@ class User < ActiveRecord::Base
     t.add :first_name
     t.add :last_name
     t.add :about
-    t.add :interest_list, :as => :interests
+    t.add :interest_list
     t.add :good_list, :as => :goods
     t.add :skill_list, :as => :skills
     t.add :links
@@ -205,10 +205,6 @@ class User < ActiveRecord::Base
     t.add :unread
     t.add lambda {|u| "User"}, :as => :classtype
     t.add lambda {|u| u.actions_tags}, :as => :actionstags
-  end
-
-  def announcement_count
-    self.announcements.count
   end
 
   def links
@@ -672,14 +668,17 @@ WHERE
       r.user = self
       r.save
     else
-      Resident.create(
+      r= Resident.create(
         :community => self.community,
         :first_name => self.first_name,
         :last_name => self.last_name,
         :address => self.address,
         :email => self.email,
         :street_address => addr,
-        :user => self)
+        :user => self,
+        :community_id => self.community_id)
+      r.update_attribute(:community_id,self.community_id)
+      r.update_attribute(:community,self.community)
     end
   end
 

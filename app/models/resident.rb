@@ -69,6 +69,14 @@ class Resident < ActiveRecord::Base
       []
     end
   end
+  
+  def interest_list
+    if self.on_commonplace?
+      User.find(self.user_id).interest_list
+    else
+      []
+    end
+  end
 
   # Created via Organizer App
   def manual_add
@@ -86,6 +94,7 @@ class Resident < ActiveRecord::Base
     todos |= self.metadata[:todos] if self.metadata[:todos]
     todos
   end
+
 
   # Creates tags associated with the resident
   #
