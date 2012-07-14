@@ -52,7 +52,7 @@ var RegisterFeedListView = RegistrationModalPage.extend({
   },
   
   finish: function() {
-    this.nextPage("neighbors", this.data);
+    this.nextPage("group", this.data);
   },
   
   FeedItem: CommonPlace.View.extend({
