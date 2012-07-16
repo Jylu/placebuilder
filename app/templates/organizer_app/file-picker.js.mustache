@@ -21,7 +21,7 @@ newselect.insertBefore("#filter");
 <div id="file-picker-filters">
 <button id="new-resident">New Resident</button>
 <button id="todo-list">Task List</button>
- <button id="interest-picker">Interests</button> 
+ <button id="interest-picker">Interests</button>
 <HR>
   <input type="text" placeholder="search" id="query-input" size=25>
   <button id="filter-button">Search</button>
@@ -31,10 +31,9 @@ newselect.insertBefore("#filter");
     <option value="yes" selected=true> Have
     <option value="no"> Not
   </select>
-<select id="1" name="filter-tags" style="width:130px" onchange="show(this.id)">
-<option value=''>Choose a tag</option>
+<select id="1" class="list" name="filter-tags" data-placeholder="Choose a tag" style="width:130px" onchange="show(this.id)">
   {{#dropdowns}}
-        <option value="{{tag}}" > {{val}}
+    <option value="{{tag}}" > {{val}} </option>
   {{/dropdowns}}
 </select>
 <button id="filter">Filter</button><br>
@@ -57,7 +56,7 @@ newselect.insertBefore("#filter");
      <option class="tag-adding" value="{{.}}">{{.}}</option>
   {{/tags}}
 </select>
-<button id="add-tag">Add tag</button>  
+<button id="add-tag">Add tag</button>
 <HR>
 
 <input type="checkbox" id="check-all">Check all shown</input>

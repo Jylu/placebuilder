@@ -21,23 +21,23 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
   editResident: function(){
     new OrganizerApp.AddResident({el: $('#file-viewer'), model: this.model, fileViewer: this, edit:true}).render();
   },
-  
+
   onClickFile: function(e) {
     e.preventDefault();
     //console.log($(e.currentTarget));
     this.show($(e.currentTarget).data('model'), this.community, this.collection);
   },
-  
+
   interests: function(){
     return this.model.get('interest_list');
   },
-  
+
   getRelated: function(){
     if(!this.model.get('on_commonplace') && this.model.get('classtype')=="Resident"){
       this.$("#person-relation-viewer").empty();
       this.$("#person-relation-viewer").append("Not a user yet");
     }
-    else{    
+    else{
       if(this.model.get('classtype')=="Resident"){
         var params={"search":"linked","resident_id":this.model.get('id')};
       }
@@ -51,12 +51,12 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     }
     //this.renderList(users);
   },
-  
+
   filterByinterest: function(e){
   //  console.log("!");
     this.filePicker.filtByinterest($(e.currentTarget).text());
   },
-  
+
   renderList: function(list) {
     this.$("#user-picker-list").empty();
     this.$("#user-picker-list").append(

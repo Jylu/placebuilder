@@ -101,12 +101,13 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
 
   afterRender: function() {
     $("#check-all").attr("checked", all_check);
+//    this.$("select.list").chosen()
     this.renderList(this.collection.models);
     this.amount();
     this.$("#amount").text(this.collection.models.length);
     this.produceOrdertags();
   },
-  
+
   amount: function(){
     return this.collection.models.length;
   },
@@ -177,20 +178,20 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     var Search="filter";
     _.map(this.$("select[name=filter-tags]"), function(select) {
       if(select.value){
-        if(!isNaN(select.value)){ 	
+        if(!isNaN(select.value)){
           tag.push(interests[select.value]);
           Search="byinterest";
         }
         else{
-          tag.push(select.value);	  	
+          tag.push(select.value);
         }
       }
     });
     var haves=new Array();
     _.map(this.$("select[name=haveornot]"), function(select) {
-      if(select.value){ 
+      if(select.value){
         haves.push(select.value);
-      }    
+      }
     });
 
     switch(e.target.id){
@@ -205,7 +206,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           data: params,
           success: _.bind(this.afterRender, this)
         });
-        
+
         break;
       case "filter-order":
         var params={
@@ -223,7 +224,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         break;
     }
   },
-  
+
   filtByinterest: function(interest){
    var params={
           "search": "byinterest",
@@ -235,9 +236,9 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           success: _.bind(this.afterRender, this)
         });
   },
-  
+
   produceOrdertags: function(){
-    var obj = this.$("#order-tags").empty(); 
+    var obj = this.$("#order-tags").empty();
     _.map(this.collection.commontags(),function(tag){
       this.$("#order-tags").append('<option value='+tag+'>'+tag+'</option>');
     });
