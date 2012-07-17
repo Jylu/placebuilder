@@ -397,21 +397,26 @@ WHERE
   end
 
   def skill_list
-    (self.skills || "").split(", ")
+    (self.skills || "").split(",")
   end
 
   def interest_list
-    (self.interests || "").split(", ")
+    (self.interests || "").split(",")
   end
 
   def good_list
-    (self.goods || "").split(", ")
+    (self.goods || "").split(",")
+  end
+
+  def add_organizations(orgs)
+    self.organizations = orgs
+    self.community.add_organizations(orgs.split(','))
   end
 
   def skill_list=(skill_list)
     case skill_list
     when Array
-      self.skills = skill_list.join(", ")
+      self.skills = skill_list.join(",")
     else
       self.skills = skill_list
     end

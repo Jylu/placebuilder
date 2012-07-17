@@ -37,6 +37,7 @@ class API
     # Returns validation errors on failure
     post "/:community_id/new" do |community_id|
       control_access :public
+      community = Community.find(community_id)
       params.merge!(request_body) rescue
       user = User.new(:full_name => params["full_name"],
                       :email => params["email"],
@@ -52,7 +53,7 @@ class API
         user.referral_source = params["referral_source"]
         user.referral_metadata = params["referral_metadata"]
         user.calculated_cp_credits = 0
-        user.organizations = params["organizations"]
+        user.add_organizations(params["organizations"])
 
         user.save
         warden.set_user(user, :scope => :user)
