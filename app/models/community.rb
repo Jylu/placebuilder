@@ -265,6 +265,12 @@ class Community < ActiveRecord::Base
     CommunityExterior.new(self)
   end
 
+  def add_organizations(orgs)
+    self.metadata[:organizations] ||= []
+    self.metadata[:organizations] |= orgs
+    self.save
+  end
+
   def add_resident_tags(tags)
     self.metadata[:resident_tags] ||= []
     self.metadata[:resident_tags] |= tags
