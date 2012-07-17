@@ -41,7 +41,7 @@
       CommonPlace.community = new Community(<%= Serializer::serialize(@community).to_json.html_safe %>);
       CommonPlace.account = new Account(<%= @account.try(:persisted?) ? Serializer::serialize(Account.new(@account)).to_json : "{}" %>);
  
-      window.router = new RegistrationRouter({ communityExterior: <%= Serializer::serialize(@community.exterior).to_json.html_safe %> });
+      window.router = new CommonPlace.registration.Router({ communityExterior: <%= Serializer::serialize(@community.exterior).to_json.html_safe %> });
 
       var communitySlug = window.location.pathname.split("/")[1];
 
