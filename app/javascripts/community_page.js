@@ -12,10 +12,10 @@ var CommunityPage = CommonPlace.View.extend({
 
     var profileDisplayer = new ProfileDisplayer({});
 
-    this.postBox = new PostBox({
+    /*this.postBox = new PostBox({
       account: this.account,
       community: this.community
-    });
+    });*/
 
     this.lists = new CommunityResources({
       account: this.account,
@@ -23,15 +23,17 @@ var CommunityPage = CommonPlace.View.extend({
       showProfile: function(p) { profileDisplayer.show(p, { from_wire: true }); }
     });
 
-    this.profileBox = new ProfileBox({
+    /*this.profileBox = new ProfileBox({
       profileDisplayer: profileDisplayer
-    });
+    });*/
+
+    this.sidebar = new CommonPlace.main.Sidebar();
 
     profileDisplayer.highlightSingleUser = function(user) {
       self.lists.highlightSingleUser(user);
     }
 
-    this.views = [this.postBox, this.lists, this.profileBox];
+    this.views = [this.sidebar, this.lists];
   },
 
   afterRender: function() {
