@@ -1,4 +1,3 @@
-CommonPlace.registration = {}
 CommonPlace.registration.Router = Backbone.Router.extend(
   routes:
     "": "new_user"
