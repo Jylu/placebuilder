@@ -182,6 +182,11 @@ class KickOff
     enqueue(ShareNotification, user, item, recipient_email)
   end
 
+  def deliver_email_share(recipients, postlike_id, postlike_type, community_id, current_user_id)
+    # TODO: Implement
+    enqueue(EmailShare, recipients, postlike_id, postlike_type, community_id, current_user_id)
+  end
+
   def deliver_statistics_ready_notification(admin_user)
     name = User.find_by_email(admin_user.email) ? User.find_by_email(admin_user.email).first_name : "Admin"
     enqueue(StatisticsReadyNotification, admin_user.email, name)

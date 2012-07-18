@@ -86,6 +86,26 @@ class API
       else
         [400, "errors"]
       end
-    end			
+    end
+
+    # Shares the postlike via e-mail to a CSV list of addresses
+    #
+    # Kicks off a job to deliver the e-mail(s)
+    #
+    # Requires community membership
+    #
+    # Request params:
+    #  recipients - comma-separated list of e-mail addresses to send to
+    #
+    # Returns 400 if there are errors
+    # Returns 200 if successful
+    post "/:id/share_via_email" do
+      postlike = find_postlike
+      control_access :community_member, postlike.community
+
+      recipients = params['recipients'].split(',')
+      kickoff.deliver_email_share(recipients, postlike.id, postlike.class.name, postlike.community.id, current_user.id)
+      200
+    end
   end
 end
