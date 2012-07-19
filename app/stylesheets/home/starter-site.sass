@@ -1,0 +1,334 @@
+@import "compass/css3/gradient"
+@import "compass/css3/border-radius"
+@import "compass/reset"
+@import base.sass
+
+$Ultra: 'Ultra'
+$Yellowtail: 'Yellowtail'
+$Rokkitt: 'Rokkitt'
+
+#main-reg
+  width: 1100px
+  background: none
+  margin: 0 auto
+  position: relative
+  .community-name
+    width: 600px
+    padding-left: 20px
+    border-style: none
+    h1
+      background: url("shared/redesign/logo2.png") left no-repeat
+      font-weight: normal
+      font-size: 33px
+      float: left
+      width: 225px
+      margin-top: 15px
+      text-indent: -9999px
+    span
+      font-size: 28px
+      margin-top: 18px
+      text-shadow: black 1px 1px 1px
+      font-weight: normal
+      display: block
+      font-family: $Rokkitt
+      color: $red
+#registration_modal
+  background:none
+  width: 1070px
+  overflow: hidden
+  position: relative
+  height: auto
+  margin-left: auto
+  margin-right: auto
+  z-index: 500
+.registration_right
+  top: 0
+  width: 415px
+  float: right
+.top-bar
+  width: 300px
+  border-style: none
+  border-right: none
+  float: right
+  h3
+    color: white
+    font-size: 16px
+    text-shadow: 1px 1px 1px black
+    margin-right: 10px
+    float: left 
+    margin-top: 20px
+    font-family: $heading
+  .button
+    padding: 5px 
+    height: 22px
+    top: 9px
+    bottom: 7px
+    border-radius: 4px 
+    box-shadow: inset 0 1px 1px rgba(255,255,255,.4)
+    cursor: pointer
+    width: 70px
+    float: left
+    margin-top: 12px
+    font-family: $heading
+    font-size: 18px
+    color: white
+    border: 1px solid black
+    text-align: center
+  .blue
+    margin-right: 20px
+    +linear-gradient(color-stops(#2e5274, #1b334a))
+  .red
+    background: $red
+    +linear-gradient(color-stops(#cc4441, #ac322f))
+.dropdown
+  opacity: 0
+  -webkit-transition: opacity 500ms ease
+  width: 270px
+  background: #EEECDF
+  text-align: center
+  z-index: 400
+  display:none
+  +border-radius(4px)
+  position: absolute
+  box-shadow: black 0px 1px 1px
+  right: 15px
+  top: 63px
+  .arrow
+    width: 150px
+    height: 20px
+    background: url("shared/redesign/arrow.png") no-repeat
+    background-position: 100px 12px
+    position: absolute
+    top: -20px 
+    display: block
+    right: 0
+  input
+    width: 215px
+    -webkit-appearance: none
+    border: 0 
+    font-size: 16px
+    padding: 7px
+    height: auto
+    margin-top: 5px
+    font-family: $Rokkitt
+    border: 1px solid #ddd
+    &:focus
+      outline: none
+  .email
+    margin: 20px 0px 10px 0px
+  button.signin
+    text-align: center
+    float: right
+    width: 90px
+    +linear-gradient(color-stops(#2e5274, #1b334a))
+    font-weight: bold
+    font-size: 15px
+    margin-right: 20px
+    padding-top: 10px
+    padding-bottom: 8px
+    margin-top: 5px
+    height: auto
+  button.signin.facebook
+    width: 127px
+    height: auto
+    margin-right: 12px
+    font-size: 15px
+    padding: 10px 0 8px 0
+    +linear-gradient(color-stops(#4e6fb6, #3b5998))
+  p 
+    clear: both
+    margin-left: 20px
+    padding: 10px 0px 15px 0px
+    text-align: left
+    font-family: $Rokkitt
+    cursor: pointer
+    color: #565656
+    font-weight: bold
+    &:hover
+      text-decoration: underline
+
+.registration1
+  margin-top: 250px
+  .left 
+    width: 55%
+    float: left
+    h1
+      color: #eeecdf
+      font-family: $Yellowtail
+      background: url("shared/redesign/red-bg.png")
+      width: 253px
+      text-shadow: 4px 4px 1px $blue
+      font-size: 42px
+      padding: 20px
+      margin-bottom: 35px
+    p
+      margin-top: 20px
+      display: inline
+      color: #1c344b
+      font-family: $Rokkitt
+      background: #eeecdf
+      padding: 5px
+        left: 15px 
+        right: 15px
+      font-size: 26px
+      line-height: 38px
+      &:last-child
+        padding-top: 0px
+        display: inline-block
+        margin-top: 0px
+    p.first
+      padding-top: 15px
+    .learn-more
+      color: $red
+      cursor: pointer
+      &:hover
+        text-decoration: underline
+    .tab-pane
+      display: none
+      &:first-child
+        display: block
+    .navbar
+      background: url("shared/redesign/blue-bg.png")
+      margin-top: 20px
+      height: 40px 
+      width: auto
+      ul 
+        padding-top: 11px
+        padding-left: 15px
+        li 
+          float: left 
+          color: white
+          font-family: $Rokkitt
+          font-size: 18px
+          text-shadow: 1px 1px 1px black
+          margin-right: 15px
+          a 
+            text-decoration: none
+            color: white
+            &:hover 
+              color: $red
+          a.selected
+            color: $red
+  .right 
+    width: 450px
+    height: 385px
+    position: relative
+    -webkit-perspective: 800px
+    float: right
+    #redbox
+      height: 100%
+      text-align: center
+      width: 100%
+      position: absolute
+      -webkit-transform-style: preserve-3d
+      -webkit-transition: transform 1s
+      figure
+        display: block
+        position: absolute
+        width: 100%
+        height: 100%
+        -webkit-backface-visibility: hidden
+      .front
+        background: $red url("shared/redesign/red-bg.png")
+        display: block
+      .back 
+        background: $blue
+        -webkit-transform: rotateY( 180deg )
+        display: block
+      h2
+        font-size: 42px
+        margin-top: 20px
+        width: 100%
+        background: url("shared/redesign/stars.png") no-repeat center
+        text-align: center
+        font-family: $Yellowtail
+        text-shadow: 4px 4px 1px $blue
+        color: #eeecdf
+        margin-bottom: 17px
+        padding-bottom: 12px
+      input
+        width: 379px
+        height: 20px
+        padding: 8px
+        font-family: $Rokkitt
+        color: $blue
+        border: none
+        font-size: 18px
+        background: #eeecdf
+        margin-bottom: 20px
+        &:last-child
+          margin-bottom: 30px
+      input::-webkit-input-placeholder
+        color: $blue
+    .registration 
+      button
+        -webkit-appearance: none
+        background: $blue
+        width: 395px
+        padding: 10px 0
+        letter-spacing: 1px
+        font-family: $Ultra
+        font-size: 20px
+        border: 1px solid #151f28
+        color: white
+        text-transform: uppercase
+        +linear-gradient(color-stops(#2e5274, #1b334a))
+        box-shadow: 1px 1px 1px rgba(0,0,0,.5)
+        text-shadow: 1px 2px 3px rgba(0,0,0,.5)
+        cursor: pointer
+        margin-top: 0px
+    .facebook
+      margin: 0 auto
+        top: 15px
+      width: 345px
+      text-align: left
+      a 
+        cursor: pointer
+        background: url("shared/redesign/fbreg.png") no-repeat center
+        text-indent: -9999px
+        height: 32px
+        display: block
+        margin-left: 100px
+        width: 245px
+        font-size: 18px
+        text-transform: uppercase
+      p
+        color: white
+        font-family: $Rokkitt 
+        padding-top: 6px
+        float: left
+        font-size: 18px
+
+.tab-content
+  overflow: hidden
+  height: auto
+  width: 100%
+.strip
+  width: 2000px
+  position: relative
+  height: auto
+.tab-pane
+  display: block
+  width: 100%
+  float: left
+
+#registration_content .left .navbar ul li 
+  margin-top: -7px
+  a
+    text-decoration: none
+    color: white
+    font-size: 19px
+
+div#main-reg 
+  div.community-name
+    border-right: none
+    border-left: 1px solid #1c1b1c
+  div.top-bar
+    border-left: none
+    width: 450px
+
+#find_button a.blue-button.next-button
+  position: relative
+  bottom: 55px
+  margin-top: -60px
+  margin-right: -28px
