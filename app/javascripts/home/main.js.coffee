@@ -21,14 +21,15 @@ $ ->
     success: (community) ->
 
       router.community = community
+
       (new Home.model.Account).fetch
 
         success: (account) ->
 
-          router.account = account
-
           _kmq.push(['identify', account.get('email')]);
           _kmq.push(['record', 'logged in']);
+
+          router.account = account
 
           Backbone.history.start(pushState: true)
 

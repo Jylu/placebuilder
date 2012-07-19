@@ -49,6 +49,7 @@ class User < ActiveRecord::Base
 
   after_create :create_resident
   after_create :track
+  after_destroy :track_deletion
   before_validation :geocode, :if => :address_changed?
   before_validation :place_in_neighborhood, :if => :address_changed?
 
@@ -600,7 +601,7 @@ WHERE
     KM.identify(email)
     KM.alias(full_name, email)
     KM.record('signed up')
-    KM.record('activated')
+    KM.record('authenticated')
   end
 
   def track_deletion
