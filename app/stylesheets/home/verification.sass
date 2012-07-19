@@ -1,0 +1,92 @@
+@import "compass/css3/border-radius"
+@import "compass/css3/images"
+@import base.sass
+
+.redbox
+  padding: 30px
+  background: url("shared/redesign/verification-bg.png") no-repeat
+  height: 635px
+
+.address
+  width: 390px
+  h2 
+    font-size: 42px
+    margin-top: 20px
+    width: 100%
+    background: url("shared/redesign/stars-2.png") no-repeat center
+    text-align: center
+    font-family: $Yellowtail
+    margin-top: 0
+    text-shadow: 4px 4px 1px $blue
+    margin-bottom: 25px
+    color: #eeecdf
+  p 
+    color: white
+    font-family: $Rokkitt
+    font-size: 18px
+    margin: 0 0 15px 0
+  input.address
+    font-size: 17px
+    border: 1px solid #821916
+    box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.5) 0px 1px 1px
+    font-family: $Rokkitt
+    width: 370px
+    padding: 8px
+    color: #333333
+  input.address::-webkit-input-placeholder
+    color: #333
+  img 
+    border: 1px solid #821916
+    margin-top: -5px
+  p.caption
+    font-size: 14px
+    float: right
+    margin: 10px 0 20px 0 
+    font-family: $Rokkitt
+    text-align: right
+  input[type=button]
+    -webkit-appearance: none
+    background: $blue
+    @include background(linear-gradient(top center, #2e5274, #1b334a))
+    width: 393px
+    padding: 10px 0
+    letter-spacing: 1px
+    font-family: $Ultra
+    font-size: 20px
+    border: 1px solid #151f28
+    color: white
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255,255,255,.3)
+    text-shadow: 1px 2px 3px rgba(0,0,0,.5)
+    cursor: pointer
+  select
+    width: 390px
+.welcome
+  background: url("shared/redesign/welcomebg.png") center top no-repeat
+  width: 525px
+  padding: 0 32px
+
+#registration1 div.redbox.address div#find_button a.blue-button.next-button
+  position: relative
+  width: 355px
+  right: 30px
+  top: 70px
+  text-align: center
+
+#dk_container_hear 
+  width: 385px
+  z-index: 999
+  a.dk_toggle 
+    height: 16px
+    margin-top: 40px
+    margin-bottom: 0
+    span.dk_arrow.button.blue 
+      margin-right: -16px
+    span.dk_label 
+      width: 350px
+
+ul.ui-autocomplete
+  background: white
+  width: 366px
+
+li.ui-menu-item
+  border-bottom: solid grey 1px
