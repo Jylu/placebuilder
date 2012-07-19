@@ -2,6 +2,9 @@
 post_notification:
   intro: Hi {{user_name}}, <br> {{poster_name}} just posted to your neighborhood board on CommonPlace.
 
+email_share:
+  intro: Hi! <br> Your friend {{sharer_name}} wanted you to see this {{post_type}} on {{community_name}}'s CommonPlace.
+
 share_notification:
   intro: "Hi! <br> Your friend {{sharer_name}} wanted you to see this {{data_type}} on the {{community_name}} CommonPlace. <br> CommonPlace is an online bulletin board for the Falls Church community. <br> Sign up here: www.FallsChurch.OurCommonPlace.com <br> You may see the post below."
 

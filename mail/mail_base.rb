@@ -30,7 +30,7 @@ class MailBase < Mustache
   end
 
   def text
-    @text ||= YAML.load_file(File.join(File.dirname(__FILE__), "text", "#{community.locale}.yml"))[self.underscored_name]
+    @text ||= YAML.load_file(File.join(File.dirname(__FILE__), "text", "#{community.locale || "en"}.yml"))[self.underscored_name]
   end
 
   def self.render_html(*args, &block)
@@ -115,15 +115,15 @@ class MailBase < Mustache
   end
 
   def limited?
-    unless defined? user
-      true
+    if !user.present? || user == nil
+      false
     else
       user.emails_are_limited?
     end
   end
 
   def increase_email_count
-    if defined? user
+    if user.present? && user.try(:emails_sent)
       user.emails_sent += 1
       user.save
     end
