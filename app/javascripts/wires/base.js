@@ -74,14 +74,14 @@ var Wire = CommonPlace.View.extend({
   schemaToView: function(model) {
     var schema = model.get("schema");
     return new {
-      "events": EventWireItem,
-      "announcements": AnnouncementWireItem,
-      "posts": PostWireItem,
-      "group_posts": GroupPostWireItem,
-      "feeds": FeedWireItem,
-      "users": UserWireItem,
-      "groups": GroupWireItem,
-      "messages": MessageWireItem
+      "events": CommonPlace.wire_item.EventWireItem,
+      "announcements": CommonPlace.wire_item.AnnouncementWireItem,
+      "posts": CommonPlace.wire_item.PostWireItem,
+      "group_posts": CommonPlace.wire_item.GroupPostWireItem,
+      "feeds": CommonPlace.wire_item.FeedWireItem,
+      "users": CommonPlace.wire_item.UserWireItem,
+      "groups": CommonPlace.wire_item.GroupWireItem,
+      "messages": CommonPlace.wire_item.MessageWireItem
     }[schema]({model: model, showProfile: this.options.showProfile });
   },
   
