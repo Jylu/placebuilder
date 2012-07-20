@@ -14,8 +14,8 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     "submit form#add-email": "addEmail",
     "click #edit-resident":"editResident",
     //"click .pick-user": "onClickFile",
-    "click .interests": "filterByinterest",
-    "click #related-users": "getRelated"
+    "click .interests": "filterByinterest"
+    //"click #get-stories": "getStories"
   },
 
   editResident: function(){
@@ -283,6 +283,12 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     } else {
       return "No tags in our records yet.";
     }
+  },
+  
+  stories: function() {
+    //console.log(this.model.get('stories'));
+    return this.model.get('stories');
+    
   },
 
   allactions: function() {

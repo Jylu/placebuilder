@@ -91,7 +91,7 @@ class API
         }.flatten
       end
 
-      def filter_users_by_tag(tag,haveornot)
+      def filter_users_by_tag(tag,haveornot,community_id)
         @resident=false
         case tag
               when "post"
@@ -116,6 +116,9 @@ class API
                 @ids=Post.where(:id=>@postsids).map {|a| a.user_id}.uniq
               when "invite"
                 @ids=Invite.all.map {|a| a.inviter_id}.uniq
+              when "story"
+                @ids=Resident.where("stories_count > 0").map &:id
+                @resident=true
               else
                 @ids=Flag.where(:name=>tag).map &:resident_id
                 @resident=true
@@ -123,28 +126,28 @@ class API
           @ids.uniq!
           if !@resident
             if haveornot=="yes"
-              User.where(:id=>@ids)
+              User.where(:id=>@ids,:community_id=>community_id).map &:resident
             else
               if @ids.empty?
-                User.all
+                User.where(:community_id=>community_id).map &:resident
               else
-                User.where("id not in (?)",@ids)
+                User.where("community_id = ? AND id not in (?)",community_id,@ids).map &:resident
               end
             end
           else
             if haveornot=="yes"
-              Resident.where(:id=>@ids)
+              Resident.where(:id=>@ids,:community_id=>community_id)
             else
               if @ids.empty?
-                Resident.all
+                Resident.where(:community_id=>community_id)
               else
-                Resident.where("id not in (?)",@ids)
+                Resident.where("community_id = ? AND id not in (?)",community_id,@ids)
               end
             end
           end
       end
 
-      def order_users_by_time_of_tag(tag)
+      def order_users_by_time_of_tag(tag,community_id)
         @resident=false
         case tag
               when "post"
@@ -169,53 +172,62 @@ class API
                 @ids=Post.where(:id=>@postsids).map {|a| a.user_id}.uniq
               when "invite"
                 @ids=Invite.order("created_at DESC").map {|a| a.inviter_id}.uniq
+              when "story"
+                @ids=Resident.where("last_story_time is not null").order("last_story_time DESC").map &:id
+                @resident=true
               else
                 @ids=Flag.where(:name=>tag).order("created_at DESC").map &:resident_id
                 @resident=true
           end
           @ids.uniq!
-          @users=nil
+          @residents=nil
           if !@resident          
-            @users=User.where(:id=>@ids[0])
+            @residents=User.where(:id=>@ids[0],:community_id=>community_id).map &:resident
             for @k in 1..@ids.size-1 do
-              if User.find(@ids[@k])
-                @users << User.find(@ids[@k])
+              if @users=User.where(:id=>@ids[@k],:community_id=>community_id)
+                @users.each do |user|
+                  @residents << user.resident
+                end
               end
             end
           else
-            @users=Resident.where(:id=>@ids[0])
+            @residents=Resident.where(:id=>@ids[0],:community_id=>community_id)
             for @k in 1..@ids.size-1 do
-              if Resident.find(@ids[@k])
-                @users << Resident.find(@ids[@k])
+              if @r=Resident.where(:id=>@ids[@k],:community_id=>community_id)
+                @r.each do |r|
+                  @residents << r
+                end
               end
             end
           end
-          @users.uniq!
-          serialize(@users)
+          @residents.uniq!
+          serialize(@residents)
       end
 
-      def order_users_by_quantity_of_tag(tag)
+      def order_users_by_quantity_of_tag(tag,community_id)
         @need=false
         case tag
           when "post"
-            @users=User.order("posts_count DESC")
+            @residents=User.where("community_id = ? and posts_count <> ?",community_id,0).order("posts_count DESC").map &:resident
           when "reply"
-            @users=User.order("replies_count DESC")
+            @residents=User.where("community_id = ? and replies_count <> ?",community_id,0).order("replies_count DESC").map &:resident
           when "sitevisit"
-            @users=User.order("sign_in_count DESC")
+            @residents=User.where("community_id = ? and sign_in_count <> ?",community_id,0).order("sign_in_count DESC").map &:resident
           when "announcement"
-            @users=User.order("announcements_count DESC")
+            @residents=User.where("community_id = ? and announcements_count <> ?",community_id,0).order("announcements_count DESC").map &:resident
           when "feed"
-            @users=User.order("feeds_count DESC")
+            @residents=User.where("community_id = ? and feeds_count <> ?",community_id,0).order("feeds_count DESC").map &:resident
           when "replied"
-            @users=User.order("replied_count DESC")
+            @residents=User.where("community_id = ? and replied_count <> ?",community_id,0).order("replied_count DESC").map &:resident
           when "invite"
-            @users=User.order("invite_count DESC")
+            @residents=User.where("community_id = ? and invite_count <> ?",community_id,0).order("invite_count DESC").map &:resident
           when "event"
-            @users=User.order("events_count DESC")
+            @residents=User.where("community_id = ? and event_count <> ?",community_id,0).order("events_count DESC").map &:resident
+          when "story"
+            @residents=Resident.where("community_id = ? and stories_count <> ?",community_id,0).order("stories_count DESC")
         end
-        @users.uniq!
-        serialize(@users)
+        @residents.uniq!
+        serialize(@residents)
       end
     end
 
@@ -270,32 +282,32 @@ CONDITION
       if params[:search]=="filter"
         if !params[:order]
           if params[:tag].length>1
-            @users=filter_users_by_tag(params[:tag][0],params[:have][0])
-            @final=@users&filter_users_by_tag(params[:tag][1],params[:have][1])
+            @users=filter_users_by_tag(params[:tag][0],params[:have][0],params[:id])
+            @final=@users&filter_users_by_tag(params[:tag][1],params[:have][1],params[:id])
             for @k in 2..params[:tag].size-1 do
-                @final=@final&filter_users_by_tag(params[:tag][@k],params[:have][@k])
+                @final=@final&filter_users_by_tag(params[:tag][@k],params[:have][@k],params[:id])
             end
             serialize(@final)
           else
-            puts params[:have][0]
-            serialize(filter_users_by_tag(params[:tag][0],params[:have][0]))
+            serialize(filter_users_by_tag(params[:tag][0],params[:have][0],params[:id]))
           end
         else
           if params[:order]=="time"
-             order_users_by_time_of_tag(params[:tag])
+             order_users_by_time_of_tag(params[:tag],params[:id])
           else
-             order_users_by_quantity_of_tag(params[:tag])
+             order_users_by_quantity_of_tag(params[:tag],params[:id])
           end
         end
       elsif params[:search]=="byinterest"
-        serialize(User.tagged_with(params[:tag],:on=>:interests))
+        serialize(User.where(:community_id=>params[:id]).tagged_with(params[:tag],:on=>:interests).map &:resident)
       elsif params[:search]=="linked"
         if params[:resident_id]
-          serialize(User.find(Resident.find(params[:resident_id]).user_id).find_related_interests)
+          serialize(User.find(Resident.find(params[:resident_id]).user_id).find_related_interests.map &:resident)
         else
-          serialize(User.find(params[:user_id]).find_related_interests)
+          serialize(User.find(params[:user_id]).find_related_interests.map &:resident)
         end
       else
+=begin      
       serialize(Sunspot.search(Resident) do
           paginate :page => 1, :per_page => 9001
           order_by :last_name
@@ -309,6 +321,8 @@ CONDITION
             end
           end
         end)
+=end
+      serialize(Resident.where(:community_id=>params[:id]))
       end
     end
 

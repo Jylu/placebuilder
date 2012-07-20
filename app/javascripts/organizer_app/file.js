@@ -101,12 +101,9 @@ OrganizerApp.Files = Backbone.Collection.extend({
     var tags= new Array();
     var actions= [];    
     actions= actions.concat(this.models[0].actionstags());
-    //console.log(this.models[0].get('classtype'));
-    if(this.models[0].get('classtype')=="Resident"){
       tags=tags.concat(this.models[0].manualtags());
-      _.map(this.models, function(model){ 
-        if((t=model.manualtags()).length>0){
-        //console.log(model.manualtags());
+      _.map(this.models, function(model){         
+        if((t=model.manualtags()).length>0){        
           intersect={},res=[];
           for (var i=tags.length-1; i>=0; i--) {	
 	    for ( var j=0; j<t.length; j++) {	
@@ -120,7 +117,6 @@ OrganizerApp.Files = Backbone.Collection.extend({
 	  tags.push(k);
         }
       });
-    }
     
     _.map(this.models, function(model){ 
       if((t=model.actionstags()).length>0){
