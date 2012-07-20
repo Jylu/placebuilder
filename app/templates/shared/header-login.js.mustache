@@ -1,19 +1,28 @@
-<li>Have an Account?</li>
-<li id="sign_in_button">Sign in</li>
-<li id="sign_in_form">
-  <form class="user">
-    <ul class="error" id="errors"></ul>
-  <ul>
-    <li>
-      <label name="email">Email Address: <input name="email" type="text"></label>
-    </li>
-    <li>
-      <label name="password">Enter your password: <input name="password" type="password"> </label>
-    </li>
-    <li>
-      <input type="image" src="/assets/buttons/login.png" class="submit" value="Log in">
-      <a class="facebook" href="/users/auth/facebook"> <img src="/assets/login.png" alt="Log in with Facebook"> </a>
-      <a class="forgot" href="/users/password/new">Forgot your password?</a>
-    </li>
-  </ul></form>
-</li>
+<div class="community-name">
+   <h1>CommonPlace
+   </h1>
+     <span class="community">
+       {{community_name}}
+     </span>
+
+ </div>
+ <div class="top-bar">
+   <div class="registration_right">
+     <h3>Wrong Town?</h3> 
+     <div class="button blue">
+       Choose
+     </div>
+     <h3>Have an account?</h3> 
+     <div id="login" class="button red drop">
+       Login
+     </div>
+     <div class="dropdown">
+       <div class="arrow"></div>
+       <input type="email" name="email" class="email" placeholder="Email Address" />
+       <input type="password" name="password" placeholder="Password" />
+       <button name="signin" class="button signin">Sign In</button>
+       <button name="facebooksignin" class="button signin facebook">Facebook Login</button>
+       <p class="forgot">Forgot Password?</p>
+     </div>
+   </div>
+ </div>
