@@ -14,7 +14,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     url = "/api/communities/" + @communityExterior.id + "/address_completions"
     @$("input[name=street_address]").autocomplete
       source: url
-      minLength: 2
+      minLength: 1
 
   community_name: ->
     @communityExterior.name
