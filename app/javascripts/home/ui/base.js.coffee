@@ -59,7 +59,13 @@ Home.ui.WireItem = Framework.View.extend
         "model": this.model
     share = router.share(community_name, params)
     _kmq.push(['record', 'Wire Engagement', {'Type': 'Share'}]);
+
+  flag: (e) ->
+    if e
+      e.preventDefault()
+
+    _kmq.push(['record', 'Wire Engagement', {'Type': 'Flag'}]);
       
   getPublicUrl: ->
     router.community.get("links").base+"/home/show/"+this.model.get("schema") + "/" + this.model.get("id")
-    
+

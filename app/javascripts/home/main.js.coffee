@@ -27,7 +27,7 @@ $ ->
         success: (account) ->
 
           _kmq.push(['identify', account.get('email')]);
-          _kmq.push(['record', 'logged in']);
+          _kmq.push(['record', 'main page']);
 
           router.account = account
 

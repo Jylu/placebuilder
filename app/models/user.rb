@@ -604,6 +604,13 @@ WHERE
     KM.record('authenticated')
   end
 
+  def track_logged_in
+    KM.identify(email)
+    KM.alias(full_name, email)
+    KM.record('logged in')
+    KM.record('authenticated')
+  end
+
   def track_deletion
     KM.record('canceled')
   end

@@ -48,7 +48,7 @@ Home.ui.Share = Framework.View.extend
       success: (response) ->
         $("input[name=share-email]").val('')
         $("#share_success").toggle()
-        _kmq.push(['record', 'Wire Engagement', {'Type': 'Share', 'Medium': 'Email'}])
+        _kmq.push(['record', 'Share', {'Medium': 'Email'}])
       dataType: "JSON"
     )
 

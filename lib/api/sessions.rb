@@ -13,6 +13,7 @@ class API
       user = User.find_by_email(request_body['email'])
       if user && user.valid_password?(request_body['password'])
         warden.set_user(user, :scope => :user)
+        user.track_logged_in
       else
         401
       end
