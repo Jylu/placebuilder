@@ -419,6 +419,7 @@ ActiveRecord::Schema.define(:version => 20120719182211) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "community_id"
+    t.string   "carrier_route"
   end
 
   create_table "subscriptions", :force => true do |t|
