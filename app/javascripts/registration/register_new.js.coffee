@@ -5,7 +5,7 @@ CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModa
     "click input.sign_up": "submit"
     "submit form": "submit"
     "click .next-button": "submit"
-    "click img.facebook": "facebook"
+    "click .facebook": "facebook"
 
   afterRender: ->
     unless @current
