@@ -4,27 +4,39 @@
 
 #findNeighbors 
   width: 630px
+  height: 550px
+  overflow: scroll
   background-color: #eeecdf
   background: url(shared/redesign/red-bg.png)
   z-index: 1000
-  margin-top: 100px
+  margin-top: 5%
   margin-right: auto
   margin-left: 170px
   margin-bottom: 30px
-  position: fixed
   padding-bottom: 20px
 
   img.find_title 
     margin: 15px auto 0px 30px
 
+li div.check h4
+  font: bold 13px Helvetica, sans-serif
+  color: #1f3952
+
+li div.check span.page_text
+  font: 12px Helvetica, sans-serif
+  color: #1a1918
+  overflow: hidden
+
 #civicProfile 
   width: 630px
+  height: 70%
+  overflow: scroll
   background-color: #eeecdf
   background: url(shared/redesign/red-bg.png)
   z-index: 1000
   margin-top: 100px
   margin-right: auto
-  margin-left: 170px
+  margin-left: auto
   margin-bottom: 30px
   position: fixed
   padding-bottom: 20px
@@ -195,9 +207,11 @@
 
   a h4
     color: $dark-tan
+    font: 14px Helvetica, sans-serif
 
   a span.page_text
     color: $dark-tan
+    font: 12px Helvetica, sans-serif
 
 #subscribe_pages ul.subscribe_pages li a 
   display: inline-block
@@ -241,3 +255,8 @@
   position: relative
   top: 35px
   right: 25px
+
+img.page_img
+  width: 64px
+  height: 64px
+  float: left
