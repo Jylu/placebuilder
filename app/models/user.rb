@@ -3,6 +3,8 @@ class NamedPoint
 end
 
 class User < ActiveRecord::Base
+  require 'amatch'
+  include Amatch
 
   before_save :ensure_authentication_token
 
@@ -549,6 +551,25 @@ WHERE
       self.save
     end
     KickOff.new.send_spam_report_received_notification(self)
+  end
+
+  def address_correlate
+    likeness = 0.85
+    matches = []
+    street = self.community.street_addresses
+    street.each do |street_address|
+      st_addr = street_address.address
+      test = st_addr.jarowinkler_similar(self.address)
+      if test > likeness
+        likeness = test
+        matches.clear
+        matches |= Array(st_addr)
+      elsif test == likeness
+        matches << st_addr
+      end
+    end
+
+    matches.first
   end
 
   # Finds StreetAddress with same address

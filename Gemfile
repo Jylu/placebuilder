@@ -148,3 +148,4 @@ end
 
 gem 'rb-readline'
 gem 'acts-as-taggable-on', '~> 2.3.1'
+gem 'amatch'
