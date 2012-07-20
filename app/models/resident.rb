@@ -1,3 +1,10 @@
+#require 'outside_in'
+require 'rubygems'
+require 'json'
+require 'digest/md5'
+require 'net/http'
+require 'uri'
+
 class Resident < ActiveRecord::Base
   serialize :metadata, Hash
   serialize :logs, Array
@@ -11,8 +18,10 @@ class Resident < ActiveRecord::Base
 
   has_many :flags
 
-  after_create :manual_add
+  after_create :manual_add, :find_story
 
+  BASE_URL = "http://hyperlocal-api.outside.in/v1.1"
+  
   def on_commonplace?
     self.user_id?
   end
@@ -59,15 +68,18 @@ class Resident < ActiveRecord::Base
   end
   
   def manualtags
-    self.flags.map &:name
+    self.flags.map &:name 
   end
   
   def actionstags
+    actionstags=[]
     if self.on_commonplace?
-      User.find(self.user_id).actions_tags
-    else
-      []
+      actionstags+=User.find(self.user_id).actions_tags
     end
+    if self.stories_count>0
+      actionstags << "story"
+    end
+    actionstags
   end
   
   def interest_list
@@ -232,6 +244,48 @@ class Resident < ActiveRecord::Base
       # Until then, destroy as a contingency plan
       return true
     end
+  end
+  
+  def find_stories(zipcode)
+    url="/zipcodes/#{URI.escape(zipcode)}/stories"
+    request(url) do |response|
+      JSON[response.body]
+    end
+  end
+
+  def request(path, &block)
+    url = URI.parse(sign("#{BASE_URL}#{path}")+"&keyword="+self.first_name+"%20"+self.last_name)
+    #url = URI.parse(sign("#{BASE_URL}#{path}"))
+    puts "Requesting #{url}"
+    response = Net::HTTP.get_response(url)
+    if response.code.to_i == 200
+      yield(response)
+    else
+      raise Exception.new("Request failed with code #{response.code}")
+    end
+  end
+
+  def sign(url)
+    @key = '3h3n5k5j8375trecsr6x9enc'
+    @secret = 'TM9xkeYa9U'
+    "#{url}?dev_key=#{@key}&sig=#{Digest::MD5.hexdigest(@key + @secret + Time.now.to_i.to_s)}"
+  end
+  
+  def find_story
+=begin
+    OutsideIn.key = '3h3n5k5j8375trecsr6x9enc'
+    OutsideIn.secret = 'TM9xkeYa9U'
+    OutsideIn.logger.level = Logger::DEBUG # defaults to WARN
+    data = OutsideIn::Story.for_nabe("MA", "Boston","Back Bay",{:keyword => "Fisher College"})
+    #puts "Total stories for #{data[:location].display_name}: #{data[:total]}"
+    #data[:stories].each {|story| puts "  #{story.title} - #{story.feed_title}"}
+=end
+    data=find_stories(self.community.zip_code)
+    self.stories_count=data['total']
+    if data['total']>0
+      self.last_story_time=data['stories'][0]['published_at']
+    end
+    data['stories']
   end
 
 end

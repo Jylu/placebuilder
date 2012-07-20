@@ -9,7 +9,7 @@ if(ids.indexOf(id)>=0){
 else{
   ids.push(id);
   var newid=++currentid;
-  var newselect=$("<select id=\"haveornot\" name=\"haveornot\" ><option value=yes selected=true> Have<option value=no> Not</select><select id=\""+newid+"\" name=\"filter-tags\" style=\"width:130px\" onchange=\"show(this.id)\"><option value=''>Choose a tag</option> {{#dropdowns}}<option value=\"{{tag}}\">{{val}}{{/dropdowns}}</select><br>");
+  var newselect=$("<br><select id=\"haveornot\" name=\"haveornot\" ><option value=yes selected=true> Have<option value=no> Not</select><select id=\""+newid+"\" name=\"filter-tags\" style=\"width:130px\" onchange=\"show(this.id)\"><option value=''>Choose a tag</option> {{#dropdowns}}<option value=\"{{tag}}\">{{val}}{{/dropdowns}}</select>");
 newselect.insertBefore("#filter");
   if(newid==2){
     $("<br>").insertAfter("#1");

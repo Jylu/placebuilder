@@ -101,7 +101,6 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
 
   afterRender: function() {
     $("#check-all").attr("checked", all_check);
-//    this.$("select.list").chosen()
     this.renderList(this.collection.models);
     this.amount();
     this.$("#amount").text(this.collection.models.length);
@@ -119,7 +118,8 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
       _.map(list, _.bind(function(model) {
         /*console.log("renderList model: ");
         console.log(model);
-        console.log("model url: ", model.url());*/
+        console.log("model url: ", model.url());
+        */
         var li = $("<li/>", { text: model.full_name(), data: { model: model } })[0];
         var cb = $("<input/>", { type: "checkbox", checked: checklist[model.getId()], value: model.getId(), data: { model: model } })[0];
         $(cb).addClass("cb");
@@ -161,7 +161,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     //var tags=["post","email","reply","replied","invite","announcement","event","sitevisit"];
     //var alltags=tags.concat(possTags);
     var actions=[{tag:"post",val:"Post"},{tag:"email",val:"Email"},{tag:"reply",val:"Reply"},{tag:"replied",val:"Be replied"},
-              {tag:"invite",val:"Invite"},{tag:"announcement",val:"Announcement"},{tag:"event",val:"Event"},{tag:"sitevisit",val:"Log in"}         ];
+              {tag:"invite",val:"Invite"},{tag:"announcement",val:"Announcement"},{tag:"event",val:"Event"},{tag:"sitevisit",val:"Log in"},{tag:"story",val:"News"}         ];
     possTags=this.options.community.get('resident_tags');
     _.map(possTags, function(residenttag) {
       actions.push({tag:residenttag,val:residenttag});
@@ -220,7 +220,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           data: params,
           success: _.bind(this.afterRender, this)
         });
-        console.log(params["tag"]);
+        //console.log(params["tag"]);
         break;
     }
   },
@@ -240,8 +240,10 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   produceOrdertags: function(){
     var obj = this.$("#order-tags").empty();
     _.map(this.collection.commontags(),function(tag){
+      //console.log(tag);
       this.$("#order-tags").append('<option value='+tag+'>'+tag+'</option>');
     });
+    
   }
 
 });
