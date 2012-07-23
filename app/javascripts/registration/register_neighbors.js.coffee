@@ -32,7 +32,6 @@ CommonPlace.registration.NeighborsView = CommonPlace.registration.RegistrationMo
     @email_address_contains(email_address, "@hotmail") or @email_address_contains(email_address, "@live")
 
   afterRender: ->
-    @complete()  if window.history and window.history.pushState
     self = this
     if @is_google_user(@options.data.email)
       GoogleContacts.prepare success: _.bind((friends) ->
@@ -284,7 +283,7 @@ CommonPlace.registration.NeighborsView = CommonPlace.registration.RegistrationMo
     $(e.target).siblings("input[type=text]").val ""
 
   NeighborItemView: CommonPlace.View.extend(
-    template: "find_my_neighbors_page.neighbor"
+    template: "registration.neighbor-item"
     tagName: "td"
     events:
       click: "check"
