@@ -39,12 +39,14 @@ class StreetAddress < ActiveRecord::Base
   # This should be resolved with a merge when the person registers as a user.
   def create_default_resident
     split_name = unreliable_name.to_s.split(" ")
-    Resident.create(
+    r = Resident.create(
       :community => self.community,
       :first_name => split_name.shift.to_s,
       :last_name => split_name.pop.to_s,
       :address => self.address,
       :street_address => self)
+
+    r.add_tags(self.carrier_route)
   end
 
 end

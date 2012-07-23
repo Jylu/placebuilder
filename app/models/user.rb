@@ -553,23 +553,52 @@ WHERE
     KickOff.new.send_spam_report_received_notification(self)
   end
 
+  def address_approx
+    self.metadata[:address_approx] ||= []
+  end
+
   def address_correlate
-    likeness = 0.85
+    likeness = 0.80
+    static = likeness
+    crrt = []
     matches = []
+    addr = []
     street = self.community.street_addresses
     street.each do |street_address|
+      route = street_address.carrier_route
       st_addr = street_address.address
       test = st_addr.jarowinkler_similar(self.address)
+      if test >= static
+        crrt << route
+        matches << st_addr
+      end
       if test > likeness
         likeness = test
-        matches.clear
-        matches |= Array(st_addr)
+        addr.clear
+        addr << street_address
       elsif test == likeness
-        matches << st_addr
+        addr << street_address
       end
     end
 
-    matches.first
+    self.metadata[:address_approx] = []
+    matches.each_with_index do |address, idx|
+      carrier = crrt[idx]
+      self.metadata[:address_approx] << "#{address}: #{carrier}"
+    end
+
+    addr.first
+  end
+
+  def self.find_all_by_carrier_route(crrt)
+    user = User.all
+    carriers = []
+    user.each do |u|
+      s = u.resident.street_address.carrier_route if !u.resident.street_address.nil?
+      carriers << u if s === crrt
+    end
+
+    carriers
   end
 
   # Finds StreetAddress with same address
@@ -584,8 +613,10 @@ WHERE
 
     # This should not happen when verify_address is written
     if matched.count == 0
-      matched = create_st_address
+      # matched = create_st_address
+      return nil
     else
+      return nil
       # We somehow...have the same street address more than once D=
       # This should never happen
     end
@@ -672,7 +703,8 @@ WHERE
   # Correlates the User and the corresponding StreetAddress file with
   # the "REAL AMERICAN PERSON" file [aka the Resident file]
   def correlate
-    addr = find_st_address
+    #addr = find_st_address
+    addr = self.address_correlate
     if r = find_resident
       if !r.address?
         r.address = self.address
@@ -687,6 +719,7 @@ WHERE
       end
 
       r.user = self
+      r.add_tags("registered")
       r.save
     else
       r= Resident.create(
@@ -698,8 +731,11 @@ WHERE
         :street_address => addr,
         :user => self,
         :community_id => self.community_id)
+      r.add_tags(addr.carrier_route) if !addr.nil?
+      r.add_tags("registered")
       r.update_attribute(:community_id,self.community_id)
       r.update_attribute(:community,self.community)
+      r.save
     end
   end
 

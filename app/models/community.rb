@@ -280,7 +280,7 @@ class Community < ActiveRecord::Base
   def resident_tags
     tags = Flag.init.keys
     tags |=  self.metadata[:resident_tags] if self.metadata[:resident_tags]
-    tags << "registered"
+    # tags << "registered"
     tags << "email"
     tags << "address"
     tags

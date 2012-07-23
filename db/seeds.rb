@@ -6,7 +6,6 @@
 #   cities = City.create([{ :name => 'Chicago' }, { :name => 'Copenhagen' }])
 #   Major.create(:name => 'Daley', :city => cities.first)
 
-
 community = Community.create!(:name => "Test", :slug => "test", :zip_code => "02132")
 neighborhood = Neighborhood.create!(:name => "n1",
                                     :community => community,

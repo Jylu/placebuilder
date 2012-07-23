@@ -18,7 +18,7 @@ class Resident < ActiveRecord::Base
 
   has_many :flags
 
-  after_create :manual_add, :find_story
+  after_create :manual_add
 
   BASE_URL = "http://hyperlocal-api.outside.in/v1.1"
   
@@ -68,7 +68,9 @@ class Resident < ActiveRecord::Base
   end
   
   def manualtags
-    self.flags.map &:name 
+    tags = self.flags.map &:name 
+
+    tags
   end
   
   def actionstags
@@ -107,7 +109,6 @@ class Resident < ActiveRecord::Base
     todos
   end
 
-
   # Creates tags associated with the resident
   #
   # Returns a list of todos
@@ -125,6 +126,15 @@ class Resident < ActiveRecord::Base
     end
 
     [remove, add]
+  end
+
+  def approx
+    if !self.user.nil?
+      self.user.address_correlate
+      return self.user.address_approx
+    end
+
+    nil
   end
 
   def add_tags(tag_or_tags)
