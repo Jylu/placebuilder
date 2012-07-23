@@ -16,12 +16,6 @@ CommonPlace.registration.FeedListView = CommonPlace.registration.RegistrationMod
       @$(category).append itemView.el
     , this)
     @slideIn @el
-    height = 0
-    @$(".feeds_container li").each (index) ->
-      return false  if index is 4
-      height = height + $(this).outerHeight(true)
-
-    @$("ul").height height + "px"
 
   community_name: ->
     @communityExterior.name
