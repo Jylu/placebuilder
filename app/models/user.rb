@@ -719,7 +719,8 @@ WHERE
       end
 
       r.user = self
-      r.add_tags("registered")
+      # r.add_tags("registered")
+      r.registered
       r.save
     else
       r= Resident.create(
@@ -732,7 +733,8 @@ WHERE
         :user => self,
         :community_id => self.community_id)
       r.add_tags(addr.carrier_route) if !addr.nil?
-      r.add_tags("registered")
+      # r.add_tags("registered")
+      r.registered
       r.update_attribute(:community_id,self.community_id)
       r.update_attribute(:community,self.community)
       r.save

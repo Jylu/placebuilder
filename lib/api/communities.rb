@@ -120,7 +120,14 @@ class API
                 @ids=Resident.where("stories_count > 0").map &:id
                 @resident=true
               else
-                @ids=Flag.where(:name=>tag).map &:resident_id
+                #@ids=Flag.where(:name=>tag).map &:resident_id
+                @ids = []
+
+                residents = Resident.all
+                residents.each do |r|
+                  @ids << r.id if r.tags.include?(tag)
+                end
+
                 @resident=true
           end
           @ids.uniq!

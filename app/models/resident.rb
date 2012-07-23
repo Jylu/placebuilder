@@ -130,11 +130,17 @@ class Resident < ActiveRecord::Base
 
   def approx
     if !self.user.nil?
-      self.user.address_correlate
       return self.user.address_approx
     end
 
     nil
+  end
+
+  def registered
+    self.metadata[:tags] ||= []
+    self.metadata[:tags] << "registered"
+    self.community.add_resident_tags(Array("registered"))
+    self.save
   end
 
   def add_tags(tag_or_tags)
@@ -289,13 +295,13 @@ class Resident < ActiveRecord::Base
     data = OutsideIn::Story.for_nabe("MA", "Boston","Back Bay",{:keyword => "Fisher College"})
     #puts "Total stories for #{data[:location].display_name}: #{data[:total]}"
     #data[:stories].each {|story| puts "  #{story.title} - #{story.feed_title}"}
-=end
     data=find_stories(self.community.zip_code)
     self.stories_count=data['total']
     if data['total']>0
       self.last_story_time=data['stories'][0]['published_at']
     end
     data['stories']
+=end
   end
 
 end
