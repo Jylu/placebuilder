@@ -36,10 +36,7 @@ CommonPlace.registration.FeedListView = CommonPlace.registration.RegistrationMod
       , this)
 
   finish: ->
-    if @communityExterior.has_residents_list
-      @nextPage "neighbors", @data
-    else
-      @complete()
+    @nextPage "neighbors", @data
 
   FeedItem: CommonPlace.View.extend(
     template: "registration.home_feed-item"
