@@ -21,6 +21,7 @@ CommonPlace.main.Sidebar = CommonPlace.View.extend
     #show the your pages tab by default
     @showTab("pages")
     @$('[title="pages"]').addClass('current_tab')
+    $(window).resize(_.bind(@resizeDirectory, this))
 
   switchTabs: (e) ->
     e.preventDefault()
@@ -28,7 +29,6 @@ CommonPlace.main.Sidebar = CommonPlace.View.extend
     @showTab(title)
 
   showTab: (title) ->
-    success = title of @tabs
     if title of @tabs
       @$('.sidebar-links').removeClass('current_tab')
       @$('[title="'+title+'"]').addClass('current_tab')
@@ -47,9 +47,11 @@ CommonPlace.main.Sidebar = CommonPlace.View.extend
     else if body and body.clientHeight
       height = body.clientHeight
     
-    #offset = @$("#"+@content_div).offset()
-    #directory_height = height - offset.top - 10
-    directory_height = height - 170
+    offset = @$("#"+@content_div).offset()
+    if offset.top is 0
+      directory_height = height - 435
+    else
+      directory_height = height - offset.top - 10
     @$("#"+@content_div).height(directory_height+"px")
 
   showScrollBar: (e) ->
