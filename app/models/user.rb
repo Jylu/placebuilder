@@ -558,7 +558,7 @@ WHERE
   end
 
   def address_correlate
-    likeness = 0.80
+    likeness = 0.85
     static = likeness
     crrt = []
     matches = []
@@ -567,7 +567,7 @@ WHERE
     street.each do |street_address|
       route = street_address.carrier_route
       st_addr = street_address.address
-      test = st_addr.jarowinkler_similar(self.address)
+      test = st_addr.jarowinkler_similar(address.split(/[,|\.]/).first)
       if test >= static
         crrt << route
         matches << st_addr
@@ -590,6 +590,17 @@ WHERE
     addr.first
   end
 
+  def self.no_carrier
+    user = User.all
+    no_carrier = []
+    user.each do |u|
+      next if u.first_name === "test"
+      no_carrier << u if u.resident.street_address.nil?
+    end
+
+    no_carrier
+  end
+
   def self.find_all_by_carrier_route(crrt)
     user = User.all
     carriers = []
@@ -598,6 +609,16 @@ WHERE
       carriers << u if s === crrt
     end
 
+    address = []
+    street = StreetAddress.all
+    street.each do |s|
+      address << s if s.carrier_route === crrt
+    end
+
+    c = carriers.count
+    a = address.count
+    conversion = (c / a.to_f).round(4) * 100
+    [c, a, conversion]
     carriers
   end
 

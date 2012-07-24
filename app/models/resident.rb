@@ -18,7 +18,7 @@ class Resident < ActiveRecord::Base
 
   has_many :flags
 
-  after_create :manual_add
+  after_create :manual_add, :find_story
 
   BASE_URL = "http://hyperlocal-api.outside.in/v1.1"
   
