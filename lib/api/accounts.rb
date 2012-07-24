@@ -2,9 +2,9 @@ class API
   class Accounts < Base
 
     helpers do
-      
+
       # Notes that the user just checked their inbox
-      # 
+      #
       # Returns the serialized account
       def checked_inbox
         current_user.checked_inbox!
@@ -16,12 +16,12 @@ class API
     # Returns the serialized account
     #
     # Requires authentication
-    get "/" do 
+    get "/" do
       control_access :authenticated
 
       serialize Account.new(current_user)
     end
-    
+
     # Updates the account's profile
     #
     # Requires authentication
@@ -40,7 +40,7 @@ class API
     # Returns 500 error on validation errors
     put "/" do
       control_access :authenticated
-      
+
       current_user.full_name = request_body["name"]
       current_user.about = request_body["about"]
       current_user.interest_list = request_body["interests"]
@@ -49,7 +49,7 @@ class API
       current_user.email = request_body["email"]
       current_user.post_receive_method = request_body["neighborhood_posts"]
       current_user.receive_weekly_digest = request_body["bulletin"]
-      
+
       if current_user.save
         current_user.reset_password(request_body["password"]) if request_body["password"]
         serialize Account.new(current_user)
@@ -57,11 +57,11 @@ class API
         [500, "could not save"]
       end
     end
-    
+
     # Deletes the current account
     #
     # Requires authentication
-    # 
+    #
     # Returns 200
     delete "/" do
       control_access :authenticated
@@ -71,7 +71,7 @@ class API
     end
 
     # Creates the account's avatar
-    # 
+    #
     # Requires authentication
     #
     # Request params:
@@ -88,7 +88,7 @@ class API
     end
 
     # Deletes the account's avatar
-    # 
+    #
     # Requires authentication
     #
     # Returns the serialized account
@@ -129,7 +129,7 @@ class API
     # Request params
     #   key - The metadata to update
     #   value - The value to update with
-    # 
+    #
     # Returns the serialized account
     post "/metadata" do
       control_access :authenticated
@@ -146,11 +146,11 @@ class API
     #
     # Request params:
     #   id - The feed ids to subscribe to
-    # 
+    #
     # Returns 401 if any of the requested feeds are in a different community
     # Returns the serialized account
     post "/subscriptions/feeds" do
-      
+
       feeds = [params[:id] || request_body["id"]].flatten.map do |feed_id|
         feed = Feed.find(feed_id)
 
@@ -158,26 +158,26 @@ class API
 
         feed
       end
-      
+
       feeds.each do |feed|
         current_user.feeds << feed
       end
-      
+
       serialize(Account.new(current_user))
     end
 
     # Removes a subscription to a feed
     #
     # Requires authentication
-    # 
+    #
     # Returns the serialized account
     delete "/subscriptions/feeds/:id" do |id|
       control_access :authenticated
-      
+
       current_user.feeds.delete(Feed.find(id))
       serialize(Account.new(current_user))
     end
-    
+
 
     # Adds account group subscriptions
     #
@@ -185,7 +185,7 @@ class API
     #
     # Request params:
     #   id - The group ids to subscribe to
-    # 
+    #
     # Returns 401 if any of the requested groups are in a different community
     # Returns the serialized account
     post "/subscriptions/groups" do
@@ -197,18 +197,18 @@ class API
 
         group
       end
-      
+
       groups.each do |group|
         current_user.groups << group
       end
-      
+
       serialize(Account.new(current_user))
     end
 
     # Removes a subscription to a group
     #
     # Requires authentication
-    # 
+    #
     # Returns the serialized account
     delete "/subscriptions/groups/:id" do |id|
       control_access :authenticated
@@ -218,7 +218,7 @@ class API
     end
 
     # Adds a Met for the given user id
-    # 
+    #
     # Requires same community membership
     #
     # Request params:
@@ -235,7 +235,7 @@ class API
       serialize(Account.new(current_user))
     end
 
-    # Removes a met 
+    # Removes a met
     #
     # Requires authentication
     delete "/mets/:id" do |id|
@@ -244,15 +244,15 @@ class API
       current_user.people.delete(User.find(id))
       serialize(Account.new(current_user))
     end
-    
+
     # Adds residents for each of the neighbors the user names
-    # 
+    #
     # Requires authentication
     #
     # Notes that the current_user is a friend of the added resident
     # Delivers an invite to the resident if that is allowed by
     # can_contact
-    # 
+    #
     # Request params:
     #   neighbors - A list of neighbors like {name: "", email: ""}
     #   can_contact - Whether or not we can contact the neighbors
@@ -280,18 +280,41 @@ class API
       end
       halt 200
     end
-    
+
+    # Gets a list of people in the community who are also facebook
+    # friends with the user
+    #
+    # The user must be facebook connected or an access_token must be
+    # passed in. If neither is present, we return an empty list
+    #
+    # Params:
+    #   access_token - A facebook access_token (optional)
+    post "/facebook_neighbors" do
+      control_access :authenticated
+      access_token = (current_user.facebook_user? ?
+        current_user.oauth2_token : params[:access_token])
+
+      serialize FacebookNeighbors.matches(current_user.community, access_token)
+    end
+
+    # TODO: Document these
+
+    post "/gmail_neighbors" do
+      control_access :authenticated
+      serialize GmailNeighbors.matches(current_user.community, params)
+    end
+
     # Returns a (paginated) list of the account's swipes
-    # 
+    #
     # Requires authentication
     get "/swipes" do
       control_access :authenticated
-      
+
       serialize(paginate(current_user.swipes))
     end
-    
+
     # Returns the account's (paginated) inbox
-    # 
+    #
     # Stores that they just checked their inbox
     #
     # Requires authentication
@@ -330,7 +353,7 @@ class API
     end
 
     # Returns a list of 'featured' neighbors for the account
-    # 
+    #
     # Requires authentication
     get "/featured" do
       control_access :authenticated
@@ -339,7 +362,7 @@ class API
     end
 
     # Adds Facebook connect to the account
-    # 
+    #
     # Requires authentication
     post "/facebook" do
       control_access :authenticated
@@ -354,20 +377,20 @@ class API
     end
 
     # Returns the account's history (posts, messages, etc.)
-    # 
+    #
     # Requires authentication
     get "/history" do
       control_access :authenticated
 
       current_user.profile_history.to_json
     end
-    
+
     # Returns the account's activity (post counts, thank counts, etc.)
-    # 
+    #
     # Requires authentication
     get "/activity" do
       control_access :authenticated
-      
+
       serialize(current_user.activity)
     end
 
@@ -378,6 +401,6 @@ class API
       control_access :authenticated
       serialize(Account.new(current_user).recommendations)
     end
-    
+
   end
 end

@@ -81,7 +81,8 @@ gem 'rollout' # we use this to control features
 
 # Contacts
 gem 'hpricot'
-gem 'turing-contacts', :git => "https://github.com/turingstudio/contacts.git", :require => 'contacts'
+# gem 'turing-contacts', :git => "https://github.com/turingstudio/contacts.git", :require => 'contacts'
+gem 'contacts', git: "https://github.com/Jberlinsky/contacts.git"
 
 # Data Export
 gem 'simple_xlsx_writer', :require => false
@@ -152,7 +153,6 @@ group :test do
   gem 'spork' # we use spork to speed up tests
   gem 'rr' # we use rr for mocking
   gem 'rspec-rr' # we use rspec-rr for integration between rspec and rr
-  gem 'webmock' # we use webmock to mock google maps and other apis
   gem 'capybara', '1.1.2'
   gem 'launchy' # we use launchy to launch a browser during integration testing
   gem 'database_cleaner' # we use database_cleaner to clean the database between tests
