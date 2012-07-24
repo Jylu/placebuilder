@@ -28,7 +28,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     @data.address = @$("input[name=street_address]").val()
     @data.referral_source = @$("select[name=referral_source]").val()
     @data.referral_metadata = @$("input[name=referral_metadata]").val()
-    @nextPage "profile", @data
+    @nextPage "welcome", @data
 
   referrers: ->
     @communityExterior.referral_sources

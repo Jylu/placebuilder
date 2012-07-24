@@ -31,6 +31,9 @@ CommonPlace.registration.Router = Backbone.Router.extend(
   address: ->
     @modal.showPage "address"
 
+  welcome: ->
+    @modal.showPage "welcome"
+
   profile: ->
     @modal.showPage "profile"
 
@@ -82,6 +85,14 @@ CommonPlace.registration.RegistrationModal = CommonPlace.View.extend(
 
       address: ->
         new CommonPlace.registration.AddressView(
+          nextPage: nextPage
+          data: data
+          slideIn: slideIn
+          communityExterior: self.communityExterior
+        )
+
+      welcome: ->
+        new CommonPlace.registration.WelcomeView(
           nextPage: nextPage
           data: data
           slideIn: slideIn

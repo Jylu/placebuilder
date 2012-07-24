@@ -36,8 +36,6 @@ CommonPlace.registration.ProfileView = CommonPlace.registration.RegistrationModa
       list = @$("select[name=" + listname + "]").val()
       @data[listname] = list.toString()  unless _.isEmpty(list)
     , this)
-    @data.referral_source = @$("select[name=referral_source]").val()
-    @data.referral_metadata = @$("input[name=referral_metadata]").val()
     new_api = "/api" + @communityExterior.links.registration[(if (@data.isFacebook) then "facebook" else "new")]
     $.post new_api, @data, _.bind((response) ->
       if response.success is "true" or response.id
