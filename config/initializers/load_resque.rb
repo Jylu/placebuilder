@@ -6,15 +6,12 @@ uri = if Rails.env.development?
       elsif ENV["REDISTOGO_URL"].present?
         URI.parse(ENV["REDISTOGO_URL"])
       else
-        ""
+        URI.parse("")
       end
 
-if uri.present?
-  Resque.redis = Redis.new(:host => uri.host, 
-                           :port => uri.port, 
-                           :password => uri.password, 
-                           :thread_safe => true)
-else
-  Resque.redis = MockRedis.new
-end
+Resque.redis = Redis.new(:host => uri.host,
+                         :port => uri.port,
+                         :password => uri.password,
+                         :thread_safe => true)
+
 Resque.schedule = YAML.load_file(File.join(File.dirname(__FILE__), '../resque_schedule.yml'))

@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   end
 
 
-  geocoded_by :normalized_address
+  geocoded_by :normalized_address, unless: -> { Rails.env.test? || Rails.env.cucumber? }
 
   belongs_to :community
   belongs_to :neighborhood
@@ -51,7 +51,7 @@ class User < ActiveRecord::Base
   after_create :track
   after_destroy :track_deletion
   before_validation :geocode, :if => :address_changed?
-  before_validation :place_in_neighborhood, :if => :address_changed?
+  before_validation :place_in_neighborhood, :if => :address_changed?, unless: ->(user) { user.neighborhood.present? }
 
   validates_presence_of :community
   validates_presence_of :address, :on => :create, :unless => :is_transitional_user, :message => "Please provide a street address so CommonPlace can verify that you live in our community."
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   validates_presence_of :first_name, :unless => :is_transitional_user
   validate :validate_first_and_last_names, :unless => :is_transitional_user
 
-  validates_presence_of :neighborhood, :unless => :is_transitional_user
+  # validates_presence_of :neighborhood, :unless => :is_transitional_user
   validates_uniqueness_of :facebook_uid, :allow_blank => true
 
   scope :between, lambda { |start_date, end_date|
