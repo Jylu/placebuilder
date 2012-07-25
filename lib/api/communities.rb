@@ -530,8 +530,26 @@ CONDITION
     #
     # term - the term to find auto-completed
     get "/:id/address_completions" do
-      serialize(find_community.street_addresses
-      .where("address ILIKE ?", "%#{params[:term]}%").pluck(:address))
+      addr = find_community.street_addresses.where("address ILIKE ?", "%#{params[:term]}%").pluck(:address)
+
+      serialize(addr[0, 6])
+    end
+
+    # Returns a list of address approximations
+    #
+    # term - the address to match with
+    get "/:id/address_approximate" do
+      likeness = 0.90
+      addr = []
+      find_community.street_addresses.each do |street_address|
+        street = street_address.address
+        test = street.jarowinkler_similar(params[:term].split(/[,|\.]/).first)
+        if test >= likeness
+          addr << street
+        end
+      end
+
+        serialize(addr)
     end
 
     # Returns the community's posts, possibly a search result
