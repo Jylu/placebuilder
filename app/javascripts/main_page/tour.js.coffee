@@ -41,6 +41,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           data: data
           slideIn: slideIn
           community: self.community
+          account: self.account
         )
 
       profile: ->
@@ -49,6 +50,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           data: data
           slideIn: slideIn
           community: self.community
+          account: self.account
         )
 
       crop: ->
@@ -56,6 +58,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           nextPage: nextPage
           slideIn: slideIn
           data: data
+          account: self.account
         )
 
       feed: ->
@@ -63,6 +66,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           nextPage: nextPage
           slideIn: slideIn
           community: self.community
+          account: self.account
           data: data
           complete: self.options.complete
         )
@@ -72,6 +76,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           complete: self.options.complete
           slideIn: slideIn
           community: self.community
+          account: self.account
           data: data
           nextPage: nextPage
         )
@@ -185,6 +190,7 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
   initialize: (options) ->
     @data = options.data or isFacebook: false
     @community = options.community
+    @account = options.account
     @slideIn = options.slideIn
     @nextPage = options.nextPage
     @complete = options.complete

@@ -10,7 +10,8 @@ CommonPlace.main.WelcomeView = CommonPlace.main.TourModalPage.extend(
     @community.get("name")
 
   user_name: ->
-    (if (@data.full_name) then @data.full_name.split(" ")[0] else "")
+    full_name = @account.get("name")
+    (if (full_name) then full_name.split(" ")[0] else "")
 
   submit: (e) ->
     e.preventDefault()  if e
