@@ -145,7 +145,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     $current = @$("#current-tour-page")
     dimensions = @dimensions($current)
     @slide $current,
-      left: 0 - $current.width()
+      left: 0 - (1.5*$current.width())
     , ->
       $current.empty()
       $current.hide()
@@ -173,13 +173,11 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
   slide: ($el, ending, complete) ->
     if @firstSlide
-      $el.css ending
       @firstSlide = false
-      return complete()
-    $el.animate ending, 800, complete
+    $el.animate ending, 1200, complete
 
   dimensions: ($el) ->
-    left = ($(window).width() - $el.width()) / 2
+    left = ($(window).width() / 2) - $el.width()
     left: left
 
   exit: ->
