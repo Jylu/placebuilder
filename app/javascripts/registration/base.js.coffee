@@ -89,6 +89,7 @@ CommonPlace.registration.RegistrationModal = CommonPlace.View.extend(
           data: data
           slideIn: slideIn
           communityExterior: self.communityExterior
+          complete: self.options.complete
         )
 
       welcome: ->

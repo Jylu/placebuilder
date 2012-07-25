@@ -99,8 +99,33 @@ class Community < ActiveRecord::Base
       "shares" => "/communities/#{id}/shares",
       "landing_wires" => "/communities/#{id}/wire",
       "residents" => "/communities/#{id}/residents",
-      "email_contact_authorization_callback" => "find_neighbors/callback"
+      "email_contact_authorization_callback" => "find_neighbors/callback",
+      "facebook_login" => "/users/auth/facebook",
+      "registration" => {
+        "validate" => "/registration/#{id}/validate",
+        "new" => "/registration/#{id}/new",
+        "avatar" => "/account/avatar",
+        "facebook" => "/registration/#{id}/facebook",
+        "residents" => "/communities/#{id}/residents"
+      }
     }
+  end
+
+  def referral_sources
+    [
+      "",
+      "Flyer in the mail",
+      "Someone knocked on my door",
+      "In a meeting with #{@community.organizer_name}",
+      "At a table or booth at an event",
+      "In an email",
+      "On Facebook or Twitter",
+      "On another website",
+      "In the news",
+      "Word of mouth",
+      "Flyer from a business or organization",
+      "Other"
+    ]
   end
 
   def self.find_by_name(name)
