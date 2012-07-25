@@ -1,5 +1,5 @@
 CommonPlace.main.YourTown = CommonPlace.View.extend
-  template: "main_page.your-town"
+  template: "main_page.sidebar.your-town"
 
   showPosts: (e) ->
     e.preventDefault()
