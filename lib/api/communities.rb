@@ -329,7 +329,7 @@ CONDITION
           end
         end)
 =end
-      serialize(Resident.where(:community_id=>params[:id]))
+      serialize(paginate(Resident.where(:community_id=>params[:id])).page(params[:page]).per(50))
       end
     end
 
