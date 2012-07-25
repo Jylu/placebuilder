@@ -8,6 +8,6 @@ class UpdateStoryinActionTags < ActiveRecord::Migration
   end
 
   def down
-    remove_column :users, :stories_count
+    remove_column :residents, :stories_count
   end
 end
