@@ -217,12 +217,14 @@ var Application = Backbone.Router.extend({
 
   tour: function(c) {
     this.community();
-    var tour = new Tour({
+    var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
       account: CommonPlace.account,
-      community: CommonPlace.community
+      community: CommonPlace.community,
+      template: "main_page.tour.modal"
     });
     tour.render();
+    tour.welcome();
   },
 
   showPage: function(name) {

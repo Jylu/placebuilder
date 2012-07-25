@@ -28,7 +28,22 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     @data.address = @$("input[name=street_address]").val()
     @data.referral_source = @$("select[name=referral_source]").val()
     @data.referral_metadata = @$("input[name=referral_metadata]").val()
-    @nextPage "welcome", @data
+    @data.organizations = ""
+    new_api = "/api" + @communityExterior.links.registration[(if (@data.isFacebook) then "facebook" else "new")]
+    $.post new_api, @data, _.bind((response) ->
+      if response.success is "true" or response.id
+        CommonPlace.account = new Account(response)
+        if @hasAvatarFile and not @data.isFacebook
+          @avatarUploader.submit()
+        else
+          @complete()
+      else
+        unless _.isEmpty(response.facebook)
+          window.location.pathname = @communityExterior.links.facebook_login
+        else unless _.isEmpty(response.password)
+          @$(".error").text response.password[0]
+          @$(".error").show()
+    , this)
 
   referrers: ->
     @communityExterior.referral_sources
