@@ -302,6 +302,8 @@ class Resident < ActiveRecord::Base
     end
     data['stories']
 =end
+
+  []
   end
 
 end
