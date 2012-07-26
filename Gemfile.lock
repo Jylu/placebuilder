@@ -135,6 +135,7 @@ GEM
       ffi (~> 1.0.6)
     chunky_png (1.2.5)
     cocaine (0.2.1)
+    coderay (1.0.5)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -280,6 +281,7 @@ GEM
       creole (>= 0.3.7)
       loofah (>= 0.4.7)
       rdiscount (>= 1.6.0)
+    method_source (0.7.1)
     mime-types (1.18)
     mongo (1.6.1)
       bson (~> 1.6.1)
@@ -325,6 +327,10 @@ GEM
     premailer (1.7.3)
       css_parser (>= 1.1.9)
       htmlentities (>= 4.0.0)
+    pry (0.9.9.6)
+      coderay (~> 1.0.5)
+      method_source (~> 0.7.1)
+      slop (>= 2.4.4, < 3)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -425,6 +431,7 @@ GEM
     sinatra (1.2.7)
       rack (~> 1.1)
       tilt (>= 1.2.2, < 2.0)
+    slop (2.4.4)
     spork (0.9.0)
     sprockets (2.1.2)
       hike (~> 1.2)
@@ -531,6 +538,7 @@ DEPENDENCIES
   pg
   pg_search
   premailer
+  pry
   rack-cache
   rack-contrib
   rack-timeout
