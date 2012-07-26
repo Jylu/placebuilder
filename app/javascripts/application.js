@@ -110,7 +110,7 @@ var Application = Backbone.Router.extend({
 
     ":community/account": "account",
 
-    ":community/tour": "tour",
+    ":community/registration": "tour",
 
     ":community/stats": "stats",
 

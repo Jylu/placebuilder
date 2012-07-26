@@ -6,7 +6,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
   events:
     "click a.end-tour": "end"
-    "click #tour-shadow": "end"
     "click #profile-box, #community-resources, #post-box": "end"
 
   initialize: (options) ->
@@ -177,7 +176,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     $el.animate ending, 1200, complete
 
   dimensions: ($el) ->
-    left = ($(window).width() / 2) - $el.width()
+    left = ($(window).width() - $el.width())/ 2
     left: left
 
   exit: ->
