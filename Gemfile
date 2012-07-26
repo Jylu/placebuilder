@@ -160,3 +160,4 @@ group :test do
 end
 
 gem 'rb-readline'
+gem 'amatch'
