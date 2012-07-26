@@ -310,6 +310,25 @@ CONDITION
       serialize(addr[0, 7])
     end
 
+    # Returns a list of address approximations
+    #
+    # term - the address to match with
+    # TODO: Instead of loosening the similarity cut-off,
+    # make sure they type in a "proper" address (ie begins with some #)
+    get "/:id/address_approximate" do
+      input = params[:term].split(/[,|\.]/).first
+      likeness = input.split(" ").first =~ /^[0-9]+/ ? 0.90 : 0.75
+      addr = {}
+      find_community.street_addresses.each do |street_address|
+        street = street_address.address.squeeze(" ")
+        st_apt = street.clone
+        st_apt << " Apt" if !street.upcase.include?("APT")
+        test = st_apt.jarowinkler_similar(input)
+        if test >= likeness
+          addr[street] = test
+        end
+      end
+
     # Returns the community's posts, possibly a search result
     # 
     # Query params:
