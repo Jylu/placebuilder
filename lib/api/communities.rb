@@ -328,6 +328,7 @@ CONDITION
           addr[street] = test
         end
       end
+    end
 
     # Returns the community's posts, possibly a search result
     # 
