@@ -114,13 +114,6 @@ $black-shadow: 0px 2px 1px black
 $darkRed: #ad312f
 $darkBlue: #1b334a
 
-#current-tour-page, #next-tour-page
-  display: none
-  position: absolute
-  z-index: 2000000
-  padding-bottom: 30px
-  font-family: Rockwell, Georgia, Times, "Times New Roman", serif
-
 #tour-shadow
   position: fixed
   top: 0 
@@ -133,11 +126,16 @@ $darkBlue: #1b334a
 
 #tour
   position: fixed
-  z-index: 1001
-  left: 2
+  left: 0
   top: 0
-  margin-left: 15%
   margin-top: 10%
+
+#current-tour-page, #next-tour-page
+  display: none
+  position: absolute
+  z-index: 2000000
+  padding-bottom: 30px
+  font-family: Rockwell, Georgia, Times, "Times New Roman", serif
 
 .welcome
   background-image: image-url("shared/redesign/welcomebg.png")
@@ -580,7 +578,6 @@ img.page_img
   background: url(shared/redesign/red-bg.png)
   z-index: 1000
   margin: 70px auto 30px
-  position: fixed
   padding-bottom: 20px
   font-family: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
   color: #fff
