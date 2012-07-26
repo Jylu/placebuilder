@@ -540,16 +540,17 @@ CONDITION
     # term - the address to match with
     get "/:id/address_approximate" do
       likeness = 0.90
-      addr = []
+      addr = {}
       find_community.street_addresses.each do |street_address|
         street = street_address.address
         test = street.jarowinkler_similar(params[:term].split(/[,|\.]/).first)
         if test >= likeness
-          addr << street
+          addr[street] = test
         end
       end
 
-        serialize(addr)
+      list = addr.sort {|a, b| b[1] <=> a[1]}.map {|a, b| a}
+      serialize(list)
     end
 
     # Returns the community's posts, possibly a search result
