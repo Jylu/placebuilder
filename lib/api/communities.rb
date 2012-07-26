@@ -319,7 +319,7 @@ CONDITION
       input = params[:term].split(/[,|\.]/).first
       likeness = input.split(" ").first =~ /^[0-9]+/ ? 0.90 : 0.75
       addr = {}
-      find_community.street_addresses.each do |street_address|
+      find_community.residents.each do |street_address|
         street = street_address.address.squeeze(" ")
         st_apt = street.clone
         st_apt << " Apt" if !street.upcase.include?("APT")
@@ -328,6 +328,9 @@ CONDITION
           addr[street] = test
         end
       end
+
+      list = addr.sort {|a, b| b[1] <=> a[1]}.map {|a, b| a}
+      serialize(list)
     end
 
     # Returns the community's posts, possibly a search result
