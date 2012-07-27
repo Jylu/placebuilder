@@ -330,6 +330,7 @@ CONDITION
         end)
 =end
       serialize(paginate(Resident.where(:community_id=>params[:id])).page(params[:page]).per(50))
+      #serialize(Resident.where(:community_id=>params[:id]))
       end
     end
 
@@ -532,25 +533,33 @@ CONDITION
     get "/:id/address_completions" do
       addr = find_community.street_addresses.where("address ILIKE ?", "%#{params[:term]}%").pluck(:address)
 
-      serialize(addr[0, 6])
+      serialize(addr[0, 7])
     end
 
     # Returns a list of address approximations
     #
     # term - the address to match with
+    # TODO: Instead of loosening the similarity cut-off,
+    # make sure they type in a "proper" address (ie begins with some #)
     get "/:id/address_approximate" do
-      likeness = 0.90
+      input = params[:term].split(/[,|\.]/).first
+      likeness = input.split(" ").first =~ /^[0-9]+/ ? 0.90 : 0.75
       addr = {}
       find_community.street_addresses.each do |street_address|
-        street = street_address.address
-        test = street.jarowinkler_similar(params[:term].split(/[,|\.]/).first)
+        street = street_address.address.squeeze(" ")
+        st_apt = street.clone
+        st_apt << " Apt" if !street.upcase.include?("APT")
+        test = st_apt.jarowinkler_similar(input)
+        addr[street] = test
+=begin
         if test >= likeness
           addr[street] = test
         end
+=end
       end
 
       list = addr.sort {|a, b| b[1] <=> a[1]}.map {|a, b| a}
-      serialize(list)
+      serialize(list[0, 7])
     end
 
     # Returns the community's posts, possibly a search result
