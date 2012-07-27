@@ -3,7 +3,7 @@ require 'json'
 require 'digest/md5'
 require 'net/http'
 require 'uri'
-require 'pismo'
+#require 'pismo'
 
 class LoadStories
   BASE_URL = "http://hyperlocal-api.outside.in/v1.1"
