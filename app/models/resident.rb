@@ -3,7 +3,7 @@ require 'json'
 require 'digest/md5'
 require 'net/http'
 require 'uri'
-require 'pismo'
+#require 'pismo'
 
 class Resident < ActiveRecord::Base
   serialize :metadata, Hash
@@ -66,7 +66,9 @@ class Resident < ActiveRecord::Base
   end
   
   def manualtags
-    self.flags.map &:name 
+    tags = self.flags.map &:name 
+
+    tags
   end
   
   def actionstags
@@ -105,7 +107,6 @@ class Resident < ActiveRecord::Base
     todos
   end
 
-
   # Creates tags associated with the resident
   #
   # Returns a list of todos
@@ -123,6 +124,21 @@ class Resident < ActiveRecord::Base
     end
 
     [remove, add]
+  end
+
+  def approx
+    if !self.user.nil?
+      return self.user.address_approx
+    end
+
+    nil
+  end
+
+  def registered
+    self.metadata[:tags] ||= []
+    self.metadata[:tags] << "registered"
+    self.community.add_resident_tags(Array("registered"))
+    self.save
   end
 
   def add_tags(tag_or_tags)
@@ -256,26 +272,14 @@ class Resident < ActiveRecord::Base
       response = Net::HTTP.get_response(URI(url))
       if JSON[response.body]['content'].include?(self.first_name+" "+self.last_name)
 =end
-     if story.content.include?(self.first_name+" "+self.last_name)
+    if story.content.include?(self.first_name+" "+self.last_name)
         puts story.title        
         result << {"story_url"=>story.url,"title"=>story.title,"summary"=>story.summary}
         count=count+1
-      end
-
     end
     self.stories_count=count
     self.last_story_time=stories[0].created_at unless stories.size==0
     self.save
     result
   end
-=begin  
-  def get_content
-    base_url="http://viewtext.org/api/text?url="
-    url='http://pubapi.outside.in/r?url=http://fullcount.weei.com/sports/boston/baseball/red-sox/2012/07/19/thursdays-red-sox-white-sox-matchups-clay-buchholz-vs-jose-quintana/&publication_id=0&placement=list&region_name=02116'
-    base_url=base_url+url+"&format=JSON"
-    #Pismo::Document.new(url).title
-    response = Net::HTTP.get_response(URI(base_url))
-    JSON[response.body]['content']
-  end
-=end
 end

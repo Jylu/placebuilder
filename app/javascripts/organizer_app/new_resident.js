@@ -4,7 +4,8 @@ OrganizerApp.AddResident = CommonPlace.View.extend({
   template: "organizer_app.new-resident",
 
   events: {
-    "submit form#add-resident": "addResident"
+    //"submit form#add-resident": "addResident"
+    "click #new-resident": "addResident"
   },
 
   name: function(){

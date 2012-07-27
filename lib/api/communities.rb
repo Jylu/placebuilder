@@ -120,7 +120,14 @@ class API
                 @ids=Resident.where("stories_count > 0").map &:id
                 @resident=true
               else
-                @ids=Flag.where(:name=>tag).map &:resident_id
+                #@ids=Flag.where(:name=>tag).map &:resident_id
+                @ids = []
+
+                residents = Resident.all
+                residents.each do |r|
+                  @ids << r.id if r.tags.include?(tag)
+                end
+
                 @resident=true
           end
           @ids.uniq!
@@ -322,7 +329,7 @@ CONDITION
           end
         end)
 =end
-      serialize(Resident.where(:community_id=>params[:id]))
+      serialize(paginate(Resident.where(:community_id=>params[:id])).page(params[:page]).per(50))
       end
     end
 
@@ -523,8 +530,27 @@ CONDITION
     #
     # term - the term to find auto-completed
     get "/:id/address_completions" do
-      serialize(find_community.street_addresses
-      .where("address ILIKE ?", "%#{params[:term]}%").pluck(:address))
+      addr = find_community.street_addresses.where("address ILIKE ?", "%#{params[:term]}%").pluck(:address)
+
+      serialize(addr[0, 6])
+    end
+
+    # Returns a list of address approximations
+    #
+    # term - the address to match with
+    get "/:id/address_approximate" do
+      likeness = 0.90
+      addr = {}
+      find_community.street_addresses.each do |street_address|
+        street = street_address.address
+        test = street.jarowinkler_similar(params[:term].split(/[,|\.]/).first)
+        if test >= likeness
+          addr[street] = test
+        end
+      end
+
+      list = addr.sort {|a, b| b[1] <=> a[1]}.map {|a, b| a}
+      serialize(list)
     end
 
     # Returns the community's posts, possibly a search result
