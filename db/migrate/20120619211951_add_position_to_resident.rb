@@ -1,5 +1,8 @@
 class AddPositionToResident < ActiveRecord::Migration
-  def change
+  def self.up
     add_column :residents, :position, :string
+  end
+  def self.down
+    remove_column :residents, :position, :string
   end
 end

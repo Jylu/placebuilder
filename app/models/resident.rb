@@ -1,9 +1,9 @@
-#require 'outside_in'
 require 'rubygems'
 require 'json'
 require 'digest/md5'
 require 'net/http'
 require 'uri'
+#require 'pismo'
 
 class Resident < ActiveRecord::Base
   serialize :metadata, Hash
@@ -18,9 +18,7 @@ class Resident < ActiveRecord::Base
 
   has_many :flags
 
-  after_create :manual_add, :find_story
-
-  BASE_URL = "http://hyperlocal-api.outside.in/v1.1"
+  after_create :manual_add#, :find_story
   
   def on_commonplace?
     self.user_id?
@@ -261,49 +259,27 @@ class Resident < ActiveRecord::Base
       return true
     end
   end
-  
-  def find_stories(zipcode)
-    url="/zipcodes/#{URI.escape(zipcode)}/stories"
-    request(url) do |response|
-      JSON[response.body]
-    end
-  end
 
-  def request(path, &block)
-    url = URI.parse(sign("#{BASE_URL}#{path}")+"&keyword="+self.first_name+"%20"+self.last_name)
-    #url = URI.parse(sign("#{BASE_URL}#{path}"))
-    puts "Requesting #{url}"
-    response = Net::HTTP.get_response(url)
-    if response.code.to_i == 200
-      yield(response)
-    else
-      raise Exception.new("Request failed with code #{response.code}")
-    end
-  end
-
-  def sign(url)
-    @key = '3h3n5k5j8375trecsr6x9enc'
-    @secret = 'TM9xkeYa9U'
-    "#{url}?dev_key=#{@key}&sig=#{Digest::MD5.hexdigest(@key + @secret + Time.now.to_i.to_s)}"
-  end
-  
   def find_story
+    stories=self.community.stories.order(:created_at)
+    result=[]
+    self.stories_count=0
+    count=0
+    stories.each do |story|
 =begin
-    OutsideIn.key = '3h3n5k5j8375trecsr6x9enc'
-    OutsideIn.secret = 'TM9xkeYa9U'
-    OutsideIn.logger.level = Logger::DEBUG # defaults to WARN
-    data = OutsideIn::Story.for_nabe("MA", "Boston","Back Bay",{:keyword => "Fisher College"})
-    #puts "Total stories for #{data[:location].display_name}: #{data[:total]}"
-    #data[:stories].each {|story| puts "  #{story.title} - #{story.feed_title}"}
-    data=find_stories(self.community.zip_code)
-    self.stories_count=data['total']
-    if data['total']>0
-      self.last_story_time=data['stories'][0]['published_at']
-    end
-    data['stories']
+      #doc=Pismo::Document.new(story.url)
+      url="http://viewtext.org/api/text?url="+story.url+"&format=JSON"
+      response = Net::HTTP.get_response(URI(url))
+      if JSON[response.body]['content'].include?(self.first_name+" "+self.last_name)
 =end
-
-  []
+    if story.content.include?(self.first_name+" "+self.last_name)
+        puts story.title        
+        result << {"story_url"=>story.url,"title"=>story.title,"summary"=>story.summary}
+        count=count+1
+    end
+    self.stories_count=count
+    self.last_story_time=stories[0].created_at unless stories.size==0
+    self.save
+    result
   end
-
 end

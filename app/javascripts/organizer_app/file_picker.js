@@ -15,7 +15,8 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click #map-button": "showMapView",
     "click #new-resident": "addResident",
     "click #todo-list": "gotoTodo",
-    "click #interest-picker": "interestPicker"
+    "click #interest-picker": "interestPicker",
+    "click #refresh-stories": "refreshStory"
     //"click #filter-tags": "addNewselect"
     //"click #new-street" : "addStreet"
   },
@@ -244,6 +245,10 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
       this.$("#order-tags").append('<option value='+tag+'>'+tag+'</option>');
     });
     
+  },
+  
+  refreshStory: function(){
+    this.options.community.get('new_stories');
   }
 
 });
