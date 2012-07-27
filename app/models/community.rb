@@ -2,7 +2,9 @@ class Community < ActiveRecord::Base
   serialize :metadata, Hash
   serialize :feature_switches, Hash
   serialize :discount_businesses
+  
   has_many :feeds
+  has_many :stories
   has_many :neighborhoods, :order => :created_at
   has_many(:announcements,
            :order => "announcements.created_at DESC",
@@ -68,6 +70,7 @@ class Community < ActiveRecord::Base
     t.add :manual_tags
     t.add :resident_todos
     t.add :zip_code
+    #t.add lambda {|u| u.find_story}, :as => :new_stories
   end
 
   def links
@@ -287,6 +290,7 @@ class Community < ActiveRecord::Base
   end
 
   def manual_tags
-    tags=Flag.all.map &:name
+    Flag.all.map &:name
   end
+
 end
