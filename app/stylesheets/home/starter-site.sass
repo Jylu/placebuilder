@@ -193,8 +193,7 @@ $Rokkitt: 'Rokkitt'
       margin-right: 40px
       height: 40px 
       width: 550px
-      ul 
-        padding-top: 6px
+      ul
         padding-left: 15px
         li 
           float: left 
@@ -202,11 +201,13 @@ $Rokkitt: 'Rokkitt'
           font-family: $Rokkitt
           font-size: 15px
           text-shadow: 1px 1px 1px black
-          margin-right: 15px
+          margin-right: 20px
+          margin-top: -3px
           a 
             text-decoration: none
             color: white
             font-size: 18px
+            padding-left: 0px
             &:hover 
               color: $red
           a.selected
@@ -237,6 +238,13 @@ $Rokkitt: 'Rokkitt'
         background: $blue
         -webkit-transform: rotateY( 180deg )
         display: block
+      .error
+        font-size: 12px
+        color: #fff
+        margin-top: -10px
+        margin-bottom: 15px
+        width: 100%
+        float: left
       h2
         font-size: 42px
         margin-top: 20px
@@ -323,10 +331,10 @@ div#main-reg
     width: 450px
 
 #find_button a.blue-button.next-button
-  position: relative
-  bottom: 55px
-  margin-top: -60px
-  margin-right: -28px
+  float: left
+  position: static
+  width: 100%
+  margin: 0px auto
 
 #user_sign_in div.community-name span.community
   position: relative
