@@ -272,11 +272,13 @@ class Resident < ActiveRecord::Base
       response = Net::HTTP.get_response(URI(url))
       if JSON[response.body]['content'].include?(self.first_name+" "+self.last_name)
 =end
+    if story.content
       if story.content.include?(self.first_name+" "+self.last_name)
         puts story.title        
         result << {"story_url"=>story.url,"title"=>story.title,"summary"=>story.summary}
         count=count+1
       end
+    end
     self.stories_count=count
     self.last_story_time=stories[0].created_at unless stories.size==0
     self.save
