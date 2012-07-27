@@ -31,7 +31,7 @@ newselect.insertBefore("#filter");
     <option value="yes" selected=true> Have
     <option value="no"> Not
   </select>
-<select id="1" class="list" name="filter-tags" data-placeholder="Choose a tag" style="width:130px" onchange="show(this.id)">
+<select id="1" multiple="true" class="list" name="filter-tags" data-placeholder="Choose a tag" style="width:130px" onchange="show(this.id)">
   {{#dropdowns}}
     <option value="{{tag}}" > {{val}} </option>
   {{/dropdowns}}

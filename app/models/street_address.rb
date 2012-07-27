@@ -14,6 +14,10 @@ class StreetAddress < ActiveRecord::Base
 
   after_create :create_default_resident
 
+  searchable do
+    string :address
+  end
+
   def have_dropped_flyers?
     [false, true].sample
   end
