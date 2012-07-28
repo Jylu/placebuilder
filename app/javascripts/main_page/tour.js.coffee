@@ -52,14 +52,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           account: self.account
         )
 
-      crop: ->
-        new CommonPlace.main.CropView(
-          nextPage: nextPage
-          slideIn: slideIn
-          data: data
-          account: self.account
-        )
-
       feed: ->
         new CommonPlace.main.SubscribeView(
           nextPage: nextPage
@@ -86,29 +78,13 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     @showPage "welcome"
 
   wire: ->
+    #this function isn't used, leaving it as an example of how the tour highlighted different objects
     @cleanUp()
     @template = "main_page.tour.wire"
     @$("#tour").html(@renderTemplate("main_page.tour.wire", this)).attr "class", "wire"
     @$("#tour").css left: $("#main").offset().left
     @removeShadows "#community-resources"
     @raise "#community-resources"
-
-  profile: ->
-    @cleanUp()
-    @template = "main_page.tour.profile"
-    @$("#tour").html(@renderTemplate("main_page.tour.profile", this)).attr "class", "profile"
-    @$("#tour").css
-      left: $("#main").offset().left + $("#profile-box").outerWidth() + 10
-      top: $("#profile-box").offset().top
-
-    @raise "#profile-box"
-
-  feed: ->
-    @cleanUp()
-    @template = "main_page.tour.feed"
-    @$("#tour").html(@renderTemplate("main_page.tour.feed", this)).attr "class", "feed"
-    @$("#tour").css top: $("#header").outerHeight()
-    @raise "#header"
 
   end: ->
     @cleanUp()
