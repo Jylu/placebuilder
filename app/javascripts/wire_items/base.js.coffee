@@ -41,7 +41,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     e.preventDefault()  if e
     @state = "share"
     @removeFocus()
-    @$("#modal").empty()
+    $("#modal").empty()
     @$(".share-link").addClass "current"
     shareModal = new CommonPlace.view.ShareModal(
       model: @model
@@ -49,7 +49,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       message: "Share this post with more people!"
     )
     shareModal.render()
-    @$("#modal").append shareModal.el
+    $("#modal").append shareModal.el
 
   reply: (e) ->
     e.preventDefault()  if e
