@@ -266,6 +266,7 @@ class Resident < ActiveRecord::Base
     self.stories_count=0
     count=0
     stories.each do |story|
+    #add story.id into self.examined stories, then search stories=self.community.stories.where("id NOT IN ?",self.examnied).order(:created_at)
 =begin
       #doc=Pismo::Document.new(story.url)
       url="http://viewtext.org/api/text?url="+story.url+"&format=JSON"

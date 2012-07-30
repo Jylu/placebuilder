@@ -58,10 +58,8 @@
 }
 
 .dataTables_filter {
-        display: none;
-	width: 50%;
-	float: right;
-	text-align: right;
+	float: top;
+	text-align: left;
 }
 
 .dataTables_info {
