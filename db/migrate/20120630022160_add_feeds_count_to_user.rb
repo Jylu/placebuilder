@@ -5,9 +5,8 @@ class AddFeedsCountToUser < ActiveRecord::Migration
     User.reset_column_information
     User.find_each do |user|
       User.update_counters user.id, :feeds_count => user.managable_feeds.length
-      user.save
     end
-    
+
   end
   def self.down
     remove_column :users, :feeds_count

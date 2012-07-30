@@ -1,15 +1,12 @@
 class AddRepliedCountToUser < ActiveRecord::Migration
   def self.up
     add_column :users, :replied_count, :integer, null:false, :default => 0
-    @amount=0
-    User.find_each do |user|
-      user.posts.each do |post|
-        @amount+=Reply.where(:repliable_id=>post.user_id).count
-      end
-      user.update_attribute(:replied_count, @amount)
-      user.save
-    end
-    
+    grouped_sql = "SELECT users.id,COUNT(replies.id) FROM users JOIN posts ON posts.user_id = users.id JOIN replies ON posts.id = replies.repliable_id GROUP BY users.id"
+    result = execute(grouped_sql).values[0]
+    result.each do |pair|
+      next unless pair[0].present? and pair[1].present?
+      execute("UPDATE users SET replied_count = #{pair[1]} WHERE id = #{pair[0]}")
+    end if result.present?
   end
   def self.down
     remove_column :users, :replied_count

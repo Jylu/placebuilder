@@ -102,6 +102,13 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
 
   afterRender: function() {
     $("#check-all").attr("checked", all_check);
+//    this.$("select.list").chosen()
+
+    this.$("select.list").chosen().change({}, function() {
+      var clickable = $(this).parent("li").children("div").children("ul");
+      clickable.click();
+    });
+
     this.renderList(this.collection.models);
     this.amount();
     this.$("#amount").text(this.collection.models.length);
