@@ -14,7 +14,8 @@ var AccountPage = CommonPlace.View.extend({
   initialize: function() {
     this.model = CommonPlace.account;
     
-    this.model.on("change:avatar_url", _.bind(function() { this.render(); }, this));
+    //Bryan - Commenting this out because it was redirecting the registraiton to edit account when a picture was uploaded
+    //this.model.on("change:avatar_url", _.bind(function() { this.render(); }, this));
   },
 
 

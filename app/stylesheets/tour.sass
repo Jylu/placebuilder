@@ -121,7 +121,7 @@ $darkBlue: #1b334a
   bottom: 0 
   right: 0
   background-color: black 
-  @include opacity(0.5)
+  @include opacity(0.65)
   z-index: 1000
 
 #tour
@@ -225,8 +225,7 @@ $darkBlue: #1b334a
 
 #findNeighbors 
   width: 630px
-  height: 550px
-  overflow: scroll
+  float: left
   background-color: #eeecdf
   background: url(shared/redesign/red-bg.png)
   z-index: 1000
@@ -356,14 +355,14 @@ ul li
 #findNeighbors ul.subscribe_categories
   width: 556px
   margin: 0px auto
+  padding-bottom: 15px
 
   li 
     display: inline-block
-    height: 30px
     margin-left: 0px
     margin-right: 0px
-    padding: 0px 13px 10px 0px
-    border-radius: 5px
+    padding: 6px 10px
+    border-radius: 4px
 
 #findNeighbors ul.subscribe_categories li:hover 
   display: inline-block
@@ -382,14 +381,15 @@ ul li
   margin-left: auto
   height: 380px
   overflow: scroll
+  overflow-x: hidden
 
 #subscribe_pages ul.subscribe_pages li 
   overflow: hidden
-  width: 240px
+  width: 232px
   display: inline-block
   padding: 15px
   background-color: #e9ded0
-  margin-right: 8px
+  margin-right: 10px
   margin-bottom: 0
   margin-top: 8px
   height: 50px
@@ -409,7 +409,7 @@ ul li
   float: left
   color: $dark-tan
 
-#subscribe_pages ul.subscribe_pages li a img.page_img 
+#subscribe_pages ul.subscribe_pages li img.page_img 
   width: 50px
   height: 50px
   float: left
@@ -578,10 +578,11 @@ img.page_img
   background: url(shared/redesign/red-bg.png)
   z-index: 1000
   margin: 70px auto 30px
-  padding-bottom: 20px
+  padding: 10px 0px 20px 0px
   font-family: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
   color: #fff
   right: 380px
+  float: left
 
   #search 
     width: 556px
@@ -655,9 +656,10 @@ img.page_img
 
 div#RealFindNeighbors div#find_bottom #invite_friends
   margin-left: 31px
+  margin-top: 15px
 
 div#RealFindNeighbors div#find_bottom
-  margin-top:  -20px
+  margin-top: 0px
 
 div.welcome div.bottom input.next-button.blue-button
   width: 130px
@@ -668,7 +670,6 @@ div.welcome div.bottom input.next-button.blue-button
 
 div.welcome
   position: relative
-  right: 150px
 
 div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
   margin-top: -5px

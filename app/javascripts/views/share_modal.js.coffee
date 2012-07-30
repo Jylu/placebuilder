@@ -43,7 +43,7 @@ CommonPlace.view.ShareModal = CommonPlace.View.extend(
     if this.$("input[name=share-email]").val()
       this.submitEmail()
 
-    router.navigate(router.community.get("slug"), {"trigger": true, "replace": true})
+    window.app.navigate(CommonPlace.community.get("slug"), {"trigger": true, "replace": true})
     this.remove()
 
   shareFacebook: (e) ->

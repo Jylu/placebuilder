@@ -73,7 +73,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
 
       onComplete: (file, response) ->
         CommonPlace.account.set response
-        self.nextPage "crop", @data
+        self.nextPage "feed", @data
     )
 
   toggleAvatar: ->
