@@ -8,7 +8,7 @@ class AddAnnouncementsCountToUser < ActiveRecord::Migration
       INNER JOIN announcements ON announcements.owner_id = feeds.user_id
       GROUP BY users.id
     SQL
-    execute(sql).values[0].each do |pair|
+    execute(sql).values.each do |pair|
       next unless pair[0].present? and pair[1].present?
       execute("UPDATE users SET announcements_count = #{pair[1]} WHERE id = #{pair[0]}")
     end

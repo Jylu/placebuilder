@@ -46,3 +46,10 @@ scale_down_post_daily_digest:
   args: 2
   queue: server_management
   description: "Decreases used dynos after daily digest mailings"
+  
+load_daily_new_stories:
+  cron: "0 0 * * *"
+  class: LoadStories
+  args:
+  queue: daily_new_stories
+  description: "Pull new news of a community every midnight"
