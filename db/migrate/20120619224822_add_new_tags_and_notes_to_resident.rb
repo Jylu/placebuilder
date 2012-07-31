@@ -5,8 +5,8 @@ class AddNewTagsAndNotesToResident < ActiveRecord::Migration
     add_column :residents, :notes, :string
   end
   def down
-    remove_column :residents, :sector_tags, :text
-    remove_column :residents, :type_tags, :text
-    remove_column :residents, :notes, :string
+    remove_column :residents, :sector_tags
+    remove_column :residents, :type_tags
+    remove_column :residents, :notes
   end
 end
