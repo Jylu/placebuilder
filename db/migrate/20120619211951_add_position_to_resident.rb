@@ -3,6 +3,6 @@ class AddPositionToResident < ActiveRecord::Migration
     add_column :residents, :position, :string
   end
   def self.down
-    remove_column :residents, :position, :string
+    remove_column :residents, :position
   end
 end
