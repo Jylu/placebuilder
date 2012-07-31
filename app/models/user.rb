@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
   serialize :private_metadata, Hash
 
   acts_as_taggable
-  
+
   acts_as_taggable_on :skills, :interests, :goods
   #track_on_creation
   include Geokit::Geocoders

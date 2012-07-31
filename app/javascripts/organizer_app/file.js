@@ -32,22 +32,6 @@ OrganizerApp.File = Backbone.Model.extend({
     return this.get('longitude');
   },
 
-  addTag: function(tag, callback) {
-    var self = this;
-
-    /*$.post(this.url() + "/tags", {tags: tag},
-        function() { self.fetch({success: callback}) });*/
-	  $.ajax({
-		  type: 'POST',
-		  url: this.url() + "/tags",
-		  data: {tags: tag},
-		  cache: 'false',
-		  success: function() {
-        self.fetch({success: callback});
-      }
-	  });
-  },
-
   addEmail: function(email, callback) {
     var self = this;
 	  $.ajax({
@@ -75,8 +59,8 @@ OrganizerApp.File = Backbone.Model.extend({
         self.fetch({success: callback});
       }
 	  });
-  }, 
-  
+  },
+
   manualtags: function(){
     return this.get('manualtags');
   },
@@ -99,14 +83,14 @@ OrganizerApp.Files = Backbone.Collection.extend({
 
   commontags: function(){
     var tags= new Array();
-    var actions= [];    
+    var actions= [];
     actions= actions.concat(this.models[0].actionstags());
       tags=tags.concat(this.models[0].manualtags());
-      _.map(this.models, function(model){         
-        if((t=model.manualtags()).length>0){        
+      _.map(this.models, function(model){
+        if((t=model.manualtags()).length>0){
           intersect={},res=[];
-          for (var i=tags.length-1; i>=0; i--) {	
-	    for ( var j=0; j<t.length; j++) {	
+          for (var i=tags.length-1; i>=0; i--) {
+	    for ( var j=0; j<t.length; j++) {
 		if (tags[i]==t[j]) {
 			intersect[tags[i]]=true;
 		}
@@ -117,13 +101,13 @@ OrganizerApp.Files = Backbone.Collection.extend({
 	  tags.push(k);
         }
       });
-    
-    _.map(this.models, function(model){ 
+
+    _.map(this.models, function(model){
       if((t=model.actionstags()).length>0){
         //console.log(model.manualtags());
         intersect={},res=[];
-        for (var i=actions.length-1; i>=0; i--) {	
-	  for ( var j=0; j<t.length; j++) {	
+        for (var i=actions.length-1; i>=0; i--) {
+	  for ( var j=0; j<t.length; j++) {
 		if (actions[i]==t[j]) {
 			intersect[actions[i]]=true;
 		}

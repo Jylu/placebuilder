@@ -72,12 +72,17 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     if(tag == "")
       return;
 
+    var i = 0;
+    var arr = [];
     _.map(this.collection.models, _.bind(function(model) {
       if(checklist[model.getId()]) {
 
-        model.addTag(tag, _.bind(this.render, this));
+        arr[i] = model.getId();
+        ++i;
       }
     }, this));
+
+    $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr});
   },
 
   gotoTodo: function (e) {
@@ -121,7 +126,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
 
   renderList: function(list) {
     this.$("#file-picker-list").empty();
-    //console.log(list);
+
     this.$("#file-picker-list").append(
       _.map(list, _.bind(function(model) {
         /*console.log("renderList model: ");
@@ -209,7 +214,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
           "have": haves,
           "tag": tag
         };
-        //console.log(params["have"]);
+
         this.collection.fetch({
           data: params,
           success: _.bind(this.afterRender, this)
@@ -251,9 +256,9 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
       //console.log(tag);
       this.$("#order-tags").append('<option value='+tag+'>'+tag+'</option>');
     });
-    
+
   },
-  
+
   refreshStory: function(){
     this.options.community.get('new_stories');
   }

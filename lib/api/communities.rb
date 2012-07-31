@@ -190,7 +190,7 @@ class API
           end
           @ids.uniq!
           @residents=nil
-          if !@resident          
+          if !@resident
             @residents=User.where(:id=>@ids[0],:community_id=>community_id).map &:resident
             for @k in 1..@ids.size-1 do
               if @users=User.where(:id=>@ids[@k],:community_id=>community_id)
@@ -300,7 +300,7 @@ CONDITION
             end
             serialize(@final)
           else
-            serialize(filter_users_by_tag(params[:tag][0],params[:have][0],params[:id]))
+            serialize(filter_users_by_tag(params[:tag][0], params[:have][0], params[:id]))
           end
         else
           if params[:order]=="time"
@@ -318,7 +318,7 @@ CONDITION
           serialize(User.find(params[:user_id]).find_related_interests.map &:resident)
         end
       else
-=begin      
+=begin
       serialize(Sunspot.search(Resident) do
           paginate :page => 1, :per_page => 9001
           order_by :last_name
@@ -333,7 +333,7 @@ CONDITION
           end
         end)
 =end
-      serialize(paginate(Resident.where(:community_id=>params[:id])).page(params[:page]).per(50))
+      serialize(paginate(Resident.where(:community_id=>params[:id])).page(params[:page]).per(params[:per]).order("last_name ASC, first_name ASC"))
       #serialize(Resident.where(:community_id=>params[:id]))
       end
     end
@@ -391,7 +391,7 @@ CONDITION
 
       Resident.find(params[:file_id])
     end
-    
+
     # Returns related users of specific resident file
     # according to interests
     get "/:id/files/:file_id/relatedusers" do
@@ -399,7 +399,7 @@ CONDITION
       user_id=Resident.find(params[:file_id]).user_id
       user=User.find(user_id)
       serialize(user.find_related_interests)
-      
+
     end
 
     # Add a log to a community resident file
@@ -426,10 +426,12 @@ CONDITION
     #
     # Request params:
     #   tags - the tags to add
-    post "/:id/files/:file_id/tags" do
+    post "/:id/files/tags" do
       control_access :admin
 
-      Resident.find(params[:file_id]).add_tags(params[:tags])
+      params[:file_id].each do |id|
+        find_community.residents.find(id).add_tags(params[:tags])
+      end
       200
     end
 
