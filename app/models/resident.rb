@@ -74,11 +74,13 @@ class Resident < ActiveRecord::Base
   def actionstags
     actionstags=[]
     if self.on_commonplace?
-      actionstags+=User.find(self.user_id).actions_tags
+      actionstags+=User.find(self.user_id).action_tags
     end
+=begin
     if self.stories_count>0
       actionstags << "story"
     end
+=end
     actionstags
   end
   
@@ -263,7 +265,7 @@ class Resident < ActiveRecord::Base
   def find_story
     stories=self.community.stories.order(:created_at)
     result=[]
-    self.stories_count=0
+    #self.stories_count=0
     count=0
     stories.each do |story|
     #add story.id into self.examined stories, then search stories=self.community.stories.where("id NOT IN ?",self.examnied).order(:created_at)
@@ -279,7 +281,7 @@ class Resident < ActiveRecord::Base
         count=count+1
       end
     end
-    self.stories_count=count
+    #self.stories_count=count
     self.last_story_time=stories[0].created_at unless stories.size==0
     self.save
     result
