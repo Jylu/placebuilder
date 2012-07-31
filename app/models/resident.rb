@@ -74,7 +74,7 @@ class Resident < ActiveRecord::Base
   def actionstags
     actionstags=[]
     if self.on_commonplace?
-      actionstags+=User.find(self.user_id).actions_tags
+      actionstags+=User.find(self.user_id).action_tags
     end
     if self.stories_count>0
       actionstags << "story"

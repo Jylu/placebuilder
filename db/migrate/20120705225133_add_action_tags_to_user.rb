@@ -1,21 +1,23 @@
 class AddActionTagsToUser < ActiveRecord::Migration
   def self.up
     add_column :users, :action_tags, :text
+    grouped_sql = "SELECT users.id,users.posts_count,users.replies_count,users.replied_count,users.invites_count,users.announcements_count,users.events_count,users.sign_in_count,users.emails_sent FROM users"
+    result = execute(grouped_sql).values
+    result.each do |pair|
+      next unless pair[0].present? and pair[1].present? and pair[2].present? and pair[3].present? and pair[4].present? and pair[5].present? and pair[6].present? and pair[7].present? and pair[8].present?
+      tags=Array.new
+      tags.push("post") if pair[1].present? and pair[1].to_i>0
+      tags.push("reply") if pair[2].present? and pair[2].to_i>0
+      tags.push("replied") if pair[3].present? and pair[3].to_i>0
+      tags.push("invite") if pair[4].present? and pair[4].to_i>0
+      tags.push("announcement") if pair[5].present? and pair[5].to_i>0
+      tags.push("event") if pair[6].present? and pair[6].to_i>0
+      tags.push("sitevisit") if pair[7].present? and pair[7].to_i>0
+      tags.push("email") if pair[8].present? and pair[8].to_i>0
 
-    # TODO: This should be done in SQL
-    # User.find_each do |user|
-      # tags=[]
-      # tags.push("post") if user.posts_count.present? and user.posts_count>0
-      # tags.push("reply") if user.replies_count.present? and user.replies_count>0
-      # tags.push("replied") if user.replied_count.present? and user.replied_count>0
-      # tags.push("invite") if user.invites_count.present? and user.invites_count>0
-      # tags.push("announcement") if user.announcements_count.present? and user.announcements_count>0
-      # tags.push("event") if user.events_count.present? and user.events_count>0
-      # tags.push("sitevisit") if user.sign_in_count.present? and user.sign_in_count>0
-      # tags.push("email") if user.emails_sent.present? and user.emails_sent>0
-      # user.update_attribute(:action_tags, @tags)
-      # user.save
-    # end
+      #execute("UPDATE users SET action_tags = #{tagstos} WHERE id = #{pair[0]}")
+      User.find(pair[0]).update_attributes(:action_tags=>tags)
+    end if result.present?
   end
 
   def self.down

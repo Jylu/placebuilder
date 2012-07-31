@@ -1,7 +1,7 @@
 class AddInviteCountToUser < ActiveRecord::Migration
   def self.up
     add_column :users, :invites_count, :integer, null:false, :default => 0
-    invitation_counts = execute("SELECT invites.inviter_id, COUNT(*) FROM invites GROUP BY inviter_id").values[0]
+    invitation_counts = execute("SELECT invites.inviter_id, COUNT(*) FROM invites GROUP BY inviter_id").values
     if invitation_counts.present?
       invitation_counts.each do |pair|
         next unless pair[0].present? and pair[1].present?
