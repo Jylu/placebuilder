@@ -1,4 +1,4 @@
-CommonPlace.view.ShareView = CommonPlace.View.extend(
+CommonPlace.views.ShareView = CommonPlace.View.extend(
   className: "share"
   template: "shared/share"
   initialize: (options) ->
