@@ -1,4 +1,4 @@
-CommonPlace.view.ShareModal = CommonPlace.View.extend(
+CommonPlace.views.ShareModal = CommonPlace.View.extend(
   template: "shared/share_modal"
 
   events:
