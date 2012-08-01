@@ -54,14 +54,14 @@
 var Application = Backbone.Router.extend({
 
   initialize: function() {
-    var header = new HeaderView({ el: $("#header") });
+    var header = new CommonPlace.shared.HeaderView({ el: $("#header") });
     header.render();
 
     if (!CommonPlace.account.get("metadata")['completed_facebook_nag'] &&
         (!CommonPlace.account.get('facebook_user') &&
         !(CommonPlace.account.get('avatar_url').indexOf("missing") == -1)
         )) {
-      var nag = new FacebookNag({ el: $("#notification") });
+      var nag = new CommonPlace.shared.FacebookNag({ el: $("#notification") });
       nag.render();
     } else {
       $("#notification").hide();
