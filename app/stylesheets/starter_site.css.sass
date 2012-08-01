@@ -29,6 +29,9 @@ $body: Helvetica Neue, Helvetica, Tahoma, serif
 /* Woo Shadows */
 $black-shadow: 0px 2px 1px black
 
+html
+  -webkit-font-smoothing: antialiased
+
 body 
   background: url("shared/redesign/bg.jpg") no-repeat center top
 
@@ -65,7 +68,7 @@ body
           text-decoration: none
           color: white
           font-size: 18px
-          padding: 5px 7px 3px 6px
+          padding: 5px 7px
         &:hover 
           a 
             background-color: darken($red, 10%)
@@ -89,22 +92,27 @@ body
       a 
         color: $red
         text-decoration: none
+        &:hover
+          text-decoration: underline
       h3
         font-family: $Rokkitt
         color: $blue
         font-size: 26px
         padding-bottom: 20px
+        font-weight: bold
       p 
-        color: #5d5d5d
+        color: #424242
         font-family: $Rokkitt
-        width: 430px
-        font-size: 19px
+        width: 465px
+        font-size: 18px
         margin-bottom: 15px
+        line-height: 1.25em
       .highlight
         color: $blue 
         font-size: 19px 
         margin-top: 15px 
-        margin-bottom: 5px
+        margin-bottom: 15px
+        font-weight: bold
     .right 
       border-left: 1px solid white
       width: 460px
@@ -126,6 +134,7 @@ body
       .registration 
         margin-top: 25px
       input
+        -webkit-font-smoothing: antialiased
         width: 460px
         height: 20px
         padding: 8px
@@ -135,11 +144,11 @@ body
         font-size: 18px
         background: white
         margin-bottom: 20px
-        box-shadow: inset 0px 1px 6px rgba(0, 0, 0, .5)
+        box-shadow: inset 1px 2px 4px rgba(0, 0, 0, 0.35)
         &:last-child
           margin-bottom: 30px
       button 
-        -webkit-appearance: none
+        -webkit-font-smoothing: antialiased
         background: $blue
         width: 475px
         padding: 10px 0
@@ -149,11 +158,21 @@ body
         border: 1px solid #151f28
         color: white
         text-transform: uppercase
-        +linear-gradient(color-stops(#2e5274, #1b334a))
-        box-shadow: 1px 1px 1px rgba(0,0,0,.5)
-        text-shadow: 1px 2px 3px rgba(0,0,0,.5)
+        +linear-gradient(color-stops(#2e5274, #1b334a), top)
+        box-shadow: 1px 1px 1px rgba(0,0,0,.25)
+        text-shadow: 1px 2px 3px rgba(0,0,0,.65)
         cursor: pointer
         margin-top: 0px
+        &:hover, &:focus
+          color: #fff
+          +linear-gradient(color-stops(#2e5274, #1b334a), top)
+          text-shadow: 1px 2px 3px rgba(0,0,0,.65)
+          box-shadow: 0px 2px 4px rgba(0,0,0,.65)
+        &:active
+          color: #fff
+          +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
+          text-shadow: -1px -1px -1px rgba(0,0,0,.65)
+          box-shadow: 1px 1px 1px rgba(0,0,0,.25)
       .facebook
         margin: 0 auto
           top: 15px
