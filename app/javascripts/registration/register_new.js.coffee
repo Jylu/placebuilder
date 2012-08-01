@@ -58,13 +58,19 @@ CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModa
 
   submit: (e) ->
     e.preventDefault()  if e
+    @$("input").removeClass "input_error"
     @data.full_name = @$("input[name=full_name]").val()
     @data.email = @$("input[name=email]").val()
     @data.password = @$("input[name=password]").val()
-    params = [ "full_name", "email" ]
-    @validate_registration params, _.bind(->
-      @nextPage "address", @data
-    , this)
+    if @data.password is ""
+      input = @$("input[name=password]")
+      input.attr("placeholder", "Password can't be empty")
+      input.addClass "input_error"
+    else 
+      params = [ "full_name", "email" ]
+      @validate_registration params, _.bind(->
+        @nextPage "address", @data
+      , this)
 
   facebook: (e) ->
     e.preventDefault()  if e

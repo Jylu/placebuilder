@@ -212,12 +212,13 @@ CommonPlace.registration.RegistrationModalPage = CommonPlace.View.extend(
       else
         _.each params, _.bind((field) ->
           unless _.isEmpty(response[field])
-            error = @$(".error." + field)
+            input = @$("input[name=" + field + "]")
             errorText = _.reduce(response[field], (a, b) ->
               a + " and " + b
             )
-            error.text errorText
-            error.show()
+            input.attr("placeholder", errorText)
+            input.val("")
+            input.addClass "input_error"
             valid = false
         , this)
         callback()  if valid and callback
