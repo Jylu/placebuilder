@@ -116,11 +116,9 @@ class API
                 @ids=Post.where(:id=>@postsids).map {|a| a.user_id}.uniq
               when "invite"
                 @ids=Invite.all.map {|a| a.inviter_id}.uniq
-=begin
               when "story"
                 @ids=Resident.where("stories_count > 0").map &:id
                 @resident=true
-=end
               else
                 #@ids=Flag.where(:name=>tag).map &:resident_id
                 @ids = []
@@ -232,10 +230,8 @@ class API
             @residents=User.where("community_id = ? and invite_count <> ?",community_id,0).order("invite_count DESC").map &:resident
           when "event"
             @residents=User.where("community_id = ? and event_count <> ?",community_id,0).order("events_count DESC").map &:resident
-=begin
           when "story"
             @residents=Resident.where("community_id = ? and stories_count <> ?",community_id,0).order("stories_count DESC")
-=end
         end
         @residents.uniq!
         serialize(@residents)
