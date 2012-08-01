@@ -13,7 +13,7 @@ CommonPlace.registration.Router = Backbone.Router.extend(
 
   initialize: (options) ->
     @initFacebook()
-    header = new HeaderView(el: $("#header"))
+    header = new CommonPlace.shared.HeaderView(el: $("#header"))
     header.render()
     @modal = new CommonPlace.registration.RegistrationModal(
       communityExterior: options.communityExterior
