@@ -254,15 +254,30 @@ html
         background: $blue
         -webkit-transform: rotateY( 180deg )
         display: block
-      .error
-        font-size: 12px
-        color: #fff
-        margin-top: -3px
-        margin-bottom: 8px
-        width: 100%
+      #password, #full_name, #email
+        position: relative
         float: left
+        width: 100%
+      .input_error
+        background-color: #fff7b8
+        box-shadow: inset #d8cb60 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
+        input::-webkit-input-placeholder
+          color: $red
+      .error
+        font-size: 11px
+        color: #fff
+        max-width: 250px
         font-family: Helvetica, Arial, sans-serif
         font-weight: bold
+        position: absolute
+        bottom: 40px
+        right: -20%
+        background: url('shared/redesign/error-bg.png')
+        background-repeat: no-repeat
+        background-position: bottom left
+        padding: 8px 8px 16px 8px
+        line-height: 14px
+        text-align: left
         
       h2
         font-size: 42px
