@@ -19,7 +19,7 @@ class Resident < ActiveRecord::Base
   has_many :flags
 
   after_create :manual_add#, :find_story
-  
+
   def on_commonplace?
     self.user_id?
   end
@@ -64,13 +64,13 @@ class Resident < ActiveRecord::Base
 =end
     tags
   end
-  
+
   def manualtags
-    tags = self.flags.map &:name 
+    tags = self.flags.map &:name
 
     tags
   end
-  
+
   def actionstags
     actionstags=[]
     if self.on_commonplace?
@@ -83,7 +83,7 @@ class Resident < ActiveRecord::Base
 =end
     actionstags
   end
-  
+
   def interest_list
     if self.on_commonplace?
       User.find(self.user_id).interest_list
@@ -276,7 +276,7 @@ class Resident < ActiveRecord::Base
       if JSON[response.body]['content'].include?(self.first_name+" "+self.last_name)
 =end
       if story.content.include?(self.first_name+" "+self.last_name)
-        puts story.title        
+        puts story.title
         result << {"story_url"=>story.url,"title"=>story.title,"summary"=>story.summary}
         count=count+1
       end
@@ -285,6 +285,6 @@ class Resident < ActiveRecord::Base
     self.last_story_time=stories[0].created_at unless stories.size==0
     self.save
     result
-    
+
   end
 end
