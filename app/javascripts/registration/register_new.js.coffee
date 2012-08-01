@@ -59,13 +59,16 @@ CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModa
   submit: (e) ->
     e.preventDefault()  if e
     @$("input").removeClass "input_error"
+    @$(".error").hide()
     @data.full_name = @$("input[name=full_name]").val()
     @data.email = @$("input[name=email]").val()
     @data.password = @$("input[name=password]").val()
     if @data.password is ""
       input = @$("input[name=password]")
-      input.attr("placeholder", "Password can't be empty")
+      error = @$(".error.password")
       input.addClass "input_error"
+      error.text "Password can't be empty"
+      error.show()
     else 
       params = [ "full_name", "email" ]
       @validate_registration params, _.bind(->

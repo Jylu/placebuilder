@@ -35,13 +35,20 @@
         <figure class="front">
           <h2>Sign Up</h2>
           <form class="registration">
-            <input id="full-name" name="full_name" class="name" type="text" placeholder="Full Name" />
-            <span class="error full_name"></span>
+            <div id="full_name">
+              <input name="full_name" class="name" type="text" placeholder="Full Name" />
+              <span class="error full_name"></span>
+            </div>
             <br />
-            <input class="email" type="email" name="email" placeholder="Your Email" />
-            <span class="error email"></span>
+            <div id="email">
+              <input class="email" type="email" name="email" placeholder="Your Email" />
+              <span class="error email"></span>
+            </div>
             <br />
-            <input class="password" type="password" name="password" placeholder="New Password" /><br />
+            <div id="password">
+              <input class="password" type="password" name="password" placeholder="New Password" /><br />
+              <span class="error password"></span>
+            </div>
 			<button class="next-button">Register Now!</button></form>
           <div class="facebook">
             <p>Or you can:</p>
