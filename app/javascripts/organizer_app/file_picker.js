@@ -61,11 +61,6 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     this.render();
   },
 
-  /*
-   * For some reason, reloading the location causes a race condition
-   * where it's not guaranteed for all of the checked names to have
-   * the tag applied to the file
-   */
   addTag: function() {
     var tag = this.$("#tag-list option:selected").val();
 
@@ -82,7 +77,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
       }
     }, this));
 
-    $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr});
+    $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr}).success(function() { location.reload() });
   },
 
   gotoTodo: function (e) {
