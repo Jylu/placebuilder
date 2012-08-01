@@ -16,6 +16,12 @@ $(document).ready(function(){
     else if($(this).attr('href')=="our-platform"){
       $('#our-platform').show();
     }
+    else if($(this).attr('href')=="press"){
+      $('#press').show();
+    }
+    else if($(this).attr('href')=="nominate"){
+      $('#nominate').show();
+    }
     return false;
   });
 });
