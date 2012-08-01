@@ -27,15 +27,21 @@ newselect.insertBefore("#filter");
   <button id="filter-button">Search</button>
 
 <br>
-  <select id="haveornot" name="haveornot"  style="width:77px">
-    <option value="yes" selected=true> Have
-    <option value="no"> Not
-  </select>
-<select id="1" multiple="true" class="list" name="filter-tags" data-placeholder="Choose a tag" style="width:130px" onchange="show(this.id)">
+  <label id="haveornot" name="haveornot" style="width:77px">Has</label>
+<select id="1" multiple="true" class="list" name="filter-tags" data-placeholder="Choose a tag" style="width:200px">
   {{#dropdowns}}
     <option value="{{tag}}" > {{val}} </option>
   {{/dropdowns}}
 </select>
+
+<br>
+  <label id="haveornot" name="haveornot" style="width:77px">No</label>
+<select id="2" multiple="true" class="list" name="filter-tags" data-placeholder="Choose a tag" style="width:200px">
+  {{#dropdowns}}
+    <option value="{{tag}}" > {{val}} </option>
+  {{/dropdowns}}
+</select>
+
 <button id="filter">Filter</button><br>
 
 <select id="order">
