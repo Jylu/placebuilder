@@ -61,11 +61,6 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     this.render();
   },
 
-  /*
-   * For some reason, reloading the location causes a race condition
-   * where it's not guaranteed for all of the checked names to have
-   * the tag applied to the file
-   */
   addTag: function() {
     var tag = this.$("#tag-list option:selected").val();
 
@@ -82,7 +77,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
       }
     }, this));
 
-    $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr});
+    $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr}).success(function() { location.reload() });
   },
 
   gotoTodo: function (e) {
@@ -193,6 +188,23 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
   filterUsers: function(e){
     var tag=new Array();
     var Search="filter";
+    var select = this.$("select[name=filter-tags]");
+    var haves = new Array();
+    var len = select[0].options.length;
+
+    for(var x = 0; x < len; ++x) {
+      if(select[0].options[x].selected) {
+        tag.push(select[0].options[x].value);
+        haves.push("yes");
+      }
+
+      if(select[1].options[x].selected) {
+        tag.push(select[1].options[x].value);
+        haves.push("no");
+      }
+    }
+
+    /*
     _.map(this.$("select[name=filter-tags]"), function(select) {
       if(select.value){
         if(!isNaN(select.value)){
@@ -210,6 +222,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
         haves.push(select.value);
       }
     });
+    */
 
     switch(e.target.id){
       case "filter":
