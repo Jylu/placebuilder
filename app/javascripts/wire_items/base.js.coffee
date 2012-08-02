@@ -43,7 +43,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     @removeFocus()
     $("#modal").empty()
     @$(".share-link").addClass "current"
-    shareModal = new CommonPlace.view.ShareModal(
+    shareModal = new CommonPlace.views.ShareModal(
       model: @model
       account: CommonPlace.account
       message: "Share this post with more people!"
