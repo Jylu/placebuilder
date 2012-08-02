@@ -17,21 +17,6 @@ CommonPlace.shared.HeaderLogin = CommonPlace.View.extend(
   create_error: (text) ->
     "<li class='error'>" + text + "</li>"
 
-  root_url: ->
-    if CommonPlace.account.isAuth()
-      "/" + CommonPlace.account.get("community_slug")
-    else
-      "/" + CommonPlace.community.get("slug")  if CommonPlace.community
-
-  hasCommunity: ->
-    CommonPlace.community
-
-  community_name: ->
-    if CommonPlace.account.isAuth()
-      CommonPlace.account.get "community_name"
-    else
-      CommonPlace.community.get "name"  if CommonPlace.community
-
   login: (e) ->
     e.preventDefault()  if e
     @$(".notice").html ""
