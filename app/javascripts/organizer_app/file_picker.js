@@ -16,7 +16,7 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
     "click #new-resident": "addResident",
     "click #todo-list": "gotoTodo",
     "click #interest-picker": "interestPicker",
-    "click #refresh-stories": "refreshStory"
+    "click #statistics-charts": "newCharts"
     //"click #filter-tags": "addNewselect"
     //"click #new-street" : "addStreet"
   },
@@ -91,6 +91,10 @@ OrganizerApp.FilePicker = CommonPlace.View.extend({
 
   addResident: function(e) {
     new OrganizerApp.AddResident({el: $('#file-viewer'), collection: this.collection, filePicker: this}).render();
+  },
+  
+  newCharts: function(e) {
+    new OrganizerApp.Charts({el: $('#file-viewer'), community: this.options.community, collection: this.collection, filePicker: this}).render();
   },
 /*
   addStreet: function(e) {

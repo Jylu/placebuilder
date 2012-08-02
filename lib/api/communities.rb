@@ -244,6 +244,13 @@ class API
 
       serialize find_community
     end
+    
+    # Set organize start date
+    post "/:id" do
+      control_access :admin
+
+      Community.find(params[:id]).update_attributes(:organize_start_date=>request_body['organize_start_date'])
+    end
 
     # Returns the serialized community wire
     #

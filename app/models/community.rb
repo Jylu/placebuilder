@@ -70,7 +70,8 @@ class Community < ActiveRecord::Base
     t.add :manual_tags
     t.add :resident_todos
     t.add :zip_code
-    #t.add lambda {|u| u.find_story}, :as => :new_stories
+    t.add :organize_start_date
+    t.add lambda {|u| u.user_statistics}, :as => :user_statistics
   end
 
   def links
@@ -292,5 +293,49 @@ class Community < ActiveRecord::Base
   def manual_tags
     Flag.all.map &:name
   end
+  
+  def user_statistics
+    if self.organize_start_date?
+      start=self.organize_start_date
+    else
+      start=self.created_at.to_date
+    end
+    if Date.today.months_ago(6)>start
+      t=Date.today.months_ago(6)
+    else
+      t=start
+    end
+    result={}
+    users=[]
+    users<<["Date","Total","Gain"]
+    while t<=Date.today
+      total=self.users.where("created_at<?",t).count
+      gain=total-self.users.where("created_at<?",t-1).count
+      #result<<[t.strftime("%b %d"),total,gain]
+      users<<[t,total,gain]
+      puts total
+      t=t+1
+    end
+    result.merge({users: users})
+    
+=begin    
+    cols=[]
+    rows=[]
+    cols<<{id: 'date', label: 'Date', type: 'date'}
+    cols<<{id: 'total', label: 'Total', type: 'number'}
+    cols<<{id: 'gain', label: 'Gain', type: 'number'}
+    while t!=Date.today
+      column=[]
+      column<<{v: t}
+      total=User.where("created_at<?",t).count
+      column<<{v: total}
+      gain=total-User.where("created_at<?",t-1).count
+      column<<{v: gain}
+      rows<<{c: column}
+      t=t+1
+    end
+    results={cols: cols, rows: rows}
+=end
 
+  end
 end
