@@ -356,26 +356,29 @@ ul li
   font-family: $heading
 
 #findNeighbors ul.subscribe_categories
-  width: 556px
+  width: 100%
   margin: 0px auto
   padding-bottom: 15px
+  text-align: center
 
   li 
     display: inline-block
     margin-left: 0px
-    margin-right: 0px
-    padding: 6px 10px
+    margin-right: 18px
+    padding: 6px
     border-radius: 4px
+    &:last-child
+      margin-right: 0px
 
 #findNeighbors ul.subscribe_categories li:hover 
   display: inline-block
   background-color: #1b334a
 
 #findNeighbors ul.subscribe_categories li a 
-  color: #fffeff
-  font-size: 13px
+  color: #fff
+  font-size: 16px
   text-decoration: none
-  padding-left: 15px
+    
 
 
 #subscribe_pages 
@@ -464,6 +467,8 @@ img.page_img
 #subscribe_pages a h2
   color: #e9ded0
   margin-top: 15px
+  font-size: 18px
+  font-weight: bold
 
 .find_neighbors
   width: 380px
@@ -592,13 +597,20 @@ img.page_img
     height: 20px
     margin: 10px 0px 15px 0px
     font-size: 13px
-    padding: 5px
+    padding: 8px
+    font-family: $Rokkitt
+    color: $blue
+    background: #fff
+    float: left
+    margin-left: 27px
+    border: 1px solid #821916
+    box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
 
   .find_title
     font-family: $Yellowtail
     font-size: 36px
     margin: 20px auto 30px auto
-    text-shadow: 4px 4px 1px $blue
+    text-shadow: 3px 3px 0px $blue
     text-align: center
     background: url(shared/redesign/neighbors_stars.png) no-repeat 29px -16px
 
