@@ -46,7 +46,8 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     shareModal = new CommonPlace.views.ShareModal(
       model: @model
       account: CommonPlace.account
-      message: "Share this post with more people!"
+      message: "We'll feature it on tomorrow's Daily Bulletin, which is ready by 319 Lexington residents! In the meantime, would you like us to share your post with some more people?"
+      header: "Thanks for the post!"
     )
     shareModal.render()
     $("#modal").append shareModal.el

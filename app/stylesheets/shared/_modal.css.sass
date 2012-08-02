@@ -1,6 +1,6 @@
 .message-modal, .modal-container
   position: absolute
-
+  background-image: url(shared/redesign/tan-bg.png)
   +border-radius(5px)
   z-index: 2000000
 
@@ -152,7 +152,7 @@ div.form-container.share ul li
   padding-bottom: 10px  
   text-shadow: black 0 0 0  
   padding-left: 30px  
-  background: url(bullet-quote.png) left center no-repeat
+  background: url(check-off.png) no-repeat 6px 12px
   cursor: pointer
   clear: both
   &:hover, &:focus, &:active
@@ -168,9 +168,24 @@ div.form-container.share ul li
       color: $red
   a:hover
     color: $red
+
+div.form-container.share ul li#facebookshare
+  font: 18px/20px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+  color: $blue
+  position: relative
+  top: 3px
+  margin-left: 0px
+  padding-left: 35px
+  &:hover, &:focus, &:active
+    color: $red
+  a:hover
+    color: $red
 div.form-container.share
   width: 285px
-  padding: 40px 80px
+  padding: 40px
+  position: absolute
+  margin-left: 40%
+  margin-top: 2%
   #share_email
     input
       width: 267px
@@ -182,10 +197,16 @@ div.form-container.share
       padding: 10px 8px
       margin: 0px
 
-h3   
-  font: 18px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+h1
+  font: 32px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+  text-align: center
   text-shadow: 1px 1px 1px white
-  color: #1b334a
+  color: $blue
+
+h3   
+  font: 16px Helvetica, sans-serif
+  text-shadow: 1px 1px 1px white
+  color: black
   margin-bottom: 10px
 
 a.share
@@ -207,7 +228,7 @@ div.share
   text-decoration: none
 
   h3
-    font: 16px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+    font: 13px Helvetica, sans-serif
     margin: 20px 0px 10px 0px
 
   button.green-button   
@@ -219,3 +240,9 @@ div.share
     text-decoration: none
     cursor: pointer
     text-transform: uppercase
+
+#share-email 
+  display: none
+
+#share_link
+  display: none
