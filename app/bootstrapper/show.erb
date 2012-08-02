@@ -1,18 +1,75 @@
+
 <!DOCTYPE html>
-<html>
+
+<html xmlns="https://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
+
   <head>
-    <title>TESTING THE PUBLIC LINKS</title>
-    <!-- link href="/assets/home.css" rel="stylesheet" type="text/css" --!>
+    <title>CommonPlace</title>
+    <meta name="description" content="CommonPlace helps you share and connect with your neighbors.">
+
+    <link href="https://webfonts.fontslive.com/css/0a25c9dc-bb5a-4ea9-88b2-1c7a8802e172.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Rokkitt:400,700" rel="stylesheet" type="text/css">
+    <link href="/assets/favicon.png" rel="icon" type="image/png">
+
+    <link href="/assets/application.css" rel="stylesheet" type="text/css">
+
+    <% if Rails.env.production? %>
+    <script type="text/javascript">
+      var _errs=["4f947d86c30155957702de85"];(function(a,b){a.onerror=function(){_errs.push(arguments)};
+      var d=function(){var a=b.createElement("script"),c=b.getElementsByTagName("script")[0];
+      a.src="//d15qhc0lu1ghnk.cloudfront.net/beacon.js";a.async=!0;
+      c.parentNode.insertBefore(a,c)};a.addEventListener?a.addEventListener("load",d,!1):
+      a.attachEvent("onload",d)})(window,document);
+    </script>
+    <% end %>
   </head>
-  <body>
-    <header>
-    </header>
 
-    <div id="modal"></div>
+  <body class="application">
+    <img src="/assets/tour/welcome-bg.png" style="display:none;">
+    <img src="/assets/tour/tour-button.png" style="display:none;">
+    <img src="/assets/loading.gif" style="display:none;">
 
-    <div class="main" id="content"></div>        
+    <div id="sticky-wrapper">
+      <div id="fb-root"></div>
+      <div id="modal"></div>
+      
+      <div id="header"></div>
 
+      <div id="notification" class="important-notification"></div>
 
-    <!-- script type="text/javascript" src="/assets/home.js"></script --!>
+      <div id="feature-switching"></div>
+      
+      <div id="main"></div>
+      
+      <div id="sticky-footer"></div>
+      
+      <script type="text/javascript" src="/assets/show.js"></script>
+
+      <%= erb :tracking %>
+    </div>
+
+    <%= erb :footer %>
+    <script type="text/javascript">
+      var _kmq = _kmq || [];
+      var _kmk = _kmk || '<%= $KissmetricsAPIToken %>';
+      function _kms(u){
+        setTimeout(function(){
+          var d = document, f = d.getElementsByTagName('script')[0],
+          s = d.createElement('script');
+          s.type = 'text/javascript'; s.async = true; s.src = u;
+          f.parentNode.insertBefore(s, f);
+        }, 1);
+      }
+      _kms('//i.kissmetrics.com/i.js');
+      _kms('//doug1izaerwt3.cloudfront.net/' + _kmk + '.1.js');
+    </script>
+
+    <% if @account.present? %>
+      <script type="text/javascript">
+        _kmq.push(['identify', '<%= @account.email %>']);
+      </script>
+    <% end %>
+
   </body>
+
 </html>

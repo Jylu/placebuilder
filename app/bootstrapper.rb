@@ -88,7 +88,14 @@ class Bootstrapper < Sinatra::Base
     erb :art_project
   end
 
-  get %r{([\w]+)/register.*} do
+  get %r{([\w]+)/show.*} do 
+    set_account
+    @community = Community.find_by_slug(params[:captures].first)
+
+    erb @account ? :application : :show
+  end
+
+  get %r{([\w]+)/register.*} do 
     @community = Community.find_by_slug(params[:captures].first)
     erb :register
   end
