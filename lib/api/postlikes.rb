@@ -42,10 +42,8 @@ class API
     end
 
     # Returns the serialized postlike
-    # 
-    # Requires communtiy membership
     get "/:id" do
-      control_access :community_member, find_postlike.community
+      control_access :public, find_postlike.community
 
       serialize find_postlike
     end
