@@ -1,8 +1,7 @@
 .message-modal, .modal-container
   position: absolute
-  background-color: #AC322F
-  border: 10px solid #fff
-  +border-radius(15px)
+
+  +border-radius(5px)
   z-index: 2000000
 
   .error
@@ -144,3 +143,79 @@
   right: 0
   left: 0
   z-index: 1000000
+
+div.form-container.share ul
+
+div.form-container.share ul li   
+  list-style-type: none  
+  padding-top: 10px  
+  padding-bottom: 10px  
+  text-shadow: black 0 0 0  
+  padding-left: 30px  
+  background: url(bullet-quote.png) left center no-repeat
+  cursor: pointer
+  clear: both
+  &:hover, &:focus, &:active
+    background-color: rgba(255, 255, 255, 0.4)
+
+  div
+    font: 18px/20px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+    color: $blue
+    position: relative
+    top: 3px
+    margin-left: 5px
+    &:hover, &:focus, &:active
+      color: $red
+  a:hover
+    color: $red
+div.form-container.share
+  width: 285px
+  padding: 40px 80px
+  #share_email
+    input
+      width: 267px
+      padding: 10px 8px
+      margin-bottom: 15px
+  #share_link
+    input
+      width: 267px
+      padding: 10px 8px
+      margin: 0px
+
+h3   
+  font: 18px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+  text-shadow: 1px 1px 1px white
+  color: #1b334a
+  margin-bottom: 10px
+
+a.share
+  color: $red
+  text-decoration: none
+  text-transform: uppercase
+  position: relative
+  font: bold 11px "Helvetica Neue", "Helvetica", "Arial"
+  padding: 8px
+  float: right
+  bottom: 15px
+  background-color: #D7D5C6
+  margin-top: 10px
+  &:hover, &:focus, &:active
+    background-color: $red
+    color: white
+
+div.share
+  text-decoration: none
+
+  h3
+    font: 16px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
+    margin: 20px 0px 10px 0px
+
+  button.green-button   
+    float: left
+    font-size: 20px
+    padding: 10px 5px
+    width: 100%
+    height: 40px
+    text-decoration: none
+    cursor: pointer
+    text-transform: uppercase
