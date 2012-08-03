@@ -308,16 +308,24 @@ class Community < ActiveRecord::Base
     result={}
     users=[]
     users<<["Date","Total","Gain"]
+    posts=[]
+    posts<<["Date","Total","Gain"]
+    feeds=[]
+    feeds<<["Date","Total","Gain"]
     while t<=Date.today
-      total=self.users.where("created_at<?",t).count
-      gain=total-self.users.where("created_at<?",t-1).count
+      userstotal=self.users.where("created_at<?",t).count
+      poststotal=self.posts.where("created_at<?",t).count
+      feedstotal=self.feeds.where("created_at<?",t).count
+      usersgain=userstotal-self.users.where("created_at<?",t-1).count
+      postsgain=poststotal-self.posts.where("created_at<?",t-1).count
+      feedsgain=feedstotal-self.feeds.where("created_at<?",t-1).count
       #result<<[t.strftime("%b %d"),total,gain]
-      users<<[t,total,gain]
-      puts total
+      users<<[t.strftime("%b %d"),userstotal,usersgain]
+      posts<<[t.strftime("%b %d"),poststotal,postsgain]
+      feeds<<[t.strftime("%b %d"),feedstotal,feedsgain]
       t=t+1
     end
-    result.merge({users: users})
-    
+    result.merge!({users: users}).merge!({posts: posts}).merge!({feeds: feeds})
 =begin    
     cols=[]
     rows=[]

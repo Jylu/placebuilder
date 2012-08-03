@@ -5,6 +5,7 @@ OrganizerApp.Charts = CommonPlace.View.extend({
 
   events: {
      "click #set-date":"setStartdate",
+     "click #graphs":"drawVisualization"
   },
   
   initialize: function() {
@@ -17,10 +18,12 @@ OrganizerApp.Charts = CommonPlace.View.extend({
   
   render:function () {        
         /*$(this.el).html('<div id="set-start-date" style="display:none">Organize start date is not set. Set now?<input id="start-date" type="text" placeholder="Date (MM/DD/YYYY)"><button id="set-start-date">Set</button></div><br><select id="graphs"><option value="user">User Amount</option></select><br><div id="chart_div"></div>');*/
-        $(this.el).html('<div id="set-start-date" style="display:none">Organize start date is not set. Set now?</div><br><select id="graphs"></select><br><br><div id="chart_div"></div>');
+        $(this.el).html('<div id="set-start-date" style="display:none">Organize start date is not set. Set now?</div><br>Users Amount<div id="users_div"></div>Posts Amount<div id="posts_div"></div>Feeds Amount<div id="feeds_div"></div>');
         this.$('#set-start-date').append('<input id="start-date" type="text" placeholder="Date (DD/MM/YYYY)" />');
         this.$('#set-start-date').append('<button id="set-date">Set</button>');
+        /*
         var newOptions = {
+          '':'',
           'users':'User Amount',
           'posts':'Post Amount',
           'emails':'Emails Sent Amount',
@@ -39,16 +42,17 @@ OrganizerApp.Charts = CommonPlace.View.extend({
         }
         $.each(newOptions, function(val, text) {
           options[options.length] = new Option(text, val);
-        });
+        });*/
+        if(!this.options.community.get('organize_start_date')){
+          this.$("#set-start-date").get(0).style.display="";
+        }
         google.load('visualization', '1',  {'callback':this.drawVisualization,
             'packages':['corechart']});
         return this;
     },
     
     drawVisualization:function () {
-        if(!this.community.get('organize_start_date')){
-          this.$("#set-start-date").get(0).style.display="";
-        }
+        
         console.log("In draw visualization");
         var data = new google.visualization.DataTable();
         /*
@@ -62,19 +66,25 @@ OrganizerApp.Charts = CommonPlace.View.extend({
         data.setCell(1, 0, new Date("2009/07/08"));
         data.setCell(1, 1, 2);
         data.setCell(1, 2, 4);*/
-        console.log(this.community.get('user_statistics'));
-        var data = google.visualization.arrayToDataTable(this.community.get('user_statistics')['users'],false);
+        console.log(community.get('user_statistics'));
+        users = google.visualization.arrayToDataTable(community.get('user_statistics')['users'],false);
+        posts = google.visualization.arrayToDataTable(community.get('user_statistics')['posts'],false);
+        feeds = google.visualization.arrayToDataTable(community.get('user_statistics')['feeds'],false);
         var options = {
-          chartArea:{left:30,top:20,width:"90%",height:"65%"},
-          title : 'User Amount Gain Statistics',
+          chartArea:{left:30,top:10,width:"90%",height:"60%"},
+          //title : 'User Amount Gain Statistics',
           vAxis: {0:{title: "Amount",logScale: false},1:{}},
-          hAxis: {title: "Day",textPosition: "out"},
+          hAxis: {title: "Day",textPosition: "out",textStyle:{fontSize: 10}},
           series: {0:{type: "line",targetAxisIndex:0},1: {type: "bars",targetAxisIndex:1}},
           legend: {position: 'in',textStyle: {color: 'blue', fontSize: 12}}
         };
-        var chart = new google.visualization.ComboChart(this.$('#chart_div').get(0));
-        google.visualization.events.addListener(chart, 'select', this.selectHandler);
-        chart.draw(data, options);
+        var userschart = new google.visualization.ComboChart(this.$('#users_div').get(0));
+        var postschart = new google.visualization.ComboChart(this.$('#posts_div').get(0));
+        var feedschart = new google.visualization.ComboChart(this.$('#feeds_div').get(0));
+        google.visualization.events.addListener(userschart, 'select', this.selectHandler);
+        userschart.draw(users, options);
+        postschart.draw(posts, options);
+        feedschart.draw(feeds, options);
     },
     
     selectHandler: function () {
@@ -99,9 +109,11 @@ OrganizerApp.Charts = CommonPlace.View.extend({
 		  success: function() {
                              alert("Saved!");
                              editdiv.style.display="none";
+                             location.reload();
                            }
 	  });
      }
+     
     
 
 });
