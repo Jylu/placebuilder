@@ -22,19 +22,11 @@
   </div>
   <ul>
     <li>
-      <input class="name" type="text" name="full_name" placeholder="Full name">
-      <span class="error full_name"></span>
-    </li>
-    <li>
-      <input class="mail" type="text" name="email" id="email" placeholder="Email address">
-      <span class="error email"></span>
-    </li>
-    <li>
-		<div class="verify_address">Please confirm your street address:</div>
+		<div class="verify_address_header">Please confirm your street address:</div>
       <input class="address" type="text" name="street_address" class="has_hint" placeholder="Street address*">
-	  <input type="radio" name="verify_address" value="entered" class="address_verify_radio" /> <span class="address_verify_radio">Use this address.</span><br />
 	<input type="radio" name="verify_address" value="suggested" class="address_verify_radio" /> <span class="address_verify_radio">Use the address we have in our system:</span>
 		<div id="suggested_address">2300 Pimmit Dr. #1012<br />Falls Church, VA 22043-555</div>
+	  <input type="radio" name="verify_address" value="entered" class="address_verify_radio" /> <span class="address_verify_radio">Use the address I typed.</span><br />
       <div class="verify_address">*This is to verify you live in {{community_name}}.  It won't be shared with anyone.</div>
     </li>
   </ul>
