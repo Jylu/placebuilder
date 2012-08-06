@@ -312,20 +312,30 @@ class Community < ActiveRecord::Base
     posts<<["Date","Total","Gain"]
     feeds=[]
     feeds<<["Date","Total","Gain"]
+    emails=[]
+    emails<<["Date","Total","Gain"]
+    calls=[]
+    calls<<["Date","Total","Gain"]
     while t<=Date.today
-      userstotal=self.users.where("created_at<?",t).count
-      poststotal=self.posts.where("created_at<?",t).count
-      feedstotal=self.feeds.where("created_at<?",t).count
-      usersgain=userstotal-self.users.where("created_at<?",t-1).count
-      postsgain=poststotal-self.posts.where("created_at<?",t-1).count
-      feedsgain=feedstotal-self.feeds.where("created_at<?",t-1).count
+      userstotal=self.users.where("created_at <= ?",t).count
+      poststotal=self.posts.where("created_at <= ?",t).count
+      feedstotal=self.feeds.where("created_at <= ?",t).count
+      emailstotal=Flag.joins(:resident).where("flags.created_at <= ? AND flags.name= ? AND residents.community_id=?",t,"sent nomination email",self.id).count
+      callstotal=Flag.joins(:resident).where("flags.created_at <= ? AND flags.name= ? AND residents.community_id=?",t,"called",self.id).count
+      usersgain=userstotal-self.users.where("created_at <= ?",t-1).count
+      postsgain=poststotal-self.posts.where("created_at <= ?",t-1).count
+      feedsgain=feedstotal-self.feeds.where("created_at <= ?",t-1).count
+      emailsgain=emailstotal-Flag.joins(:resident).where("flags.created_at <= ? AND flags.name= ? AND residents.community_id=?",t-1,"sent nomination email",self.id).count
+      callsgain=callstotal-Flag.joins(:resident).where("flags.created_at <= ? AND flags.name= ? AND residents.community_id=?",t-1,"called",self.id).count
       #result<<[t.strftime("%b %d"),total,gain]
       users<<[t.strftime("%b %d"),userstotal,usersgain]
       posts<<[t.strftime("%b %d"),poststotal,postsgain]
       feeds<<[t.strftime("%b %d"),feedstotal,feedsgain]
+      emails<<[t.strftime("%b %d"),emailstotal,emailsgain]
+      calls<<[t.strftime("%b %d"),callstotal,callsgain]
       t=t+1
     end
-    result.merge!({users: users}).merge!({posts: posts}).merge!({feeds: feeds})
+    result.merge!({users: users}).merge!({posts: posts}).merge!({feeds: feeds}).merge!({emails: emails}).merge!({calls: calls})
 =begin    
     cols=[]
     rows=[]
