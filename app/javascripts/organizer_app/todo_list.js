@@ -30,7 +30,7 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
   },
 
   addTag: function() {
-    var tag = this.$("#tag-list option:selected").val();
+    var tag = this.$("#tag-listing option:selected").val();
 
     if(tag == "")
       return;
@@ -51,7 +51,7 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
   },
 
   afterRender: function() {
-    //this.$("select.listing").chosen();
+    this.$("select.listing").chosen();
     /*
     this.$("select.listing").chosen().change({}, function() {
       var clickable = $(this).parent("li").children("div").children("ul");
