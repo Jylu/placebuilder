@@ -1,11 +1,10 @@
 <div id="todo-viewer">
   <h3>Task List</h3>
 
-
-  <select id="tag-list">
-  <option>Tag List</option>
+  <select class="listing" id="tag-list" style="width:198px">
+  <option></option>
   {{#tags}}
-  <option class="tag-adding">{{.}}</option>
+  <option class="tag-adding" value="{{.}}">{{.}}</option>
   {{/tags}}
   </select>
   <button id="add-tag">Add tag</button>

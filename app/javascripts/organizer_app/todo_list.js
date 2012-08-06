@@ -1,4 +1,3 @@
-
 OrganizerApp.TodoList = CommonPlace.View.extend({
 
   template: "organizer_app.todo-list",
@@ -33,19 +32,33 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
   addTag: function() {
     var tag = this.$("#tag-list option:selected").val();
 
-    if(tag == "Tag List")
+    if(tag == "")
       return;
 
+    var i = 0;
+    var arr = [];
     _.map(models, _.bind(function(model) {
       if(checklist[model.getId()]) {
         console.log(model);
 
-        model.addTag(tag, _.bind(this.render, this));
+        arr[i] = model.getId();
+        ++i;
+        //model.addTag(tag, _.bind(this.render, this));
       }
+
+      $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr}).success(function() { location.reload() });
     }, this));
   },
 
   afterRender: function() {
+    //this.$("select.listing").chosen();
+    /*
+    this.$("select.listing").chosen().change({}, function() {
+      var clickable = $(this).parent("li").children("div").children("ul");
+      clickable.click();
+    });
+    */
+
     _.each(this.$(".todo-specific"), function(list) {
       var value = $(list).attr('value');
       var profiles = _.filter(models, function(model) {
@@ -95,5 +108,5 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
     return this.options.community.get('resident_todos');
   },
 
-  tags: function() { return community.get('resident_tags'); },
+  tags: function() { return this.options.community.get('resident_tags'); },
 });
