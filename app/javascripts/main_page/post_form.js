@@ -1,5 +1,5 @@
 var PostForm = CommonPlace.View.extend({
-  template: "main_page.forms.post-form",
+  template: "main_page.forms.home-post-form",
   tagName: "form",
   className: "create-neighborhood-post post",
 
@@ -49,6 +49,7 @@ var PostForm = CommonPlace.View.extend({
         category: this.options.category
       };
       this.sendPost(CommonPlace.community.posts, data);
+      this.remove()
     }
   },
   
