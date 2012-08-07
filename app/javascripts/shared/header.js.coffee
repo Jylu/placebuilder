@@ -25,4 +25,10 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
       CommonPlace.account.get "community_name"
     else
       CommonPlace.community.get "name"  if CommonPlace.community
+
+  isAuth: ->
+    CommonPlace.account.isAuth()
+
+  notAuth: ->
+    not CommonPlace.account.isAuth()
 )
