@@ -2,9 +2,19 @@
   
   <div class="community-name">
     <a href="{{root_url}}">
-    <h1>{{#hasCommunity}}
-      {{community_name}}
-    {{/hasCommunity}}</h1>
+      {{#isAuth}}
+        <h1>{{#hasCommunity}}
+          {{community_name}}
+        {{/hasCommunity}}</h1>
+      {{/isAuth}}
+      {{#notAuth}}
+        <h1>OurCommonPlace</h1>
+        {{#hasCommunity}}
+          <span class="community">
+            {{community_name}}
+          </span>
+        {{/hasCommunity}}
+      {{/notAuth}}
     </a>
   </div>
   <div class="nav"></div>
