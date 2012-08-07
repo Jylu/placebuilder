@@ -187,6 +187,7 @@
   .avatar.calendar
     font-family: Rokkitt, Rockwell, Helvetica, Arial, Verdana, sans-serif
     border: 0
+    margin-left: 34px
 
     .month
       background-color: #ac322f
@@ -254,7 +255,6 @@ group-post:first
   width: 635px
   border-radius: 4px
   position: relative
-  box-shadow: 0px 0px 5px #666
   .wire-top
     height: 30px
     border-radius: 4px
@@ -264,14 +264,14 @@ group-post:first
     border-bottom: 1px solid 
     border-color: lighten($dark-grey, 20%)
     h3
-      font-family: $heading
+      font: bold 18px $heading
       float: left
       color: $blue
-      font-size: 16px
+      font-size: 18px
       padding-left: 30px
       background: image-url("shared/redesign/wire-icon.png") left no-repeat       
       background-position: 5px 5px
-      padding: 4px 0px 2px 30px
+      padding: 5px 0px 2px 30px
       width: 300px
       height: 20px
     p
@@ -298,6 +298,13 @@ group-post:first
       color: $blue
       font-weight: bold
       padding-bottom: 6px
+      position: relative
+      bottom: 4px
+      a
+        color: #1b334a
+        padding-left: 0px
+        padding-bottom: 6px
+        font: bold 13px "Helvetica Neue", Helvetica, sans-serif
     p.post-text
       font-size: 13px
       line-height: 18px
@@ -793,3 +800,9 @@ div.post-action.clear ul.actions li
       padding-left: 31px
       background-position: 10px 10px
       color: $dark-grey
+
+#community-resources div.resources div.wire div.events.wire ul.wire-list li.wire-item div.post-content table.event-location
+  margin-left: 90px
+  margin-top: 10px
+  font: 12px/20px "Helvetica Neue", Helvetica, sans-serif
+  color: $blue
