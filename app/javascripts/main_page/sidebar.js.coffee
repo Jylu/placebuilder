@@ -23,6 +23,15 @@ CommonPlace.main.Sidebar = CommonPlace.View.extend
     @$('[title="pages"]').addClass('current_tab')
     $(window).resize(_.bind(@resizeDirectory, this))
 
+  showPostbox: (e) ->
+    if e
+      e.preventDefault()
+    @postbox = new CommonPlace.main.PostBox
+      account: CommonPlace.account
+      community: CommonPlace.community
+    @postbox.render()
+    $("#modal").html(@postbox.el)
+
   switchTabs: (e) ->
     e.preventDefault()
     title = @$(e.currentTarget).attr("title")
@@ -64,5 +73,6 @@ CommonPlace.main.Sidebar = CommonPlace.View.extend
 
   events:
     "click .sidebar-links": "switchTabs"
+    "click .post": "showPostbox"
     "mouseover .scroll": "showScrollBar"
     "mouseout .scroll": "hideScrollBar"
