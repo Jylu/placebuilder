@@ -71,7 +71,7 @@ var Application = Backbone.Router.extend({
       faq: new FaqPage({ el: $("#main") }),
       invite: new InvitePage({ el: $("#main") }),
       discount: new DiscountPage({ el: $("#main") }),
-      community: new CommunityPage({ el: $("#main") }),
+      community: new CommonPlace.CommunityPage({ el: $("#main") }),
       inbox: new InboxPage({ el: $("#main") }),
       outbox: new OutboxPage({ el: $("#main") }),
       feed_inbox: new FeedInboxPage({ el: $("#main") }),
