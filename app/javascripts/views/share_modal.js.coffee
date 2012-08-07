@@ -4,6 +4,8 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
   events:
     "click .share-f": "shareFacebook"
     "click .share-t": "shareTwitter"
+    "click #emailshare": "showEmailShare"
+    "click #linkshare": "showLinkShare"
     "click .green-button": "close"
     "click #submit_email_share": "submitEmail"
 
@@ -69,7 +71,11 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
 
   showEmailShare: (e) ->
     e.preventDefault()
-    @$("#share-email").show()
+    @$("#share-email").toggle()
+
+  showLinkShare: (e) ->
+    e.preventDefault()
+    @$("#share_link").toggle()
 
   submitEmail: (e) ->
     if e
