@@ -6,9 +6,10 @@ var RegisterNewUserView = RegistrationModalPage.extend({
     "click a.show-video": "showVideo",
     "click input.sign_up": "submit",
     "submit form": "submit",
-    "click img.facebook": "facebook"
+    "click img.facebook": "facebook",
+    "click radio": "change_address"
   },
-  
+
   afterRender: function() {
     if (!this.current) {
       this.slideIn(this.el);
@@ -39,7 +40,7 @@ var RegisterNewUserView = RegistrationModalPage.extend({
     });
 
     var url = '/api/communities/'+this.communityExterior.id+'/address_completions'
-    this.$("input[name=street_address]").autocomplete({ source: url , minLength: 2 });
+    this.$("input[name=street_address]").autocomplete({ source: url , minLength: 1 });
 
   },
   
@@ -49,7 +50,38 @@ var RegisterNewUserView = RegistrationModalPage.extend({
   neighbors: function() { return this.communityExterior.statistics.neighbors; },
   feeds: function() { return this.communityExterior.statistics.feeds; },
   postlikes: function() { return this.communityExterior.statistics.postlikes; },
+
+  change_address: function(e) {
+    console.log("hi");
+    console.log(e.name);
+  },
   
+  suggest_address: function() {
+
+    var url = '/api/communities/'+this.communityExterior.id+'/address_approximate';
+    this.data.term = this.data.address;
+
+    $.get(url, this.data, _.bind(function(response) {
+      console.log(response)
+
+      if(response.length < 1) {
+        console.log("no good");
+        var radio = this.$("#suggested_address").hide;
+        return false;
+      }
+
+      console.log(response);
+      var radio = this.$("#suggested_address").empty();
+
+      for(var i = 0; i < response.length; ++i) {
+      }
+
+      radio.text(response[0]);
+      radio.show();
+    }, this));
+
+  },
+
   submit: function(e) {
     if (e) { e.preventDefault(); }
     
@@ -74,7 +106,29 @@ var RegisterNewUserView = RegistrationModalPage.extend({
             valid = false;
           }
         }, this));
-          
+
+        var url = '/api/communities/'+this.communityExterior.id+'/address_approximate';
+        this.data.term = this.data.address;
+
+        $.get(url, this.data, _.bind(function(response) {
+          var radio = this.$("#suggested_address");
+          console.log(response);
+
+          if(response === null || response.length < 1) {
+            radio.hide();
+            valid = false;
+          }
+          else {
+            radio.empty();
+
+            for(var i = 0; i < response.length; ++i) {
+            }
+
+            radio.text(response[0]);
+            radio.show();
+          }
+        }, this));
+
         if (valid) { this.nextPage("profile", this.data); }
       }
     }, this));
