@@ -44,6 +44,16 @@ CommonPlace.wire_item.PostWireItem = CommonPlace.wire_item.WireItem.extend(
   peoplePerson: ->
     (if (@model.get("thanks").length is 1) then "person" else "people")
 
+  wireCategory: ->
+    @model.get "category"
+
+  wireCategoryName: ->
+    category = @model.get "category"
+    if category
+      category = (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join(' ')
+    else
+      category = "Post"
+
   events:
     "click div.group-post > .author": "messageUser"
     "click .editlink": "editPost"
