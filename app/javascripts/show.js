@@ -51,7 +51,7 @@ var Application = Backbone.Router.extend({
     $("#notification").hide();
 
     this.pages = {
-      community: new CommunityPage({ el: $("#main") }),
+      community: new CommonPlace.CommunityPage({ el: $("#main") }),
     };
 
     _.invoke(this.pages, "unbind");
