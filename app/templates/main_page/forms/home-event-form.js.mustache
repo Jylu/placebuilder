@@ -1,38 +1,40 @@
-<div class="error"></div>
-<div class="form-container event">
-  <h1>Publicize an Event or Meetup</h1>
-  <form>
-    <input placeholder="Event Name" name="title" class="rounded_corners">
-    <div id="event_date">
-      <input class="date rounded_corners" id="date" placeholder="Date" name="date" value="{{date}}" type="text">
-    </div>
-    <div id="start_at_time">
-      <select name="start" id="start_time" class="dk">
-        <option value="">Starts At</option
-        {{#time_values}}
-          <option value="{{.}}">{{.}}</option>
-        {{/time_values}}
-      </select>
-    </div>
-    <div id="end_at_time">
-      <select name="end" id="end_time" class="dk">
-        <option value="">Ends At</option
-        {{#time_values}}
-          <option value="{{.}}">{{.}}</option>
-        {{/time_values}}
-      </select>
-    </div>
-    <textarea placeholder="Description of your event" name="about" class="rounded_corners"></textarea>
-    <input placeholder="Venue Name" name="venue" class="rounded_corners">
-    <input placeholder="Address" name="address" class="rounded_corners">		
+<div id="post-box">
+	<div class="error"></div>
+	<div class="form-container event">
+	  <h1>Publicize an Event or Meetup</h1>
+	  <form>
+	    <input placeholder="Event Name" name="title" class="rounded_corners">
+	    <div id="event_date">
+	      <input class="date rounded_corners" id="date" placeholder="Date" name="date" value="{{date}}" type="text">
+	    </div>
+	    <div id="start_at_time">
+	      <select name="start" id="start_time" class="dk">
+	        <option value="">Starts At</option
+	        {{#time_values}}
+	          <option value="{{.}}">{{.}}</option>
+	        {{/time_values}}
+	      </select>
+	    </div>
+	    <div id="end_at_time">
+	      <select name="end" id="end_time" class="dk">
+	        <option value="">Ends At</option
+	        {{#time_values}}
+	          <option value="{{.}}">{{.}}</option>
+	        {{/time_values}}
+	      </select>
+	    </div>
+	    <textarea placeholder="Description of your event" name="about" class="rounded_corners"></textarea>
+	    <input placeholder="Venue Name" name="venue" class="rounded_corners">
+	    <input placeholder="Address" name="address" class="rounded_corners">		
 
-    <div id="business">
-      Are you advertising on behalf of a business or organizations?<br />		
-      <ul>
-        <li><input type="radio" name="business" value="yes">Yes</li>
-        <li><input type="radio" name="business" value="no">No</li>
-      </ul>
-    </div>
-    <button class="red-button">POST NOW</button>
-  </form>
+	    <div id="business">
+	      Are you advertising on behalf of a business or organizations?<br />		
+	      <ul>
+	        <li><input type="radio" name="business" value="yes">Yes</li>
+	        <li><input type="radio" name="business" value="no">No</li>
+	      </ul>
+	    </div>
+	    <button class="red-button">POST NOW</button>
+	  </form>
+	</div>
 </div>
