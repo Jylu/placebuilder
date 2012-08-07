@@ -1,5 +1,5 @@
 CommonPlace.wire_item.EventWireItem = CommonPlace.wire_item.WireItem.extend(
-  template: "wire_items/event-item"
+  template: "wire_items/home_event-item"
   tagName: "li"
   className: "wire-item"
   initialize: (options) ->
