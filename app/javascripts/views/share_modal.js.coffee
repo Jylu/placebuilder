@@ -50,6 +50,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
 
   shareFacebook: (e) ->
     e.preventDefault()
+    $('.share-f').addClass("checked")
     $link = $(e.target)
     FB.ui
       method: "feed"
@@ -63,6 +64,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
 
   shareTwitter: (e) ->
     e.preventDefault()
+    $('.share-t').addClass("checked")
     $link = $(e.target)
     url = encodeURIComponent($link.attr("data-url"))
     text = $link.attr("data-message")
@@ -76,6 +78,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
   showLinkShare: (e) ->
     e.preventDefault()
     @$("#share_link").toggle()
+    $("#linkshare").addClass("checked")
 
   submitEmail: (e) ->
     if e
@@ -83,13 +86,16 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     data =
       recipients: this.$("input[name=share-email]").val()
 
+    if data.recipients isnt ""
+      $("#emailshare").addClass("checked")
+
     $.ajax(
       type: "POST"
       url: "/api" + this.model.get("links").self + "/share_via_email"
       data: data
       success: (response) ->
         $("input[name=share-email]").val('')
-        $("#share_success").toggle()
+        $("#emailshare").addClass("checked")
         _kmq.push(['record', 'Share', {'Medium': 'Email'}])
       dataType: "JSON"
     )
