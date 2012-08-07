@@ -56,7 +56,9 @@ CommonPlace.wire_item.EventWireItem = CommonPlace.wire_item.WireItem.extend(
     (if (@model.get("thanks").length is 1) then "person" else "people")
 
   wireCategory: ->
-    @model.get "category"
+    category = @model.get "category"
+    if not category
+      category = "event"
 
   wireCategoryName: ->
     category = @model.get "category"
