@@ -1,5 +1,5 @@
 CommonPlace.wire_item.AnnouncementWireItem = CommonPlace.wire_item.WireItem.extend(
-  template: "wire_items/announcement-item"
+  template: "wire_items/home_announcement-item"
   tagName: "li"
   className: "wire-item"
   initialize: (options) ->
@@ -40,6 +40,18 @@ CommonPlace.wire_item.AnnouncementWireItem = CommonPlace.wire_item.WireItem.exte
 
   peoplePerson: ->
     (if (@model.get("thanks").length is 1) then "person" else "people")
+
+  wireCategory: ->
+    category = @model.get "category"
+    if not category
+      category = "announcement"
+
+  wireCategoryName: ->
+    category = @model.get "category"
+    if category
+      category = (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join(' ')
+    else
+      category = "Announcement"
 
   events:
     "click .editlink": "editAnnouncement"
