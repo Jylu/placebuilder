@@ -104,8 +104,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     facebook_connect_avatar success: _.bind((data) ->
       @data.isFacebook = true
       @data = _.extend(@data, data)
-      @template = "registration.facebook_profile"
-      @render()
+      $(".profile_pic").attr("src", @avatar_url)
     , this)
 
   isWatertown: ->
