@@ -64,26 +64,26 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
     view = undefined
     constant =
       nothing: ->
-        new PostForm()
+        new CommonPlace.main.PostForm()
       event: ->
         new EventForm()
       discussion: ->
-        new PostForm(
+        new CommonPlace.main.PostForm(
           category: "neighborhood"
           template: "main_page.forms.home-post-form"
         )
       request: ->
-        new PostForm(
+        new CommonPlace.main.PostForm(
           category: "offers"
           template: "main_page.forms.home-post-request-offer-form"
         )
       other: ->
-        new PostForm(
+        new CommonPlace.main.PostForm(
           category: "other"
           template: "main_page.forms.home-post-form"
         )
       meetup: ->
-        new PostForm(
+        new CommonPlace.main.PostForm(
           category: "meetup"
           template: "main_page.forms.home-post-meetup-form"
         )
