@@ -1,6 +1,5 @@
 CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModalPage.extend(
   template: "registration.home_new"
-  facebookTemplate: "registration.facebook"
   events:
     "click input.sign_up": "submit"
     "submit form": "submit"
@@ -80,7 +79,6 @@ CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModa
     facebook_connect_registration success: _.bind((data) ->
       @data = data
       @data.isFacebook = true
-      @template = @facebookTemplate
       @render()
     , this)
 
