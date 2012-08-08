@@ -65,7 +65,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
       name: "avatar"
       data: {}
       responseType: "json"
-      autoSubmit: false
+      autoSubmit: true
       onChange: ->
         self.toggleAvatar()
 
@@ -73,7 +73,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
 
       onComplete: (file, response) ->
         CommonPlace.account.set response
-        self.nextPage "feed", @data
+        $(".profile_pic").attr("src", CommonPlace.account.get("avatar_url"))
     )
 
   toggleAvatar: ->
