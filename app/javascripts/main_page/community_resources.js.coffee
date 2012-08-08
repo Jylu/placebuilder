@@ -62,7 +62,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       wire = new self.PostLikeWire(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
-        collection: CommonPlace.community.postsAndGroupPosts
+        collection: CommonPlace.community.posts
         callback: ->
           self.stickHeader()
 
@@ -301,7 +301,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
           self.stickHeader()
       )
       wire.searchUser user
-      self.switchTab "all_posts", wire
+      self.switchTab "posts", wire
       $(window).scrollTo 0
 
 
