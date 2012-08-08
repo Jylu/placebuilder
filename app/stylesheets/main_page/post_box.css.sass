@@ -664,15 +664,16 @@ div.form-container.share ul
 
 div.form-container.share ul li   
   list-style-type: none  
-  padding-top: 10px  
+  padding-top: 13px  
   padding-bottom: 10px  
   text-shadow: black 0 0 0  
-  padding-left: 30px  
-  //background: url(bullet-quote.png) left center no-repeat
+  padding-left: 37px  
+  background: url(share_unchecked.png) left center no-repeat
   cursor: pointer
   clear: both
   &:hover, &:focus, &:active
     background-color: rgba(255, 255, 255, 0.4)
+    color: $red
 
   div
     font: 18px/20px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
@@ -696,7 +697,10 @@ div.form-container.share
     input
       width: 267px
       padding: 10px 8px
-      margin: 0px
+      margin: -10px 0px 0px 18px
+
+div.form-container.share ul li.checked  
+  background: url(share_checked.png) left center no-repeat
 
 h3   
   font: 18px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
