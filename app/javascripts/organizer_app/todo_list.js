@@ -4,6 +4,7 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
 
   events: {
     "click .cb": "toggle",
+    "click .checkall": "checkall",
     "click #add-tag" : "addTag",
   },
 
@@ -17,7 +18,6 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
   toggle: function(e) {
 
     c = this.$(e.currentTarget).data('model').getId();
-
     if(typeof checklist[c] === "undefined")
       checklist[c] = false;
 
@@ -26,6 +26,17 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
     console.log("toggle");
     console.log(c);
     console.log(checklist[c]);
+    this.render();
+  },
+
+  checkall: function(e){
+    var name=e.target.id;
+    _.each(this.$("input[name='"+name+"[]']"),function(checkbox){
+      var id=checkbox.value;
+      if(typeof checklist[id] === "undefined")
+        checklist[id] = false;
+      checklist[id] = !checklist[id];
+    });
     this.render();
   },
 
@@ -39,26 +50,19 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
     var arr = [];
     _.map(models, _.bind(function(model) {
       if(checklist[model.getId()]) {
-        console.log(model);
-
+        //console.log(model);
         arr[i] = model.getId();
         ++i;
         //model.addTag(tag, _.bind(this.render, this));
-      }
-
-      $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr}).success(function() { location.reload() });
+      }      
     }, this));
+    $.post(this.collection.url()+"/tags", {tags: tag, file_id: arr}).success(function() { location.reload() });
   },
 
   afterRender: function() {
     this.$("select.listing").chosen();
-    /*
-    this.$("select.listing").chosen().change({}, function() {
-      var clickable = $(this).parent("li").children("div").children("ul");
-      clickable.click();
-    });
-    */
-
+    var deferred = $.Deferred();
+    deferred.resolve(
     _.each(this.$(".todo-specific"), function(list) {
       var value = $(list).attr('value');
       var profiles = _.filter(models, function(model) {
@@ -67,7 +71,10 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
       });
 
       $(list).empty();
-      $(list).append(
+      var tbody=  $("<tbody/>"); 
+      var thead=$("<thead><tr><th><input type=checkbox class=checkall id=\""+value+"\"/></th> <th>Name</th> <th>Email</th> <th>Phone</th></tr> </thead>"); 
+      $(list).append(thead);
+      var trs=
         _.map(profiles, function(model) {
           var name = model.full_name();
           var email = model.email();
@@ -80,17 +87,27 @@ OrganizerApp.TodoList = CommonPlace.View.extend({
           if(phone == null) {
             phone = "No phone";
           }
+          
+          //var info = name + " | " + email + " | "+phone;
 
-          var info = name + " | " + email + " | "+phone;
-
-          var li = $("<li/>",{ text: info, data: { model: model } })[0];
-          var cb = $("<input/>", { type: "checkbox", checked: checklist[model.getId()], value: model.getId(), data: { model: model } })[0];
+          //var li = $("<li/>",{ text: info, data: { model: model } })[0];
+          var cb = $("<input/>", { type: "checkbox", name: value+"[]", checked: checklist[model.getId()], value: model.getId(), data: { model: model } })[0];
           $(cb).addClass("cb");
-          $(li).prepend(cb);
+          var td=$("<td/>");
+          $(td).append(cb);
+          var tr=$("<tr/>");
+          $(tr).append(td);
+          $(tr).append("<td>"+name+"</td><td>"+email+"</td><td>"+phone+"</td>");
+          
+          //$(tr).prepend(cb)
+          //$(li).prepend(cb);
 
-          return li;
-        }));
-    });
+          return tr;
+        });
+      _.each(trs,function(tr){$(tbody).append(tr);});
+      $(list).append(tbody);
+    }));
+    deferred.done(this.$("table.todo-specific").dataTable());
   },
 
   profiles: function() {

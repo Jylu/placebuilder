@@ -1,3 +1,5 @@
+
+</style>
 <div id="todo-viewer">
   <h3>Task List</h3>
 
@@ -10,10 +12,10 @@
   <button id="add-tag">Add tag</button>
   {{#todos}}
     <h4>{{.}}</h4>
-    <ul class="todo-specific" value="{{.}}">
-    {{#profiles}}
-      <input type="checkbox" name="{{.}}">{{.}}<br>
-    {{/profiles}}
-    </ul>
+    <table class="todo-specific" value="{{.}}" id="profiles" name="{{.}}">
+      
+    </table>
+      <br>
   {{/todos}}
+
 </div>

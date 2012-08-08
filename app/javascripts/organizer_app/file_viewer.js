@@ -32,26 +32,6 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
     return this.model.get('interest_list');
   },
 
-  getRelated: function(){
-    if(!this.model.get('on_commonplace') && this.model.get('classtype')=="Resident"){
-      this.$("#person-relation-viewer").empty();
-      this.$("#person-relation-viewer").append("Not a user yet");
-    }
-    else{
-      if(this.model.get('classtype')=="Resident"){
-        var params={"search":"linked","resident_id":this.model.get('id')};
-      }
-      else{
-        var params={"search":"linked","user_id":this.model.get('id')}
-      }
-      this.collection.fetch({
-        data:params,
-        success: _.bind(this.afterRender, this)
-      });
-    }
-    //this.renderList(users);
-  },
-
   filterByinterest: function(e){
   //  console.log("!");
     this.filePicker.filtByinterest($(e.currentTarget).text());
@@ -65,10 +45,6 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
         $(li).addClass("pick-user");
         return li;
       }, this)));
-  },
-
-  afterRender: function() {
-    this.renderList(this.collection.models);
   },
 
   show: function(model,community,collection,filePicker) {
@@ -160,6 +136,18 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
       return type;
     }
   },
+  
+  inputMethod: function() {
+    return this.model.get('input_method');
+  },
+  
+  PFOstatus: function(){
+    return this.model.get('PFO_status');
+  },
+  
+  organizer: function(){
+    return this.model.get('organizer');
+  },
 
   addAddress: function(e) {
     e.preventDefault();
@@ -202,7 +190,7 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
 
   addNotes: function(e) {
     e.preventDefault();
-    var notes = this.$("#notes-text").val();
+    var notes = this.$("#notes-text").val();console.log(notes);
     if (!notes) {
       alert("Please enter a non-empty notes.");
     } else {
@@ -286,16 +274,15 @@ OrganizerApp.FileViewer = CommonPlace.View.extend({
   },
   
   stories: function() {
-    //console.log(this.model.get('stories'));
     return this.model.get('stories');
-    
   },
 
   allactions: function() {
     //this.$("#action-count").empty();
     //this.$("#action-count").append("<p>here</p>");
     if(!this.model.get("on_commonplace")){
-      this.$("#action-count").before("Not a user yet");
+      this.$("#action-count").before("Not a user yet<br>");
+      this.$("#action-count").before("<a href=\""+this.model.get("community_id")+"/"+this.model.get("id")+"/residenttags\" target=\"content\" >Tags</a>");
     }
     else{
       this.$("#content").attr("src",this.model.get("community_id")+"/"+this.model.get("user_id")+"/all");

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120803205115) do
+ActiveRecord::Schema.define(:version => 20120808190234) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -405,6 +405,9 @@ ActiveRecord::Schema.define(:version => 20120803205115) do
     t.integer  "stories_count",     :default => 0,     :null => false
     t.datetime "last_story_time"
     t.text     "old_stories"
+    t.string   "input_method"
+    t.string   "PFO_status"
+    t.string   "organizer"
   end
 
   create_table "sent_emails", :force => true do |t|
