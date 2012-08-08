@@ -104,8 +104,9 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     facebook_connect_avatar success: _.bind((data) ->
       @data.isFacebook = true
       @data = _.extend(@data, data)
+      @toggleAvatar()
       $(".profile_pic").attr("src", @data.avatar_url)
-    , this)
+    , this) if not @data.isFacebook
 
   isWatertown: ->
     CommonPlace.community.get("name") is "Watertown"
