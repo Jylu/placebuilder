@@ -79,7 +79,7 @@ CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModa
     facebook_connect_registration success: _.bind((data) ->
       @data = data
       @data.isFacebook = true
-      @render()
+      @nextPage "address", @data
     , this)
 
   isRealEmail: ->
