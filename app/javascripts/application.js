@@ -57,6 +57,7 @@ var Application = Backbone.Router.extend({
     var header = new CommonPlace.shared.HeaderView({ el: $("#header") });
     header.render();
 
+    /* Removing this because I don't think it is needed anymore
     if (!CommonPlace.account.get("metadata")['completed_facebook_nag'] &&
         (!CommonPlace.account.get('facebook_user') &&
         !(CommonPlace.account.get('avatar_url').indexOf("missing") == -1)
@@ -66,6 +67,8 @@ var Application = Backbone.Router.extend({
     } else {
       $("#notification").hide();
     }
+    */
+    $("#notification").hide();
 
     this.pages = {
       faq: new FaqPage({ el: $("#main") }),
