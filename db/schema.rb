@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120808190234) do
+ActiveRecord::Schema.define(:version => 20120809191322) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -401,13 +401,14 @@ ActiveRecord::Schema.define(:version => 20120808190234) do
     t.text     "sector_tags"
     t.text     "type_tags"
     t.string   "notes"
-    t.boolean  "manually_added",    :default => false
-    t.integer  "stories_count",     :default => 0,     :null => false
+    t.boolean  "manually_added",      :default => false
+    t.integer  "stories_count",       :default => 0,     :null => false
     t.datetime "last_story_time"
     t.text     "old_stories"
     t.string   "input_method"
     t.string   "PFO_status"
     t.string   "organizer"
+    t.integer  "last_examined_story"
   end
 
   create_table "sent_emails", :force => true do |t|
