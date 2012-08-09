@@ -5,10 +5,12 @@ class ImportLexingtonData < ActiveRecord::Base
     CSV.foreach(s, :headers => true) do |row|
       h = row.to_hash
 
-      first = h["FirstName"].nil? ? nil : h["FirstName"].capitalize
-      last = h["LastName"].nil? ? nil : h["LastName"].capitalize
-      name = "#{first} #{last}" if !first.nil? && !last.nil?
-      street = h["ADDRESS"].squeeze(" ")
+      first = h["FirstName"].nil? ? nil : h["FirstName"].capitalize.strip
+      last = h["LastName"].nil? ? nil : h["LastName"].capitalize.strip
+      if !first.nil? && !first.empty? && !last.nil? && !last.empty?
+        name = "#{first} #{last}"
+      end
+      street = h["ADDRESS"].squeeze(" ").strip
       zip = h["Zip"].to_i
 
       StreetAddress.create(address: street,
