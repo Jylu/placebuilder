@@ -4,6 +4,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     "click input.continue": "submit"
     "submit form": "submit"
     "click .next-button": "submit"
+    "input #street_address": "updateMap"
     "focusout #street_address": "updateMap"
 
   afterRender: ->
@@ -20,9 +21,9 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
 
   initMap: ->
     @geocoder = new google.maps.Geocoder()
-    latlng = new google.maps.LatLng(-34.397, 150.644)
+    latlng = new google.maps.LatLng(42.447, -71.225)
     mapOptions =
-      zoom: 8
+      zoom: 12
       center: latlng
       mapTypeId: google.maps.MapTypeId.ROADMAP
 
@@ -35,6 +36,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     e.preventDefault() if e
     address = $("#street_address").val()
     if address isnt ""
+      address += " "+@community_name()
       @map_address(address)
 
   map_address: (address) ->
