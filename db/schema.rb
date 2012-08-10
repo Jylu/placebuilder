@@ -90,6 +90,26 @@ ActiveRecord::Schema.define(:version => 20120809191322) do
     t.datetime "updated_at"
   end
 
+  create_table "civic_hero_nominations", :force => true do |t|
+    t.string   "nominee_name"
+    t.string   "nominee_email"
+    t.text     "reason"
+    t.string   "nominator_name"
+    t.string   "nominator_email"
+    t.integer  "community_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "civic_leader_applications", :force => true do |t|
+    t.string   "name"
+    t.string   "email"
+    t.text     "reason"
+    t.integer  "community_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "communities", :force => true do |t|
     t.string   "name",                                                                 :null => false
     t.datetime "created_at"
@@ -394,7 +414,6 @@ ActiveRecord::Schema.define(:version => 20120809191322) do
     t.string   "email"
     t.decimal  "latitude"
     t.decimal  "longitude"
-    t.integer  "street_address_id"
     t.integer  "phone"
     t.string   "organization"
     t.string   "position"
@@ -405,6 +424,7 @@ ActiveRecord::Schema.define(:version => 20120809191322) do
     t.integer  "stories_count",       :default => 0,     :null => false
     t.datetime "last_story_time"
     t.text     "old_stories"
+    t.integer  "street_address_id"
     t.string   "input_method"
     t.string   "PFO_status"
     t.string   "organizer"
@@ -437,6 +457,7 @@ ActiveRecord::Schema.define(:version => 20120809191322) do
     t.datetime "updated_at",      :null => false
     t.integer  "community_id"
     t.string   "carrier_route"
+    t.integer  "zip_code"
   end
 
   create_table "subscriptions", :force => true do |t|
