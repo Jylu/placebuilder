@@ -67,7 +67,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
           self.stickHeader()
 
         showProfile: self.options.showProfile
-        isInAllWire: true
+        isInAllWire: false
       )
       self.makeTab wire
 
