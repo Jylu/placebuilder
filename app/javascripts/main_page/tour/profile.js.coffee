@@ -42,8 +42,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
       success: (response) ->
         if self.hasAvatarFile and not self.data.isFacebook
           self.avatarUploader.submit()
-        else
-          self.nextPage "feed", self.data
+        self.nextPage "feed", self.data
     )
 
   skills: ->
