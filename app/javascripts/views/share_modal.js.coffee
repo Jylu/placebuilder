@@ -2,8 +2,8 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
   template: "shared/share_modal"
 
   events:
-    "click .share-f": "shareFacebook"
-    "click .share-t": "shareTwitter"
+    "click #facebookshare": "shareFacebook"
+    "click #twittershare": "shareTwitter"
     "click #emailshare": "showEmailShare"
     "click #linkshare": "showLinkShare"
     "click .green-button": "close"
