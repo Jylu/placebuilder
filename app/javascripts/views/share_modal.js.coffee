@@ -68,7 +68,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     $link = $(e.target)
     url = encodeURIComponent($link.attr("data-url"))
     text = $link.attr("data-message")
-    share_url = "https://twitter.com/intent/tweet?url=" + url + "&text=" + text + "&count=horizontal"
+    share_url = "https://twitter.com/intent/tweet?url=" + url + "&text=" + text + " " + url + "&count=horizontal"
     window.open share_url, "cp_share"
 
   showEmailShare: (e) ->
