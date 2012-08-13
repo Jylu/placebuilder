@@ -1,4 +1,4 @@
-class ImportLexingtonData < ActiveRecord::Base
+class DeportLexingtonData < ActiveRecord::Base
 
   community = Community.find_by_name("Lexington")
   s = Rails.root.join("scripts", "data-fix", "LexMelissadata.csv")
@@ -11,7 +11,7 @@ class ImportLexingtonData < ActiveRecord::Base
     r.destroy if !r.nil?
 
     s = StreetAddress.find_by_address(street)
-    s.destroy
+    s.destroy if !s.nil?
 
   end
 end
