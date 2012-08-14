@@ -40,3 +40,7 @@ neo4j
 .env
 coverage
 chromedriver.log
+
+commonplace-staging-mark
+
+vendor/cache/libv8-3.3.10.4-x86_64-darwin-10.gem
