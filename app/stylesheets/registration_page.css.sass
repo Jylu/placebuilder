@@ -46,15 +46,23 @@ body
 ul.ui-autocomplete
   background: white
   width: 366px
+  border: 1px solid #821916
+  overflow: auto
+  max-height: 280px
 
 li.ui-menu-item
-  border-bottom: solid grey 1px
+  border-bottom: 1px dotted #ccc
+  line-height: 42px
+  &:hover
+    background-color: #eee
+  &:last-child
+    border: 0px none
 
 #find_button a.blue-button.next-button
-  text-decoration: none;
-  float: right;
-  width: 150px;
-  padding-left: 15px;
-  margin-right: -10px;
-  position: relative;
-  top: 30px;
+  text-decoration: none
+  float: right
+  width: 150px
+  padding-left: 15px
+  margin-right: -10px
+  position: relative
+  top: 30px
