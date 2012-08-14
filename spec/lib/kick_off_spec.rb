@@ -317,10 +317,10 @@ describe KickOff do
       u.community = community
     } }
     let(:date) { DateTime.now.utc }
-    before { kickoff.deliver_daily_bulletin(user.email, user.first_name, user.community.name, user.community.locale, user.community.slug, date.to_s(:db), "posts", "announcements", "events") }
+    before { kickoff.deliver_daily_bulletin(user.email, user.first_name, user.community.name, user.community.locale, user.community.slug, date.to_s(:db), "posts", "announcements", "events", "offers") }
 
     it "enqueues a DailyBulletin job" do
-      should have_queued(DailyBulletin, user.email, user.first_name, user.community.name, user.community.locale, user.community.slug, date.to_s(:db), "posts", "announcements", "events")
+      should have_queued(DailyBulletin, user.email, user.first_name, user.community.name, user.community.locale, user.community.slug, date.to_s(:db), "posts", "announcements", "events", "offers")
     end
   end
 
