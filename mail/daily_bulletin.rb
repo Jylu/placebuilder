@@ -1,6 +1,6 @@
 class DailyBulletin < MailBase
 
-  def initialize(user_email, user_first_name, user_community_name, community_locale, community_slug, date, posts, announcements, events)
+  def initialize(user_email, user_first_name, user_community_name, community_locale, community_slug, date, posts, announcements, events, offers)
     @user_email = user_email
     @user_first_name = user_first_name
     @user_community_name = user_community_name
@@ -82,6 +82,14 @@ class DailyBulletin < MailBase
 
   def posts
     @posts
+  end
+
+  def offers_present
+    @offers.present?
+  end
+
+  def offers
+    @offers
   end
 
   def announcements_present

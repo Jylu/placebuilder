@@ -86,7 +86,7 @@ class CommunityDailyBulletinJob
 
     community.users.where("post_receive_method != 'Never'").find_each do |user|
       Exceptional.rescue do
-        kickoff.deliver_daily_bulletin(user.email, user.first_name, user.community.name, user.community.locale, user.community.slug, date, posts, announcements, events)
+        kickoff.deliver_daily_bulletin(user.email, user.first_name, user.community.name, user.community.locale, user.community.slug, date, posts, announcements, events, offers)
       end
     end
   end
