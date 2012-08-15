@@ -62,8 +62,6 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     @data.referral_source = @$("select[name=referral_source]").val()
     @data.referral_metadata = @$("input[name=referral_metadata]").val()
     @data.organizations = ""
-    if @data.isFacebook
-      console.log(@data.facebook_uid + ", "+@data.fb_auth_token)
     new_api = "/api" + @communityExterior.links.registration[(if (@data.isFacebook) then "facebook" else "new")]
     $.post new_api, @data, _.bind((response) ->
       if response.success is "true" or response.id
