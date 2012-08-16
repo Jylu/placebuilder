@@ -10,12 +10,10 @@ var FeedView = CommonPlace.View.extend({
     var resourceNav, resource, actions, profile, about, header, feedAdminBar;
 
 
-
     adminBar = new FeedAdminBar({ model: feed, collection: this.account.feeds, account: this.account });
     profile = new FeedProfileView({ model: feed, account: this.account });
     about = new FeedAboutView({ model: feed });
     header = new FeedHeaderView({ model: feed, account: self.account });
-	sidebar = new CommonPlace.main.Sidebar();
     resource = new FeedSubResourcesView({ feed: feed, account: self.account });
     resourceNav = resourceNav = new FeedNavView({ model: feed,
                                                   switchTab: function(tab) { resource.switchTab(tab); }
@@ -26,7 +24,7 @@ var FeedView = CommonPlace.View.extend({
                                                       community: self.community
                                                     });
 
-    this.subViews = [profile, about, header, resource, resourceNav, actions, sidebar, adminBar];
+    this.subViews = [profile, about, header, resource, resourceNav, actions, adminBar];
   },
 
   afterRender: function() {
