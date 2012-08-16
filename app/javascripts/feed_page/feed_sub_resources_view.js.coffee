@@ -1,6 +1,6 @@
 CommonPlace.pages.PageSubResourcesView = CommonPlace.View.extend(
   template: "feed_page/feed-subresources"
-  id: "feed-subresources"
+  id: "wire"
   initialize: (options) ->
     @account = options.account
     @feed = options.feed

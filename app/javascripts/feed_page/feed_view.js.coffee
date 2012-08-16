@@ -26,7 +26,7 @@ CommonPlace.pages.PageView = CommonPlace.View.extend(
       account: @account
     )
     about = new CommonPlace.pages.PageAboutView(model: feed)
-    content = new CommonPlace.pages.PageSubResourcesView(
+    wire = new CommonPlace.pages.PageSubResourcesView(
       feed: feed
       account: self.account
     )
@@ -44,7 +44,7 @@ CommonPlace.pages.PageView = CommonPlace.View.extend(
     
     sidebar = new CommonPlace.shared.Sidebar()
 
-    @subViews = [content, resourceNav, actions, adminBar, sidebar]
+    @subViews = [resourceNav, actions, adminBar, sidebar, wire]
 
   afterRender: ->
     self = this
