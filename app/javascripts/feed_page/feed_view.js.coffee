@@ -30,10 +30,10 @@ CommonPlace.pages.PageView = CommonPlace.View.extend(
       feed: feed
       account: self.account
     )
-    resourceNav = new CommonPlace.pages.PageNavView(
+    wireNav = new CommonPlace.pages.PageNavView(
       model: feed
       switchTab: (tab) ->
-        resource.switchTab tab
+        wire.switchTab tab
     )
     actions = new CommonPlace.pages.PageActionsView(
       feed: feed
@@ -42,9 +42,21 @@ CommonPlace.pages.PageView = CommonPlace.View.extend(
       community: self.community
     )
     
-    sidebar = new CommonPlace.shared.Sidebar()
+    sidebar = new CommonPlace.shared.Sidebar(
+      tabs: [{
+        title: "subscribers"
+        text: "Subscribers"
+      }, {
+        title: "similar"
+        text: "Similar"
+      }]
+      tabviews:
+        subscribers: new CommonPlace.pages.PageSubscribersList(feed: @model)
+        similar: new CommonPlace.pages.PageListView()
+      nav: wireNav
+    )
 
-    @subViews = [resourceNav, actions, adminBar, sidebar, wire]
+    @subViews = [actions, adminBar, sidebar, wire]
 
   afterRender: ->
     self = this

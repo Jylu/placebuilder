@@ -5,18 +5,15 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
   content_div       : "directory_content"
 
   initialize: (options) ->
-    @tabs = {
-      neighbors: ->
-        new CommonPlace.shared.Neighbors()
-      pages: ->
-        new CommonPlace.shared.YourPages()
-    }
+    @tabs = options.tabs
+    @tabviews = options.tabviews
+    @nav = options.nav
 
   afterRender: ->
     self = this
-    yourTown = new CommonPlace.shared.YourTown()
-    yourTown.render()
-    @$("#your-town").replaceWith(yourTown.el)
+    #yourTown = new CommonPlace.shared.YourTown()
+    @nav.render()
+    @$("#your-town").replaceWith(@nav.el)
 
     #show the your pages tab by default
     @showTab("pages")
@@ -38,10 +35,10 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
     @showTab(title)
 
   showTab: (title) ->
-    if title of @tabs
+    if title of @tabviews
       @$('.sidebar-links').removeClass('current_tab')
       @$('[title="'+title+'"]').addClass('current_tab')
-      view = @tabs[title]()
+      view = @tabviews[title]
       view.render()
       @$("#"+@content_div).html(view.el)
       @resizeDirectory()
