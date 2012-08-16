@@ -22,7 +22,20 @@ CommonPlace.CommunityPage = CommonPlace.View.extend(
 
     )
     #@profileBox = new ProfileBox(profileDisplayer: profileDisplayer)
-    @sidebar = new CommonPlace.shared.Sidebar()
+    @sidebar = new CommonPlace.shared.Sidebar(
+      tabs: [{
+        title: "pages"
+        text: "Your Pages"
+      }, {
+        title: "neighbors"
+        text: "Your Neighbors"
+      }]
+      tabviews:
+        pages: new CommonPlace.shared.YourPages()
+        neighbors: new CommonPlace.shared.Neighbors()
+      nav: new CommonPlace.shared.YourTown()
+    )
+      
     profileDisplayer.highlightSingleUser = (user) ->
       self.lists.highlightSingleUser user
 

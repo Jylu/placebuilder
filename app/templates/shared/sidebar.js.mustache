@@ -7,8 +7,9 @@
 
 <div id="directories">
 	<div id="directory_nav">
-		<h3 class="sidebar-links" title="pages">Your Pages</h3>
-    <h3 class="sidebar-links" title="neighbors">Your Neighbors</h3>		
+    {{#tabs}}
+      <h3 class="sidebar-links" title="{{title}}">{{text}}</h3>
+    {{/tabs}}
 	</div>	
 	
   <div id="directory_content" class="scroll"></div>

@@ -7,11 +7,7 @@ CommonPlace.pages.PageRouter = Backbone.Router.extend(
     self = this
     @account = options.account
     @community = options.community
-    @feedsList = new CommonPlace.pages.PageListView(
-      collection: options.feeds
-      el: $("#feeds-list")
-    )
-    @feedsList.render()
+    CommonPlace.pages.feeds = options.feeds
     @show options.feed
 
   show: (slug) ->
@@ -21,7 +17,6 @@ CommonPlace.pages.PageRouter = Backbone.Router.extend(
     $("#header").replaceWith header.el
 
     $.getJSON "/api" + @community.links.groups, (groups) ->
-      self.feedsList.select slug
       $.getJSON "/api/feeds/" + slug, (response) ->
         feed = new Feed(response)
         document.title = feed.get("name")

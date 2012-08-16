@@ -1,7 +1,7 @@
 CommonPlace.pages.PageListView = CommonPlace.View.extend(
   template: "feed_page/feeds-list"
   feeds: ->
-    @collection
+    CommonPlace.pages.feeds
 
   afterRender: ->
     height = 0
