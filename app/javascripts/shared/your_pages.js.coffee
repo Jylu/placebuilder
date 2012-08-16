@@ -1,5 +1,5 @@
-CommonPlace.main.YourPages = CommonPlace.View.extend
-  template: "main_page.sidebar.your-pages"
+CommonPlace.shared.YourPages = CommonPlace.View.extend
+  template: "shared.sidebar.your-pages"
 
   afterRender: (params) -> 
     self = this
@@ -12,7 +12,7 @@ CommonPlace.main.YourPages = CommonPlace.View.extend
     page = data.toJSON()
     page.url = "/"+CommonPlace.community.get("slug")+page.url
     page.about.trim()
-    html = this.renderTemplate("main_page.sidebar.page", page)
+    html = this.renderTemplate("shared.sidebar.page", page)
     if page.id in subscriptions
       this.$('#your-pages-list').prepend html
     else

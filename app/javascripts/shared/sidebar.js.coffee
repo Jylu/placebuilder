@@ -1,5 +1,5 @@
-CommonPlace.main.Sidebar = CommonPlace.View.extend
-  template          : "main_page.sidebar"
+CommonPlace.shared.Sidebar = CommonPlace.View.extend
+  template          : "shared.sidebar"
   id                : "sidebar"
   links_header_class: "sidebar-links"
   content_div       : "directory_content"
@@ -7,14 +7,14 @@ CommonPlace.main.Sidebar = CommonPlace.View.extend
   initialize: (options) ->
     @tabs = {
       neighbors: ->
-        new CommonPlace.main.Neighbors()
+        new CommonPlace.shared.Neighbors()
       pages: ->
-        new CommonPlace.main.YourPages()
+        new CommonPlace.shared.YourPages()
     }
 
   afterRender: ->
     self = this
-    yourTown = new CommonPlace.main.YourTown()
+    yourTown = new CommonPlace.shared.YourTown()
     yourTown.render()
     @$("#your-town").replaceWith(yourTown.el)
 
