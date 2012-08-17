@@ -17,7 +17,7 @@ CommonPlace.pages.PageSubResourcesView = CommonPlace.View.extend(
     @feed.subscribers.on "sync", (->
       @switchTab "showSubscribers"
     ), this
-
+ 
   afterRender: ->
     this[@currentTab]()
 

@@ -6,6 +6,7 @@
 //= require time_ago_in_words
 //= require underscore
 //= require mustache
+//= require masonry
 //= require json2
 //= require backbone
 //= require autoresize
@@ -22,3 +23,4 @@
 //= require feed_page/app
 //= require_tree ./feed_page
 //= require_tree ./shared
+

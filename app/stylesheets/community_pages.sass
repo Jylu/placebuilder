@@ -38,13 +38,25 @@ div#feed div#right-column
   margin-top: 50px
   margin-right: 80px
 
-#wire div.feed-announcements.tab.current div.wire ul.wire-list li.wire-item div.post-content img
-  width: 50px
-  float: left
-  height: 50px
+#wire div.feed-announcements.tab.current div.wire ul.wire-list li.wire-item 
+  div.post-content img
+    width: 50px
+    float: left
+    height: 50px
 
-#wire div.feed-announcements.tab.current div.wire ul.wire-list li.wire-item div.post-content h3
-  line-height: 25px
+  div.post-content h3
+    font-size: 18px
+    line-height: 22px
+
+  div.post-action.clear
+    margin-left: 0
+    padding-left: 15px
+
+  div.replies-area div.replies div.comment form.new-reply.clear img.avatar
+    margin-left: 0
+
+  div.replies-area div.replies div.comment form.new-reply.clear div.reply-text textarea.reply-text-entry
+    width: 210px
 
 #directory_content
   height: 100%
@@ -197,3 +209,14 @@ div#feed div#right-column
   border-bottom: 1px dotted #cfcfcf
   padding-bottom: 15px
   padding-top: 10px
+
+div#feed div#right-column #wire
+  width: 800px
+	
+  div.feed-announcements.tab.current div.wire
+    width: 800px
+
+    ul.wire-list li.wire-item
+      float: left
+      width: 385px
+      margin-right: 15px
