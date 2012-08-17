@@ -34,6 +34,7 @@ CommonPlace.CommunityPage = CommonPlace.View.extend(
         pages: new CommonPlace.shared.YourPages()
         neighbors: new CommonPlace.shared.Neighbors()
       nav: new CommonPlace.shared.YourTown()
+      post_button: true
     )
       
     profileDisplayer.highlightSingleUser = (user) ->
