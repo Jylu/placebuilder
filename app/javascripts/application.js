@@ -21,6 +21,7 @@
 //= require chosen
 //= require highlight-3
 //= require modernizr
+//= require masonry
 
 //= require config
 //= require feature_switches
