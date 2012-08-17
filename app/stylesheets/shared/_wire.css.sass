@@ -247,15 +247,11 @@
 group-post:first
   margin-top: 60px
 
-#community-resources div.resources div.wire div.posts.wire ul.wire-list li.wire-item div.post-content img
-  width: 75px
-  float: left
-  padding-right: 15px
-
 .wire
   min-height: 100px
-  width: 635px
+  width: 645px
   border-radius: 4px
+  margin: 0px auto
   position: relative
   .wire-top
     height: 30px
@@ -284,45 +280,44 @@ group-post:first
       float: right
       padding: 8px 10px 0px 0px
   .post-content
-    padding: 15px 15px 10px 15px
+    padding: 20px
     h3, p
-      margin-left: 90px
+      margin-left: 65px
       font-family: $body
       color: $black
-      overflow: hidden
-      font: 13px/17px $body
+      font: 13px/18px $body
+      margin-bottom: 10px
     h3 
-      font-size: 18px
+      font-size: 22px
       font-weight: bold
-      padding-bottom: 6px
+      margin-bottom: 15px
+      text-shadow: none
     p.author
       font-size: 13px
       color: $blue
       font-weight: bold
-      padding-bottom: 6px
+      margin-bottom: 5px
       position: relative
       bottom: 4px
-      a
-        color: #1b334a
-        padding-left: 0px
-        padding-bottom: 6px
-        font: bold 13px "Helvetica Neue", Helvetica, sans-serif
+    a
+      color: $red
+      font-family: Helvetica, Arial, sans-serif
     p.post-text
       font-size: 13px
       line-height: 18px
-    img
-      height: 50px
+    .avatar-container
       width: 50px
-      border-radius: 0px
+      height: 50px
       float: left
+      background-position: top center
+      background-size: 100%
+      background-repeat: no-repeat
+    img
+      width: 100%
   .post-action
-    padding: 15px 20px 15px 41px
-      top: 0
-      bottom: 0
-    margin-left: 65px
+    margin-left: 85px
     font-family: $body
     font-size: 10px
-    text-transform: uppercase
     font-weight: bold
     color: $red
     height: 35px
@@ -501,15 +496,15 @@ group-post:first
     position: absolute
     bottom: 0px
     left: 5px
-    .shadow_right
-      float: right
-      width: 50%
-      height: 15px
-      background: image-url("shared/redesign/post-shadow-right.png") no-repeat
-      background-position: bottom right
-      position: absolute
-      bottom: 0px
-      right: 5px
+  .shadow_right
+    float: right
+    width: 50%
+    height: 15px
+    background: image-url("shared/redesign/post-shadow-right.png") no-repeat
+    background-position: bottom right
+    position: absolute
+    bottom: 0px
+    right: 5px
   .wire-group
     width: 100%
     float: left
