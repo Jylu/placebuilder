@@ -8,6 +8,7 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
     @tabs = options.tabs
     @tabviews = options.tabviews
     @nav = options.nav
+    @options = options
 
   afterRender: ->
     self = this
@@ -16,6 +17,12 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
 
     @showTab(@tabs[0].title)
     $(window).resize(_.bind(@resizeDirectory, this))
+
+   post_button: ->
+    @options.post_button
+
+  avatar_url: ->
+    @options.avatar_url
 
   showPostbox: (e) ->
     if e
