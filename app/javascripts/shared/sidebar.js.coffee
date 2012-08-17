@@ -11,13 +11,10 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
 
   afterRender: ->
     self = this
-    #yourTown = new CommonPlace.shared.YourTown()
     @nav.render()
     @$("#your-town").replaceWith(@nav.el)
 
-    #show the your pages tab by default
-    @showTab("pages")
-    @$('[title="pages"]').addClass('current_tab')
+    @showTab(@tabs[0].title)
     $(window).resize(_.bind(@resizeDirectory, this))
 
   showPostbox: (e) ->
