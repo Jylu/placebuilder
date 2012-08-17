@@ -1,19 +1,24 @@
 <aside>
-<a href=""
-  data-remote
-  class="red-button post">Post To Your Neighbors!</a>
+  {{#avatar_url}}
+    <img src="{{avatar_url}}" class="avatar">
+  {{/avatar_url}}
+  {{#post_button}}
+    <a href=""
+      data-remote
+      class="red-button post">Post To Your Neighbors!</a>
+  {{/post_button}}
 
-<div id="your-town"></div>
+  <div id="your-town"></div>
 
-<div id="directories">
-	<div id="directory_nav">
-    {{#tabs}}
-      <h3 class="sidebar-links" title="{{title}}">{{text}}</h3>
-    {{/tabs}}
-	</div>	
-	
-  <div id="directory_content" class="scroll"></div>
-</div>
+  <div id="directories">
+    <div id="directory_nav">
+      {{#tabs}}
+        <h3 class="sidebar-links" title="{{title}}">{{text}}</h3>
+      {{/tabs}}
+    </div>	
+    
+    <div id="directory_content" class="scroll"></div>
+  </div>
 
 
 </aside>

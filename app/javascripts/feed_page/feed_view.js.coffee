@@ -54,6 +54,7 @@ CommonPlace.pages.PageView = CommonPlace.View.extend(
         subscribers: new CommonPlace.pages.PageSubscribersList(feed: @model)
         similar: new CommonPlace.pages.PageListView()
       nav: wireNav
+      avatar_url: feed.get("avatar_url")
     )
 
     @subViews = [actions, adminBar, sidebar, wire]
