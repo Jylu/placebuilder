@@ -259,6 +259,8 @@ $black-shadow: 0px 2px 1px black
         color: $blue
         background-color: #efeee7
         cursor: pointer
+    h3.current_tab
+      background-color: #efeee7
 
     li.directory_listing
       padding: 8px 0
@@ -276,7 +278,7 @@ $black-shadow: 0px 2px 1px black
 
 
 #directory_nav h3.sidebar-links.current_tab
-
+  
 #directory_nav 
   height: 58px
   cursor: pointer
@@ -839,7 +841,7 @@ ul.your-town
   float: right
   width: 400px
   margin-right: 30px
-
+  color: #fff
 
 #civic_button 
   clear: right
@@ -856,37 +858,56 @@ ul.your-town
   margin-top: 25px
   color: #fefffe
   text-align: center
-  font: 18px/15px Rockkitt, RockwellSTD, Rockwell, sans-serif
+  font: 18px/15px $heading
 
 #civicProfile div.civic_title 
   font-size: 40px
   position: relative
   top: 20px
-  width: 100%
-  background: url("shared/redesign/civic_stars.png") no-repeat 25px
+  width: 565px
+  background: url("shared/redesign/civic_stars.png") no-repeat center 15px
   text-align: center
-  font-family: "Yellowtail"
+  font-family: $Yellowtail
   text-shadow: 4px 4px 1px #1b334a
   color: #eeecdf
-  margin-bottom: 25px
+  margin: 0px auto 25px auto
 
 input#search.civic_message 
   margin-top: 12px
   -webkit-font-smoothing: antialiased
 
+#civicProfile.container div.civic_right label
+  font-size: 18px
+  float: left
+
 #civicProfile.container div.civic_right input 
-  height: 10px
-  padding: 10px
-  width: 388px
-  margin-bottom: 22px
+  width: 382px
+  margin-top: 0px
+  margin-bottom: 20px
   -webkit-font-smoothing: antialiased
+  font-size: 18px
+  padding: 8px
+  height: auto
+  font-family: $Rokkitt
+  color: #333
+  border: 1px solid #821916
+  box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
+  &:focus
+    outline: none
 
 #civicProfile.container div.civic_right textarea
-  padding: 10px
-  width: 388px
+  width: 382px
   height: 80px
-  margin-bottom: 22px
+  margin-top: 0px
   -webkit-font-smoothing: antialiased
+  font-size: 18px
+  padding: 8px
+  font-family: $Rokkitt
+  color: #333
+  border: 1px solid #821916
+  box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
+  &:focus
+    outline: none
 
 input::-webkit-input-placeholder
   color: #888
@@ -895,7 +916,7 @@ textarea::-webkit-input-placeholder
   color: #888
 
 #civic_name 
-  font-family: "Rokkitt"
+  font-family: $heading
   font-size: 26px
   letter-spacing: 1px
   color: white
@@ -919,11 +940,49 @@ textarea::-webkit-input-placeholder
 
 #civicProfile div.civic_right ul.chzn-choices
   height: 30px
-
+  width: 398px
+  padding-bottom: 2px
+  -webkit-font-smoothing: antialiased
+  font-size: 18px
+  font-family: $Rokkitt
+  color: #333
+  border: 1px solid #821916
+  box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
+  &:focus
+    outline: none
+  input::-webkit-input-placeholder
+    color: #888
+  
+#civicProfile div.civic_right ul.chzn-choices input
+  box-shadow: none
+  margin: 0px
+  border: 0 none
+  input::-webkit-input-placeholder
+    color: #888
+  &:focus
+    outline: none
+    
+#civicProfile div.chzn-drop
+  width: 398px !important
+  border: 1px solid #821916
+  box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
+  margin-top: -15px
+  ul.chzn-results
+    li
+      border-bottom: 1px dotted #ccc
+      padding: 12px 8px
+      color: #333
+      font-family: $heading
+      font-size: 16px
+      &:hover
+        background-color: #eee
+        color: $red
+.chzn-container .chzn-results .highlighted
+  background-color: #eee
+  color: $red 
 #civic_button a.blue-button.next-button
   padding: 10px
   
-
 #civicProfile div.civic_left div.not-facebook div a.avatar_file_browse
   text-transform: uppercase
   color: #fffeff

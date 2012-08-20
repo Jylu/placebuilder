@@ -101,9 +101,12 @@ $black-shadow: 0px 2px 1px black
   margin: 0 auto
 
 html
-  background: image-url("http://upload.wikimedia.org/wikipedia/commons/1/1c/Fort_Washington_%28Cambridge%2C_MA%29.JPG") no-repeat center center fixed
+  background: image-url("shared/redesign/backgrounds/Warwick2.jpg") no-repeat center center fixed
+  background-color: #cae4f7
   background-size: cover
-  -webkit-background-size: cover 
+  -webkit-background-size: cover
+  -webkit-font-smoothing: antialiased
+  text-rendering: optimizeLegibility
 
 header
   height: 60px
@@ -197,7 +200,6 @@ aside
   display: block
   height: 100%
   z-index: 999
-  border: 1px solid #a4a295
   .red-button
     width: 83%
     text-align: center
@@ -312,6 +314,7 @@ aside
 
 
 #directory_nav h3.sidebar-links.current_tab
+  background-color: #e2e0d5
 
 #directory_nav 
   height: 58px
@@ -322,7 +325,7 @@ aside
     &:hover
       background-color: #e2e0d5
   h3.sidebar-links.current_tab
-    background-color: #efeee7
+    background-color: #e2e0d5
     color: $red
     position: relative
     z-index: 999
