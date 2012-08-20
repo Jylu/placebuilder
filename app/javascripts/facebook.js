@@ -21,8 +21,30 @@ function fbConnect(api, scope, callback) {
   });
 }
 
+function facebook_stream_publish(options) {
+  fbConnect("/me/feed", "read_friendlists,offline_access,publish_stream", function(auth_token, response) {
+    var data = {
+      access_token: auth_token,
+      name: options.name,
+      caption: options.caption,
+      description: options.description,
+      message: options.message
+    };
+    FB.api('/me/feed', 'post', data, function(response) {
+      if (response) {
+        if (response.error) {
+          alert(response.error.message);
+        } else {
+          alert("Posted as: "+response.id);
+        }
+      }
+      // if no response then user cancelled
+    });
+  });
+}
+
 function facebook_connect_post_registration(success, failure) {
-  fbConnect("/me", "read_friendlists,offline_access", function(auth_token, response) {
+  fbConnect("/me", "read_friendlists,offline_access,publish_stream", function(auth_token, response) {
     $.ajax({
       type: "POST",
       dataType: "json",
@@ -38,7 +60,7 @@ function facebook_connect_post_registration(success, failure) {
 }
 
 function facebook_connect_registration(options) {
-  fbConnect("/me", "offline_access,email", function(auth_token, response) {
+  fbConnect("/me", "offline_access,email,publish_stream", function(auth_token, response) {
     var data = {
       full_name: response.name,
       fb_auth_token: auth_token,

@@ -13,6 +13,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     @account = options.account
     @header = options.header
     @message = options.message
+    @facebook_share = false
 
   afterRender: ->
 
@@ -45,14 +46,19 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     if this.$("input[name=share-email]").val()
       this.submitEmail()
 
+
+    user = new User({links: { self: "/users/" + CommonPlace.account.get("id")}})
+    user.fetch
+      success: ->
+        @test = user
+
     window.app.navigate(CommonPlace.community.get("slug"), {"trigger": true, "replace": true})
     this.remove()
 
   shareFacebook: (e) ->
     e.preventDefault()
-    $('.share-f').addClass("checked")
     $link = $(e.target)
-    FB.api
+    @share_info =
       method: "feed"
       name: $link.attr("data-name")
       link: $link.attr("data-url")
@@ -60,7 +66,16 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
       caption: $link.attr("data-caption")
       description: $link.attr("data-description")
       message: $link.attr("data-message")
-    , $.noop
+    if @account.get("facebook_user")
+      @facebook_share = not @facebook_share
+      if @facebook_share
+        $('.share-f').addClass("checked")
+      else
+        $('.share-f').removeClass("checked")
+    else
+      $('.share-f').addClass("checked")
+      FB.ui @share_info
+      , $.noop
 
   shareTwitter: (e) ->
     e.preventDefault()
@@ -88,6 +103,8 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
 
     if data.recipients isnt ""
       $("#emailshare").addClass("checked")
+
+    facebook_stream_publish @share_info
 
     $.ajax(
       type: "POST"
