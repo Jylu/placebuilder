@@ -52,7 +52,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     e.preventDefault()
     $('.share-f').addClass("checked")
     $link = $(e.target)
-    FB.api
+    FB.ui
       method: "feed"
       name: $link.attr("data-name")
       link: $link.attr("data-url")
