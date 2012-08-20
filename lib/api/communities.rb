@@ -310,6 +310,24 @@ CONDITION
       serialize(addr[0, 7])
     end
 
+    # Returns a list of names we have on file that matches what is typed
+    #
+    # term - the term to be auto-completed
+    get "/:id/name_completions" do
+      full = params[:term].split(" ")
+      first = full.first
+      last = full[1]
+
+      names = find_community.residents.where("first_name ILIKE ? AND last_name ILIKE ?", "#{first}%", "#{last}%")
+      names.delete_if { |r| r.first_name.length < 2 || r.last_name.length < 2 }
+      names.map! { |r| "#{r.first_name.capitalize} #{r.last_name.capitalize}" }
+      names.uniq!
+      names.sort!
+
+      serialize(names[0, 7])
+    end
+
+
     # Returns a list of address approximations
     #
     # term - the address to match with
