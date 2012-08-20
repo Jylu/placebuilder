@@ -52,15 +52,12 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     e.preventDefault()
     $('.share-f').addClass("checked")
     $link = $(e.target)
-    FB.api
-      method: "feed"
-      name: $link.attr("data-name")
+    data =
       link: $link.attr("data-url")
       picture: $link.attr("data-picture")
       caption: $link.attr("data-caption")
-      description: $link.attr("data-description")
       message: $link.attr("data-message")
-    , $.noop
+    FB.api "/me/feed", "post", data, $.noop
 
   shareTwitter: (e) ->
     e.preventDefault()
