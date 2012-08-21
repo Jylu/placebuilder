@@ -1,5 +1,5 @@
 .replies-area
-  padding: 1px 0px 0 22px
+  padding: 1px 0px 0 40px
   position: relative
   font-family: Helvetica, sans-serif
   margin-top: 0
@@ -31,12 +31,15 @@
     .thanked-reply
       color: #bebebe
       
-  .avatar 
-    float: left
+  .avatar-container
     width: 30px
     height: 30px
-    +border-radius(0)
-    border: 0
+    float: left
+    background-position: top center
+    background-size: auto 100%
+    background-repeat: no-repeat
+    border-radius: 5px
+    background-color: #ccc
 
   .reply-info
     padding-top: 5px
@@ -102,13 +105,16 @@
 
 .replies form.new-reply
   margin-top: 13px
-
-  .avatar 
+  .avatar-container
+    overflow: hidden
     float: left
+    background-color: #ccc
+    background-position: top center
+    background-size: auto 100%
+    background-repeat: no-repeat
     width: 30px
     height: 30px
-    +border-radius(0)
-    border: 0
+    border-radius: 5px
     
   .reply-text
     float: right
