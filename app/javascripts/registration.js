@@ -19,9 +19,11 @@
 //= require contacts/google
 //= require contacts/windows_live
 //= require contacts/yahoo
+//= require jquery-dimlights
 //= require views
 //= require models
 //= require_tree ../templates/shared
 //= require_tree ../templates/registration
 //= require_tree ./registration
 //= require_tree ./shared
+
