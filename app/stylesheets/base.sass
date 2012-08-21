@@ -39,13 +39,13 @@ $black-shadow: 0px 2px 1px black
   background: $red
   border-radius: 4px
   color: #fff
-  text-shadow: 1px 1px 1px #541513
+  text-shadow: 0px 2px 1px #64100D
   font-weight: bold
   height: 18px
   font-family: $heading
   +linear-gradient(color-stops(#d0413d, #ac322f), top)
   display: block
-  font-size: 22px
+  font-size: 21px
   text-decoration: none
   border: 1px solid
   border-color: #ac322f
@@ -119,26 +119,27 @@ header
     left: none
     right: none
   .community-name
-    width: 354px
+    width: auto
     float: left
     background: image-url("shared/redesign/commonplace-icon.png") no-repeat
-    padding-left: 60px
+    padding-left: 57px
     height: 60px
     background-position: 20px 14px
     position: relative
-    border-right: 1px solid $dark-blue
+    //border-right: 1px solid $dark-blue
     border-left: 1px solid $dark-blue
     box-shadow: inset 1px 0 0 $light-blue
     h1
       color: white
       text-shadow: $black-shadow
-      font-size: 32px
-      margin-top: 14px
+      font-size: 30px
+      margin-top: 15px
       font-family: $heading
       float: left
       text-align: left
+      font-weight: bold
       a
-        underline: none
+        text-decoration: none
         color: white
 
   .right
@@ -146,7 +147,7 @@ header
     float: right
   .top-bar
     width: 803px
-    border-left: 1px solid $light-blue
+    //border-left: 1px solid $light-blue
     height: 60px
     border-right: 1px solid $light-blue
     box-shadow: inset -1px 0px 0px 0px $dark-blue
@@ -204,8 +205,7 @@ aside
     width: 83%
     text-align: center
     vertical-align: center
-    font-weight: normal
-    padding: 12px 10px 15px 10px
+    padding: 12px 9px 13px 9px
     margin: 0 auto
       top: 25px
   ul.post-box
@@ -259,6 +259,7 @@ aside
           padding-left: 43px
           background: image-url("shared/redesign/sidebar-icon.png") no-repeat left
           line-height: 26px
+          text-shadow: 1px 1px 0px #fff
           &:hover, &:focus, &:active
             color: $red
             text-shadow: 2px 2px 0px white
@@ -276,7 +277,7 @@ aside
           background: image-url("shared/redesign/announcements-icon.png") no-repeat left       
 
   #directories
-    width: 264px
+    width: 266px
     margin: 0 auto
     h3
       display: inline-block
@@ -370,7 +371,7 @@ aside
       h4
         font-family: $heading
         color: $blue
-        font-weight: bold
+        font-weight: normal
         font-size: 18px
         line-height: 16px
         margin-bottom: 5px
@@ -427,7 +428,7 @@ aside
     h4
       font-family: $heading
       color: $blue
-      font-weight: bold
+      font-weight: normal
       font-size: 18px
       line-height: 16px
       margin-bottom: 5px

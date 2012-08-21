@@ -43,7 +43,7 @@
 
   .reply-info
     padding-top: 5px
-    margin-left: 40px
+    margin-left: 45px
 
   .author, .body
     margin-left: 0
@@ -53,10 +53,10 @@
   .author
     margin-bottom: 0
     margin-right: 5px
-    margin-top: 4px
+    margin-top: 0
     position: relative
     font-weight: bold
-    color: #1b334a
+    color: $blue
     float: left
 
   .body, h1, h2, h3, h4, h5, h6
@@ -73,9 +73,9 @@
     font-weight: bold
 
   .time
-    color: #243248
+    color: #999
     font-size: 12px
-    margin-left: 5px
+    margin-left: 2px
     white-space: nowrap
     
   .thanks_count:hover
@@ -117,25 +117,26 @@
     border-radius: 5px
     
   .reply-text
-    float: right
+    float: left
+    margin-left: 13px
 
     textarea 
       font-family: Helvetica, Arial, sans-serif
       font-size: 12px
       color: #888
       background: white
-      border-radius: 4px
-      border: 1px solid #c3c3c3
+      border: 1px dotted #ddd
       padding: 8px 10px
       height: 12px
-      width: 380px
+      width: 510px
       line-height: 14px
       position: relative
-      right: 90px
-      
+      &:hover
+        border: 1px solid #ccc
       &:focus
         outline: none
-        color: #444
+        color: #333
+        border-color: 1px solid #ccc
         
     .enter-hint
       display: none
@@ -145,19 +146,33 @@
 
 .submit-c
   display: none
-  padding: 7px
+  padding: 7px 14px
   background: #ac322f
-  position: relative
-  bottom: 2px
+  bottom: 32px
   left: 370px
-  border-radius: 5px
+  border-radius: 4px
   float: right
   font-size: 11px
+  font-weight: bold
   color: white
   text-transform: uppercase
-  margin-top: 6px
-  width: 31px
-  &:hover
+  margin-right: 30px
+  margin-bottom: 10px
+  letter-spacing: 1px
+  +linear-gradient(color-stops(#d0413d, #ac322f), top)
+  border: 1px solid
+  border-color: #ac322f
+  box-shadow: inset 0px 1px 1px #e28986
+  &:hover, &:focus
+    color: #fff
+    +linear-gradient(color-stops(#ee5a56, #b53633), top)
+    text-shadow: 1px 1px 1px #541513
+    box-shadow: 0px 2px 4px #adab9f
+    cursor: pointer
+  &:active
+    color: #fff
+    +linear-gradient(color-stops(#d64541, #ac322f), bottom)
+    text-shadow: -1px -1px -1px #cb5450
     cursor: pointer
 .waiting
   background: white
