@@ -3,7 +3,8 @@
   <p>{{publishedAt}}</p>
 </div>
 <div class="post-content">
-  <img src="{{avatarUrl}}" />
+  <div class="avatar-container" style="background-image:url('{{avatarUrl}}');">
+  </div>
   <h3>{{title}}</h3>
   <p class="author">{{author}}{{#group}}to <a href="{{groupUrl}}">{{group}}</a>{{/group}}</p>
   <p class="post-text body announcement-body">{{#markdown}}{{body}}{{/markdown}}</p>
