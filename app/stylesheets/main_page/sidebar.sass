@@ -42,13 +42,13 @@ $black-shadow: 0px 2px 1px black
   background: $red
   border-radius: 4px
   color: #fff
-  text-shadow: 1px 1px 1px #541513
+  text-shadow: 0px 2px 1px #64100D
   font-weight: bold
   height: 18px
   font-family: $heading
   +linear-gradient(color-stops(#d0413d, #ac322f), top)
   display: block
-  font-size: 22px
+  font-size: 21px
   text-decoration: none
   border: 1px solid
   border-color: #ac322f
@@ -118,7 +118,7 @@ $black-shadow: 0px 2px 1px black
   position: fixed
   top: 0
   z-index: 9999
-  box-shadow: 0px 1px 10px #434343
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.42)
   border: 2px solid $light-blue
     left: none
     right: none
@@ -126,7 +126,7 @@ $black-shadow: 0px 2px 1px black
     width: 233px
     float: left
     background: image-url("shared/redesign/commonplace-icon.png") no-repeat
-    padding-left: 60px
+    padding-left: 57px
     height: 60px
     background-position: 20px 14px
     position: relative
@@ -136,12 +136,14 @@ $black-shadow: 0px 2px 1px black
     h1
       color: white
       text-shadow: $black-shadow
-      font-size: 32px
-      margin-top: 14px
+      font-size: 30px
+      margin-top: 15px
       font-family: $heading
       text-align: left
+      font-weight: bold
+      letter-spacing: -1px
       a
-        underline: none
+        text-decoration: none
         color: white
 
   .right
@@ -210,8 +212,7 @@ $black-shadow: 0px 2px 1px black
     width: 83%
     text-align: center
     vertical-align: center
-    font-weight: normal
-    padding: 12px 10px 15px 10px
+    padding: 12px 9px 13px 9px
     margin: 0 auto
       top: 25px
   ul.post-box
@@ -238,7 +239,7 @@ $black-shadow: 0px 2px 1px black
         font-size: 14px
 
   #directories
-    width: 264px
+    width: 266px
     margin: 0 auto
     h3
       display: inline-block
@@ -837,6 +838,7 @@ ul.your-town
         padding-left: 43px
         background: image-url("shared/redesign/sidebar-icon.png") no-repeat left
         line-height: 26px
+        text-shadow: 1px 1px 0px #fff
         &:hover, &:focus, &:active
           color: $red
           text-shadow: 2px 2px 0px white

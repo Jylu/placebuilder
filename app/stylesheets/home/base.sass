@@ -122,7 +122,7 @@ html
   position: fixed
   top: 0
   z-index: 9999
-  box-shadow: 0px 1px 10px #434343
+  box-shadow: 0px 1px 10px rgba(0,0,0,0.42)
   border: 2px solid $light-blue
     left: none
     right: none
@@ -131,27 +131,26 @@ html
     margin: 0px auto
     position: relative
   .community-name
-    width: 250px
+    width: auto
     float: left
     background: image-url("shared/redesign/commonplace-icon.png") no-repeat
-    padding-left: 60px
+    padding-left: 57px
     height: 60px
     background-position: 20px 14px
     position: relative
-    border-right: 1px solid $dark-blue
+    //border-right: 1px solid $dark-blue
     border-left: 1px solid $dark-blue
     box-shadow: inset 1px 0 0 $light-blue
-    &:active
-      margin-top: 2px
-      cursor: pointer
     h1
       color: white
       text-shadow: $black-shadow
-      font-size: 26px
-      margin-top: 16px
+      font-size: 30px
+      margin-top: 15px
       font-family: $heading
+      letter-spacing: -1px
+      font-weight: bold
       a
-        underline: none
+        text-decoration: none
         color: white
 
   .right
@@ -159,8 +158,8 @@ html
     float: right
   .top-bar
     z-index: 2000001
-    width: 766px
-    border-left: 1px solid $light-blue
+    width: auto
+    //border-left: 1px solid $light-blue
     height: 60px
     border-right: 1px solid $light-blue
     box-shadow: inset -1px 0px 0px 0px $dark-blue
@@ -221,7 +220,6 @@ html
   width: 83%
   text-align: center
   vertical-align: center
-  font-weight: normal
   padding: 12px 10px 15px 10px
   margin: 0 auto
     top: 25px
