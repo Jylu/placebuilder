@@ -10,6 +10,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
   afterRender: ->
     @hasAvatarFile = false
     @initReferralQuestions()
+    @$("select.dk").dropkick()
     unless @current
       @slideIn @el
       @current = true

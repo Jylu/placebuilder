@@ -44,7 +44,7 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
 
   FeedItem: CommonPlace.View.extend(
     template: "main_page.tour.home_feed-item"
-    tagName: "li"
+
     events:
       click: "check"
 
