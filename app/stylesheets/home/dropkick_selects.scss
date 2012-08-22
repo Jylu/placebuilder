@@ -193,8 +193,11 @@ a.dk_toggle {
     }
 }
 
-#dk_container_categorize, #dk_container_discussion_topic {
-   width: 413px;
+a.dk_toggle span.dk_arrow:hover {
+   @include background-image(linear-gradient(#3e6b96 0%, #1b334a 50%));
+}
+a.dk_toggle span.dk_arrow:active {
+   @include background-image(linear-gradient(#1b334a 0%, #294d6f 50%));
 }
 
 /** Critical to the continued enjoyment of working dropdowns ******/

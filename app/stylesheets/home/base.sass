@@ -1,3 +1,8 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
 @import url(http://fonts.googleapis.com/css?family=Rokkitt:400,700)
 @import url(http://fonts.googleapis.com/css?family=Ultra)
 @import url(http://fonts.googleapis.com/css?family=Yellowtail)
@@ -18,6 +23,7 @@ $off-grey: #eeecdf
 $search-box: #b7c3cf
 $dark-tan: #bcbbae
 $tan: #F5F3E9
+$light-tan: #FCFAF4
 
 $Ultra: 'Ultra'
 $Yellowtail: 'Yellowtail'
@@ -28,20 +34,20 @@ $heading: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
 $body: Helvetica Neue, Helvetica, Tahoma, serif
 
 /* Woo Shadows */
-$black-shadow: 2px 2px 1px black
+$black-shadow: 0px 2px 1px black
 
 /* Woo Buttons */
 .red-button
   background: $red
-  border-radius: 4px
+  border-radius: 5px
   color: #fff
-  text-shadow: 1px 1px 1px #541513
+  text-shadow: 0px 2px 1px #64100D
   font-weight: bold
   height: 18px
   font-family: $heading
   +linear-gradient(color-stops(#d0413d, #ac322f), top)
   display: block
-  font-size: 22px
+  font-size: 21px
   text-decoration: none
   border: 1px solid
   border-color: #ac322f
@@ -61,7 +67,7 @@ $black-shadow: 2px 2px 1px black
 
 .green-button
   background: green
-  border-radius: 4px
+  border-radius: 5px
   color: #eeecdf
   text-shadow: 1px 1px 1px black
   font-weight: bold
@@ -92,13 +98,9 @@ $black-shadow: 2px 2px 1px black
   float: left
 .clear
   clear: both
-#main
+.full-width
   width: 1100px
   margin: 0 auto
-em
-  font-style: italic
-strong
-  font-weight: bold
 
 html
   background: image-url("shared/redesign/backgrounds/Warwick2.jpg") no-repeat center center fixed
@@ -107,30 +109,17 @@ html
   -webkit-background-size: cover
   -webkit-font-smoothing: antialiased
   text-rendering: optimizeLegibility
-  
-#current-registration-page, #next-registration-page
-  display: none
-  position: absolute
-  z-index: 100
-  margin-top: 65px
-  padding-bottom: 30px
-  font-family: $Rokkitt, Rockwell, Georgia, Times, "Times New Roman", serif
 
-#header
+header
   height: 60px
   width: 100%
   background: $blue
   position: fixed
-  top: 0
   z-index: 9999
-  box-shadow: 0px 1px 10px rgba(0,0,0,0.42)
+  box-shadow: 0px 1px 10px #434343
   border: 2px solid $light-blue
     left: none
     right: none
-  #nav_wrapper
-    width: 1080px
-    margin: 0px auto
-    position: relative
   .community-name
     width: auto
     float: left
@@ -148,7 +137,8 @@ html
       font-size: 30px
       margin-top: 15px
       font-family: $heading
-      letter-spacing: -1px
+      float: left
+      text-align: left
       font-weight: bold
       a
         text-decoration: none
@@ -158,8 +148,7 @@ html
     width: 113px
     float: right
   .top-bar
-    z-index: 2000001
-    width: auto
+    width: 803px
     //border-left: 1px solid $light-blue
     height: 60px
     border-right: 1px solid $light-blue
@@ -207,51 +196,49 @@ html
         float: left
         display: block
         text-indent: -9999px
-
-#sidebar
-  width: 294px
-  //background: $off-grey image-url("shared/redesign/background.gif") center
+aside
+  width: 300px
   background-color: #F5F3E9
+  //background: $off-grey image-url("shared/redesign/background.gif") center
   position: fixed
   display: block
   height: 100%
-  margin-top: 60px
   z-index: 999
-  border: 1px solid #a4a295
-.red-button
-  width: 83%
-  text-align: center
-  vertical-align: center
-  padding: 12px 10px 15px 10px
-  margin: 0 auto
-    top: 25px
-ul.post-box
-  margin: 0
-    top: 25px
-    left: auto
-    right: auto
-  width: 85%
-  li
-    margin-bottom: 5px
-    background: url(../images/topics-icon-lrg.png) no-repeat
-    height: 26px
-    padding-left: 35px
-    padding-top: 6px
-    a
-      text-decoration: none
-      color: $blue
-      font-family: $heading
-      font-weight: bold
-      font-size: 16px
-      text-shadow: 1px 1px 1px white
+  padding-top: 10px
+  .red-button
+    width: 235px
+    text-align: center
+    vertical-align: center
+    padding: 12px 9px 13px 9px
+    margin: 0 auto
+      top: 15px
+  ul.post-box
+    margin: 0
+      top: 25px
+      left: auto
+      right: auto
+    width: 85%
+    li
+      margin-bottom: 5px
+      background: url(../images/topics-icon-lrg.png) no-repeat
+      height: 26px
+      padding-left: 35px
+      padding-top: 6px
+      a
+        text-decoration: none
+        color: $blue
+        font-family: $heading
+        font-weight: bold
+        font-size: 16px
+        text-shadow: 1px 1px 1px white
       .number-of
         font-weight: normal
         font-size: 14px
   #your-town
-    width: 90%
+    width: 255px
     margin: 0 auto
     padding: 15px 0px 0px 0px
-    margin-bottom: -5px
+    margin-bottom: -4px
     h3
       font-family: $heading
       font-size: 15px
@@ -262,9 +249,10 @@ ul.post-box
     .your-town 
       padding: 0px
       li
-        padding: 7px 10px 10px 12px
+        padding: 8px 10px 8px 9px
         &:hover, &:focus, &:active
-          background-color: rgba(255, 255, 255, 0.4)
+          background-color: $light-tan
+          border-radius: 5px
         a
           text-decoration: none
           font-family: $heading
@@ -276,6 +264,7 @@ ul.post-box
           padding-left: 43px
           background: image-url("shared/redesign/sidebar-icon.png") no-repeat left
           line-height: 26px
+          text-shadow: 1px 1px 0px #fff
           &:hover, &:focus, &:active
             color: $red
             text-shadow: 2px 2px 0px white
@@ -293,7 +282,7 @@ ul.post-box
           background: image-url("shared/redesign/announcements-icon.png") no-repeat left       
 
   #directories
-    width: 264px
+    width: 270px
     margin: 0 auto
     h3
       display: inline-block
@@ -301,18 +290,20 @@ ul.post-box
       font-size: 18px
       padding: 10px 8px
       margin: 19px 0px 0px 0px
-      background-color: rgba(225, 225, 225, 0.3)
+      background-color: rgba(225, 225, 225, 0.35)
       color: $red
-      border-radius: 4px 4px 0px 0px
+      border-radius: 5px 5px 0px 0px
       cursor: pointer
-      width: 113px
+      width: 115px
       text-align: center
       text-shadow: none
-      border: 1px solid #D7D5C6
-      border-bottom: 1px solid #efeee7
+      border: 1px solid #CAC8B8
+      border-bottom: 1px solid $light-tan
+      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
+      text-shadow: rgba(255, 255, 255, 0.75)
       &:hover
         color: $blue
-        background-color: #efeee7
+        background-color: $light-tan
         cursor: pointer
 
     li.directory_listing
@@ -331,24 +322,25 @@ ul.post-box
 
 
 #directory_nav h3.sidebar-links.current_tab
+  background-color: $light-tan
 
 #directory_nav 
   height: 58px
   cursor: pointer
-  width: 268px
+  width: 270px
   h3
     cursor: pointer
     &:hover
-      background-color: #e2e0d5
+      background-color: $light-tan
   h3.sidebar-links.current_tab
-    background-color: #efeee7
+    background-color: $light-tan
     color: $red
     position: relative
     z-index: 999
 
 #directory_content
   height: 100%
-  width: 244px
+  width: 238px
   background-color: #efeee7
   padding: 0px 10px 10px 10px
   position: relative
@@ -359,9 +351,9 @@ ul.post-box
   .your-neighbors
     .neighbor
       margin-left: 0px
-      border-bottom: 1px solid
+      border-bottom: 1px dotted
       border-color: lighten($dark-grey, 30%)
-      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.75)
+      box-shadow: 0px 1px 0px rgba(255, 255, 255, 1.0)
       padding-bottom: 5px
       padding-top: 15px
       width: auto
@@ -376,18 +368,18 @@ ul.post-box
         height: inherit
         p
           float: right
-          width: 187px
-          margin: 0px
+          width: 181px
+          margin-top: 2px
           padding-bottom: 10px
         h4
           color: $red
       h4
         font-family: $heading
         color: $blue
-        font-weight: bold
+        font-weight: normal
         font-size: 18px
         line-height: 16px
-        margin-bottom: 5px
+        margin-bottom: 0px
         margin-right: 10px
         text-overflow: ellipsis
         overflow: hidden
@@ -398,7 +390,7 @@ ul.post-box
         color: lighten($black, 10%)
         text-overflow: ellipsis
         overflow: hidden
-        margin-top: 3px
+        margin-top: 2px
         line-height: 15px
       .avatar-container
         width: 32px
@@ -417,9 +409,9 @@ ul.post-box
           height: 100%
   .page
     margin-left: 0px
-    border-bottom: 1px solid
+    border-bottom: 1px dotted
     border-color: lighten($dark-grey, 30%)
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.75)
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 1.0)
     padding-bottom: 5px
     padding-top: 15px
     width: auto
@@ -434,29 +426,28 @@ ul.post-box
       height: inherit
       p
         float: right
-        width: 187px
-        margin: 0px
+        width: 181px
+        margin-top: 2px
         padding-bottom: 10px
       h4
         color: $red
     h4
       font-family: $heading
       color: $blue
-      font-weight: bold
+      font-weight: normal
       font-size: 18px
       line-height: 16px
-      margin-bottom: 5px
+      margin-bottom: 0px
       margin-right: 10px
       text-overflow: ellipsis
       overflow: hidden
-      text-transform: capitalize
     p
       font-family:  $body
       font-size: 13px
       color: lighten($black, 10%)
       text-overflow: ellipsis
       overflow: hidden
-      margin-top: 3px
+      margin-top: 2px
       line-height: 15px
     .avatar-container
       width: 32px
@@ -473,7 +464,6 @@ ul.post-box
       img
         width: 100%
         height: 100%
- 
 .main
   overflow: hidden
   position: relative
@@ -485,12 +475,13 @@ ul.post-box
   .wire
     min-height: 100px
     background: white
-    border-radius: 4px
-    margin: 0px auto
+    border-radius: 5px
+    margin: 20px
     position: relative
+    box-shadow: 0px 0px 5px #666
     .wire-top
       height: 30px
-      border-radius: 4px
+      border-radius: 5px
       border-bottom-left-radius: 0
       border-bottom-right-radius: 0      
       //background: $light-grey image-url("shared/redesign/background.gif")
@@ -739,9 +730,9 @@ ul.post-box
   .wire-header
     margin: 20px 20px 0px
     height: 40px
-    header-display
+    .header-display
       margin: auto
-      border-radius: 4px
+      border-radius: 5px
       background: $light-grey image-url("shared/redesign/background.gif")
       box-shadow: inset 0px 1px 0px 0px white
       border-bottom: 1px solid 
@@ -783,7 +774,7 @@ ul.post-box
   display: none
 
 input::-webkit-input-placeholder
-  color: #888
+  color: #a2a2a2
 
 //.main .wire .post-interaction .interaction
   padding: 15px 0
@@ -827,3 +818,26 @@ ul.actions li
 
 div.bottom input.next-button
   height: 50px
+
+a span.community
+  float: left
+  color: #ac322f
+  text-decoration: none
+  margin-top: 24px
+  margin-left: 5px
+
+#nav_wrapper div.community-name
+  width: 351px
+
+#user_sign_in div.top-bar
+  width: 665px
+
+#nav_wrapper div.community-name a h1
+  float: left
+
+#nav_wrapper div.community-name a span.community
+  float: left
+  margin-top: 21px
+  color: #991a17
+  font: bold 18px Rokkitt, "Rockwell STD", Serif
+  margin-left: 6px

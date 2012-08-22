@@ -23,6 +23,7 @@ $off-grey: #eeecdf
 $search-box: #b7c3cf
 $dark-tan: #bcbbae
 $tan: #F5F3E9
+$light-tan: #FCFAF4
 
 $Ultra: 'Ultra'
 $Yellowtail: 'Yellowtail'
@@ -38,7 +39,7 @@ $black-shadow: 0px 2px 1px black
 /* Woo Buttons */
 .red-button
   background: $red
-  border-radius: 4px
+  border-radius: 5px
   color: #fff
   text-shadow: 0px 2px 1px #64100D
   font-weight: bold
@@ -66,7 +67,7 @@ $black-shadow: 0px 2px 1px black
 
 .green-button
   background: green
-  border-radius: 4px
+  border-radius: 5px
   color: #eeecdf
   text-shadow: 1px 1px 1px black
   font-weight: bold
@@ -196,20 +197,21 @@ header
         display: block
         text-indent: -9999px
 aside
-  width: 294px
+  width: 300px
   background-color: #F5F3E9
   //background: $off-grey image-url("shared/redesign/background.gif") center
   position: fixed
   display: block
   height: 100%
   z-index: 999
+  padding-top: 10px
   .red-button
-    width: 83%
+    width: 235px
     text-align: center
     vertical-align: center
     padding: 12px 9px 13px 9px
     margin: 0 auto
-      top: 25px
+      top: 15px
   ul.post-box
     margin: 0
       top: 25px
@@ -233,10 +235,10 @@ aside
         font-weight: normal
         font-size: 14px
   #your-town
-    width: 90%
+    width: 255px
     margin: 0 auto
     padding: 15px 0px 0px 0px
-    margin-bottom: -5px
+    margin-bottom: -4px
     h3
       font-family: $heading
       font-size: 15px
@@ -247,9 +249,10 @@ aside
     .your-town 
       padding: 0px
       li
-        padding: 7px 10px 10px 12px
+        padding: 8px 10px 8px 9px
         &:hover, &:focus, &:active
-          background-color: rgba(255, 255, 255, 0.4)
+          background-color: $light-tan
+          border-radius: 5px
         a
           text-decoration: none
           font-family: $heading
@@ -279,7 +282,7 @@ aside
           background: image-url("shared/redesign/announcements-icon.png") no-repeat left       
 
   #directories
-    width: 266px
+    width: 270px
     margin: 0 auto
     h3
       display: inline-block
@@ -287,20 +290,20 @@ aside
       font-size: 18px
       padding: 10px 8px
       margin: 19px 0px 0px 0px
-      background-color: rgba(225, 225, 225, 0.3)
+      background-color: rgba(225, 225, 225, 0.35)
       color: $red
-      border-radius: 4px 4px 0px 0px
+      border-radius: 5px 5px 0px 0px
       cursor: pointer
-      width: 113px
+      width: 115px
       text-align: center
       text-shadow: none
       border: 1px solid #CAC8B8
-      border-bottom: 1px solid #efeee7
+      border-bottom: 1px solid $light-tan
       box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
       text-shadow: rgba(255, 255, 255, 0.75)
       &:hover
         color: $blue
-        background-color: #efeee7
+        background-color: $light-tan
         cursor: pointer
 
     li.directory_listing
@@ -319,25 +322,25 @@ aside
 
 
 #directory_nav h3.sidebar-links.current_tab
-  background-color: #e2e0d5
+  background-color: $light-tan
 
 #directory_nav 
   height: 58px
   cursor: pointer
-  width: 268px
+  width: 270px
   h3
     cursor: pointer
     &:hover
-      background-color: #e2e0d5
+      background-color: $light-tan
   h3.sidebar-links.current_tab
-    background-color: #e2e0d5
+    background-color: $light-tan
     color: $red
     position: relative
     z-index: 999
 
 #directory_content
   height: 100%
-  width: 244px
+  width: 238px
   background-color: #efeee7
   padding: 0px 10px 10px 10px
   position: relative
@@ -348,9 +351,9 @@ aside
   .your-neighbors
     .neighbor
       margin-left: 0px
-      border-bottom: 1px solid
+      border-bottom: 1px dotted
       border-color: lighten($dark-grey, 30%)
-      box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.75)
+      box-shadow: 0px 1px 0px rgba(255, 255, 255, 1.0)
       padding-bottom: 5px
       padding-top: 15px
       width: auto
@@ -365,8 +368,8 @@ aside
         height: inherit
         p
           float: right
-          width: 187px
-          margin: 0px
+          width: 181px
+          margin-top: 2px
           padding-bottom: 10px
         h4
           color: $red
@@ -376,7 +379,7 @@ aside
         font-weight: normal
         font-size: 18px
         line-height: 16px
-        margin-bottom: 5px
+        margin-bottom: 0px
         margin-right: 10px
         text-overflow: ellipsis
         overflow: hidden
@@ -387,13 +390,14 @@ aside
         color: lighten($black, 10%)
         text-overflow: ellipsis
         overflow: hidden
-        margin-top: 3px
+        margin-top: 2px
         line-height: 15px
       .avatar-container
         width: 32px
         height: 32px
         border-radius: 5px
         margin-bottom: 10px
+        overflow: hidden
         margin-right: 10px
         float: left
         background-color: #ccc
@@ -405,9 +409,9 @@ aside
           height: 100%
   .page
     margin-left: 0px
-    border-bottom: 1px solid
+    border-bottom: 1px dotted
     border-color: lighten($dark-grey, 30%)
-    box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.75)
+    box-shadow: 0px 1px 0px rgba(255, 255, 255, 1.0)
     padding-bottom: 5px
     padding-top: 15px
     width: auto
@@ -422,8 +426,8 @@ aside
       height: inherit
       p
         float: right
-        width: 187px
-        margin: 0px
+        width: 181px
+        margin-top: 2px
         padding-bottom: 10px
       h4
         color: $red
@@ -433,18 +437,17 @@ aside
       font-weight: normal
       font-size: 18px
       line-height: 16px
-      margin-bottom: 5px
+      margin-bottom: 0px
       margin-right: 10px
       text-overflow: ellipsis
       overflow: hidden
-      text-transform: capitalize
     p
       font-family:  $body
       font-size: 13px
       color: lighten($black, 10%)
       text-overflow: ellipsis
       overflow: hidden
-      margin-top: 3px
+      margin-top: 2px
       line-height: 15px
     .avatar-container
       width: 32px
@@ -472,13 +475,13 @@ aside
   .wire
     min-height: 100px
     background: white
-    border-radius: 4px
+    border-radius: 5px
     margin: 20px
     position: relative
     box-shadow: 0px 0px 5px #666
     .wire-top
       height: 30px
-      border-radius: 4px
+      border-radius: 5px
       border-bottom-left-radius: 0
       border-bottom-right-radius: 0      
       //background: $light-grey image-url("shared/redesign/background.gif")
@@ -729,7 +732,7 @@ aside
     height: 40px
     .header-display
       margin: auto
-      border-radius: 4px
+      border-radius: 5px
       background: $light-grey image-url("shared/redesign/background.gif")
       box-shadow: inset 0px 1px 0px 0px white
       border-bottom: 1px solid 
