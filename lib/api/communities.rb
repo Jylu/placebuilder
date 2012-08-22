@@ -703,9 +703,84 @@ CONDITION
     #
     # term - the term to find auto-completed
     get "/:id/address_completions" do
-      addr = find_community.residents.where("address ILIKE ?", "%#{params[:term]}%").pluck(:address)
+      if !find_community.street_addresses.nil? && find_community.street_addresses.count > 0
+        addr = find_community.street_addresses.where("address ILIKE ?", "%#{params[:term]}%").pluck(:address)
 
-      serialize(addr[0, 7])
+        serialize(addr[0, 7])
+      else
+        addr = find_community.residents.where("address ILIKE ?","%#{params[:term]}%").pluck(:address)
+
+        serialize(addr[0,7])
+      end
+    end
+
+    # Returns a list of address approximations
+    #
+    # term - the address to match with
+    # TODO: Instead of loosening the similarity cut-off,
+    # make sure they type in a "proper" address (ie begins with some #)
+    get "/:id/address_approximate" do
+      if find_community.launch_date < Community.find_by_name("Lexington").launch_date
+        return serialize([-1])
+      end
+      if params[:term].nil? || params[:term].empty?
+        return serialize([])
+      end
+
+      input = params[:term].split(",").first
+      likeness = input.split(" ").first =~ /^[0-9]+/ ? 0.84 : 0.84
+      addr = {}
+      best = 0
+
+      if !find_community.street_addresses.nil? && find_community.street_addresses.count > 0
+        find_community.street_addresses.each do |street_address|
+          street = street_address.address.squeeze(" ").strip
+          test = street.jarowinkler_similar(input.squeeze(" ").strip)
+
+          if test == 1
+            best = test
+            addr[street] = test
+            break
+          end
+
+          st_apt = street.clone
+          st_apt << " Apt" if !street.upcase.include?("APT")
+          test = st_apt.jarowinkler_similar(input.squeeze(" ").strip)
+          if test > best
+            best = test
+          end
+          if test >= likeness
+            addr[street] = test
+          end
+        end
+      else
+        find_community.residents.each do |street_address|
+          next if street_address.address.nil? || street_address.address.empty?
+          street = street_address.address.squeeze(" ").split(",").first.strip
+          test = street.jarowinkler_similar(input.squeeze(" ").strip)
+
+          if test == 1
+            best = test
+            addr[street] = test
+            break
+          end
+
+
+          st_apt = street.clone
+          st_apt << " Apt" if !street.upcase.include?("APT")
+          test = st_apt.jarowinkler_similar(input.squeeze(" ").strip)
+          if test > best
+            best = test
+          end
+          if test >= likeness
+            addr[street] = test
+          end
+        end
+      end
+
+      list = addr.sort {|a, b| b[1] <=> a[1]}.map {|a, b| a}
+      threshold_test = [best, list[0]]
+      serialize(threshold_test)
     end
 
     # Returns a list of names we have on file that matches what is typed
