@@ -3,12 +3,6 @@ CommonPlace.registration.Router = Backbone.Router.extend(
     "": "new_user"
     "/": "new_user"
     "new": "new_user"
-    "register/profile": "profile"
-    "register/avatar": "crop"
-    "register/crop": "crop"
-    "register/feeds": "feed"
-    "register/groups": "group"
-    "register/neighbors": "neighbors"
     "*p": "new_user"
 
   initialize: (options) ->
@@ -30,24 +24,6 @@ CommonPlace.registration.Router = Backbone.Router.extend(
 
   address: ->
     @modal.showPage "address"
-
-  welcome: ->
-    @modal.showPage "welcome"
-
-  profile: ->
-    @modal.showPage "profile"
-
-  crop: ->
-    @modal.showPage "crop"
-
-  feed: ->
-    @modal.showPage "feed"
-
-  group: ->
-    @modal.showPage "group"
-
-  neighbors: ->
-    @modal.showPage "neighbors", CommonPlace.account.toJSON()
 
   initFacebook: ->
     e = document.createElement("script")
@@ -92,55 +68,6 @@ CommonPlace.registration.RegistrationModal = CommonPlace.View.extend(
           complete: self.options.complete
         )
 
-      welcome: ->
-        new CommonPlace.registration.WelcomeView(
-          nextPage: nextPage
-          data: data
-          slideIn: slideIn
-          communityExterior: self.communityExterior
-        )
-
-      profile: ->
-        new CommonPlace.registration.ProfileView(
-          nextPage: nextPage
-          data: data
-          slideIn: slideIn
-          communityExterior: self.communityExterior
-        )
-
-      crop: ->
-        new CommonPlace.registration.CropView(
-          nextPage: nextPage
-          slideIn: slideIn
-          data: data
-        )
-
-      feed: ->
-        new CommonPlace.registration.FeedListView(
-          nextPage: nextPage
-          slideIn: slideIn
-          communityExterior: self.communityExterior
-          data: data
-          complete: self.options.complete
-        )
-
-      group: ->
-        new CommonPlace.registration.GroupListView(
-          nextPage: nextPage
-          slideIn: slideIn
-          communityExterior: self.communityExterior
-          data: data
-          complete: self.options.complete
-        )
-
-      neighbors: ->
-        new CommonPlace.registration.NeighborsView(
-          complete: self.options.complete
-          slideIn: slideIn
-          communityExterior: self.communityExterior
-          data: data
-          nextPage: nextPage
-        )
     }[page]()
     view.render()
 

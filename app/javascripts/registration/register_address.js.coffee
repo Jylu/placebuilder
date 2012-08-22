@@ -1,10 +1,9 @@
 CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModalPage.extend(
-  template: "registration.home_address"
+  template: "registration.address"
   events:
     "click input.continue": "submit"
     "submit form": "submit"
     "click .next-button": "submit"
-    "input #street_address": "updateMap"
     "focusout #street_address": "updateMap"
 
   afterRender: ->
@@ -36,7 +35,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
   updateMap: (e) ->
     e.preventDefault() if e
     address = $("#street_address").val()
-    if address isnt ""
+    if address isnt "" and address.length > 5  #trying to prevent unnecessary calls to the maps API
       address += " "+@community_name()
       @map_address(address)
 

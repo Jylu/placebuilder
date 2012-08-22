@@ -1,6 +1,5 @@
 CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
-  template: "main_page.tour.home_profile"
-  facebookTemplate: "main_page.tour.facebook_profile"
+  template: "main_page.tour.profile"
   events:
     "click input.continue": "submit"
     "submit form": "submit"

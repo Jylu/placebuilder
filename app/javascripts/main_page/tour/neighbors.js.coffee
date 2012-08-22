@@ -1,5 +1,5 @@
 CommonPlace.main.NeighborsView = CommonPlace.main.TourModalPage.extend(
-  template: "main_page.tour.home_neighbors"
+  template: "main_page.tour.neighbors"
   events:
     "click .next-button": "submit"
 

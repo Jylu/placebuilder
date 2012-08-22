@@ -1,5 +1,5 @@
 CommonPlace.main.WelcomeView = CommonPlace.main.TourModalPage.extend(
-  template: "main_page.tour.home_welcome"
+  template: "main_page.tour.welcome"
   events:
     "click .next-button": "submit"
 
