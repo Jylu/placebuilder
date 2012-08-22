@@ -258,9 +258,10 @@ group-post:first
     border-radius: 4px
     border-bottom-left-radius: 0
     border-bottom-right-radius: 0      
-    background: $light-grey image-url("shared/redesign/background.gif")
-    border-bottom: 1px solid 
-    border-color: lighten($dark-grey, 20%)
+    //background: $light-grey image-url("shared/redesign/background.gif")
+    border-bottom: 1px dotted 
+    border-color: #D7D5C6
+    background-color: #F5F3E9
     h3
       font: bold 18px $heading
       float: left
@@ -269,9 +270,10 @@ group-post:first
       padding-left: 30px
       background: image-url("shared/redesign/wire-icon.png") left no-repeat       
       background-position: 5px 5px
-      padding: 5px 0px 2px 30px
+      padding: 6px 0px 2px 30px
       width: 300px
       height: 20px
+      font-weight: normal
     p
       font-family: $heading
       font-size: 16px
@@ -324,6 +326,7 @@ group-post:first
     color: $red
     height: 35px
     margin-right: 30px
+    margin-bottom: 5px
     span.thank
       color: $dark-grey
     p
@@ -336,7 +339,7 @@ group-post:first
       font-size: 11px
     .actions
       border-top: 1px dotted
-      border-bottom: 1px dotted
+      //border-bottom: 1px dotted
       height: 35px
       border-color: #ddd
       li
@@ -374,7 +377,7 @@ group-post:first
         background-position: 10px 10px
         &:hover, &:focus, &:active
           background: image-url("shared/redesign/thanked.png") no-repeat
-          padding-left: 28px
+          padding-left: 33px
           background-position: 10px 10px
           color: $dark-grey
       li.flag-link
