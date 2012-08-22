@@ -22,6 +22,7 @@ $light-grey: #e8e8e8
 $off-grey: #eeecdf
 $search-box: #b7c3cf
 $dark-tan: #bcbbae
+$tan: #F5F3E9
 
 $Ultra: 'Ultra'
 $Yellowtail: 'Yellowtail'
@@ -196,7 +197,8 @@ header
         text-indent: -9999px
 aside
   width: 294px
-  background: $off-grey image-url("shared/redesign/background.gif") center
+  background-color: #F5F3E9
+  //background: $off-grey image-url("shared/redesign/background.gif") center
   position: fixed
   display: block
   height: 100%
@@ -294,7 +296,7 @@ aside
       text-shadow: none
       border: 1px solid #CAC8B8
       border-bottom: 1px solid #efeee7
-      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.75)
+      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
       text-shadow: rgba(255, 255, 255, 0.75)
       &:hover
         color: $blue
@@ -479,9 +481,10 @@ aside
       border-radius: 4px
       border-bottom-left-radius: 0
       border-bottom-right-radius: 0      
-      background: $light-grey image-url("shared/redesign/background.gif")
-      border-bottom: 1px solid 
-      border-color: lighten($dark-grey, 20%)
+      //background: $light-grey image-url("shared/redesign/background.gif")
+      border-bottom: 1px dotted 
+      border-color: #D7D5C6
+      background-color: #F5F3E9
       h3
         font-family: $heading
         float: left
@@ -491,6 +494,7 @@ aside
         background: image-url("shared/redesign/wire-icon.png") left no-repeat
         background-position: 5px 5px
         padding: 8px 0px 2px 30px
+        font-weight: normal
       p
         font-family: $heading
         font-size: 16px
