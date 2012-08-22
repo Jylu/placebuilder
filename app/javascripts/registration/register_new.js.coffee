@@ -1,5 +1,5 @@
 CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModalPage.extend(
-  template: "registration.home_new"
+  template: "registration.new"
   events:
     "click input.sign_up": "submit"
     "submit form": "submit"

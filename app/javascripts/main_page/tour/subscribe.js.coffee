@@ -1,5 +1,5 @@
 CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
-  template: "main_page.tour.home_subscribe"
+  template: "main_page.tour.subscribe"
   feed_kinds: [ "Non-profit", "Community Group", "Business", "Municipal", "News", "Other" ]
   events:
     "click input.continue": "submit"
@@ -43,7 +43,7 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
     @nextPage "neighbors", @data
 
   FeedItem: CommonPlace.View.extend(
-    template: "main_page.tour.home_feed-item"
+    template: "main_page.tour.feed-item"
 
     events:
       click: "check"
