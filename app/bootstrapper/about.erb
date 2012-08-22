@@ -158,7 +158,7 @@
     <script type="text/javascript">
       CommonPlace.community = new Community(<%= Serializer::serialize(@community).to_json.html_safe %>);
       CommonPlace.account = new Account(<%= @account.try(:persisted?) ? Serializer::serialize(Account.new(@account)).to_json : "{}" %>);
-      var header = new HeaderView({el: $("#header")});
+      var header = new CommonPlace.shared.HeaderView({el: $("#header")});
       header.render();
 
       <% if @active_tab %>
@@ -166,12 +166,12 @@
       <% end %>
 
       var communityExterior = <%= Serializer::serialize(@community.exterior).to_json.html_safe %>;
-      window.router = new RegistrationRouter({ communityExterior: communityExterior });
+      window.router = new CommonPlace.registration.Router({ communityExterior: communityExterior });
 
       var communitySlug = window.location.pathname.split("/")[1];
 
-      var nominateForm = new NominateCivicHeroForm({ el: $("#nominate-form"), communityExterior: communityExterior });
-      var applyForm = new ApplyCivicLeaderForm({ el: $("#apply-form"), communityExterior: communityExterior });
+      var nominateForm = new CommonPlace.registration.NominateCivicHeroForm({ el: $("#nominate-form"), communityExterior: communityExterior });
+      var applyForm = new CommonPlace.registration.ApplyCivicLeaderForm({ el: $("#apply-form"), communityExterior: communityExterior });
       nominateForm.render();
       applyForm.render();
 

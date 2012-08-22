@@ -59,6 +59,14 @@ CommonPlace.registration.RegistrationModal = CommonPlace.View.extend(
           data: data
         )
 
+      new_about_user: ->
+        new CommonPlace.registration.AboutPageRegisterNewUserView(
+          nextPage: nextPage
+          slideIn: slideIn
+          communityExterior: self.communityExterior
+          data: data
+        )
+
       address: ->
         new CommonPlace.registration.AddressView(
           nextPage: nextPage

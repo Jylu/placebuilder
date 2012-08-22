@@ -124,7 +124,7 @@
     <script type="text/javascript">
       CommonPlace.community = new Community(<%= Serializer::serialize(@community).to_json.html_safe %>);
       CommonPlace.account = new Account({});
-      var header = new HeaderView({el: $("#header")});
+      var header = new CommonPlace.shared.HeaderView({el: $("#header")});
       header.render();
     </script>
   </body>

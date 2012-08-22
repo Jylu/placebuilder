@@ -1,5 +1,5 @@
-var RegisterNewUserView = RegistrationModalPage.extend({
-  template: "registration.home_new",
+var RegisterNewUserView = CommonPlace.registration.RegistrationModalPage.extend({
+  template: "registration.new",
   facebookTemplate: "registration.facebook",
 
   events: {
