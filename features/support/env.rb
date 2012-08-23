@@ -6,6 +6,7 @@
 
 require 'cucumber/rails'
 require 'factory_girl/step_definitions'
+require 'coffee_script'
 Dir.glob(File.join(File.dirname(__FILE__), '../../spec/factories/*.rb')).each {|f| require f }
 
 Capybara.register_driver :chrome do |app|

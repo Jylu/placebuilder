@@ -4,7 +4,6 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     "click input.continue": "submit"
     "submit form": "submit"
     "click .next-button": "submit"
-    "focusout #street_address": "updateMap"
 
   afterRender: ->
     @hasAvatarFile = false
@@ -17,40 +16,6 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     @$("input[name=street_address]").autocomplete
       source: url
       minLength: 1
-    @initMap()
-
-  initMap: ->
-    @geocoder = new google.maps.Geocoder()
-    latlng = new google.maps.LatLng(42.447, -71.225)
-    mapOptions =
-      zoom: 12
-      center: latlng
-      mapTypeId: google.maps.MapTypeId.ROADMAP
-
-    @map = new google.maps.Map(document.getElementById("map_canvas"), mapOptions)
-
-  community_name: ->
-    @communityExterior.name
-
-  updateMap: (e) ->
-    e.preventDefault() if e
-    address = $("#street_address").val()
-    if address isnt "" and address.length > 5  #trying to prevent unnecessary calls to the maps API
-      address += " "+@community_name()
-      @map_address(address)
-
-  map_address: (address) ->
-    @geocoder.geocode
-      address: address
-    , _.bind((results, status) ->
-      if status is google.maps.GeocoderStatus.OK and results.length is 1
-        @map.setCenter results[0].geometry.location
-        @map.setZoom(14)
-        marker = new google.maps.Marker(
-          map: @map
-          position: results[0].geometry.location
-        )
-    , this)
 
   user_name: ->
     (if (@data.full_name) then @data.full_name.split(" ")[0] else "")

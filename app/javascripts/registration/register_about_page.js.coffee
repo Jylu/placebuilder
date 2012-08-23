@@ -56,33 +56,18 @@ CommonPlace.registration.AboutPageRegisterNewUserView = CommonPlace.registration
     e.preventDefault()  if e
     @data.full_name = @$("input[name=full_name]").val()
     @data.email = @$("input[name=email]").val()
-    @data.address = @$("input[name=street_address]").val()
-    validate_api = "/api" + @communityExterior.links.registration.validate
-    $.getJSON validate_api, @data, _.bind((response) ->
-      @$(".error").hide()
-      valid = true
-      unless _.isEmpty(response.facebook)
-        window.location.pathname = @communityExterior.links.facebook_login
-      else
-        _.each ["full_name", "email", "street_address"], _.bind((field) ->
-          model_field_name = undefined
-          if field is "street_address"
-            model_field_name = "address"
-          else
-            model_field_name = field
-          unless _.isEmpty(response[model_field_name])
-            error = @$(".error." + field)
-            errorText = _.reduce(response[model_field_name], (a, b) ->
-              a + " and " + b
-            )
-            error.text errorText
-            error.show()
-            valid = false
-        , this)
-        if valid
-          new_url = "/" + @communityExterior.slug + "/register/profile?name=" + @data.full_name + "&email=" + @data.email + "&address=" + @data.address
-          window.location.href = new_url
-    , this)
+    @data.password = @$("input[name=password]").val()
+    if @data.password is ""
+      input = @$("input[name=password]")
+      error = @$(".error.password")
+      input.addClass "input_error"
+      error.text "Password can't be empty"
+      error.show()
+    else 
+      params = [ "full_name", "email" ]
+      @validate_registration params, _.bind(->
+        @nextPage "address", @data
+      , this)
 
   facebook: (e) ->
     e.preventDefault()  if e

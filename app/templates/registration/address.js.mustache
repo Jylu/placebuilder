@@ -10,10 +10,9 @@
       <div id="suggested_address">2300 Pimmit Dr. #1012<br />Falls Church, VA 22043-555</div>
       <input type="radio" name="verify_address" value="entered" class="address_verify_radio" /> <span class="address_verify_radio">Use the address I typed.</span><br />
     </div>
-    <!--<div id="map_canvas" style="width: 388px; height: 130px;"></div>-->
     <p class="caption"><sup>*</sup> We won't share your address with anyone</p>
     <form>
-      <!--<label for="referral_source">How did you find out about CommonPlace?</label>-->
+      <label for="referral_source">How did you find out about CommonPlace?</label>
       <select name="referral_source" id="hear" class="dk" tabindex="1">
         {{#referrers}}
           <option value="{{.}}">{{.}}</option>

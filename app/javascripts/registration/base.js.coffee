@@ -4,6 +4,8 @@ CommonPlace.registration.Router = Backbone.Router.extend(
     "/": "new_user"
     "new": "new_user"
     "*p": "new_user"
+    "register/address?:params": "address"
+    "register/address": "address"
 
   initialize: (options) ->
     @initFacebook()
