@@ -19,8 +19,16 @@ CommonPlace.registration.Router = Backbone.Router.extend(
     )
     @modal.render()
 
-  new_user: ->
-    @modal.showPage "new_user"
+  new_user: (c) ->
+    if window.location.pathname.split("/").length > 2
+      url = window.location.pathname.split("/")[2]
+      if url is "about" or url is "our-mission" or url is "our-story" or url is "our-platform" or url is "press" or url is "nominate"
+        @new_user_about()
+    else
+      @modal.showPage "new_user"
+
+  new_user_about: (c) ->
+    @modal.showPage "new_user_about"
 
   address: ->
     @modal.showPage "address"
@@ -59,7 +67,7 @@ CommonPlace.registration.RegistrationModal = CommonPlace.View.extend(
           data: data
         )
 
-      new_about_user: ->
+      new_user_about: ->
         new CommonPlace.registration.AboutPageRegisterNewUserView(
           nextPage: nextPage
           slideIn: slideIn

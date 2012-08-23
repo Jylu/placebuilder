@@ -7,6 +7,9 @@
 //= require backbone
 //= require views
 //= require models
+//= require starter_site/application
 //= require starter_site/tabs
+//= require about/tabs
 
+//= require_tree ./shared
 //= require_tree ../templates
