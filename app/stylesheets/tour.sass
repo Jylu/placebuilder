@@ -114,6 +114,9 @@ $black-shadow: 0px 2px 1px black
 $darkRed: #ad312f
 $darkBlue: #1b334a
 
+body
+  overflow: hidden !important
+
 #tour-shadow
   position: fixed
   top: 0 
@@ -260,7 +263,7 @@ li div.check span.page_text
   width: 630px
   overflow: none
   background-color: #eeecdf
-  background: url(shared/redesign/red-bg.png)
+  background: url(shared/redesign/tan-bg.png)
   z-index: 1000
   margin-top: 0px
   margin-right: auto
@@ -268,6 +271,12 @@ li div.check span.page_text
   margin-bottom: 30px
   padding-bottom: 40px
   float: left
+  right: -150px
+  position: relative
+  top: 15px
+  border-radius: 5px
+  border-top: 1px solid #fff
+  color: #333
 
   img.find_title 
     margin: 15px auto 0px 30px
@@ -413,7 +422,7 @@ ul li
   background-color: #e9ded0
   margin-right: 15px
   margin-bottom: 0
-  margin-top: 10px
+  margin-top: 15px
   height: 50px
   border-radius: 4px
   
@@ -743,9 +752,9 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
   margin-bottom: 15px
 
 div#subscribe_pages ul.subscribe_pages div
-  width: 250px
+  width: 246px
   display: inline-block
-  margin-right: 27px
+  margin-right: 25px
 
 ul#Non-profit div li.check.checked
   background-color: $dark-tan

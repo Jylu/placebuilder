@@ -101,6 +101,9 @@ $black-shadow: 0px 2px 1px black
 .full-width
   width: 1100px
   margin: 0 auto
+sup
+  font-size: 0.85em
+  vertical-align: top
 
 html
   background: image-url("shared/redesign/backgrounds/Warwick2.jpg") no-repeat center center fixed
@@ -110,16 +113,31 @@ html
   -webkit-font-smoothing: antialiased
   text-rendering: optimizeLegibility
 
-header
-  height: 60px
+#wrapper
+  width: 1100px
+  margin: 0px auto
+  
+#nav_wrapper
+  width: 1100px
+  margin: 0 auto
+  position: relative
+  top: -15px
+  
+#header
+  height: 30px
   width: 100%
   background: $blue
+  padding: 15px 0px
+  z-index: 1000
   position: fixed
-  z-index: 9999
-  box-shadow: 0px 1px 10px #434343
+  top: 0px
+  left: 0px
+  right: 0px
+  box-shadow: 0px 3px 5px rgba(0,0,0,0.25)
   border: 2px solid $light-blue
     left: none
     right: none
+    bottom: 1px solid #000
   .community-name
     width: auto
     float: left
@@ -204,7 +222,7 @@ aside
   display: block
   height: 100%
   z-index: 999
-  padding-top: 10px
+  padding-top: 15px
   .red-button
     width: 235px
     text-align: center
@@ -385,7 +403,7 @@ aside
         overflow: hidden
         text-transform: capitalize
       p
-        font-family:  $body
+        font-family: $body
         font-size: 13px
         color: lighten($black, 10%)
         text-overflow: ellipsis
@@ -442,7 +460,7 @@ aside
       text-overflow: ellipsis
       overflow: hidden
     p
-      font-family:  $body
+      font-family: $body
       font-size: 13px
       color: lighten($black, 10%)
       text-overflow: ellipsis

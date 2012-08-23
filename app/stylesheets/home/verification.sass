@@ -8,6 +8,7 @@
   background: url("shared/redesign/tan-bg.png") repeat
   background-color: $tan
   float: left
+  border-radius: 5px
 
 .address
   width: 455px
@@ -38,9 +39,10 @@
     width: 440px
     padding: 8px
     color: #333
-    margin: 0px 0px 25px 0px
+    margin: 0px 0px 5px 0px
+    z-index: 150 !important
   input.address::-webkit-input-placeholder
-    color: #333
+    color: #424242
   img 
     border: 1px solid #821916
     margin-top: -5px
@@ -76,7 +78,7 @@
 
 #dk_container_hear 
   width: 455px
-  z-index: 999
+  z-index: 10 !important
   float: left
   margin-bottom: 20px
   a.dk_toggle 
@@ -87,6 +89,7 @@
     width: 448px !important
     color: $black
     border-radius: 0px !important
+    z-index: 10 !important
     span.dk_arrow.button.blue 
       border-radius: 0px !important
       border: 1px solid #0F1E2C
@@ -104,7 +107,7 @@ ul.ui-autocomplete
   width: 366px
   border: 1px solid #C9C4B4
   overflow: auto
-  max-height: 280px
+  max-height: 250px
 
 li.ui-menu-item
   border-bottom: 1px dotted #ccc
@@ -118,7 +121,7 @@ li.ui-menu-item
   color: $black
   font-family: $Rokkitt
   font-size: 18px
-  margin: 5px 0px 10px 0px
+  margin: 15px 0px 10px 0px
   text-shadow: 1px 1px 0px #fff
   display: none
 
