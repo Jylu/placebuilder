@@ -1,49 +1,26 @@
 <div id="registration1">
-
   <div class="redbox address">
-<<<<<<< HEAD
-    <h2>Resident of {{community_name}}?</h2>
-    <p>Only {{community_name}} residents can join OurCommonPlace {{community_name}}. Please verify that you live in {{community_name}}<sup>*</sup>.</p>
-    <input id="street_address" name="street_address" type="input" type="text" class="address" placeholder="Please enter your {{community_name}} street address." /><br />
-    <span class="error address"></span>
-    <div id="address_verification" style="display:none">
-      Please confirm your street address:<Br />
-      <input type="radio" id="suggested" checked="checked" name="verify_address" value="suggested" class="address_verify_radio" /> <span class="address_verify_radio">Use the address we have in our system:</span>
-      <div id="suggested_address"></div>
-      <input type="radio" name="verify_address" value="entered" class="address_verify_radio" /> <span class="address_verify_radio">Use the address I typed.</span><br />
-    </div>
-    <p class="caption"><sup>*</sup> We won't share your address with anyone</p>
-    <form>
-      <label for="referral_source">How did you find out about CommonPlace?</label>
-      <select name="referral_source" id="hear" class="dk" tabindex="1">
-        {{#referrers}}
-          <option value="{{.}}">{{.}}</option>
-        {{/referrers}}
-      </select>
-    </form>
-=======
     <div class="registration_border">
        <h2>Resident of {{community_name}}?</h2>
        <span class="divider"></span>
        <p>Only {{community_name}} residents can join OurCommonPlace {{community_name}}. Please verify that you live in {{community_name}}<sup>*</sup>.</p>
        <input id="street_address" name="street_address" type="input" type="text" class="address" placeholder="Please enter your {{community_name}} street address." /><br />
-       <div id="address_verification">
+       <span class="error address"></span>
+       <div id="address_verification" style="display:none">
          Please confirm your street address:<Br />
-         <input type="radio" name="verify_address" value="suggested" class="address_verify_radio" /> <span class="address_verify_radio">Use the address we have in our system:</span>
-         <div id="suggested_address">2300 Pimmit Dr. #1012<br />Falls Church, VA 22043-555</div>
+         <input type="radio" id="suggested" checked="checked" name="verify_address" value="suggested" class="address_verify_radio" /> <span class="address_verify_radio">Use the address we have in our system:</span>
+         <div id="suggested_address"></div>
          <input type="radio" name="verify_address" value="entered" class="address_verify_radio" /> <span class="address_verify_radio">Use the address I typed.</span><br />
        </div>
-       <!--<div id="map_canvas" style="width: 388px; height: 130px;"></div>-->
        <p class="caption"><sup>*</sup> We won't share your address with anyone</p>
        <form>
-         <!--<label for="referral_source">How did you find out about CommonPlace?</label>-->
+         <label for="referral_source">How did you find out about CommonPlace?</label>
          <select name="referral_source" id="hear" class="dk" tabindex="1">
            {{#referrers}}
              <option value="{{.}}">{{.}}</option>
            {{/referrers}}
          </select>
        </form>
->>>>>>> new styles for registration pgs including new images (star, divider line, border), changed markup accordingly
 
        <div id="find_button">
          <a href="#" class="blue-button next-button">Confirm Address</a>
