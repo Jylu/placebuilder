@@ -10,5 +10,9 @@ ZIP_CODES = {
 }
 
 ZIP_CODES.each do |slug, zip_code|
-  Community.where(slug: slug).first.update_attributes(zip_code: zip_code)
+  begin
+    Community.where(slug: slug).first.update_attributes(zip_code: zip_code)
+  rescue
+    puts "Could not find community '#{slug}'"
+  end
 end
