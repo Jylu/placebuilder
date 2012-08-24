@@ -78,7 +78,6 @@ class CommunityExterior
 
   def referral_sources
     [
-      "",
       "Received a flyer in the mail",
       "Received a postcard from a local business",
       "From the Lexington Civic Heroes Blog",
