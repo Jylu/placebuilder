@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 ZIP_CODES = {
   "Warwick" => "10990",
   "Fayetteville" => "72701",

@@ -153,12 +153,17 @@
       var bDistance = b.distance;
       return ((aDistance < bDistance) ? -1 : ((aDistance > bDistance) ? 1 : 0));
     }
+    $.location = {
+      // window.geolocation_provider is useful for testing purposes, not used in
+      // development/staging/production envs.
+      geolocation_provider: window.geolocation_provider || navigator.geolocation
+    }
     function getLocation() {
       $.ajax({
         url: "/api/communities/locations"
       }).done(function(community_locations) {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(function(position) {
+          $.location.geolocation_provider.getCurrentPosition(function(position) {
             var latitude = position.coords.latitude;
             var longitude = position.coords.longitude;
             distances = $.collect(community_locations, function(index, coords) {
@@ -168,9 +173,7 @@
               }
             });
             distances = distances.sort(sortByDistance);
-            console.log(distances);
             coordinate_pair = distances[0];
-            console.log(coordinate_pair);
             window.location.href = "/" + coordinate_pair.slug + "/about";
           });
         } else {

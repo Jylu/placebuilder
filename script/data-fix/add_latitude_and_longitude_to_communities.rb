@@ -1,3 +1,4 @@
+#!/usr/bin/env ruby
 Community.all.each do |community|
   zip_code = community.zip_code
   next unless zip_code.present?
