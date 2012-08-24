@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120815231732) do
+ActiveRecord::Schema.define(:version => 20120824011243) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -136,6 +136,8 @@ ActiveRecord::Schema.define(:version => 20120815231732) do
     t.text     "last_story"
     t.string   "state"
     t.date     "organize_start_date"
+    t.decimal  "latitude",                   :default => 0.0
+    t.decimal  "longitude",                  :default => 0.0
   end
 
   create_table "delayed_jobs", :force => true do |t|
@@ -338,6 +340,17 @@ ActiveRecord::Schema.define(:version => 20120815231732) do
     t.decimal  "longitude"
   end
 
+  create_table "organizer_data_points", :force => true do |t|
+    t.integer  "organizer_id"
+    t.string   "address"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "lat"
+    t.float    "lng"
+    t.boolean  "attempted_geolocating"
+  end
+
   create_table "posts", :force => true do |t|
     t.text     "body",                                :null => false
     t.integer  "user_id",                             :null => false
@@ -409,7 +422,7 @@ ActiveRecord::Schema.define(:version => 20120815231732) do
     t.string   "position"
     t.text     "sector_tags"
     t.text     "type_tags"
-    t.string   "notes"
+    t.text     "notes"
     t.boolean  "manually_added",      :default => false
     t.integer  "stories_count",       :default => 0,     :null => false
     t.datetime "last_story_time"
@@ -418,6 +431,13 @@ ActiveRecord::Schema.define(:version => 20120815231732) do
     t.string   "PFO_status"
     t.string   "organizer"
     t.integer  "last_examined_story"
+  end
+
+  create_table "sent_emails", :force => true do |t|
+    t.string   "tag"
+    t.integer  "community_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "stories", :force => true do |t|
