@@ -114,8 +114,6 @@ $black-shadow: 0px 2px 1px black
 $darkRed: #ad312f
 $darkBlue: #1b334a
 
-body
-  overflow: hidden !important
 
 #tour-shadow
   position: fixed
@@ -254,19 +252,26 @@ p.welcome-divider
   background-color: #eeecdf
   background: url(shared/redesign/tan-bg.png)
   z-index: 1000
-  margin-top: 5px
-  margin-right: auto
-  margin-left: 178px
-  margin-bottom: 30px
-  padding-bottom: 35px
+  margin-top: 15px
+  margin-right: 0px
+  margin-left: 238px
+  margin-bottom: 0px
+  padding: 15px
   border-radius: 5px
-
-  img.find_title 
-    margin: 20px auto 0px 30px
-
-li div.check h4
+  .find_title
+    font-size: 42px
+    background: url(shared/redesign/neighbors_stars.png) no-repeat 0px -10px
+    text-align: center
+    font-family: $Yellowtail
+    text-shadow: 0px 2px 0px #fff
+    color: $red
+    margin: -10px auto 20px auto
+    padding-bottom: 0px
+  
+.check h4
   font: bold 13px Helvetica, sans-serif
-  color: #1f3952
+  text-overflow: ellipsis !important
+  white-space: nowrap !important
 
 li div.check span.page_text
   font: 12px Helvetica, sans-serif
@@ -355,15 +360,14 @@ li div.check span.page_text
   font-size: 13px
 
 #invite_friends 
-  width: 225px
+  width: 350px
   font-size: 13px
   font-family: $heading
   line-height: 20px
   color: $black
   float: left
   text-align: left
-  margin-left: 37px
-  margin-top: 0px
+  margin: 0px
 
   ul 
     height: 23px
@@ -399,20 +403,20 @@ ul li
 
   li 
     display: inline-block
-    margin-right: 9px
+    margin-right: 5px
     padding: 0px 10px
     border-radius: 4px
     &:last-child
       margin-right: 0px
     &:hover
       display: inline-block
-      background-color: $red
+      background-color: $blue
       a
         color: #fff
         text-shadow: none
 
 #findNeighbors ul.subscribe_categories li a 
-  color: $red
+  color: $blue
   font-size: 16px
   text-decoration: none
   padding: 0px
@@ -425,7 +429,7 @@ ul li
   width: 559px
   margin-right: auto
   margin-left: auto
-  height: 370px
+  height: 300px
   overflow: scroll
   overflow-x: hidden
   background-color: #fff
@@ -500,13 +504,16 @@ ul li
   font-size: 16px
   line-height: 22px
   margin-top: 25px
+  color: $black
 
 #invite_friends p a 
   font-size: 16px
   line-height: 20px
-  color: #fff
+  color: $red
   font-weight: bold
   text-decoration: underline
+  &:hover
+    text-decoration: none
 
 #registration1 div.redbox.address div#find_button a.blue-button.next-button
   position: relative
@@ -669,14 +676,6 @@ img.page_img
     box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
     -webkit-font-smoothing: antialiased
 
-  .find_title
-    font-family: $Yellowtail
-    font-size: 36px
-    margin: 20px auto 30px auto
-    text-shadow: 3px 3px 0px $blue
-    text-align: center
-    background: url(shared/redesign/neighbors_stars.png) no-repeat 29px -16px
-
   .find_known
     width: 600px
     font-size: 24px
@@ -760,13 +759,17 @@ div#RealFindNeighbors div#find_bottom
 div.welcome
   position: relative
 
-div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
-  margin-top: 5px
-  width: 160px
+div#find_button
   float: right
-  padding: 10px
-  margin-right: -41px
+  
+div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
+  float: right
+  padding: 10px 15px
   text-align: center
+  position: relative
+  top: 0px
+  right: 0px
+  margin: 25px 0px 0px 0px
 
 div#RealFindNeighbors.container #find_button a.blue-button.next-button
   margin-top: 5px

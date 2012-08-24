@@ -16,9 +16,21 @@
   border: 3px solid #23405b
   border-radius: 5px
   box-shadow: 1px 2px 0px #fff
+  position: relative
 
 .address
-  width: 525px
+  .error
+    clear: both
+    font-family: $body
+    font-size: 11px
+    font-weight: bold
+    color: #fff
+    padding: 10px 12px 18px 12px
+    background: url('shared/redesign/error-bg.png') no-repeat bottom left
+    position: absolute
+    top: 135px
+    right: -102px
+    display: none
   h2 
     font-size: 42px
     width: 465px
@@ -34,7 +46,7 @@
     color: $black
     font-family: $Rokkitt
     font-size: 18px
-    margin: 0 0 15px 0
+    margin: 0 0 20px 0
     line-height: 1.2em
     text-shadow: 1px 1px 0px #fff
   input.address
@@ -56,7 +68,7 @@
   p.caption
     font-size: 14px
     float: right
-    margin: 10px 0 20px 0 
+    margin: 5px 0 20px 0 
     font-family: $Rokkitt
     text-align: right
   input[type=button]
@@ -135,6 +147,10 @@
           color: $red
         &:last-child
           border: 0px none
+          
+.dk_options_inner, .dk_touch .dk_options
+  max-height: 200px !important
+  
 ul.ui-autocomplete
   background: white
   width: 366px
@@ -157,7 +173,6 @@ li.ui-menu-item
   font-size: 18px
   margin: 15px 0px 10px 0px
   text-shadow: 1px 1px 0px #fff
-  display: none
 
 #address_verification input.address_verify_radio
   width: 15px
