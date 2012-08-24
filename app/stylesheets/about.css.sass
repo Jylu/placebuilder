@@ -144,90 +144,98 @@ html
             &:active
               color: #fff
               +linear-gradient(color-stops(#cc4441, #ac322f), bottom)
-        .dropdown
-          width: 270px
-          background: #EEECDF
-          text-align: center
-          z-index: 4000000
-          display:none
-          +border-radius(4px)
-          position: absolute
-          box-shadow: black 0px 1px 1px
-          right: 15px
-          top: 63px
-          .arrow
-            width: 150px
-            height: 20px
-            background: url("shared/redesign/arrow.png") no-repeat
-            background-position: 100px 12px
-            position: absolute
-            top: -20px 
-            display: block
-            right: 0
-          input
-            width: 215px
-            -webkit-appearance: none
-            font-size: 16px
-            padding: 7px
-            height: auto
-            margin-top: 5px
-            font-family: $Rokkitt
-            border: 1px solid #d7d5c5
-            font-family: $Rokkitt
-            color: #333
-            box-shadow: inset #eee 0px 0px 3px 2px, rgba(255,255,255,.15) 0px 1px 1px
-            &:focus
-              outline: none
-          input::-webkit-input-placeholder
-            color: #888
-          input:-moz-placeholder
-            color: #888
-          .email
-            margin: 20px 0px 10px 0px
-          button.signin
+          .dropdown
+            width: 270px
+            background: #EEECDF
             text-align: center
-            float: right
-            width: 90px
-            +linear-gradient(color-stops(#2e5274, #1b334a))
-            font-weight: bold
-            font-size: 15px
-            margin-right: 20px
-            padding-top: 10px
-            padding-bottom: 8px
-            margin-top: 5px
-            height: auto
-            &:hover, &:focus
-              color: #fff
-              +linear-gradient(color-stops(#3e6b96, #1b334a), top)
-              box-shadow: inset 0 1px 1px rgba(255,255,255,.5)
-            &:active
-              color: #fff
-              +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
-          button.signin.facebook
-            width: 127px
-            height: auto
-            margin-right: 12px
-            font-size: 15px
-            padding: 10px 0 8px 0
-            +linear-gradient(color-stops(#4e6fb6, #3b5998))
-            &:hover, &:focus
-              color: #fff
-              +linear-gradient(color-stops(#5c83d7, #3b5998), top)
-              box-shadow: inset 0 1px 1px rgba(255,255,255,.5)
-            &:active
-              color: #fff
-              +linear-gradient(color-stops(#4e6fb6, #3b5998), bottom)
-          p 
-            clear: both
-            margin-left: 20px
-            padding: 10px 0px 15px 0px
-            text-align: left
-            font-family: $Rokkitt
-            cursor: pointer
-            color: #565656
-            font-weight: bold
-            &:hover
-              text-decoration: underline
+            z-index: 4000000
+            display:none
+            +border-radius(4px)
+            position: absolute
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2)
+            right: 15px
+            top: 61px
+            a
+              color: #565656
+              text-decoration: none
+            .arrow
+              width: 150px
+              height: 20px
+              background: url("shared/redesign/arrow.png") no-repeat
+              background-position: 95px 12px
+              position: absolute
+              top: -20px 
+              display: block
+              right: 0
+            input
+              width: 215px
+              -webkit-appearance: none
+              font-size: 16px
+              padding: 7px
+              height: auto
+              margin-top: 5px
+              font-family: $Rokkitt
+              border: 1px solid #d7d5c5
+              font-family: $Rokkitt
+              color: #333
+              box-shadow: inset #eee 0px 0px 3px 2px, rgba(255,255,255,.15) 0px 1px 1px
+              -webkit-font-smoothing: antialiased
+              &:focus
+                outline: none
+            input::-webkit-input-placeholder
+              color: #888
+            input:-moz-placeholder
+              color: #888
+            .email
+              margin: 20px 0px 10px 0px
+            button.signin
+              text-align: center
+              float: right
+              width: 90px
+              +linear-gradient(color-stops(#2e5274, #1b334a))
+              font-weight: bold
+              font-size: 15px
+              margin-right: 20px
+              padding-top: 10px
+              padding-bottom: 8px
+              margin-top: 5px
+              height: auto
+              -webkit-font-smoothing: antialiased
+              &:hover, &:focus
+                color: #fff
+                +linear-gradient(color-stops(#3e6b96, #1b334a), top)
+                box-shadow: inset 0 1px 1px rgba(255,255,255,.5)
+              &:active
+                color: #fff
+                +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
+            button.signin.facebook
+              width: 127px
+              height: auto
+              margin-right: 12px
+              font-size: 15px
+              padding: 10px 0 8px 0
+              +linear-gradient(color-stops(#4e6fb6, #3b5998))
+              -webkit-font-smoothing: antialiased
+              &:hover, &:focus
+                color: #fff
+                +linear-gradient(color-stops(#5c83d7, #3b5998), top)
+                box-shadow: inset 0 1px 1px rgba(255,255,255,.5)
+              &:active
+                color: #fff
+                +linear-gradient(color-stops(#4e6fb6, #3b5998), bottom)
+            p 
+              clear: both
+              margin-left: 20px
+              padding: 10px 0px 15px 0px
+              text-align: left
+              font-family: $Rokkitt
+              cursor: pointer
+              color: #565656
+              font-weight: bold
+              -webkit-font-smoothing: antialiased
+              &:hover
+                text-decoration: underline
+              
 em
   font-style: italic
 

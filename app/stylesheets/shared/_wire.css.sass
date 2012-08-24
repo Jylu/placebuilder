@@ -295,7 +295,9 @@ group-post:first
     h3 
       font-size: 22px
       font-weight: bold
-      margin-bottom: 10px
+      margin-bottom: 5px
+      margin-top: -3px
+      line-height: 26px
       text-shadow: none
     p.author
       font-size: 13px
@@ -305,7 +307,11 @@ group-post:first
       position: relative
     a
       color: $red
-      font-family: Helvetica, Arial, sans-serif
+      font-family: $body
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+        
     p.post-text
       font-size: 13px
       line-height: 18px
@@ -327,9 +333,9 @@ group-post:first
     font-size: 10px
     font-weight: bold
     color: $red
-    height: 35px
+    height: 37px
     margin-right: 20px
-    margin-bottom: 5px
+    margin-bottom: 0px
     span.thank
       color: $dark-grey
     p
@@ -731,7 +737,7 @@ div.bottom input.next-button
         color: $blue
 
 div.post-action.clear ul.actions li
-  font: bold 11px Helvetica, "Helvetica Neue", sans-serif
+  font: bold 12px $body
   padding-left: 33px
 
 #community-resources div.resources div.wire div.events.wire ul.wire-list li.wire-item div.post-content table.event-location
