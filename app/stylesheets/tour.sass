@@ -142,10 +142,10 @@ body
   font-family: $heading
 
 .welcome
-  background-image: image-url("shared/redesign/welcomebg.png")
+  background: image-url("shared/redesign/welcomebg.png") no-repeat center
   width: 440px
   height: 400px
-  padding: 115px 65px 100px 73px
+  padding: 115px 65px 100px 65px
 
 .welcome-to
   background: image-url("tour/welcome-to.png") no-repeat center
@@ -168,7 +168,7 @@ body
 
 .welcome h4 
   font-family: $Yellowtail
-  color: white
+  color: $blue
   font-size: 30px
   margin: 0
   position: relative
@@ -180,11 +180,12 @@ body
   font-size: 80px
   text-align: center
   letter-spacing: 1px
-  text-shadow: 6px 5px 0px #1B334A
+  text-shadow: 1px 2px 0px #fff
   color: white
   margin: 0
   text-transform: capitalize 
   font-weight: bold
+  color: $red
 
 .welcome .white-box 
   width: 400px
@@ -192,17 +193,26 @@ body
   margin-top: 15px
   padding: 15px
   padding-top: 20px
-  padding-bottom: 20px
-  border-radius: 4px
-  background: white
+  padding-bottom: 18px
+  border-radius: 5px
+  background-color: #f7f5ea
   text-align: center 
+  border: 1px solid #C9C4B4
+  box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
 
 .welcome p 
   margin: 0
   font-family: $heading
-  color: #ffffff
+  color: $black
   font-size: 20px
   font-weight: bold
+  text-shadow: 0px 1px 0px #fff
+
+p.welcome-divider
+  background: image-url("shared/redesign/welcome-divider.png") no-repeat center
+  text-align: center
+  width: 100%
+  color: $red
 
 .welcome .bottom 
   width: 430px
@@ -218,30 +228,38 @@ body
   margin: 10px auto 25px
 
 .welcome ul li 
-  color: white
+  color: $black
   margin-bottom: 5px
   font-size: 18px
   line-height: 30px
-  background: url(shared/redesign/bullet_star.png) no-repeat 0 6px
+  background: url("shared/redesign/star-red.png") no-repeat 0 6px
   text-indent: 26px
+  text-shadow: 0px 1px 0px #fff
 
 .white-box p 
   color: $blue
   font-size: 24px
   font-weight: normal
+  
+.registration_border
+  float: left
+  padding: 30px
+  border: 3px solid #23405b
+  border-radius: 5px
+  box-shadow: 1px 2px 0px #fff
 
 #findNeighbors 
   width: 645px
   float: left
   background-color: #eeecdf
-  background: url(shared/redesign/red-bg.png)
+  background: url(shared/redesign/tan-bg.png)
   z-index: 1000
   margin-top: 5px
   margin-right: auto
   margin-left: 178px
   margin-bottom: 30px
   padding-bottom: 35px
-  border-radius: 4px
+  border-radius: 5px
 
   img.find_title 
     margin: 20px auto 0px 30px
@@ -277,6 +295,7 @@ li div.check span.page_text
   border-radius: 5px
   border-top: 1px solid #fff
   color: #333
+  padding: 15px
 
   img.find_title 
     margin: 15px auto 0px 30px
@@ -340,7 +359,7 @@ li div.check span.page_text
   font-size: 13px
   font-family: $heading
   line-height: 20px
-  color: #ffffff
+  color: $black
   float: left
   text-align: left
   margin-left: 37px
@@ -383,22 +402,24 @@ ul li
     margin-right: 9px
     padding: 0px 10px
     border-radius: 4px
-    text-shadow: rgba(0, 0, 0, .75) 0px 2px 2px
     &:last-child
       margin-right: 0px
-
-#findNeighbors ul.subscribe_categories li:hover 
-  display: inline-block
-  background-color: #1b334a
-  box-shadow: rgba(255, 255, 255, .25) 0px 1px 1px
+    &:hover
+      display: inline-block
+      background-color: $red
+      a
+        color: #fff
+        text-shadow: none
 
 #findNeighbors ul.subscribe_categories li a 
-  color: #fff
+  color: $red
   font-size: 16px
   text-decoration: none
   padding: 0px
   top: 0px
   font-weight: bold
+  text-shadow: 0px 2px 0px #fff
+
 
 #subscribe_pages 
   width: 559px
@@ -407,11 +428,11 @@ ul li
   height: 370px
   overflow: scroll
   overflow-x: hidden
-  background-color: rgba(0, 0, 0, 0.12)
-  border: 1px solid #741512
-  box-shadow: inset #821916 0px 0px 2px 2px, rgba(255, 255, 255, .25) 0px 1px 1px
+  background-color: #fff
+  border: 1px solid #C9C4B4
+  box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
   padding: 0px 0px 10px 15px
-  border-radius: 4px
+  border-radius: 5px
   margin-bottom: 5px
 
 #subscribe_pages ul.subscribe_pages li 
@@ -419,26 +440,27 @@ ul li
   width: 227px
   display: inline-block
   padding: 15px
-  background-color: #e9ded0
+  background-color: #f7f5ea
   margin-right: 15px
   margin-bottom: 0
   margin-top: 15px
   height: 50px
-  border-radius: 4px
+  border-radius: 5px
+  border: 1px solid #E0DBCB
   
 #subscribe_pages div.check
   overflow: hidden
   height: 50px
 
 #subscribe_pages ul.subscribe_pages li:hover
-  background-color: $blue
-  color: $dark-tan
+  background-color: $red
+  color: #fff
   cursor: pointer
   a h4
-    color: $dark-tan
+    color: #fff
     font: 14px Helvetica, sans-serif
   a span.page_text
-    color: $dark-tan
+    color: #fff
     font: 12px Helvetica, sans-serif
 
 #subscribe_pages ul.subscribe_pages li a 
@@ -446,11 +468,17 @@ ul li
   float: left
   color: $dark-tan
 
-#subscribe_pages ul.subscribe_pages li img.page_img 
+#subscribe_pages ul.subscribe_pages li div.avatar-container
   width: 50px
   height: 50px
   float: left
   margin-right: 12px
+  border-radius: 5px
+  background-color: #ccc
+  overflow: hidden
+  background-position: top center
+  background-size: auto 100%
+  background-repeat: no-repeat
 
 #subscribe_pages ul.subscribe_pages li a h4 
   font: bold 14px Helvetica, Arial, sans-serif
@@ -497,7 +525,7 @@ img.page_img
   float: left
 
 #subscribe_pages a h2
-  color: #fff
+  color: $red
   padding-top: 15px
   margin-bottom: 5px
   font-size: 20px
@@ -624,7 +652,7 @@ img.page_img
   color: #fff
   right: 380px
   float: left
-  border-radius: 4px
+  border-radius: 5px
   -webkit-font-smoothing: antialiased
 
   #search 
@@ -757,15 +785,16 @@ div#subscribe_pages ul.subscribe_pages div
   margin-right: 25px
 
 ul#Non-profit div li.check.checked
-  background-color: $dark-tan
+  background-color: #fff
+  border-color: #eceade
   h4
     font: bold 14px Helvetica, Arial, sans-serif
     width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #1b334a
+    color: #888
   span.page_text
-    color: #1a1918
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
     width: 160px
     padding-left: 63px
@@ -794,21 +823,22 @@ ul#Non-profit div li.check
     color: #1b334a
 
 #Non-profit div li.check:hover span.page_text
-  color: #e9ded0
+  color: #fff
 
 #Non-profit div li.check:hover h4
-  color: #e9ded0
+  color: #fff
 
 ul#Community-group div li.check.checked
-  background-color: $dark-tan
+  background-color: #fff
+  border-color: #eceade
   h4
     font: bold 14px Helvetica, Arial, sans-serif
     width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #1b334a
+    color: #888
   span.page_text
-    color: #1a1918
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
     width: 160px
     padding-left: 63px
@@ -837,21 +867,22 @@ ul#Community-group div li.check
     color: #1b334a
 
 #Community-group div li.check:hover span.page_text
-  color: #e9ded0
+  color: #fff
 
 #Community-group div li.check:hover h4
-  color: #e9ded0
+  color: #fff
 
 ul#Business div li.check.checked
-  background-color: $dark-tan
+  background-color: #fff
+  border-color: #eceade
   h4
     font: bold 14px Helvetica, Arial, sans-serif
     width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #1b334a
+    color: #888
   span.page_text
-    color: #1a1918
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
     width: 160px
     padding-left: 63px
@@ -880,21 +911,22 @@ ul#Business div li.check
     color: #1b334a
 
 #Business div li.check:hover span.page_text
-  color: #e9ded0
+  color: #fff
 
 #Business div li.check:hover h4
-  color: #e9ded0
+  color: #fff
 
 ul#Municipal div li.check.checked
-  background-color: $dark-tan
+  background-color: #fff
+  border-color: #eceade
   h4
     font: bold 14px Helvetica, Arial, sans-serif
     width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #1b334a
+    color: #888
   span.page_text
-    color: #1a1918
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
     width: 160px
     padding-left: 63px
@@ -923,21 +955,22 @@ ul#Municipal div li.check
     color: #1b334a
 
 #Municipal div li.check:hover span.page_text
-  color: #e9ded0
+  color: #fff
 
 #Municipal div li.check:hover h4
-  color: #e9ded0
+  color: #fff
 
 ul#News div li.check.checked
-  background-color: $dark-tan
+  background-color: #fff
+  border-color: #eceade
   h4
     font: bold 14px Helvetica, Arial, sans-serif
     width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #1b334a
+    color: #888
   span.page_text
-    color: #1a1918
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
     width: 160px
     padding-left: 63px
@@ -966,21 +999,22 @@ ul#News div li.check
     color: #1b334a
 
 #News div li.check:hover span.page_text
-  color: #e9ded0
+  color: #fff
 
 #News div li.check:hover h4
-  color: #e9ded0
+  color: #fff
 
 ul#Other div li.check.checked
-  background-color: $dark-tan
+  background-color: #fff
+  border-color: #eceade
   h4
     font: bold 14px Helvetica, Arial, sans-serif
     width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #1b334a
+    color: #888
   span.page_text
-    color: #1a1918
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
     width: 160px
     padding-left: 63px
@@ -1009,7 +1043,7 @@ ul#Other div li.check
     color: #1b334a
 
 #Other div li.check:hover span.page_text
-  color: #e9ded0
+  color: #fff
 
 #Other div li.check:hover h4
-  color: #e9ded0
+  color: #fff

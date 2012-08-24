@@ -966,7 +966,6 @@ ul.your-town
 #civicProfile div.civic_right 
   float: right
   width: 400px
-  margin-right: 30px
   color: #333
 
 #civic_button 
@@ -979,18 +978,15 @@ ul.your-town
 #civicProfile div.civic_left 
   float: left
   width: 122px
-  margin-left: 30px
   margin-right: 25px
-  margin-top: 25px
   color: #888
+  text-shadow: 0px 1px 0px #fff
   text-align: center
-  font: 18px/15px $heading
+  font: 18px/15px Rockkitt, RockwellSTD, Rockwell, sans-serif
 
 #civicProfile div.civic_title 
   font-size: 40px
   position: relative
-  top: 20px
-  width: 565px
   background: url("shared/redesign/civic_stars.png") no-repeat center 15px
   text-align: center
   font-family: $Yellowtail
@@ -1025,7 +1021,7 @@ input#search.civic_message
 
 #civicProfile.container div.civic_right textarea
   width: 382px
-  height: 80px
+  height: 50px
   margin-top: 0px
   -webkit-font-smoothing: antialiased
   font-size: 18px
@@ -1034,7 +1030,7 @@ input#search.civic_message
   color: #333
   border: 1px solid #C9C4B4
   box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
-  textarea.civic_right::-webkit-textarea-placeholder
+  textarea.civic_right::-webkit-input-placeholder
     color: #555
   &:focus
     outline: none
@@ -1042,7 +1038,7 @@ input#search.civic_message
 input::-webkit-input-placeholder
   color: #555 !important
 
-textarea::-webkit-textarea-placeholder
+textarea::-webkit-input-placeholder
   color: #555 !important
   
 select::-webkit-select-placeholder
@@ -1063,7 +1059,7 @@ select::-webkit-select-placeholder
   border-radius: 5px
 
 #civicProfile div.civic_left img.profile_pic
-  margin-bottom: 15px
+  margin-bottom: 25px
 
 #civicProfile div.civic_left div.civic_facebook
   width: 120px
@@ -1118,15 +1114,16 @@ select::-webkit-select-placeholder
   background-color: #eee
   color: $red 
 #civic_button a.blue-button.next-button
-  padding: 10px
+  padding: 10px 15px
   
 #civicProfile div.civic_left div.not-facebook div a.avatar_file_browse
   text-transform: uppercase
-  color: #fffeff
+  color: #fff
   font: bold 10px "Helvetica Neue", Helvetica, sans-serif
-  background-color: #1b334a
+  background-color: $blue
   padding: 5px
   border-radius: 5px
+  text-shadow: none
 
 #civicProfile div.civic_left div.to-facebook img.facebook
-  margin-top: 18px
+  margin-top: 7px
