@@ -730,10 +730,10 @@ CONDITION
     # make sure they type in a "proper" address (ie begins with some #)
     get "/:id/address_approximate" do
       if find_community.launch_date < Community.find_by_name("Lexington").launch_date
-        return serialize([-1])
+        return serialize([-1, []])
       end
       if params[:term].nil? || params[:term].empty?
-        return serialize([])
+        return serialize([-1, []])
       end
 
       input = params[:term].split(",").first

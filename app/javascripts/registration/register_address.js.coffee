@@ -44,15 +44,15 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
         radio = @$("input.address_verify_radio")
         span = @$("span.address_verify_radio")
         addr = @$("#suggested_address")
+        weight = parseFloat(response[0])
 
-        delete @data.term
-        if response[0] != -1
-          if response[1].length < 1 || response[0] < 0.84
+        if weight != -1
+          if response[1].length < 1 || weight < 0.84
             error = @$(".error.address")
             error.text "Please enter a valid address"
             error.show()
             return
-          else if response[0] < 0.94
+          else if weight < 0.94
             @data.suggest = response[1]
 
             addr.empty()
@@ -66,6 +66,8 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
           else
             @data.address = response[1]
             @verified()
+        else
+          @verified()
       , this)
     else
       if @$("#suggested").is(':checked')
@@ -81,6 +83,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
         if @hasAvatarFile and not @data.isFacebook
           @avatarUploader.submit()
         else
+          delete @data.term
           delete @data.suggest
           @complete()
       else
