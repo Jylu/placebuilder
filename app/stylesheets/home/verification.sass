@@ -140,7 +140,7 @@
       a
         font-family: $heading !important
         border-bottom: 1px dotted #ccc !important
-        line-height: 28px !important
+        line-height: 24px !important
         font-size: 18px !important
         &:hover
           background-color: #eee
@@ -161,12 +161,21 @@ ul.ui-autocomplete
 
 li.ui-menu-item
   border-bottom: 1px dotted #ccc
-  line-height: 46px
+  line-height: 44px
+  font-family: $heading
+  padding: 0px 8px
+  font-size: 18px
+  color: $black
+  -webkit-font-smoothing: antialiased
   &:hover
     background-color: #eee
   &:last-child
     border: 0px none
-
+  a
+    &:hover
+      color: $red
+      cursor: pointer
+      
 #address_verification
   color: $black
   font-family: $Rokkitt
