@@ -6,7 +6,10 @@ ZIP_CODES = {
   "StPaul" => "55112",
   "Farragut" => "37934",
   "Marquette" => "49855",
-  "concord" => "01742"
+  "Concord" => "01742",
+  "Lexington" => "02421",
+  "Cambridge" => "02141",
+  "HarvardNeighbors" => "02138"
 }
 
 ZIP_CODES.each do |slug, zip_code|
@@ -15,4 +18,10 @@ ZIP_CODES.each do |slug, zip_code|
   rescue
     puts "Could not find community '#{slug}'"
   end
+end
+
+begin
+  community = Community.where(slug: "Kincardine").first
+  community.should_delete = true
+  community.destroy
 end
