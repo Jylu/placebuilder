@@ -40,7 +40,8 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
       , this)
 
   finish: ->
-    @nextPage "neighbors", @data
+    #@nextPage "neighbors", @data
+    window.location.pathname = "/" + @community.get("slug")
 
   FeedItem: CommonPlace.View.extend(
     template: "main_page.tour.feed-item"
