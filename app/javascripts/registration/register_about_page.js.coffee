@@ -27,13 +27,6 @@ CommonPlace.registration.AboutPageRegisterNewUserView = CommonPlace.registration
         empty: (element) ->
           $(".error.email").hide()
 
-
-    url = "/api/communities/" + @communityExterior.id + "/address_completions"
-    @$("input[name=street_address]").autocomplete
-      source: url
-      minLength: 1
-
-
   community_name: ->
     @communityExterior.name
 
@@ -63,7 +56,7 @@ CommonPlace.registration.AboutPageRegisterNewUserView = CommonPlace.registration
       input.addClass "input_error"
       error.text "Password can't be empty"
       error.show()
-    else 
+    else
       params = [ "full_name", "email" ]
       @validate_registration params, _.bind(->
         @nextPage "address", @data

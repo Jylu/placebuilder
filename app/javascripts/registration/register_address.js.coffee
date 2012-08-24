@@ -16,6 +16,7 @@ CommonPlace.registration.AddressView = CommonPlace.registration.RegistrationModa
     @$("input[name=street_address]").autocomplete
       source: url
       minLength: 1
+      autoFocus: true
 
   user_name: ->
     (if (@data.full_name) then @data.full_name.split(" ")[0] else "")
