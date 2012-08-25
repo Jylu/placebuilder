@@ -29,6 +29,9 @@ html
   -webkit-background-size: cover
   -webkit-font-smoothing: antialiased
   text-rendering: optimizeLegibility
+  
+body
+  overflow: scroll
 
 /* Woo Fonts */
 $heading: 'Rokkitt', RockwellSTD, Rockwell, sans-serif
@@ -984,15 +987,16 @@ ul.your-town
   font: 18px/15px Rockkitt, RockwellSTD, Rockwell, sans-serif
 
 #civicProfile div.civic_title 
-  font-size: 40px
+  font-size: 46px
   position: relative
-  background: url("shared/redesign/civic_stars.png") no-repeat center 15px
+  //background: url("shared/redesign/civic_stars.png") no-repeat center 15px
   text-align: center
   font-family: $Yellowtail
   text-shadow: 0px 2px 0px #fff
   color: $red
   margin: 0px auto
   margin-top: -10px
+  padding-bottom: 0px
   
 span.divider
   //background: url("shared/redesign/divider.png") no-repeat top center
@@ -1021,11 +1025,11 @@ input#search.civic_message
   padding: 8px
   height: auto
   font-family: $Rokkitt
-  color: #333
+  color: #555
   border: 1px solid #C9C4B4
   box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
   input.civic_right::-webkit-input-placeholder
-    color: #555
+    color: #555 !important
   &:focus
     outline: none
 
