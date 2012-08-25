@@ -105,12 +105,26 @@
       </div>
       <div id="wrapper-footer"></div>
     </div>
-    <script type="text/javascript" src="/assets/starter_site.js"></script>
+    <script type="text/javascript" src="/assets/registration.js"></script>
     <script type="text/javascript">
       CommonPlace.account = new Account({});
       var header = new CommonPlace.shared.HeaderView({el: $("#header")});
       header.render();
       var communitySlug = window.location.pathname.split("/")[1];
+
+      tabs = this.$("ul.nav-tabs > a");
+      $(".tab-content > div").hide().filter("#home").fadeIn("500", "linear");
+      $("ul.nav-tabs a").each(function() {
+        if (this.pathname === window.location.pathname) {
+          return tabs.push(this);
+        }
+      });
+      this.$(tabs).click(function() {
+        $(".tab-content > div").hide().filter(this.hash).fadeIn("500", "linear");
+        $(tabs).removeClass("selected");
+        $(this).addClass("selected");
+        return false;
+      });
     </script>
   </body>
 </html>
