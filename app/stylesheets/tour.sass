@@ -122,7 +122,7 @@ $darkBlue: #1b334a
   bottom: 0 
   right: 0
   background-color: #000 
-  @include opacity(0.65)
+  @include opacity(0)
   z-index: 1000
 
 #tour
@@ -193,7 +193,7 @@ $darkBlue: #1b334a
   padding-top: 20px
   padding-bottom: 18px
   border-radius: 5px
-  background-color: #f8f6ec
+  background-color: #f7f5ea
   text-align: center 
   border: 1px solid #C9C4B4
   box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
@@ -242,37 +242,33 @@ p.welcome-divider
 .registration_border
   float: left
   padding: 30px
-  border: 3px solid #CFCCC1
+  border: 3px solid #23405b
   border-radius: 5px
-  box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
+  box-shadow: 1px 2px 0px #fff
 
 #findNeighbors 
-  width: 642px
+  width: 645px
+  height: 540px
   float: left
   background-color: #eeecdf
-  background: url(shared/redesign/tan-bg.png) center center
+  background: url(shared/redesign/tan-bg.png)
   z-index: 1000
-  margin-top: 0px
+  margin-top: 15px
   margin-right: 0px
-  margin-left: 0px
+  margin-left: 238px
   margin-bottom: 0px
   padding: 15px
   border-radius: 5px
-  box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
-  border: 1px solid white
   .find_title
-    font-size: 46px
-    //background: url(shared/redesign/stars-subscribe.png) no-repeat 0px -7px
+    font-size: 42px
+    background: url(shared/redesign/neighbors_stars.png) no-repeat 0px -10px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
     color: $red
     margin: -10px auto 20px auto
     padding-bottom: 0px
-  span.divider
-    margin-top: 0px
-    width: 100%
-    
+  
 .check h4
   font: bold 13px Helvetica, sans-serif
   text-overflow: ellipsis !important
@@ -288,10 +284,10 @@ li div.check span.page_text
   line-height: 16px
 
 #civicProfile 
-  width: 610px
+  width: 630px
   overflow: none
   background-color: #eeecdf
-  background: url(shared/redesign/tan-bg.png) center center
+  background: url(shared/redesign/tan-bg.png)
   z-index: 1000
   margin-top: 0px
   margin-right: auto
@@ -299,14 +295,14 @@ li div.check span.page_text
   margin-bottom: 30px
   padding-bottom: 40px
   float: left
+  right: -150px
   position: relative
+  top: 15px
   border-radius: 5px
-  border: 1px solid #fff
+  border-top: 1px solid #fff
   color: #333
   padding: 15px
-  box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
-  span.divider
-    margin-bottom: 30px
+
   img.find_title 
     margin: 15px auto 0px 30px
 
@@ -409,8 +405,8 @@ ul li
   li 
     display: inline-block
     margin-right: 5px
-    padding: 6px 10px 5px 10px
-    border-radius: 5px
+    padding: 0px 10px
+    border-radius: 4px
     &:last-child
       margin-right: 0px
     &:hover
@@ -429,44 +425,33 @@ ul li
   font-weight: bold
   text-shadow: 0px 2px 0px #fff
 
+
 #subscribe_pages 
   width: 559px
   margin-right: auto
   margin-left: auto
-  height: 350px
+  height: 300px
   overflow: scroll
   overflow-x: hidden
-  background-color: #F7F5EA
+  background-color: #fff
   border: 1px solid #C9C4B4
-  box-shadow: inset #dfdbcd 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
+  box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
   padding: 0px 0px 10px 15px
-  border-radius: 0px
+  border-radius: 5px
   margin-bottom: 5px
-  .page_category 
-    ul.subscribe_pages
-      border-bottom: 1px dotted #C5C1A7
-      box-shadow: 0px 1px 0px #fff
-      margin-bottom: 0px
-      margin-right: 10px
-      padding-bottom: 20px
-      &:last-child
-        border: 0px none
-        padding-bottom: 10px
 
-ul.subscribe_pages li 
+#subscribe_pages ul.subscribe_pages li 
   overflow: hidden
-  width: 223px
+  width: 227px
   display: inline-block
   padding: 15px
-  background-color: #fff
-  margin-right: 5px
-  margin-left: 5px
+  background-color: #f7f5ea
+  margin-right: 15px
   margin-bottom: 0
   margin-top: 15px
   height: 50px
   border-radius: 5px
-  border: 1px solid #ddd
-  box-shadow: 0px 2px 2px #ebe8d9
+  border: 1px solid #E0DBCB
   
 #subscribe_pages div.check
   overflow: hidden
@@ -502,6 +487,7 @@ ul.subscribe_pages li
 
 #subscribe_pages ul.subscribe_pages li a h4 
   font: bold 14px Helvetica, Arial, sans-serif
+  width: 165px
   margin-left: 15px
   overflow: hidden
   color: #1b334a
@@ -510,6 +496,7 @@ ul.subscribe_pages li
 #subscribe_pages ul.subscribe_pages li a span.page_text 
   color: #1a1918
   font: 12px Helvetica, Arial, sans-serif
+  width: 160px
   padding-left: 15px
   margin-top: 4px
   float: left
@@ -547,12 +534,10 @@ img.page_img
 
 #subscribe_pages a h2
   color: $red
-  padding-top: 20px
-  margin-bottom: 0px
-  font-size: 18px
-  font-weight: normal
-  text-shadow: 1px 1px 0px #fff
-  padding-left: 5px
+  padding-top: 15px
+  margin-bottom: 5px
+  font-size: 20px
+  font-weight: bold
 
 .find_neighbors
   width: 380px
@@ -665,18 +650,19 @@ img.page_img
           display: none
 
 #RealFindNeighbors
-  width: 670px
+  width: 690px
   background-color: #eeecdf
   background: url(shared/redesign/red-bg.png)
   z-index: 1000
   margin: 70px auto 30px
-  padding: 10px 0px 20px 0px
+  padding: 15px
   font-family: $heading
   color: #fff
-  right: 380px
+  position: relative
   float: left
   border-radius: 5px
   -webkit-font-smoothing: antialiased
+  left: 175px
 
   #search 
     width: 585px
@@ -795,31 +781,28 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
   text-align: center
 
 #civicProfile div.civic_right ul.chzn-choices
-  width: 394px
+  width: 398px
   margin-bottom: 15px
-  margin-top: -5px
-  li.search-field
-    input::-webkit-input-placeholder
-      color: #555 !important
-      
+
 div#subscribe_pages ul.subscribe_pages div
+  width: 246px
   display: inline-block
+  margin-right: 25px
 
 ul#Non-profit div li.check.checked
-  background-color: #fcfcf9
+  background-color: #fff
   border-color: #eceade
-  box-shadow: none
-  .avatar-container
-    opacity: 0.35
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #DDD
+    color: #888
   span.page_text
-    color: #DDD
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -829,7 +812,8 @@ ul#Non-profit div li.check
   span.page_text
     color: #1a1918
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -838,6 +822,7 @@ ul#Non-profit div li.check
     display: none
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
     color: #1b334a
@@ -849,20 +834,19 @@ ul#Non-profit div li.check
   color: #fff
 
 ul#Community-group div li.check.checked
-  background-color: #fcfcf9
+  background-color: #fff
   border-color: #eceade
-  box-shadow: none
-  .avatar-container
-    opacity: 0.35
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #ddd
+    color: #888
   span.page_text
-    color: #ddd
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -872,7 +856,8 @@ ul#Community-group div li.check
   span.page_text
     color: #1a1918
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -881,6 +866,7 @@ ul#Community-group div li.check
     display: none
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
     color: #1b334a
@@ -892,20 +878,19 @@ ul#Community-group div li.check
   color: #fff
 
 ul#Business div li.check.checked
-  background-color: #fcfcf9
+  background-color: #fff
   border-color: #eceade
-  box-shadow: none
-  .avatar-container
-    opacity: 0.35
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #ddd
+    color: #888
   span.page_text
-    color: #ddd
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -915,7 +900,8 @@ ul#Business div li.check
   span.page_text
     color: #1a1918
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -924,6 +910,7 @@ ul#Business div li.check
     display: none
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
     color: #1b334a
@@ -935,20 +922,19 @@ ul#Business div li.check
   color: #fff
 
 ul#Municipal div li.check.checked
-  background-color: #fcfcf9
+  background-color: #fff
   border-color: #eceade
-  box-shadow: none
-  .avatar-container
-    opacity: 0.35
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #ddd
+    color: #888
   span.page_text
-    color: #ddd
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -958,6 +944,7 @@ ul#Municipal div li.check
   span.page_text
     color: #1a1918
     font: 12px Helvetica, Arial, sans-serif
+    width: 160px
     padding-left: 63px
     margin-top: -30px
     float: left
@@ -967,6 +954,7 @@ ul#Municipal div li.check
     display: none
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
     color: #1b334a
@@ -978,20 +966,19 @@ ul#Municipal div li.check
   color: #fff
 
 ul#News div li.check.checked
-  background-color: #fcfcf9
+  background-color: #fff
   border-color: #eceade
-  box-shadow: none
-  .avatar-container
-    opacity: 0.35
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #ddd
+    color: #888
   span.page_text
-    color: #ddd
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -1001,7 +988,8 @@ ul#News div li.check
   span.page_text
     color: #1a1918
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -1010,6 +998,7 @@ ul#News div li.check
     display: none
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
     color: #1b334a
@@ -1021,20 +1010,19 @@ ul#News div li.check
   color: #fff
 
 ul#Other div li.check.checked
-  background-color: #fcfcf9
+  background-color: #fff
   border-color: #eceade
-  box-shadow: none
-  .avatar-container
-    opacity: 0.35
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
-    color: #ddd
+    color: #888
   span.page_text
-    color: #ddd
+    color: #888
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -1044,7 +1032,8 @@ ul#Other div li.check
   span.page_text
     color: #1a1918
     font: 12px Helvetica, Arial, sans-serif
-    padding-left: 62px
+    width: 160px
+    padding-left: 63px
     margin-top: -30px
     float: left
     height: 27px
@@ -1053,6 +1042,7 @@ ul#Other div li.check
     display: none
   h4
     font: bold 14px Helvetica, Arial, sans-serif
+    width: 165px
     margin-left: 15px
     overflow: hidden
     color: #1b334a
@@ -1062,3 +1052,72 @@ ul#Other div li.check
 
 #Other div li.check:hover h4
   color: #fff
+
+#tooltip_profile
+  width: 227px
+  height: 86px
+  position: relative
+  right: 170px
+  float: left
+  bottom: 589px
+  padding: 15px
+  background: url('shared/redesign/red_bg.jpg')
+  border-radius: 5px
+  border: 1px solid $blue
+
+  p 
+    color: #f7f7f7
+
+  #tooltip_tail
+    background: url('shared/redesign/tooltip-red-arrow.png')
+    position: relative
+    width: 23px
+    height: 16px
+    top: 33px
+    left: 200px
+
+#tooltip_neighbors
+  width: 227px
+  height: 86px
+  position: relative
+  right: 170px
+  float: left
+  bottom: 589px
+  padding: 15px
+  background: url('shared/redesign/red_bg.jpg')
+  border-radius: 5px
+  border: 1px solid $blue
+
+  p 
+    color: #f7f7f7
+
+  #tooltip_tail
+    background: url('shared/redesign/tooltip-red-arrow.png')
+    position: relative
+    width: 23px
+    height: 16px
+    top: 33px
+    left: 200px
+
+#tooltip_subscribe
+  width: 227px
+  height: 86px
+  position: relative
+  right: 320px
+  float: left
+  bottom: 389px
+  padding: 15px
+  background: url('shared/redesign/red_bg.jpg')
+  border-radius: 5px
+  border: 1px solid $blue
+
+  p 
+    color: #f7f7f7
+
+  #tooltip_tail
+    background: url('shared/redesign/tooltip-red-arrow.png')
+    position: relative
+    width: 23px
+    height: 16px
+    top: 33px
+    left: 200px
