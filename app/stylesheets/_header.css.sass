@@ -38,17 +38,16 @@
       float: right
       border-right: 1px solid #151F28
       box-shadow: inset -1px 0 0 #32485C
-      padding-right: 15px
+      padding-right: 25px
       height: 60px
       bottom: 15px
       position: relative
       a, .disabled_link
         font-size: 16px
-        padding: 3px 0 3px 10px
+        padding: 0px 0 0px 10px
         color: #eee
         font-weight: bold
         text-decoration: none
-        +text-shadow(#000 0px 2px 1px)
         &:hover
           color: #ac322f
         .notif
@@ -66,7 +65,7 @@
         float: left
         margin-right: 16px
         display: block
-        padding-top: 14px
+        margin-top: 20px
       li.my-activity 
         position: relative
         padding-right: 9px
@@ -263,18 +262,21 @@
         position: relative
         margin-right: 0px
         border: 1px solid transparent
-        padding: 5px 10px 0px 0px
-        margin-top: 8px
+        margin-top: 19px
+        padding: 0px
         &:hover
-          padding-top: 3px
-          margin-top: 10px
+          padding: 10px 10px 0px 0px
+          margin-top: 7px
+          margin-right: -10px
         ul.account-sub
           position: absolute
+          top: 31px
+          min-width: 165px
+          padding-top: 2px
           display: none
           background: white
           border: 1px solid #d7d7d7
           color: #505250
-          width: 165px
           font-family: Helvetica, Sans Serif
           font-size: 13px
           border-top: 0px none
@@ -283,15 +285,14 @@
           +border-top-left-radius(5px)
           +border-bottom-left-radius(5px)
           z-index: 9999
-          padding: 5px 0px 0px 0px
           box-shadow: 0px 4px 8px rgba(0,0,0,0.20)
           li
             margin-top: 0
             height: auto
             float: none
-            width: 135px
+            min-width: 135px
             margin-right: 0
-            padding: 5px 15px 5px 15px
+            padding: 15px
             border-bottom: 1px dotted #ddd
             box-shadow: inset 0px 1px 0px #fff
             &:last-child
@@ -338,7 +339,7 @@
         height: 25px
         width: 21px
         float: left
-        margin-top: 6px
+        margin-top: -1px
       .avatar-container
         width: 20px
         height: 20px
@@ -349,7 +350,7 @@
         background-position: top center
         background-size: auto 100%
         background-repeat: no-repeat
-        margin-top: 5px
+        margin-top: -2px
         margin-left: 8px
         box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.75)
         img
@@ -524,13 +525,6 @@
       padding-top: 1px
       float: right
 
-a span.community
-  float: left
-  color: #ac322f
-  text-decoration: none
-  margin-top: 24px
-  margin-left: 5px
-
 #header #nav_wrapper div.community-name
   width: 351px
 
@@ -542,7 +536,10 @@ a span.community
 
 #header #nav_wrapper div.community-name a span.community
   float: left
-  margin-top: 21px
-  color: #991a17
-  font: bold 18px Rokkitt, "Rockwell STD", Serif
-  margin-left: 6px
+  margin-top: 20px
+  color: #ac322f
+  font-size: 24px
+  font-weight: bold
+  margin-left: 8px
+  text-shadow: 1px 1px 1px black
+  font-family: "Rokkitt", "Rockwell STD", Rockwell, Serif

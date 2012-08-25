@@ -708,6 +708,12 @@ CONDITION
       end
     end
 
+    get "/:id/comm_completions" do
+      comm = Community.where("name ILIKE ?", "%#{params[:term]}%").pluck(:name)
+
+      return serialize(comm)
+    end
+
     # Returns a list of completed versions of the address
     #
     # term - the term to find auto-completed
@@ -730,10 +736,10 @@ CONDITION
     # make sure they type in a "proper" address (ie begins with some #)
     get "/:id/address_approximate" do
       if find_community.launch_date < Community.find_by_name("Lexington").launch_date
-        return serialize([-1])
+        return serialize([-1, []])
       end
       if params[:term].nil? || params[:term].empty?
-        return serialize([])
+        return serialize([-1, []])
       end
 
       input = params[:term].split(",").first

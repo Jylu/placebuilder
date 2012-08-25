@@ -96,16 +96,16 @@ html
       color: #fff
       +linear-gradient(color-stops(#cc4441, #ac322f), bottom)
 .dropdown
-  width: 270px
+  width: 300px
   background: #EEECDF
   text-align: center
   z-index: 4000000
   display:none
   +border-radius(4px)
   position: absolute
-  box-shadow: black 0px 1px 1px
-  right: 15px
-  top: 63px
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2), inset 0px -1px 0px #AAA
+  right: 0px
+  top: 61px
   .arrow
     width: 150px
     height: 20px
@@ -116,10 +116,10 @@ html
     display: block
     right: 0
   input
-    width: 215px
+    width: 240px
     -webkit-appearance: none
     font-size: 16px
-    padding: 7px
+    padding: 8px
     height: auto
     margin-top: 5px
     font-family: $Rokkitt
@@ -127,6 +127,7 @@ html
     font-family: $Rokkitt
     color: #333
     box-shadow: inset #eee 0px 0px 3px 2px, rgba(255,255,255,.15) 0px 1px 1px
+    -webkit-font-smoothing: antialiased
     &:focus
       outline: none
   input::-webkit-input-placeholder
@@ -138,7 +139,7 @@ html
   button.signin
     text-align: center
     float: right
-    width: 90px
+    width: 100px
     +linear-gradient(color-stops(#2e5274, #1b334a))
     font-weight: bold
     font-size: 15px
@@ -147,6 +148,7 @@ html
     padding-bottom: 8px
     margin-top: 5px
     height: auto
+    -webkit-font-smoothing: antialiased
     &:hover, &:focus
       color: #fff
       +linear-gradient(color-stops(#3e6b96, #1b334a), top)
@@ -155,12 +157,13 @@ html
       color: #fff
       +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
   button.signin.facebook
-    width: 127px
+    width: 145px
     height: auto
     margin-right: 12px
     font-size: 15px
     padding: 10px 0 8px 0
     +linear-gradient(color-stops(#4e6fb6, #3b5998))
+    -webkit-font-smoothing: antialiased
     &:hover, &:focus
       color: #fff
       +linear-gradient(color-stops(#5c83d7, #3b5998), top)
@@ -170,18 +173,19 @@ html
       +linear-gradient(color-stops(#4e6fb6, #3b5998), bottom)
   p 
     clear: both
-    margin-left: 20px
-    padding: 10px 0px 15px 0px
+    margin-left: 22px
+    padding: 12px 0px 15px 0px
     text-align: left
     font-family: $Rokkitt
     cursor: pointer
     color: #565656
     font-weight: bold
+    -webkit-font-smoothing: antialiased
     &:hover
       text-decoration: underline
 
 .registration1
-  margin-top: 10%
+  margin-top: 12%
   .left 
     width: 55%
     float: left

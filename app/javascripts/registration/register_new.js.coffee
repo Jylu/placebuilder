@@ -68,7 +68,7 @@ CommonPlace.registration.NewUserView = CommonPlace.registration.RegistrationModa
       input.addClass "input_error"
       error.text "Password can't be empty"
       error.show()
-    else 
+    else
       params = [ "full_name", "email" ]
       @validate_registration params, _.bind(->
         @nextPage "address", @data
