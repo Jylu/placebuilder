@@ -708,6 +708,12 @@ CONDITION
       end
     end
 
+    get "/:id/comm_completions" do
+      comm = Community.where("name ILIKE ?", "%#{params[:term]}%").pluck(:name)
+
+      return serialize(comm)
+    end
+
     # Returns a list of completed versions of the address
     #
     # term - the term to find auto-completed

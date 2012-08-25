@@ -76,6 +76,10 @@
                 <figure class="front">
                   <h2>Sign Up</h2>
                   <form class="registration">
+                    <div id="community">
+                      <input id="community" placeholder="Community">
+                    </div>
+                    <br />
                     <div id="full_name">
                       <input name="full_name" class="name" type="text" placeholder="Full Name" />
                       <span class="error full_name"></span>
@@ -111,7 +115,10 @@
       var header = new CommonPlace.shared.HeaderView({el: $("#header")});
       header.render();
       var communitySlug = window.location.pathname.split("/")[1];
-
+      this.$("input#community").autocomplete({
+          source: "/api/communities/lexington/comm_completions",
+          minLength: 0
+      });
       tabs = this.$("ul.nav-tabs > a");
       $(".tab-content > div").hide().filter("#home").fadeIn("500", "linear");
       $("ul.nav-tabs a").each(function() {
