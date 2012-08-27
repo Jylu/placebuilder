@@ -1,5 +1,6 @@
 CommonPlace.shared.YourPages = CommonPlace.View.extend
   template: "shared.sidebar.your-pages"
+  id      : "your-pages-links"
 
   afterRender: (params) -> 
     self = this

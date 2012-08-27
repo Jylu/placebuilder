@@ -15,7 +15,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
   render: ->
     @$("#tour").html(@renderTemplate("main_page.tour.wire", this)).attr "class", "wire"
-    $(@el).append("<div id='tour-shadow'></div>")
     $(@el).append(@renderTemplate("main_page.tour.modal", this))
 
   community_name: ->
