@@ -7,6 +7,11 @@ CommonPlace.main.RulesView = CommonPlace.main.TourModalPage.extend(
     unless @current
       @slideIn @el
       @current = true
+    $("#directory_content").css
+      zIndex: "990"
+    $(".red-button").css
+      zIndex: "1002"
+      position: "relative"
 
   community_name: ->
     @community.get("name")

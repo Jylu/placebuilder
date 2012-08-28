@@ -5,7 +5,6 @@ CommonPlace.main.WelcomeView = CommonPlace.main.TourModalPage.extend(
 
   afterRender: ->
     @slideIn @el
-    $('#left-column').dimTheLights()
 
   community_name: ->
     @community.get("name")
