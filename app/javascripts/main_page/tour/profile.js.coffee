@@ -19,6 +19,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     $("#directory_content").css
       zIndex: "1002"
       position: "relative"
+    $(".sidebar-links[title=neighbors]").click()
   community_name: ->
     @community.get("name")
 

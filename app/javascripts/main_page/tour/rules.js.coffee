@@ -18,5 +18,5 @@ CommonPlace.main.RulesView = CommonPlace.main.TourModalPage.extend(
 
   submit: (e) ->
     e.preventDefault()  if e
-    window.location.pathname = "/" + @community.get("slug")
+    @complete()
 )

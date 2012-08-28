@@ -15,6 +15,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
   render: ->
     @$("#tour").html(@renderTemplate("main_page.tour.wire", this)).attr "class", "wire"
+    $("#sidebar").append("<div id='tour-shadow'></div>")
     $(@el).append(@renderTemplate("main_page.tour.modal", this))
 
   community_name: ->
@@ -58,7 +59,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           community: self.community
           account: self.account
           data: data
-          complete: self.options.complete
+          complete: self.end
         )
 
       rules: ->
@@ -68,17 +69,17 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           community: self.community
           account: self.account
           data: data
-          complete: self.options.complete
+          complete: self.end
         )
 
       neighbors: ->
         new CommonPlace.main.NeighborsView(
-          complete: self.options.complete
           slideIn: slideIn
           community: self.community
           account: self.account
           data: data
           nextPage: nextPage
+          complete: self.end
         )
     }[page]()
     view.render()
@@ -96,9 +97,10 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     @raise "#community-resources"
 
   end: ->
-    @cleanUp()
     $("#tour-shadow").remove()
     $("#tour").remove()
+    #window.location.pathname = "/" + @community.get("slug")
+
 
   raise: (el) ->
     $(el).css zIndex: @overlayLevel + 1
@@ -164,8 +166,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     left = ($(window).width() - $el.width())/ 2
     left: left
 
-  exit: ->
-    $(@el).remove()
 )
 
 CommonPlace.main.TourModalPage = CommonPlace.View.extend(
