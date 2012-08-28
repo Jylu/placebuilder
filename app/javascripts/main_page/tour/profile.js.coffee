@@ -16,7 +16,9 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @$("select.list").chosen().change {}, ->
       clickable = $(this).parent("li").children("div").children("ul")
       clickable.click()
-
+    $("#directory_content").css
+      zIndex: "1002"
+      position: "relative"
   community_name: ->
     @community.get("name")
 
