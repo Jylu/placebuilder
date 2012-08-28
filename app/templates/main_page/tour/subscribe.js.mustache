@@ -10,9 +10,15 @@
 
       <div id="subscribe_pages">
         {{#categories}}
-        <a name="{{.}}"><h2>{{.}}</h2></a>
-        <ul class="subscribe_pages" id="{{.}}"></ul>
+        <div class="page_category {{.}}">
+          <a name="{{.}}"><h2>{{.}}</h2></a>
+          <ul class="subscribe_pages" id="{{.}}"></ul>
+        </div>
         {{/categories}}
+        <div class="page_category Other">
+          <a name="Other"><h2>Other</h2></a>
+          <ul class="subscribe_pages" id="Other"></ul>
+        </div>
       </div>
 
       <div id="find_bottom">
