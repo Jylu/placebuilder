@@ -737,6 +737,7 @@ CONDITION
     get "/:id/address_approximate" do
       if find_community.nil?
         return serialize([-1, []])
+      end
       if find_community.launch_date < Community.find_by_name("Lexington").launch_date
         return serialize([-1, []])
       end
