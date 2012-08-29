@@ -9,6 +9,11 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
 
   afterRender: ->
     self = this
+    $("#directory_content").css
+      zIndex: "990"
+    $("#your-pages-links").css
+      zIndex: "1002"
+      position: "relative"
     categories = @$(".page_category")
     $("#directory_content").css
       zIndex: "990"
@@ -16,6 +21,7 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
       zIndex: "1002"
       position: "relative"
     categories.hide()
+    $(".sidebar-links[title=pages]").click()
     feeds = @community.featuredFeeds
     feeds.fetch(
       success: ->
