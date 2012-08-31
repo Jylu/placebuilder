@@ -1,7 +1,11 @@
-class ImportLexingtonData < ActiveRecord::Base
+class ImportConcordData < ActiveRecord::Base
 
-  community = Community.find_by_name("Lexington")
-  s = Rails.root.join("scripts", "data-fix", "LexMelissadata.csv")
+  community = Community.find_by_name("Concord")
+  if community.nil?
+    community = Community.create(name: "Concord", slug: "concord", state: "MA")
+  end
+
+  s = Rails.root.join("script", "data-fix", "ConcordMelissaData.csv")
   i = 0
   CSV.foreach(s, :headers => true) do |row|
     i += 1
@@ -15,8 +19,9 @@ class ImportLexingtonData < ActiveRecord::Base
     if !first.nil? && !first.empty? && !last.nil? && !last.empty?
       name = "#{first} #{last}"
     end
-    street = h["ADDRESS"].squeeze(" ").strip
-    zip = h["Zip"].to_i
+    street = h["Address"].squeeze(" ").strip
+    zip = h["ZIP"].to_i
+    crrt = h["Crrt"]
 
     begin
       StreetAddress.create(address: street,
