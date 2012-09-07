@@ -1,7 +1,7 @@
 class ImportLexingtonCommunityMap < ActiveRecord::Base
 
   community = Community.find_by_name("Lexington")
-  s = Rails.root.join("scripts", "data-fix", "LexCommunityMap.csv")
+  s = Rails.root.join("script", "data-fix", "LexCommunityMap.csv")
   i = 0
   CSV.foreach(s, :headers => true) do |row|
     i += 1
