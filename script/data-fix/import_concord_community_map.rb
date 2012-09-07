@@ -15,13 +15,41 @@ class ImportConcordCommunityMap < ActiveRecord::Base
     organization = h["Company"]
     email = h["E-mail Address"]
     pos = h["Position"]
-    type_tag = h["Type"]
-    type = type_tag.split("Type: ").first
-    sector_tag = h["Sector"]
-    sector = sector_tag.split("Sector: ").first
     notes = h["Notes"]
-    tag = h["Email Tag"]
+
+    type_tag = h["Type"]
+    sector_tag = h["Sector"]
+    tag = h["Tag"]
     organizer_tag = h["Organizer"]
-    organizer = organizer_tag.split("Organizer: ").first
+
+    type = type_tag.split("Type: ").first
+    sector = sector_tag.split("Sector: ").first if !sector_tag.nil?
+    organizer = organizer_tag.split("Organizer: ").first if !organizer_tag.nil?
+
+    first.strip!
+    last.strip!
+    organizer.strip!
+
+    begin
+      r = Resident.create(first_name: first,
+                          last_name: last,
+                          email: email,
+                          organization: organization,
+                          position: pos,
+                          community: community,
+                          sector_tag_list: sector,
+                          organizer_list: organizer,
+                          type_tag_list: type,
+                          notes: notes,
+                          manually_added: true)
+
+      r.add_tags(type_tag) if !type_tag.nil?
+      r.add_tags(tag)
+      r.add_tags(sector_tag)
+      r.add_tags(organizer_tag)
+      r.correlate
+    rescue
+      puts "Count not import line #{i}"
+    end
   end
 end

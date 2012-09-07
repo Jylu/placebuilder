@@ -5,7 +5,7 @@ class ImportConcordData < ActiveRecord::Base
     community = Community.create(name: "Concord", slug: "concord", state: "MA")
   end
 
-  s = Rails.root.join("script", "data-fix", "ConcordMelissaData.csv")
+  s = Rails.root.join("script", "data-fix", "ConcordResidentFile.csv")
   i = 0
   CSV.foreach(s, :headers => true) do |row|
     i += 1
