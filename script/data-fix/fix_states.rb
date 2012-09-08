@@ -3,7 +3,9 @@
 COMMUNITY_SLUGS = {
   "Warwick" => "NY",
   "GraduateCommons" => "MA",
-  "Akron" => "OH"
+  "Akron" => "OH",
+  "Lexington" => "MA",
+  "Cambridge" => "MA"
 }
 
 COMMUNITY_SLUGS.each do |slug, state|
