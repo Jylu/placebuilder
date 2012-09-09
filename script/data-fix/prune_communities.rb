@@ -8,6 +8,8 @@ COMMUNITY_SLUGS = %w[
   sega
   StPaul
   Farragut
+  CommonPlace
+  umw
 ]
 
 COMMUNITY_SLUGS.each do |slug|
