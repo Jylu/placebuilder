@@ -10,6 +10,7 @@ COMMUNITY_SLUGS = %w[
   Farragut
   CommonPlace
   umw
+  Cambridge
 ]
 
 COMMUNITY_SLUGS.each do |slug|
