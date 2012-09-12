@@ -22,7 +22,7 @@ class ImportConcordCommunityMap < ActiveRecord::Base
     tag = h["Tag"]
     organizer_tag = h["Organizer"]
 
-    type = type_tag.split("Type: ").first
+    type = type_tag.split("Type: ").first if !type_tag.nil?
     sector = sector_tag.split("Sector: ").first if !sector_tag.nil?
     organizer = organizer_tag.split("Organizer: ").first if !organizer_tag.nil?
 
