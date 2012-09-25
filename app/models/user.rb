@@ -49,6 +49,9 @@ class User < ActiveRecord::Base
   has_many :swipes
   has_many :swiped_feeds, :through => :swipes, :class_name => "Feed", :source => :feed
 
+  has_many :sell_transactions, :class_name => 'Transaction', :foreign_key => 'seller_id'
+  has_many :buy_transactions, :class_name => 'Transaction', :foreign_key => 'buyer_id'
+
   def organizer_data_points
     OrganizerDataPoint.find_all_by_organizer_id(self.id)
   end

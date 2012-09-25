@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914010553) do
+ActiveRecord::Schema.define(:version => 20120914225718) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -503,6 +503,23 @@ ActiveRecord::Schema.define(:version => 20120914010553) do
     t.string   "thankable_type"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+  end
+
+  create_table "transactions", :force => true do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "item_file_name"
+    t.text     "metadata"
+    t.integer  "community_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id",                         :null => false
+    t.integer  "price_in_cents", :default => 0
+    t.integer  "buyer_fee",      :default => 0
+    t.integer  "seller_fee",     :default => 0
+    t.boolean  "pending",        :default => false
+    t.boolean  "confirmed",      :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "tweets", :force => true do |t|
