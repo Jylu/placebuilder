@@ -1,0 +1,27 @@
+<div class="transaction">
+
+  <div class="corner">{{publishedAt}}{{#canEdit}} - <a href="#" class="editlink">EDIT</a>{{/canEdit}}</div>
+
+  <img src="{{avatarUrl}}" width="50" height="50" class="avatar">
+
+  <a class="title">{{title}}</a>
+
+  <div class="author"><a class="person">{{author}}</a>{{#group}} to <a href="{{groupUrl}}">{{group}}</a>{{/group}}</div>
+
+  <div class="price">Price: {{price}}</div>
+
+  <div class="body post-body">{{#markdown}}{{body}}{{/markdown}}</div>
+
+  <button class="buy"> Test Buy </button>
+
+  <div style="clear:both;"></div>
+</div>
+
+<ul class="thank-share">
+  <li class="reply-link">Reply</li>
+  <span class="dot">&bull;</span>
+  <li class="thank-link"> Thank {{first_name}}</li>
+</ul>
+<a class="ts-text" href="#"><span class="thank_count">{{numThanks}}</span> <span class="people_person">{{peoplePerson}}</span> <span class="people-thanked">thanked {{first_name}}</span></a>
+
+<div class="replies-area"></div>

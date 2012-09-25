@@ -33,7 +33,6 @@ module Serializer
       when Resident
       {
         "id" => o.id,
-
         "classtype" => o.class.name,
         "user_id" => o.user_id,
         "first_name" => o.first_name, 
@@ -89,6 +88,19 @@ module Serializer
           "thank" => "/posts/#{o.id}/thank"
         }
       }
+
+      when Transaction
+        {
+          "id" => o.id,
+          "schema" => "transactions",
+          "published_at" => o.created_at.utc,
+          "url" => "/transactions/#{o.id}",
+          "title" => o.title,
+          "author" => o.seller.name,
+          "first_name" => o.seller.first_name,
+          "price" => o.price_in_cents,
+          "body" => o.description
+        }
 
       when Event
         {

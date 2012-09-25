@@ -1,0 +1,9 @@
+<div class="sub-navigation transactions transaction">
+  <h2><a href="/{{community_slug}}/list/transactions" class="current" data-remote>
+    {{^isRecent}}{{#t}}Marketplace{{/t}}{{/isRecent}}
+    {{#isRecent}}{{#t}}Marketplace{{/t}}{{/isRecent}}
+  </a></h2>
+  <div style="clear:both;"></div>
+</div>
+<div class="no-results"><p>There were no results</p></div>
+<div class="transactions wire">{{>wires.wire}}</div>
