@@ -93,6 +93,7 @@ var Application = Backbone.Router.extend({
     ":community/show/group_posts/:id": "showGroupPost",
     ":community/show/announcements/:id": "showAnnouncement",
     ":community/show/users/:id": "showUserWire",
+    ":community/show/transactions/:id": "showTransaction",
 
     ":community/message/users/:id": "messageUser",
     ":community/message/feeds/:id": "messageFeed",
@@ -156,6 +157,11 @@ var Application = Backbone.Router.extend({
   showEvent: function(c, id) {
     this.showPage("community");
     this.pages.community.lists.showEvent(new Event({links: {self: "/events/" + id }}));
+  },
+
+  showTransaction: function(c, id) {
+    this.showPage("community");
+    this.pages.community.lists.showTransaction(new Transaction({links: {self: "/transactions/" + id }}));
   },
 
   showGroupPost: function(c, id) {
@@ -234,7 +240,7 @@ var Application = Backbone.Router.extend({
   bindNewPosts: function() {
     var self = this;
     var community = CommonPlace.community;
-    var postlikes = [community.posts, community.events, community.groupPosts, community.announcements];
+    var postlikes = [community.posts, community.events, community.groupPosts, community.announcements, community.transactions];
     _.each(postlikes, function(postlike) {
       postlike.on("sync", function() {
         self.navigate("/", true);
