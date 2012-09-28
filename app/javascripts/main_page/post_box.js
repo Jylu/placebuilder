@@ -87,6 +87,7 @@ var PostBox = CommonPlace.View.extend({
     var constant = {
       nothing: function() { return new PostForm(); },
       event: function() { return new EventForm(); },
+      transaction: function() { return new TransactionForm(); },
       post: function() { return new PostForm({
         category: "neighborhood",
         template: "main_page.forms.post-neighborhood-form"
