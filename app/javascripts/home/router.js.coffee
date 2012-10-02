@@ -5,6 +5,7 @@ Home.Router = Backbone.Router.extend
     ":community/home/create-conversation": "createConvo"
     ":community/home/create-event": "createEvent"
     ":community/home/create-request": "createRequest"
+    ":community/home/create-transaction": "createTransaction"
 
   home: ->
     header = new Home.ui.Header el: $("header")
@@ -38,3 +39,7 @@ Home.Router = Backbone.Router.extend
   createRequest: ->
     posting = this.createPost()
     posting.show "request"
+
+  createTransaction: ->
+    posting = this.createPost()
+    posting.show "transaction"
