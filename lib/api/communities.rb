@@ -752,7 +752,7 @@ CONDITION
       transaction = Transaction.new(
         :seller => current_user,
         :title => request_body['title'],
-        :price => request_body['price'],
+        :price_in_cents => request_body['price'],
         :description => request_body['body']
       )
 

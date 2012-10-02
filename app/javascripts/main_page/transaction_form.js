@@ -27,8 +27,6 @@ var TransactionForm = CommonPlace.View.extend({
     var n = this.$("[name=price]").val();
     var price = Number(n.replace(/[^0-9\.]+/g, "") * 100);
 
-    //console.log((price / 100.0).toFixed(2).toLocaleString());
-
     CommonPlace.community.transactions.create({ // use $.fn.serialize here
       title:   this.$("[name=title]").val(),
       price: price,

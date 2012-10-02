@@ -94,8 +94,11 @@ module Serializer
           "id" => o.id,
           "schema" => "transactions",
           "published_at" => o.created_at.utc,
+          "url" => "/transactions/#{o.id}",
           "title" => o.title,
-          "price" => o.price,
+          "author" => o.seller.name,
+          "first_name" => o.user.first_name,
+          "price" => o.price_in_cents,
           "body" => o.description
         }
 

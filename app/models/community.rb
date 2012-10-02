@@ -91,6 +91,7 @@ class Community < ActiveRecord::Base
       "feeds" => "/communities/#{id}/feeds",
       "posts" => "/communities/#{id}/posts",
       "events" => "/communities/#{id}/events",
+      "transactions" => "/communities/#{id}/transactions",
       "announcements" => "/communities/#{id}/announcements",
       "group_posts" => "/communities/#{id}/group_posts",
       "post_likes" => "/communities/#{id}/post-like",
