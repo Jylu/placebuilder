@@ -97,7 +97,7 @@ module Serializer
           "url" => "/transactions/#{o.id}",
           "title" => o.title,
           "author" => o.seller.name,
-          "first_name" => o.user.first_name,
+          "first_name" => o.seller.first_name,
           "price" => o.price_in_cents,
           "body" => o.description
         }

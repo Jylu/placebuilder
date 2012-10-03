@@ -163,6 +163,17 @@ var CommunityResources = CommonPlace.View.extend({
       });
       return self.makeTab(wire);
     },
+
+    transactions: function(self) {
+      var wire = new self.PostLikeWire({
+        template: "main_page.transaction-resources",
+        emptyMessage: "No items here yet.",
+        collection: CommonPlace.community.transactions,
+        callback: function() { self.stickHeader(); },
+        showProfile: self.options.showProfile
+      });
+      return self.makeTab(wire);
+    },
     
     announcements: function(self) {
       var wire = new self.PostLikeWire({
@@ -252,6 +263,17 @@ var CommunityResources = CommonPlace.View.extend({
         template: "main_page.event-resources",
         fullWireLink: "#/events",
         tab: "events"
+      });
+    }});
+  },
+
+  showTransaction: function(transaction) {
+    var self = this;
+    transaction.fetch({ success: function() {
+      self.showSingleItem(transaction, Transactions, {
+        template: "main_page.transaction-resources",
+        fullWireLink: "#/transactions",
+        tab: "transactions"
       });
     }});
   },

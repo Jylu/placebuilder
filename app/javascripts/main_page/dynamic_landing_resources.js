@@ -121,6 +121,15 @@ var DynamicLandingResources = CommonPlace.View.extend({
       callback: self.callback,
       showProfile: self.options.showProfile
     });
+
+    var transactions = new LandingPreview({
+      template: "main_page.transaction-resources",
+      collection: self.raw.transactions,
+      fullWireLink: "#/transactions",
+      emptyMessage: "No items here yet.",
+      callback: self.callback,
+      showProfile: self.options.showProfile
+    });
     
     var chrono = new Wire({
       template: "main_page.chrono-resources",

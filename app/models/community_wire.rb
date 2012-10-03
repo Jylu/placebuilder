@@ -14,6 +14,10 @@ class CommunityWire
     @community.events.upcoming.reorder("date ASC").limit(3)
   end
 
+  def transactions
+    @community.transactions.limit(3)
+  end
+
   def neighborhood
     @community.posts.where(category: 'neighborhood').limit(3)
   end

@@ -161,6 +161,9 @@ var Account = Model.extend({
 
   canTryFeatures: function() { return this.get('is_admin'); },
 
+  canEditTransaction: function(transaction) {
+    return transaction.get('seller_id') == this.id || this.get('is_admin');
+  },
   deleteAvatar: function(callback) {
     var self = this;
     $.ajax({

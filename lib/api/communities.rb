@@ -750,6 +750,7 @@ CONDITION
       control_access :community_member, find_community
 
       transaction = Transaction.new(
+        :community_id => find_community.id,
         :seller => current_user,
         :title => request_body['title'],
         :price_in_cents => request_body['price'],
@@ -940,6 +941,15 @@ CONDITION
       else
         serialize(paginate(find_community.events.upcoming.
                              includes(:replies).reorder("date ASC")))
+      end
+    end
+
+    get "/:id/transactions" do
+      control_access :community_member, find_community
+
+      if params["query"].present?
+      else
+        serialize(paginate(find_community.transactions))
       end
     end
 
