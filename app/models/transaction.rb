@@ -5,6 +5,14 @@ class Transaction < ActiveRecord::Base
   belongs_to :seller, :class_name => 'User', :foreign_key => 'seller_id'
   belongs_to :buyer, :class_name => 'User', :foreign_key => 'buyer_id'
 
+  acts_as_api
+
+  api_accessible :history do |t|
+    t.add :id
+    t.add ->(m) { "transactions" }, :as => :schema
+    t.add :title
+  end
+
   # Potential buyers
   def buyers
     metadata[:buyers] ||= []

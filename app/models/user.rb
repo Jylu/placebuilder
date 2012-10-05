@@ -532,6 +532,7 @@ WHERE
       self.direct_events +
       self.announcements +
       self.group_posts +
+      self.sell_transactions +
       self.replies.where("repliable_type != 'Message'")
   end
 

@@ -18,14 +18,14 @@ var EventWireItem = WireItem.extend({
     if (this.numThanks() === 0) { this.$(".ts-text").hide(); }
   },
 
-  short_month_name: function() { 
+  short_month_name: function() {
     var m = this.model.get("occurs_on").match(/(\d{4})-(\d{2})-(\d{2})/);
     return this.monthAbbrevs[m[2] - 1];
   },
 
-  day_of_month: function() { 
+  day_of_month: function() {
     var m = this.model.get("occurs_on").match(/(\d{4})-(\d{2})-(\d{2})/);
-    return m[3]; 
+    return m[3];
   },
 
   publishedAt: function() { return timeAgoInWords(this.model.get('published_at')); },
@@ -50,7 +50,7 @@ var EventWireItem = WireItem.extend({
   numThanks: function() {
     return this.directThanks().length;
   },
-  
+
   peoplePerson: function() {
     return (this.model.get("thanks").length == 1) ? "person" : "people";
   },
@@ -94,11 +94,11 @@ var EventWireItem = WireItem.extend({
   showProfile: function(e) {
     this.options.showProfile(this.model.author());
   },
-  
+
   isFeed: function() { return this.model.get("owner_type") == "Feed"; },
-  
+
   feedUrl: function() { return this.model.get("feed_url"); },
-  
+
   messageUser: function(e) {
     if (!this.isFeed()) {
       e && e.preventDefault();

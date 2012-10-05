@@ -59,7 +59,7 @@ var PostWireItem = WireItem.extend({
   numThanks: function() {
     return this.directThanks().length;
   },
-  
+
   peoplePerson: function() {
     return (this.model.get("thanks").length == 1) ? "person" : "people";
   },

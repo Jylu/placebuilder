@@ -25,7 +25,7 @@ var TransactionForm = CommonPlace.View.extend({
     this.cleanUpPlaceholders();
 
     var n = this.$("[name=price]").val();
-    var price = Number(n.replace(/[^0-9\.]+/g, "") * 100);
+    var price = Number(n.replace(/[^0-9\.]+/g, "") * 100).toFixed(2);
 
     CommonPlace.community.transactions.create({ // use $.fn.serialize here
       title:   this.$("[name=title]").val(),
