@@ -10,13 +10,13 @@ var FeedProfile = CommonPlace.View.extend({
   },
 
   avatarUrl: function() { return this.model.get('avatar_url'); },
-  
+
   fullName: function() { return this.model.get("name"); },
-  
+
   shortName: function() { return this.model.get("first_name"); },
-  
+
   about: function() { return this.model.get('about'); },
-  
+
   groups: function() { return ""; },
 
   showMessageForm: function(e) {
@@ -26,7 +26,7 @@ var FeedProfile = CommonPlace.View.extend({
     });
     formView.render();
   },
-  
+
   showFeedEditForm: function(e) {
     e.preventDefault();
     var formView = new FeedEditFormView({
@@ -50,6 +50,6 @@ var FeedProfile = CommonPlace.View.extend({
   isOwner: function() { return CommonPlace.account.isFeedOwner(this.model); },
 
   url: function() { return this.model.get("url"); }
-  
+
 });
 

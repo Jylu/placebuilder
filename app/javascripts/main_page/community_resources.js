@@ -2,7 +2,7 @@
 var CommunityResources = CommonPlace.View.extend({
   template: "main_page.community-resources",
   id: "community-resources",
-  
+
   events: {
     "submit .sticky form": "search",
     "keyup .sticky input": "debounceSearch",
@@ -11,7 +11,7 @@ var CommunityResources = CommonPlace.View.extend({
     "mouseenter .post": "showProfile",
     "mouseenter .thank-share": "showProfile"
   },
-  
+
   afterRender: function() {
     var self = this;
     this.searchForm = new this.SearchForm();
@@ -23,21 +23,21 @@ var CommunityResources = CommonPlace.View.extend({
 
   switchTab: function(tab, single) {
     var self = this;
-    
+
     this.$(".tab-button").removeClass("current");
     this.$("." + tab).addClass("current");
 
     this.view = this.tabs[tab](this);
-    
+
     this.$(".search-switch").removeClass("active");
     if (_.include(["users", "groups", "feeds"], tab)) {
       this.$(".directory-search").addClass("active");
     } else {
       this.$(".post-search").addClass("active");
     }
-    
+
     if (single) { this.view.singleWire(single); }
-    
+
     (self.currentQuery) ? self.search() : self.showTab();
   },
 
@@ -53,20 +53,20 @@ var CommunityResources = CommonPlace.View.extend({
 
     (self.currentQuery) ? self.search() : self.showTab();
   },
-  
+
   showTab: function() {
     this.$(".resources").empty();
     this.$(".resources").append(this.loading());
     var self = this;
-    
+
     this.view.resources(function(wire) {
       wire.render();
       $(wire.el).appendTo(self.$(".resources"));
     });
-    
+
     this.stickHeader(true);
   },
-  
+
   tabs: {
     all_posts: function(self) {
       return new DynamicLandingResources({
@@ -74,7 +74,7 @@ var CommunityResources = CommonPlace.View.extend({
         showProfile: self.options.showProfile
       });
     },
-    
+
     posts: function(self) {
       var wire = new self.PostLikeWire({
         template: "main_page.post-resources",
@@ -152,7 +152,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
       return self.makeTab(wire);
     },
-    
+
     events: function(self) {
       var wire = new self.PostLikeWire({
         template: "main_page.event-resources",
@@ -174,7 +174,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
       return self.makeTab(wire);
     },
-    
+
     announcements: function(self) {
       var wire = new self.PostLikeWire({
         template: "main_page.announcement-resources",
@@ -185,7 +185,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
       return self.makeTab(wire);
     },
-    
+
     group_posts: function(self) {
       var wire = new self.PostLikeWire({
         template: "main_page.group-post-resources",
@@ -196,7 +196,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
       return self.makeTab(wire);
     },
-    
+
     groups: function(self) {
       var wire = new self.GroupLikeWire({
         template: "main_page.directory-resources",
@@ -208,7 +208,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
       return self.makeTab(wire);
     },
-    
+
     feeds: function(self) {
       var wire = new self.GroupLikeWire({
         template: "main_page.directory-resources",
@@ -220,7 +220,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
       return self.makeTab(wire);
     },
-    
+
     users: function(self) {
       var wire = new self.GroupLikeWire({
         template: "main_page.directory-resources",
@@ -233,7 +233,7 @@ var CommunityResources = CommonPlace.View.extend({
       return self.makeTab(wire);
     }
   },
-  
+
   showPost: function(post) {
     var self = this;
     post.fetch({ success: function() {
@@ -244,7 +244,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
     }});
   },
-  
+
   showAnnouncement: function(announcement) {
     var self = this;
     announcement.fetch({ success: function() {
@@ -255,7 +255,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
     }});
   },
-  
+
   showEvent: function(event) {
     var self = this;
     event.fetch({ success: function() {
@@ -277,7 +277,7 @@ var CommunityResources = CommonPlace.View.extend({
       });
     }});
   },
-  
+
   showGroupPost: function(post) {
     var self = this;
     post.fetch({ success: function() {
@@ -288,9 +288,9 @@ var CommunityResources = CommonPlace.View.extend({
       });
     }});
   },
-  
+
   highlightSingleUser: function(user) { this.singleUser = user; },
-  
+
   showSingleItem: function(model, kind, options) {
     this.model = model;
     this.isSingle = true;
@@ -317,7 +317,7 @@ var CommunityResources = CommonPlace.View.extend({
       this.options.showProfile(user);
     }
   },
-  
+
   showUserWire: function(user) {
     var self = this;
     user.fetch({ success: function() {
@@ -333,11 +333,11 @@ var CommunityResources = CommonPlace.View.extend({
       $(window).scrollTo(0);
     }});
   },
-  
+
   debounceSearch: _.debounce(function() {
     this.search();
   }, CommonPlace.autoActionTimeout),
-  
+
   search: function(event) {
     if (event) { event.preventDefault(); }
     this.currentQuery = this.$(".sticky form .search-switch.active input").val();
@@ -351,7 +351,7 @@ var CommunityResources = CommonPlace.View.extend({
       this.cancelSearch();
     }
   },
-  
+
   cancelSearch: function(e) {
     this.currentQuery = "";
     this.$(".sticky form.search input").val("");
@@ -361,13 +361,13 @@ var CommunityResources = CommonPlace.View.extend({
     $(".sticky .cancel").hide();
     $(".resources").removeHighlight();
   },
-  
+
   stickHeader: function(isFirst) {
     var $sticky_header = this.$(".sticky .header");
     var sticky_bottom = $sticky_header.offset().top + $sticky_header.outerHeight();
-    
+
     if (!isFirst) { this.$(".resources .loading-resource").remove(); }
-    
+
     var current_subnav = this.$(".resources .sub-navigation").filter(function() {
       if (!$sticky_header.height()) {
         return $(this).offset().top <= $sticky_header.offset().top;
@@ -377,42 +377,42 @@ var CommunityResources = CommonPlace.View.extend({
         return nav_text_bottom <= sticky_bottom;
       }
     }).last();
-    
+
     $sticky_header.html(current_subnav.clone());
-    
+
     if (this.currentQuery) { $(".sticky .cancel").removeClass("waiting"); }
-    
+
     CommonPlace.layout.reset();
   },
-  
+
   makeTab: function(wire) { return new this.ResourceTab({ wire: wire }); },
-  
+
   loading: function() {
     var view = new this.LoadingResource();
     view.render();
     return view.el;
   },
-  
+
   PostLikeWire: Wire.extend({ _defaultPerPage: 15 }),
-  
+
   GroupLikeWire: Wire.extend({ _defaultPerPage: 50 }),
-  
+
   ResourceTab: CommonPlace.View.extend({
     initialize: function(options) {
       this.wire = options.wire;
     },
-    
+
     resources: function(callback) {
       (this.single) ? callback(this.single) : callback(this.wire);
     },
-    
+
     search: function(query) {
       if (this.single) { this.single = null; }
       this.wire.search(query);
     },
-    
+
     singleWire: function(wire) { this.single = wire; },
-    
+
     cancelSearch: function() { this.search(""); }
   }),
 
@@ -421,11 +421,11 @@ var CommunityResources = CommonPlace.View.extend({
     tagName: "form",
     className: "search"
   }),
-  
+
   LoadingResource: CommonPlace.View.extend({
     template: "main_page.loading-resource",
     className: "loading-resource"
   })
-  
+
 });
 

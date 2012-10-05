@@ -141,6 +141,5 @@ var PostBox = CommonPlace.View.extend({
 
   feeds: function() { return CommonPlace.account.get("feeds"); }
 
-
 });
 
