@@ -4,6 +4,12 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
   links_header_class: "sidebar-links"
   content_div       : "directory_content"
 
+  events:
+    "click .sidebar-links": "switchTabs"
+    "click .post": "showPostbox"
+    "mouseover .scroll": "showScrollBar"
+    "mouseout .scroll": "hideScrollBar"
+
   initialize: (options) ->
     @tabs = options.tabs
     @tabviews = options.tabviews
@@ -72,8 +78,3 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
     e.preventDefault()
     @$(e.currentTarget).css({"overflow": "hidden"})
 
-  events:
-    "click .sidebar-links": "switchTabs"
-    "click .post": "showPostbox"
-    "mouseover .scroll": "showScrollBar"
-    "mouseout .scroll": "hideScrollBar"
