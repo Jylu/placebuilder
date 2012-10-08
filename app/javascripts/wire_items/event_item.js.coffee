@@ -46,5 +46,4 @@ CommonPlace.wire_item.EventWireItem = CommonPlace.wire_item.WireItem.extend(
 
   canEdit: ->
     CommonPlace.account.canEditEvent @model
-
 )
