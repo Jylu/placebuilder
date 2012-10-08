@@ -55,7 +55,7 @@
 var Application = Backbone.Router.extend({
 
   initialize: function() {
-    var header = new HeaderView({ el: $("#header") });
+    var header = new CommonPlace.shared.HeaderView({ el: $("#header") });
     header.render();
 
     $("#notification").hide();
@@ -64,7 +64,7 @@ var Application = Backbone.Router.extend({
       faq: new FaqPage({ el: $("#main") }),
       invite: new InvitePage({ el: $("#main") }),
       discount: new DiscountPage({ el: $("#main") }),
-      community: new CommunityPage({ el: $("#main") }),
+      community: new CommonPlace.CommunityPage({ el: $("#main") }),
       inbox: new InboxPage({ el: $("#main") }),
       outbox: new OutboxPage({ el: $("#main") }),
       feed_inbox: new FeedInboxPage({ el: $("#main") }),
@@ -135,7 +135,7 @@ var Application = Backbone.Router.extend({
 
   community: function(c) {
     this.showPage("community");
-    this.pages.community.lists.switchTab("all_posts");
+    this.pages.community.lists.switchTab("posts");
   },
 
   communityWire: function(c, tab) {

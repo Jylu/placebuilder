@@ -1,4 +1,4 @@
-var CommonPlace = CommonPlace || {main: {}, registration: {}, shared: {}};
+var CommonPlace = CommonPlace || {main: {}, pages: {}, shared: {}, registration: {}, views: {}, wire_item: {}};
 
 CommonPlace.View = Backbone.View.extend({
 
