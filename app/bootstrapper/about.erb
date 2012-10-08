@@ -190,7 +190,7 @@
     <script type="text/javascript">
       CommonPlace.community = new Community(<%= Serializer::serialize(@community).to_json.html_safe %>);
       CommonPlace.account = new Account(<%= @account.try(:persisted?) ? Serializer::serialize(Account.new(@account)).to_json : "{}" %>);
-      var header = new HeaderView({el: $("#header")});
+      var header = new CommonPlace.shared.HeaderView({el: $("#header")});
       header.render();
 
       <% if @active_tab %>

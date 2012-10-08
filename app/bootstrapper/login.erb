@@ -70,7 +70,7 @@
 
     <script type="text/javascript">
       CommonPlace.account = new Account({});
-      var header = new HeaderView({ el: $("#header") });
+      var header = new CommonPlace.shared.HeaderView({ el: $("#header") });
       header.render();
       var loginForm = new LoginForm({ el: $("#login_form") });
       loginForm.render();
