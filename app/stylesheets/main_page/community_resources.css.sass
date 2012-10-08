@@ -4,9 +4,6 @@
   position: relative
 
   .resources
-    background-color: white
-    border: 1px solid #bebebe
-      top: 0
       
     li.wire-item
       &:first-child
@@ -43,13 +40,15 @@
     text-align: center
       
   .loading
-    background-color: #fff
+    display: none
     padding: 20px
+      top: 45px
+    color: #fff
+    font-size: 18px
     text-align: center
     background-image: image-url("loading.gif")
-    background-position: center center
+    background-position: top center
     background-repeat: no-repeat
-    height: 50px
 
   form.search
     margin: 10px 10px 0
@@ -107,7 +106,7 @@ body.fixedLayout
     top: 65px
     width: 490px
     height: 50px
-    background-color: #333
+    background-color: #cee7fe
 
   #community-resources > .navigation
     position: fixed
@@ -128,7 +127,7 @@ body.fixedLayout
         padding-bottom: 12px
   
     .resources
-      margin-top: 104px
+      margin-top: 90px !important
       
       .sub-navigation
         z-index: 21

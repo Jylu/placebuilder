@@ -1,0 +1,35 @@
+<div id="sharePost" class="modal-container form-container share">
+  {{#header}}<h1>{{header}}</h1>{{/header}}
+  {{#message}}<h3>{{message}}</h3>{{/message}}
+  <ul class="share">
+    <li id="facebookshare" class="share-f"
+      data-name="{{item_name}}"
+      data-url="{{share_url}}"
+      data-picture="{{avatar_url}}"
+      data-caption="Join {{community_name}} CommonPlace to share with your neighborhood."
+      data-description=""
+      data-message="Check out this post from my neighbors...">Post to Facebook
+    </li>
+    <li id="emailshare">Email to Friends</li>
+    <div id="share-email">
+      <form>
+        <input placeholder="e.g. john@gmail.com, jane@gmail.com" name="share-email" class="rounded_corners">
+        <!-- <a href="#" class="share rounded_corners">Connect your Email</a> -->
+        <a href="#" class="share rounded_corners" id="submit_email_share">Send</a>
+      </form><br /><br />
+    </div>
+    <li id="twittershare" class="share-t"
+      data-url="{{share_url}}" 
+      data-message="Check out this post from my neighbors on the {{community_name}} CommonPlace:">
+      Share on Twitter
+    </li>
+    <li id="linkshare">Copy the URL</li>
+    <div id="share_link">
+      <form>
+        <input value="{{share_url}}" name="share-link" class="rounded_corners" disabled="true">
+      </form>
+    </div>
+  </ul>
+  <br /><br />
+  <button class="green-button">Share Post!</button>
+</div>
