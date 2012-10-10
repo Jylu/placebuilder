@@ -1,4 +1,4 @@
-var LandingResources = CommonPlace.View.extend({ 
+var LandingResources = CommonPlace.View.extend({
   template: "main_page.landing-resources",
   className: "resources",
 
@@ -36,7 +36,7 @@ var LandingResources = CommonPlace.View.extend({
           emptyMessage: "No posts here yet.",
           isRecent: true
          })),
-        
+
         (new PreviewWire({
           template: 'main_page.event-resources',
           collection: this.community.events,
@@ -46,7 +46,7 @@ var LandingResources = CommonPlace.View.extend({
           emptyMessage: "There are no upcoming events yet. Add some.",
           isRecent: true
         })),
-        
+
         (new PreviewWire({
           template: 'main_page.announcement-resources',
           collection: this.community.announcements,
@@ -56,7 +56,7 @@ var LandingResources = CommonPlace.View.extend({
           fullWireLink: "#/announcements",
           isRecent: true
         })),
-        
+
         (new PreviewWire({
           template: 'main_page.group-post-resources',
           collection: this.community.groupPosts,
@@ -70,7 +70,7 @@ var LandingResources = CommonPlace.View.extend({
     }
     return this._wires;
   },
-  
+
   stickHeader: function() {
     var landing_top = $(this.el).offset().top + $(window).scrollTop();
 
@@ -78,16 +78,16 @@ var LandingResources = CommonPlace.View.extend({
       var wire_bottom = wire.el.offset().top + wire.el.height();
       return wire_bottom >= landing_top;
     });
-    
+
     var top_wire = wires_below_header.shift();
-    
+
     if (top_wire != this.headerWire) {
       this.unstickHeader();
       top_wire.header.detach().appendTo($("#community-resources .sticky-header"));
       this.headerWire = top_wire;
     }
   },
-  
+
   unstickHeader: function() {
     if (this.headerWire) {
       this.headerWire.header.detach().prependTo(this.headerWire.el);

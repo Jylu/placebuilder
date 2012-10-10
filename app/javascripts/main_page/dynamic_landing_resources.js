@@ -1,7 +1,7 @@
 var DynamicLandingResources = CommonPlace.View.extend({
   template: "main_page.dynamic-landing-resources",
   className: "resources",
-  
+
   initialize: function(options) {
     this.raw = new CommunityWire({ uri: CommonPlace.community.link("landing_wires")});
     this.postlikes = new PostLikes([], { uri: CommonPlace.community.link("post_likes") });
@@ -9,10 +9,10 @@ var DynamicLandingResources = CommonPlace.View.extend({
     this.single = {};
     this.callback = options.callback;
   },
-  
+
   resources: function(callback) {
     var self = this;
-    
+
     if (!_.isEmpty(this.single) && !this.currentQuery) {
       callback(this.single);
     } else if (_.isEmpty(this._wires)) {
@@ -34,7 +34,7 @@ var DynamicLandingResources = CommonPlace.View.extend({
       _.each(this._wires, function(wire) { callback(wire); });
     }
   },
-  
+
   makeWires: function() {
     var self = this;
     var unfiltered = [
@@ -95,24 +95,24 @@ var DynamicLandingResources = CommonPlace.View.extend({
         showProfile: self.options.showProfile
       }))
     ];
-    
+
     var duplicates = [];
     var sorted = _.filter(unfiltered, function(wire) {
       return wire.collection.length > 0;
     });
-    
+
     var empty = _.filter(unfiltered, function(wire) {
       return !wire.collection.length;
     });
-    
+
     sorted = _.sortBy(sorted, function(wire) {
       return parseDate(wire.collection.first().get("published_at"));
     });
-    
+
     sorted.reverse();
-    
+
     var first = sorted.shift();
-    
+
     var events = new LandingPreview({
       template: "main_page.event-resources",
       collection: self.raw.events,
@@ -139,17 +139,17 @@ var DynamicLandingResources = CommonPlace.View.extend({
       callback: self.callback,
       showProfile: self.options.showProfile
     });
-    
+
     _.each(self.raw.all(), function(collection) { duplicates.push(collection.models); })
     chrono.collection.setDupes(_.flatten(duplicates));
-    
+
     self._wires = [first];
     if (events.collection.length) { self._wires.push(events); }
     self._wires.push(sorted);
     self._wires.push(chrono);
     self._wires = _.flatten(self._wires);
   },
-  
+
   makeSearch: function() {
     var searchWire = new Wire({
       template: "main_page.chrono-search-resources",
@@ -162,15 +162,15 @@ var DynamicLandingResources = CommonPlace.View.extend({
     searchWire.search(this.currentQuery);
     this._wires = [searchWire];
   },
-  
+
   search: function(query) {
     this.currentQuery = query;
     this._wires = [];
     this.single = {};
   },
-  
+
   cancelSearch: function() { this.search(""); },
-  
+
   singleWire: function(wire) { this.single = wire; }
 });
 
