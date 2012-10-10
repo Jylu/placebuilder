@@ -37,8 +37,8 @@ var EventForm = CommonPlace.View.extend({
       venue:   this.$("[name=venue]").val(),
       address: this.$("[name=address]").val(),
       tags:    this.$("[name=tags]").val(),
-      groups:  this.$("[name=groups]:checked").map(function() {
-        return $(this).val();
+      groups:  this.$("[name=groups]:checked").map(function() { 
+        return $(this).val(); 
       }).toArray()
     }, {
       success: function() {
@@ -86,7 +86,7 @@ var EventForm = CommonPlace.View.extend({
       }
     )
   ),
-
+  
   onFormBlur: function(e) {
     if (!$(e.target).val() || $(e.target).val() == $(e.target).attr("placeholder")) {
       $(e.target).removeClass("filled");

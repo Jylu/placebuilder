@@ -18,17 +18,17 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
   afterRender: ->
     @$("input[placeholder], textarea[placeholder]").placeholder()
 
-
+  
   #this.$("textarea").autoResize();
   createPost: (e) ->
     e.preventDefault()
     @cleanUpPlaceholders()
     @$(".spinner").show()
     @$("button").hide()
-
+    
     # Category not specified
     if @options.category is `undefined`
-
+      
       # Show a notification
       $("#invalid_post_tooltip").show()
       @$(".spinner").hide()
@@ -67,9 +67,9 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
       naturalHeight = $moreInputs.actual("height")
       $moreInputs.css height: 0
       $moreInputs.show()
-
+      
       CommonPlace.layout.reset()
-
+  
   onFormBlur: (e) ->
     $("#invalid_post_tooltip").hide()
     unless @focused
