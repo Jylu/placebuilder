@@ -76,6 +76,7 @@ var Wire = CommonPlace.View.extend({
     return new {
       "events": CommonPlace.wire_item.EventWireItem,
       "announcements": CommonPlace.wire_item.AnnouncementWireItem,
+      "transactions": CommonPlace.wire_item.TransactionWireItem,
       "posts": CommonPlace.wire_item.PostWireItem,
       "group_posts": CommonPlace.wire_item.GroupPostWireItem,
       "feeds": CommonPlace.wire_item.FeedWireItem,

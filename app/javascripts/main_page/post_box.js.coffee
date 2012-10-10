@@ -49,7 +49,6 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
       @$("form textarea[name=about]").val @temp.body
     @$("[placeholder]").placeholder()
     CommonPlace.layout.reset()
-    @showWire tab
     if view.$el.height() + @absolutePosition(view.el)[1] > $(window).height()
       
       # Make the position fixed
@@ -66,7 +65,9 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
       nothing: ->
         new CommonPlace.main.PostForm()
       event: ->
-        new EventForm()
+        new CommonPlace.main.EventForm()
+      transaction: ->
+        new CommonPlace.main.TransactionForm()
       discussion: ->
         new CommonPlace.main.PostForm(
           category: "neighborhood"
@@ -95,14 +96,6 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
 
   groups: ->
     CommonPlace.community.get "groups"
-
-  showWire: (tab) ->
-    unless tab is "nothing"
-      tab = "announcements"  if tab.search("feed") > -1
-      wire = $(".resources .sub-navigation." + tab)
-      if wire.length
-        offset = wire.offset().top
-        $(window).scrollTo offset - parseInt($("#community-resources .sticky").css("top"))
 
   feeds: ->
     CommonPlace.account.get "feeds"
