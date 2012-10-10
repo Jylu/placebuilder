@@ -10,7 +10,7 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
 
   clickTab: (e) ->
     e.preventDefault()
-    
+
     # DETERMINE WHAT TO DO WITH URLS WHEN WE CLICK
     @switchTab $(e.target).attr("data-tab"), e
     $("#first_post_tooltip").hide()
@@ -51,7 +51,7 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
     CommonPlace.layout.reset()
     @showWire tab
     if view.$el.height() + @absolutePosition(view.el)[1] > $(window).height()
-      
+
       # Make the position fixed
       newHeight = $(window).height() - @absolutePosition(view.el)[1] - 20
       view.$el.css "height", "" + newHeight + "px"

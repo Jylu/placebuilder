@@ -13,7 +13,7 @@ var AnnouncementForm = CommonPlace.View.extend({
     "mouseenter": "mouseEnter",
     "mouseleave": "mouseLeave"
   },
-  
+
   aroundRender: function(render) {
     var self = this;
     $.getJSON("/api/feeds/" + this.options.feed_id, function(response) {
@@ -26,12 +26,12 @@ var AnnouncementForm = CommonPlace.View.extend({
     this.$('input[placeholder], textarea[placeholder]').placeholder();
     //this.$("textarea").autoResize();
   },
-  
+
   createPost: function(e) {
     e.preventDefault();
-    
+
     this.cleanUpPlaceholders();
-    
+
     this.$(".spinner").show();
     this.$("button").hide();
 
@@ -41,7 +41,7 @@ var AnnouncementForm = CommonPlace.View.extend({
     };
     this.sendPost(this.feed.announcements, data);
   },
-  
+
   sendPost: function(postCollection, data) {
     var self = this;
     postCollection.create(data, {
@@ -57,7 +57,7 @@ var AnnouncementForm = CommonPlace.View.extend({
       }
     });
   },
-  
+
   showError: function(response) {
     this.$(".error").text(response.responseText);
     this.$(".error").show();
@@ -72,10 +72,10 @@ var AnnouncementForm = CommonPlace.View.extend({
       //$moreInputs.animate(
         //{ height: naturalHeight },
         //{
-        //  complete: function() { 
-        //    $moreInputs.css({height: "auto"}); 
+        //  complete: function() {
+        //    $moreInputs.css({height: "auto"});
         //    CommonPlace.layout.reset();
-        //  }, 
+        //  },
         //  step: function() {
         //    CommonPlace.layout.reset();
         //  }
@@ -87,7 +87,7 @@ var AnnouncementForm = CommonPlace.View.extend({
     //  $("#invalid_post_tooltip").show();
     //});
   },
-  
+
   onFormBlur: function(e) {
     $("#invalid_post_tooltip").hide();
     if (!this.focused) {
@@ -100,15 +100,15 @@ var AnnouncementForm = CommonPlace.View.extend({
       $(e.target).addClass("filled");
     }
   },
-  
+
   mouseEnter: function() { this.focused = true; },
-  
+
   mouseLeave: function() { this.focused = false; },
 
   resetLayout: function() { CommonPlace.layout.reset(); },
-  
+
   hideLabel: function(e) { $("option.label", e.target).hide(); },
-  
+
   name: function() { return this.feed.get("name"); }
 });
 

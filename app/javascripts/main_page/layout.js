@@ -11,13 +11,13 @@ var FixedLayout = function() {
       $("#left-column").show();
       $("#right-column").css({ float: '', marginLeft: '', marginRight: '' });
     }
-        
+
     $infoBox.css({
       top: $postBox.outerHeight() + parseInt($postBox.css("top"),10) + 4
     });
 
     $infoBox.show();
-    if ($infoBox.height() < 20) { 
+    if ($infoBox.height() < 20) {
       $infoBox.hide();
     }
   };
@@ -56,7 +56,7 @@ var FixedLayout = function() {
   this.unbind = function() {
     $(window).unbind(".communityLayout");
   };
-  
+
 };
 
 var StaticLayout = function() {
@@ -92,6 +92,6 @@ var StaticLayout = function() {
   this.unbind = function() {
     $(window).unbind(".communityLayout");
   };
-    
+
   this.reset = $.noop;
 };
