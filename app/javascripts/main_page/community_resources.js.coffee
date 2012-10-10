@@ -167,6 +167,17 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       )
       self.makeTab wire
 
+    transactions: (self) ->
+      wire = new self.PostLikeWire(
+        template: "main_page.transaction-resources"
+        emptyMessage: "No items here yet."
+        collection: CommonPlace.community.transactions
+        callback: ->
+          self.stickHeader()
+        showProfile: self.options.showProfile
+      )
+      self.makeTab wire
+
     group_posts: (self) ->
       wire = new self.PostLikeWire(
         template: "main_page.group-post-resources"
@@ -246,6 +257,14 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         fullWireLink: "#/events"
         tab: "events"
 
+
+  showTransaction: (transaction) ->
+    self = this
+    transactions.fetch success: ->
+      self.showSingleItem transaction, Transactions,
+        template: "main_page.transaction-resources"
+        fullWireLink: "#/transactions"
+        tab: "transactions"
 
 
   showGroupPost: (post) ->

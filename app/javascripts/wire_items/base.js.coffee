@@ -1,4 +1,15 @@
 CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
+
+  initialize: (options) ->
+    self = this
+    @model.on "destroy", ->
+      self.remove()
+
+  afterRender: ->
+    @model.on "change", @render, this
+    @reply()
+    @checkThanked()
+
   checkThanked: ->
     if @thanked()
       @$(".thank-link").html "Thanked!"
@@ -80,4 +91,47 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   removeFocus: ->
     @$(".thank-share .current").removeClass "current"
+
+  publishedAt: ->
+    timeAgoInWords @model.get("published_at")
+
+  publishedAtISO: ->
+    @model.get "published_at"
+
+  avatarUrl: ->
+    @model.get "avatar_url"
+
+  title: ->
+    @model.get "title"
+
+  author: ->
+    @model.get "author"
+
+  first_name: ->
+    @model.get "first_name"
+
+  body: ->
+    @model.get "body"
+
+  numThanks: ->
+    @directThanks().length
+
+  peoplePerson: ->
+    (if (@model.get("thanks").length is 1) then "person" else "people")
+
+  wireCategory: ->
+    @model.get "category"
+
+  wireCategoryName: ->
+    category = @wireCategory()
+    if category
+      category = (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join(' ')
+    else
+      category = "Post"
+
+  isFeed: ->
+    @model.get("owner_type") is "Feed"
+
+  feedUrl: ->
+    @model.get "feed_url"
 )
