@@ -1,19 +1,19 @@
 var ProfileBoxLists = CommonPlace.View.extend({
   id: "profile-box-lists",
-
+  
   initialize: function() {
-
+    
     this.lists = {
       "users": CommonPlace.account.featuredUsers,
       "feeds": CommonPlace.community.featuredFeeds,
       "groups": CommonPlace.community.groups,
       "account": CommonPlace.account.featuredUsers
     };
-
+    
     var self = this;
     this.nextPageTrigger();
     this.page = 0;
-
+    
     this.$("#profile-box-results").scroll(function() {
       if ($(this).scrollTop() + 10 > this.scrollHeight / 2) {
         self.nextPageThrottled();
@@ -39,28 +39,28 @@ var ProfileBoxLists = CommonPlace.View.extend({
     this.currentQuery = search_term;
     this.fetchAndRenderCurrentSearch(options);
   },
-
+  
   renderCurrentList: function(options) {
     var self = this;
     this.removeListSpinner();
     var views = this.currentList.map(function(item) {
-      return new ProfileBoxListItem({
-        model: item,
-        showProfile: function(profile) {
+      return new ProfileBoxListItem({ 
+        model: item, 
+        showProfile: function(profile) { 
           self.options.showProfile(profile, { highlight: self.currentQuery });
         }
       });
     });
-
+    
     _.invoke(views, "render");
-
+    
     var $results = this.$("#profile-box-results ul");
     if (!options || !options.nextPage) {
       $results.empty();
     }
-
+    
     $results.append(_.pluck(views, "el"));
-
+    
     if (views.length && options && options.showProfile) {
       _.first(views).showProfile();
     }
@@ -80,33 +80,33 @@ var ProfileBoxLists = CommonPlace.View.extend({
     this.showListSpinner();
     CommonPlace.community.grouplikes.fetch({
       data: { query: this.currentQuery },
-      success: _.bind(function() {
+      success: _.bind(function() { 
         if (this.currentList.length === 0) {
           this.$("#profile-box-failed-search").show();
-          this.options.showProfile(new ClientSideModel({
+          this.options.showProfile(new ClientSideModel({ 
             schema: "failed_search",
             id: this.currentQuery,
             query: this.currentQuery
           }));
-        }
+        } 
         this.renderCurrentList(options);
         this.options.removeSearchSpinner();
       }, this)
     });
   },
 
-  clearSearch: function() {
-    this.$("#profile-box-search input.search").val("");
+  clearSearch: function() { 
+    this.$("#profile-box-search input.search").val(""); 
     this.currentQuery = "";
   },
-
+  
   nextPageTrigger: function() {
     var self = this;
     this.nextPageThrottled = _.once(function() {
       self.nextPage();
     });
   },
-
+  
   nextPage: function() {
     if (this.currentList.length < 25) { return; }
     this.page++;
@@ -124,15 +124,15 @@ var ProfileBoxLists = CommonPlace.View.extend({
       }, this)
     });
   },
-
+  
   showListSpinner: function() {
     var spinner = $("<div/>");
     spinner.addClass("loading-list");
     this.$("#profile-box-results ul").append(spinner);
   },
-
+  
   removeListSpinner: function() {
     this.$(".loading-list").remove();
   }
-
+  
 });
