@@ -10,7 +10,7 @@ var ProfileDisplayer = Backbone.View.extend({
     profile.render();
     $(this.el).empty().append(profile.el);
   },
-  
+
   show: function(profile_model, options) {
     var self = this;
     profile_model.fetch({
@@ -53,5 +53,5 @@ var ProfileDisplayer = Backbone.View.extend({
       highlightSingleUser: this.highlightSingleUser
     });
   }
-  
+
 });

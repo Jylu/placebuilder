@@ -7,8 +7,8 @@ var ProfileBox = CommonPlace.View.extend({
   },
 
   afterRender: function() {
-    this.lists = new ProfileBoxLists({ 
-      el: this.$("#profile-box-lists"), 
+    this.lists = new ProfileBoxLists({
+      el: this.$("#profile-box-lists"),
       showProfile: _.bind(this.profileDisplayer.show, this.profileDisplayer),
       removeSearchSpinner: _.bind(this.removeSearchSpinner, this)
     });
@@ -30,17 +30,17 @@ var ProfileBox = CommonPlace.View.extend({
     "click .remove-search": "removeSearch",
     "keyup input.search": "search"
   },
-  
+
   switchFilterClass: function(schema) {
     this.$(".filters a").removeClass("current");
-    this.$(".filters a." + schema + "-filter").addClass("current");    
+    this.$(".filters a." + schema + "-filter").addClass("current");
   },
-  
+
   switchFilter: function(e) {
     e.preventDefault();
 
     var schema = $(e.target).attr("href").split("#")[1];
-    
+
     if (schema == "account") {
       this.lists.showList(schema);
       this.profileDisplayer.show(CommonPlace.account);
@@ -64,12 +64,11 @@ var ProfileBox = CommonPlace.View.extend({
     }
   }, 500),
 
-  removeSearch: function() { 
-    this.lists.clearSearch(); 
-    this.$(".filters a.account-filter").click() 
+  removeSearch: function() {
+    this.lists.clearSearch();
+    this.$(".filters a.account-filter").click()
   },
-  
+
   removeSearchSpinner: function() { this.$(".search").removeClass("loading"); }
-  
 
 });
