@@ -1,7 +1,7 @@
-CommonPlace.main.PostForm = CommonPlace.View.extend(
-  template: "main_page.forms.home-post-form"
+CommonPlace.main.AnnouncementForm = CommonPlace.View.extend(
+  template: "main_page.forms.announcement-form"
   tagName: "form"
-  className: "create-neighborhood-post post"
+  className: "create-announcement post"
   events:
     "click button": "createPost"
     "focusin input, textarea": "onFormFocus"
@@ -12,47 +12,42 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
     mouseenter: "mouseEnter"
     mouseleave: "mouseLeave"
 
-  initialize: (options) ->
-    @template = options.template or @template  if options
+  aroundRender: (render) ->
+    self = this
+    $.getJSON "/api/feeds/" + @options.feed_id, (response) ->
+      self.feed = new Feed(response)
+      render()
+
 
   afterRender: ->
     @$("input[placeholder], textarea[placeholder]").placeholder()
 
+  
+  #this.$("textarea").autoResize();
   createPost: (e) ->
     e.preventDefault()
     @cleanUpPlaceholders()
     @$(".spinner").show()
     @$("button").hide()
-    
-    # Category not specified
-    if @options.category is `undefined`
-      
-      # Show a notification
-      $("#invalid_post_tooltip").show()
-      @$(".spinner").hide()
-      @$("button").show()
-    else
-      @options.category = "publicity"  if $("input[name=commercial]").is(":checked")
-      data =
-        title: @$("[name=title]").val()
-        body: @$("[name=body]").val()
-        category: @$("[name=categorize]").val()
+    data =
+      title: @$("[name=title]").val()
+      body: @$("[name=body]").val()
 
-      @sendPost CommonPlace.community.posts, data
-      @remove()
+    @sendPost @feed.announcements, data
 
   sendPost: (postCollection, data) ->
     self = this
     postCollection.create data,
       success: ->
-        postCollection.trigger "sync"
         self.render()
         self.resetLayout()
+        CommonPlace.community.announcements.trigger "sync"
 
       error: (attribs, response) ->
         self.$(".spinner").hide()
         self.$("button").show()
         self.showError response
+
 
   showError: (response) ->
     @$(".error").text response.responseText
@@ -65,8 +60,24 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
       $moreInputs.css height: 0
       $moreInputs.show()
       
+      #$moreInputs.animate(
+      #{ height: naturalHeight },
+      #{
+      #  complete: function() { 
+      #    $moreInputs.css({height: "auto"}); 
+      #    CommonPlace.layout.reset();
+      #  }, 
+      #  step: function() {
+      #    CommonPlace.layout.reset();
+      #  }
+      #}
+      #);
       CommonPlace.layout.reset()
+
   
+  #CommonPlace.account.clicked_post_box(function() {
+  #  $("#invalid_post_tooltip").show();
+  #});
   onFormBlur: (e) ->
     $("#invalid_post_tooltip").hide()
     unless @focused
@@ -88,4 +99,7 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
 
   hideLabel: (e) ->
     $("option.label", e.target).hide()
+
+  name: ->
+    @feed.get "name"
 )
