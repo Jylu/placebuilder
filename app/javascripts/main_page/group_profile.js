@@ -8,9 +8,9 @@ var GroupProfile = CommonPlace.View.extend({
   },
 
   avatarUrl: function() { return this.model.get('avatar_url'); },
-
+  
   fullName: function() { return this.model.get("name"); },
-
+  
   about: function() { return this.model.get('about'); },
 
   subscribe: function(e) {
@@ -26,6 +26,6 @@ var GroupProfile = CommonPlace.View.extend({
   isSubscribed: function() { return CommonPlace.account.isSubscribedToGroup(this.model); },
 
   url: function() { return this.model.get("url"); }
-
+  
 });
 
