@@ -49,7 +49,7 @@ class ImportConcordCommunityMap < ActiveRecord::Base
       r.add_tags(organizer_tag)
       r.correlate
     rescue
-      puts "Count not import line #{i}"
+      puts "Could not import line #{i}"
     end
   end
 end
