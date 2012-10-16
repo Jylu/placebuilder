@@ -35,6 +35,8 @@ def port(community, s)
                           notes: notes,
                           manually_added: true)
 
+      r.add_tags("Organizer: #{organizer}") if !organizer.nil?
+      r.add_tags("Sector: #{sector}") if !sector.nil?
       tags = h["Tags"].split(', ')
 
       tags.each do |tag|
