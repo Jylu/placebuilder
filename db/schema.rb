@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914225718) do
+ActiveRecord::Schema.define(:version => 20121012204553) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -594,5 +594,13 @@ ActiveRecord::Schema.define(:version => 20120914225718) do
   end
 
   add_index "users", ["oauth2_token"], :name => "index_users_on_oauth2_token"
+
+  create_table "warnings", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "warnable_id"
+    t.string   "warnable_type"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
 end

@@ -48,6 +48,12 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       @$(".replies-area").append thanksView.el
       @state = "thanks"
 
+  flag: ->
+    $.post "/api" + @model.link("flag"), _.bind((response) ->
+      @model.set response
+      @render()
+    , this)
+
   share: (e) ->
     e.preventDefault()  if e
     @state = "share"

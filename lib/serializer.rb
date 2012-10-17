@@ -35,7 +35,7 @@ module Serializer
         "id" => o.id,
         "classtype" => o.class.name,
         "user_id" => o.user_id,
-        "first_name" => o.first_name, 
+        "first_name" => o.first_name,
         "last_name" => o.last_name,
         "address" => o.address,
         "phone" => o.phone,
@@ -79,12 +79,14 @@ module Serializer
         "user_id" => o.user_id,
         "replies" => serialize(o.replies.to_a),
         "thanks" => serialize(o.all_thanks.to_a),
+        "flags" => serialize(o.all_flags.to_a),
         "last_activity" => o.last_activity.utc,
         "category" => o.category,
         "links" => {
           "author" => "/users/#{o.user_id}",
           "replies" => "/posts/#{o.id}/replies",
           "self" => "/posts/#{o.id}",
+          "flag" => "/posts/#{o.id}/flag",
           "thank" => "/posts/#{o.id}/thank"
         }
       }
@@ -127,10 +129,12 @@ module Serializer
         "owner_type" => o.owner_type,
         "replies" => serialize(o.replies.to_a),
         "thanks" => serialize(o.all_thanks.to_a),
+        "flags" => serialize(o.all_flags.to_a),
         "links" => {
           "replies" => "/events/#{o.id}/replies",
           "self" => "/events/#{o.id}",
           "author" => "/#{o.owner_type.downcase.pluralize}/#{o.owner_id}",
+          "flag" => "/events/#{o.id}/flag",
           "thank" => "/events/#{o.id}/thank"
         }
       }
@@ -154,10 +158,12 @@ module Serializer
         "owner_type" => o.owner_type,
         "replies" => serialize(o.replies.to_a),
         "thanks" => serialize(o.all_thanks.to_a),
+        "flags" => serialize(o.all_flags.to_a),
         "links" => {
           "replies" => "/announcements/#{o.id}/replies",
           "self" => "/announcements/#{o.id}",
           "author" => "/#{o.owner_type.downcase.pluralize}/#{o.owner_id}",
+          "flag" => "/announcements/#{o.id}/flag",
           "thank" => "/announcements/#{o.id}/thank"
         }
       }
@@ -180,11 +186,13 @@ module Serializer
         "body" => o.body,
         "replies" => serialize(o.replies.to_a),
         "thanks" => serialize(o.all_thanks.to_a),
+        "flags" => serialize(o.all_flags.to_a),
         "links" => {
           "replies" => "/group_posts/#{o.id}/replies",
           "author" => "/users/#{o.user_id}",
           "group" => "/groups/#{o.group_id}",
           "self" => "/group_posts/#{o.id}",
+          "flag" => "/group_posts/#{o.id}/flag",
           "thank" => "/group_posts/#{o.id}/thank"
         }
         }
@@ -226,6 +234,7 @@ module Serializer
         "body" => o.body,
         "published_at" => o.created_at.utc,
         "thanks" => serialize(o.thanks.to_a),
+        "flags" => serialize(o.warnings.to_a),
         "links" => {
           "author" => "/users/#{o.user_id}",
           "self" => "/replies/#{o.id}",
