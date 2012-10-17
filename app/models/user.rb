@@ -508,6 +508,10 @@ WHERE
     self.posted_content.map(&:thanks).flatten
   end
 
+  def flags_received
+    self.posted_content.map(&:warnings).flatten
+  end
+
   def thanks_received_this_week
     self.posted_content.map{ |content| content.thanks.this_week }.flatten
   end
