@@ -26,6 +26,13 @@ module Serializer
         "thankable_author" => o.thankable.user.name
       }
 
+      when Warning
+      {
+        "warner" => o.user.name,
+        "warnable_type" => o.warnable_type,
+        "warnable_author" => o.warnable.user.name
+      }
+
       when EventRecommendation
         o.as_api_response(:default)
       when EventNote
