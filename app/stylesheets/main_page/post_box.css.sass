@@ -1,3 +1,10 @@
+@mixin seam
+  clear: both
+  display: block
+  height: 0px
+  border-top: 1px solid #cfccc1
+  border-bottom: 1px solid white
+
 @mixin input
   font-family: Helvetica, Arial, sans-serif
   font-size: 14px
@@ -10,13 +17,11 @@
   margin: 0 0 10px 0
   resize: none
   @include box-shadow(0 0 0 1px #8b2324, 2px 2px 5px #ccc inset)
-
   .navigation
     float: left
     margin-left: 10px
     width: 147px
     padding-bottom: 10px
-
     h3.postbox-head
       color: white
       font-family: Helvetica, Arial, sans-serif
@@ -50,7 +55,7 @@
     font-family: Helvetica, Arial, sans-serif
     text-shadow: 1px 1px 0 black
     font-size: 12px
-
+  
 
   .form-container
     float: left
@@ -248,23 +253,85 @@ a
   z-index: 1000
 
 #post-box   
-  background-color: $off-grey  
-  border: 12px solid #bcbbae
+  background: url(shared/redesign/tan-bg.png) repeat
   z-index: 1001
   margin-top: 100px
   margin-right: auto
   margin-left: 250px
   margin-bottom: 30px
+  padding: 15px
   position: fixed
   border-radius: 4px
-  width: 500px
+  left: 15%
+  width: 502px !important
+
+  input:focus, textarea:focus
+    outline: none !important
+
+  .posting-header
+    margin-bottom: 15px
+    background-size: 42px !important
+    padding-left: 60px
+    h1 
+      margin: 0 
+      text-align: left
+      color: #AC322F
+      padding: 0
+      text-shadow: white 1px 1px 1px
+    span 
+      display: block 
+      margin: 0 
+      color: #333333
+      text-shadow: white 1px 1px 1px
+      padding: 0
+      font-size: 14px 
+  .posting-header.requests
+    background: url(shared/redesign/requests-icon.png) left center no-repeat
+  .posting-header.event
+    background: url(shared/redesign/events-icon.png) left center no-repeat
+  .posting-header.conversation
+    background: url(shared/redesign/discussions-icon.png) left center no-repeat
+  .posting-header.meetup
+    background: url(shared/redesign/meetups-icon.png) left center no-repeat
+
+  .seam 
+    +seam()
+    margin-bottom: 25px
+
+  .post-box 
+    height: 375px
+    padding: 10px 
+    height: 350px
+    border-radius: 4px
+    border: 4px solid #bcbbae
+
+  .close 
+    position: absolute
+    top: 6px
+    left: 505px
+    width: 20px 
+    cursor: pointer
+    font-size: 20px
+    background: url(shared/redesign/close-icon.png) no-repeat
+    text-indent: -9999em
+    font-family: helvetica
+
+  .form-container
+    padding: 10px 
+    height: 100%
+    width: 100%
+    border-radius: 4px
+    border: 4px solid #bcbbae
+
 
   div.navigation   
     width: 250px 
     float: left   
     padding: 20px
-    margin-top: -20px
-    margin-left: 48px
+    margin-top: -39px
+    margin-left: -27px
+    ul 
+      width: 500px
 
     div.links-conversation
       display: none
@@ -330,32 +397,40 @@ a
       padding-top: 10px  
       padding-bottom: 10px  
       text-shadow: black 0 0 0  
-      padding-left: 36px  
+      padding-left: 55px  
       background: url(bullet-quote.png) left center no-repeat
       font-size: 20px
       color: $blue
-      line-height: 18px
-
+      line-height: 17px
+      background-size: 40px !important
+      cursor: pointer
+      margin-bottom: 4px 
+      &:last-child 
+        margin-bottom: 0
+      span 
+        margin-top: 5px
+        display: block
+        font-size: 12px
+        color: #434343
+        text-shadow: white 1px 1px 1px
 
     ul li.request
-      background: url(shared/redesign/request-offer-icon.png) left center no-repeat
-      background-size: 26px
+      background: url(shared/redesign/requests-icon.png) left center no-repeat
 
     ul li.event
-      background: url(shared/redesign/event-icon.png) left center no-repeat
-      background-size: 26px
+      background: url(shared/redesign/events-icon.png) left center no-repeat
 
     ul li.conversation
       background: url(shared/redesign/discussions-icon.png) left center no-repeat
-      background-size: 26px
 
     ul li.meetup
-      background: url(shared/redesign/meetup-icon.png) left center no-repeat
-      background-size: 26px
+      background: url(shared/redesign/meetups-icon.png) left center no-repeat
 
     ul li:hover
       color: $red
       clear: both
+      span 
+        color: #434343
 
   div.form-container.default
     opacity: 1
@@ -434,14 +509,26 @@ strong
 ::-moz-placeholder
   color: #a2a2a2
 
-input   
+input[type="text"], textarea
   width: 397px  
   background-color: #fefffe
-  margin-bottom: 15px  
+  margin-bottom: 20px  
   border: 1px solid $dark-tan  
-  font: 14px Helvetica, Arial, "Sans Serif"
   padding: 10px 8px
-  color: #333
+  font-family: $Rokkitt
+  color: #555555
+  font-size: 18px
+  background: #fff
+  float: left
+  box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 1px 1px
+  input::-webkit-input-placeholder
+    color: #555
+  input:-moz-placeholder
+    color: #555
+
+input.price 
+  width: 150px
+
 
 textarea   
   width: 397px  
@@ -449,10 +536,11 @@ textarea
   height: 150px  
   margin-bottom: 15px  
   border: 1px solid $dark-tan  
-  font: 14px Helvetica, Arial, "Sans Serif"
   padding: 10px 8px
   line-height: 18px  
   color: #333
+  font-family: $Rokkitt
+  font-size: 18px
   //box-shadow: inset 2px 2px 4px 0px #dddddd  
 
 #disclaimer   
@@ -823,16 +911,16 @@ div.form-container
       font-size: 20px
       padding: 10px 5px
       width: 185px
-      height: 39px
+      height: 40px !important
       text-decoration: none
       cursor: pointer
 
 #invalid_post_tooltip
   display: none
 
-.create-neighborhood-post.post #post-box div.form-container button.red-button
+#post-box div.form-container button.red-button
   width: 140px
-  height: 40px
+  height: 40px !important
   float: right
   margin-top: 16px
 
@@ -849,6 +937,6 @@ div.form-container
 
 #post-box div.form-container.event button.red-button
   width: 140px
-  height: 40px
+  height: 40px !important
   float: right
   margin-top: 14px

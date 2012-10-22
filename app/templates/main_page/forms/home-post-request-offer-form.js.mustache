@@ -1,29 +1,82 @@
 <div id="post-box" class="form">
-	<div class="error"></div>
+  <div class="error"></div>
 
-	<div class="form-container">
-	  <h1>Make a Request or Offer</h1>
-	  <form>
-	    <div class="post_category">
-	      <select name="categorize" class="dk" tabindex="1">
-	        <option value="">How would you categorize this post?</option>
-	        <option name="topics" value="Request">Request</option>
-	        <option name="topics" value="Offer">Offer</option>	
-	      </select>
-	    </div>
+  <div class="form-container">
+    <div class="posting-header requests">
+      <h1>Requests</h1>
+      <span>Ask your neighbors a question</span>
+    </div>
+    <div class="seam">
+    </div>
+    <form>
+      <input type="text" placeholder="Request Title" name="title" class="rounded_corners">
+      <textarea placeholder="Request Message" name="body" class="rounded_corners"></textarea>   
+      <select data-placeholder="Your Favorite Football Team" style="width:350px;" class="chzn-select" multiple tabindex="6">
+          <option value=""></option>
+          <optgroup label="NFC EAST">
+            <option>Dallas Cowboys</option>
+            <option>New York Giants</option>
+            <option>Philadelphia Eagles</option>
+            <option>Washington Redskins</option>
+          </optgroup>
+          <optgroup label="NFC NORTH">
+            <option>Chicago Bears</option>
+            <option>Detroit Lions</option>
+            <option>Green Bay Packers</option>
+            <option>Minnesota Vikings</option>
+          </optgroup>
+          <optgroup label="NFC SOUTH">
+            <option>Atlanta Falcons</option>
+            <option>Carolina Panthers</option>
+            <option>New Orleans Saints</option>
+            <option>Tampa Bay Buccaneers</option>
+          </optgroup>
+          <optgroup label="NFC WEST">
+            <option>Arizona Cardinals</option>
+            <option>St. Louis Rams</option>
+            <option>San Francisco 49ers</option>
+            <option>Seattle Seahawks</option>
+          </optgroup>
+          <optgroup label="AFC EAST">
+            <option>Buffalo Bills</option>
+            <option>Miami Dolphins</option>
+            <option>New England Patriots</option>
+            <option>New York Jets</option>
+          </optgroup>
+          <optgroup label="AFC NORTH">
+            <option>Baltimore Ravens</option>
+            <option>Cincinnati Bengals</option>
+            <option>Cleveland Browns</option>
+            <option>Pittsburgh Steelers</option>
+          </optgroup>
+          <optgroup label="AFC SOUTH">
+            <option>Houston Texans</option>
+            <option>Indianapolis Colts</option>
+            <option>Jacksonville Jaguars</option>
+            <option>Tennessee Titans</option>
+          </optgroup>
+          <optgroup label="AFC WEST">
+            <option>Denver Broncos</option>
+            <option>Kansas City Chiefs</option>
+            <option>Oakland Raiders</option>
+            <option>San Diego Chargers</option>
+          </optgroup>
+        </select>
 
-	    <input placeholder="Request Title" name="title" class="rounded_corners">
-	    <textarea placeholder="Request Message" name="body" class="rounded_corners"></textarea>		
-	    <div class="spinner"></div>
+      <div class="spinner"></div>
 
-	    <div id="business">
-	      Are you advertising on behalf of a business or organizations?<br />		
-	      <ul>
-	        <li><input type="radio" name="business" value="yes">Yes</li>
-	        <li><input type="radio" name="business" value="no">No</li>
-	      </ul>
-	    </div>
-	    <button class="red-button">POST NOW</button>
-	  </form>
-	</div>
+
+      <div id="business">
+        Are you advertising on behalf of a business or organizations?<br />   
+        <ul>
+          <li><input type="radio" name="business" value="yes">Yes</li>
+          <li><input type="radio" name="business" value="no">No</li>
+        </ul>
+      </div>
+      <button class="red-button">POST NOW</button>
+    </form>
+  </div>
+    <div class="close">
+      x
+    </div>
 </div>
