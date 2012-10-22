@@ -8,6 +8,7 @@ CommonPlace.wire_item.EventWireItem = CommonPlace.wire_item.WireItem.extend(
   events:
     "click .editlink": "editEvent"
     "click .thank-link": "thank"
+    "click .flag-link": "flag"
     "click .share-link": "share"
     "click .reply-link": "reply"
     blur: "removeFocus"

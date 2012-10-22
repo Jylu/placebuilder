@@ -9,6 +9,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     @model.on "change", @render, this
     @reply()
     @checkThanked()
+    @checkFlagged()
 
   checkThanked: ->
     if @thanked()
@@ -46,6 +47,35 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       )
       thanksView.render()
       @$(".replies-area").append thanksView.el
+      @state = "thanks"
+
+  checkFlagged: ->
+    if @flagged()
+      @$(".flag-link").html "Flagged!"
+      @$(".flag-link").addClass "flagged-post"
+
+  flagged: ->
+    flags = _.map(@directFlags(), (flag) ->
+      flag.warner
+    )
+    _.include flags, CommonPlace.account.get("name")
+
+  directFlags: ->
+    _.filter @model.get("flags"), (t) ->
+      t.warnable_type isnt "Reply"
+
+  flag: ->
+    return @showFlags() if @flagged()
+    $.post "/api" + @model.link("flag"), _.bind((response) ->
+      @model.set response
+      @render()
+    , this)
+
+  showFlags: (e) ->
+    e.preventDefault()  if e
+    unless _.isEmpty(@model.get("flags"))
+      @removeFocus()
+      @$(".flag-link").addClass "current"
       @state = "thanks"
 
   share: (e) ->

@@ -45,6 +45,7 @@ class User < ActiveRecord::Base
   belongs_to :community
   belongs_to :neighborhood
   has_many :thanks, :dependent => :destroy
+  has_many :warns, :dependent => :destroy
 
   has_many :swipes
   has_many :swiped_feeds, :through => :swipes, :class_name => "Feed", :source => :feed
@@ -505,6 +506,10 @@ WHERE
 
   def thanks_received
     self.posted_content.map(&:thanks).flatten
+  end
+
+  def flags_received
+    self.posted_content.map(&:warnings).flatten
   end
 
   def thanks_received_this_week
