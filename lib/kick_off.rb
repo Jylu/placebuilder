@@ -188,8 +188,8 @@ class KickOff
     enqueue(MetNotification, user_id, neighbor_id)
   end
 
-  def deliver_flag_notification(flag)
-    enqueue(FlagNotification, flag)
+  def deliver_flag_notification(flag_id)
+    enqueue(FlagNotification, flag_id)
   end
 
   def deliver_share_notification(user, item, recipient_email)
