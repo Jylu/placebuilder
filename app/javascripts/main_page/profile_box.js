@@ -70,6 +70,5 @@ var ProfileBox = CommonPlace.View.extend({
   },
   
   removeSearchSpinner: function() { this.$(".search").removeClass("loading"); }
-  
 
 });
