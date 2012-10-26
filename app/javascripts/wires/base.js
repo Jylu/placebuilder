@@ -14,13 +14,7 @@ var Wire = CommonPlace.View.extend({
     
     this.appendCurrentPage();
     
-    this.header = this.$(".sub-navigation");
-    
     $(window).on("scroll.wire", function() { self.onScroll(); });
-    
-    if (!_.isEmpty(this.currentUser)) {
-      this.$(".sub-navigation .username").text(this.currentUser.get("first_name"));
-    }
     
     this.options.callback && this.options.callback();
   },

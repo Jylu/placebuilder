@@ -14,8 +14,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
     @searchForm = new @SearchForm()
     @searchForm.render()
     $(@searchForm.el).prependTo @$(".sticky")
-    $(window).on "scroll.communityLayout", ->
-      self.stickHeader true
 
     @$("[placeholder]").placeholder()
 
@@ -47,14 +45,9 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       wire.render()
       $(wire.el).appendTo self.$(".resources")
 
-    @stickHeader true
-
   tabs:
     all_posts: (self) ->
       new DynamicLandingResources(
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
 
@@ -63,9 +56,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.posts
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
         isInAllWire: false
       )
@@ -76,9 +66,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["neighborhood"]
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -88,9 +75,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["help"]
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -100,9 +84,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["offers"]
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -112,9 +93,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["publicity"]
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -124,9 +102,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["meetups"]
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -136,9 +111,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["other"]
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -148,9 +120,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.event-resources"
         emptyMessage: "No events here yet."
         collection: CommonPlace.community.events
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -160,9 +129,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.announcement-resources"
         emptyMessage: "No announcements here yet."
         collection: CommonPlace.community.announcements
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -172,8 +138,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.transaction-resources"
         emptyMessage: "No items here yet."
         collection: CommonPlace.community.transactions
-        callback: ->
-          self.stickHeader()
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -183,9 +147,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.group-post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.groupPosts
-        callback: ->
-          self.stickHeader()
-
         showProfile: self.options.showProfile
       )
       self.makeTab wire
@@ -195,9 +156,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.directory-resources"
         emptyMessage: "No groups here yet."
         collection: CommonPlace.community.groups
-        callback: ->
-          self.stickHeader()
-
         active: "groups"
         showProfile: self.options.showProfile
       )
@@ -208,9 +166,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.directory-resources"
         emptyMessage: "No feeds here yet."
         collection: CommonPlace.community.feeds
-        callback: ->
-          self.stickHeader()
-
         active: "feeds"
         showProfile: self.options.showProfile
       )
@@ -221,9 +176,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.directory-resources"
         emptyMessage: "No users here yet."
         collection: CommonPlace.community.users
-        callback: ->
-          self.stickHeader()
-
         active: "users"
         showProfile: self.options.showProfile
       )
@@ -284,8 +236,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         uri: model.link("self")
       )
       fullWireLink: options.fullWireLink
-      callback: ->
-        self.stickHeader()
     )
     unless _.isEmpty(@singleUser)
       wire.searchUser @singleUser
@@ -310,8 +260,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.user-wire-resources"
         collection: collection
         emptyMessage: "No posts here yet."
-        callback: ->
-          self.stickHeader()
       )
       wire.searchUser user
       self.switchTab "posts", wire
@@ -341,22 +289,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
     $(".sticky form.search input").removeClass "active"
     $(".sticky .cancel").hide()
     $(".resources").removeHighlight()
-
-  stickHeader: (isFirst) ->
-    $sticky_header = @$(".sticky .header")
-    sticky_bottom = $sticky_header.offset().top + $sticky_header.outerHeight()
-    @$(".resources .loading-resource").remove()  unless isFirst
-    current_subnav = @$(".resources .sub-navigation").filter(->
-      unless $sticky_header.height()
-        $(this).offset().top <= $sticky_header.offset().top
-      else
-        $nav_text = $(this).children("h2")
-        nav_text_bottom = $nav_text.offset().top + $nav_text.height()
-        nav_text_bottom <= sticky_bottom
-    ).last()
-    $sticky_header.html current_subnav.clone()
-    $(".sticky .cancel").removeClass "waiting"  if @currentQuery
-    CommonPlace.layout.reset()
 
   makeTab: (wire) ->
     new @ResourceTab(wire: wire)
