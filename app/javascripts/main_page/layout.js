@@ -4,13 +4,8 @@ var FixedLayout = function() {
     var $postBox = $("#post-box");
     var $infoBox = $("#profile-box");
 
-    if ($(window).width() < 990) {
-      $("#left-column").hide();
-      $("#right-column").css({ float: "none", marginLeft: "auto", marginRight: "auto" });
-    } else {
-      $("#left-column").show();
-      $("#right-column").css({ float: '', marginLeft: '', marginRight: '' });
-    }
+    $("#left-column").show();
+    $("#right-column").show();
         
     $infoBox.css({
       top: $postBox.outerHeight() + parseInt($postBox.css("top"),10) + 4

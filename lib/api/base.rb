@@ -155,6 +155,7 @@ class API
                               :warnable_type => scope.to_s)
 
         if warning.save
+          kickoff.deliver_flag_notification(warning.id)
           if scope == Reply
             serialize scope.find(id).repliable
           else

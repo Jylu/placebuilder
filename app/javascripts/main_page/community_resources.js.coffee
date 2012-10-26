@@ -247,8 +247,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         fullWireLink: "#/announcements"
         tab: "announcements"
 
-
-
   showEvent: (event) ->
     self = this
     event.fetch success: ->
@@ -256,7 +254,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.event-resources"
         fullWireLink: "#/events"
         tab: "events"
-
 
   showTransaction: (transaction) ->
     self = this
@@ -266,7 +263,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         fullWireLink: "#/transactions"
         tab: "transactions"
 
-
   showGroupPost: (post) ->
     self = this
     post.fetch success: ->
@@ -274,8 +270,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.group-post-resources"
         fullWireLink: "#/groupPosts"
         tab: "group_posts"
-
-
 
   highlightSingleUser: (user) ->
     @singleUser = user

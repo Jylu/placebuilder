@@ -28,5 +28,4 @@ CommonPlace.wire_item.AnnouncementWireItem = CommonPlace.wire_item.WireItem.exte
       template: "shared/announcement-edit-form"
     )
     formview.render()
-
 )

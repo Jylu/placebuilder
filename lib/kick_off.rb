@@ -184,13 +184,12 @@ class KickOff
     enqueue(ThankNotification, thank)
   end
 
-<<<<<<< HEAD
-  def deliver_flag_notification(flag)
-    enqueue(FlagNotification, flag)
-=======
   def deliver_met_notification(user_id, neighbor_id)
-    enqueue(MetNotification, user_id, neighbor_id)
->>>>>>> 4d5ecfb96667601197cdad797a5dbb0bb303a558
+   enqueue(MetNotification, user_id, neighbor_id)
+  end
+
+  def deliver_flag_notification(flag_id)
+   enqueue(FlagNotification, flag_id)
   end
 
   def deliver_share_notification(user, item, recipient_email)
