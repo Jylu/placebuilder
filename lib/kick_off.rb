@@ -173,7 +173,7 @@ class KickOff
   end
 
   def deliver_single_post_email(user_id, post)
-    enqueue(PostNotification, post.id, user_id)
+    enqueue(PostNotification, post.id, user_id) if post.present? and post.try(:id).present? and user_id.present?
   end
 
   def deliver_feed_owner_welcome(feed)
@@ -184,8 +184,13 @@ class KickOff
     enqueue(ThankNotification, thank)
   end
 
+<<<<<<< HEAD
   def deliver_flag_notification(flag)
     enqueue(FlagNotification, flag)
+=======
+  def deliver_met_notification(user_id, neighbor_id)
+    enqueue(MetNotification, user_id, neighbor_id)
+>>>>>>> 4d5ecfb96667601197cdad797a5dbb0bb303a558
   end
 
   def deliver_share_notification(user, item, recipient_email)
