@@ -24,7 +24,7 @@ var MessageFormView = FormView.extend({
       }
     });
   },
-  
+
   showError: function(response) {
     this.$(".error").text(response.responseText);
     this.$(".error").show();

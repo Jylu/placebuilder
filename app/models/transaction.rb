@@ -1,9 +1,17 @@
 class Transaction < ActiveRecord::Base
+  include Trackable
+  after_create :track_posted_content
   serialize :metadata, Hash
 
   belongs_to :community
   belongs_to :seller, :class_name => 'User', :foreign_key => 'seller_id'
   belongs_to :buyer, :class_name => 'User', :foreign_key => 'buyer_id'
+
+  has_many :replies, :as => :repliable, :order => :created_at, :dependent => :destroy
+  has_many :repliers, :through => :replies, :uniq => true, :source => :user
+  has_many :thanks, :as => :thankable, :dependent => :destroy
+
+  validates_presence_of :seller, :community
 
   acts_as_api
 
@@ -24,7 +32,8 @@ class Transaction < ActiveRecord::Base
   def add_buyer(c_id)
     metadata[:buyers] ||= []
 
-    metadata[:buyers] << c_id
+    metadata[:buyers] |= Array(c_id.to_i)
+    self.save
   end
 
   # Seller chose which buyer to sell to
@@ -35,6 +44,8 @@ class Transaction < ActiveRecord::Base
     self.save
   end
 
+  # To be done later when payments are actually to be implemented
+
   # Buyer confirmed purchase. Transaction should now be complete
   #
   # What to do at this point?
@@ -42,8 +53,6 @@ class Transaction < ActiveRecord::Base
   # Should there be a log of transactions somehow?
   def buyer_confirmed
   end
-
-  # To be done later when payments are actually to be implemented
 
   # Someone wants to buy item. Now on seller to deliver.
   def sell_pending

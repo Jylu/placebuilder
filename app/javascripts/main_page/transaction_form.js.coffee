@@ -29,7 +29,7 @@ CommonPlace.main.TransactionForm = CommonPlace.View.extend(
 
   sendTransaction: (transactionCollection, data) ->
     self = this
-    transactionCollection.create data, 
+    transactionCollection.create data,
       success: ->
         CommonPlace.community.transactions.trigger "sync"
         self.render()

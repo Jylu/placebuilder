@@ -765,6 +765,12 @@ CONDITION
       end
     end
 
+    post "/:id/buy_log" do
+      t = Transaction.find(params[:id])
+
+      t.add_buyer(params[:buyer])
+    end
+
     # Returns a list of completed versions of community names
     #
     # Note: This should not be bound to a community, but when

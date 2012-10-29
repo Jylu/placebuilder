@@ -106,9 +106,18 @@ module Serializer
           "url" => "/transactions/#{o.id}",
           "title" => o.title,
           "author" => o.seller.name,
+          "author_id" => o.seller_id,
           "first_name" => o.seller.first_name,
           "price" => o.price_in_cents,
-          "body" => o.description
+          "body" => o.description,
+          "links" => {
+            "author" => "/users/#{o.seller_id}",
+            "buy" => "/communities/#{o.id}/buy_log",
+            "replies" => "/posts/#{o.id}/replies",
+            "self" => "/posts/#{o.id}",
+            "flag" => "/posts/#{o.id}/flag",
+            "thank" => "/posts/#{o.id}/thank"
+          }
         }
 
       when Event
