@@ -99,5 +99,24 @@ class API
         [400, "errors"]
       end
     end
+
+    # Add an image to a post
+    #
+    # Requires authentication
+    #
+    # Request params:
+    #   image[:tempfile] - an image
+    #
+    # Returns the serialized account
+    post "/image" do
+      control_access :authenticated
+
+      photo = Image.new(:user => current_user)
+      photo.image = params[:image][:tempfile]
+      photo.image.instance_write(:image_file_name, params[:image][:filename])
+      photo.save
+
+      serialize photo
+    end
   end
 end

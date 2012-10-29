@@ -7,6 +7,7 @@ CommonPlace.main.EventForm = CommonPlace.View.extend(
     "change .post-label-selector input": "toggleCheckboxLIClass"
     "keydown textarea": "resetLayout"
     "focusout input, textarea": "onFormBlur"
+    "click .close": "close"
 
   afterRender: ->
     @$("input.date", @el).datepicker dateFormat: "yy-mm-dd"
@@ -18,6 +19,9 @@ CommonPlace.main.EventForm = CommonPlace.View.extend(
     @$("input.date").bind "change", ->
       self.onFormBlur target: self.$("input.date")
 
+  close: (e) ->
+    e.preventDefault()
+    @remove()
 
   createEvent: (e) ->
     e.preventDefault()

@@ -258,6 +258,15 @@ module Serializer
         }
         }
 
+      when Image
+        {
+        "id" => o.id,
+        "image_url" => o.image_url(:normal),
+        "owner_url" => "/users/#{o.user_id}",
+        "user_id" => o.user_id,
+        "published_at" => o.created_at.utc,
+        }
+
       when Feed
         o.as_api_response(:default)
       when FeedOwner

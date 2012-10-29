@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121023053933) do
+ActiveRecord::Schema.define(:version => 20121029174559) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -282,6 +282,17 @@ ActiveRecord::Schema.define(:version => 20121023053933) do
     t.integer  "community_id"
   end
 
+  create_table "images", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "imageable_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.string   "image_file_size"
+    t.string   "image_updated_at"
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
+  end
+
   create_table "internships", :force => true do |t|
     t.string   "name"
     t.string   "email"
@@ -366,6 +377,19 @@ ActiveRecord::Schema.define(:version => 20121023053933) do
     t.datetime "replied_at"
   end
 
+  create_table "rails_admin_histories", :force => true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month"
+    t.integer  "year",       :limit => 8
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
   create_table "referrals", :force => true do |t|
     t.integer  "event_id",    :null => false
     t.integer  "referee_id",  :null => false
@@ -421,6 +445,13 @@ ActiveRecord::Schema.define(:version => 20121023053933) do
     t.integer  "last_examined_story"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "sent_emails", :force => true do |t|
+    t.string   "tag"
+    t.integer  "community_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "stories", :force => true do |t|
