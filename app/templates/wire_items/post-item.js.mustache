@@ -1,7 +1,8 @@
 <div class="wire-top" data-published-at="{{publishedAtISO}}">
   <h3 class="{{wireCategory}}">{{wireCategoryName}}</h3>
+  <p>{{#canEdit}} - <a href="#" class="editlink">EDIT</a>{{/canEdit}}</p>
   <p>{{publishedAt}}</p>
-  {{#canEdit}} - <a href="#" class="editlink">EDIT</a>{{/canEdit}}
+
 </div>
 <div class="post-content">
   <div class="avatar-container" style="background-image:url('{{avatarUrl}}');">
