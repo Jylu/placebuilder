@@ -4,6 +4,7 @@ CommonPlace.wire_item.TransactionWireItem = CommonPlace.wire_item.WireItem.exten
   className: "wire-item"
 
   events:
+    "click .buy-link": "messageUser"
     "click .editlink": "editTransaction"
     #"click .thank-link": "thank"
     "click .share-link": "share"
@@ -18,6 +19,17 @@ CommonPlace.wire_item.TransactionWireItem = CommonPlace.wire_item.WireItem.exten
 
   format: (cents) ->
     "$" + (cents / 100.0).toFixed(2).toLocaleString()
+
+  messageUser: (e) ->
+    e.preventDefault()  if e
+    unless @model.get("author_id") is CommonPlace.account.id
+      params = { buyer: CommonPlace.account.id }
+      $.post "/api" + @model.link("buy"), params, _.bind((response) ->
+        subject = "Re: " + @model.get("title")
+        @model.user (user) ->
+          formview = new MessageFormView(model: new Message(messagable: user), subject: subject)
+          formview.render()
+      , this)
 
   wireCategoryName: ->
     category = @wireCategory()

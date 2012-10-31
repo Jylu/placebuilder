@@ -3,11 +3,15 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
   id: "post-box"
   events:
     "click .navigation li": "clickTab"
+    "click .close": "close"
 
   afterRender: ->
     @temp = {}
     #@showTab("nothing");
 
+  close: (e) ->
+    e.preventDefault()
+    @remove()
 
   clickTab: (e) ->
     e.preventDefault()
@@ -91,7 +95,7 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
           template: "main_page.forms.home-post-meetup-form"
         )
     unless constant[tab]
-      view = new AnnouncementForm(feed_id: tab.split("-").pop())
+      view = new CommonPlace.main.AnnouncementForm(feed_id: tab.split("-").pop())
     else
       view = constant[tab]()
     view

@@ -747,6 +747,9 @@ CONDITION
       end
     end
 
+    # Requires community membership
+    #
+    # Creates a new Transaction model
     post "/:id/transactions" do
       control_access :community_member, find_community
 
@@ -763,6 +766,13 @@ CONDITION
       else
         [400, "errors"]
       end
+    end
+
+    # Logs who's interested in a given transaction
+    post "/:trans_id/buy_log" do
+      t = Transaction.find(params[:trans_id])
+
+      t.add_buyer(params[:buyer])
     end
 
     # Returns a list of completed versions of community names
@@ -945,12 +955,13 @@ CONDITION
       end
     end
 
+    # Returns the community's transactions
     get "/:id/transactions" do
       control_access :community_member, find_community
 
       if params["query"].present?
       else
-        serialize(paginate(find_community.transactions))
+        serialize(paginate(find_community.transactions).reorder("created_at DESC"))
       end
     end
 

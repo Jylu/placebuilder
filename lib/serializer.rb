@@ -106,9 +106,19 @@ module Serializer
           "url" => "/transactions/#{o.id}",
           "title" => o.title,
           "author" => o.seller.name,
+          "author_id" => o.seller_id,
           "first_name" => o.seller.first_name,
           "price" => o.price_in_cents,
-          "body" => o.description
+          "body" => o.description,
+          "images" => serialize(o.images.to_a),
+          "links" => {
+            "author" => "/users/#{o.seller_id}",
+            "buy" => "/communities/#{o.id}/buy_log",
+            "replies" => "/transactions/#{o.id}/replies",
+            "self" => "/transactions/#{o.id}",
+            "flag" => "/transactions/#{o.id}/flag",
+            "thank" => "/transactions/#{o.id}/thank"
+          }
         }
 
       when Event
@@ -247,6 +257,15 @@ module Serializer
           "self" => "/replies/#{o.id}",
           "thank" => "/replies/#{o.id}/thank"
         }
+        }
+
+      when Image
+        {
+        "id" => o.id,
+        "image_url" => o.image_url(:normal),
+        "owner_url" => "/users/#{o.user_id}",
+        "user_id" => o.user_id,
+        "published_at" => o.created_at.utc,
         }
 
       when Feed

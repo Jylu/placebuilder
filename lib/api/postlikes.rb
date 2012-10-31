@@ -47,6 +47,8 @@ class API
     get "/:id" do
       control_access :community_member, find_postlike.community
 
+      puts find_postlike.inspect
+
       serialize find_postlike
     end
 
@@ -95,6 +97,52 @@ class API
       if reply.save
         kickoff.deliver_reply(reply)
         Serializer::serialize(reply).to_json
+      else
+        [400, "errors"]
+      end
+    end
+
+    # Adds an Image to the postlike
+    #
+    # Requires community membership - should be ownership
+    #
+    # Request params:
+    #  image_id - the id of the Image
+    #
+    # Returns the serialized Image if successful
+    # Returns 400 if there are validation errors
+    post "/:id/add_image" do
+      control_access :community_member, find_postlike.community
+
+      image = Image.find_by_id(params[:image_id])
+      image.update_attributes(
+        imageable: find_postlike
+      )
+
+      if image.save
+        serialize image
+      else
+        [400, "errors"]
+      end
+    end
+
+    # Uploads an image
+    #
+    # Requires authentication
+    #
+    # Request params:
+    #   image[:tempfile] - an image
+    #
+    # Returns the serialized image
+    post "/image" do
+      control_access :authenticated
+
+      photo = Image.new(:user => current_user)
+      photo.image = params[:image][:tempfile]
+      photo.image.instance_write(:image_file_name, params[:image][:filename])
+
+      if photo.save
+        serialize photo
       else
         [400, "errors"]
       end

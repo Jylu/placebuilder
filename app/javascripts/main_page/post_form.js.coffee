@@ -9,6 +9,7 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
     "focusin select": "hideLabel"
     "click select": "hideLabel"
     "focusout input, textarea": "onFormBlur"
+    "click .close": "close"
     mouseenter: "mouseEnter"
     mouseleave: "mouseLeave"
 
@@ -17,6 +18,10 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
 
   afterRender: ->
     @$("input[placeholder], textarea[placeholder]").placeholder()
+
+  close: (e) ->
+    e.preventDefault()
+    @remove()
 
   createPost: (e) ->
     e.preventDefault()
