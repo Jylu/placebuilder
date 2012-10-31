@@ -961,7 +961,7 @@ CONDITION
 
       if params["query"].present?
       else
-        serialize(paginate(find_community.transactions))
+        serialize(paginate(find_community.transactions).reorder("created_at DESC"))
       end
     end
 
