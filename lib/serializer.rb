@@ -110,13 +110,14 @@ module Serializer
           "first_name" => o.seller.first_name,
           "price" => o.price_in_cents,
           "body" => o.description,
+          "images" => serialize(o.images.to_a),
           "links" => {
             "author" => "/users/#{o.seller_id}",
             "buy" => "/communities/#{o.id}/buy_log",
-            "replies" => "/posts/#{o.id}/replies",
-            "self" => "/posts/#{o.id}",
-            "flag" => "/posts/#{o.id}/flag",
-            "thank" => "/posts/#{o.id}/thank"
+            "replies" => "/transactions/#{o.id}/replies",
+            "self" => "/transactions/#{o.id}",
+            "flag" => "/transactions/#{o.id}/flag",
+            "thank" => "/transactions/#{o.id}/thank"
           }
         }
 

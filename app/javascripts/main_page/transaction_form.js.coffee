@@ -24,7 +24,7 @@ CommonPlace.main.TransactionForm = CommonPlace.View.extend(
     @imageUploader = new AjaxUpload($el,
       action: "/api/transactions/image"
       name: "image"
-      data: {}
+      data: @data
       responseType: "json"
       autoSubmit: true
       onChange: ->
@@ -32,9 +32,10 @@ CommonPlace.main.TransactionForm = CommonPlace.View.extend(
 
       onSubmit: (file, extension) ->
 
-      onComplete: (file, response) ->
-        $(".item_pic").attr("src", response.image_url)
-        @data.image_id = response.id
+      onComplete: _.bind((file, response) ->
+          $(".item_pic").attr("src", response.image_url)
+          @data.image_id = response.id
+        , this)
     )
 
   createTransaction: (e) ->
@@ -49,16 +50,25 @@ CommonPlace.main.TransactionForm = CommonPlace.View.extend(
     @data.price= price
     @data.body= @$("[name=body]").val()
 
-    @sendTransaction CommonPlace.community.transactions, data
+    @sendTransaction CommonPlace.community.transactions, @data
     @remove()
 
   sendTransaction: (transactionCollection, data) ->
     self = this
     transactionCollection.create data,
-      success: ->
+      success: (response) ->
         CommonPlace.community.transactions.trigger "sync"
         if self.hasImageFile
           self.imageUploader.submit()
+
+        $.ajax(
+          type: "POST"
+          url: "/api" + response.get("links").self + "/add_image"
+          data:
+            "image_id" : response.get("image_id")
+          success: (response) ->
+          dataType: "JSON"
+        )
         self.render()
 
       error: (attribs, response) ->

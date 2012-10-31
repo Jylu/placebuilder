@@ -131,6 +131,15 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
   avatarUrl: ->
     @model.get "avatar_url"
 
+  hasImages: ->
+    if @model.get("images").length > 0
+      return true
+    else
+      return false
+
+  images: ->
+    @model.get "images"
+
   title: ->
     @model.get "title"
 

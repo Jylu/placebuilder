@@ -24,16 +24,16 @@ class Image < ActiveRecord::Base
                         :large => {:geometry => "200x200", :processors => [:cropper]},
                         :original => "1000x1000>"
                       },
-                      :default_url => "https://s3.amazonaws.com/commonplace-avatars-production/missing.png"
+                      :default_url => "https://s3.amazonaws.com/commonplace-images-production/missing.png"
                     }.merge(Rails.env.development? || Rails.env.test? ?
-                            { :path => ":rails_root/public/system/users/:user_id/images/:id/:style.:extension",
+                            { :path => ":rails_root/public/system/images/:id/:style.:extension",
                               :storage => :filesystem,
-                              :url => "/system/users/:user_id/images/:id/:style.:extension"
+                              :url => "/system/images/:id/:style.:extension"
                             } : {
                               :storage => :s3,
                               :s3_protocol => "https",
-                              :bucket => "commonplace-avatars-#{Rails.env}",
-                              :path => "/users/:user_id/images/:id/:style.:extension",
+                              :bucket => "commonplace-images-#{Rails.env}",
+                              :path => "/images/:id/:style.:extension",
                               :s3_credentials => {
                                 :access_key_id => ENV['S3_KEY_ID'],
                                 :secret_access_key => ENV['S3_KEY_SECRET']

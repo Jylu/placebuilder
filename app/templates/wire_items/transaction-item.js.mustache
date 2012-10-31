@@ -11,6 +11,11 @@
   <p class="author">{{author}}</p>
   <p class="price">Price: {{price}}</p>
   <p class="post-text">{{#markdown}}{{body}}{{/markdown}}</p>
+  {{#hasImages}}
+    {{#images}}
+      <img class="post_image" src="{{image_url}}">
+    {{/images}}
+  {{/hasImages}}
 </div>
 <div class="post-action clear">
   <ul class="actions">
