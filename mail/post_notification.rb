@@ -1,15 +1,15 @@
 class PostNotification < MailBase
-  
+
   def initialize(post_id, user_id)
     @post, @user = Post.find(post_id), User.find(user_id)
   end
 
-  def logo_url
-    asset_url("logo2.png")
-  end
-
   def subject
-    "#{author_name} just posted to your neighborhood on OurCommonPlace."
+    if @post.community.is_college
+      "#{poster_name} just posted to your hall board on CommonPlace"
+    else
+      "#{poster_name} just posted to our neighborhood on CommonPlace"
+    end
   end
 
   def reply_to
@@ -24,20 +24,24 @@ class PostNotification < MailBase
     @user
   end
 
-  def author
+  def poster
     @post.user
   end
 
   def community
     @post.community
   end
-    
-  def author_name
-    author.name
+
+  def community_name
+    community.name
   end
 
-  def short_author_name
-    author.first_name
+  def poster_name
+    poster.name
+  end
+
+  def short_poster_name
+    poster.first_name
   end
 
   def post_url
@@ -45,27 +49,23 @@ class PostNotification < MailBase
   end
 
   def new_message_url
-    message_user_url(author.id)
+    message_user_url(poster.id)
   end
 
-  def title
+  def post_subject
     post.subject
   end
 
-  def body
-    post.body
+  def post_body
+    markdown(post.body) rescue ("<p>" + post.body + "</p>")
   end
 
-  def author_avatar_url
-    author.avatar_url(:thumb)
+  def poster_avatar_url
+    asset_url(poster.avatar_url(:thumb))
   end
 
-  def has_avatar
-    author.avatar?
-  end
-
-  def author_url
-    show_user_url(author.id)
+  def poster_url
+    community_url("/")
   end
 
   def user_name
@@ -73,14 +73,7 @@ class PostNotification < MailBase
   end
 
   def tag
-    'post'
+    'single_post'
   end
 
-  def limited?
-    user.emails_are_limited?
-  end
-
-  def short_user_name
-    user.first_name
-  end
 end

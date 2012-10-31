@@ -29,6 +29,19 @@ class API
       200
     end
 
+    post "/mailgun/opens" do
+      authentic_mailgun? || (halt 401)
+      begin
+        if params['event'] == 'opened'
+          DailyStatistic.increment_or_create("#{params['tag']}s_opened")
+        end
+        # TODO: Log the email
+      rescue
+        halt 501
+      end
+      200
+    end
+
     # When a user marks us as spam, Mailgun lets us know, and we don't
     # send them any more emails
     post "/mailgun/disabled_emails" do

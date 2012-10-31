@@ -10,7 +10,6 @@ gem 'rack-contrib'
 gem 'rack-cache' # For caching
 gem 'dalli' # memcache client, for caching
 gem 'acts_as_api'
-gem 'barometer' #for weather forecasts
 
 # ActiveRecord
 gem 'sunspot_rails', "1.3.0"
@@ -54,6 +53,7 @@ gem 'resque', "~> 1.19.0" # use this to queue worker processes
 gem 'resque-exceptional' # we use this to send notify of exceptions with worker processes
 gem 'resque-scheduler' # we use this to queue jobs at specific times
 gem 'resque-cleaner'
+gem 'resque-job-stats', :git => "https://github.com/alanpeabody/resque-job-stats.git"
 gem 'hirefireapp' # auto-scale web and worker processes
 gem "resque-statsd", :git => "https://github.com/cloudability/resque-statsd.git"
 
@@ -72,6 +72,7 @@ gem 'sass' # used for stylesheets
 gem 'rails_admin', :git => 'https://github.com/sferik/rails_admin.git'
 gem 'googlecharts' # used for admin/overview
 gem 'garb' # used to access the Google Analytics API
+gem 'leftronic'
 
 # Monitoring
 gem 'exceptional' # we use this to notify on exceptions
