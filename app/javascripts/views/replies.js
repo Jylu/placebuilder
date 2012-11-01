@@ -79,7 +79,7 @@ var RepliesView = CommonPlace.View.extend({
     this.$('.replies-more').hide();
   },
   
-  showButton: function(e) { this.$(".submit-c").show(); },
+  showButton: function(e) { this.$(".submit-c").fadeIn(); },
   
   hideButton: function(e) { 
     if (!this.$("form textarea").val()) { this.$(".submit-c").hide(); }

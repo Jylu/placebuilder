@@ -134,13 +134,23 @@
 
 .submit-c
   display: none
-  padding: 7px
-  background: #ac322f
+  padding: 8px
+  background: -moz-linear-gradient(top, #ee432e 0%, #ac322f 50%, #ac322f 50%, #ac322f 100%)
+  background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #d1433f), color-stop(0.5, #ac322f), color-stop(0.5, #ac322f), color-stop(1, #ac322f))
+  -moz-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #555555
+  -webkit-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #555555
+  box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #555555
+  text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.8)
+  border: 1px solid #8f2927
   float: right
-  font-size: 11px
+  font-size: 12px
   color: white
   text-transform: uppercase
-  width: 31px
+  width: 55px
+  text-align: center
+  border-radius: 4px 
+  font-weight: bold 
+  margin: 0 20px 15px 0
   clear: both
   &:hover
     cursor: pointer
