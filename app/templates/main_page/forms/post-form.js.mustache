@@ -1,15 +1,29 @@
-<div class="error"></div>
+<div id="post-box" class="form">
+	<div class="error"></div>
 
-<input type="text" name="title" type="text" placeholder="Title">
+	<div class="form-container">
+	  <h1>Start a Discussion</h1>
+	  <div class="post_category">
+	    <form>
+	      <select name="categorize" class="dk" tabindex="1">
+	        <option value="">What discussion page do you want to contribute to?&nbsp;&nbsp;&nbsp;&nbsp;</option>
+	        <option value="Volunteering">Volunteering</option>
+	        <option value="City Problems">City Problems</option>
+	        <option value="Safety">Safety</option>
+	        <option value="News">News</option>
+	        <option value="Health and Wellness">Health and Wellness</option>
+	        <option value="Schools">Schools</option>
+	      </select>
 
-<textarea name="body" placeholder="Post a message to your neighbors"></textarea>
+	      <input placeholder="Post Title" name="title" class="rounded_corners">
+	      <textarea placeholder="Write your post here!" name="body" rows="15" cols="55" class="rounded_corners"></textarea>
 
-<div class="spinner"></div>
-<div class="on-focus">
-
-  <input type="checkbox" name="commercial" /> <span class="checkbox-label">Check here if this is a commercial post or advertisement</span>
-  <button>Post Now</button>
-
-
-  <div style="clear: both"></div>
+	      <div class="spinner"></div>
+	      <button class="red-button">POST NOW</button>
+	    </form>
+	  </div>
+	</div>
+  <div class="close">
+    x
+  </div>
 </div>

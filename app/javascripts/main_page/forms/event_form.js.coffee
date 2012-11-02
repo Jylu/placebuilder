@@ -1,9 +1,8 @@
-CommonPlace.main.EventForm = CommonPlace.View.extend(
+CommonPlace.main.EventForm = CommonPlace.main.BaseForm.extend(
   template: "main_page.forms.event-form"
-  tagName: "form"
   className: "create-event event"
   events:
-    "click button": "createEvent"
+    "click button": "createPost"
     "change .post-label-selector input": "toggleCheckboxLIClass"
     "keydown textarea": "resetLayout"
     "focusout input, textarea": "onFormBlur"
@@ -13,23 +12,18 @@ CommonPlace.main.EventForm = CommonPlace.View.extend(
     @$("input.date", @el).datepicker dateFormat: "yy-mm-dd"
     @$("input[placeholder], textarea[placeholder]").placeholder()
     
-    #this.$("textarea").autoResize({});
     @$("select.time").dropkick()
     self = this
     @$("input.date").bind "change", ->
       self.onFormBlur target: self.$("input.date")
 
-  close: (e) ->
-    e.preventDefault()
-    @remove()
-
-  createEvent: (e) ->
+  createPost: (e) ->
     e.preventDefault()
     @$("button").hide()
     @$(".spinner").show()
     self = this
     @cleanUpPlaceholders()
-    CommonPlace.community.events.create # use $.fn.serialize here
+    data =
       title: @$("[name=title]").val()
       about: @$("[name=about]").val()
       date: @$("[name=date]").val()
@@ -41,29 +35,13 @@ CommonPlace.main.EventForm = CommonPlace.View.extend(
       groups: @$("[name=groups]:checked").map(->
         $(this).val()
       ).toArray()
-    ,
-      success: ->
-        CommonPlace.community.events.trigger "sync"
-        self.render()
-
-      error: (attribs, response) ->
-        self.$("button").show()
-        self.$(".spinner").hide()
-        self.showError response
-
-
-  showError: (response) ->
-    @$(".error").text response.responseText
-    @$(".error").show()
+    @sendPost CommonPlace.community.events, data
 
   groups: ->
     CommonPlace.community.get "groups"
 
   toggleCheckboxLIClass: (e) ->
     $(e.target).closest("li").toggleClass "checked"
-
-  resetLayout: ->
-    CommonPlace.layout.reset()
 
   time_values: _.flatten(_.map(["AM", "PM"], (half) ->
     _.map [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], (hour) ->
@@ -72,9 +50,4 @@ CommonPlace.main.EventForm = CommonPlace.View.extend(
 
 
   ))
-  onFormBlur: (e) ->
-    if not $(e.target).val() or $(e.target).val() is $(e.target).attr("placeholder")
-      $(e.target).removeClass "filled"
-    else
-      $(e.target).addClass "filled"
 )

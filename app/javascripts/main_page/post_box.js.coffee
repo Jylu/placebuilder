@@ -1,5 +1,5 @@
 CommonPlace.main.PostBox = CommonPlace.View.extend(
-  template: "main_page.home-post-box"
+  template: "main_page.post-box"
   id: "post-box"
   events:
     "click .navigation li": "clickTab"
@@ -17,7 +17,7 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
     e.preventDefault()
     
     # DETERMINE WHAT TO DO WITH URLS WHEN WE CLICK
-    @switchTab $(e.target).attr("data-tab"), e
+    @switchTab $(e.currentTarget).attr("data-tab"), e
     $("#first_post_tooltip").hide()
 
   switchTab: (tab, e) ->
@@ -77,22 +77,22 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
       discussion: ->
         new CommonPlace.main.PostForm(
           category: "neighborhood"
-          template: "main_page.forms.home-post-form"
+          template: "main_page.forms.post-form"
         )
       request: ->
         new CommonPlace.main.PostForm(
           category: "offers"
-          template: "main_page.forms.home-post-request-offer-form"
+          template: "main_page.forms.post-offer-form"
         )
       other: ->
         new CommonPlace.main.PostForm(
           category: "other"
-          template: "main_page.forms.home-post-form"
+          template: "main_page.forms.post-form"
         )
       meetup: ->
         new CommonPlace.main.PostForm(
           category: "meetup"
-          template: "main_page.forms.home-post-meetup-form"
+          template: "main_page.forms.post-meetup-form"
         )
     unless constant[tab]
       view = new CommonPlace.main.AnnouncementForm(feed_id: tab.split("-").pop())
