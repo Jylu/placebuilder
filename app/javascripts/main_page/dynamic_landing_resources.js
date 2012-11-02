@@ -144,8 +144,9 @@ var DynamicLandingResources = CommonPlace.View.extend({
     chrono.collection.setDupes(_.flatten(duplicates));
     
     self._wires = [first];
-    if (events.collection.length) { self._wires.push(events); }
     self._wires.push(sorted);
+    if (transactions.collection.length) { self._wires.push(transactions); }
+    if (events.collection.length) { self._wires.push(events); }
     self._wires.push(chrono);
     self._wires = _.flatten(self._wires);
   },
