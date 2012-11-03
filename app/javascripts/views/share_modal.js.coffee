@@ -6,6 +6,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     "click #twittershare": "shareTwitter"
     "click #linkshare": "showLinkShare"
     "click .green-button": "close"
+    "click .close": "close"
     "click #submit_email_share": "submitEmail"
     "click #mailto-share": "markEmailShareChecked"
 
@@ -36,10 +37,10 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     @model.get "title"
 
   email_subject: ->
-    "Testing email subject"
+    "Check out this post on OurCommonPlace #{@community_name()}"
 
   email_body: ->
-    "Check out this link #{@share_url()}"
+    "I thought you might like this post on OurCommonPlace, #{@community_name()}'s online town bulletin: #{@share_url()}"
 
   community_name: ->
     CommonPlace.community.get "name"
