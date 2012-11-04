@@ -21,111 +21,112 @@
     .small 
       font-size: 8px
 
-.replies-area .reply-item
-  margin-top: 12px
-  padding: 0
+  .reply-list
+    width: 544px 
+    margin-left: 62px
+    .reply-item
+      margin-top: 25px
+      padding: 0
 
-  &:hover
-    a.delete-reply, a.thank-reply, .thanked-reply
-      color: #b7403c
-    .thanked-reply
-      color: #bebebe
+      &:hover
+        a.delete-reply, a.thank-reply, .thanked-reply
+          color: #b7403c
+        .thanked-reply
+          color: #bebebe
+          
+      .avatar 
+        float: left
+        width: 32px
+        height: 32px
+        +border-radius(5px)
+        border: 0
+
+      .reply-info
+        padding-top: 0px
+        margin-left: 50px
+
+      .author, .body
+        margin-left: 0
+        line-height: 18px
+        font-size: 13px
+
+      .author
+        margin-bottom: 0
+        margin-right: 5px
+        position: relative
+        font-weight: bold
+        color: #1b334a
+        float: left
+
+      .body, h1, h2, h3, h4, h5, h6
+        color: #444
+        margin-top: 0px
+        margin-bottom: 0px
+        p
+          margin-top: 0px
+
+      h1, h2, h3, h4, h5, h6
+        font-weight: bold
+
+      .time
+        color: #243248
+        font-size: 12px
+        margin-left: 5px
+        white-space: nowrap
+        
+      .thanks_count:hover
+        text-decoration: underline
+        cursor: pointer
       
-  .avatar 
-    float: left
-    width: 30px
-    height: 30px
-    +border-radius(0)
-    border: 0
-
-  .reply-info
-    padding-top: 5px
-    margin-left: 40px
-    border-top: 1px solid #efefef
-
-  .author, .body
-    margin-left: 0
-    line-height: 18px
-    font-size: 13px
-
-  .author
-    margin-bottom: 0
-    margin-right: 5px
-    position: relative
-    font-weight: bold
-    color: #1b334a
-    float: left
-
-  .body, h1, h2, h3, h4, h5, h6
-    color: #444
-    margin-top: 0px
-    margin-bottom: 0px
-    p
-      margin-top: 0px
-
-  h1, h2, h3, h4, h5, h6
-    font-weight: bold
-
-  .time
-    color: #243248
-    font-size: 12px
-    margin-left: 5px
-    white-space: nowrap
-    
-  .thanks_count:hover
-    text-decoration: underline
-    cursor: pointer
-  
 
 
-  a.delete-reply, a.thank-reply, .thanked-reply
-    display: inline
-    font-size: 10px
-    margin-left: 5px
-    padding-right: 10px
-    text-decoration: none
-    font-weight: bold
-      
-  a.delete-reply, a.thank-reply
-    color: white
-    &:hover
-      text-decoration: underline
-    
-  .thanked-reply
-    color: white
-    
-  .controls
-    white-space: nowrap
+      a.delete-reply, a.thank-reply, .thanked-reply
+        display: inline
+        font-size: 10px
+        margin-left: 5px
+        padding-right: 10px
+        text-decoration: none
+        font-weight: bold
+          
+      a.delete-reply, a.thank-reply
+        color: white
+        &:hover
+          text-decoration: underline
+        
+      .thanked-reply
+        color: white
+        
+      .controls
+        white-space: nowrap
 
 .replies form.new-reply
   margin-top: 13px
-
+  margin-left: 15px
   .avatar 
     float: left
-    width: 30px
-    height: 30px
-    +border-radius(0)
+    width: 32px
+    height: 32px
+    border-radius: 5px
     border: 0
     
   .reply-text
     float: left 
-    margin-left: 30px
+    margin-left: 15px
     textarea 
       font-family: Helvetica, Arial, sans-serif
-      font-size: 12px
+      font-size: 13px
       color: #888
       background: white
       box-shadow: none
-      border: 1px solid #c3c3c3
-      padding: 8px 10px
+      border: 1px dotted #d9d9d9
+      padding: 10px 12px
       height: 12px
-      width: 526px
+      width: 522px
       line-height: 14px
-      
       &:focus
         outline: none
         color: #444
-        
+        border-color: #c3c3c3
     .enter-hint
       display: none
       font-size: 12px
