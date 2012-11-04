@@ -38,7 +38,7 @@
 //= require invite_page
 //= require faq_page
 //= require discount_page
-//= require community_page
+//= require main_page
 //= require inbox_page
 //= require feed_inbox_page
 //= require outbox_page
@@ -136,7 +136,7 @@ var Application = Backbone.Router.extend({
 
   community: function(c) {
     this.showPage("community");
-    this.pages.community.lists.switchTab("posts");
+    this.pages.community.lists.switchTab("all_posts");
   },
 
   communityWire: function(c, tab) {

@@ -15,7 +15,7 @@ class CommunityWire
   end
 
   def transactions
-    @community.transactions.limit(3)
+    @community.transactions.reorder("created_at DESC").limit(3)
   end
 
   def neighborhood
@@ -62,6 +62,7 @@ class CommunityWire
     t.add :other
     t.add :past
     t.add :meetups
+    t.add :transactions
   end
   
 end

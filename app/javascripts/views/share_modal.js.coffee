@@ -4,10 +4,11 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
   events:
     "click #facebookshare": "shareFacebook"
     "click #twittershare": "shareTwitter"
-    "click #emailshare": "showEmailShare"
     "click #linkshare": "showLinkShare"
     "click .green-button": "close"
+    "click .close": "close"
     "click #submit_email_share": "submitEmail"
+    "click #mailto-share": "markEmailShareChecked"
 
   initialize: (options) ->
     @account = options.account
@@ -35,6 +36,12 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
   item_name: ->
     @model.get "title"
 
+  email_subject: ->
+    "Check out this post on OurCommonPlace #{@community_name()}"
+
+  email_body: ->
+    "I thought you might like this post on OurCommonPlace, #{@community_name()}'s online town bulletin: #{@share_url()}"
+
   community_name: ->
     CommonPlace.community.get "name"
 
@@ -42,8 +49,8 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     if e
       e.preventDefault()
 
-    if this.$("input[name=share-email]").val()
-      this.submitEmail()
+    #if this.$("input[name=share-email]").val()
+      #this.submitEmail()
 
     window.app.navigate(CommonPlace.community.get("slug"), {"trigger": true, "replace": true})
     this.remove()
@@ -69,7 +76,11 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
     url = encodeURIComponent($link.attr("data-url"))
     text = $link.attr("data-message")
     share_url = "https://twitter.com/intent/tweet?url=" + url + "&text=" + text + " " + url + "&count=horizontal"
-    window.open share_url, "cp_share"
+    window.open share_url, "cp_share", 'height=500,width=500'
+
+  markEmailShareChecked: (e) ->
+    e.preventDefault if e
+    $("#emailshare").addClass("checked")
 
   showEmailShare: (e) ->
     e.preventDefault()

@@ -1,17 +1,12 @@
-CommonPlace.main.PostForm = CommonPlace.View.extend(
-  template: "main_page.forms.home-post-form"
+CommonPlace.main.BaseForm = CommonPlace.View.extend(
   tagName: "form"
   className: "create-neighborhood-post post"
   events:
     "click button": "createPost"
     "focusin input, textarea": "onFormFocus"
     "keydown textarea": "resetLayout"
-    "focusin select": "hideLabel"
-    "click select": "hideLabel"
     "focusout input, textarea": "onFormBlur"
     "click .close": "close"
-    mouseenter: "mouseEnter"
-    mouseleave: "mouseLeave"
 
   initialize: (options) ->
     @template = options.template or @template  if options
@@ -37,7 +32,6 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
       @$(".spinner").hide()
       @$("button").show()
     else
-      @options.category = "publicity"  if $("input[name=commercial]").is(":checked")
       data =
         title: @$("[name=title]").val()
         body: @$("[name=body]").val()
@@ -46,18 +40,30 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
       @sendPost CommonPlace.community.posts, data
       @remove()
 
-  sendPost: (postCollection, data) ->
+  sendPost: (collection, data) ->
     self = this
-    postCollection.create data,
-      success: ->
-        postCollection.trigger "sync"
+    collection.create data,
+      success: _.bind((post) ->
+        collection.trigger "sync"
         self.render()
         self.resetLayout()
+        @showShareModal(post, "Thanks for posting!", "Share your post with your friends!")
+      , this)
 
       error: (attribs, response) ->
         self.$(".spinner").hide()
         self.$("button").show()
         self.showError response
+
+  showShareModal: (model, header, message) ->
+    shareModal = new CommonPlace.views.ShareModal(
+      model: model
+      account: CommonPlace.account
+      message: message
+      header: header
+    )
+    shareModal.render()
+    $("#modal").html shareModal.el
 
   showError: (response) ->
     @$(".error").text response.responseText
@@ -81,12 +87,6 @@ CommonPlace.main.PostForm = CommonPlace.View.extend(
       $(e.target).removeClass "filled"
     else
       $(e.target).addClass "filled"
-
-  mouseEnter: ->
-    @focused = true
-
-  mouseLeave: ->
-    @focused = false
 
   resetLayout: ->
     CommonPlace.layout.reset()

@@ -103,6 +103,7 @@ module Serializer
           "id" => o.id,
           "schema" => "transactions",
           "published_at" => o.created_at.utc,
+          "avatar_url" => o.seller.avatar_url(:thumb),
           "url" => "/transactions/#{o.id}",
           "title" => o.title,
           "author" => o.seller.name,
@@ -351,6 +352,7 @@ module Serializer
         "publicity" => serialize(o.publicity),
         "group" => serialize(o.group),
         "other" => serialize(o.other),
+        "transactions" => serialize(o.transactions),
         "meetups" => serialize(o.meetups)
       }
 

@@ -1,3 +1,4 @@
+#= require ./main_page/forms/base
 #= require_tree ./main_page
 CommonPlace.CommunityPage = CommonPlace.View.extend(
   template: "main_page.main-page"

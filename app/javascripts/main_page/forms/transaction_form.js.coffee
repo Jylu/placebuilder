@@ -1,12 +1,6 @@
-CommonPlace.main.TransactionForm = CommonPlace.View.extend(
+CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
   template: "main_page.forms.transaction-form"
-  tagName: "form"
   className: "create-transaction transaction"
-  events:
-    "click button": "createTransaction"
-    "keydown textarea": "resetLayout"
-    "focusout input, textarea": "onFormBlur"
-    "click .close": "close"
 
   afterRender: ->
     @data = {}
@@ -14,10 +8,6 @@ CommonPlace.main.TransactionForm = CommonPlace.View.extend(
     @$("input[placeholder], textarea[placeholder]").placeholder()
     @initImageUploader @$(".image_file_browser")
     self = this
-
-  close: (e) ->
-    e.preventDefault()
-    @remove()
 
   initImageUploader: ($el) ->
     self = this
@@ -38,7 +28,7 @@ CommonPlace.main.TransactionForm = CommonPlace.View.extend(
         , this)
     )
 
-  createTransaction: (e) ->
+  createPost: (e) ->
     e.preventDefault()
     @cleanUpPlaceholders()
     @$("button").hide()
@@ -50,42 +40,31 @@ CommonPlace.main.TransactionForm = CommonPlace.View.extend(
     @data.price= price
     @data.body= @$("[name=body]").val()
 
-    @sendTransaction CommonPlace.community.transactions, @data
+    @sendPost CommonPlace.community.transactions, @data
     @remove()
 
-  sendTransaction: (transactionCollection, data) ->
+  sendPost: (transactionCollection, data) ->
     self = this
     transactionCollection.create data,
-      success: (response) ->
+      success: _.bind((post) ->
         CommonPlace.community.transactions.trigger "sync"
+        @showShareModal(post, "Thanks for posting!", "Share your post with your friends!")
         if self.hasImageFile
           self.imageUploader.submit()
 
         $.ajax(
           type: "POST"
-          url: "/api" + response.get("links").self + "/add_image"
+          url: "/api" + post.get("links").self + "/add_image"
           data:
-            "image_id" : response.get("image_id")
+            "image_id" : post.get("image_id")
           success: (response) ->
           dataType: "JSON"
         )
         self.render()
+      , this)
 
       error: (attribs, response) ->
         self.$("button").show()
         self.$(".spinner").hide()
         self.showError response
-
-  showError: (response) ->
-    @$(".error").text response.responseText
-    @$(".error").show()
-
-  resetLayout: ->
-    CommonPlace.layout.reset()
-
-  onFormBlur: (e) ->
-    if not $(e.target).val() or $(e.target).val() is $(e.target).attr("placeholder")
-      $(e.target).removeClass "filled"
-    else
-      $(e.target).addClass "filled"
 )

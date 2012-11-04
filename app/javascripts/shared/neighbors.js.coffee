@@ -2,7 +2,7 @@ CommonPlace.shared.Neighbors = CommonPlace.View.extend
   template: "shared.sidebar.neighbors"
 
   afterRender: () ->
-    CommonPlace.community.users.fetch
+    CommonPlace.account.featuredUsers.fetch
       success: (neighbors) =>
         neighbors.each (n) =>
           neighbor = n.toJSON()
