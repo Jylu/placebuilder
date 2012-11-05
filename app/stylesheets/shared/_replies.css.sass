@@ -8,14 +8,15 @@
     display: block
     font-size: 11px
     text-transform: uppercase
-    color: #B7403C
+    //color: #B7403C
     font-weight: bold
-    padding: 4px
     text-align: center
     color: #243248
-    margin-top: 10px
+    margin-top: 0px
     text-decoration: none
-    background: #F8F8F8
+    border-top: 1px dotted #ddd
+    padding-top: 20px
+    margin-left: 45px
     &:hover
       text-decoration: underline
     .small 
@@ -25,8 +26,12 @@
     width: 544px 
     margin-left: 62px
     .reply-item
-      margin-top: 25px
-      padding: 0
+      margin: 20px 0px 0px 0px
+      padding: 0px
+      &:first-child
+        padding-top: 20px
+        border-top: 1px dotted #ddd
+        margin-top: 0px
 
       &:hover
         a.delete-reply, a.thank-reply, .thanked-reply
