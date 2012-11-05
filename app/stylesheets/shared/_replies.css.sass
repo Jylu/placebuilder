@@ -3,7 +3,25 @@
   position: relative
   font-family: Helvetica, sans-serif
   margin-top: 0
-  
+  .thanks
+    padding-top: 10px
+    border-top: 1px dotted #ddd
+    padding-bottom: 20px
+    width: 544px 
+    margin-left: 62px
+    .thanks-list
+      margin: 0px
+    .avatar
+      display: none
+    .reply-item
+      margin-top: 0px !important
+      padding: 10px 0px 0px 0px !important
+      border: 0px none !important
+      &:last-child
+        border: 0px none
+      .reply-info
+        margin-left: 0px !important
+        
   .replies-more
     display: block
     font-size: 11px
@@ -22,7 +40,7 @@
     .small 
       font-size: 8px
 
-  .reply-list
+  .reply-list, .thanks-list
     width: 544px 
     margin-left: 62px
     .reply-item
