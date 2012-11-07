@@ -51,6 +51,12 @@
       <img src="/assets/loading.gif" style="display:none;">
     <div id="wrapper">
       <div id="header"></div>
+      <div id="notice">
+        <% if @login_redirect %>
+          <input id="login_redirect" type="hidden" name="login_redirect" value="<%= @login_redirect %>" />
+        <% end %>
+        <h2 class="notice"><%= (@login_error) ? @login_error : "" %></h2>
+      </div>
 
       <div id="main">
         <div id="fb-root"></div>
@@ -85,6 +91,12 @@
 
       // Call function once the client has loaded
       google.setOnLoadCallback(onGoogleDataLoad);
+      <% if @login_redirect %>
+        $(document).ready(function() {
+            $("#notice").show();
+            $("input[type=hidden][name=login_redirect]").val(window.location.href);
+          });
+      <% end %>
     </script>
     <%= erb :tracking %>
     <% if Rails.env.production? %>
