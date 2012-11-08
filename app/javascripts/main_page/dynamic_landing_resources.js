@@ -44,7 +44,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
         fullWireLink: "#/posts",
         emptyMessage: "No posts here yet.",
         callback: self.callback,
-        showProfile: self.options.showProfile
       })),
       (new LandingPreview({
         template: "main_page.post-offer-resources",
@@ -52,7 +51,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
         fullWireLink: "#/posts",
         emptyMessage: "No offers here yet.",
         callback: self.callback,
-        showProfile: self.options.showProfile
       })),
       (new LandingPreview({
         template: "main_page.post-help-resources",
@@ -60,7 +58,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
         fullWireLink: "#/posts",
         emptyMessage: "No help requests here yet.",
         callback: self.callback,
-        showProfile: self.options.showProfile
       })),
       (new LandingPreview({
         template: "main_page.post-publicity-resources",
@@ -68,7 +65,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
         fullWireLink: "#/posts",
         emptyMessage: "No posts here yet.",
         callback: self.callback,
-        showProfile: self.options.showProfile
       })),
       (new LandingPreview({
         template: "main_page.post-other-resources",
@@ -76,7 +72,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
         fullWireLink: "#/posts",
         emptyMessage: "No posts here yet.",
         callback: self.callback,
-        showProfile: self.options.showProfile
       })),
       (new LandingPreview({
         template: "main_page.group-post-resources",
@@ -84,7 +79,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
         fullWireLink: "#/groupPosts",
         emptyMessage: "No posts here yet.",
         callback: self.callback,
-        showProfile: self.options.showProfile
       })),
       (new LandingPreview({
         template: "main_page.post-meetup-resources",
@@ -92,7 +86,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
         fullWireLink: "#/posts",
         emptyMessage: "No meetups here yet.",
         callback: self.callback,
-        showProfile: self.options.showProfile
       }))
     ];
     
@@ -119,7 +112,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
       fullWireLink: "#/events",
       emptyMessage: "No events here yet.",
       callback: self.callback,
-      showProfile: self.options.showProfile
     });
    
     var transactions = new LandingPreview({
@@ -128,7 +120,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
       fullWireLink: "#/transactions",
       emptyMessage: "No items here yet.",
       callback: self.callback,
-      showProfile: self.options.showProfile
     });
  
     var chrono = new Wire({
@@ -137,7 +128,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
       emptyMessage: "No posts here yet.",
       perPage: 22,
       callback: self.callback,
-      showProfile: self.options.showProfile
     });
     
     _.each(self.raw.all(), function(collection) { duplicates.push(collection.models); })
@@ -158,7 +148,6 @@ var DynamicLandingResources = CommonPlace.View.extend({
       emptyMessage: "No results.",
       perPage: 22,
       callback: this.callback,
-      showProfile: this.options.showProfile
     });
     searchWire.search(this.currentQuery);
     this._wires = [searchWire];

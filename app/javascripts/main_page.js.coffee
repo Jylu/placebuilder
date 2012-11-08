@@ -9,20 +9,10 @@ CommonPlace.CommunityPage = CommonPlace.View.extend(
     self = this
     @account = CommonPlace.account
     @community = CommonPlace.community
-    profileDisplayer = new ProfileDisplayer({})
-    #@postBox = new PostBox(
-    #  account: @account
-    #  community: @community
-    #)
     @lists = new CommonPlace.main.CommunityResources(
       account: @account
       community: @community
-      showProfile: (p) ->
-        profileDisplayer.show p,
-          from_wire: true
-
     )
-    #@profileBox = new ProfileBox(profileDisplayer: profileDisplayer)
     @sidebar = new CommonPlace.shared.Sidebar(
       tabs: [{
         title: "pages"
@@ -38,9 +28,6 @@ CommonPlace.CommunityPage = CommonPlace.View.extend(
       post_button: true
     )
       
-    profileDisplayer.highlightSingleUser = (user) ->
-      self.lists.highlightSingleUser user
-
     @views = [@sidebar, @lists]
 
   afterRender: ->

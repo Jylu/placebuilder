@@ -81,6 +81,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
   markEmailShareChecked: (e) ->
     e.preventDefault if e
     $("#emailshare").addClass("checked")
+    _kmq.push(['record', 'Share', {'Medium': 'Email'}]) if _kmq?
 
   showEmailShare: (e) ->
     e.preventDefault()
@@ -107,7 +108,7 @@ CommonPlace.views.ShareModal = CommonPlace.View.extend(
       success: (response) ->
         $("input[name=share-email]").val('')
         $("#emailshare").addClass("checked")
-        _kmq.push(['record', 'Share', {'Medium': 'Email'}])
+        _kmq.push(['record', 'Share', {'Medium': 'Email'}]) if _kmq?
       dataType: "JSON"
     )
 )

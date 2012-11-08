@@ -8,12 +8,8 @@ CommonPlace.wire_item.GroupWireItem = CommonPlace.wire_item.WireItem.extend(
     @attr_accessible [ "name", "url", "avatar_url" ]
 
   events:
-    mouseenter: "showProfile"
     "click button.subscribe": "subscribe"
     "click button.unsubscribe": "unsubscribe"
-
-  showProfile: (callback) ->
-    @options.showProfile @model
 
   subscribe: ->
     CommonPlace.account.subscribeToFeed @model

@@ -11,7 +11,6 @@ CommonPlace.wire_item.ReplyWireItem = CommonPlace.wire_item.WireItem.extend(
 
   events:
     "click .reply-text > .author": "messageUser"
-    mouseenter: "showProfile"
     "click .delete-reply": "deleteReply"
     "click .thank-reply": "thankReply"
     "click .thanks_count": "showThanks"
@@ -37,12 +36,6 @@ CommonPlace.wire_item.ReplyWireItem = CommonPlace.wire_item.WireItem.extend(
       @model.user (user) ->
         formview = new MessageFormView(model: new Message(messagable: user))
         formview.render()
-
-  showProfile: (e) ->
-    user = new User(links:
-      self: @model.link("author")
-    )
-    @options.showProfile user
 
   canEdit: ->
     CommonPlace.account.canEditReply @model
