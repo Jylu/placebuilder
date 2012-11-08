@@ -12,6 +12,7 @@ CommonPlace.shared.YourPages = CommonPlace.View.extend
   addFeedPageLinks: (data, subscriptions) ->
     page = data.toJSON()
     page.about.trim()
+    page.url = "/" + CommonPlace.community.get("slug") + page.url
     html = this.renderTemplate("shared.sidebar.page", page)
     if page.id in subscriptions
       this.$('#your-pages-list').prepend html

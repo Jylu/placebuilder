@@ -19,8 +19,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
 
   switchTab: (tab, single) ->
     self = this
-    @$(".tab-button").removeClass "current"
-    @$("." + tab).addClass "current"
     @view = @tabs[tab](this)
     @$(".search-switch").removeClass "active"
     if _.include(["users", "groups", "feeds"], tab)
@@ -189,7 +187,17 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         fullWireLink: "#/posts"
         tab: "posts"
 
-
+  showFeedPage: (feed_slug) ->
+    $.getJSON("/api/feeds/" + feed_slug, _.bind((response) ->
+      feed = new Feed(response)
+      wire = new @PostLikeWire(
+        template: "main_page.announcement-resources"
+        emptyMessage: "No announcements here yet."
+        collection: feed.announcements
+      )
+      @view = @makeTab wire
+      @showTab()
+    , @))
 
   showAnnouncement: (announcement) ->
     self = this
