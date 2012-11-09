@@ -88,6 +88,8 @@ var Application = Backbone.Router.extend({
     ":community/list/:tab": "communityWire",
     ":community/share/:tab": "communityPostBox",
 
+    ":community/pages/:id": "showFeedPage",
+
     ":community/show/posts/:id": "showPost",
     ":community/show/events/:id": "showEvent",
     ":community/show/group_posts/:id": "showGroupPost",
@@ -167,6 +169,11 @@ var Application = Backbone.Router.extend({
   showGroupPost: function(c, id) {
     this.showPage("community");
     this.pages.community.lists.showGroupPost(new GroupPost({links: {self: "/group_posts/" + id}}));
+  },
+
+  showFeedPage: function(c, id) {
+    this.showPage("community");
+    this.pages.community.lists.showFeedPage(id);
   },
 
   showAnnouncement: function(c, id) {

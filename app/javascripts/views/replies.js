@@ -26,7 +26,6 @@ var RepliesView = CommonPlace.View.extend({
     this.collection.each(function(reply, index) {
       var replyview = new CommonPlace.wire_item.ReplyWireItem({ 
         model: reply, 
-        showProfile: self.options.showProfile ,
         thankReply: self.options.thankReply,
         showThanks: self.options.showThanks
       });

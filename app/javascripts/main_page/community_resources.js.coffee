@@ -5,9 +5,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
     "submit .sticky form": "search"
     "keyup .sticky input": "debounceSearch"
     "click .sticky .cancel": "cancelSearch"
-    mouseenter: "showProfile"
-    "mouseenter .post": "showProfile"
-    "mouseenter .thank-share": "showProfile"
 
   afterRender: ->
     self = this
@@ -19,8 +16,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
 
   switchTab: (tab, single) ->
     self = this
-    @$(".tab-button").removeClass "current"
-    @$("." + tab).addClass "current"
     @view = @tabs[tab](this)
     @$(".search-switch").removeClass "active"
     if _.include(["users", "groups", "feeds"], tab)
@@ -28,7 +23,11 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
     else
       @$(".post-search").addClass "active"
     @view.singleWire single  if single
-    (if (self.currentQuery) then self.search() else self.showTab())
+    if (self.currentQuery)
+      self.search()
+    else
+      self.showTab()
+      _kmq.push(['record', 'Wire Engagement', { 'Type': 'Tab', 'Tab': tab }]) if _kmq?
 
   winnowToCollection: (collection_name) ->
     self = this
@@ -47,16 +46,13 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
 
   tabs:
     all_posts: (self) ->
-      new DynamicLandingResources(
-        showProfile: self.options.showProfile
-      )
+      new DynamicLandingResources({})
 
     posts: (self) ->
       wire = new self.PostLikeWire(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.posts
-        showProfile: self.options.showProfile
         isInAllWire: false
       )
       self.makeTab wire
@@ -66,7 +62,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["neighborhood"]
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -75,7 +70,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["help"]
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -84,7 +78,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["offers"]
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -93,7 +86,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["publicity"]
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -102,7 +94,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["meetups"]
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -111,7 +102,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["other"]
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -120,7 +110,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.event-resources"
         emptyMessage: "No events here yet."
         collection: CommonPlace.community.events
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -129,7 +118,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.announcement-resources"
         emptyMessage: "No announcements here yet."
         collection: CommonPlace.community.announcements
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -138,7 +126,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.transaction-resources"
         emptyMessage: "No items here yet."
         collection: CommonPlace.community.transactions
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -147,7 +134,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.group-post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.groupPosts
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -157,7 +143,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         emptyMessage: "No groups here yet."
         collection: CommonPlace.community.groups
         active: "groups"
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -167,7 +152,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         emptyMessage: "No feeds here yet."
         collection: CommonPlace.community.feeds
         active: "feeds"
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -177,7 +161,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         emptyMessage: "No users here yet."
         collection: CommonPlace.community.users
         active: "users"
-        showProfile: self.options.showProfile
       )
       self.makeTab wire
 
@@ -189,7 +172,17 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         fullWireLink: "#/posts"
         tab: "posts"
 
-
+  showFeedPage: (feed_slug) ->
+    $.getJSON("/api/feeds/" + feed_slug, _.bind((response) ->
+      feed = new Feed(response)
+      wire = new @PostLikeWire(
+        template: "main_page.announcement-resources"
+        emptyMessage: "No announcements here yet."
+        collection: feed.announcements
+      )
+      @view = @makeTab wire
+      @showTab()
+    , @))
 
   showAnnouncement: (announcement) ->
     self = this
@@ -242,13 +235,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       @singleUser = {}
     @switchTab options.tab, wire
     $(window).scrollTo 0
-
-  showProfile: (e) ->
-    if @isSingle
-      user = new User(links:
-        self: @model.link("author")
-      )
-      @options.showProfile user
 
   showUserWire: (user) ->
     self = this

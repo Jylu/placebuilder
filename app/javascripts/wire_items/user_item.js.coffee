@@ -10,13 +10,9 @@ CommonPlace.wire_item.UserWireItem = CommonPlace.wire_item.WireItem.extend(
 
   events:
     "click button": "messageUser"
-    mouseenter: "showProfile"
 
   messageUser: (e) ->
     e and e.preventDefault()
     formview = new MessageFormView(model: new Message(messagable: @model))
     formview.render()
-
-  showProfile: (e) ->
-    @options.showProfile @model
 )

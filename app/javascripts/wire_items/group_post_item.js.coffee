@@ -44,8 +44,6 @@ CommonPlace.wire_item.GroupPostWireItem = CommonPlace.wire_item.WireItem.extend(
   events:
     "click div.group-post > .author > .person": "messageUser"
     "click .moreBody": "loadMore"
-    mouseenter: "showProfile"
-    "mouseenter .group-post": "showProfile"
     "click .editlink": "editGroupPost"
     "click .thank-link": "thank"
     "click .share-link": "share"
@@ -69,12 +67,6 @@ CommonPlace.wire_item.GroupPostWireItem = CommonPlace.wire_item.WireItem.extend(
     e.preventDefault()
     @allwords = true
     @render()
-
-  showProfile: (e) ->
-    group = new Group(links:
-      self: @model.link("group")
-    )
-    @options.showProfile group
 
   canEdit: ->
     CommonPlace.account.canEditGroupPost @model

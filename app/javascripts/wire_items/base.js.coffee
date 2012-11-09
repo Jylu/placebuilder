@@ -7,7 +7,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   afterRender: ->
     @model.on "change", @render, this
-    @reply()
+    @reply() if @model.get("replies") isnt undefined
     @checkThanked()
     @checkFlagged()
 
@@ -43,7 +43,6 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       @$(".replies-area").empty()
       thanksView = new ThanksListView(
         model: @model
-        showProfile: @options.showProfile
       )
       thanksView.render()
       @$(".replies-area").append thanksView.el
@@ -102,7 +101,6 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       @$(".replies-area").empty()
       @repliesView = new RepliesView(
         collection: @model.replies()
-        showProfile: @options.showProfile
         thankReply: _.bind((response) ->
           @model.set response
         , this)
