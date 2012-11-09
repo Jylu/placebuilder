@@ -2,19 +2,24 @@ CommonPlace.shared.YourPages = CommonPlace.View.extend
   template: "shared.sidebar.your-pages"
   id      : "your-pages-links"
 
-  afterRender: (params) -> 
+  afterRender: (params) ->
     self = this
-    self.subscriptions = CommonPlace.account.get("feed_subscriptions")
+    self.feed_subscriptions = CommonPlace.account.get("feed_subscriptions")
     CommonPlace.community.feeds.fetch
       success: (data) =>
-        this.addFeedPageLinks(page, self.subscriptions) for page in data.models
+        this.addPageLinks(page, self.feed_subscriptions, false) for page in data.models
 
-  addFeedPageLinks: (data, subscriptions) ->
+    self.group_subscriptions = CommonPlace.account.get("group_subscriptions")
+    CommonPlace.community.groups.fetch
+      success: (data) =>
+        this.addPageLinks(page, self.group_subscriptions, true) for page in data.models
+
+  addPageLinks: (data, subscriptions, subscriptions_only) ->
     page = data.toJSON()
     page.about.trim()
     page.url = "/" + CommonPlace.community.get("slug") + page.url
     html = this.renderTemplate("shared.sidebar.page", page)
     if page.id in subscriptions
       this.$('#your-pages-list').prepend html
-    else
+    else if not subscriptions_only
       this.$('#your-pages-list').append html
