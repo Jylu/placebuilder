@@ -1,6 +1,7 @@
 CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
   template: "main_page.forms.post-form"
   className: "create-neighborhood-post post"
+  category: "neighborhood"
 
   createPost: (e) ->
     e.preventDefault()
@@ -8,19 +9,15 @@ CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
     @$(".spinner").show()
     @$("button").hide()
     
-    # Category not specified
-    if @options.category is `undefined`
-      
-      # Show a notification
-      $("#invalid_post_tooltip").show()
-      @$(".spinner").hide()
-      @$("button").show()
-    else
-      data =
-        title: @$("[name=title]").val()
-        body: @$("[name=body]").val()
-        category: @$("[name=categorize]").val()
+    user_category = @$("[name=categorize]").val()
+    if user_category isnt undefined
+      @category = user_category
 
-      @sendPost CommonPlace.community.posts, data
-      @remove()
+    data =
+      title: @$("[name=title]").val()
+      body: @$("[name=body]").val()
+      category: @category
+
+    @sendPost CommonPlace.community.posts, data
+    @remove()
 )

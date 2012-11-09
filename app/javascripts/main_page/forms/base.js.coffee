@@ -1,6 +1,7 @@
 CommonPlace.main.BaseForm = CommonPlace.View.extend(
   tagName: "form"
   className: "create-neighborhood-post post"
+  category: "neighborhood"
   events:
     "click button": "createPost"
     "focusin input, textarea": "onFormFocus"
@@ -9,7 +10,8 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
     "click .close": "close"
 
   initialize: (options) ->
-    @template = options.template or @template  if options
+    @template = options.template or @template if options
+    @category = options.category or @category if options.category
 
   afterRender: ->
     @$("input[placeholder], textarea[placeholder]").placeholder()
