@@ -1,23 +1,25 @@
+<input type="text" id="search-header" placeholder="Search {{community_name}}..." >
 <ul>
   <li id="header_title"></li>
   {{#showActivity}}
     <li class="my-activity"></li>
   {{/showActivity}}
 
-  <li class="inbox">
-    <div class="file"></div>
-    <a href="{{inbox_url}}" data-remote>
-      Inbox
-    </a>
-  </li>
+
   <li class="account">
     <div class="avatar-container" style="background-image:url('{{avatar_url}}');">
     </div>
-    <a href="{{account_url}}" data-remote>Hi, {{short_name}}!</a>
+    My Page
 
     <ul class="account-sub">
-      <li><a href="{{account_url}}" data-remote>Account Settings</a></li>
+      <li><a href="{{account_url}}" data-remote>Hi, {{short_name}}!</a></li>
 
+      <li><a href="{{account_url}}" data-remote>Account Settings</a></li>
+      <li class="inbox">
+        <a href="{{inbox_url}}" data-remote>
+        Inbox
+        </a>
+      </li>
       {{#feeds}}
         <li><a href="/pages/{{slug}}">{{name}}</a></li>
       {{/feeds}}
@@ -32,6 +34,5 @@
       <li><a href="{{privacy_url}}">Privacy Policy</a></li>
       <li><a href="/users/sign_out">Sign Out</a></li>
     </ul>
-
   </li>
 </ul>
