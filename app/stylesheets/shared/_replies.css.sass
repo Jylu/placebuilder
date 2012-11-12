@@ -19,7 +19,7 @@
     padding-bottom: 10px
   .thanks-list
     margin: -10px 0px 15px 0px !important
-    width: 444px !important
+    width: 507px !important
     padding-left: 50px !important
     .avatar
       display: none
@@ -39,21 +39,24 @@
     //color: #B7403C
     font-weight: bold
     text-align: left
-    color: #243248
+    color: #999
     margin-top: 0px
     text-decoration: none
     border-top: 1px dotted #ddd
     padding-top: 15px
     padding-bottom: 15px
     margin-left: 65px
-    padding-left: 140px
+    margin-right: 20px
+    padding-left: 165px
     &:hover
       text-decoration: underline
     .small 
-      font-size: 8px
+      font-size: 9px
+      margin-left: 4px
+      color: #bbb
 
   .reply-list, .thanks-list
-    width: 492px 
+    width: 543px 
     margin-left: 15px
     float: left
     a
@@ -178,21 +181,58 @@
       border: 1px dotted #d9d9d9
       padding: 8px 10px
       height: 14px
-      width: 425px
+      width: 475px
       line-height: 14px
+      font-weight: normal
+      -webkit-font-smoothing: antialiased
+      input::-webkit-input-placeholder
+        color: #888
       &:focus
         outline: none
-        color: #444
-        border-color: #c3c3c3
+        color: #333
+        border-color: #c0c0c0
     .enter-hint
       display: none
       font-size: 12px
-      color: #909090
+      color: #aaa
       
 
 .submit-c
+  background: $red
+  border-radius: 4px
+  color: #fff
+  text-shadow: 0px -1px 0px #64100D
+  font-weight: bold
+  letter-spacing: 1px
+  font-family: $body
+  +linear-gradient(color-stops(#d0413d, #ac322f), top)
+  display: block
+  font-size: 11px
+  text-decoration: none
+  border: 1px solid
+  border-color: #ac322f
+  box-shadow: inset 0px 1px 0.5px #e28986
+  padding: 6px
+  float: right
+  text-align: center
   display: none
-  padding: 8px
+  clear: both
+  width: 55px
+  text-transform: uppercase
+  margin: 0px 0px 10px 0px
+  &:hover, &:focus
+    color: #fff
+    +linear-gradient(color-stops(#ee5a56, #b53633), top)
+    box-shadow: 0px 2px 4px #adab9f
+    cursor: pointer
+  &:active
+    color: #fff
+    +linear-gradient(color-stops(#d64541, #ac322f), bottom)
+    text-shadow: 0px 1px 0px #64100D
+
+//.submit-c
+  display: none
+  padding: 6px
   background: -moz-linear-gradient(top, #ee432e 0%, #ac322f 50%, #ac322f 50%, #ac322f 100%)
   background: -webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #d1433f), color-stop(0.5, #ac322f), color-stop(0.5, #ac322f), color-stop(1, #ac322f))
   -moz-box-shadow: inset 0px 0px 0px 1px rgba(255, 115, 100, 0.4), 0 1px 3px #555555
@@ -201,7 +241,7 @@
   text-shadow: 0px -1px 1px rgba(0, 0, 0, 0.8)
   border: 1px solid #8f2927
   float: right
-  font-size: 12px
+  font-size: 11px
   color: white
   text-transform: uppercase
   width: 55px
