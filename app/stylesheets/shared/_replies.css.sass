@@ -3,21 +3,24 @@
   position: relative
   font-family: Helvetica, sans-serif
   margin-top: 0
-  .avatar-container
-    width: 32px
-    height: 32px
-    float: left
-    background-size: cover
-    background-repeat: no-repeat
-    border-radius: 4px
+  .replies
+    .comment
+      margin-top: 15px
+      display: inline-block
+      .avatar-container
+        width: 32px
+        height: 32px
+        float: left
+        background-size: cover
+        background-repeat: no-repeat
+        border-radius: 4px
+        margin-top: 0px
   .thanks
-    padding-top: 10px
-    border-top: 1px dotted #ddd
-    padding-bottom: 20px
-    width: 544px 
-    margin-left: 62px
-    .thanks-list
-      margin: 0px
+    padding-bottom: 10px
+  .thanks-list
+    margin: -10px 0px 15px 0px !important
+    width: 444px !important
+    padding-left: 50px !important
     .avatar
       display: none
     .reply-item
@@ -35,29 +38,35 @@
     text-transform: uppercase
     //color: #B7403C
     font-weight: bold
-    text-align: center
+    text-align: left
     color: #243248
     margin-top: 0px
     text-decoration: none
     border-top: 1px dotted #ddd
-    padding-top: 20px
-    margin-left: 45px
+    padding-top: 15px
+    padding-bottom: 15px
+    margin-left: 65px
+    padding-left: 140px
     &:hover
       text-decoration: underline
     .small 
       font-size: 8px
 
   .reply-list, .thanks-list
-    width: 544px 
-    margin-left: 62px
+    width: 492px 
+    margin-left: 15px
+    float: left
+    a
+      color: #ac322f
     .reply-item
-      margin: 20px 0px 0px 0px
-      padding: 0px
+      margin: 0px
+      padding: 0px 0px 12px 0px
       &:first-child
-        padding-top: 20px
-        border-top: 1px dotted #ddd
-        margin-top: 0px
-
+        //padding-top: 20px
+        //border-top: 1px dotted #ddd
+        margin: 0px
+      &:last-child
+        padding-bottom: 10px
       &:hover
         a.delete-reply, a.thank-reply, .thanked-reply
           color: #b7403c
@@ -70,10 +79,23 @@
         height: 32px
         +border-radius(5px)
         border: 0
-
+        display: none
+        
+      .avatar-container
+        width: 32px
+        height: 32px
+        float: left
+        background-size: cover
+        background-repeat: no-repeat
+        border-radius: 4px
+        margin-top: 15px
+        
       .reply-info
-        padding-top: 0px
-        margin-left: 50px
+        padding-top: 12px
+        margin-left: 48px
+        border-top: 1px dotted #ddd
+        &:first-child
+          padding-top: 15px
 
       .author, .body
         margin-left: 0
@@ -97,24 +119,31 @@
 
       h1, h2, h3, h4, h5, h6
         font-weight: bold
-
-      .time
-        color: #243248
-        font-size: 12px
-        margin-left: 5px
-        white-space: nowrap
         
-      .thanks_count:hover
-        text-decoration: underline
-        cursor: pointer
+      .controls
+        white-space: nowrap        
+        float: left
+        width: 100%
+        .time
+          color: #aaa
+          font-size: 12px
+          white-space: nowrap
+        .thank-divider
+          margin: 0px 3px 0px 0px
+          color: #aaa
+          font-size: 11px
+        .thanks-count
+          color: #aaa
+          &:hover
+            text-decoration: underline
+            cursor: pointer
       
 
 
       a.delete-reply, a.thank-reply, .thanked-reply
         display: inline
         font-size: 10px
-        margin-left: 5px
-        padding-right: 10px
+        margin-left: 10px
         text-decoration: none
         font-weight: bold
           
@@ -125,12 +154,9 @@
         
       .thanked-reply
         color: white
-        
-      .controls
-        white-space: nowrap
+
 
 .replies form.new-reply
-  margin-top: 13px
   margin-left: 15px
   .avatar 
     float: left
@@ -149,9 +175,9 @@
       background: white
       box-shadow: none
       border: 1px dotted #d9d9d9
-      padding: 10px 12px
-      height: 12px
-      width: 522px
+      padding: 8px 10px
+      height: 14px
+      width: 425px
       line-height: 14px
       &:focus
         outline: none
@@ -181,7 +207,7 @@
   text-align: center
   border-radius: 4px 
   font-weight: bold 
-  margin: 0 20px 15px 0
+  margin: 0 0px 15px 0
   clear: both
   &:hover
     cursor: pointer
