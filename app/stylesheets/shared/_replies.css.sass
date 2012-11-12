@@ -58,13 +58,16 @@
     float: left
     a
       color: #ac322f
+      &:hover
+        text-decoration: underline
     .reply-item
       margin: 0px
-      padding: 0px 0px 12px 0px
+      padding: 0px 0px 7px 0px
       &:first-child
-        //padding-top: 20px
-        //border-top: 1px dotted #ddd
-        margin: 0px
+        .reply-info
+          padding-top: 15px
+        .avatar-container
+          margin-top: 18px
       &:last-child
         padding-bottom: 10px
       &:hover
@@ -88,14 +91,12 @@
         background-size: cover
         background-repeat: no-repeat
         border-radius: 4px
-        margin-top: 15px
+        margin-top: 14px
         
       .reply-info
-        padding-top: 12px
+        padding-top: 10px
         margin-left: 48px
         border-top: 1px dotted #ddd
-        &:first-child
-          padding-top: 15px
 
       .author, .body
         margin-left: 0
@@ -207,7 +208,7 @@
   text-align: center
   border-radius: 4px 
   font-weight: bold 
-  margin: 0 0px 15px 0
+  margin: 0 0px 12px 0
   clear: both
   &:hover
     cursor: pointer
