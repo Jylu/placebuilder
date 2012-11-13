@@ -25,7 +25,7 @@
     <style type="text/css" media="screen">
        html {
            background: url('/assets/shared/redesign/backgrounds/<%= @community.slug.titleize %>.jpg') no-repeat center center fixed;
-           background-color: #CEE7FE;
+           background-color: #F5F3E9;
            background-size: cover;
            -webkit-background-size: cover;
            -webkit-font-smoothing: antialiased;
@@ -39,13 +39,30 @@
   </head>
 
   <body class="application">
+    <img src="/assets/shared/redesign/backgrounds/<%= @community.slug.titleize %>.jpg" style="display:none;"> 
+    <img src="/assets/shared/redesign/logo3.png" style="display:none;">
+    <img src="/assets/shared/redesign/requests-icon.png" style="display:none;">
+    <img src="/assets/shared/redesign/marketplace-icon.png" style="display:none;">
+    <img src="/assets/shared/redesign/events-icon.png" style="display:none;">
+    <img src="/assets/shared/redesign/discussions-icon.png" style="display:none;">
+    <img src="/assets/shared/redesign/announcements-icon.png" style="display:none;">
     <img src="/assets/shared/redesign/welcomebg.png" style="display:none;">
+    <img src="/assets/shared/redesign/reply.png" style="display:none;">
+    <img src="/assets/shared/redesign/replied.png" style="display:none;">
+    <img src="/assets/shared/redesign/publicize.png" style="display:none;">
+    <img src="/assets/shared/redesign/publicized.png" style="display:none;">
+    <img src="/assets/shared/redesign/thank.png" style="display:none;">
+    <img src="/assets/shared/redesign/thanked.png" style="display:none;">
+    <img src="/assets/shared/redesign/flag.png" style="display:none;">
+    <img src="/assets/shared/redesign/flagged.png" style="display:none;">
     <img src="/assets/shared/redesign/tan-bg.png" style="display:none;">
     <img src="/assets/shared/redesign/red-bg.png" style="display:none;">
     <img src="/assets/shared/redesign/blue-bg.png" style="display:none;">
     <img src="/assets/shared/redesign/star-red.png" style="display:none;">
     <img src="/assets/shared/redesign/star-blue.png" style="display:none;">
     <img src="/assets/shared/redesign/welcome-divider.png" style="display:none;">
+    <img src="/assets/shared/redesign/post-shadow-left.png" style="display:none;">
+    <img src="/assets/shared/redesign/post-shadow-right.png" style="display:none;">
     <img src="/assets/shared/redesign/error-bg.png" style="display:none;">
     <img src="/assets/shared/redesign/fbreg.png" style="display:none;">
     <img src="/assets/shared/redesign/arrow.png" style="display:none;">
@@ -65,7 +82,7 @@
 
       <div id="main"></div>
 
-      <div id="sticky-footer"></div>
+      <!--<div id="sticky-footer"></div>-->
 
       <%= erb :tracking %>
       <% if Rails.env.production? %>
@@ -75,7 +92,7 @@
       <% end %>
     </div>
 
-    <%= erb :footer %>
+    <!--<%= erb :footer %>-->
 
   </body>
 
