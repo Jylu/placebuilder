@@ -184,6 +184,18 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       @showTab()
     , @))
 
+  showGroupPage: (group_id) ->
+    $.getJSON("/api/groups/" + group_id, _.bind((response) ->
+      group = new Group(response)
+      wire = new @PostLikeWire(
+        template: "main_page.announcement-resources"
+        emptyMessage: "No announcements here yet."
+        collection: group.posts
+      )
+      @view = @makeTab wire
+      @showTab()
+    , @))
+
   showAnnouncement: (announcement) ->
     self = this
     announcement.fetch success: ->
