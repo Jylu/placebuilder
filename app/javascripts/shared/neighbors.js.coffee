@@ -8,6 +8,7 @@ CommonPlace.shared.Neighbors = CommonPlace.View.extend
           neighbor = n.toJSON()
           if neighbor.about isnt null
             neighbor.about.trim()
+          neighbor.url = '/' + CommonPlace.community.get("slug") + '/show' + neighbor.url
           html = this.renderTemplate("shared.sidebar.neighbor", neighbor)
           this.$(".list").append html
 
