@@ -6,9 +6,10 @@ CommonPlace.wire_item.TransactionWireItem = CommonPlace.wire_item.WireItem.exten
   events:
     "click .buy-link": "messageUser"
     "click .editlink": "editTransaction"
-    #"click .thank-link": "thank"
+    "click .thank-link": "thank"
+    "click .flag-link": "flag"
     "click .share-link": "share"
-    #"click .reply-link": "reply"
+    "click .reply-link": "reply"
     blur: "removeFocus"
 
   afterRender: ->
