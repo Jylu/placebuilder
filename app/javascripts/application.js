@@ -89,6 +89,7 @@ var Application = Backbone.Router.extend({
     ":community/share/:tab": "communityPostBox",
 
     ":community/pages/:id": "showFeedPage",
+    ":community/groups/:id": "showGroupPage",
 
     ":community/show/posts/:id": "showPost",
     ":community/show/events/:id": "showEvent",
@@ -174,6 +175,11 @@ var Application = Backbone.Router.extend({
   showFeedPage: function(c, id) {
     this.showPage("community");
     this.pages.community.lists.showFeedPage(id);
+  },
+
+  showGroupPage: function(c, id) {
+    this.showPage("community");
+    this.pages.community.lists.showGroupPage(id);
   },
 
   showAnnouncement: function(c, id) {

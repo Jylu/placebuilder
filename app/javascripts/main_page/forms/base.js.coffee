@@ -10,8 +10,9 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
     "click .close": "close"
 
   initialize: (options) ->
-    @template = options.template or @template if options
-    @category = options.category or @category if options.category
+    if options
+      @template = options.template or @template if options.template
+      @category = options.category or @category if options.category
 
   afterRender: ->
     @$("input[placeholder], textarea[placeholder]").placeholder()
