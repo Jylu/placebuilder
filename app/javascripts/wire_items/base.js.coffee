@@ -160,7 +160,10 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     (if (@model.get("thanks").length is 1) then "person" else "people")
 
   wireCategory: ->
-    @model.get "category"
+    if @model.get("schema") is "group_posts"
+      @model.get("group")
+    else
+      @model.get "category"
 
   wireCategoryName: ->
     category = @wireCategory()

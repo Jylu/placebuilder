@@ -3,21 +3,31 @@ CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
   className: "create-neighborhood-post post"
   category: "neighborhood"
 
+  initialize: (options) ->
+    CommonPlace.main.BaseForm.prototype.initialize options
+    @groups = CommonPlace.community.get("groups")
+
   createPost: (e) ->
     e.preventDefault()
     @cleanUpPlaceholders()
     @$(".spinner").show()
     @$("button").hide()
     
-    user_category = @$("[name=categorize]").val()
-    if user_category isnt undefined
-      @category = user_category
+    group_id = @$("[name=group_selector]").val()
+    if group_id is ""
+      # Show an error
+      $("#invalid_post_tooltip").show()
+      @$("button").show()
+    else
+      @group_id = group_id
 
-    data =
-      title: @$("[name=title]").val()
-      body: @$("[name=body]").val()
-      category: @category
+      data =
+        title: @$("[name=title]").val()
+        body: @$("[name=body]").val()
 
-    @sendPost CommonPlace.community.posts, data
-    @remove()
+      group = new Group({links: {self: "/groups/" + @group_id, posts: "/groups/" + @group_id + "/posts"}})
+
+      @sendPost group.posts, data
+      @remove()
+
 )
