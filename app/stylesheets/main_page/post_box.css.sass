@@ -223,14 +223,6 @@
 a
   text-decoration: none
 
-#modal
-  width: 1000px
-  margin-right: 0px
-  margin-left: 0px
-  position: fixed
-  top: 150px
-  left: 100px
-
 #posting_navlinks
   overflow: hidden
 
@@ -250,20 +242,69 @@ a
     color: $red
 
 #modal
+  width: 1000px
+  margin-right: 0px
+  margin-left: 0px
+  position: fixed
+  top: 150px
+  left: 100px
   z-index: 1000
+  
+//.modal
+  overflow: none
+  background-color: #eeecdf
+  background: url(shared/redesign/tan-bg.png) center center
+  z-index: 1000
+  margin-top: 0px
+  margin-right: auto
+  margin-left: auto
+  float: left
+  position: relative
+  border-radius: 5px
+  border: 1px solid #fff
+  color: #333
+  padding: 15px
+  box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
+  span.divider
+    margin-bottom: 30px
+    float: left
+    width: 100%
+    height: 3px
+    background-color: #CFCCC1
+    border-bottom: 1px solid #fff
+    
+.modal-border
+  float: left
+  padding: 30px
+  border: 3px solid #CFCCC1
+  border-radius: 5px
+  box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
+  width: auto
 
 #post-box   
-  background: url(shared/redesign/tan-bg.png) repeat
-  z-index: 1001
-  margin-top: 100px
+  margin-top: 90px
   margin-right: auto
-  margin-left: 250px
-  margin-bottom: 30px
-  padding: 15px
+  margin-left: 200px
   position: fixed
-  border-radius: 4px
   left: 15%
-  width: 502px !important
+  width: auto
+  overflow: none
+  background-color: #eeecdf
+  background: url(shared/redesign/tan-bg.png) center center
+  z-index: 1000
+  float: left
+  border-radius: 5px
+  border: 1px solid #fff
+  color: #333
+  padding: 15px
+  box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
+  span.divider
+    margin-bottom: 30px
+    float: left
+    width: 100%
+    height: 3px
+    background-color: #CFCCC1
+    border-bottom: 1px solid #fff
 
   input:focus, textarea:focus
     outline: none !important
@@ -298,30 +339,16 @@ a
     +seam()
     margin-bottom: 25px
 
-  .post-box 
-    height: 375px
-    padding: 10px 
-    height: 350px
-    border-radius: 4px
-    border: 4px solid #bcbbae
-
   .close 
     position: absolute
     top: 6px
-    left: 505px
+    left: 490px
     width: 20px 
     cursor: pointer
     font-size: 20px
     background: url(shared/redesign/close-icon.png) no-repeat
     text-indent: -9999em
-    font-family: helvetica
-
-  .form-container
-    padding: 10px 
-    height: 100%
-    width: 100%
-    border-radius: 4px
-    border: 4px solid #bcbbae
+    font-family: Helvetica, Arial, sans-serif
   
   .discuss 
     input[type="text"]
@@ -336,13 +363,10 @@ a
       float: left
 
   div.navigation   
-    width: 250px 
-    float: left   
-    padding: 20px
-    margin-top: -39px
-    margin-left: -27px
+    width: auto 
+    float: left
     ul 
-      width: 500px
+      width: 420px
 
     div.links-conversation
       display: none
@@ -400,7 +424,7 @@ a
     font-weight: bold
 
   div.links   
-    padding: 40px
+    padding: 0px
     margin: 0px auto
 
     ul li   
@@ -466,9 +490,7 @@ a
         background: $dark-tan
 
   div.form-container   
-    padding: 40px    
     overflow: hidden
-    width: 415px 
     position: relative
 
     form   
@@ -934,8 +956,6 @@ div.meetup_lets
       top: 7px
 
 div.form-container   
-  padding: 17px 17px 0    
-  width: 415px 
   overflow: auto
   position: relative
 

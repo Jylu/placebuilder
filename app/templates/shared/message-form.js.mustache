@@ -1,14 +1,21 @@
-<form>
-  <div class="error"></div>
-  <h1>Write a private message to <strong>{{name}}</strong></h1>
-  <label for="subject">Subject:</label>
-  <input name="subject" type="text">
+<div id="post-box">
+   <div class="modal-border">
+      <form>
+        <div class="error"></div>
+        <h1>Write a private message to <strong>{{name}}</strong></h1>
+        <label for="subject">Subject:</label>
+        <input name="subject" type="text">
 
-  <label for="body">Body:</label>
-  <textarea name="body" rows="3"></textarea>
+        <label for="body">Body:</label>
+        <textarea name="body" rows="3"></textarea>
 
-  <div class="controls">
-    <a class="cancel" href="#">Cancel</a>
-    <button>Send Message</button>
-  </div>
-</form>
+        <div class="controls">
+          <a class="cancel" href="#">Cancel</a>
+          <button>Send Message</button>
+        </div>
+      </form>
+   </div>
+   <div class="close">
+       x
+     </div>
+</div>
