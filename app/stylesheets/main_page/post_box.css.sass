@@ -289,9 +289,9 @@ a
     background: url(shared/redesign/requests-icon.png) left center no-repeat
   .posting-header.event
     background: url(shared/redesign/events-icon.png) left center no-repeat
-  .posting-header.conversation
+  .posting-header.discuss
     background: url(shared/redesign/discussions-icon.png) left center no-repeat
-  .posting-header.meetup
+  .posting-header.meetups
     background: url(shared/redesign/meetups-icon.png) left center no-repeat
 
   .seam 
@@ -322,7 +322,18 @@ a
     width: 100%
     border-radius: 4px
     border: 4px solid #bcbbae
-
+  
+  .discuss 
+    input[type="text"]
+      margin-top: 20px
+  
+  .meetups
+    .meetup
+      width: 345px 
+      float: right
+    p 
+      font-size: 20px 
+      float: left
 
   div.navigation   
     width: 250px 
@@ -456,6 +467,7 @@ a
 
   div.form-container   
     padding: 40px    
+    overflow: hidden
     width: 415px 
     position: relative
 
@@ -475,19 +487,25 @@ a
         a
           text-decoration: none
     .chzn-container
-      width: 413px !important
+      width: 415px !important
       ul.chzn-choices 
         width: 410px
         border: 1px solid $dark-tan  
         font-family: $Rokkitt
+        border-radius: 4px
         color: #555555
-        width: 397px !important
+        font-size: 18px
+        width: 413px !important
+        box-shadow: #C8C8C8 0px 0px 4px 1px inset, rgba(255, 255, 255, 0.247059) 0px 4px 4px
         .chzn-drop 
-          width: 410px
-        ::-webkit-input-placeholder, ::-moz-placeholder
-          color: #555
+          width: 413px !important
         .chzn-results
-          width: 410px
+          width: 413px
+        .search-field 
+          input 
+            padding: 9px 5px 5px 8px !important
+          .default 
+            color: #555
 
     button.green-button   
       float: right
@@ -545,6 +563,8 @@ input[type="text"], textarea
 
 input.price 
   width: 150px
+
+ul.chzn-choices
 
 
 textarea   

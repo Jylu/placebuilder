@@ -1,17 +1,32 @@
 <div id="post-box" class="form">
-	<div class="error"></div>
-	<div class="form-container">
-	  <h1>Propose a Meet-up</h1>
-	  <form>
-	    <div class="categorize">
-	      <p>Let's</p>
-	      <input placeholder="start a pickup game, create a book club..." name="title" class="rounded_corners">
-	    </div>
-	    <textarea placeholder="Propose a meet-up, group, or mew idea with people in the community" name="body" class="rounded_corners"></textarea>
-	    <div class="spinner"></div>
-	    <button class="red-button">POST NOW</button>
-	  </form>
-	</div>
+    <div class="error"></div>
+    <div class="form-container meetups">
+      <div class="posting-header meetups">
+        <h1>Publicize an Event or Meetup</h1>
+        <span>Add to our events board or suggest a get-together with your neighbors</span>
+      </div>
+      <div class="seam">
+      </div>
+    <form>
+        <div class="categorize">
+          <p>Let's</p>
+          <input type="text" placeholder="start a pickup game, create a book club..." name="title" class="meetup">
+        </div>
+        <textarea placeholder="Propose a meet-up, group, or mew idea with people in the community" name="body" class="rounded_corners"></textarea>
+        <select data-placeholder="Tag Your Post" class="dropdown" tabindex="1">
+          <option value=""></option>
+          <option value="Virgin Islands, British">Virgin Islands, British</option> 
+          <option value="Virgin Islands, U.S.">Virgin Islands, U.S.</option> 
+          <option value="Wallis and Futuna">Wallis and Futuna</option> 
+          <option value="Western Sahara">Western Sahara</option> 
+          <option value="Yemen">Yemen</option> 
+          <option value="Zambia">Zambia</option> 
+          <option value="Zimbabwe">Zimbabwe</option>
+      </select>
+        <div class="spinner"></div>
+        <button class="red-button">POST NOW</button>
+      </form>
+    </div>
   <div class="close">
     x
   </div>

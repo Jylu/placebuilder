@@ -64,6 +64,9 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
       view.$el.css "overflow-x", "hidden"
     view.onFormFocus()  if view.onFormFocus
     $(".dropdown").chosen()
+    $(".chzn-select").chosen()
+    $(".chzn-drop").css('width','413px')
+
 
   tabs: (tab) ->
     view = undefined
