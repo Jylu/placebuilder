@@ -137,7 +137,7 @@
           border-color: #ddd
           float: left
           font-size: 12px
-          padding: 9px 12px 8px 10px
+          padding: 9px 12px 9px 10px
           &:first-child
             padding-left: 19px
           &:last-child
@@ -151,6 +151,16 @@
             background: image-url("shared/redesign/replied.png") no-repeat
             padding-left: 21px
             background-position: 0 10px
+            color: $dark-grey
+        li.message-link
+          margin-left: 0
+          background: image-url("shared/redesign/message.png") no-repeat
+          padding-left: 32px
+          background-position: 10px 11px
+          &:hover, &:focus, &:active
+            background: image-url("shared/redesign/messaged.png") no-repeat
+            padding-left: 32px
+            background-position: 10px 11px
             color: $dark-grey
         li.share-link
           background: image-url("shared/redesign/publicize.png") no-repeat
