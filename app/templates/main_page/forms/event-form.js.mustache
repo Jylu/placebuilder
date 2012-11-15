@@ -1,34 +1,40 @@
 <div id="post-box" class="form">
-	<div class="error"></div>
-	<div class="form-container event">
-	  <h1>Publicize an Event</h1>
-	  <form>
-	    <input placeholder="Event Name" name="title" class="rounded_corners">
-	    <div id="event_date">
-	      <input class="date rounded_corners" id="date" placeholder="Date" name="date" value="{{date}}" type="text">
-	    </div>
-	    <div id="start_at_time">
-	      <select name="start" id="start_time" class="dk">
-	        <option value="">Starts At</option
-	        {{#time_values}}
-	          <option value="{{.}}">{{.}}</option>
-	        {{/time_values}}
-	      </select>
-	    </div>
-	    <div id="end_at_time">
-	      <select name="end" id="end_time" class="dk">
-	        <option value="">Ends At</option
-	        {{#time_values}}
-	          <option value="{{.}}">{{.}}</option>
-	        {{/time_values}}
-	      </select>
-	    </div>
-	    <textarea placeholder="Description of your event" name="about" class="rounded_corners"></textarea>
-	    <input placeholder="Venue Name" name="venue" class="rounded_corners">
-	    <input placeholder="Address" name="address" class="rounded_corners">
-	    <button class="red-button">POST NOW</button>
-	  </form>
-	</div>
+  <div class="error"></div>
+  <div class="form-container event">
+    <div class="posting-header requests">
+      <h1>Requests</h1>
+      <span>Ask your neighbors a question</span>
+    </div>
+    <div class="seam">
+    </div>
+    <form>
+      <input type="text" placeholder="Event Name" name="title" class="rounded_corners">
+      <textarea placeholder="Description of your event" name="about" class="rounded_corners"></textarea>
+      <div id="event_date">
+        <input class="date rounded_corners" id="date" placeholder="Date" name="date" value="{{date}}" type="text">
+      </div>
+      <div id="start_at_time">
+        <select name="start" id="start_time" class="dk">
+          <option value="">Starts At</option
+          {{#time_values}}
+            <option value="{{.}}">{{.}}</option>
+          {{/time_values}}
+        </select>
+      </div>
+      <div id="end_at_time">
+        <select name="end" id="end_time" class="dk">
+          <option value="">Ends At</option
+          {{#time_values}}
+            <option value="{{.}}">{{.}}</option>
+          {{/time_values}}
+        </select>
+      </div>
+
+      <input type="text" placeholder="Venue Name" name="venue" class="rounded_corners">
+      <input type="text" placeholder="Address" name="address" class="rounded_corners">
+      <button class="red-button">POST NOW</button>
+    </form>
+  </div>
   <div class="close">
     x
   </div>
