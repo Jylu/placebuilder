@@ -157,6 +157,7 @@ var FormView = CommonPlace.View.extend({
 
   events: {
     "click form a.cancel": "exit",
+    "click .close": "exit",
     "click form a.delete": "deletePost",
     "submit form": "send"
   },
