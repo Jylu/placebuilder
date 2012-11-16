@@ -5,7 +5,7 @@ CommonPlace.views.ShareModal = FormView.extend(
     "click #facebookshare": "shareFacebook"
     "click #twittershare": "shareTwitter"
     "click #linkshare": "showLinkShare"
-    "click .green-button": "exit"
+    "click .red-button": "exit"
     "click .close": "exit"
     "click #submit_email_share": "submitEmail"
     "click #mailto-share": "markEmailShareChecked"
