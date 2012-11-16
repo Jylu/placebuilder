@@ -264,6 +264,7 @@ module Serializer
         {
         "id" => o.id,
         "image_url" => o.image_url(:normal),
+        "image_url_large" => o.image_url(:large),
         "owner_url" => "/users/#{o.user_id}",
         "user_id" => o.user_id,
         "published_at" => o.created_at.utc,
