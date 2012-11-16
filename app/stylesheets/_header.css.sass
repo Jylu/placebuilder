@@ -99,7 +99,7 @@ $black-shadow: 0px 2px 1px black
         margin-left: 22px
         margin-right: 10px
         margin-top: 16px
-        width: 460px
+        width: 450px
         font-size: 20px
         padding: 6px 10px
         border-radius: 4px
@@ -115,18 +115,6 @@ $black-shadow: 0px 2px 1px black
       #search-header::-webkit-input-placeholder
         color: white !important
         text-shadow: black 2px 2px 0px
-      .avatar-container 
-        height: 18px 
-        width: 18px
-        margin-right: 8px
-        float: left
-        border-radius: 2px
-        background-size: cover
-      li.account 
-        margin-top: 11px !important
-        width: 94px
-        padding-left: 8px
-        color: white
       a, .disabled_link
         font-size: 12px
         letter-spacing: .7px
@@ -225,7 +213,7 @@ $black-shadow: 0px 2px 1px black
             margin-right: 5px
             font-weight: bold
             font-size: 14px
-            text-align: center !important
+            text-align: center !importantt
           span.sub-total-week
             float: right
             width: 27px
@@ -343,12 +331,64 @@ $black-shadow: 0px 2px 1px black
             float: right
       li.register_feed
         margin-right: 35px
-
+      .avatar-container 
+        height: 18px 
+        width: 18px
+        margin-right: 8px
+        float: left
+        border-radius: 2px
+        //box-shadow: 0px 1px 0px rgba(255,255,255,0.35), inset 0px 1px 1px rgba(0,0,0,0.75)
+        margin-top: -1px
+        background-size: cover
+      //li.account 
+        margin-top: 11px !important
+        width: 94px
+        padding-left: 8px
+        color: white
       li.account
+        -webkit-font-smoothing: antialiased
+        background: $blue
+        width: 100px
+        padding: 9px 8px 7px 8px
+        height: 19px
+        margin-top: 16px !important
+        font-family: $heading
+        font-size: 15px
+        font-weight: bold
+        border: 1px solid #151f28 !important
+        color: white
+        text-transform: capitalize
+        border-radius: 5px
+        +linear-gradient(color-stops(#2e5274, #1b334a), top)
+        box-shadow: 0px 1px 2px rgba(0,0,0,.15), inset -0px -1px 0px rgba(255,255,255,0.15) 
+        text-shadow: black 2px 2px 0px
+        cursor: pointer
+        margin-top: 0px
         position: relative
-        margin-right: 0px
-        border: 1px solid transparent
-        padding-right: 8px
+        &:hover, &:focus
+          color: #fff
+          +linear-gradient(color-stops(#2e5274, #1b334a), top)
+          text-shadow: 1px 2px 3px rgba(0,0,0,.65)
+          box-shadow: 0px 2px 4px rgba(0,0,0,.65)
+          ul.account-sub
+            display: block
+          a 
+            text-shadow: none
+            color: #1B334A
+        &:active
+          color: #fff
+          +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
+          text-shadow: -1px -1px -1px rgba(0,0,0,.65)
+          box-shadow: 1px 1px 1px rgba(0,0,0,.25)
+        span.arrow
+          font-size: 17px
+          position: absolute
+          top: 9px
+          right: 10px
+          color: rgba(0,0,0, 0.80)
+          font-weight: bold
+          text-shadow: 1px 1px 0px rgba(255,255,255, 0.25)
+          -webkit-font-smoothing: antialiased
         ul.account-sub
           position: absolute
           display: none
@@ -381,8 +421,8 @@ $black-shadow: 0px 2px 1px black
               margin: 0
               padding: 0
               font-weight: normal
-        &:hover
-          background: white
+        //&:hover
+          background: $blu
           color: #1B334A
           border: white 1px solid
           border: 1px solid #d7d7d7
