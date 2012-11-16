@@ -7,7 +7,6 @@ CommonPlace.views.ShareModal = FormView.extend(
     "click #linkshare": "showLinkShare"
     "click .red-button": "exit"
     "click .close": "exit"
-    "click #submit_email_share": "submitEmail"
     "click #mailto-share": "markEmailShareChecked"
 
   initialize: (options) ->
@@ -50,6 +49,7 @@ CommonPlace.views.ShareModal = FormView.extend(
     e.preventDefault()
     $('.share-f').addClass("checked")
     $link = $(e.target)
+    _kmq.push(['record', 'Share', {'Schema': @model.get("schema"), 'ID': @model.id, 'Medium': 'Facebook'}]) if _kmq?
     FB.ui
       method: "feed"
       name: $link.attr("data-name")
@@ -64,6 +64,7 @@ CommonPlace.views.ShareModal = FormView.extend(
     e.preventDefault()
     $('.share-t').addClass("checked")
     $link = $(e.target)
+    _kmq.push(['record', 'Share', {'Schema': @model.get("schema"), 'ID': @model.id, 'Medium': 'Twitter'}]) if _kmq?
     url = encodeURIComponent($link.attr("data-url"))
     text = $link.attr("data-message")
     share_url = "https://twitter.com/intent/tweet?url=" + url + "&text=" + text + " " + url + "&count=horizontal"
@@ -72,7 +73,7 @@ CommonPlace.views.ShareModal = FormView.extend(
   markEmailShareChecked: (e) ->
     e.preventDefault if e
     $("#emailshare").addClass("checked")
-    _kmq.push(['record', 'Share', {'Medium': 'Email'}]) if _kmq?
+    _kmq.push(['record', 'Share', {'Schema': @model.get("schema"), 'ID': @model.id, 'Medium': 'Email'}]) if _kmq?
 
   showEmailShare: (e) ->
     e.preventDefault()
@@ -82,6 +83,7 @@ CommonPlace.views.ShareModal = FormView.extend(
     e.preventDefault()
     @$("#share_link").toggle()
     $("#linkshare").addClass("checked")
+    _kmq.push(['record', 'Share', {'Schema': @model.get("schema"), 'ID': @model.id, 'Medium': 'Public Link'}]) if _kmq?
 
   submitEmail: (e) ->
     if e

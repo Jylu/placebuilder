@@ -2,6 +2,9 @@ CommonPlace.shared.YourPages = CommonPlace.View.extend
   template: "shared.sidebar.your-pages"
   id      : "your-pages-links"
 
+  events:
+    "click .page_link": "clickPage"
+
   afterRender: (params) ->
     self = this
     self.feed_subscriptions = CommonPlace.account.get("feed_subscriptions")
@@ -23,3 +26,7 @@ CommonPlace.shared.YourPages = CommonPlace.View.extend
       this.$('#your-pages-list').prepend html
     else if not subscriptions_only
       this.$('#your-pages-list').append html
+
+  clickPage: (e) ->
+    e.preventDefault() if e
+    _kmq.push(['record', 'Clicked Directory Page', {"Page Name": e.currentTarget.innerText}]) if _kmq?

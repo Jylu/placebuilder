@@ -47,6 +47,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     self = this
     transactionCollection.create data,
       success: _.bind((post) ->
+        _kmq.push(['record', 'Post', {'Schema': post.get("schema"), 'ID': post.id}]) if _kmq?
         CommonPlace.community.transactions.trigger "sync"
         @showShareModal(post, "Thanks for posting!", "Share your post with your friends!")
         if self.hasImageFile
@@ -64,6 +65,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
       , this)
 
       error: (attribs, response) ->
+        _kmq.push(['record', 'Post Error', {'Attributes': attribs}]) if _kmq?
         self.$("button").show()
         self.$(".spinner").hide()
         self.showError response

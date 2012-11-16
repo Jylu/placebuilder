@@ -29,6 +29,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
   thank: ->
     @$(".thank-share .current").removeClass "current"
     return @showThanks()  if @thanked()
+    _kmq.push(['record', 'Thanked Post', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     $.post "/api" + @model.link("thank"), _.bind((response) ->
       @model.set response
       @render()
@@ -65,6 +66,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   flag: ->
     return @showFlags() if @flagged()
+    _kmq.push(['record', 'Flagged Post', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     $.post "/api" + @model.link("flag"), _.bind((response) ->
       @model.set response
       @render()
@@ -83,6 +85,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     @removeFocus()
     $("#modal").empty()
     @$(".share-link").addClass "current"
+    _kmq.push(['record', 'Clicked Share', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     shareModal = new CommonPlace.views.ShareModal(
       model: @model
       account: CommonPlace.account
