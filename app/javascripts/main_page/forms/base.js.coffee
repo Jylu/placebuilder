@@ -66,7 +66,6 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
       header: header
     )
     shareModal.render()
-    $("#modal").html shareModal.el
 
   showError: (response) ->
     @$(".error").text response.responseText

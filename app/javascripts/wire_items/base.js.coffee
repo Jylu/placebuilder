@@ -90,7 +90,6 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       header: "Share this post!"
     )
     shareModal.render()
-    $("#modal").append shareModal.el
 
   reply: (e) ->
     e.preventDefault()  if e
