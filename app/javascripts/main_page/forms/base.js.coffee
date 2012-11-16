@@ -50,10 +50,12 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
         collection.trigger "sync"
         self.render()
         self.resetLayout()
+        _kmq.push(['record', 'Post', {'Schema': post.get("schema"), 'ID': post.id}]) if _kmq?
         @showShareModal(post, "Thanks for posting!", "Share your post with your friends!")
       , this)
 
       error: (attribs, response) ->
+        _kmq.push(['record', 'Post Error', {'Attributes': attribs}]) if _kmq?
         self.$(".spinner").hide()
         self.$("button").show()
         self.showError response
@@ -66,7 +68,6 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
       header: header
     )
     shareModal.render()
-    $("#modal").html shareModal.el
 
   showError: (response) ->
     @$(".error").text response.responseText

@@ -143,7 +143,8 @@ CommonPlace.View = Backbone.View.extend({
 
 var FormView = CommonPlace.View.extend({
   initialize: function(options) {
-    this.template = (this.options.template || this.template);
+    this.template = (options.template || this.template);
+    this.el = (options.el || this.el)
     this.modal = new ModalView({form: this.el});
   },
 

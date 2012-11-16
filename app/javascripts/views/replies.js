@@ -63,6 +63,9 @@ var RepliesView = CommonPlace.View.extend({
         },
         {
           success: _.bind(function() {
+            if (typeof _kmq !== "undefined" && _kmq !== null) {
+              _kmq.push(['record', 'Sent Reply']);
+            }
             this.$("div.submit-c").removeClass("waiting");
             this.collection.trigger("sync");
           }, this),

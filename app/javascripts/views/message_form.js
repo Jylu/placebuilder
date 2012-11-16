@@ -12,6 +12,9 @@ var MessageFormView = FormView.extend({
     }, {
       wait: true,
       success: function(model, response) {
+        if (typeof _kmq !== "undefined" && _kmq !== null) {
+          _kmq.push(['record', 'Sent Message']);
+        }
         this.$(".controls").html(oldHTML);
         callback();
         if (self.goToInbox) {

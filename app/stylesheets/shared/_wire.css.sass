@@ -94,7 +94,7 @@
         text-decoration: none
         &:hover
           text-decoration: underline
-          
+
       p.post-text
         font-size: 13px
         line-height: 18px
@@ -105,7 +105,8 @@
         background-size: cover
         background-repeat: no-repeat
         border-radius: 4px
-      img
+
+      //img
         width: 100%
         height: 100%
     .post-action
@@ -132,6 +133,12 @@
         //border-bottom: 1px dotted
         height: 32px
         border-color: #ddd
+        a
+          color: $red
+        a:hover
+          color: $dark-grey
+        a:active
+          color: $dark-grey
         li
           border-right: 1px dotted
           border-color: #ddd
@@ -154,6 +161,8 @@
             color: $dark-grey
         li.message-link
           margin-left: 0
+          border-right: 1px dotted
+          border-color: #ddd
           background: image-url("shared/redesign/message.png") no-repeat
           padding-left: 32px
           background-position: 10px 11px
@@ -315,6 +324,27 @@
           background-position: 5px 5px
           padding: 11px
 
+/* Marketplace Wire Post */
+
+.transactions 
+  .text_container
+    float: left
+    width: 245px
+    margin-left: 15px
+    padding-bottom: 20px
+    p
+      margin-left: 0px !important
+    .price
+      font-weight: bold !important
+  .image_container
+    width: 230px
+    float: right
+    margin-left: 15px
+    padding-bottom: 20px
+    .post_image
+      max-width: 245px
+      margin: 0px auto
+      text-align: center
 
 #content div.list div.wire div.post-replies p.replies
   display: none

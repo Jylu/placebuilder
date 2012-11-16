@@ -64,7 +64,7 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
       view.$el.css "overflow-x", "hidden"
     view.onFormFocus()  if view.onFormFocus
     $(".dropdown").chosen()
-    $(".chzn-select").chosen()
+    #$(".chzn-select").chosen()
     $(".chzn-drop").css('width','413px')
 
 
@@ -86,16 +86,6 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
         new CommonPlace.main.PostForm(
           category: "offers"
           template: "main_page.forms.post-offer-form"
-        )
-      other: ->
-        new CommonPlace.main.PostForm(
-          category: "other"
-          template: "main_page.forms.post-form"
-        )
-      meetup: ->
-        new CommonPlace.main.PostForm(
-          category: "meetup"
-          template: "main_page.forms.post-meetup-form"
         )
     unless constant[tab]
       view = new CommonPlace.main.AnnouncementForm(feed_id: tab.split("-").pop())

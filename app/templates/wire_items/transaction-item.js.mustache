@@ -9,11 +9,15 @@
   </div>
   <h3>{{title}}</h3>
   <p class="author">{{author}}</p>
-  <p class="price">Price: {{price}}</p>
+  <div class="text_container">
   <p class="post-text">{{#markdown}}{{body}}{{/markdown}}</p>
+  <p class="price">Price: {{price}}</p>
+  </div>
   {{#hasImages}}
     {{#images}}
+    <div class="image_container">
       <img class="post_image" src="{{image_url}}">
+    </div>
     {{/images}}
   {{/hasImages}}
 </div>
@@ -22,7 +26,7 @@
     <li class="buy-link">Buy</li>
     <li class="reply-link">Reply</li>
     <li class="share-link">Help Publicize</li>
-    <li class="thank-link">Thank {{first_name}}</li>
+    <li class="thank-link">Thank</li>
     <li class="flag-link">Flag</li>
   </ul>
 </div>

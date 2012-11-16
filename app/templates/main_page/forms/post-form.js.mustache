@@ -1,33 +1,35 @@
-<div id="post-box" class="form">
+<div id="post-box" class="form modal">
 	<div class="error"></div>
 
-	<div class="form-container discuss">
+	<div class="form-container discuss modal-border">
     <div class="posting-header discuss">
-      <h1>Share Community Thuoghts</h1>
+      <h1>Share Community Thoughts</h1>
       <span>Discuss a town topic with your neighbors</span>
     </div>
     <div class="seam">
     </div>	  
     <div class="post_category">
-	    <form>
-	      <select name="categorize" class="chzn-select" tabindex="1">
-	        <option value="">What discussion page do you want to contribute to?&nbsp;&nbsp;&nbsp;&nbsp;</option>
-	        <option value="Volunteering">Volunteering</option>
-	        <option value="City Problems">City Problems</option>
-	        <option value="Safety">Safety</option>
-	        <option value="News">News</option>
-	        <option value="Health and Wellness">Health and Wellness</option>
-	        <option value="Schools">Schools</option>
-	      </select>
+      <form>
+        <select name="group_selector" class="chzn-select" tabindex="1">
+          <option value="">What discussion page do you want to contribute to?&nbsp;&nbsp;&nbsp;&nbsp;</option>
+          {{#groups}}
+          <option value="{{id}}">{{name}}</option>
+          {{/groups}}
+        </select>
 
-	      <input type="text" placeholder="Post Title" name="title" class="rounded_corners">
-	      <textarea placeholder="Write your post here!" name="body" rows="15" cols="55" class="rounded_corners"></textarea>
+        <div id="invalid_post_tooltip">
+          <img src="/images/arrow_left_up.png" />
+          <span id="invalid_post_text">Choose a category before posting!</span>
+        </div>
 
-	      <div class="spinner"></div>
-	      <button class="red-button">POST NOW</button>
-	    </form>
-	  </div>
-	</div>
+        <input type="text" placeholder="Post Title" name="title" class="rounded_corners">
+        <textarea placeholder="Write your post here!" name="body" rows="15" cols="55" class="rounded_corners"></textarea>
+
+        <div class="spinner"></div>
+        <button class="red-button">POST NOW</button>
+      </form>
+    </div>
+  </div>
   <div class="close">
     x
   </div>
