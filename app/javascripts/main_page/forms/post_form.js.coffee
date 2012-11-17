@@ -1,7 +1,6 @@
 CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
   template: "main_page.forms.post-form"
   className: "create-neighborhood-post post"
-  category: "neighborhood"
 
   initialize: (options) ->
     CommonPlace.main.BaseForm.prototype.initialize options
@@ -15,13 +14,16 @@ CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
     
     group_id = @$("[name=group_selector]").val()
     collection = CommonPlace.community.posts
-    if group_id isnt ""
+    if group_id isnt undefined
       group = new Group({links: {self: "/groups/" + group_id, posts: "/groups/" + group_id + "/posts"}})
       collection = group.posts
 
     data =
       title: @$("[name=title]").val()
       body: @$("[name=body]").val()
+
+    if @category isnt undefined
+      data['category'] = @category
 
     @sendPost collection, data
 
