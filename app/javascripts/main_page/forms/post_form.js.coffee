@@ -14,20 +14,15 @@ CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
     @$("button").hide()
     
     group_id = @$("[name=group_selector]").val()
-    if group_id is ""
-      # Show an error
-      $("#invalid_post_tooltip").show()
-      @$("button").show()
-    else
-      @group_id = group_id
+    collection = CommonPlace.community.posts
+    if group_id isnt ""
+      group = new Group({links: {self: "/groups/" + group_id, posts: "/groups/" + group_id + "/posts"}})
+      collection = group.posts
 
-      data =
-        title: @$("[name=title]").val()
-        body: @$("[name=body]").val()
+    data =
+      title: @$("[name=title]").val()
+      body: @$("[name=body]").val()
 
-      group = new Group({links: {self: "/groups/" + @group_id, posts: "/groups/" + @group_id + "/posts"}})
-
-      @sendPost group.posts, data
-      @remove()
+    @sendPost collection, data
 
 )

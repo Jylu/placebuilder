@@ -1,17 +1,9 @@
-CommonPlace.main.PostBox = CommonPlace.View.extend(
+CommonPlace.main.PostBox = FormView.extend(
   template: "main_page.post-box"
   id: "post-box"
   events:
     "click .navigation li": "clickTab"
-    "click .close": "close"
-
-  afterRender: ->
-    @temp = {}
-    #@showTab("nothing");
-
-  close: (e) ->
-    e.preventDefault()
-    @remove()
+    "click .close": "exit"
 
   clickTab: (e) ->
     e.preventDefault()
@@ -47,7 +39,7 @@ CommonPlace.main.PostBox = CommonPlace.View.extend(
     @$("li." + tab).addClass "current"
     view = @tabs(tab)
     view.render()
-    $("#modal").html view.el
+    $(".links").html view.el
     if @temp
       @$("form input[name=title]").val @temp.title
       @$("form textarea[name=body]").val @temp.body

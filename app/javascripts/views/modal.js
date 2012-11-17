@@ -5,6 +5,7 @@ var ModalView = CommonPlace.View.extend({
   initialize: function(options) {
     var self = this;
     this.form = this.options.form;
+    $("."+this.className).remove()
   },
 
   afterRender: function() {

@@ -41,7 +41,6 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
         category: @$("[name=categorize]").val()
 
       @sendPost CommonPlace.community.posts, data
-      @remove()
 
   sendPost: (collection, data) ->
     self = this
@@ -63,10 +62,9 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
   showShareModal: (model, header, message) ->
     shareModal = new CommonPlace.views.ShareModal(
       model: model
-      account: CommonPlace.account
-      message: message
-      header: header
     )
+    shareModal.set_header header
+    shareModal.set_message message
     shareModal.render()
 
   showError: (response) ->

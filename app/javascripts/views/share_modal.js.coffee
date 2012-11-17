@@ -1,5 +1,9 @@
 CommonPlace.views.ShareModal = FormView.extend(
   template: "shared/share_modal"
+  id: "share-modal"
+  account: CommonPlace.account
+  header: ""
+  message: ""
 
   events:
     "click #facebookshare": "shareFacebook"
@@ -9,14 +13,6 @@ CommonPlace.views.ShareModal = FormView.extend(
     "click .close": "exit"
     "click #mailto-share": "markEmailShareChecked"
 
-  initialize: (options) ->
-    options.template = @template
-    options.el = @el
-    FormView.prototype.initialize options
-    @account = options.account
-    @header = options.header
-    @message = options.message
-
   avatar_url: ->
     url = @model.get("avatar_url")
     return "https://www.ourcommonplace.com/images/logo-pin.png"  if url is "https://s3.amazonaws.com/commonplace-avatars-production/missing.png"
@@ -25,13 +21,13 @@ CommonPlace.views.ShareModal = FormView.extend(
   share_url: ->
     CommonPlace.community.get("links")["base"] + "/show/" + @model.get("schema") + "/" + @model.get("id")
 
-  header: ->
-    if @header
-      @header
+  set_header: (text) ->
+    if text
+      @header = text
 
-  message: ->
-    if @message
-      @message
+  set_message: (text) ->
+    if text
+      @message = text
 
   item_name: ->
     @model.get "title"

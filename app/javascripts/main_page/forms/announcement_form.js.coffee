@@ -18,7 +18,6 @@ CommonPlace.main.AnnouncementForm = CommonPlace.main.BaseForm.extend(
       body: @$("[name=body]").val()
 
     @sendPost @feed.announcements, data
-    @remove()
 
   name: ->
     @feed.get "name"

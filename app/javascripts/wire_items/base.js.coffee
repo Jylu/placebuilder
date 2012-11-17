@@ -88,10 +88,8 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     _kmq.push(['record', 'Clicked Share', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     shareModal = new CommonPlace.views.ShareModal(
       model: @model
-      account: CommonPlace.account
-      message: ""
-      header: "Share this post!"
     )
+    shareModal.set_header "Share this post!"
     shareModal.render()
 
   reply: (e) ->
