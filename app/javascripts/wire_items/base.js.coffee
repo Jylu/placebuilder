@@ -162,15 +162,19 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
   wireCategory: ->
     if @model.get("schema") is "group_posts"
       @model.get("group")
-    else
+    else if @model.get "category"
       @model.get "category"
+    else
+      "post"
 
   wireCategoryName: ->
     category = @wireCategory()
     if category
+      if category is "offers"
+        category = "question"
       category = (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join(' ')
     else
-      category = "Post"
+      category = "Neighborhood Post"
 
   isFeed: ->
     @model.get("owner_type") is "Feed"
