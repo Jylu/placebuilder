@@ -327,24 +327,29 @@
 /* Marketplace Wire Post */
 
 .transactions 
-  .text_container
-    float: left
-    width: 245px
-    margin-left: 15px
-    padding-bottom: 20px
-    p
-      margin-left: 0px !important
+  .post-content
+    //p
+      width: 245px
+      margin-left: 15px !important
+      float: left
+    //.text_container
+      float: left
+      width: 245px
+      margin-left: 15px
+      padding-bottom: 20px
+      p
+        margin-left: 0px !important
     .price
       font-weight: bold !important
-  .image_container
-    width: 230px
-    float: right
-    margin-left: 15px
-    padding-bottom: 20px
+      font-size: 16px !important
+    .image_container
+      width: 495px
+      float: left
+      margin: 10px auto 20px 65px
+      border-top: 1px dotted #ddd
+      padding-top: 20px
     .post_image
-      max-width: 245px
-      margin: 0px auto
-      text-align: center
+      max-width: 500px
 
 #content div.list div.wire div.post-replies p.replies
   display: none

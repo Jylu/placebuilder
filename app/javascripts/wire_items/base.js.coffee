@@ -88,10 +88,8 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     _kmq.push(['record', 'Clicked Share', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     shareModal = new CommonPlace.views.ShareModal(
       model: @model
-      account: CommonPlace.account
-      message: ""
-      header: "Share this post!"
     )
+    shareModal.set_header "Share this post!"
     shareModal.render()
 
   reply: (e) ->
@@ -164,15 +162,19 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
   wireCategory: ->
     if @model.get("schema") is "group_posts"
       @model.get("group")
-    else
+    else if @model.get "category"
       @model.get "category"
+    else
+      "post"
 
   wireCategoryName: ->
     category = @wireCategory()
     if category
+      if category is "offers"
+        category = "question"
       category = (category.split(' ').map (word) -> word[0].toUpperCase() + word[1..-1].toLowerCase()).join(' ')
     else
-      category = "Post"
+      category = "Neighborhood Post"
 
   isFeed: ->
     @model.get("owner_type") is "Feed"

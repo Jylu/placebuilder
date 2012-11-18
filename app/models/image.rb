@@ -20,8 +20,8 @@ class Image < ActiveRecord::Base
   has_attached_file(:image,
                     {:styles => {
                         :thumb => {:geometry => "100x100", :processors => [:cropper]},
-                        :normal => {:geometry => "120x120", :processors => [:cropper]},
-                        :large => {:geometry => "200x200", :processors => [:cropper]},
+                        :normal => {:geometry => "250x250", :processors => [:cropper]},
+                        :large => {:geometry => "500x500", :processors => [:cropper]},
                         :original => "1000x1000>"
                       },
                       :default_url => "https://s3.amazonaws.com/commonplace-images-production/missing.png"

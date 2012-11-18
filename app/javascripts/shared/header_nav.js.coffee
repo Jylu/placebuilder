@@ -2,6 +2,10 @@ CommonPlace.shared.HeaderNav = CommonPlace.View.extend(
   template: "shared.new_header.header-nav"
   className: "nav"
   unreadMessageCount: 0
+
+  events:
+    "keyup #search-header": "search"
+
   afterRender: ->
     @updateUnreadMessages()
     @updateUnreadMessagesBadge()
@@ -10,6 +14,10 @@ CommonPlace.shared.HeaderNav = CommonPlace.View.extend(
       self.updateUnreadMessages()
       self.updateUnreadMessagesBadge()
 
+  search: (event) ->
+    @query = @$("#search-header").val()
+    @eventAggregator.query = @query
+    @eventAggregator.trigger("searchBox:submit", @query)
 
   slug: ->
     if CommonPlace.account.isAuth()

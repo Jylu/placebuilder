@@ -6,6 +6,10 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
     "keyup .sticky input": "debounceSearch"
     "click .sticky .cancel": "cancelSearch"
 
+  initialize: ->
+    _.bindAll(this, "debounceSearch")
+    @eventAggregator.bind("searchBox:submit", @debounceSearch)
+
   afterRender: ->
     self = this
     @searchForm = new @SearchForm()
@@ -268,14 +272,10 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
     @search()
   , CommonPlace.autoActionTimeout)
   search: (event) ->
-    event.preventDefault()  if event
-    @currentQuery = @$(".sticky form .search-switch.active input").val()
+    @currentQuery = @eventAggregator.query
     if @currentQuery
       @view.search @currentQuery
       @showTab()
-      $(".sticky form.search input").addClass "active"
-      $(".sticky .cancel").show()
-      $(".sticky .cancel").addClass "waiting"
     else
       @cancelSearch()
 

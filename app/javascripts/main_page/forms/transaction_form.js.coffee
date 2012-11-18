@@ -41,7 +41,6 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     @data.body= @$("[name=body]").val()
 
     @sendPost CommonPlace.community.transactions, @data
-    @remove()
 
   sendPost: (transactionCollection, data) ->
     self = this

@@ -37,7 +37,6 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
       account: CommonPlace.account
       community: CommonPlace.community
     @postbox.render()
-    $("#modal").html(@postbox.el)
 
   switchTabs: (e) ->
     e.preventDefault()

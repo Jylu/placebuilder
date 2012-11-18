@@ -149,7 +149,7 @@ var FormView = CommonPlace.View.extend({
   },
 
   afterRender: function() {
-    if (this.options.subject) {
+    if (this.options && this.options.subject) {
       this.$("[name=subject]").val(this.options.subject);
     }
     this.modal.render();
@@ -157,6 +157,7 @@ var FormView = CommonPlace.View.extend({
 
   events: {
     "click form a.cancel": "exit",
+    "click .close": "exit",
     "click form a.delete": "deletePost",
     "submit form": "send"
   },
