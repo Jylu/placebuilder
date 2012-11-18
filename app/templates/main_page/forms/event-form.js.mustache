@@ -2,8 +2,8 @@
   <div class="error"></div>
   <div class="form-container event modal-border">
     <div class="posting-header requests">
-      <h1>Requests</h1>
-      <span>Ask your neighbors a question</span>
+      <h1>Publicize an Event or Meetup</h1>
+      <span>Add to our events board or suggest a get-together with your neighbors.</span>
     </div>
     <div class="seam">
     </div>
@@ -14,15 +14,15 @@
         <input class="date rounded_corners" id="date" placeholder="Date" name="date" value="{{date}}" type="text">
       </div>
       <div id="start_at_time">
-        <select name="start" id="start_time" class="dk">
-          <option value="">Starts At</option
+        <select name="start" id="start_time" class="chzn-select" tabindex="1">
+          <option value="">Starts At</option>
           {{#time_values}}
             <option value="{{.}}">{{.}}</option>
           {{/time_values}}
         </select>
       </div>
       <div id="end_at_time">
-        <select name="end" id="end_time" class="dk">
+        <select name="end" id="end_time" class="chzn-select" tabindex="1">
           <option value="">Ends At</option
           {{#time_values}}
             <option value="{{.}}">{{.}}</option>

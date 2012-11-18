@@ -363,11 +363,8 @@ a
       float: left
 
   div.navigation   
-    width: 500px 
-    float: left   
-    padding: 20px
-    margin-top: -39px
-    margin-left: -27px
+    width: auto 
+    float: left
     ul 
       width: 420px
 
@@ -430,7 +427,7 @@ a
     padding: 0px
     margin: 0px auto
 
-    ul li   
+    ul.overview li   
       list-style-type: none  
       padding-top: 10px  
       padding-bottom: 10px  
@@ -513,6 +510,8 @@ a
           text-decoration: none
     .chzn-container
       width: 415px !important
+      .chzn-search 
+        display: none !important
       .chzn-single 
         width: 397px  
         background-color: #fefffe
@@ -533,6 +532,16 @@ a
             background-image: url(shared/redesign/down.png)
             background-position: 0
             margin-left: -8px 
+      
+      .chzn-results
+        width: 413px
+        margin: 0 
+        padding: 0
+        li 
+          font-size: 16px !important
+          border-bottom: 1px solid #cfccc1
+          padding: 12px 12px 12px 8px
+
       ul.chzn-choices 
         width: 410px
         border: 1px solid $dark-tan  
@@ -551,7 +560,17 @@ a
             padding: 9px 5px 5px 8px !important
           .default 
             color: #555
-
+    #start_time_chzn, #end_time_chzn
+      margin-top: 0 !important
+      width: 100px !important
+      a 
+        width: 100px !important
+      .chzn-drop 
+        width: 116px !important
+        .highlighted
+          width: 96px !important
+        li 
+          width: 96px !important
     button.green-button   
       float: right
       margin-right: 10px
@@ -606,12 +625,32 @@ input[type="text"], textarea
   input:-moz-placeholder
     color: #797979
 
+.chzn-search
+  input[type="text"]
+    display: none
+    width: 378px !important
+    box-shadow: none
+    margin: 1px 0 !important
+
+
+
 textarea.description
   width: 193.5px
   float: left
 .upload-section 
   float: right 
   width: 193.5px
+  margin-top: 2px 
+  margin-right: 5px
+  .box 
+    background-color: #fff
+    box-shadow: #C8C8C8 0px 0px 4px 1px inset, rgba(255, 255, 255, 0.247059) 0px 4px 4px
+    border: 1px solid $dark-tan  
+    padding: 10px
+    border-radius: 4px
+    img 
+      width: 172px 
+      height: 100px
 textarea   
   width: 397px  
   background-color: #fefffe  
