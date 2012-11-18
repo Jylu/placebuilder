@@ -55,6 +55,7 @@
 var Application = Backbone.Router.extend({
 
   initialize: function() {
+    Backbone.View.prototype.eventAggregator = _.extend({}, Backbone.Events);
     var header = new CommonPlace.shared.HeaderView({ el: $("#header") });
     header.render();
 
