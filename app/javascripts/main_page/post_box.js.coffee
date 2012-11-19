@@ -33,10 +33,6 @@ CommonPlace.main.PostBox = FormView.extend(
   showTab: (tab, e) ->
     view = undefined
     $("#invalid_post_tooltip").hide()
-    @$("li.current").removeClass "current"
-    tab = "publicity"  if tab is "announcement"
-    tab = "group"  if tab is "group_post"
-    @$("li." + tab).addClass "current"
     view = @tabs(tab)
     view.render()
     $(".links").html view.el
@@ -67,6 +63,8 @@ CommonPlace.main.PostBox = FormView.extend(
         new CommonPlace.main.PostForm()
       event: ->
         new CommonPlace.main.EventForm()
+      promote: ->
+        new CommonPlace.main.AnnouncementForm()
       transaction: ->
         new CommonPlace.main.TransactionForm()
       discussion: ->
@@ -77,10 +75,10 @@ CommonPlace.main.PostBox = FormView.extend(
       request: ->
         new CommonPlace.main.PostForm(
           category: "offers"
-          template: "main_page.forms.post-offer-form"
+          template: "main_page.forms.question-form"
         )
     unless constant[tab]
-      view = new CommonPlace.main.AnnouncementForm(feed_id: tab.split("-").pop())
+      view = new CommonPlace.main.AnnouncementForm()
     else
       view = constant[tab]()
     view

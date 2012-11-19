@@ -3,7 +3,7 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
   className: "create-neighborhood-post post"
   category: "neighborhood"
   events:
-    "click button": "createPost"
+    "click .submit": "createPost"
     "focusin input, textarea": "onFormFocus"
     "keydown textarea": "resetLayout"
     "focusout input, textarea": "onFormBlur"
