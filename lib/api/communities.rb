@@ -995,7 +995,7 @@ CONDITION
       if params["query"].present?
         chronological_search(GroupPost, params, find_community.id)
       else
-        serialize(paginate(GroupPost.order("group_posts.replied_at DESC").
+        serialize(paginate(GroupPost.order("group_posts.updated_at DESC").
                              includes(:group, :user).
                              where(:groups => {:community_id => find_community.id})))
       end
