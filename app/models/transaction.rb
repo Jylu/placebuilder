@@ -10,6 +10,7 @@ class Transaction < ActiveRecord::Base
   has_many :replies, :as => :repliable, :order => :created_at, :dependent => :destroy
   has_many :repliers, :through => :replies, :uniq => true, :source => :user
   has_many :thanks, :as => :thankable, :dependent => :destroy
+  has_many :warnings, :as => :warnable, :dependent => :destroy
   has_many :images, :as => :imageable, :dependent => :destroy
 
   validates_presence_of :seller, :community

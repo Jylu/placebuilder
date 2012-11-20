@@ -1,5 +1,5 @@
 
-var Transaction = Model.extend({
+var Transaction = Repliable.extend({
   user: function(callback) {
     if(!this._user) {
       this._user = new User({
