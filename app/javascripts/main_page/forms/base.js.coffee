@@ -31,7 +31,8 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
     if @options.category is `undefined`
       
       # Show a notification
-      $("#invalid_post_tooltip").show()
+      $(".error").html("Please select a category")
+      $(".error").show()
       @$(".spinner").hide()
       @$("button").show()
     else

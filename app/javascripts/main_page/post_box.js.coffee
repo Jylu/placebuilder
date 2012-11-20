@@ -10,15 +10,8 @@ CommonPlace.main.PostBox = FormView.extend(
     
     # DETERMINE WHAT TO DO WITH URLS WHEN WE CLICK
     @switchTab $(e.currentTarget).attr("data-tab"), e
-    $("#first_post_tooltip").hide()
 
   switchTab: (tab, e) ->
-    if @$("form input").length
-      $title = @$("[name=title]")
-      $body = @$("[name=body], [name=about]")
-      @temp = {}
-      @temp.title = $title.val()  unless $title.attr("placeholder") is $title.val()
-      @temp.body = $body.val()  unless $body.attr("placeholder") is $body.val()
     @showTab tab, e
 
   absolutePosition: (element) ->
@@ -32,14 +25,9 @@ CommonPlace.main.PostBox = FormView.extend(
 
   showTab: (tab, e) ->
     view = undefined
-    $("#invalid_post_tooltip").hide()
     view = @tabs(tab)
     view.render()
     $(".links").html view.el
-    if @temp
-      @$("form input[name=title]").val @temp.title
-      @$("form textarea[name=body]").val @temp.body
-      @$("form textarea[name=about]").val @temp.body
     @$("[placeholder]").placeholder()
     CommonPlace.layout.reset()
     if view.$el.height() + @absolutePosition(view.el)[1] > $(window).height()
