@@ -1,12 +1,6 @@
 CommonPlace.main.EventForm = CommonPlace.main.BaseForm.extend(
   template: "main_page.forms.event-form"
   className: "create-event event"
-  events:
-    "click button": "createPost"
-    "change .post-label-selector input": "toggleCheckboxLIClass"
-    "keydown textarea": "resetLayout"
-    "focusout input, textarea": "onFormBlur"
-    "click .close": "close"
 
   afterRender: ->
     @$("input.date", @el).datepicker dateFormat: "yy-mm-dd"
@@ -39,9 +33,6 @@ CommonPlace.main.EventForm = CommonPlace.main.BaseForm.extend(
 
   groups: ->
     CommonPlace.community.get "groups"
-
-  toggleCheckboxLIClass: (e) ->
-    $(e.target).closest("li").toggleClass "checked"
 
   time_values: _.flatten(_.map(["AM", "PM"], (half) ->
     _.map [12, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11], (hour) ->

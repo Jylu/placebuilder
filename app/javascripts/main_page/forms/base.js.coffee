@@ -8,6 +8,7 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
     "keydown textarea": "resetLayout"
     "focusout input, textarea": "onFormBlur"
     "click .close": "close"
+    "click .back": "showPostbox"
 
   initialize: (options) ->
     if options
@@ -68,6 +69,13 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
     shareModal.set_header header
     shareModal.set_message message
     shareModal.render()
+
+  showPostbox: (e) ->
+    e.preventDefault() if e
+    postbox = new CommonPlace.main.PostBox
+      account: CommonPlace.account
+      community: CommonPlace.community
+    postbox.render()
 
   showError: (response) ->
     @$(".error").text response.responseText
