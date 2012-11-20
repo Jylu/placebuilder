@@ -26,10 +26,6 @@ var ModalView = CommonPlace.View.extend({
     $el.css({ top: top, left: left });
   },
 
-  events: {
-    "click #modal-shadow": "exit"
-  },
-
   exit: function() {
     $(this.el).remove();
   }
