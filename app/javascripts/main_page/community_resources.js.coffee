@@ -22,6 +22,8 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
   switchTab: (tab, single) ->
     self = this
     @view = @tabs[tab](this)
+    $(".wire_filter").removeClass "current"
+    $("#"+tab).addClass "current"
     @$(".search-switch").removeClass "active"
     if _.include(["users", "groups", "feeds"], tab)
       @$(".directory-search").addClass "active"
@@ -78,7 +80,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       )
       self.makeTab wire
 
-    offers: (self) ->
+    questions: (self) ->
       wire = new self.PostLikeWire(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
@@ -91,14 +93,6 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         template: "main_page.post-resources"
         emptyMessage: "No posts here yet."
         collection: CommonPlace.community.categories["publicity"]
-      )
-      self.makeTab wire
-
-    meetup: (self) ->
-      wire = new self.PostLikeWire(
-        template: "main_page.post-resources"
-        emptyMessage: "No posts here yet."
-        collection: CommonPlace.community.categories["meetups"]
       )
       self.makeTab wire
 
@@ -134,7 +128,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       )
       self.makeTab wire
 
-    group_posts: (self) ->
+    discussions: (self) ->
       wire = new self.PostLikeWire(
         template: "main_page.group-post-resources"
         emptyMessage: "No posts here yet."
