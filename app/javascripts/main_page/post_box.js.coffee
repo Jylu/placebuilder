@@ -76,4 +76,11 @@ CommonPlace.main.PostBox = FormView.extend(
 
   feeds: ->
     CommonPlace.account.get "feeds"
+
+  promote_header: ->
+    feeds = @feeds()
+    if feeds.length is 1
+      return "Promote #{feeds[0].name}"
+    else
+      return "Promote Your Service or Organization"
 )
