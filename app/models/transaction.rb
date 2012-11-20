@@ -4,7 +4,7 @@ class Transaction < ActiveRecord::Base
   serialize :metadata, Hash
 
   belongs_to :community
-  belongs_to :seller, :class_name => 'User', :foreign_key => 'seller_id'
+  belongs_to :seller, :class_name => 'User', :foreign_key => 'user_id'
   belongs_to :buyer, :class_name => 'User', :foreign_key => 'buyer_id'
 
   has_many :replies, :as => :repliable, :order => :created_at, :dependent => :destroy

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121030210400) do
+ActiveRecord::Schema.define(:version => 20121120210920) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -354,6 +354,17 @@ ActiveRecord::Schema.define(:version => 20121030210400) do
     t.decimal  "longitude"
   end
 
+  create_table "organizer_data_points", :force => true do |t|
+    t.integer  "organizer_id"
+    t.string   "address"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.float    "lat"
+    t.float    "lng"
+    t.boolean  "attempted_geolocating"
+  end
+
   create_table "posts", :force => true do |t|
     t.text     "body",                                :null => false
     t.integer  "user_id",                             :null => false
@@ -438,6 +449,13 @@ ActiveRecord::Schema.define(:version => 20121030210400) do
     t.datetime "updated_at"
   end
 
+  create_table "sent_emails", :force => true do |t|
+    t.string   "tag"
+    t.integer  "community_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
   create_table "stories", :force => true do |t|
     t.string   "title"
     t.integer  "community_id"
@@ -508,7 +526,7 @@ ActiveRecord::Schema.define(:version => 20121030210400) do
     t.text     "metadata"
     t.integer  "community_id"
     t.integer  "buyer_id"
-    t.integer  "seller_id",                         :null => false
+    t.integer  "user_id",                           :null => false
     t.integer  "price_in_cents", :default => 0
     t.integer  "buyer_fee",      :default => 0
     t.integer  "seller_fee",     :default => 0
@@ -516,6 +534,7 @@ ActiveRecord::Schema.define(:version => 20121030210400) do
     t.boolean  "confirmed",      :default => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.datetime "replied_at"
   end
 
   create_table "tweets", :force => true do |t|
