@@ -12,11 +12,14 @@ CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
     @$(".spinner").show()
     @$("button").hide()
     
-    group_id = @$("[name=group_selector]").val()
     collection = CommonPlace.community.posts
+    callback = false
+
+    group_id = @$("[name=group_selector]").val()
     if group_id isnt undefined
       group = new Group({links: {self: "/groups/" + group_id, posts: "/groups/" + group_id + "/posts"}})
       collection = group.posts
+      callback = @groupPostSuccess
 
     data =
       title: @$("[name=title]").val()
@@ -25,6 +28,8 @@ CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
     if @category isnt undefined
       data['category'] = @category
 
-    @sendPost collection, data
+    @sendPost collection, data, callback
 
+  groupPostSuccess: ->
+    CommonPlace.community.groupPosts.trigger "sync"
 )

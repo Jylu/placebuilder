@@ -43,7 +43,7 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
 
       @sendPost CommonPlace.community.posts, data
 
-  sendPost: (collection, data) ->
+  sendPost: (collection, data, callback) ->
     self = this
     collection.create data,
       success: _.bind((post) ->
@@ -52,6 +52,7 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
         self.resetLayout()
         _kmq.push(['record', 'Post', {'Schema': post.get("schema"), 'ID': post.id}]) if _kmq?
         @showShareModal(post, "Thanks for posting!", "Share your post with your friends!")
+        callback() if callback
       , this)
 
       error: (attribs, response) ->

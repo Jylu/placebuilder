@@ -23,7 +23,7 @@ CommonPlace.main.AnnouncementForm = CommonPlace.main.BaseForm.extend(
         title: @$("[name=title]").val()
         body: @$("[name=body]").val()
 
-      @sendPost feed.announcements, data
+      @sendPost feed.announcements, data, @announcementSuccess
     else
       # Show an error message to select a feed
       $error = @$(".error")
@@ -32,4 +32,7 @@ CommonPlace.main.AnnouncementForm = CommonPlace.main.BaseForm.extend(
 
   name: ->
     @feed.get "name"
+
+  announcementSuccess: ->
+    CommonPlace.community.announcements.trigger "sync"
 )
