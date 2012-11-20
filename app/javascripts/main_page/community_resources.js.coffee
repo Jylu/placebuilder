@@ -15,6 +15,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
     @searchForm = new @SearchForm()
     @searchForm.render()
     $(@searchForm.el).prependTo @$(".sticky")
+    $('#main').height($(document).height())
 
     @$("[placeholder]").placeholder()
 
