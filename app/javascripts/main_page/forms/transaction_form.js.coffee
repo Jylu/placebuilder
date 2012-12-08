@@ -2,6 +2,9 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
   template: "main_page.forms.transaction-form"
   className: "create-transaction transaction"
 
+  events:
+    "click #ach": "acceptACH"
+
   afterRender: ->
     @data = {}
     @hasImageFile = false
@@ -27,6 +30,9 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
           @data.image_id = response.id
         , this)
     )
+
+  # Open another form...?
+  acceptACH: (e) ->
 
   createPost: (e) ->
     e.preventDefault()
