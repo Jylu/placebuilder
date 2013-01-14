@@ -334,53 +334,72 @@ p.welcome-divider
     color: $red
     margin: -10px auto 20px auto
     padding-bottom: 0px
-  .civic_left
-    float: left
+  img.profile_pic
+    margin-bottom: 20px
     width: 122px
-    margin-right: 24px
-    color: #888
-    text-shadow: 0px 1px 0px #fff
-    text-align: center
-    font-family: $heading
+    float: left
+    margin-right: 25px
+    width: 100px
+    border-radius: 4px
+  .not-facebook
+    height: 45px
+    line-height: 11px
+  input
+    width: 378px
+    margin-top: 0px
+    margin-bottom: 20px
+    -webkit-font-smoothing: antialiased
     font-size: 18px
-    img.profile_pic
-      margin-bottom: 20px
-      width: 122px
-    .not-facebook
-      height: 45px
-      line-height: 11px
-  .civic_right
-    float: right
-    width: 396px
-    input
-      width: 378px
-      margin-top: 0px
-      margin-bottom: 20px
-      -webkit-font-smoothing: antialiased
+    width: 526px
+    padding: 8px
+    clear: both
+    height: auto
+    font-family: $heading
+    border: 1px solid #C9C4B4
+    box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
+    background-color: #fff
+    input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
+      color: #555
+    &:after 
+      display: block
+      content: ""
+      clear: both
+  input.name 
+    width: 400px
+    clear: none
+  textarea
+    width: 526px
+    height: 50px
+    margin-top: 0px
+    margin-bottom: 15px
+    clear: both
+    -webkit-font-smoothing: antialiased
+    font-size: 18px
+    padding: 8px
+    font-family: $heading
+    border: 1px solid #C9C4B4
+    box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
+    background-color: #fff
+    textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder
+      color: #555
+  .org
+    clear: both
+    &:after 
+      display: block
+      content: ""
+      clear: both
+    input 
+      width: 15px
+      margin-left: 0
+      float: left
+    label 
+      float: left
+      margin: 2px 0 0 5px  
+    p 
+      margin-bottom: 10px
       font-size: 18px
-      padding: 8px
-      height: auto
-      font-family: $heading
-      border: 1px solid #C9C4B4
-      box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
-      background-color: #fff
-      input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
-        color: #555
-    textarea
-      width: 378px
-      height: 50px
-      margin-top: 0px
-      margin-bottom: 15px
-      -webkit-font-smoothing: antialiased
-      font-size: 18px
-      padding: 8px
-      font-family: $heading
-      border: 1px solid #C9C4B4
-      box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
-      background-color: #fff
-      textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder
-        color: #555
-  
+      line-height: 20px
+
 #civicProfile div.civic_left div.not-facebook div a.avatar_file_browse
   text-transform: uppercase
   color: white
@@ -391,14 +410,9 @@ p.welcome-divider
   text-shadow: none
   display: block
   width: 121px
-  margin-left: 1px
-  margin-top: -3px
-
-#civicProfile div.civic_left div.to-facebook img.facebook
-  margin-top: 12px
   
 #civic_button
-  width: 200px
+  width: 191px
   margin: 0px auto
   .next-button
     width: 158px
@@ -897,12 +911,6 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
     margin: 0px
     border: 0 none
     color: #555
-
-input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
-  color: #555 !important
-
-textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder
-  color: #555 !important  
 
 #civicProfile div.chzn-drop
   width: 394px !important
