@@ -1,0 +1,70 @@
+.profile-card 
+  background: #f5f3e9
+  width: 585px 
+  padding: 15px
+  min-height: 235px
+  border-radius: 4px
+  .left 
+    float: left 
+    width: 100px
+    .avatar-container 
+      width: 100px
+      height: 100px
+      border-radius: 4px
+    .red-button 
+      font-size: 16px
+      padding: 6px
+      height: auto
+      line-height: 16px
+      text-align: center
+      margin-top: 17px
+
+  .right 
+    float: right 
+    width: 455px
+    h2
+      font-size: 32px
+      color: $red
+      font-family: $Yellowtail
+    .stat-bar
+      ul 
+        @include background(linear-gradient(top center, #f3f0e1, #e4e1d1))
+        border: 1px solid #d8d4c2
+        border-radius: 4px
+        height: 55px
+        margin-top: 20px
+        margin-bottom: 15px
+        li
+          float: left
+          width: 73px
+          margin-top: 3px 
+          margin-bottom: 3px
+          text-align: center
+          font-family: $Rokkitt
+          border-right: 1px solid #dedac9
+          border-left: 1px solid #faf9f3
+          height: 37px
+          padding: 6px 0
+          &:first-child 
+            border-left: none
+          &:last-child 
+            border-right: none
+          span.big
+            color: #333333
+            font-size: 22px
+            text-shadow: 1px 1px 1px white
+          span.little 
+            color: #555555
+            clear: both
+            display: block
+            font-size: 16px
+            text-shadow: 1px 1px 1px white
+          &:hover 
+            span.big 
+              color: $red
+
+    p 
+      color: #333333
+      font-size: 14px 
+      line-height: 15px
+      clear: both
