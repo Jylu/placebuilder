@@ -54,7 +54,15 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           account: self.account
         )
 
-      feed: ->
+      create_page: ->
+        new CommonPlace.main.CreatePageView(
+          nextPage: nextPage
+          data: data
+          fadeIn: fadeIn
+          community: self.community
+          account: self.account
+        )
+      subscribe: ->
         new CommonPlace.main.SubscribeView(
           nextPage: nextPage
           fadeIn: fadeIn
