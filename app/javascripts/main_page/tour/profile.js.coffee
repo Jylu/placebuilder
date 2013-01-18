@@ -9,7 +9,6 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
   afterRender: ->
     @hasAvatarFile = false
     @$('input[placeholder], textarea[placeholder]').placeholder()
-    @initReferralQuestions()
     @initAvatarUploader @$(".avatar_file_browse")  unless @data.isFacebook
     unless @current
       @fadeIn @el
@@ -17,9 +16,6 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @$("select.list").chosen().change {}, ->
       clickable = $(this).parent("li").children("div").children("ul")
       clickable.click()
-
-  community_name: ->
-    @community.get("name")
 
   user_name: ->
     (if (@data.full_name) then @data.full_name.split(" ")[0] else "")
@@ -42,7 +38,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
       success: (response) ->
         if self.hasAvatarFile and not self.data.isFacebook
           self.avatarUploader.submit()
-        self.nextPage "feed", self.data
+        self.nextPage "create_page", self.data
     )
 
   skills: ->
@@ -53,9 +49,6 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
 
   goods: ->
     @community.get("goods")
-
-  referrers: ->
-    @community.referral_sources
 
   initAvatarUploader: ($el) ->
     self = this
@@ -79,25 +72,6 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @hasAvatarFile = true
     @$("a.avatar_file_browse").html "Photo Added! ✓"
 
-  initReferralQuestions: ->
-    @$("select[name=referral_source]").bind "change", _.bind(->
-      question =
-        "At a table or booth at an event": "What was the event?"
-        "In an email": "Who was the email from?"
-        "On Facebook or Twitter": "From what person or organization?"
-        "On another website": "What website?"
-        "In the news": "From which news source?"
-        "Word of mouth": "From what person or organization?"
-        "Flyer from a business or organization": "Which business or organization?"
-        Other: "Where?"
-      [@$("select[name=referral_source] option:selected").val()]
-      if question
-        @$(".referral_metadata_li").show()
-        @$(".referral_metadata_li label").html question
-      else
-        @$(".referral_metadata_li").hide()
-    , this)
-
   facebook: (e) ->
     e.preventDefault()  if e
     facebook_connect_avatar success: _.bind((data) ->
@@ -107,6 +81,4 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
       $(".profile_pic").attr("src", @data.avatar_url)
     , this) if not @data.isFacebook
 
-  isWatertown: ->
-    CommonPlace.community.get("name") is "Watertown"
 )
