@@ -300,12 +300,12 @@ p.welcome-divider
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
     color: $red
-    margin: 0px auto 20px auto
+    margin: 0px auto 15px auto
     padding-bottom: 0px
   span.divider
     margin-bottom: 15px
     
-#civicProfile, #norms
+#civicProfile, #norms, #create_page_registration
   width: 565px
   overflow: none
   background-color: #eeecdf
@@ -322,7 +322,6 @@ p.welcome-divider
   padding: 8px
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
   text-shadow: 1px 1px 0px white
-  color: #333
   span.divider
     margin-bottom: 20px
     float: left
@@ -342,18 +341,17 @@ p.welcome-divider
     margin: 0px auto 20px auto
     padding-bottom: 0px
   img.profile_pic
-    margin-bottom: 20px
-    width: 122px
+    margin-bottom: 21px
+    width: 90px
     float: left
     margin-right: 20px
-    width: 100px
     border-radius: 5px
     box-shadow: white 0px 1px 0px
   .not-facebook
     height: 45px
     line-height: 11px
   input
-    width: 501px
+    width: 503px
     margin-top: 0px
     margin-bottom: 20px
     -webkit-font-smoothing: antialiased
@@ -372,13 +370,22 @@ p.welcome-divider
       content: ""
       clear: both
   input.name 
-    width: 375px
+    width: 393px
     clear: none
+    margin-bottom: 18px
+    margin-top: 1px
+  input.half
+    width: 235px
+    clear: none
+  input.phone
+    float: right
+  input.website
+    float: left
   textarea
-    width: 501px
+    width: 503px
     height: 50px
     margin-top: 0px
-    margin-bottom: 15px
+    margin-bottom: 20px
     clear: both
     -webkit-font-smoothing: antialiased
     font-size: 18px
@@ -397,16 +404,36 @@ p.welcome-divider
       clear: both
     input 
       width: 15px
-      margin-left: 0
+      margin-left: 0px
+      clear: none
+      margin-top: 10px
       float: left
+      cursor: pointer
+    input#no
+      margin-left: 25px
     label 
       float: left
-      margin: 2px 0 0 5px  
+      margin: 11px 0 0 3px
+      cursor: pointer  
     p 
       margin-bottom: 10px
       font-size: 18px
       line-height: 20px
-
+  .create_page
+    float: left
+  .avatar_file_browse
+    +red-button
+    font-size: 12px
+    font-weight: bold
+    float: left
+    margin-right: 15px
+    font-family: $body
+    height: 12px
+  img.facebook
+    float: left
+  #create_button
+    float: right
+    margin: 15px 0px
 #civicProfile div.civic_left div.not-facebook div a.avatar_file_browse
   text-transform: uppercase
   color: white
@@ -419,7 +446,7 @@ p.welcome-divider
   width: 121px
   
 #civic_button
-  width: 191px
+  width: 200px
   margin: 0px auto
   .next-button
     width: 158px
@@ -522,7 +549,7 @@ p.welcome-divider
 
   li 
     display: inline-block
-    margin-right: 5px
+    margin-right: 7px
     padding: 4px 5px 3px 5px
     border-radius: 5px
     &:last-child
@@ -544,15 +571,15 @@ p.welcome-divider
   text-shadow: 1px 1px 0px #fff
 
 #subscribe_pages
-  //width: 493px
+  width: 493px
   margin-right: auto
   margin-left: auto
   height: 295px
   overflow: auto
   overflow-x: hidden
-  background-color: rgba(0, 0, 0, 0.0125)
-  border: 1px solid #bbb
-  box-shadow: inset #dedbd4 0px 0px 3px 2px, #fff 0px 1px 0px
+  background-color: #f5f3ed
+  border: 1px solid #D5D1C8
+  box-shadow: inset #dedbd4 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 0px
   padding: 0px 10px 10px 15px
   border-radius: 0px
   margin-bottom: 15px
@@ -565,17 +592,17 @@ p.welcome-divider
 
 #subscribe_pages ul.subscribe_pages li
   overflow: hidden
-  width: 388px
+  width: 213px
   padding: 10px
   background-color: #fff
   //margin-right: 5px
   margin-left: 0px
   margin-bottom: 5px
   margin-top: 5px
-  max-height: 66px
-  //border-radius: 5px
-  border: 1px solid white
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
+  height: 85px
+  border-radius: 5px
+  border: 1px solid #ddd
+  //box-shadow: 0px 1px 2px #ebe8d9
   
 #subscribe_pages div.check
   overflow: hidden
@@ -622,8 +649,8 @@ p.welcome-divider
   
 #subscribe_pages ul.subscribe_pages li .description-container
   overflow: hidden
-  width: 335px
-  max-height: 66px
+  width: 155px
+  height: 83px
 
 #subscribe_pages ul.subscribe_pages li.check.checked
   border-color: $blue
@@ -986,7 +1013,7 @@ div#subscribe_pages ul.subscribe_pages div.page_item
         box-shadow: 1px 1px 0px white
       p
         float: right
-        width: 378px
+        width: 445px
       strong
         color: $red
         font-size: 17px
