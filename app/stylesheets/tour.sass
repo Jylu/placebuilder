@@ -280,33 +280,14 @@ p.welcome-divider
   width: auto
 
 #findNeighbors 
-  display: inline-block
-  width: 565px
-  background-color: #eeecdf
-  background: url(shared/redesign/tan-bg.png) center center
-  z-index: 1000
-  margin-top: 0px
-  margin-right: 0px
-  margin-left: 0px
-  margin-bottom: 0px
-  padding: 8px
-  border-radius: 5px
-  box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
-  border: 1px solid white
   .find_title
-    font-size: 38px
-    //background: url(shared/redesign/stars-subscribe.png) no-repeat 0px -7px
-    text-align: center
-    font-family: $Yellowtail
-    text-shadow: 0px 2px 0px #fff
-    color: $red
-    margin: 0px auto 15px auto
-    padding-bottom: 0px
+    margin-bottom: 15px !important
   span.divider
     margin-bottom: 15px
     
-#civicProfile, #norms, #create_page_registration
-  width: 565px
+#civicProfile, #norms, #create_page_registration, #findNeighbors
+  width: 500px
+  height: 525px
   overflow: none
   background-color: #eeecdf
   background: url(shared/redesign/tan-bg.png) center center
@@ -318,12 +299,12 @@ p.welcome-divider
   position: relative
   border-radius: 5px
   border: 1px solid #fff
-  color: #333
   padding: 8px
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
   text-shadow: 1px 1px 0px white
+  color: #333
   span.divider
-    margin-bottom: 20px
+    margin-bottom: 15px
     float: left
     width: 100%
     height: 2px
@@ -331,9 +312,8 @@ p.welcome-divider
     border-bottom: 1px solid #fff
   img.find_title 
     margin: 15px auto 0px 30px
-  .civic_title, .norms_title
-    font-size: 38px
-    //background: url(shared/redesign/stars-subscribe.png) no-repeat 0px -7px
+  .civic_title, .norms_title, .find_title
+    font-size: 36px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
@@ -341,28 +321,29 @@ p.welcome-divider
     margin: 0px auto 20px auto
     padding-bottom: 0px
   img.profile_pic
-    margin-bottom: 21px
+    margin-bottom: 18px
     width: 90px
     float: left
-    margin-right: 20px
+    margin-right: 18px
     border-radius: 5px
     box-shadow: white 0px 1px 0px
   .not-facebook
     height: 45px
     line-height: 11px
   input
-    width: 503px
+    width: 438px
     margin-top: 0px
-    margin-bottom: 20px
+    margin-bottom: 15px
     -webkit-font-smoothing: antialiased
     font-size: 18px
     padding: 8px
     clear: both
     height: auto
     font-family: $heading
-    border: 1px solid #C9C4B4
+    border: 1px solid #ccc9bd
     box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
+    color: #131313
     input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
       color: #555
     &:after 
@@ -370,30 +351,31 @@ p.welcome-divider
       content: ""
       clear: both
   input.name 
-    width: 393px
+    width: 330px
     clear: none
-    margin-bottom: 18px
+    margin-bottom: 17px
     margin-top: 1px
   input.half
-    width: 235px
+    width: 204px
     clear: none
   input.phone
     float: right
   input.website
     float: left
   textarea
-    width: 503px
+    width: 438px
     height: 50px
     margin-top: 0px
-    margin-bottom: 20px
+    margin-bottom: 15px
     clear: both
     -webkit-font-smoothing: antialiased
     font-size: 18px
     padding: 8px
     font-family: $heading
-    border: 1px solid #C9C4B4
+    border: 1px solid #ccc9bd
     box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
+    color: #131313
     textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder
       color: #555
   .org
@@ -416,9 +398,9 @@ p.welcome-divider
       margin: 11px 0 0 3px
       cursor: pointer  
     p 
-      margin-bottom: 10px
+      margin-bottom: 0px
       font-size: 18px
-      line-height: 20px
+      line-height: 22px
   .create_page
     float: left
   .avatar_file_browse
@@ -549,7 +531,7 @@ p.welcome-divider
 
   li 
     display: inline-block
-    margin-right: 7px
+    margin-right: 5px
     padding: 4px 5px 3px 5px
     border-radius: 5px
     &:last-child
@@ -571,15 +553,15 @@ p.welcome-divider
   text-shadow: 1px 1px 0px #fff
 
 #subscribe_pages
-  width: 493px
+  //width: 493px
   margin-right: auto
   margin-left: auto
   height: 295px
   overflow: auto
   overflow-x: hidden
-  background-color: #f5f3ed
-  border: 1px solid #D5D1C8
-  box-shadow: inset #dedbd4 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 0px
+  background-color: rgba(0, 0, 0, 0.0125)
+  border: 1px solid #bbb
+  box-shadow: inset #dedbd4 0px 0px 3px 2px, #fff 0px 1px 0px
   padding: 0px 10px 10px 15px
   border-radius: 0px
   margin-bottom: 15px
@@ -592,17 +574,17 @@ p.welcome-divider
 
 #subscribe_pages ul.subscribe_pages li
   overflow: hidden
-  width: 213px
+  width: 388px
   padding: 10px
   background-color: #fff
   //margin-right: 5px
   margin-left: 0px
   margin-bottom: 5px
   margin-top: 5px
-  height: 85px
-  border-radius: 5px
-  border: 1px solid #ddd
-  //box-shadow: 0px 1px 2px #ebe8d9
+  max-height: 66px
+  //border-radius: 5px
+  border: 1px solid white
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
   
 #subscribe_pages div.check
   overflow: hidden
@@ -649,8 +631,8 @@ p.welcome-divider
   
 #subscribe_pages ul.subscribe_pages li .description-container
   overflow: hidden
-  width: 155px
-  height: 83px
+  width: 335px
+  max-height: 66px
 
 #subscribe_pages ul.subscribe_pages li.check.checked
   border-color: $blue
@@ -1013,7 +995,7 @@ div#subscribe_pages ul.subscribe_pages div.page_item
         box-shadow: 1px 1px 0px white
       p
         float: right
-        width: 445px
+        width: 378px
       strong
         color: $red
         font-size: 17px
