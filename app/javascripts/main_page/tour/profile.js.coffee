@@ -1,5 +1,6 @@
 CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
   template: "main_page.tour.profile"
+  upcoming_page: "subscribe"
   events:
     "click input.continue": "submit"
     "submit form": "submit"
@@ -29,6 +30,8 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @$(".error").hide()
     @data.about = @$("textarea[name=about]").val()
     @data.organizations = @$("input[name=organizations]").val()
+    if @$("input:checked").attr("id") is "yes"
+      @upcoming_page = "create_page"
     _.each [ "interests", "skills", "goods" ], _.bind((listname) ->
       list = @$("select[name=" + listname + "]").val()
       @data[listname] = list.toString()  unless _.isEmpty(list)
@@ -38,7 +41,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
       success: (response) ->
         if self.hasAvatarFile and not self.data.isFacebook
           self.avatarUploader.submit()
-        self.nextPage "create_page", self.data
+        self.nextPage self.upcoming_page, self.data
     )
 
   skills: ->
