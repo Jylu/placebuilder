@@ -23,7 +23,26 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
     self = this
     e.preventDefault()  if e
     @$(".error").hide()
-    @nextPage "subscribe", self.data
+    feed_data =
+      name: @$("input[name=name]").val()
+      about: @$("textarea[name=about]").val()
+      address: @$("input[name=address]").val()
+      website: @$("input[name=website]").val()
+      phone: @$("input[name=phone]").val()
+      tags: @$("input[name=tags]").val()
+
+    $.ajax
+      type: "post"
+      url: "/api" + CommonPlace.community.feeds.uri
+      data: JSON.stringify(feed_data)
+      dataType: "json"
+      success: _.bind((feed) ->
+        self.nextPage "subscribe", self.data
+      error: (attribs, response) ->
+        $error = @$(".error")
+        $error.html "Error creating feed"
+        $error.show()
+      , this)
 
   initAvatarUploader: ($el) ->
     self = this
