@@ -53,10 +53,9 @@ var Wire = CommonPlace.View.extend({
     });
   },
 
-  appendCurrentPage: function() {
-    this.$(".loading").hide();
-    var self = this;
+  showCard: function() {
     var $ul = this.$("ul.wire-list");
+
     if (this.options.card == "user") {
       var view = new CommonPlace.wire_item.UserProfileCard({model: this.currentUser});
       $ul.append(view.render().el);
@@ -65,6 +64,19 @@ var Wire = CommonPlace.View.extend({
       var view = new CommonPlace.wire_item.FeedProfileCard({model: this.currentFeed});
       $ul.append(view.render().el);
     }
+    if (this.options.card == "group") {
+      var view = new CommonPlace.wire_item.GroupProfileCard({model: this.currentFeed});
+      $ul.append(view.render().el);
+    }
+  },
+
+  appendCurrentPage: function() {
+    this.$(".loading").hide();
+    var self = this;
+    var $ul = this.$("ul.wire-list");
+
+    this.showCard();
+
     this.collection.each(function(model) {
       var view = self.schemaToView(model);
       $ul.append(view.render().el);

@@ -215,6 +215,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       group = new Group(response)
       wire = new @PostLikeWire(
         template: "main_page.announcement-resources"
+        card: "group"
         emptyMessage: "No announcements here yet."
         collection: group.posts
       )
