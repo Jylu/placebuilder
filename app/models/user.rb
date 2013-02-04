@@ -220,6 +220,9 @@ class User < ActiveRecord::Base
     t.add :links
     t.add lambda {|u| u.posts.count}, :as => :post_count
     t.add lambda {|u| u.replies.count}, :as => :reply_count
+    t.add lambda {|u| u.sell_transactions.count}, :as => :sell_count
+    t.add lambda {|u| u.thanks_received.count}, :as => :thank_count
+    t.add lambda {|u| u.mets.count}, :as => :met_count
     t.add lambda {|u| "true" }, :as => :success
     t.add :unread
     t.add lambda {|u| "User"}, :as => :classtype

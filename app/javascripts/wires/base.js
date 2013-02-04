@@ -57,6 +57,14 @@ var Wire = CommonPlace.View.extend({
     this.$(".loading").hide();
     var self = this;
     var $ul = this.$("ul.wire-list");
+    if (this.options.card == "user") {
+      var view = new CommonPlace.wire_item.UserProfileCard({model: this.currentUser});
+      $ul.append(view.render().el);
+    }
+    if (this.options.card == "feed") {
+      var view = new CommonPlace.wire_item.FeedProfileCard({model: this.currentFeed});
+      $ul.append(view.render().el);
+    }
     this.collection.each(function(model) {
       var view = self.schemaToView(model);
       $ul.append(view.render().el);
