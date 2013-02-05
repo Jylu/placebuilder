@@ -1,7 +1,7 @@
 <div class="profile-card">
    <div class="left">
       <img class="avatar-container" src={{avatar}} />
-      <a class="red-button" href="#">Subscribe</a>
+      <a class="red-button subscribe-link" href="#">{{#isSubscribed}}Subscribed{{/isSubscribed}}{{^isSubscribed}}Subscribe{{/isSubscribed}}</a>
    </div>
    <div class="right">
       <h2 class="name"><a href="#">{{name}}</a></h2>

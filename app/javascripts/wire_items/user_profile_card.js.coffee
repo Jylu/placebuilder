@@ -3,6 +3,11 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
   tagName: "li"
   className: "wire-item"
 
+  events:
+    "click .message-link": "messageUser"
+    "click .meet": "meet"
+    "click .unmeet": "unmeet"
+
   post_count: ->
     @model.get "post_count"
 
@@ -18,6 +23,18 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
   met_count: ->
     @model.get "met_count"
 
-  about: ->
-    @model.get "about"
+  hasMet: () ->
+    CommonPlace.account.hasMetUser @model
+
+  meet: (e) ->
+    e.preventDefault() if e
+    CommonPlace.account.meetUser @model
+    @$(".just-met").show()
+    @$(".meet").hide()
+    _kmq.push(['record', 'Met User', {'initiator': CommonPlace.account.id, 'recipient': @model.id}]) if _kmq?
+
+  unmeet: (e) ->
+    CommonPlace.account.unmeetUser @model, _.bind(->
+      @render()
+    , this)
 )
