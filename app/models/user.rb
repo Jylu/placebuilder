@@ -214,6 +214,7 @@ class User < ActiveRecord::Base
     t.add :first_name
     t.add :last_name
     t.add :about
+    t.add :organizations
     t.add :interest_list, :as => :interests
     t.add :good_list, :as => :goods
     t.add :skill_list, :as => :skills
@@ -223,10 +224,25 @@ class User < ActiveRecord::Base
     t.add lambda {|u| u.sell_transactions.count}, :as => :sell_count
     t.add lambda {|u| u.thanks_received.count}, :as => :thank_count
     t.add lambda {|u| u.mets.count}, :as => :met_count
+    t.add lambda {|u| u.pages}, :as => :pages
     t.add lambda {|u| "true" }, :as => :success
     t.add :unread
     t.add lambda {|u| "User"}, :as => :classtype
     t.add lambda {|u| u.action_tags}, :as => :actionstags
+  end
+
+  def pages
+    return nil if self.feed_owners.empty?
+
+    orgs = ""
+    self.feed_owners.each do |f|
+      orgs << f.feed.name
+      if f != self.feed_owners.last
+        orgs << ", "
+      end
+    end
+
+    orgs
   end
 
   def links
