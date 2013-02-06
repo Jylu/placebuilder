@@ -1,7 +1,7 @@
 CommonPlace.wire_item.GroupProfileCard = CommonPlace.wire_item.ProfileCard.extend(
   template: "wire_items/group-card"
   tagName: "li"
-  className: "wire-item"
+  className: "profile-card"
 
   events:
     "click .subscribe": "subscribe"
