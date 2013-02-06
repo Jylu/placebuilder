@@ -1,7 +1,7 @@
 CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend(
   template: "wire_items/feed-card"
   tagName: "li"
-  className: "wire-item"
+  className: "profile-card"
 
   events:
     "click .message-link": "messageUser"
