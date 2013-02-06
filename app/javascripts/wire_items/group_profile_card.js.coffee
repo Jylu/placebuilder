@@ -4,7 +4,8 @@ CommonPlace.wire_item.GroupProfileCard = CommonPlace.wire_item.ProfileCard.exten
   className: "wire-item"
 
   events:
-    "click .subscribe-link": "subscribe"
+    "click .subscribe": "subscribe"
+    "click .unsubscribe": "unsubscribe"
 
   post_count: ->
     @model.get "post_count"
