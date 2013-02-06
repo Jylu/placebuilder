@@ -35,7 +35,11 @@
          </ul>
       </div>
       <p>{{about}}</p>
-      <p><span class="bold">Pages:</span>  <a href=#">Child Psychology Tutoring</a>
-      <p><span class="bold">Memberships:</span>  The Warwick Valley Humane Society, Crossfit Warwick, Warwick Kiwanis Club</p>
+      {{#pages}}
+        <p><span class="bold">Pages:</span>  <a href=#">{{pages}}</a>
+      {{/pages}}
+      {{#hasOrganizations}}
+        <p><span class="bold">Memberships:</span>{{organizations}}</p>
+      {{/hasOrganizations}}
   </div>
 </div>

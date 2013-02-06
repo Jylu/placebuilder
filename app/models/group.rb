@@ -33,8 +33,9 @@ class Group < ActiveRecord::Base
     t.add :avatar_url
     t.add :slug
     t.add :links
-    t.add lambda {|g| g.events.count}, :as => :events_count
-    t.add lambda {|g| g.subscribers.count}, :as => :subscribers_count
+    t.add lambda {|g| g.events.count}, :as => :event_count
+    t.add lambda {|g| g.subscribers.count}, :as => :subscriber_count
+    t.add lambda {|g| g.group_posts.count}, :as => :post_count
   end
 
   def links

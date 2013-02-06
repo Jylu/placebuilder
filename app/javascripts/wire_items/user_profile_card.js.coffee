@@ -23,6 +23,21 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
   met_count: ->
     @model.get "met_count"
 
+  hasOrganizations: ->
+    o = @model.get "organizations"
+
+    return true if o && o.length != 0
+
+    false
+
+  organizations: ->
+    organizations = @model.get "organizations"
+    o = organizations.replace(/\n/g, ", ")
+    return o
+
+  pages: ->
+    @model.get "pages"
+
   hasMet: () ->
     CommonPlace.account.hasMetUser @model
 

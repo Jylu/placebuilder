@@ -12,13 +12,13 @@ CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend
     @model.get "website"
 
   announce_count: ->
-    @model.get "announcements_count"
+    @model.get "announcement_count"
 
   event_count: ->
-    @model.get "events_count"
+    @model.get "event_count"
 
   subscribers: ->
-    @model.get "subscribers_count"
+    @model.get "subscriber_count"
 
   isSubscribed: ->
     CommonPlace.account.isSubscribedToFeed @model

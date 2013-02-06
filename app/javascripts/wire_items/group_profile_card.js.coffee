@@ -6,11 +6,14 @@ CommonPlace.wire_item.GroupProfileCard = CommonPlace.wire_item.ProfileCard.exten
   events:
     "click .subscribe-link": "subscribe"
 
+  post_count: ->
+    @model.get "post_count"
+
   event_count: ->
-    @model.get "events_count"
+    @model.get "event_count"
 
   subscribers: ->
-    @model.get "subscribers_count"
+    @model.get "subscriber_count"
 
   isSubscribed: ->
     CommonPlace.account.isSubscribedToGroup @model
