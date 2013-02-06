@@ -29,14 +29,25 @@
       height: 100px
       border-radius: 5px
       box-shadow: 1px 1px 0px #fff, inset 1px 1px 2px rgba(0,0,0,0.25)
-    .red-button, .blue-button
+    .red-button, .blue-button, .gray-button
       font-size: 11px
       padding: 5px 3px
       font-family: $body
       height: auto
       line-height: 16px
       text-align: center
-      margin-top: 12px
+      margin-top: 12px  
+    .unmeet, .unsubscribe
+      @include background(linear-gradient(top center, #f4f1ea, #dcd9d0))
+      border: 1px solid #d5d1c8
+      color: #888 !important
+      text-shadow: 1px 1px 0px white !important
+      box-shadow: 0px 1px 0px #fff, inset 0px 1px 0px #fff
+      &:hover
+        @include background(linear-gradient(top center, #FAF8F2, #E3E0D5))
+      &:active
+        @include background(linear-gradient(top center, #dcd9d0, #f4f1ea))
+        color: #bbb !important
 
   .right 
     float: right 
