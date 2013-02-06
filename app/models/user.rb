@@ -232,17 +232,7 @@ class User < ActiveRecord::Base
   end
 
   def pages
-    return nil if self.feed_owners.empty?
-
-    orgs = ""
-    self.feed_owners.each do |f|
-      orgs << f.feed.name
-      if f != self.feed_owners.last
-        orgs << ", "
-      end
-    end
-
-    orgs
+    managable_feeds.map(&:name).join(", ")
   end
 
   def links
