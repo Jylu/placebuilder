@@ -59,3 +59,23 @@
   &:hover 
     border-color: #888
 
+@mixin seam
+  clear: both
+  display: block
+  height: 0px
+  border-top: 1px solid #cfccc1
+  border-bottom: 1px solid white
+
+@mixin input
+  font-family: Helvetica, Arial, sans-serif
+  font-size: 14px
+  color: #888
+  background: white
+  border: none
+  width: 288px
+  @include border-radius(4px)
+  padding: 10px
+  margin: 0 0 10px 0
+  resize: none
+  -webkit-font-smoothing: antialiased
+  @include box-shadow(0 0 0 1px #8b2324, 2px 2px 5px #ccc inset)
