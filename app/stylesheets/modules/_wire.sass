@@ -56,6 +56,13 @@
             .markdown
               color: $dark-grey
 
+            table.event-location 
+              font: 12px/20px "Helvetica Neue", Helvetica, sans-serif
+              color: $black
+              th
+                font-weight: bold
+                color: $red
+
             h3, p, pre, code, ol, ul
               font-family: $body
               color: $black
@@ -154,7 +161,7 @@
               li
                 border-right: 1px dotted
                 border-color: #ddd
-                font-size: 12px
+                font: bold 12px $body
                 padding: 9px 12px 9px 10px
                 cursor: pointer
                 &:first-child
@@ -240,7 +247,7 @@
         .shadow_right
           background: image-url("shared/redesign/post-shadow-right.png") no-repeat
           background-position: bottom right
-          
+
         .wire-header
           .header-display
             border-radius: 4px
@@ -256,4 +263,17 @@
               background-position: 5px 5px
               padding: 11px
 
+      .wire-empty-message
+        color: #fff
+        text-align: center
 
+      .highlight
+        background-color: #fffa6c
+
+#zenbox_tab.ZenboxTabRight
+  background-color: $blue !important
+  border: 0px none !important
+  &:hover
+    background-color: $red !important
+  &:active
+    background-color: $blue !important
