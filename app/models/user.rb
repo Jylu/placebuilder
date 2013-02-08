@@ -233,7 +233,12 @@ class User < ActiveRecord::Base
   end
 
   def pages
-    managable_feeds.map(&:name).join(", ")
+    self.managable_feeds.map do |feed|
+      {"name" => feed.name, 
+        "id" => feed.id, 
+        "slug" => feed.slug.blank? ? feed.id : feed.slug
+      }
+    end
   end
 
   def links

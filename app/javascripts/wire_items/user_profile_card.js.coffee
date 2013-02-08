@@ -7,6 +7,7 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
     "click .message-link": "messageUser"
     "click .meet": "meet"
     "click .unmeet": "unmeet"
+    "click .page-link": "showPage"
 
   post_count: ->
     @model.get "post_count"
@@ -23,18 +24,24 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
   met_count: ->
     @model.get "met_count"
 
-  hasOrganizations: ->
-    orgs = @model.get("organizations")
-    orgs isnt undefined and orgs isnt ""
-
-  organizations: ->
-    @model.get "organizations"
-
   pages: ->
-    @model.get "pages"
+    pages = @model.get "pages"
+    pages[pages.length - 1].last = true if pages and pages.length > 0
+    pages
+
+  hasPages: ->
+    pages = @model.get "pages"
+    pages and pages.length > 0
 
   hasMet: () ->
     CommonPlace.account.hasMetUser @model
+
+  showPage: (e) ->
+    e.preventDefault() if e
+    page_slug = @$(e.currentTarget).attr("title")
+    slug = CommonPlace.community.get("slug")
+
+    app.showFeedPage(slug, page_slug) if page_slug
 
   meet: (e) ->
     e.preventDefault() if e

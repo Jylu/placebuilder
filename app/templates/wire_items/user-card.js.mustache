@@ -35,11 +35,11 @@
          </ul>
       </div>
       <p>{{about}}</p>
+      {{#hasPages}}
+      <p><span class="bold">Pages:</span>
       {{#pages}}
-        <p><span class="bold">Pages:</span>  <a href=#">{{pages}}</a>
+      <a class="page-link" title="{{slug}}" href="#">{{name}}</a><span>{{^last}},{{/last}}  </span>
       {{/pages}}
-      {{#hasOrganizations}}
-        <p><span class="bold">Memberships:</span>{{organizations}}</p>
-      {{/hasOrganizations}}
+      {{/hasPages}}
   </div>
 </div>
