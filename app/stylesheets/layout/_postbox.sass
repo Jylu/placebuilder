@@ -37,13 +37,6 @@
   text-shadow: 1px 1px 0 black
   font-size: 12px
 
-
-.form-container
-  float: left
-  margin-left: 10px
-  margin-top: 10px
-  width: 308px
-
   form
     .error
       background-color: #f4e15f
@@ -478,14 +471,6 @@ a
       width: 322px !important
       float: left
       margin-bottom: 15px
-      .chzn-drop 
-        width: 338px !important
-        -webkit-border-radius: 0 0 4px 4px
-        -moz-border-radius: 0 0 4px 4px
-        border-radius: 0 0 4px 4px
-        border: 0px none
-        max-height: 202px
-        box-shadow: none
       .chzn-search 
         display: none !important
       .chzn-single 
@@ -540,7 +525,7 @@ a
         width: 362px !important
         box-shadow: #C8C8C8 0px 0px 4px 1px inset, rgba(255, 255, 255, 0.247059) 0px 4px 4px
         .chzn-drop 
-          width: 322px !important
+          width: 322px
           border: 0px none
         .chzn-results
           width: 322px
@@ -550,23 +535,24 @@ a
           .default 
             color: #555
     #start_time_chzn, #end_time_chzn
-      margin-top: 0 !important
+      margin-top: 0 
       width: 98px !important
       color: #555
       a 
-        width: 82px !important
+        width: 82px 
         span
           color: #555
       .chzn-drop 
         width: 98px !important
-        max-height: 165px !important
+        max-height: 165px 
         .chzn-results
-          width: 98px !important
-          max-height: 165px !important
+          width: 98px 
+          overflow: scroll
+          max-height: 165px 
         .highlighted
-          width: 98px !important
+          width: 82px
         li 
-          width: 98px !important
+          width: 82px
     button.green-button   
       float: right
       margin-right: 10px
@@ -600,7 +586,7 @@ strong
   border-radius: 4px 4px 0px 0px  
 
 input, textarea
-  width: 292px
+  width: 322px
   background-color: #fefffe
   margin-bottom: 15px  
   border: 1px solid $dark-tan  
@@ -623,7 +609,7 @@ input, textarea
 
 
 textarea.description
-  width: 120px
+  width: 150px
   float: left
   height: 155px
 .upload-section 
@@ -664,7 +650,7 @@ input.price
   width: 137px
   margin: 18px 0px 0px 0px
 textarea   
-  width: 292px  
+  width: 322px  
   background-color: #fefffe  
   height: 110px  
   margin-bottom: 15px  
