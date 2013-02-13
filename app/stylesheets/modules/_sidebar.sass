@@ -1,14 +1,13 @@
 #sidebar
   background-image: url("shared/redesign/tan-bg.png")
   background-color: #e9e5de
-  border: 1px solid rgba(0,0,0,0.35)
   border-left: 1px solid white
   box-shadow: inset -1px 0px 0px white
   #your-town
     h3
       font-family: $heading
       font-size: 15px
-      color: #333
+      color: $black
       text-shadow: 1px 1px 1px white
       border-bottom: 1px solid #c5c2b5
       padding-bottom: 5px
@@ -23,7 +22,7 @@
         a
           text-decoration: none
           font-family: $heading
-          color: #333
+          color: $black
           text-shadow: none
           font-size: 19px
           font-weight: normal
@@ -79,18 +78,29 @@
             border-radius: 5px
 
   #directory
+    font-family: $heading
+    color: $black
+    #directory_search
+      .remove_search 
+        font-size: 11px
+        cursor: pointer
+        font-family: Verdana, sans-serif
+        color: #999
+        font-weight: bold
+        text-shadow: 1px 1px 0px white
+        &:hover
+          color: $red
     h3
       font-family: $heading
       font-size: 16px
       padding: 8px 4px 5px
       background-color: #ece7de
-      color: #333
+      color: $black
       border-radius: 5px 5px 0px 0px
       cursor: pointer
       text-align: center
       text-shadow: none
-      border: 1px solid #d5d1c8
-      border-bottom: 1px solid #fff
+      border: 1px solid #d5d1c8      
       box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
       text-shadow: 1px 1px 0px white
       &:hover
@@ -99,7 +109,8 @@
         cursor: pointer
     h3.current_tab
       background-color: #fff
-      color: #333
+      color: $black
+      border-bottom: 1px solid #fff
 
     #directory_nav 
       cursor: pointer
@@ -108,10 +119,16 @@
       background-color: #fff
       padding: 0px
       border: 1px solid #d5d1c8
-      border-radius: 0px 0px 5px 5px
-
+      border-radius: 0px
+      border: 1px solid #d5d1c8
+        top: 0
+      #directory_failed_search
+        color: #777
+        font-weight: normal
+        font-size: 17px
+        text-align: center
       .loading-list
-        background-image: image-url("shared/icons/waiting-white.gif")
+        background-image: url("shared/icons/loading-post.gif")
         background-position: center center
         background-repeat: no-repeat
 
@@ -132,7 +149,7 @@
           padding: 6px 0px 6px 9px
         h4
           font-family: $heading
-          color: #333
+          color: $black
           font-weight: normal
           font-size: 17px
           line-height: 17px
