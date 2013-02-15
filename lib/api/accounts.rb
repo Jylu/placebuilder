@@ -17,9 +17,14 @@ class API
     #
     # Requires authentication
     get "/" do
-      control_access :authenticated
-
-      serialize Account.new(current_user)
+      if current_user
+        serialize Account.new(current_user)
+      else
+        guest_user = User.where("guest=?", true).first
+        if guest_user
+          serialize Account.new(guest_user)
+        end
+      end
     end
 
     # Updates the account's profile
