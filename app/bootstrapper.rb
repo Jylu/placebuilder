@@ -152,7 +152,7 @@ class Bootstrapper < Sinatra::Base
 
     return 404 unless @community
 
-    erb @account ? :application : :register
+    erb @account ? :application : :application
   end
 
   get "pages/:id" do
