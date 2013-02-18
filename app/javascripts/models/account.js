@@ -1,12 +1,6 @@
 
 var Account = Model.extend({
 
-  initialize: function() {
-    if (this.isAuth()) {
-      this.featuredUsers = new Users([], { uri: this.link("featured_users") });
-    }
-  },
-
   profileHistory: function(callback) {
     $.ajax({
       type: "GET",
