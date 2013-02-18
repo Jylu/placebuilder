@@ -391,7 +391,7 @@ class API
     #
     # Requires community membership
     get "/:id/wire" do
-      control_access :community_member, find_community
+      control_access :public
 
       serialize find_community.wire
     end
@@ -405,7 +405,7 @@ class API
     #   limit - the page limit
     #   page - the page
     get "/:id/residents" do
-      control_access :community_member, find_community
+      control_access :public
 
       residents = find_community.residents.includes(:user)
       residents = paginate(residents)
@@ -943,7 +943,7 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/posts" do
-      control_access :community_member, find_community
+      control_access :public
 
       last_modified_by_replied_at(Post)
 
@@ -959,7 +959,7 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/posts_and_group_posts" do
-      control_access :community_member, find_community
+      control_access :public
 
       if params["query"].present?
         chronological_search([Post, GroupPost], params, find_community.id)
@@ -973,7 +973,7 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/posts/:category" do
-      control_access :community_member, find_community
+      control_access :public
 
       last_modified_by_replied_at(Post)
 
@@ -992,7 +992,7 @@ CONDITION
 
     # Returns the community's events, possibly a search result
     get "/:id/events" do
-      control_access :community_member, find_community
+      control_access :public
 
       last_modified_by_replied_at(Event)
 
@@ -1008,7 +1008,7 @@ CONDITION
 
     # Returns the community's transactions, possibly a search result
     get "/:id/transactions" do
-      control_access :community_member, find_community
+      control_access :public
 
       last_modified_by_replied_at(Transaction)
 
@@ -1024,7 +1024,7 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/announcements" do
-      control_access :community_member, find_community
+      control_access :public
 
       last_modified_by_replied_at(Announcement)
 
@@ -1042,7 +1042,7 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/group_posts" do
-      control_access :community_member, find_community
+      control_access :public
 
       last_modified_by_replied_at(GroupPost)
 
@@ -1060,7 +1060,7 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/feeds" do
-      control_access :community_member, find_community
+      control_access :public
 
       if params["query"].present?
         search(Feed, params, find_community.id)
@@ -1075,7 +1075,7 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/groups" do
-      control_access :community_member, find_community
+      control_access :public
 
       if params["query"].present?
         search(Group, params, find_community.id)
@@ -1089,10 +1089,10 @@ CONDITION
     # Query params:
     #  query - a query to search with (optional)
     get "/:id/users" do
-      control_access :community_member, find_community
+      control_access :public
 
       if params["query"].present?
-        if current_user.admin
+        if current_user and current_user.admin
           auth_search(User, params) # what is auth_search for ?
         else
           search(User, params, find_community.id)
@@ -1105,7 +1105,7 @@ CONDITION
 
     # Returns the community's featured feeds
     get "/:id/feeds/featured" do
-      control_access :community_member, find_community
+      control_access :public
 
       scope = find_community.feeds.featured.order("name ASC")
       serialize paginate(scope)
@@ -1123,7 +1123,7 @@ CONDITION
     # Query params:
     #   query = the query to search with
     get "/:id/group-like" do
-      control_access :community_member, find_community
+      control_access :public
 
       if params['query'].present?
         search([Feed, Group], params, find_community.id)
@@ -1137,7 +1137,7 @@ CONDITION
     # Query params:
     #   query = the query to search with (optional)
     get "/:id/post-like" do
-      control_access :community_member, find_community
+      control_access :public
 
       if params["query"].present?
         chronological_search([Announcement, Event, Post, GroupPost, Transaction], params, find_community.id)
