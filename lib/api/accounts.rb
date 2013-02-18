@@ -338,15 +338,6 @@ class API
       serialize(paginate(current_user.feed_messages.reorder("GREATEST(replied_at, created_at) DESC")))
     end
 
-    # Returns a list of 'featured' neighbors for the account
-    #
-    # Requires authentication
-    get "/featured" do
-      control_access :authenticated
-
-      serialize(paginate(current_user.featured))
-    end
-
     # Adds Facebook connect to the account
     #
     # Requires authentication
