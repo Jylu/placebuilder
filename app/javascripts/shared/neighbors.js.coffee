@@ -5,7 +5,7 @@ CommonPlace.shared.Neighbors = CommonPlace.View.extend
     "click .neighbor_link": "clickNeighbor"
 
   initialize: ->
-    CommonPlace.account.featuredUsers.fetch
+    CommonPlace.community.featuredUsers.fetch
       success: _.bind((neighbors) ->
         @neighbors = neighbors
       , this)
@@ -44,7 +44,7 @@ CommonPlace.shared.Neighbors = CommonPlace.View.extend
     if @neighbors
       @showNeighbors @neighbors
     else
-      CommonPlace.account.featuredUsers.fetch
+      CommonPlace.community.featuredUsers.fetch
         success: _.bind((neighbors) ->
           @showNeighbors neighbors
           @neighbors = neighbors
