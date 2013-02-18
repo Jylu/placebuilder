@@ -90,6 +90,16 @@ class API
         serialize(search)
       end
 
+      # Returns the list of community users ordered by
+      # our algorithm to determine which users are the most
+      # active and have the most complete profiles
+      def featured_users # not user-relevant yet
+        find_community.users.reorder("
+          (Case When avatar_file_name IS NOT NULL Then 1 Else 0 End)
+          + (Case When about != '' OR goods != '' OR interests != '' Then 1 Else 0 End) DESC")
+        .order("calculated_cp_credits DESC")
+      end
+
       # Turns a string into a array to be used as a search phrase
       #
       # Example:
@@ -1101,6 +1111,15 @@ CONDITION
         scope = find_community.users.reorder("last_name ASC, first_name ASC")
         serialize(paginate(scope))
       end
+    end
+
+    # Returns a list of 'featured' neighbors for the account
+    #
+    # Requires authentication
+    get "/:id/users/featured" do
+      control_access :public
+
+      serialize(paginate(featured_users))
     end
 
     # Returns the community's featured feeds

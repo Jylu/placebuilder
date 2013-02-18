@@ -332,7 +332,6 @@ module Serializer
           "sent" => "/account/inbox/sent",
           "feed_messages" => "/account/inbox/feeds",
           "neighborhoods_posts" => "/neighborhoods/#{o.neighborhood_id}/posts",
-          "featured_users" => "/account/featured",
           "neighbors" => "/account/neighbors",
           "swipes" => "/account/swipes",
           "history" => "/account/history"
