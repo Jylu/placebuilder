@@ -6,9 +6,14 @@
           <h1 class="community">
             <img src="/assets/shared/redesign/flag-logo.png" alt="OurCommonPlace" class="cp_logo">
           </h1>
-            <div class="button-wrapper">
-               <a href="" class="red-button post pie-element">Post To Your Neighbors!</a>
-            </div>
+          <div class="button-wrapper">
+            {{^isGuest}}
+            <a href="" class="red-button post pie-element">Post To Your Neighbors!</a>
+            {{/isGuest}}
+            {{#isGuest}}
+            <a href="" class="red-button register pie-element">Create an Account</a>
+            {{/isGuest}}
+          </div>
       {{/isAuth}}
       {{^isAuth}}
         <img src="/assets/shared/redesign/logo3.png" alt="OurCommonPlace" class="cp_logo">
