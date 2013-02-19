@@ -132,15 +132,17 @@ class API
     post "/:id/add_image" do
       control_access :community_member, find_postlike.community
 
-      image = Image.find_by_id(params[:image_id])
-      image.update_attributes(
-        imageable: find_postlike
-      )
+      params[:image_id].each do |i|
+        image = Image.find_by_id(i)
+        image.update_attributes(
+          imageable: find_postlike
+        )
 
-      if image.save
-        serialize image
-      else
-        [400, "errors"]
+        if image.save
+          serialize image
+        else
+          [400, "errors"]
+        end
       end
     end
 
