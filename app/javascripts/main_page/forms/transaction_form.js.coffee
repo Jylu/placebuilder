@@ -4,6 +4,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
 
   afterRender: ->
     @data = {}
+    @data.image_id = []
     @$("input[placeholder], textarea[placeholder]").placeholder()
     if @imageUploadSupported() and not @isPostEdit()
       @initImageUploader @$(".image_file_browser")
@@ -36,8 +37,10 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
       onComplete: _.bind((file, response) ->
           $upload_pic = $(".item_pic")
           $upload_pic.attr("src", response.image_normal)
+
           $upload_pic.parent().removeClass("loading")
-          @data.image_id = response.id
+          $(".box").append('<img src="'+response.image_url+'" alt="This is a picture of the item for sale" /><br/>')
+          @data.image_id.push(response.id)
         , this)
     )
 
