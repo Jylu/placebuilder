@@ -223,6 +223,13 @@ var Account = Model.extend({
     }
   },
 
-  isAuth: function() { return !_.isEmpty(this.attributes); }
+  isAuth: function() { return !_.isEmpty(this.attributes); },
 
+  isGuest: function() {
+    if (!_.isEmpty(this.attributes)) {
+      return this.get("is_guest");
+    } else {
+      return true;
+    }
+  }
 });
