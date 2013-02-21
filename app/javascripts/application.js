@@ -229,7 +229,7 @@ var Application = Backbone.Router.extend({
       template: "main_page.tour.modal"
     });
     tour.render();
-    tour.welcome();
+    tour.showPage("email");
   },
 
   showPage: function(name) {
