@@ -36,6 +36,15 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
     @fadeOut()  unless @firstSlide
     view = {
+      email: ->
+        new CommonPlace.main.EmailView(
+          nextPage: nextPage
+          data: data
+          fadeIn: fadeIn
+          community: self.community
+          account: self.account
+        )
+
       welcome: ->
         new CommonPlace.main.WelcomeView(
           nextPage: nextPage
