@@ -154,4 +154,27 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
     @nextPage = options.nextPage
     @complete = options.complete
     @template = @facebookTemplate  if options.data and options.data.isFacebook and @facebookTemplate
+
+  validate_registration: (params, callback) ->
+    validate_api = "/api" + @community.get("links").registration.validate
+    $.getJSON validate_api, @data, _.bind((response) ->
+      @$(".error").hide()
+      valid = true
+      unless _.isEmpty(response.facebook)
+        window.location.pathname = @communityExterior.links.facebook_login
+      else
+        _.each params, _.bind((field) ->
+          unless _.isEmpty(response[field])
+            error = @$(".error." + field)
+            input = @$("input[name=" + field + "]")
+            errorText = _.reduce(response[field], (a, b) ->
+              a + " and " + b
+            )
+            input.addClass "input_error"
+            error.text errorText
+            error.show()
+            valid = false
+        , this)
+        callback()  if valid and callback
+    , this)
 )
