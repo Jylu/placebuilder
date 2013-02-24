@@ -49,7 +49,7 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     else
       params = [ "full_name", "email" ]
       @validate_registration params, _.bind(->
-        @nextPage "welcome", @data
+        @nextPage "address", @data
       , this)
 
 )
