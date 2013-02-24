@@ -45,6 +45,15 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           account: self.account
         )
 
+      address: ->
+        new CommonPlace.main.AddressView(
+          nextPage: nextPage
+          data: data
+          fadeIn: fadeIn
+          community: self.community
+          account: self.account
+        )
+
       welcome: ->
         new CommonPlace.main.WelcomeView(
           nextPage: nextPage
