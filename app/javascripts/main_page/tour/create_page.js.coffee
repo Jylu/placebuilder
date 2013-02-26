@@ -35,10 +35,11 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         @model = new Feed(feed)
         @initAvatarUploader @$(".avatar_file_browse")
       , this)
-      error: (attribs, response) ->
+      error: _.bind((attribs, response) ->
         $error = @$(".error")
         $error.html "Error creating feed"
         $error.show()
+      , this)
 
   submit: (e) ->
     self = this
