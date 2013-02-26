@@ -1080,6 +1080,37 @@ CONDITION
       end
     end
 
+    # Create a feed in the community
+    #
+    # Requires community membership
+    #
+    # Request params:
+    #   name - the name of the feed
+    #
+    # When successful we return the serialized feed
+    # When unsuccessful we return a 400 response
+    post "/:id/feeds" do
+      control_access :community_member, find_community
+
+      feed = Feed.new(:user => current_user,
+                      :community => find_community,
+                      :name => request_body["name"])
+
+      feed.about = request_body["about"]
+      feed.kind = request_body["kind"]
+      feed.phone = request_body["phone"]
+      feed.website = request_body["website"]
+      feed.address = request_body["address"]
+      feed.slug = request_body["slug"]
+      feed.feed_url = request_body["rss"]
+
+      if feed.save
+        serialize(feed)
+      else
+        [400, "errors"]
+      end
+    end
+
     # Returns the community's groups, possibly a search result
     #
     # Query params:
