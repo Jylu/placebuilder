@@ -163,5 +163,4 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       @model.link "avatar_edit"
     else
       ""
-
 )

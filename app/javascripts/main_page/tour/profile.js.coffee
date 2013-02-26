@@ -11,7 +11,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @hideSpinner()
     @hasAvatarFile = false
     @$('input[placeholder], textarea[placeholder]').placeholder()
-    @initAvatarUploader @$(".avatar_file_browse")  unless CommonPlace.account.get("facebook_user")
+    @initAvatarUploader @$(".avatar_file_browse")  unless CommonPlace.account.get "facebook_user"
     @form_name().val(CommonPlace.account.get("name"))
     @form_about().val(CommonPlace.account.get("about"))
     @form_orgs().val(CommonPlace.account.get("organizations"))
