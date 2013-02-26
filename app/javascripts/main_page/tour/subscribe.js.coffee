@@ -33,9 +33,6 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
     )
     @fadeIn @el
 
-  community_name: ->
-    @community.get("name")
-
   categories: ->
     @feed_categories
 

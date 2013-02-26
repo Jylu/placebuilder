@@ -72,9 +72,6 @@ CommonPlace.main.BaseForm = CommonPlace.View.extend(
   disableSubmitButton: ->
     @$(".submit").attr "disabled", "disabled"
 
-  community_name: ->
-    CommonPlace.community.get("name")
-
   createPost: (e) ->
     e.preventDefault()
     @cleanUpPlaceholders()
