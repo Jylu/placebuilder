@@ -146,7 +146,15 @@ CommonPlace.View = Backbone.View.extend({
 
   community_user_count: function() { return CommonPlace.community.get('user_count'); },
 
-  community_feed_count: function() { return CommonPlace.community.get('feed_count'); }
+  community_feed_count: function() { return CommonPlace.community.get('feed_count'); },
+
+  isGuest: function() {
+    if (CommonPlace.account) {
+      return CommonPlace.account.isGuest();
+    } else {
+      return true;
+    }
+  },
 });
 
 var FormView = CommonPlace.View.extend({

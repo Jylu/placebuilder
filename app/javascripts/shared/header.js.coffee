@@ -26,7 +26,7 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
 
   showRegistration: (e) ->
     e.preventDefault() if e
-    app.tour()
+    app.register()
 
   root_url: ->
     if CommonPlace.account.isAuth()
@@ -52,6 +52,4 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
   isAuth: ->
     CommonPlace.account.isAuth()
 
-  isGuest: ->
-    CommonPlace.account.isGuest()
 )
