@@ -20,9 +20,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     $("body").css(overflow: "hidden") #prevents the main page from scrolling during the tour
     $("#current-registration-page").css(overflow: "auto")
 
-  community_name: ->
-    @community.get "name"
-
   first_name: ->
     @account.get "short_name"
 
@@ -65,6 +62,15 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
       profile: ->
         new CommonPlace.main.ProfileView(
+          nextPage: nextPage
+          data: data
+          fadeIn: fadeIn
+          community: self.community
+          account: self.account
+        )
+
+      create_page: ->
+        new CommonPlace.main.CreatePageView(
           nextPage: nextPage
           data: data
           fadeIn: fadeIn
