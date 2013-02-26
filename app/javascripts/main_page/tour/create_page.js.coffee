@@ -39,6 +39,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         $error = @$(".error")
         $error.html "Error creating feed"
         $error.show()
+      , this)
 
   submit: (e) ->
     self = this
