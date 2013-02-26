@@ -33,11 +33,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       data: JSON.stringify(feed_data)
       dataType: "json"
       success: _.bind((feed) ->
-        if @hasAvatarFile
-          @avatarUploader._settings.action = "/api" + feed.links.self + "/avatar"
-          @avatarUploader.submit()
         self.nextPage "subscribe", self.data
-      , this)
       error: (attribs, response) ->
         $error = @$(".error")
         $error.html "Error creating feed"
