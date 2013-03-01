@@ -242,7 +242,7 @@ var Application = Backbone.Router.extend({
     tour.showPage("welcome");
   },
 
-  register: function(c) {
+  showRegistration: function(c) {
     this.community();
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
