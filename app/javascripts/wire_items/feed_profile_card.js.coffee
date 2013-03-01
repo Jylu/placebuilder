@@ -51,6 +51,7 @@ CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend
 
   subscribe: (e) ->
     e.preventDefault() if e
+    return @showRegistration() if @isGuest()
     CommonPlace.account.subscribeToFeed @model, _.bind(->
       @render()
     , this)

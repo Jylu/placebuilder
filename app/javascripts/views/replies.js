@@ -16,7 +16,8 @@ var RepliesView = CommonPlace.View.extend({
     "focus form textarea": "showButton",
     "blur form textarea": "hideButton",
     "click form .submit-c": "sendReply",
-    "click .replies-more": "showMoreReplies"
+    "click .replies-more": "showMoreReplies",
+    "click .register": "showRegistration"
   },
 
   appendReplies: function() {
