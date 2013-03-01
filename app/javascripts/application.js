@@ -106,7 +106,7 @@ var Application = Backbone.Router.extend({
 
     ":community/account": "account",
 
-    ":community/registration": "register",
+    ":community/registration": "showRegistration",
     ":community/tour": "tour",
 
     ":community/stats": "stats",
@@ -228,7 +228,7 @@ var Application = Backbone.Router.extend({
     tour.showPage("welcome");
   },
 
-  register: function(c) {
+  showRegistration: function(c) {
     this.community();
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
