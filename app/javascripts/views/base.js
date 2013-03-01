@@ -155,6 +155,22 @@ CommonPlace.View = Backbone.View.extend({
       return true;
     }
   },
+
+  showRegistration: function(e) {
+    if (e) {
+      e.preventDefault();
+    }
+    var tour = new CommonPlace.main.TourModal({
+      el: $("#main"),
+      account: CommonPlace.account,
+      community: CommonPlace.community,
+      template: "main_page.tour.modal"
+    });
+    tour.render();
+    tour.showPage("email");
+    return false;
+  },
+
 });
 
 var FormView = CommonPlace.View.extend({
