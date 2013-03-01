@@ -4,7 +4,6 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
 
   events:
     "click .post": "showPostbox"
-    "click .register": "showRegistration"
 
   afterRender: ->
     center = undefined
@@ -33,10 +32,6 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
       account: CommonPlace.account
       community: CommonPlace.community
     @postbox.render()
-
-  showRegistration: (e) ->
-    e.preventDefault() if e
-    app.register()
 
   root_url: ->
     if CommonPlace.community
