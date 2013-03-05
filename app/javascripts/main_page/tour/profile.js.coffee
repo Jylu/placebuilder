@@ -10,7 +10,10 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
   afterRender: ->
     @hasAvatarFile = false
     @$('input[placeholder], textarea[placeholder]').placeholder()
-    @initAvatarUploader @$(".avatar_file_browse")  unless @data.isFacebook
+    @initAvatarUploader @$(".avatar_file_browse")  unless CommonPlace.account.get("facebook_user")
+    @form_name().val(CommonPlace.account.get("name"))
+    @form_about().val(CommonPlace.account.get("about"))
+    @form_orgs().val(CommonPlace.account.get("organizations"))
     unless @current
       @fadeIn @el
       @current = true
@@ -18,40 +21,20 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
       clickable = $(this).parent("li").children("div").children("ul")
       clickable.click()
 
-  user_name: ->
-    (if (@data.full_name) then @data.full_name.split(" ")[0] else "")
-
-  avatar_url: ->
-    (if (@data.avatar_url) then @data.avatar_url else "")
-
   submit: (e) ->
     self = this
     e.preventDefault()  if e
     @$(".error").hide()
-    @data.about = @$("textarea[name=about]").val()
-    @data.organizations = @$("input[name=organizations]").val()
+    @data.name = @form_name().val()
+    @data.about = @form_about().val()
+    @data.organizations = @form_orgs().val()
     if @$("input:checked").attr("id") is "yes"
       @upcoming_page = "create_page"
-    _.each [ "interests", "skills", "goods" ], _.bind((listname) ->
-      list = @$("select[name=" + listname + "]").val()
-      @data[listname] = list.toString()  unless _.isEmpty(list)
-    , this)
 
     CommonPlace.account.save(@data,
       success: (response) ->
-        if self.hasAvatarFile and not self.data.isFacebook
-          self.avatarUploader.submit()
         self.nextPage self.upcoming_page, self.data
     )
-
-  skills: ->
-    @community.get("skills")
-
-  interests: ->
-    @community.get("interests")
-
-  goods: ->
-    @community.get("goods")
 
   initAvatarUploader: ($el) ->
     self = this
@@ -71,6 +54,21 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
         $(".profile_pic").attr("src", CommonPlace.account.get("avatar_url"))
     )
 
+  user_name: ->
+    CommonPlace.account.get("name")
+
+  avatar_url: ->
+    CommonPlace.account.get("avatar_url")
+
+  form_name: ->
+    @$("input[name=name]")
+
+  form_orgs: ->
+    @$("input[name=organizations]")
+
+  form_about: ->
+    @$("textarea[name=about]")
+
   toggleAvatar: ->
     @hasAvatarFile = true
     @$("a.avatar_file_browse").html "Photo Added! ✓"
@@ -78,10 +76,11 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
   facebook: (e) ->
     e.preventDefault()  if e
     facebook_connect_avatar success: _.bind((data) ->
-      @data.isFacebook = true
-      @data = _.extend(@data, data)
+      CommonPlace.account.set("facebook_user", true)
+      CommonPlace.account = _.extend(CommonPlace.account, data)
       @toggleAvatar()
-      $(".profile_pic").attr("src", @data.avatar_url)
-    , this) if not @data.isFacebook
+      $(".profile_pic").attr("src", CommonPlace.account.get("avatar_url"))
+      CommonPlace.account.save()
+    , this) if not CommonPlace.account.get("facebook_user")
 
 )
