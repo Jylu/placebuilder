@@ -308,6 +308,7 @@ module Serializer
         "announcements" => o.announcements,
         "group_posts" => o.group_posts,
         "neighborhood" => o.neighborhood,
+        "organizations" => o.organizations,
         "interests" => o.interest_list,
         "goods" => o.good_list,
         "skills" => o.skill_list,

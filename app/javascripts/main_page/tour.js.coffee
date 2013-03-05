@@ -23,6 +23,11 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
   first_name: ->
     @account.get "short_name"
 
+  showError: ($el, $error, message) ->
+    $el.addClass "input_error"
+    $error.text message
+    $error.show()
+
   showPage: (page, data) ->
     self = this
     nextPage = (next, data) ->
@@ -78,7 +83,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           account: self.account
         )
 
-      feed: ->
+      subscribe: ->
         new CommonPlace.main.SubscribeView(
           nextPage: nextPage
           fadeIn: fadeIn
