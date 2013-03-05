@@ -14,7 +14,6 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @form_name().val(CommonPlace.account.get("name"))
     @form_about().val(CommonPlace.account.get("about"))
     @form_orgs().val(CommonPlace.account.get("organizations"))
-    @$(".profile_pic").attr("src", CommonPlace.account.get("avatar_url")) if CommonPlace.account.get("avatar_url")
     unless @current
       @fadeIn @el
       @current = true
@@ -75,7 +74,11 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
       CommonPlace.account.set("facebook_user", true)
       CommonPlace.account = _.extend(CommonPlace.account, data)
       @toggleAvatar()
+<<<<<<< HEAD
       $(".profile_pic").attr("src", @avatar_url())
+=======
+      $(".profile_pic").attr("src", CommonPlace.account.get("avatar_url"))
+>>>>>>> Fixing up the profile page in the registraiton modal
       CommonPlace.account.save()
     , this) if not CommonPlace.account.get("facebook_user")
 
