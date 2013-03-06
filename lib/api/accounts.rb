@@ -48,7 +48,6 @@ class API
 
       current_user.full_name = request_body["name"]
       current_user.about = request_body["about"]
-      current_user.organizations = request_body["organizations"]
       current_user.interest_list = request_body["interests"]
       current_user.skill_list = request_body["skills"]
       current_user.good_list = request_body["goods"]

@@ -40,6 +40,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   thank: ->
     @removeCurrentClass()
+    return @showRegistration() if @isGuest()
     return @showThanks()  if @thanked()
     _kmq.push(['record', 'Thanked Post', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     $.post "/api" + @model.link("thank"), _.bind((response) ->
@@ -77,6 +78,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       t.warnable_type isnt "Reply"
 
   flag: ->
+    return @showRegistration() if @isGuest()
     return @showFlags() if @flagged()
     _kmq.push(['record', 'Flagged Post', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     $.post "/api" + @model.link("flag"), _.bind((response) ->
@@ -139,6 +141,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   messageUser: (e) ->
     e.preventDefault() if e
+    return @showRegistration() if @isGuest()
     if @model.get("owner_type") is "Feed"
       recipient = new Feed(links:
         self: @model.link("author")

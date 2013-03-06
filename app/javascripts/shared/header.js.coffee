@@ -4,29 +4,33 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
 
   events:
     "click .post": "showPostbox"
-    "click .register": "showRegistration"
 
   afterRender: ->
-    nav = undefined
+    center = undefined
+    right = undefined
     if CommonPlace.account.isAuth()
-      nav = new CommonPlace.shared.HeaderNav()
+      if CommonPlace.account.isGuest()
+        center = new CommonPlace.shared.HeaderSearch()
+        right = new CommonPlace.shared.HeaderLogin()
+      else
+        center = new CommonPlace.shared.HeaderSearch()
+        right = new CommonPlace.shared.HeaderNav()
     else
-      nav = new CommonPlace.shared.HeaderLogin()
-    window.HeaderNavigation = nav
-    nav.render()
-    @$(".nav").replaceWith nav.el
+      center = new CommonPlace.shared.HeaderWrongTown()
+      right = new CommonPlace.shared.HeaderLogin()
+    window.HeaderNavigation = right
+    center.render()
+    right.render()
+    @$(".header_center").replaceWith center.el
+    @$(".header_right").replaceWith right.el
 
   showPostbox: (e) ->
-    if e
-      e.preventDefault()
+    e.preventDefault() if e
+    return @showRegistration() if @isGuest()
     @postbox = new CommonPlace.main.PostBox
       account: CommonPlace.account
       community: CommonPlace.community
     @postbox.render()
-
-  showRegistration: (e) ->
-    e.preventDefault() if e
-    app.register()
 
   root_url: ->
     if CommonPlace.account.isAuth()

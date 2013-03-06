@@ -1,18 +1,13 @@
 <div id="nav_wrapper" class="pie-element">
   
-  <div class="community-name">
+  <div class="header_left">
     <a href="{{community_url}}">
       {{#isAuth}}
         <h1 class="community">
           <img src="/assets/shared/redesign/flag-logo.png" alt="OurCommonPlace" class="cp_logo">
         </h1>
         <div class="button-wrapper pie-element">
-          {{^isGuest}}
           <a href="" class="red-button post pie-element">Post To Your Neighbors!</a>
-          {{/isGuest}}
-          {{#isGuest}}
-          <a href="" class="red-button register pie-element">Create an Account</a>
-          {{/isGuest}}
         </div>
       {{/isAuth}}
       {{^isAuth}}
@@ -20,6 +15,7 @@
       {{/isAuth}}
     </a>
   </div>
-  <div class="nav"></div>
+  <div class="header_center"></div>
+  <div class="header_right"></div>
 
 </div>

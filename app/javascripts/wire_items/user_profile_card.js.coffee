@@ -48,6 +48,7 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
 
   meet: (e) ->
     e.preventDefault() if e
+    return @showRegistration() if @isGuest()
     CommonPlace.account.meetUser @model
     @$(".just-met").show()
     @$(".meet").hide()
