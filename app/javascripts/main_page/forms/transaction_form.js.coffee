@@ -7,7 +7,10 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     @data.image_id = []
     @$("input[placeholder], textarea[placeholder]").placeholder()
     if @imageUploadSupported() and not @isPostEdit()
-      @initImageUploader @$(".image_file_browser")
+      @initImageUploader(@$(".image_file_browser#1"), 1)
+      @initImageUploader(@$(".image_file_browser#2"), 2)
+      @initImageUploader(@$(".image_file_browser#3"), 3)
+      @initImageUploader(@$(".image_file_browser#4"), 4)
     else
       @$(".image_file_browser").hide()
     @hideSpinner()
@@ -17,7 +20,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
   imageUploadSupported: ->
     return (not @isIE8orBelow())
 
-  initImageUploader: ($el) ->
+  initImageUploader: ($el, num) ->
     self = this
     @imageUploader = new AjaxUpload($el,
       action: "/api/transactions/image"
@@ -29,18 +32,17 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
         @hasImageFile = true
 
       onSubmit: _.bind((file, extension) ->
-          $upload_pic = $(".item_pic")
+          $upload_pic = $(".item_pic#"+num)
           $upload_pic.attr("src", "/assets/loading.gif")
           $upload_pic.parent().addClass("loading")
         , this)
 
       onComplete: _.bind((file, response) ->
-          $upload_pic = $(".item_pic")
+          $upload_pic = $(".item_pic#" + num)
           $upload_pic.attr("src", response.image_normal)
-
           $upload_pic.parent().removeClass("loading")
-          $(".box").append('<img src="'+response.image_url+'" alt="This is a picture of the item for sale" /><br/>')
-          @data.image_id.push(response.id)
+          #$(".box").append('<img src="'+response.image_url+'" alt="This is a picture of the item for sale" /><br/>')
+          @data.image_id = response.id
         , this)
     )
 
