@@ -4,7 +4,6 @@ CommonPlace.shared.HeaderNav = CommonPlace.View.extend(
   unreadMessageCount: 0
 
   events:
-    "keyup #search-header": "search"
     "click .feed-link": "goToFeed"
 
   initialize: ->
@@ -17,11 +16,6 @@ CommonPlace.shared.HeaderNav = CommonPlace.View.extend(
     CommonPlace.account.on "sync", ->
       self.updateUnreadMessages()
       self.updateUnreadMessagesBadge()
-
-  search: (event) ->
-    @query = @$("#search-header").val()
-    @eventAggregator.query = @query
-    @eventAggregator.trigger("searchBox:submit", @query)
 
   goToFeed: (e) ->
     e.preventDefault() if e
