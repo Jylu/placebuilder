@@ -17,6 +17,7 @@
 //= require placeholder
 //= require time_ago_in_words
 //= require scrollTo
+//= require postjson
 //= require jcrop
 //= require plaxo
 //= require chosen
