@@ -4,13 +4,18 @@
   <p><a href="{{share_url}}">{{publishedAt}}</a></p>
 </div>
 <div class="post-content">
-   {{#hasImages}}
-     {{#images}}
-     <div class="image_container">
-       <img class="post_image" src="{{image_url}}">
-     </div>
-     {{/images}}
-   {{/hasImages}}
+  {{#hasImages}}
+    <div class="photo-container">
+      <ul class="multi-photo">
+        {{#images}}
+        <li class="image_container">
+          <a href="{{image_original}}" target="_blank"><img class="post_image" src="{{image_large}}" /></a>
+        </li>
+        {{/images}}
+      </ul>
+    </div>
+  {{/hasImages}}
+
    <img class="avatar-container" src="{{avatarUrl}}" />
   <h3><a class="title" href="{{share_url}}">{{title}}</a></h3>
   <p><a class="author" href="{{author_url}}">{{author}}</a> posted in <a class="wire_filter" href="{{wireCategoryUrl}}">{{wireCategoryName}}</a></p>

@@ -733,31 +733,35 @@ input, textarea
 
 
 textarea.description
-  width: 150px
+  width: 322px
   float: left
-  height: 155px
+  height: 75px
+  margin-bottom: 0
 .upload-section 
-  float: right 
-  width: 155px
+  clear: both 
+  float: left 
+  width: 340px
   margin-top: 2px 
-  position: relative
-  display: table
   .box 
     background-color: #fff
     box-shadow: #C8C8C8 0px 0px 4px 1px inset, rgba(255, 255, 255, 0.247059) 0px 4px 4px
     border: 1px solid $dark-tan  
-    //padding: 8px
       bottom: 4px
     border-radius: 4px
-    display: table-cell
     text-align: center
     vertical-align: middle
-    width: 157px
+    width: 160px
     height: 120px
+    float: left 
+    margin-top: 15px
     img.item_pic 
       max-width: 136px 
       max-height: 104px
       margin-top: 5px
+    &:first-child 
+      margin-right: 15px 
+    &:last-child
+      margin-left: 15px
   .image_file_browser
     position: absolute
     width: 154px
@@ -771,8 +775,8 @@ textarea.description
     cursor: pointer
 input.price
   float: right
-  width: 137px
-  margin: 18px 0px 0px 0px
+  width: 322px
+  margin: 18px 0px 15px 0px
 textarea   
   width: 322px  
   background-color: #fefffe  
