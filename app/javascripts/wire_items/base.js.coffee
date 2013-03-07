@@ -178,6 +178,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   showAuthorWire: (e) ->
     e.preventDefault() if e
+    return @showRegistration() if @isGuest()
     if @isFeed()
       @showFeedWire()
     else
