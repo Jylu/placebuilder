@@ -1,7 +1,19 @@
 <div class="wire-top" data-published-at="{{published_at}}">
 </div>
 <div class="post-content">
-  <a href="{{author_url}}"><img class="avatar-container" src="{{avatar_url}}" /></a>
+  {{#hasImages}}
+    <div class="photo-container">
+      <ul class="multi-photo">
+        {{#images}}
+        <li class="image_container">
+          <a href="{{image_original}}" target="_blank"><img class="post_image" src="{{image_large}}" /></a>
+        </li>
+        {{/images}}
+      </ul>
+    </div>
+  {{/hasImages}}
+
+  <img class="avatar-container" src="{{avatarUrl}}" />
   <h3><a class="title" href="{{share_url}}">{{title}}</a></h3>
   {{#markdown}}
    {{body}}
