@@ -1,12 +1,38 @@
 <div id="create_page_registration" class="container">
   <div class="registration_border">
-    <h2 class="civic_title">Your Service or Organization</div>
+    <h2 class="civic_title">Your Service or Organization</h2>
     <span class="divider"></span>
     <div class="create_page">
       <img class="profile_pic" src="/avatars/missing.png" alt="This is your profile photo" />
-      <input type="text" class="name" name="name" placeholder="Carol's Pet Sitting">
+      <input type="text" class="name" name="name" placeholder="Babysitting service, tutoring, store...">
       <a href="#" class="avatar_file_browse">Upload a Photo</a>
-        <label for="kind" class="kind_list">Is your community page for:
+      <textarea rows="2" cols="20" name="about" placeholder="Describe your service or business" class="create_page"></textarea>
+      <input type="text" name="address" placeholder="Street Address" class="address">
+      <input type="text" name="website" placeholder="Website" class="website half">
+      <input type="text" name="phone" placeholder="Phone Number" class="phone half">
+      <form>
+         <select name="" class="chzn-select" tabindex="1">
+             <option value="">What is your community page for?&nbsp;&nbsp;&nbsp;&nbsp;</option>
+             <option value="1">A non-profit</option>
+             <option value="2">A community group</option>
+             <option value="3">A business</option>
+             <option value="4">A muncipal entity</option>
+             <option value="5">A newspaper, news service, or news blog</option>
+             <option value="6">Other</option>
+           </select>
+      </form>
+      <!--<div id="referral_source">
+         <form>
+           <select name="referral_source" id="hear" class="dk" tabindex="1">
+             <option value="placeholder" selected="selected">What is your community page for?</option>
+             {{#referrers}}
+             <option value="{{.}}">{{.}}</option>
+             {{/referrers}}
+           </select>
+         </form>
+         <span class="error referral_source"></span>
+       </div>-->
+      <!--<label for="kind" class="kind_list">Is your community page for:
           <select name="kind" class="kind_list dk" id="feed_kinds">
             <option value="1">A non-profit</option>
             <option value="2">A community group</option>
@@ -16,10 +42,6 @@
             <option value="6">Other</option>
           </select>
         </label>
-      <!--<textarea rows="2" cols="20" name="about" placeholder="Describe your service or business" class="create_page"></textarea>
-      <input type="text" name="address" placeholder="Street Address" class="address">
-      <input type="text" name="website" placeholder="Website" class="website half">
-      <input type="text" name="phone" placeholder="Phone Number" class="phone half">
       <input type="text" name="tags" placeholder="Are you registering a service or business?" class="tags">-->
     </div>
     <div id="civic_button">
