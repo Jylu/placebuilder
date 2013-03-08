@@ -155,7 +155,7 @@ p.welcome-divider
     height: 45px
     line-height: 11px
   input
-    width: 438px
+    width: 377px
     border-radius: 4px
     margin-top: 0px
     margin-bottom: 15px
@@ -176,19 +176,19 @@ p.welcome-divider
       content: ""
       clear: both
   input.name 
-    width: 335px
+    width: 274px
     clear: none
     margin-bottom: 19px
     margin-top: 2px
   input.half
-    width: 204px
+    width: 173px
     clear: none
   input.phone
     float: right
   input.website
     float: left
   textarea
-    width: 438px
+    width: 377px
     height: 50px
     margin-top: 0px
     margin-bottom: 15px
@@ -229,6 +229,102 @@ p.welcome-divider
       line-height: 22px
   .create_page
     float: left
+    .chzn-container
+      width: 322px !important
+      float: left
+      margin-bottom: 15px
+      a
+        &:focus
+          outline: none
+      .chzn-drop
+        width: 338px !important
+      .chzn-search 
+        display: none !important
+      .chzn-single 
+        width: 322px  
+        background-color: #fefffe
+        border: 1px solid $dark-tan  
+        padding: 0 8px
+        height: 36px 
+        line-height: 38px
+        font-family: $Rokkitt
+        color: $black
+        font-size: 18px
+        background: #fff
+        float: left
+        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        span
+          color: #555
+        div 
+          background: none 
+          border-left: none
+          b 
+            background-image: url(shared/redesign/down.png)
+            background-position: 0
+            margin-left: -8px 
+      
+      .chzn-results
+        width: 338px
+        border-top: 1px solid $dark-tan
+        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        margin: 0px
+        padding: 0px
+        max-height: 202px
+        -webkit-border-radius: 0 0 4px 4px
+        -moz-border-radius: 0 0 4px 4px
+        border-radius: 0 0 4px 4px
+        li
+          border-bottom: 1px dotted #ccc
+          padding: 12px 8px
+          color: #333
+          font-size: 18px
+          font-family: $heading
+          &:hover
+            color: $red
+            background-color: #eee 
+
+      ul.chzn-choices 
+        border: 1px solid $dark-tan
+        font-family: $Rokkitt
+        border-radius: 4px
+        color: #333
+        font-size: 18px
+        width: 362px !important
+        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        .chzn-drop 
+          width: 322px
+          border: 0px none
+        .chzn-results
+          width: 322px
+        .search-field 
+          input 
+            padding: 9px 5px 5px 8px !important
+          .default 
+            color: #555
+    #start_time_chzn, #end_time_chzn
+      margin-top: 0 
+      width: 98px !important
+      color: #555
+      a 
+        width: 82px
+        &:focus
+          outline: none!important
+        span
+          color: #555
+      .chzn-drop 
+        width: 98px !important
+        max-height: 164px 
+        .chzn-results
+          width: 98px 
+          max-height: 164px 
+          li
+            &:hover
+              color: $red
+              background-color: #eee
+        .highlighted
+          width: 82px
+        li 
+          width: 82px
   a.avatar_file_browse
     +red-button
     font-size: 12px
@@ -244,6 +340,7 @@ p.welcome-divider
     height: 26px
     width: 119px
     margin: 0px
+      bottom: 18px
     border-radius: 4px
   #create_button
     float: right
@@ -777,7 +874,7 @@ div#subscribe_pages ul.subscribe_pages div.page_item
       
 /************* END OF IMPORTED STYLES ***********/  
 
-#civicProfile, #norms
+#civicProfile, #norms, #register
   overflow: none
   background-color: #eeecdf
   background: url(shared/redesign/tan-bg.png) center center
