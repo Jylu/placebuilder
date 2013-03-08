@@ -133,8 +133,10 @@ p.welcome-divider
   span.divider
     background-color: #D5D1C8
     border-bottom: 1px solid #fff
-  h2
-    font-size: 44px
+  img.find_title 
+    margin: 15px auto 0px 30px
+  .civic_title, .norms_title, .find_title
+    font-size: 42px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
@@ -152,7 +154,7 @@ p.welcome-divider
     height: 45px
     line-height: 11px
   input
-    width: 382px
+    width: 438px
     border-radius: 4px
     margin-top: 0px
     margin-bottom: 15px
@@ -173,7 +175,7 @@ p.welcome-divider
       content: ""
       clear: both
   input.name 
-    width: 274px
+    width: 335px
     clear: none
     margin-bottom: 19px
     margin-top: 2px
@@ -337,7 +339,6 @@ p.welcome-divider
     height: 26px
     width: 119px
     margin: 0px
-      bottom: 18px
     border-radius: 4px
   #create_button
     float: right
@@ -477,11 +478,22 @@ p.welcome-divider
   text-shadow: 1px 1px 0px #fff
 
 #subscribe_pages
-  //background-color: rgba(0, 0, 0, 0.0125)
-  //border: 1px solid #bbb
-  //box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.12), white 0px 1px 0px
-  //padding: 0px 10px 10px 15px
-  //border-radius: 4px
+  margin-right: auto
+  margin-left: auto
+  overflow: auto
+  overflow-x: hidden
+  background-color: rgba(0, 0, 0, 0.0125)
+  border: 1px solid #bbb
+  box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.12), white 0px 1px 0px
+  padding: 0px 10px 10px 15px
+  border-radius: 4px
+  margin-bottom: 15px
+  div.page_category
+    margin-bottom: 0px
+  ul.subscribe_pages
+    margin-bottom: 0px
+    margin-right: 0px
+    display: inline-block
 
 #subscribe_pages ul.subscribe_pages li
   overflow: hidden
@@ -566,8 +578,9 @@ img.page_img
 
 #subscribe_pages a h3
   color: $red
-  margin-top: 20px
-  margin-bottom: 10px
+  padding-top: 20px
+  padding-bottom: 10px
+  margin-bottom: 0px
   font-size: 18px
   font-weight: bold
   text-shadow: 1px 1px 0px #fff
@@ -848,7 +861,10 @@ div#RealFindNeighbors div#find_bottom
   color: #131313 !important
   input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
     color: #555 !important
+div#subscribe_pages ul.subscribe_pages div.page_item
+  float: left
 
+      
 /************* END OF IMPORTED STYLES ***********/  
 
 #civicProfile, #norms, #register, #findNeighbors
