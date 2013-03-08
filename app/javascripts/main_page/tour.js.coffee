@@ -5,7 +5,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
   changedElements: []
 
   events:
-    "click .end-tour": "end"
+    "click .close": "end"
     "click #profile-box, #community-resources, #post-box": "end"
 
   initialize: (options) ->
