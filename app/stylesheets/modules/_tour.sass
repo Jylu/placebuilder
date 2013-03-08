@@ -136,8 +136,8 @@ p.welcome-divider
     border-bottom: 1px solid #fff
   img.find_title 
     margin: 15px auto 0px 30px
-  .civic_title
-    font-size: 38px
+  .civic_title, .norms_title, .find_title
+    font-size: 42px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
@@ -175,8 +175,8 @@ p.welcome-divider
       display: block
       content: ""
       clear: both
-  //input.name 
-    width: 274px
+  input.name 
+    width: 335px
     clear: none
     margin-bottom: 19px
     margin-top: 2px
@@ -481,11 +481,22 @@ p.welcome-divider
   text-shadow: 1px 1px 0px #fff
 
 #subscribe_pages
-  //background-color: rgba(0, 0, 0, 0.0125)
-  //border: 1px solid #bbb
-  //box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.12), white 0px 1px 0px
-  //padding: 0px 10px 10px 15px
-  //border-radius: 4px
+  margin-right: auto
+  margin-left: auto
+  overflow: auto
+  overflow-x: hidden
+  background-color: rgba(0, 0, 0, 0.0125)
+  border: 1px solid #bbb
+  box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.12), white 0px 1px 0px
+  padding: 0px 10px 10px 15px
+  border-radius: 4px
+  margin-bottom: 15px
+  div.page_category
+    margin-bottom: 0px
+  ul.subscribe_pages
+    margin-bottom: 0px
+    margin-right: 0px
+    display: inline-block
 
 #subscribe_pages ul.subscribe_pages li
   overflow: hidden
@@ -866,7 +877,10 @@ div#RealFindNeighbors div#find_bottom
   color: #131313 !important
   input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
     color: #555 !important
+div#subscribe_pages ul.subscribe_pages div.page_item
+  float: left
 
+      
 /************* END OF IMPORTED STYLES ***********/  
 
 #civicProfile, #norms, #register, #findNeighbors
@@ -1136,6 +1150,34 @@ div#RealFindNeighbors div#find_bottom
   margin-right: 30px
   margin-left: 5px
 
+.blue-button  
+  -webkit-font-smoothing: antialiased
+  background: $blue
+  width: 100%
+  padding: 10px 0
+  letter-spacing: 1px
+  font-family: $Ultra
+  text-align: center
+  font-size: 20px
+  border: 1px solid #151f28
+  color: white
+  text-transform: uppercase
+  border-radius: 4px
+  +linear-gradient(color-stops(#2e5274, #1b334a), top)
+  box-shadow: 1px 1px 1px rgba(0,0,0,.25), inset 0px 1px 0px rgba(255,255,255,0.25)
+  text-shadow: 1px 2px 3px rgba(0,0,0,.65)
+  cursor: pointer
+  margin-top: 0px
+  &:hover, &:focus
+    color: #fff
+    +linear-gradient(color-stops(#2e5274, #1b334a), top)
+    text-shadow: 1px 2px 3px rgba(0,0,0,.65)
+    box-shadow: 0px 2px 4px rgba(0,0,0,.65), inset 0px 1px 0px rgba(255,255,255,0.25)
+  &:active
+    color: #fff
+    +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
+    text-shadow: -1px -1px -1px rgba(0,0,0,.65)
+    box-shadow: 1px 1px 1px rgba(0,0,0,.25)
 #buttons a 
   background: #2e5172
   border-radius: 0px
