@@ -94,7 +94,7 @@ p.welcome-divider
   border-radius: 5px
   box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
 
-#findNeighbors 
+//#findNeighbors 
   background-color: #eeecdf
   background: url(shared/redesign/tan-bg.png) center center
   padding: 15px
@@ -102,7 +102,6 @@ p.welcome-divider
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
   border: 1px solid white
   .find_title
-    font-size: 46px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
@@ -136,8 +135,8 @@ p.welcome-divider
     border-bottom: 1px solid #fff
   img.find_title 
     margin: 15px auto 0px 30px
-  .civic_title, .norms_title, .find_title
-    font-size: 36px
+  .civic_title
+    font-size: 38px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
@@ -146,16 +145,17 @@ p.welcome-divider
     padding-bottom: 0px
   img.profile_pic
     margin-bottom: 18px
-    width: 90px
+    width: 85px
     float: left
     margin-right: 18px
-    border-radius: 5px
+    border-radius: 4px
     box-shadow: white 0px 1px 0px
   .not-facebook
     height: 45px
     line-height: 11px
   input
-    width: 438px
+    width: 377px
+    border-radius: 4px
     margin-top: 0px
     margin-bottom: 15px
     -webkit-font-smoothing: antialiased
@@ -175,19 +175,19 @@ p.welcome-divider
       content: ""
       clear: both
   input.name 
-    width: 330px
+    width: 274px
     clear: none
-    margin-bottom: 17px
-    margin-top: 1px
+    margin-bottom: 19px
+    margin-top: 2px
   input.half
-    width: 204px
+    width: 173px
     clear: none
   input.phone
     float: right
   input.website
     float: left
   textarea
-    width: 438px
+    width: 377px
     height: 50px
     margin-top: 0px
     margin-bottom: 15px
@@ -197,6 +197,7 @@ p.welcome-divider
     padding: 8px
     font-family: $heading
     border: 1px solid #ccc9bd
+    border-radius: 4px
     box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
     color: #131313
@@ -227,6 +228,102 @@ p.welcome-divider
       line-height: 22px
   .create_page
     float: left
+    .chzn-container
+      width: 322px !important
+      float: left
+      margin-bottom: 15px
+      a
+        &:focus
+          outline: none
+      .chzn-drop
+        width: 338px !important
+      .chzn-search 
+        display: none !important
+      .chzn-single 
+        width: 322px  
+        background-color: #fefffe
+        border: 1px solid $dark-tan  
+        padding: 0 8px
+        height: 36px 
+        line-height: 38px
+        font-family: $Rokkitt
+        color: $black
+        font-size: 18px
+        background: #fff
+        float: left
+        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        span
+          color: #555
+        div 
+          background: none 
+          border-left: none
+          b 
+            background-image: url(shared/redesign/down.png)
+            background-position: 0
+            margin-left: -8px 
+      
+      .chzn-results
+        width: 338px
+        border-top: 1px solid $dark-tan
+        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        margin: 0px
+        padding: 0px
+        max-height: 202px
+        -webkit-border-radius: 0 0 4px 4px
+        -moz-border-radius: 0 0 4px 4px
+        border-radius: 0 0 4px 4px
+        li
+          border-bottom: 1px dotted #ccc
+          padding: 12px 8px
+          color: #333
+          font-size: 18px
+          font-family: $heading
+          &:hover
+            color: $red
+            background-color: #eee 
+
+      ul.chzn-choices 
+        border: 1px solid $dark-tan
+        font-family: $Rokkitt
+        border-radius: 4px
+        color: #333
+        font-size: 18px
+        width: 362px !important
+        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        .chzn-drop 
+          width: 322px
+          border: 0px none
+        .chzn-results
+          width: 322px
+        .search-field 
+          input 
+            padding: 9px 5px 5px 8px !important
+          .default 
+            color: #555
+    #start_time_chzn, #end_time_chzn
+      margin-top: 0 
+      width: 98px !important
+      color: #555
+      a 
+        width: 82px
+        &:focus
+          outline: none!important
+        span
+          color: #555
+      .chzn-drop 
+        width: 98px !important
+        max-height: 164px 
+        .chzn-results
+          width: 98px 
+          max-height: 164px 
+          li
+            &:hover
+              color: $red
+              background-color: #eee
+        .highlighted
+          width: 82px
+        li 
+          width: 82px
   a.avatar_file_browse
     +red-button
     font-size: 12px
@@ -242,6 +339,8 @@ p.welcome-divider
     height: 26px
     width: 119px
     margin: 0px
+      bottom: 18px
+    border-radius: 4px
   #create_button
     float: right
     margin: 15px 0px
@@ -382,17 +481,15 @@ p.welcome-divider
   text-shadow: 1px 1px 0px #fff
 
 #subscribe_pages
-  //width: 493px
   margin-right: auto
   margin-left: auto
-  height: 295px
   overflow: auto
   overflow-x: hidden
   background-color: rgba(0, 0, 0, 0.0125)
   border: 1px solid #bbb
-  box-shadow: inset #dedbd4 0px 0px 3px 2px, #fff 0px 1px 0px
+  box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.12), white 0px 1px 0px
   padding: 0px 10px 10px 15px
-  border-radius: 0px
+  border-radius: 4px
   margin-bottom: 15px
   div.page_category
     margin-bottom: 0px
@@ -403,14 +500,8 @@ p.welcome-divider
 
 #subscribe_pages ul.subscribe_pages li
   overflow: hidden
-  width: 388px
   padding: 10px
   background-color: #fff
-  //margin-right: 5px
-  margin-left: 0px
-  margin-bottom: 5px
-  margin-top: 5px
-  max-height: 66px
   //border-radius: 5px
   border: 1px solid white
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
@@ -422,7 +513,7 @@ p.welcome-divider
 #subscribe_pages ul.subscribe_pages li:hover
   border: 1px solid #999
   cursor: pointer
-  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.25) !important
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.15) !important
   a h4
     color: $red
     font: 14px Helvetica, sans-serif
@@ -440,11 +531,7 @@ p.welcome-divider
   color: $dark-tan
 
 #subscribe_pages ul.subscribe_pages li img.avatar-container
-  width: 32px
-  height: 32px
-  float: left
-  margin-right: 12px
-  border-radius: 5px
+  border-radius: 4px
 
 #subscribe_pages ul.subscribe_pages li h4 
   font: bold 13px Helvetica, Arial, sans-serif
@@ -457,11 +544,6 @@ p.welcome-divider
   font: 12px Helvetica, Arial, sans-serif
   display: block
   line-height: 16px
-
-#subscribe_pages ul.subscribe_pages li .description-container
-  overflow: hidden
-  width: 335px
-  max-height: 66px
 
 #subscribe_pages ul.subscribe_pages li.check.checked
   border-color: $blue
@@ -500,12 +582,11 @@ img.page_img
 #subscribe_pages a h2
   color: $red
   padding-top: 20px
-  padding-bottom: 15px
+  padding-bottom: 10px
   margin-bottom: 0px
   font-size: 18px
   font-weight: bold
   text-shadow: 1px 1px 0px #fff
-  padding-left: 1px
 
 .find_neighbors
   width: 380px
@@ -729,7 +810,7 @@ div#find_button
   margin: 0px auto
   width: 200px
 
-div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
+//div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
   padding: 10px 20px
   text-align: center
   width: auto
@@ -739,7 +820,7 @@ div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-butt
   margin: 25px 0px 0px 0px
   display: block
 
-div#RealFindNeighbors.container #find_button a.blue-button.next-button
+//div#RealFindNeighbors.container #find_button a.blue-button.next-button
   margin-top: 5px
   width: 170px
   float: right
@@ -789,71 +870,22 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
 div#subscribe_pages ul.subscribe_pages div.page_item
   float: left
 
-
-/* Norms Page */
-
-#norms
-  font-size: 18px
-  p
-    line-height: 22px
-    margin-bottom: 7px
-    a
-      color: $red
-      &:hover
-        text-decoration: underline
-  .norms_title
-    margin-top: -5px
-  span.divider
-    margin-bottom: 15px
-  ol#rules
-    float: left
-    width: 100%
-    margin-top: 10px
-    li
-      list-style-type: none
-      list-style-position: inside
-      float: left
-      width: 100%
-      margin-bottom: 15px
-      &:last-child
-        margin-bottom: 8px
-      img
-        border-radius: 5px
-        float: left
-        margin-top: 4px
-        box-shadow: 1px 1px 0px white
-      p
-        float: right
-        width: 378px
-      strong
-        color: $red
-        font-size: 17px
-        margin-right: 2px
-  #norms_button
-    margin: 20px auto 0px auto
-    text-align: center
-    display: block
-    width: 200px
-    .next-button
-      display: block
-      width: auto
       
 /************* END OF IMPORTED STYLES ***********/  
 
-#civicProfile, #norms
+#civicProfile, #norms, #register
   overflow: none
   background-color: #eeecdf
   background: url(shared/redesign/tan-bg.png) center center
   border-radius: 5px
   border: 1px solid #fff
   color: #333
-  padding: 10px
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
   span.divider
     background-color: #D5D1C8
     border-bottom: 1px solid #fff
   h2
-    font-size: 44px
+    font-size: 42px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
@@ -877,6 +909,7 @@ div#subscribe_pages ul.subscribe_pages div.page_item
       box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
       background-color: #fff
       width: 378px !important
+      border-radius: 4px
     textarea
       -webkit-font-smoothing: antialiased
       font-size: 18px
@@ -885,6 +918,12 @@ div#subscribe_pages ul.subscribe_pages div.page_item
       border: 1px solid #C9C4B4
       box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
       background-color: #fff
+      border-radius: 4px
+#register h2
+  background: url("shared/redesign/stars.png") no-repeat center
+  padding-bottom: 10px
+  margin-bottom: 10px
+  margin-top: -10px
   
 #civicProfile div.civic_left div.not-facebook div a.avatar_file_browse
   text-transform: uppercase
@@ -956,62 +995,6 @@ div#subscribe_pages ul.subscribe_pages div.page_item
   font-weight: bold
   text-shadow: 0px 1px 0px #fff
 
-#subscribe_pages
-  overflow: auto
-  overflow-x: hidden
-  background-color: #F7F5EA
-  border: 1px solid #C9C4B4
-  box-shadow: inset #dfdbcd 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 0px
-  padding: 0px 10px 10px 15px
-  border-radius: 0px
-  div.page_category
-
-#subscribe_pages ul.subscribe_pages li 
-  overflow: hidden
-  padding: 15px
-  background-color: #fff
-  border-radius: 5px
-  border: 1px solid #ddd
-  
-#subscribe_pages div.check
-  overflow: hidden
-
-#subscribe_pages ul.subscribe_pages li:hover
-  border: 1px solid #aaa
-  cursor: pointer
-  box-shadow: 0px 3px 3px #ccc
-  a h4
-    color: $red
-    font: 14px Helvetica, sans-serif
-  a span.page_text
-    color: $red
-    font: 12px Helvetica, sans-serif
-
-#subscribe_pages ul.subscribe_pages li:active
-  border: 1px solid #bbb
-  
-#subscribe_pages ul.subscribe_pages li a 
-  color: $dark-tan
-
-#subscribe_pages ul.subscribe_pages li img.avatar-container
-  border-radius: 5px
-
-#subscribe_pages ul.subscribe_pages li h4 
-  font: bold 14px Helvetica, Arial, sans-serif
-  overflow: hidden
-  color: $blue
-
-#subscribe_pages ul.subscribe_pages li span.page_text 
-  color: #333
-  font: 12px Helvetica, Arial, sans-serif
-  line-height: 16px
-  
-#subscribe_pages ul.subscribe_pages li .description-container
-  overflow: hidden
-
-#subscribe_pages ul.subscribe_pages li.check.checked
-  border-color: $blue
-
 #invite_friends p
   font-size: 16px
   line-height: 22px
@@ -1025,15 +1008,6 @@ div#subscribe_pages ul.subscribe_pages div.page_item
   text-decoration: underline
   &:hover
     text-decoration: none
-
-#subscribe_pages a h2
-  color: $red
-  padding-top: 20px
-  padding-bottom: 15px
-  font-size: 18px
-  font-weight: bold
-  text-shadow: 1px 1px 0px #fff
-  padding-left: 1px
 
 .find_neighbors
   div.button
@@ -1211,7 +1185,7 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
   
 /* Norms Page */
 
-#norms
+#norms, #register
   font-size: 18px
   h2
     
@@ -1222,6 +1196,8 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
       color: $red
       &:hover
         text-decoration: underline
+  p.intro
+    color: $black
   ol#rules
     li
       list-style-type: none
@@ -1241,12 +1217,14 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
   padding: 10px 0
   letter-spacing: 1px
   font-family: $Ultra
+  text-align: center
   font-size: 20px
   border: 1px solid #151f28
   color: white
   text-transform: uppercase
+  border-radius: 4px
   +linear-gradient(color-stops(#2e5274, #1b334a), top)
-  box-shadow: 1px 1px 1px rgba(0,0,0,.25)
+  box-shadow: 1px 1px 1px rgba(0,0,0,.25), inset 0px 1px 0px rgba(255,255,255,0.25)
   text-shadow: 1px 2px 3px rgba(0,0,0,.65)
   cursor: pointer
   margin-top: 0px
@@ -1254,7 +1232,7 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
     color: #fff
     +linear-gradient(color-stops(#2e5274, #1b334a), top)
     text-shadow: 1px 2px 3px rgba(0,0,0,.65)
-    box-shadow: 0px 2px 4px rgba(0,0,0,.65)
+    box-shadow: 0px 2px 4px rgba(0,0,0,.65), inset 0px 1px 0px rgba(255,255,255,0.25)
   &:active
     color: #fff
     +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
@@ -1285,12 +1263,12 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
   margin-left: 6px
   top: 10px
 
-#current-tour-page
+//#current-tour-page
   .register_email
     //background: $red url("shared/redesign/red-bg.png")
     //width: 465px
     p
-      color: #555 !important
+      color: #555
     h2
       font-size: 44px
       background: url("shared/redesign/stars.png") no-repeat center
@@ -1299,7 +1277,7 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
       text-shadow: 0px 2px 0px white
       font-weight: normal
       color: $red
-      padding-bottom: 15px
+      padding-bottom: 10px
       margin-bottom: 10px
       margin-top: -10px
     .registration_border
