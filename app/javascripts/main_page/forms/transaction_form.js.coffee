@@ -10,7 +10,6 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
       @initImageUploader(@$(".image_file_browser#1"), 1)
       @initImageUploader(@$(".image_file_browser#2"), 2)
       @initImageUploader(@$(".image_file_browser#3"), 3)
-      @initImageUploader(@$(".image_file_browser#4"), 4)
     else
       @$(".image_file_browser").hide()
     @hideSpinner()
