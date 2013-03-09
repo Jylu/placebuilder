@@ -731,64 +731,79 @@ input, textarea
     box-shadow: none
     margin: 1px 0 !important
 
-textarea.description
-  width: 322px
-  float: left
-  height: 75px
-  margin-bottom: 0
-.upload-section 
-  clear: both 
-  float: left 
-  width: 340px
-  margin-top: 2px 
-  .box 
-    background-color: #fff
-    box-shadow: #C8C8C8 0px 0px 4px 1px inset, rgba(255, 255, 255, 0.247059) 0px 4px 4px
-    border: 1px solid $dark-tan  
-      bottom: 4px
-    border-radius: 4px
-    text-align: center
-    vertical-align: middle
-    width: 160px
-    height: 120px
-    float: left 
-    margin-top: 15px
-    img.item_pic 
-      max-width: 136px 
-      max-height: 104px
-      margin-top: 5px
-    &:first-child 
-      margin-right: 15px 
-    &:last-child
-      margin-left: 15px
-  .image_file_browser
+.create-transaction
+  textarea.description
+    width: 322px
+    float: left
+    height: 140px
+    margin-bottom: 0
+  
+  .inputs.left 
+    width: 340px
+    overflow: hidden
+  .upload-section 
+    float: right
+    width: 340px
+    .box 
+      background-color: #fff
+      box-shadow: #C8C8C8 0px 0px 4px 1px inset, rgba(255, 255, 255, 0.247059) 0px 4px 4px
+      border: 1px solid $dark-tan  
+        bottom: 4px
+      border-radius: 4px
+      text-align: center
+      vertical-align: middle
+      width: 104.33px
+      height: 76px
+      overflow: hidden
+      margin-bottom: 15px
+      float: left
+      margin-left: 10px 
+      &:first-child
+        margin-left: 0
+      img.item_pic 
+        max-width: 104px 
+        max-height: 66px
+        margin-top: 5px
+    .image_file_browser
+      position: absolute
+      width: 154px
+      height: 104px
+      background: none
+      text-indent: -9999px
+      border: 0 none
+      top: 8px
+      left: 8px
+      padding: 0px
+      cursor: pointer
+  li 
+    list-style-type: none
+    height: 75px
+    width: 104px
     position: absolute
-    width: 154px
-    height: 104px
-    background: none
-    text-indent: -9999px
-    border: 0 none
-    top: 8px
-    left: 8px
-    padding: 0px
-    cursor: pointer
-input.price
-  float: right
-  width: 322px
-  margin: 18px 0px 15px 0px
-textarea   
-  width: 322px  
-  background-color: #fefffe  
-  height: 110px  
-  margin-bottom: 15px  
-  border: 1px solid $dark-tan  
-  padding: 10px 8px
-  line-height: 18px  
-  font-family: $Rokkitt
-  font-size: 18px
-  overflow: auto
-  font-weight: normal !important
-  //box-shadow: inset 2px 2px 4px 0px #dddddd  
+    left: 0
+    &.two
+      left: 118px
+    &:last-child 
+      left: 234px
+  input.price
+    float: left
+    width: 322px
+    margin: 18px 0px 15px 0px
+  input 
+    width: 322px
+  textarea   
+    width: 322px  
+    background-color: #fefffe  
+    height: 110px  
+    margin-bottom: 15px  
+    border: 1px solid $dark-tan  
+    padding: 10px 8px
+    line-height: 18px  
+    font-family: $Rokkitt
+    font-size: 18px
+    overflow: auto
+    font-weight: normal !important
+    //box-shadow: inset 2px 2px 4px 0px #dddddd  
 
 #disclaimer   
   width: 174px  
