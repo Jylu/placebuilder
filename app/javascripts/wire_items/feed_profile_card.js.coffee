@@ -9,10 +9,16 @@ CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend
     "click .subscribe": "subscribe"
     "click .unsubscribe": "unsubscribe"
     "click .subscribers": "showSubscribers"
+    "click .announcements": "showAnnouncements"
+
+  showAnnouncements: ->
+    slug = CommonPlace.community.get("slug")
+    id = @model.get("id")
+    app.showFeedPage(slug, id)
 
   showSubscribers: ->
     slug = CommonPlace.community.get("slug")
-    id =@model.get("id")
+    id = @model.get("id")
     app.showFeedSubscribers(slug, id)
 
   canEdit: ->
