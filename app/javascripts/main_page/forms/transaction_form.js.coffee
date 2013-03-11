@@ -7,9 +7,9 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     @data.image_id = []
     @$("input[placeholder], textarea[placeholder]").placeholder()
     if @imageUploadSupported() and not @isPostEdit()
-      @initImageUploader(@$(".image_file_browser#1"), 1)
-      @initImageUploader(@$(".image_file_browser#2"), 2)
-      @initImageUploader(@$(".image_file_browser#3"), 3)
+      @initImageUploader(@$(".one"), 1)
+      @initImageUploader(@$(".two"), 2)
+      @initImageUploader(@$(".three"), 3)
     else
       @$(".image_file_browser").hide()
     @hideSpinner()
