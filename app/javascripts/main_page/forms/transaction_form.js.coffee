@@ -41,7 +41,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
           $upload_pic.attr("src", response.image_normal)
           $upload_pic.parent().removeClass("loading")
           #$(".box").append('<img src="'+response.image_url+'" alt="This is a picture of the item for sale" /><br/>')
-          @data.image_id = response.id
+          @data.image_id[num-1] = response.id
         , this)
     )
 
