@@ -84,7 +84,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
         CommonPlace.account = new Account(response)
         delete @data.term
         delete @data.suggest
-        @nextPage "welcome", @data
+        @nextPage "profile", @data
       else
         unless _.isEmpty(response.facebook)
           window.location.pathname = @community.links.facebook_login
