@@ -25,13 +25,14 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     self = this
     e.preventDefault()  if e
     @$(".error").hide()
-    @data.name = @form_name().val()
-    @data.about = @form_about().val()
-    @data.organizations = @form_orgs().val()
+    data =
+      name: @form_name().val()
+      about: @form_about().val()
+      organizations: @form_orgs().val()
     if @$("input:checked").attr("id") is "yes"
       @upcoming_page = "create_page"
 
-    CommonPlace.account.save(@data,
+    CommonPlace.account.save(data,
       success: (response) ->
         self.nextPage self.upcoming_page, self.data
     )
