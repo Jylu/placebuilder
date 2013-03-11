@@ -34,7 +34,7 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     facebook_connect_registration success: _.bind((data) ->
       @data = data
       @data.isFacebook = true
-      @nextPage "welcome", @data
+      @nextPage "profile", @data
     , this)
 
   submit: (e) ->
