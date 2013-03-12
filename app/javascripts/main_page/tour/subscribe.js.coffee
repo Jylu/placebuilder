@@ -10,7 +10,7 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
   afterRender: ->
     self = this
     @$(".page_category").hide()
-    groups = @community.groups
+    groups = CommonPlace.community.groups
     groups.fetch(
       success: ->
         _.each groups.models, _.bind((group) ->
@@ -20,7 +20,7 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
           $("#discussion").show()
         , this)
     )
-    feeds = @community.feeds
+    feeds = CommonPlace.community.feeds
     feeds.fetch(
       success: ->
         _.each feeds.models, _.bind((feed) ->
