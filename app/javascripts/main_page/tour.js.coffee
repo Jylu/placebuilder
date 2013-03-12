@@ -32,11 +32,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     $error.text message
     $error.show()
 
-  showError: ($el, $error, message) ->
-    $el.addClass "input_error"
-    $error.text message
-    $error.show()
-
   showPage: (page, data) ->
     self = this
     nextPage = (next, data) ->
