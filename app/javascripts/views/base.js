@@ -162,8 +162,6 @@ CommonPlace.View = Backbone.View.extend({
     }
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
-      account: CommonPlace.account,
-      community: CommonPlace.community,
       template: "main_page.tour.modal"
     });
     tour.render();

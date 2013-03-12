@@ -9,8 +9,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     "click #profile-box, #community-resources, #post-box": "end"
 
   initialize: (options) ->
-    @account = options.account
-    @community = options.community
     @firstSlide = true
 
   render: ->
@@ -21,7 +19,13 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     $("#current-registration-page").css(overflow: "auto")
 
   first_name: ->
-    @account.get "short_name"
+    CommonPlace.account.get "short_name"
+
+  user_name: ->
+    CommonPlace.account.get("name")
+
+  avatar_url: ->
+    CommonPlace.account.get("avatar_url")
 
   showError: ($el, $error, message) ->
     $el.addClass "input_error"
@@ -165,20 +169,18 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 CommonPlace.main.TourModalPage = CommonPlace.View.extend(
   initialize: (options) ->
     @data = options.data or isFacebook: false
-    @community = options.community
-    @account = options.account
     @fadeIn = options.fadeIn
     @nextPage = options.nextPage
     @complete = options.complete
     @template = @facebookTemplate  if options.data and options.data.isFacebook and @facebookTemplate
 
   validate_registration: (params, callback) ->
-    validate_api = "/api" + @community.get("links").registration.validate
+    validate_api = "/api" + CommonPlace.community.get("links").registration.validate
     $.getJSON validate_api, @data, _.bind((response) ->
       @$(".error").hide()
       valid = true
       unless _.isEmpty(response.facebook)
-        window.location.pathname = @communityExterior.links.facebook_login
+        window.location.pathname = CommonPlace.community.links.facebook_login
       else
         _.each params, _.bind((field) ->
           unless _.isEmpty(response[field])

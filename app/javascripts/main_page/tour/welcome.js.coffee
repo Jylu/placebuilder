@@ -7,7 +7,7 @@ CommonPlace.main.WelcomeView = CommonPlace.main.TourModalPage.extend(
     @fadeIn @el
 
   user_name: ->
-    full_name = @account.get("name")
+    full_name = CommonPlace.account.get("name")
     (if (full_name) then full_name.split(" ")[0] else "")
 
   submit: (e) ->
