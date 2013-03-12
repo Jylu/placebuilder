@@ -50,7 +50,6 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         $error = @$(".error")
         $error.html "Error creating feed"
         $error.show()
-      , this)
 
   submit: (e) ->
     self = this
@@ -88,6 +87,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
   initAvatarUploader: ($el) ->
     self = this
     @avatarUploader = new AjaxUpload($el,
+      action: "/api" + CommonPlace.community.get("links").registration.avatar
       name: "avatar"
       action: "/api" + @avatarEditUrl()
       data: {}
