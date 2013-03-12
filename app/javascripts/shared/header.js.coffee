@@ -12,6 +12,7 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
       if CommonPlace.account.isGuest()
         center = new CommonPlace.shared.HeaderSearch()
         right = new CommonPlace.shared.HeaderLogin()
+        @$(".header_center").addClass("header_guest") #for changing the size of the search bar when not logged in
       else
         center = new CommonPlace.shared.HeaderSearch()
         right = new CommonPlace.shared.HeaderNav()
@@ -21,8 +22,8 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
     window.HeaderNavigation = right
     center.render()
     right.render()
-    @$(".header_center").replaceWith center.el
-    @$(".header_right").replaceWith right.el
+    @$(".header_center").html center.el
+    @$(".header_right").html right.el
 
   showPostbox: (e) ->
     e.preventDefault() if e
