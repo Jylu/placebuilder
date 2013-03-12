@@ -226,8 +226,6 @@ var Application = Backbone.Router.extend({
     this.community();
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
-      account: CommonPlace.account,
-      community: CommonPlace.community,
       template: "main_page.tour.modal"
     });
     tour.render();
@@ -238,8 +236,6 @@ var Application = Backbone.Router.extend({
     this.community();
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
-      account: CommonPlace.account,
-      community: CommonPlace.community,
       template: "main_page.tour.modal"
     });
     tour.render();

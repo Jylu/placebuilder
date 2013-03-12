@@ -10,7 +10,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
     @initReferralQuestions()
     @$("input[placeholder]").placeholder()
     @fadeIn @el
-    url = "/api/communities/" + @community.id + "/address_completions"
+    url = "/api/communities/" + CommonPlace.community.id + "/address_completions"
     @$("input[name=address]").autocomplete
       source: url
       minLength: 1
@@ -41,7 +41,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
     if @$("#address_verification").is(":hidden")
       @data.term = @data.address
 
-      url = '/api/communities/' + @community.id + '/address_approximate'
+      url = '/api/communities/' + CommonPlace.community.id + '/address_approximate'
       $.get url, @data, _.bind((response) ->
         div = @$("#address_verification")
         radio = @$("input.address_verify_radio")
@@ -78,7 +78,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
       @verified()
 
   verified: ->
-    new_api = "/api" + @community.get("links").registration[(if (@data.isFacebook) then "facebook" else "new")]
+    new_api = "/api" + CommonPlace.community.get("links").registration[(if (@data.isFacebook) then "facebook" else "new")]
     $.post new_api, @data, _.bind((response) ->
       if response.success is "true" or response.id
         CommonPlace.account = new Account(response)
@@ -87,14 +87,14 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
         @nextPage "profile", @data
       else
         unless _.isEmpty(response.facebook)
-          window.location.pathname = @community.links.facebook_login
+          window.location.pathname = CommonPlace.community.links.facebook_login
         else unless _.isEmpty(response.password)
           @$(".error").text response.password[0]
           @$(".error").show()
     , this)
 
   referrers: ->
-    @community.get("referral_sources")
+    CommonPlace.community.get("referral_sources")
 
   initReferralQuestions: ->
     @$("#referral_metadata").hide()

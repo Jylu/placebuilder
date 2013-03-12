@@ -12,5 +12,5 @@ CommonPlace.main.NeighborsView = CommonPlace.main.TourModalPage.extend(
     @finish()
 
   finish: ->
-    window.location.pathname = "/" + @community.get("slug")
+    window.location.pathname = "/" + CommonPlace.community.get("slug")
 )
