@@ -1105,6 +1105,9 @@ CONDITION
       feed.feed_url = request_body["rss"]
 
       if feed.save
+        owner = FeedOwner.new(:feed => feed,
+                              :user => current_user)
+        owner.save
         serialize(feed)
       else
         [400, "errors"]

@@ -8,16 +8,11 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
   afterRender: ->
     @hasAvatarFile = false
     @$('input[placeholder], textarea[placeholder]').placeholder()
-    #@initAvatarUploader @$(".avatar_file_browse")
+    @initAvatarUploader @$(".avatar_file_browse")
+    @$("select.dk").dropkick()
     unless @current
       @fadeIn @el
       @current = true
-
-  user_name: ->
-    (if (@data.full_name) then @data.full_name.split(" ")[0] else "")
-
-  avatar_url: ->
-    (if (@data.avatar_url) then @data.avatar_url else "")
 
   submit: (e) ->
     self = this
@@ -30,6 +25,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       website: @$("input[name=website]").val()
       phone: @$("input[name=phone]").val()
       tags: @$("input[name=tags]").val()
+      kind: @$("select[name=page_kind]").val()
 
     $.ajax
       type: "post"
@@ -38,16 +34,16 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       dataType: "json"
       success: _.bind((feed) ->
         self.nextPage "subscribe", self.data
+      , this)
       error: (attribs, response) ->
         $error = @$(".error")
         $error.html "Error creating feed"
         $error.show()
-      , this)
 
   initAvatarUploader: ($el) ->
     self = this
     @avatarUploader = new AjaxUpload($el,
-      action: "/api" + @community.get("links").registration.avatar
+      action: "/api" + CommonPlace.community.get("links").registration.avatar
       name: "avatar"
       data: {}
       responseType: "json"
@@ -58,7 +54,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       onSubmit: (file, extension) ->
 
       onComplete: (file, response) ->
-        CommonPlace.account.set response
+        CommonPlace.account = new Account(response)
         $(".profile_pic").attr("src", CommonPlace.account.get("avatar_url"))
     )
 
