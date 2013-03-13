@@ -33,6 +33,9 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       data: JSON.stringify(feed_data)
       dataType: "json"
       success: _.bind((feed) ->
+        if @hasAvatarFile
+          @avatarUploader._settings.action = "/api" + feed.links.self + "/avatar"
+          @avatarUploader.submit()
         self.nextPage "subscribe", self.data
       , this)
       error: (attribs, response) ->
@@ -43,19 +46,17 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
   initAvatarUploader: ($el) ->
     self = this
     @avatarUploader = new AjaxUpload($el,
-      action: "/api" + CommonPlace.community.get("links").registration.avatar
       name: "avatar"
       data: {}
       responseType: "json"
-      autoSubmit: true
-      onChange: ->
+      autoSubmit: false
+      onChange: (file, extension) ->
         self.toggleAvatar()
+        $(".profile_pic").attr("src", file)
 
       onSubmit: (file, extension) ->
 
       onComplete: (file, response) ->
-        CommonPlace.account = new Account(response)
-        $(".profile_pic").attr("src", CommonPlace.account.get("avatar_url"))
     )
 
   toggleAvatar: ->
