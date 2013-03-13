@@ -9,6 +9,21 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
     "click .unmeet": "unmeet"
     "click .page-link": "showPage"
 
+  defaultAbout: ->
+    "This profile hasn't been filled out yet!"
+
+  canEdit: ->
+    CommonPlace.account.canEditProfile @model
+
+  slug: ->
+    if CommonPlace.account.isAuth()
+      CommonPlace.account.get "community_slug"
+    else
+      CommonPlace.community.get "slug"
+
+  account_url: ->
+    "/" + @slug() + "/account"
+
   post_count: ->
     @model.get "post_count"
 

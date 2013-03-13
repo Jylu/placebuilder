@@ -8,7 +8,8 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   afterRender: ->
     @model.on "change", @render, this
-    @reply() if @model.get("replies") isnt undefined
+    replies = @model.get("replies")
+    @reply() if replies and replies.length > 0
     @checkThanked()
     @checkFlagged()
 
@@ -38,7 +39,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       t.thankable_type isnt "Reply"
 
   thank: ->
-    @$(".thank-share .current").removeClass "current"
+    @removeCurrentClass()
     return @showThanks()  if @thanked()
     _kmq.push(['record', 'Thanked Post', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
     $.post "/api" + @model.link("thank"), _.bind((response) ->
@@ -50,14 +51,14 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
   showThanks: (e) ->
     e.preventDefault()  if e
     unless _.isEmpty(@model.get("thanks"))
-      @removeFocus()
+      @removeCurrentClass()
       @$(".thank-link").addClass "current"
-      @$(".replies-area").empty()
+      @emptyRepliesArea()
       thanksView = new ThanksListView(
         model: @model
       )
       thanksView.render()
-      @$(".replies-area").append thanksView.el
+      @appendRepliesArea thanksView.el
       @state = "thanks"
 
   checkFlagged: ->
@@ -87,14 +88,14 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
   showFlags: (e) ->
     e.preventDefault()  if e
     unless _.isEmpty(@model.get("flags"))
-      @removeFocus()
+      @removeCurrentClass()
       @$(".flag-link").addClass "current"
       @state = "flags"
 
   share: (e) ->
     e.preventDefault()  if e
     @state = "share"
-    @removeFocus()
+    @removeCurrentClass()
     $("#modal").empty()
     @$(".share-link").addClass "current"
     _kmq.push(['record', 'Clicked Share', {'Schema': @model.get("schema"), 'ID': @model.id}]) if _kmq?
@@ -106,11 +107,11 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   reply: (e) ->
     e.preventDefault()  if e
-    isFirst = _.isEmpty(@repliesView)
-    if @state isnt "reply" or isFirst
-      @removeFocus()
+    @removeCurrentClass()
+    if @state isnt "reply"
+      @state = "reply"
       @$(".reply-link").addClass "current"
-      @$(".replies-area").empty()
+      @emptyRepliesArea()
       @repliesView = new RepliesView(
         collection: @model.replies()
         thankReply: _.bind((response) ->
@@ -124,10 +125,17 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
         @render()
       , this)
       @repliesView.render()
-      @$(".replies-area").append @repliesView.el
-    unless isFirst
+      @appendRepliesArea @repliesView.el
       @$(".reply-text-entry").focus() if @browserSupportsPlaceholders() and $.browser.webkit #only focus the first input if the browser supports placeholders and is webkit based (others clear the placeholder on focus)
-      @state = "reply"
+    else
+      @state = "none"
+      @emptyRepliesArea()
+
+  emptyRepliesArea: ->
+    @$(".replies-area").empty()
+
+  appendRepliesArea: (el) ->
+    @$(".replies-area").append(el)
 
   messageUser: (e) ->
     e.preventDefault() if e
@@ -185,8 +193,8 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
     e.preventDefault() if e
     app.showFeedPage(CommonPlace.community.get("slug"), @model.get("feed_id"))
 
-  removeFocus: ->
-    @$(".thank-share .current").removeClass "current"
+  removeCurrentClass: ->
+    @$(".current").removeClass "current"
 
   publishedAt: ->
     timeAgoInWords @model.get("published_at")

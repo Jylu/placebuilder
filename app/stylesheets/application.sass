@@ -1,0 +1,106 @@
+/**************************************************************************************
+/** Requires self 
+/**************************************************************************************
+
+= require_self
+
+
+/**************************************************************************************
+/**  Main Compass extensions
+/**************************************************************************************
+
+@import "compass"
+
+
+/**************************************************************************************
+/** Base files include overall skinning, resets, global, and foundation styling
+/** These are very generic and overall, no really specific rules should go in here
+/**************************************************************************************
+
+@import "base/reset"
+@import "base/colors"
+@import "base/gradients"
+@import "base/typography"
+@import "base/buttons"
+@import "base/inputs"
+@import "base/dropkick"
+@import "base/mixins"
+@import "base/modals"
+@import "base/chosen"
+// @import "base/pie"
+@import "base/calendar"
+@import "base/general"
+
+/**************************************************************************************
+/** Layout files are for grids, positioning, widths, "faceless" containers
+/** Prefix these with l for layout, ie l-full-width, l-sidebar, etc
+/**************************************************************************************
+
+//Shared
+@import "layout/header"
+
+//Logged Out
+@import "layout/info"
+@import "layout/about"
+@import "layout/login"
+@import "layout/registration"
+@import "layout/verification"
+@import "layout/tour"
+
+//Logged In
+@import "layout/tour"
+@import "layout/wire"
+@import "layout/replies"
+@import "layout/sidebar"
+@import "layout/postbox"
+@import "layout/inbox"
+@import "layout/settings"
+@import "layout/share"
+@import "layout/feed-page"
+@import "layout/feed-registration"
+@import "layout/personal-feed"
+@import "layout/account-page"
+@import "layout/faq"
+
+
+/**************************************************************************************
+/** Module files are reusable, context-independant
+/** Prefix these with m for module, ie m-box, m-dialog, m-horizontal-list
+/**************************************************************************************
+
+//Shared
+@import "modules/header"
+
+//Logged Out
+
+@import "modules/registration"
+@import "modules/tour"
+
+//Logged In
+@import "modules/tour"
+@import "modules/wire"
+@import "modules/replies"
+@import "modules/sidebar"
+@import "modules/postbox"
+@import "modules/share"
+@import "modules/feed-page"
+@import "modules/feed-registration"
+@import "modules/personal-feed"
+@import "modules/faq"
+@import "modules/profile-card"
+
+
+/**************************************************************************************
+/** Non-Modular files are overrides, page mentality, glue code, backend dev sandbox ;)
+/**************************************************************************************
+
+//Logged Out
+@import "non-modular/info"
+@import "non-modular/about"
+@import "non-modular/login"
+@import "non-modular/verification"
+
+//Logged In
+@import "non-modular/inbox"
+@import "non-modular/account-page"
+@import "non-modular/settings"
