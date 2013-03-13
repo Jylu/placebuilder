@@ -14,6 +14,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @form_name().val(CommonPlace.account.get("name"))
     @form_about().val(CommonPlace.account.get("about"))
     @form_orgs().val(CommonPlace.account.get("organizations"))
+    @$(".profile_pic").attr("src", CommonPlace.account.get("avatar_url")) if CommonPlace.account.get("avatar_url")
     unless @current
       @fadeIn @el
       @current = true
