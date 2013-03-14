@@ -1263,6 +1263,74 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
   margin-left: 6px
   top: 10px
 
+#dk_container_page_kind
+  //width: 455px
+  //z-index: 10 !important
+  float: left
+  margin-bottom: 20px
+  font-family: $heading
+  a.dk_toggle 
+    height: 18px !important
+    margin-bottom: 0
+    font-weight: normal
+    text-indent: 0px
+    padding: 8px
+    border: 1px solid #C9C4B4
+    box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
+    width: 377px !important
+    color: $black
+    border-radius: 4px 0px 0px 4px
+    span.dk_arrow.button.blue 
+      border-radius: 0px 4px 4px 0px
+      border: 1px solid #0F1E2C
+      height: 13px
+      padding: 12px 13px 9px 9px !important
+      margin: 0px !important
+      box-shadow: inset 0 1px 0px rgba(255,255,255,.25)
+      right: -1px
+      top: -1px
+      position: absolute
+      &:hover
+        +linear-gradient(color-stops(#3e6b96, #1b334a), top)
+        box-shadow: inset 0 1px 0px rgba(255,255,255,.25)
+      &:active
+        color: rgba(255,255,255,0.4) !important
+    span.dk_label 
+      width: 350px
+      color: #555
+      font-size: 18px
+      font-weight: normal
+      font-family: $heading
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      display: inline-block
+  .dk_options
+    border-radius: 0px !important
+    left: 1px
+    margin-top: -2px
+    width: 393px
+    li
+      color: #555
+      &:hover
+        color: $black !important
+      a
+        font-family: $heading !important
+        border-bottom: 1px dotted #ccc !important
+        line-height: 24px !important
+        font-size: 18px !important
+        display: block
+        font-weight: normal
+        padding: 8px !important
+        &:hover
+          background-color: #eee
+          color: $red
+        &:last-child
+          border: 0px none
+
+.dk_options_inner, .dk_touch .dk_options
+  max-height: 200px !important
+
 //#current-tour-page
   .register_email
     //background: $red url("shared/redesign/red-bg.png")
