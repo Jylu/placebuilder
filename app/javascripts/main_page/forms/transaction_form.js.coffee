@@ -11,7 +11,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
       @initImageUploader(@$(".two"), 2)
       @initImageUploader(@$(".three"), 3)
     else
-      @$(".image_file_browser").hide()
+      @$(".item_pic").hide()
     @hideSpinner()
     self = this
     @populateFormData()
