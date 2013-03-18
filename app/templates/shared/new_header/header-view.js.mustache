@@ -4,14 +4,14 @@
     <a href="{{community_url}}">
       {{#isAuth}}
           <h1 class="community">
-            <img src="/assets/shared/redesign/flag-logo.png" alt="OurCommonPlace" class="cp_logo">
+            <img src="/assets/shared/redesign/flag-logo.png" alt="OurCommonPlace {{community_name}}" title="OurCommonPlace {{community_name}}" class="cp_logo">
           </h1>
-            <div class="button-wrapper pie-element">
+            <div class="button-wrapper pie-element" alt="Post To Your Neighbors" title="Post To Your Neighbors in {{community_name}}!">
                <a href="" class="red-button post pie-element">Post To Your Neighbors!</a>
             </div>
       {{/isAuth}}
       {{^isAuth}}
-        <img src="/assets/shared/redesign/logo3.png" alt="OurCommonPlace" class="cp_logo">
+        <h1><img src="/assets/shared/redesign/logo3.png" alt="OurCommonPlace" title="OurCommonPlace" class="cp_logo"></h1>
       {{/isAuth}}
     </a>
   </div>

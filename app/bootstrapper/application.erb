@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
-    <title>CommonPlace</title>
-    <meta name="description" content="CommonPlace helps you share and connect with your neighbors.">
+    <title>OurCommonPlace - <%= @community.slug.titleize %></title>
+    <meta name="description" content="OurCommonPlace helps you share and connect with your neighbors in <%= @community.slug.titleize %>.">
+    <meta name="keywords" content="CommonPlace, OurCommonPlace, community, marketplace, local, local business, bulletin board, <%= @community.slug.titleize %>">
     <% if ENV['TINFOIL_VERIFICATION'].present? %>
       <meta name="tinfoil-site-verification" content="<%= ENV['TINFOIL_VERIFICATION'] %>">
     <% end %>
