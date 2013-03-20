@@ -172,7 +172,6 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
     @fadeIn = options.fadeIn
     @nextPage = options.nextPage
     @complete = options.complete
-    @template = @facebookTemplate  if options.data and options.data.isFacebook and @facebookTemplate
 
   validate_registration: (params, callback) ->
     validate_api = "/api" + CommonPlace.community.get("links").registration.validate
