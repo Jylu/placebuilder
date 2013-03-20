@@ -17,7 +17,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
 
   initialize: (options) ->
     CommonPlace.main.TourModalPage.prototype.initialize options
-    if @data
+    if @data && @data.isModel
       @model = @data
     else
       @createFeed

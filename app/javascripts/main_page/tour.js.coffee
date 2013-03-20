@@ -185,6 +185,17 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
   hideSpinner: ->
     @$(".spinner").hide()
 
+  showError: ($el, $error, message) ->
+    $el.addClass "input_error"
+    $error.text message
+    $error.show()
+
+  first_name: ->
+    CommonPlace.account.get "short_name"
+
+  avatar_url: ->
+    CommonPlace.account.get("avatar_url")
+
   validate_registration: (params, callback) ->
     validate_api = "/api" + CommonPlace.community.get("links").registration.validate
     $.getJSON validate_api, @data, _.bind((response) ->
