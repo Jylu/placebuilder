@@ -9,7 +9,6 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   afterRender: ->
     @model.on "change", @render, this
-    replies = @model.get("replies")
     @reply()
     @checkThanked()
     @checkFlagged()
