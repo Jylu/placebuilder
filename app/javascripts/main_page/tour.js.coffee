@@ -18,20 +18,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     $("body").css(overflow: "hidden") #prevents the main page from scrolling during the tour
     $("#current-registration-page").css(overflow: "auto")
 
-  first_name: ->
-    CommonPlace.account.get "short_name"
-
-  user_name: ->
-    CommonPlace.account.get("name")
-
-  avatar_url: ->
-    CommonPlace.account.get("avatar_url")
-
-  showError: ($el, $error, message) ->
-    $el.addClass "input_error"
-    $error.text message
-    $error.show()
-
   showPage: (page, data) ->
     self = this
     nextPage = (next, data) ->
@@ -168,10 +154,21 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
 CommonPlace.main.TourModalPage = CommonPlace.View.extend(
   initialize: (options) ->
-    @data = options.data
+    @data = options.data || {}
     @fadeIn = options.fadeIn
     @nextPage = options.nextPage
     @complete = options.complete
+
+  showError: ($el, $error, message) ->
+    $el.addClass "input_error"
+    $error.text message
+    $error.show()
+
+  first_name: ->
+    CommonPlace.account.get "short_name"
+
+  avatar_url: ->
+    CommonPlace.account.get("avatar_url")
 
   validate_registration: (params, callback) ->
     validate_api = "/api" + CommonPlace.community.get("links").registration.validate
