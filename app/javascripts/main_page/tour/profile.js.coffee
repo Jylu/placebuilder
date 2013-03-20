@@ -14,7 +14,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @form_name().val(CommonPlace.account.get("name"))
     @form_about().val(CommonPlace.account.get("about"))
     @form_orgs().val(CommonPlace.account.get("organizations"))
-    @$(".profile_pic").attr("src", CommonPlace.account.get("avatar_url")) if CommonPlace.account.get("avatar_url")
+    @$(".profile_pic").attr("src", @avatar_url()) if @avatar_url()
     unless @current
       @fadeIn @el
       @current = true
@@ -25,7 +25,6 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
   submit: (e) ->
     self = this
     e.preventDefault()  if e
-    @$(".error").hide()
     data =
       name: @form_name().val()
       about: @form_about().val()
@@ -51,9 +50,10 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
 
       onSubmit: (file, extension) ->
 
-      onComplete: (file, response) ->
-        CommonPlace.account = new Account(response)
-        $(".profile_pic").attr("src", CommonPlace.account.get("avatar_url"))
+      onComplete: _.bind((file, response) ->
+          CommonPlace.account = new Account(response)
+          $(".profile_pic").attr("src", @avatar_url())
+        , this)
     )
 
   form_name: ->
