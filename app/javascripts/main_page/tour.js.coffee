@@ -112,6 +112,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
   end: ->
     $("#tour-shadow").remove()
     $("#tour").remove()
+    $("body").css(overflow: "auto") #enable the main page scrolling
 
   centerEl: ($el) ->
     $el.css @dimensions($el)
