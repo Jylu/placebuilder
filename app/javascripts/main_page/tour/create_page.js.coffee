@@ -15,6 +15,14 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       @createFeed
         name: CommonPlace.account.get("name") + "'s new page"
 
+  initialize: (options) ->
+    CommonPlace.main.TourModalPage.prototype.initialize options
+    if @data
+      @model = @data
+    else
+      @createFeed
+        name: CommonPlace.account.get("name") + "'s new page"
+
   afterRender: ->
     @hideSpinner()
     @hasAvatarFile = false
@@ -86,7 +94,6 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       autoSubmit: true
       onChange: (file, extension) ->
         self.toggleAvatar()
-        $(".profile_pic").attr("src", file)
 
       onSubmit: (file, extension) ->
 
