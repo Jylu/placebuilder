@@ -25,7 +25,6 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
   submit: (e) ->
     self = this
     e.preventDefault()  if e
-    @$(".error").hide()
     data =
       name: @form_name().val()
       about: @form_about().val()
