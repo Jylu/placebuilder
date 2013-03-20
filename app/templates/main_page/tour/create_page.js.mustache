@@ -3,13 +3,13 @@
     <h2 class="civic_title">Your Service or Organization</h2>
     <span class="divider"></span>
     <div class="create_page">
-      <img class="profile_pic" src="/avatars/missing.png" alt="This is your profile photo" />
-      <input type="text" class="name" name="name" placeholder="Babysitting service, tutoring, store...">
+      <img class="profile_pic" src="{{avatarUrl}}" alt="This is your profile photo" />
+      <input type="text" class="name" name="name" placeholder="Service or organization name" value="{{pageName}}">
       <a hre="#" class="avatar_file_browse">Upload a Photo</a>
-      <textarea rows="2" cols="20" name="about" placeholder="Describe your service or business" class="create_page"></textarea>
-      <input type="text" name="address" placeholder="Street Address" class="address">
-      <input type="text" name="website" placeholder="Website" class="website half">
-      <input type="text" name="phone" placeholder="Phone Number" class="phone half">
+      <textarea rows="2" cols="20" name="about" placeholder="Describe your service or business" class="create_page">{{about}}</textarea>
+      <input type="text" name="address" placeholder="Street Address" class="address" value="{{address}}">
+      <input type="text" name="website" placeholder="Website" class="website half" value="{{website}}">
+      <input type="text" name="phone" placeholder="Phone Number" class="phone half" value="{{phone}}">
       <form>
         <select name="page_kind" class="dk" tabindex="1">
           <option value="">What is your community page for?&nbsp;&nbsp;&nbsp;&nbsp;</option>

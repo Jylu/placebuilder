@@ -168,7 +168,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
 CommonPlace.main.TourModalPage = CommonPlace.View.extend(
   initialize: (options) ->
-    @data = options.data or isFacebook: false
+    @data = options.data
     @fadeIn = options.fadeIn
     @nextPage = options.nextPage
     @complete = options.complete

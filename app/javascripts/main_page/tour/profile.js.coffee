@@ -35,7 +35,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
 
     CommonPlace.account.save(data,
       success: (response) ->
-        self.nextPage self.upcoming_page, self.data
+        self.nextPage self.upcoming_page, undefined
     )
 
   initAvatarUploader: ($el) ->
