@@ -7,7 +7,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
 
   initialize: (options) ->
     CommonPlace.main.TourModalPage.prototype.initialize options
-    if @data
+    if @data && @data.isModel
       @model = @data
     else
       @createFeed
@@ -44,18 +44,22 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
     self = this
     e.preventDefault()  if e
     @$(".error").hide()
-    @model.save
-      name: @$("input[name=name]").val()
-      about: @$("textarea[name=about]").val()
-      address: @$("input[name=address]").val()
-      website: @$("input[name=website]").val()
-      phone: @$("input[name=phone]").val()
-      tags: @$("input[name=tags]").val()
-      kind: @$("select[name=page_kind]").val()
-      rss: @$("input[name=rss]").val()
-    ,
-      success: ->
-        self.nextPage "subscribe", self.data
+    name = @$("input[name=name]").val()
+    if name is ""
+      @showError @$("input[name=name]"), @$(".error.name"), "Please enter a page name"
+    else
+      @model.save
+        name: @$("input[name=name]").val()
+        about: @$("textarea[name=about]").val()
+        address: @$("input[name=address]").val()
+        website: @$("input[name=website]").val()
+        phone: @$("input[name=phone]").val()
+        tags: @$("input[name=tags]").val()
+        kind: @$("select[name=page_kind]").val()
+        rss: @$("input[name=rss]").val()
+      ,
+        success: ->
+          self.nextPage "subscribe", self.data
 
   initAvatarUploader: ($el) ->
     self = this
