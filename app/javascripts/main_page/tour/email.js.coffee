@@ -10,7 +10,7 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     @$("input[placeholder]").placeholder()
     @$("input:visible:first").focus() if @browserSupportsPlaceholders() and $.browser.webkit #only focus the first input if the browser supports placeholders and is webkit based (others clear the placeholder on focus)
     @fadeIn @el
-    if @data.isFacebook
+    if @data and @data.isFacebook
       @$("input[name=full_name]").val @data.full_name
       @$("input[name=email]").val @data.email  if @isRealEmail()
     domains = [ "hotmail.com", "gmail.com", "aol.com", "yahoo.com" ]
