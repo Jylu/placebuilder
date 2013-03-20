@@ -71,7 +71,6 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       autoSubmit: true
       onChange: (file, extension) ->
         self.toggleAvatar()
-        $(".profile_pic").attr("src", file)
 
       onSubmit: (file, extension) ->
 
