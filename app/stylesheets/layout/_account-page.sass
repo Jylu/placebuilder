@@ -5,21 +5,27 @@ body.account
     width: 960px !important
     margin: 0 auto
     position: relative
-
+    min-height: 850px !important
   #delete-account-form
-    
+    h1
+      margin-bottom: 15px
+    span.divider
+      margin-bottom: 20px
     p 
       margin: 0px 0px 15px 0px !important
       width: 420px !important
     .controls
-      margin-bottom: 20px
-
-        
+      //margin-bottom: 20px
+      width: 420px !important
+      button
+        width: 420px !important
+      a.cancel
+        width: 100%
+        text-align: center
+        float: none
   #account-edit
     margin-top: 50px
-    margin-bottom: 70px
-    height: 830px
-    
+    margin-bottom: 70px    
     h1
       margin: 5px auto 20px
 
@@ -57,7 +63,8 @@ body.account
       display: none
       
     .profile
-      width: 460px
+      width: 440px
+      float: left
       
       label, input.normal, textarea
         margin: 10px 0px
@@ -82,10 +89,11 @@ body.account
         height: 100px
         
     .controls
-      margin-right: -10px
+      margin-right: -20px
+      margin-top: 5px
       
       button
-        margin-top: 30px
+        margin-top: 0px
         margin-bottom: 15px
         margin-right: 0
         
