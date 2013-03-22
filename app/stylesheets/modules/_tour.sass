@@ -6,7 +6,10 @@
   -webkit-font-smoothing: antialiased
   a
     text-decoration: none
-
+  .controls
+    p
+      float: left
+      margin-top: 32px
 #current-tour-page, #next-tour-page
   font-family: $heading
 
@@ -89,7 +92,7 @@ p.welcome-divider
   font-weight: normal
   
 .registration_border
-  padding: 25px
+  padding: 22px
   border: 2px solid #d5d1c8
   border-radius: 5px
   box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
@@ -142,7 +145,7 @@ p.welcome-divider
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
     color: $red
-    margin: 0px auto 20px auto
+    margin: -5px auto 20px auto
     padding-bottom: 0px
   img.profile_pic
     margin-bottom: 18px
@@ -155,7 +158,7 @@ p.welcome-divider
     height: 45px
     line-height: 11px
   input
-    width: 377px
+    width: 382px
     border-radius: 4px
     margin-top: 0px
     margin-bottom: 15px
@@ -188,7 +191,7 @@ p.welcome-divider
   input.website
     float: left
   textarea
-    width: 377px
+    width: 382px
     height: 50px
     margin-top: 0px
     margin-bottom: 15px
@@ -225,8 +228,8 @@ p.welcome-divider
       cursor: pointer  
     p 
       margin-bottom: 0px
-      font-size: 18px
-      line-height: 22px
+      font-size: 17px
+      line-height: 20px
   .create_page
     float: left
     .chzn-container
@@ -451,30 +454,28 @@ p.welcome-divider
   margin-top: 57px
   padding: 20px
 
+#findNeighbors
+  h2
+    font-size: 38px !important
 
 #findNeighbors ul.subscribe_categories
-  margin: 0px auto
   padding-bottom: 15px
   text-align: center
-  margin-left: -1px
-
   li 
-    display: inline-block
-    margin-right: 5px
-    padding: 4px 5px 3px 5px
-    border-radius: 5px
+    //padding: 4px 5px 3px 5px
+    //border-radius: 5px
     &:last-child
       margin-right: 0px
     &:hover
-      display: inline-block
-      background-color: $blue
+      //display: inline-block
+      //background-color: $blue
       a
-        color: #fff
-        text-shadow: none
+        color: $red
+        //text-shadow: none
 
 #findNeighbors ul.subscribe_categories li a 
   color: $blue
-  font-size: 18px
+  font-size: 17px
   text-decoration: none
   padding: 0px
   top: 0px
@@ -482,22 +483,11 @@ p.welcome-divider
   text-shadow: 1px 1px 0px #fff
 
 #subscribe_pages
-  margin-right: auto
-  margin-left: auto
-  overflow: auto
-  overflow-x: hidden
-  background-color: rgba(0, 0, 0, 0.0125)
-  border: 1px solid #bbb
-  box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.12), white 0px 1px 0px
-  padding: 0px 10px 10px 15px
-  border-radius: 4px
-  margin-bottom: 15px
-  div.page_category
-    margin-bottom: 0px
-  ul.subscribe_pages
-    margin-bottom: 0px
-    margin-right: 0px
-    display: inline-block
+  //background-color: rgba(0, 0, 0, 0.0125)
+  //border: 1px solid #bbb
+  //box-shadow: inset 0px 0px 3px 2px rgba(0,0,0,0.12), white 0px 1px 0px
+  //padding: 0px 10px 10px 15px
+  //border-radius: 4px
 
 #subscribe_pages ul.subscribe_pages li
   overflow: hidden
@@ -580,7 +570,7 @@ img.page_img
   height: 64px
   float: left
 
-#subscribe_pages a h2
+#subscribe_pages a h3
   color: $red
   padding-top: 20px
   padding-bottom: 10px
@@ -807,9 +797,6 @@ div#RealFindNeighbors div#find_bottom
   right: 150px
   cursor:  pointer
 
-div#find_button
-  margin: 0px auto
-  width: 200px
 
 //div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
   padding: 10px 20px
@@ -868,12 +855,10 @@ div#find_button
   color: #131313 !important
   input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
     color: #555 !important
-div#subscribe_pages ul.subscribe_pages div.page_item
-  float: left
 
 /************* END OF IMPORTED STYLES ***********/  
 
-#civicProfile, #norms, #register
+#civicProfile, #norms, #register, #findNeighbors
   overflow: none
   background-color: #eeecdf
   background: url(shared/redesign/tan-bg.png) center center
@@ -956,205 +941,6 @@ div#subscribe_pages ul.subscribe_pages div.page_item
   padding: 0px 15px 11px
   font: bold 13px/0 "Rokkitt", RockwellSTD, Rockwell, sans-serif
 
-#find_left h3 
-  font-family: $heading
-  color: #fffeff
-  text-shadow: #000000 0px 0px 0
-
-#search 
-  font-size: 13px
-
-#invite_friends 
-  font-size: 13px
-  font-family: $heading
-  line-height: 20px
-  color: $black
-  text-align: left
-
-#neighbor_find 
-  background-color: #eeede0
-
-#findNeighbors ul.subscribe_categories
-  padding-bottom: 20px
-  text-align: center
-
-  li 
-    padding: 6px 7px 4px 7px
-    border-radius: 5px
-    &:hover
-      background-color: $blue
-      a
-        color: #fff
-        text-shadow: none
-
-#findNeighbors ul.subscribe_categories li a 
-  color: $blue
-  font-size: 18px
-  text-decoration: none
-  padding: 0px
-  font-weight: bold
-  text-shadow: 0px 1px 0px #fff
-
-#invite_friends p
-  font-size: 16px
-  line-height: 22px
-  color: $black
-
-#invite_friends p a 
-  font-size: 16px
-  line-height: 20px
-  color: $red
-  font-weight: bold
-  text-decoration: underline
-  &:hover
-    text-decoration: none
-
-.find_neighbors
-  div.button
-    text-transform: uppercase
-    font-weight: bold
-    font-size: 10px
-    background: #1b334a
-    padding: 4px 12px
-    color: white
-  input.search
-    +border-radius(5px)
-    +box-shadow(#ccc 1px 1px 2px 0 inset)
-    border: 1px solid #ccc
-    padding: 5px 5px
-    font-size: 18px
-    font-weight: 300
-    font-family: Helvetica, sans-serif
-  .know
-    line-height: 25px
-    background: #8C2523
-    +border-radius(4px)
-    padding: 5px
-    color: white
-    font-family: Helvetica
-    font-size: 14px
-    text-align: center
-  .remove_search
-    background-repeat: no-repeat
-    &.loading
-      background-image: image-url("shared/icons/waiting.gif")
-    &.active
-      background-image: image-url("shared/icons/cancel.png")
-      cursor: pointer
-    &.inactive
-      background-image: image-url("icons/search.png")
-  
-  .neighbor_finder, .search_finder
-    background: white
-    overflow-y: scroll
-    +border-radius(5px)
-    border: 1px solid black
-    
-    .no_results, .initial_load
-      background: white
-      +border-radius(5px)
-      text-align: center
-      padding: 5px
-      .query
-        color: #1b334a
-        font-weight: bold
-        
-    .initial_load
-      background-image: image-url("loading.gif")
-      background-position: center center
-      background-repeat: no-repeat
-    
-    table 
-      font-family: Helvetica
-      font-size: 13px
-      border-spacing: 10px
-      border-collapse: separate
-      background: white
-      
-      td
-        padding: 10px
-        border: 1px solid #dadada
-        border-collapse: collapse
-        &.checked, &:hover
-          &.checked, &:hover
-            background: #EEF5DF
-            cursor: pointer
-          &.checked
-            border: 1px solid #CCDAAE
-            +box-shadow(#bbb 2px 2px 2px)
-        .on-commonplace
-          font-size: 8px
-          color: #ac322f
-
-#RealFindNeighbors
-  background-color: #eeecdf
-  background: url(shared/redesign/red-bg.png)
-  padding: 10px 0px 20px 0px
-  font-family: $heading
-  color: #fff
-  border-radius: 5px
-  -webkit-font-smoothing: antialiased
-
-  #search 
-    font-size: 18px
-    padding: 8px
-    font-family: $Rokkitt
-    color: $blue
-    background: #fff
-    border: 1px solid #821916
-    box-shadow: inset #C8C8C8 0px 0px 3px 2px, rgba(255,255,255,.25) 0px 2px 0px
-    -webkit-font-smoothing: antialiased
-
-  .find_known
-    font-size: 24px
-    padding: 18px 0px 18px 0px
-    text-align: center
-    background: darken($red, 13%)
-
-  .find_steps
-    p
-      line-height: 14px
-      font-size: 17px
-
-  #buttons
-    a 
-      background: #2e5172
-      border-radius: 0px
-      color: #ffffff
-      text-shadow: 1px 1px 1px black
-      text-decoration: none
-      padding: 0px 10px 15px 10px
-      font: bold 16px/0 $heading
-      border: 1px solid #151f28
-      +linear-gradient(color-stops(#2e5274, #1b334a), top)
-      box-shadow: 1px 1px 1px rgba(0,0,0,.25)
-      text-shadow: 1px 2px 3px rgba(0,0,0,.65)
-      cursor: pointer
-      &:hover, &:focus
-        color: #fff
-        +linear-gradient(color-stops(#2e5274, #1b334a), top)
-        text-shadow: 1px 2px 3px rgba(0,0,0,.65)
-        box-shadow: 0px 2px 4px rgba(0,0,0,.65)
-      &:active
-        color: #fff
-        +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
-        text-shadow: -1px -1px -1px rgba(0,0,0,.65)
-        box-shadow: 1px 1px 1px rgba(0,0,0,.25)
-
-  #invite_friends
-    p
-      font-size: 18px
-
-div#RealFindNeighbors div#find_bottom #invite_friends
-  font-size: 18px
-  
-//div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
-  padding: 10px 20px
-  text-align: center
-
-div#RealFindNeighbors.container #find_button a.blue-button.next-button
-  text-align: center
-
 #civicProfile div.civic_right ul.chzn-choices
   border: 1px solid #c9c4b4
   box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
@@ -1186,11 +972,11 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
 /* Norms Page */
 
 #norms, #register
-  font-size: 18px
+  font-size: 17px
   h2
     
   p
-    line-height: 22px
+    line-height: 20px
     text-shadow: 1px 1px 0px white
     a
       color: $red
@@ -1277,7 +1063,7 @@ div#RealFindNeighbors.container #find_button a.blue-button.next-button
     padding: 8px
     border: 1px solid #C9C4B4
     box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
-    width: 377px !important
+    width: 382px !important
     color: $black
     border-radius: 4px 0px 0px 4px
     span.dk_arrow.button.blue 
