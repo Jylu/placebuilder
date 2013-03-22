@@ -109,7 +109,7 @@
 
   .avatar
     text-align: left
-    margin-top: 15px
+    margin-top: 5px
     float: left
     clear: both
 
@@ -121,24 +121,16 @@
 
     .avatar-controls
       margin-top: 35px
-      width: 200px
+      width: 300px
 
       a
         background-color: $blue
         color: white
         font-weight: bold
         padding: 5px 10px
-        border-left: 1px solid #131313
-        margin: 0
+        margin-right: 6px
         text-decoration: none
-
-        &:first-child
-          border-left: 0px
-          +border-left-radius(5px)
-
-        &:last-child
-          +border-right-radius(5px)
-
+        border-radius: 4px
         &:hover
           background-color: $red
 
@@ -164,6 +156,7 @@
       margin-bottom: 5px
       text-shadow: 1px 1px 0px white
       clear: both
+      width: 322px
 
     input[type=text]
       //margin-top: 5px
@@ -174,7 +167,18 @@
       margin-top: 2px
       transition-property: all 1s ease
       border-radius: 4px
-      -webkit-font-smoothing: antialiased      
+      -webkit-font-smoothing: antialiased
+      
+    a.delete.blue-button
+      font-family: $heading !important
+      text-transform: none
+      padding: 6px 10px
+      float: left
+      margin-top: 2px
+      width: 75px
+      letter-spacing: normal
+      font-size: 18px
+      text-shadow: none
 
 #modal-shadow
   +opacity(0.8)
@@ -372,7 +376,7 @@ a.share
     margin-top: 0px
     behavior: url("assets/PIE.htc")
   a.cancel, a.delete, a.back 
-    margin-top: 14px !important 
+    margin-top: 10px !important 
     display: block !important 
     float: right !important 
     color: $red
