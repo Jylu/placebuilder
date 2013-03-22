@@ -12,6 +12,11 @@ body
   
 h1, h2, h3, h4, h5
   font-weight: normal
+  
+sup
+  font-size: smaller
+  vertical-align: super
+  line-height: 8px
 
 a
   color: $black
@@ -20,3 +25,12 @@ a
   width: 1000px!important
   position: relative
   margin: 0px auto
+
+::-webkit-scrollbar
+  width: 7px
+::-webkit-scrollbar-track
+  background-color: rgba(0, 0, 0, 0.15)
+  border-radius: 10px
+::-webkit-scrollbar-thumb
+  border-radius: 10px
+  background-color: $blue

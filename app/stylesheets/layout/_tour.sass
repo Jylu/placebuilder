@@ -17,7 +17,7 @@
   display: none
   position: absolute
   z-index: 2000
-  height: auto !important
+  //height: auto !important
 
 .welcome
   width: 460px
@@ -104,7 +104,7 @@ p.welcome-divider
   img.find_title 
     margin: 15px auto 0px 30px
   h2
-    margin: -10px auto 20px auto
+    margin: -5px auto 20px auto
   .civic_left
     float: left
     width: 122px
@@ -139,7 +139,8 @@ p.welcome-divider
   
 #civic_button
   width: 200px
-  margin: 0px auto
+  //margin: 0px auto
+  float: right
 .next-button
   width: 200px
   margin-top: 8px
@@ -205,10 +206,9 @@ p.welcome-divider
 #findNeighbors ul.subscribe_categories
   margin: 0px auto
   margin-left: -1px
-
   li 
     display: inline-block
-    margin-right: 7px
+    margin-right: 8px
     &:last-child
       margin-right: 0px
     &:hover
@@ -218,25 +218,28 @@ p.welcome-divider
   top: 0px
 
 #subscribe_pages
-  width: 493px
+  width: 400px
   margin-right: auto
   margin-left: auto
-  height: 320px
-  margin-bottom: 5px
+  height: 350px
+  margin-bottom: 20px
+  overflow-y: scroll
   div.page_category
     margin-bottom: 0px
+    &:first-child
+      margin-top: -15px
   ul.subscribe_pages
     margin-bottom: 0px
     margin-right: 0px
     display: inline-block
 
 #subscribe_pages ul.subscribe_pages li 
-  width: 210px
+  //width: 200px
   margin-right: 5px
   margin-left: 0px
   margin-bottom: 0px
   margin-top: 10px
-  height: 65px
+  max-height: 65px
   
 #subscribe_pages div.check
   height: 50px
@@ -246,11 +249,10 @@ p.welcome-divider
   float: left
 
 #subscribe_pages ul.subscribe_pages li img.avatar-container
-  width: 32px
-  height: 32px
+  width: 50px
+  height: 50px
   float: left
   margin-right: 12px
-  margin-bottom: 25px
 
 #subscribe_pages ul.subscribe_pages li h4 
   overflow: hidden
@@ -261,8 +263,8 @@ p.welcome-divider
   
 #subscribe_pages ul.subscribe_pages li .description-container
   overflow: hidden
-  width: 165px
-  height: 65px
+  //width: 155px
+  max-height: 65px
 
 #subscribe_pages ul.subscribe_pages li.check
   input
@@ -389,6 +391,7 @@ div#RealFindNeighbors div#find_bottom
   margin-top: 0px
 
 div#find_button
+  float: right
   a.next-button
     width: 200px!important
 //div#findNeighbors.container div#find_bottom #find_button a.blue-button.next-button
@@ -420,7 +423,7 @@ div#find_button
   margin-top: 7px
   margin-bottom: 0px
 
-div#subscribe_pages ul.subscribe_pages div.page_item
+//div#subscribe_pages ul.subscribe_pages div.page_item
   float: left
   width: 50%
 
@@ -438,29 +441,33 @@ div#subscribe_pages ul.subscribe_pages div.page_item
   .norms_title
     margin-top: -5px
   span.divider
-    margin-bottom: 20px
+    margin-bottom: 15px
   ol#rules
     float: left
-    width: 500px
-    margin-top: 10px
+    width: 400px
+    margin-top: 5px
     li
       float: left
       width: 100%
       margin-bottom: 15px
       &:last-child
-        margin-bottom: 10px
+        margin-bottom: 5px
+        margin-top: -15px
       img
         float: left
         margin-top: 4px
+        width: 50px
       p
         float: right
-        width: 422px
+        width: 335px
       strong
         margin-right: 2px
   #norms_button
-    margin: 20px auto 0px auto
-    display: block
+    //margin: 20px auto 0px auto
+    //display: block
     width: 200px
+    float: right
+    //margin-top: 15px
     .next-button
       display: block
       width: auto
@@ -469,4 +476,4 @@ div#subscribe_pages ul.subscribe_pages div.page_item
 #current-tour-page
   .registration
     input, textarea
-      width: 377px
+      width: 382px
