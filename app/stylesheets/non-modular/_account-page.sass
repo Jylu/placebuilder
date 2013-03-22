@@ -44,18 +44,8 @@ body.account
           background-color: #8f2927
         a.delete-account
           font-size: 20px
-          border-radius: 4px
-          padding: 8px 15px
-          background-color: #8A2A23
           font-weight: bold
-          text-transform: uppercase
-          margin: 10px auto 20px
-          display: block
-          width: 230px
-          text-align: center
-          &:hover
-            background-color: $blue
-            text-decoration: none
+          text-decoration: uppercase
       .get-posts
         li
           font-size: 16px
@@ -93,13 +83,13 @@ body.account
         font-family: $Rokkitt
         color: $black
         font-size: 18px
-        width: 454px !important
+        width: 100%
         margin: 10px 0px
         a
           &:focus
             outline: none
         .chzn-drop
-          width: 460px !important
+          width: 100% !important
         .chzn-search 
           display: none !important
         .chzn-single 
@@ -151,7 +141,7 @@ body.account
           border-radius: 4px
           color: #333
           font-size: 18px
-          width: 460px !important
+          width: 100% !important
           box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
           .chzn-drop 
             width: 322px
@@ -160,11 +150,9 @@ body.account
             width: 322px
           .search-field 
             input 
-              padding: 9px 5px 9px 10px !important
-              color: #333 !important
-              font-family: $heading
+              padding: 9px 5px 5px 8px !important
             .default 
-              color: #333
+              color: #555
       .chzn-search
         input[type="text"]
           display: none
