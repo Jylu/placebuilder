@@ -7,9 +7,6 @@ CommonPlace.wire_item.UserWireItem = CommonPlace.wire_item.WireItem.extend(
     "click .author": "showUserWire"
     "click .message-user": "messageUser"
 
-  initialize: (options) ->
-    @attr_accessible [ "first_name", "last_name", "avatar_url" ]
-
   afterRender: ->
     @model.on "change", @render, this
 )
