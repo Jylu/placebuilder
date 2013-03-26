@@ -6,7 +6,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     @data = {}
     @data.image_id = []
     @$("input[placeholder], textarea[placeholder]").placeholder()
-    if @imageUploadSupported() and not @isPostEdit()
+    if not @isPostEdit()
       @initImageUploader(@$(".one"), 1)
       @initImageUploader(@$(".two"), 2)
       @initImageUploader(@$(".three"), 3)
@@ -16,19 +16,16 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     self = this
     @populateFormData()
 
-  imageUploadSupported: ->
-    return (not @isIE8orBelow())
-
   initImageUploader: ($el, num) ->
     self = this
     @imageUploader = new AjaxUpload($el,
       action: "/api/transactions/image"
       name: "image"
       data: @data
-      responseType: "json"
+      responseType: "text/html"
       autoSubmit: true
       onChange: ->
-        @hasImageFile = true
+        self.hasImageFile = true
 
       onSubmit: _.bind((file, extension) ->
           $upload_pic = $(".item_pic#"+num)
@@ -37,6 +34,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
         , this)
 
       onComplete: _.bind((file, response) ->
+          response = $.parseJSON(response)
           $upload_pic = $(".item_pic#" + num)
           $upload_pic.attr("src", response.image_normal)
           $upload_pic.parent().removeClass("loading")
@@ -70,9 +68,8 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     else
       transactionCollection.create data,
         success: _.bind((post) ->
-          if self.imageUploadSupported()
-            if self.imageUploader.hasImageFile
-              self.addImageToPost(post)
+          if self.hasImageFile
+            self.addImageToPost(post)
           self.render()
           CommonPlace.community.transactions.trigger "sync"
           @showShareModal(post, "Thanks for posting!", "You've just shared this post with #{@getUserCount()} neighbors in #{@community_name()}. Share with some more people!")
