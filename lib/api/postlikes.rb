@@ -162,7 +162,8 @@ class API
       photo.image.instance_write(:image_file_name, params[:image][:filename])
 
       if photo.save
-        serialize photo
+        response.headers["Content-Type"] = "text/html; charset=utf-8" #set this to make sure IE compatibility
+        [200, serialize(photo) ]
       else
         [400, "errors"]
       end
