@@ -28,7 +28,7 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
         self.hasImageFile = true
 
       onSubmit: _.bind((file, extension) ->
-          $upload_pic = $(".item_pic#"+num)
+          $upload_pic = $(".item_pic#" + num)
           $upload_pic.attr("src", "/assets/loading.gif")
           $upload_pic.parent().addClass("loading")
         , this)
@@ -38,7 +38,6 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
           $upload_pic = $(".item_pic#" + num)
           $upload_pic.attr("src", response.image_normal)
           $upload_pic.parent().removeClass("loading")
-          #$(".box").append('<img src="'+response.image_url+'" alt="This is a picture of the item for sale" /><br/>')
           @data.image_id[num-1] = response.id
         , this)
     )
