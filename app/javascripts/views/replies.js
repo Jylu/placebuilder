@@ -78,8 +78,13 @@ var RepliesView = CommonPlace.View.extend({
 
   showMoreReplies: function(event){
     event.preventDefault();
-    this.$('.reply-item').show();
-    this.$('.replies-more').hide();
+    if (this.isGuest()) {
+      this.showRegistration();
+      return false;
+    } else {
+      this.$('.reply-item').show();
+      this.$('.replies-more').hide();
+    }
   },
   
   showButton: function(e) { this.$(".submit-c").fadeIn(); },
