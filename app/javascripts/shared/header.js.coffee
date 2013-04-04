@@ -34,10 +34,10 @@ CommonPlace.shared.HeaderView = CommonPlace.View.extend(
     @postbox.render()
 
   root_url: ->
-    if CommonPlace.account.isAuth()
-      "/" + CommonPlace.account.get("community_slug")
+    if CommonPlace.community
+      "/" + CommonPlace.community.get("slug")
     else
-      "/" + CommonPlace.community.get("slug")  if CommonPlace.community
+      "/"
 
   hasCommunity: ->
     CommonPlace.community
