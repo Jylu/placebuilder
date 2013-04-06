@@ -433,6 +433,8 @@ div#find_button
 #norms, #register
   p
     margin-bottom: 13px
+    color: $black
+    line-height: 20px
   p.intro
     margin-bottom: 15px
     margin-top: 0px
@@ -455,13 +457,20 @@ div#find_button
         margin-top: -15px
       img
         float: left
-        margin-top: 4px
+        margin-top: 2px
+        border-radius: 4px
+        box-shadow: 1px 1px 0px white
         width: 50px
       p
         float: right
         width: 335px
+        a
+          color: $red
+          &:hover
+            text-decoration: underline
       strong
         margin-right: 2px
+        color: $blue
   #norms_button
     //margin: 20px auto 0px auto
     //display: block
@@ -476,4 +485,4 @@ div#find_button
 #current-tour-page
   .registration
     input, textarea
-      width: 382px
+      width: 382px !important
