@@ -177,7 +177,7 @@ p.welcome-divider
       display: block
       content: ""
       clear: both
-  input.name 
+  //input.name 
     width: 274px
     clear: none
     margin-bottom: 19px
@@ -223,12 +223,13 @@ p.welcome-divider
       margin-left: 25px
     label 
       float: left
-      margin: 11px 0 0 3px
-      cursor: pointer  
+      margin: 10px 0 0 3px
+      cursor: pointer
+      font-size: 18px  
     p 
       margin-bottom: 0px
-      font-size: 17px
-      line-height: 20px
+      font-size: 18px
+      line-height: 21px
   .create_page
     float: left
     .chzn-container
@@ -812,8 +813,17 @@ div#RealFindNeighbors div#find_bottom
   float: right
   margin-right: -40px
   text-align: center
-#civicProfile textarea
-  height: 80px
+#civicProfile
+  textarea.civic_profile
+    height: 80px
+  
+#civicProfile, #create_page_registration
+  input.name
+    width: 279px
+    clear: none
+    margin-bottom: 19px
+    margin-top: 2px
+  
 #create_page_registration textarea
   height: 60px
 #civicProfile div.civic_right ul.chzn-choices
@@ -915,7 +925,10 @@ div#RealFindNeighbors div#find_bottom
       display: block
       content: ""
       clear: both
-  input.name 
+    &:focus
+      border: 1px solid #7ba2c5
+      outline: none !important
+  //input.name 
     width: 274px
     clear: none
     margin-bottom: 19px
@@ -944,29 +957,6 @@ div#RealFindNeighbors div#find_bottom
     color: #131313
     textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder
       color: #555
-  .org
-    clear: both
-    &:after 
-      display: block
-      content: ""
-      clear: both
-    input 
-      width: 15px
-      margin-left: 0px
-      clear: none
-      margin-top: 10px
-      float: left
-      cursor: pointer
-    input#no
-      margin-left: 25px
-    label 
-      float: left
-      margin: 11px 0 0 3px
-      cursor: pointer  
-    p 
-      margin-bottom: 0px
-      font-size: 18px
-      line-height: 22px
   .create_page
     float: left
     .chzn-container
@@ -1144,12 +1134,14 @@ div#RealFindNeighbors div#find_bottom
 .dk_options_inner, .dk_touch .dk_options
   max-height: 200px !important
 
-//#current-tour-page
+#current-tour-page
   .register_email
     //background: $red url("shared/redesign/red-bg.png")
     //width: 465px
     p
-      color: #555
+      color: $black
+      line-height: 22px
+      font-size: 18px
     h2
       font-size: 44px
       background: url("shared/redesign/stars.png") no-repeat center
