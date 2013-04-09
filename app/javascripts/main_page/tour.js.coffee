@@ -164,21 +164,6 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
     @complete = options.complete
     @exitWhenDone = options.exitWhenDone
 
-  showError: ($el, $error, message) ->
-    $el.addClass "input_error"
-    $error.text message
-    $error.show()
-
-  end: ->
-    $("#tour-shadow").remove()
-    $("#tour").remove()
-    $("body").css(overflow: "auto") #enable the main page scrolling
-  first_name: ->
-    CommonPlace.account.get "short_name"
-
-  avatar_url: ->
-    CommonPlace.account.get("avatar_url")
-
   showSpinner: ->
     @$(".spinner").show()
 
@@ -190,6 +175,10 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
     $error.text message
     $error.show()
 
+  end: ->
+    $("#tour-shadow").remove()
+    $("#tour").remove()
+    $("body").css(overflow: "auto") #enable the main page scrolling
   first_name: ->
     CommonPlace.account.get "short_name"
 
