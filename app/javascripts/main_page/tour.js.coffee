@@ -10,6 +10,8 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
   initialize: (options) ->
     @firstSlide = true
+    if options.exitWhenDone
+      @exitWhenDone = true
 
   render: ->
     @$("#tour").html(@renderTemplate("main_page.tour.wire", this)).attr "class", "wire"
@@ -71,6 +73,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           fadeIn: fadeIn
           community: self.community
           account: self.account
+          exitWhenDone: self.exitWhenDone
         )
 
       subscribe: ->
@@ -159,12 +162,17 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
     @fadeIn = options.fadeIn
     @nextPage = options.nextPage
     @complete = options.complete
+    @exitWhenDone = options.exitWhenDone
 
   showError: ($el, $error, message) ->
     $el.addClass "input_error"
     $error.text message
     $error.show()
 
+  end: ->
+    $("#tour-shadow").remove()
+    $("#tour").remove()
+    $("body").css(overflow: "auto") #enable the main page scrolling
   first_name: ->
     CommonPlace.account.get "short_name"
 

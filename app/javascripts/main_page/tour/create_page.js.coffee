@@ -59,7 +59,10 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         rss: @$("input[name=rss]").val()
       ,
         success: ->
-          self.nextPage "subscribe", self.data
+          if self.options.exitWhenDone
+            self.end()
+          else
+            self.nextPage "subscribe", self.data
 
   initAvatarUploader: ($el) ->
     self = this
