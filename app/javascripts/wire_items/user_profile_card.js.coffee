@@ -15,6 +15,9 @@ CommonPlace.wire_item.UserProfileCard = CommonPlace.wire_item.ProfileCard.extend
   canEdit: ->
     CommonPlace.account.canEditProfile @model
 
+  isCurrentUser: ->
+    CommonPlace.account.isCurrentUser @model
+
   slug: ->
     if CommonPlace.account.isAuth()
       CommonPlace.account.get "community_slug"
