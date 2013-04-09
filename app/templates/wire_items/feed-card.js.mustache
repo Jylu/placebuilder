@@ -1,9 +1,12 @@
 <div>
   <div class="left">
     <img class="avatar-container" src={{avatar}} />
-    <a class="contact message-link" href="#">Send Message</a>
-    {{^isSubscribed}}<a href="#" class="subscribe">Subscribe</a>{{/isSubscribed}}
-    {{#isSubscribed}}<a href="#" class="unsubscribe">Unsubscribe</a>{{/isSubscribed}}
+    {{^isOwner}}
+      <a class="contact message-link" href="#">Send Message</a>
+      {{^isSubscribed}}<a href="#" class="subscribe">Subscribe</a>{{/isSubscribed}}
+      {{#isSubscribed}}<a href="#" class="unsubscribe">Unsubscribe</a>{{/isSubscribed}}
+    {{/isOwner}}
+    {{#canEdit}}<a href="#" class="edit">Edit Page</a>{{/canEdit}}
   </div>
   <div class="right">
     <h2 class="name">{{name}}</h2>
@@ -24,7 +27,7 @@
       </ul>
     </div>
     {{#hasAbout}}
-    <p>{{about}} {{#canEdit}}<span class="editlink"><a href="">Edit Page</a></span>{{/canEdit}}</p>
+    <p>{{about}}</p>
     {{/hasAbout}}
     <p><span class="bold">Website:</span>  <a href={{site_url}} target="_blank">{{site_url}}</a></p>
   </div>
