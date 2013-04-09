@@ -43,6 +43,7 @@
 //= require feed_inbox_page
 //= require outbox_page
 //= require account_page
+//= require profile_page
 //= require stats_page
 //
 //= require facebook
@@ -69,6 +70,7 @@ var Application = Backbone.Router.extend({
       outbox: new OutboxPage({ el: $("#main") }),
       feed_inbox: new FeedInboxPage({ el: $("#main") }),
       account: new AccountPage({ el: $("#main") }),
+      profile: new ProfilePage({el: $("#main") }),
       stats: new StatsPage({ el: $("#main") })
     };
 
@@ -105,6 +107,7 @@ var Application = Backbone.Router.extend({
     ":community/feed_inbox": "feed_inbox",
 
     ":community/account": "account",
+    ":community/profile": "profile",
 
     ":community/registration": "tour",
 
@@ -219,6 +222,8 @@ var Application = Backbone.Router.extend({
   feed_inbox: function(c) { this.showPage("feed_inbox"); },
 
   account: function(c) { this.showPage("account"); },
+
+  profile: function(c) { this.showPage("profile"); },
 
   tour: function(c) {
     this.community();

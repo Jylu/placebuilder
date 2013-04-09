@@ -1,6 +1,6 @@
 //= require_tree ./account_page
-var AccountPage = CommonPlace.View.extend({
-  template: "account_page/main",
+var ProfilePage = CommonPlace.View.extend({
+  template: "account_page/profile",
   track: true,
   page_name: "account",
 
