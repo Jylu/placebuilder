@@ -15,11 +15,11 @@
         </a>
       </li>
       <li><a href="{{user_url}}" data-remote>My Page</a></li>
+      <li><a class="create-feed-link" href="/feed_registrations/new">Create a New Page</a></li>
       {{#feeds}}
         <li><a class="feed-link" href="/{{community}}/pages/{{slug}}" id="{{slug}}">{{name}}</a></li>
       {{/feeds}}
 
-      <li><a class="create-feed-link" href="/feed_registrations/new">Create a New Page</a></li>
       <li><a href="{{account_url}}" data-remote>Account Settings</a></li>
       <li><a href="{{faq_url}}" data-remote>FAQ</a></li>
 
