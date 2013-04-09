@@ -4,7 +4,7 @@ CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend
   className: "profile-card"
 
   events:
-    "click .editlink": "edit"
+    "click .edit": "edit"
     "click .message-link": "messageUser"
     "click .subscribe": "subscribe"
     "click .unsubscribe": "unsubscribe"
