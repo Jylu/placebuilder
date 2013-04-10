@@ -7,6 +7,7 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     "click .next-button": "submit"
 
   afterRender: ->
+    @hideSpinner()
     @$("input[placeholder]").placeholder()
     @$("input:visible:first").focus() if @browserSupportsPlaceholders() and $.browser.webkit #only focus the first input if the browser supports placeholders and is webkit based (others clear the placeholder on focus)
     @fadeIn @el
@@ -47,6 +48,7 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     if @data.password is ""
       @showError @$("input[name=password]"), @$(".error.password"), "Password can't be empty"
     else
+      @showSpinner()
       params = [ "full_name", "email" ]
       @validate_registration params, _.bind(->
         @nextPage "address", @data
