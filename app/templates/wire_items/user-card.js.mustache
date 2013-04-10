@@ -9,7 +9,7 @@
       {{/hasMet}}
       {{#hasMet}}<a href="#" class="unmeet">Already Met!</a>{{/hasMet}}
     {{/isCurrentUser}}
-    {{#canEdit}}<a class="editlink" href="{{account_url}}">Edit Profile</a>{{/canEdit}}
+    {{#canEdit}}<a class="editlink" href="{{account_url}}" data-remote>Edit Profile</a>{{/canEdit}}
   </div>
   <div class="right">
     <h2 class="name">{{name}}</h2>
