@@ -4,12 +4,14 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
     "click input.continue": "submit"
     "submit form": "submit"
     "click .next-button": "submit"
+    "click .cancel-button": "cancel"
 
   initialize: (options) ->
     CommonPlace.main.TourModalPage.prototype.initialize options
     if @data && @data.isModel
       @model = @data
     else
+      @new_feed = true
       @createFeed
         name: CommonPlace.account.get("name") + "'s new page"
 
@@ -59,10 +61,18 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         rss: @$("input[name=rss]").val()
       ,
         success: ->
-          if self.options.exitWhenDone
-            self.end()
-          else
-            self.nextPage "subscribe", self.data
+          self.continue
+
+  cancel: (e) ->
+    e.preventDefault() if e
+    @model.destroy() if @new_feed
+    @continue()
+
+  continue: ->
+    if @options.exitWhenDone
+      @end()
+    else
+      @nextPage "subscribe", @data
 
   initAvatarUploader: ($el) ->
     self = this
