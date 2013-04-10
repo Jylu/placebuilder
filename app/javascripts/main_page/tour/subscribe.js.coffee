@@ -9,6 +9,7 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
 
   afterRender: ->
     self = this
+    @hideSpinner()
     @$(".page_category").hide()
     groups = CommonPlace.community.groups
     groups.fetch(
@@ -38,6 +39,7 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
 
   submit: (e) ->
     e.preventDefault()  if e
+    @showSpinner()
     feeds = _.map(@$("input[name=feeds_list]:checked"), (feed) ->
       $(feed).val()
     )

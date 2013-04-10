@@ -16,6 +16,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         name: CommonPlace.account.get("name") + "'s new page"
 
   afterRender: ->
+    @hideSpinner()
     @hasAvatarFile = false
     @$('input[placeholder], textarea[placeholder]').placeholder()
     if @model
@@ -50,6 +51,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
     if name is ""
       @showError @$("input[name=name]"), @$(".error.name"), "Please enter a page name"
     else
+      @showSpinner()
       @model.save
         name: @$("input[name=name]").val()
         about: @$("textarea[name=about]").val()
@@ -61,14 +63,14 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         rss: @$("input[name=rss]").val()
       ,
         success: ->
-          self.continue
+          self.next_step()
 
   cancel: (e) ->
     e.preventDefault() if e
     @model.destroy() if @new_feed
-    @continue()
+    @next_step()
 
-  continue: ->
+  next_step: ->
     if @options.exitWhenDone
       @end()
     else

@@ -5,9 +5,11 @@ CommonPlace.main.WelcomeView = CommonPlace.main.TourModalPage.extend(
 
   afterRender: ->
     @fadeIn @el
+    @hideSpinner()
 
   submit: (e) ->
     e.preventDefault()  if e
+    @showSpinner()
     @finish()
 
   finish: ->

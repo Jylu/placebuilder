@@ -8,6 +8,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     "click .next-button": "submit"
 
   afterRender: ->
+    @hideSpinner()
     @hasAvatarFile = false
     @$('input[placeholder], textarea[placeholder]').placeholder()
     @initAvatarUploader @$(".avatar_file_browse")  unless CommonPlace.account.get("facebook_user")
@@ -32,6 +33,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     if @$("input:checked").attr("id") is "yes"
       @upcoming_page = "create_page"
 
+    @showSpinner()
     CommonPlace.account.save(data,
       success: (response) ->
         self.nextPage self.upcoming_page, undefined
