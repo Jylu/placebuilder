@@ -15,14 +15,6 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       @createFeed
         name: CommonPlace.account.get("name") + "'s new page"
 
-  initialize: (options) ->
-    CommonPlace.main.TourModalPage.prototype.initialize options
-    if @data && @data.isModel
-      @model = @data
-    else
-      @createFeed
-        name: CommonPlace.account.get("name") + "'s new page"
-
   afterRender: ->
     @hideSpinner()
     @hasAvatarFile = false
