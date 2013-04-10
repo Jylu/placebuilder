@@ -267,6 +267,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   loadWire: (e) ->
     e.preventDefault() if e
+    return @showRegistration() if @isGuest()
     page = @model.get("schema")
     category = @model.get("category")
     if category is "offers"
