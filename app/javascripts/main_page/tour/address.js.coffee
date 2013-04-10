@@ -7,6 +7,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
     "click .confirm": "verified"
 
   afterRender: ->
+    @hideSpinner()
     @initReferralQuestions()
     @$("input[placeholder]").placeholder()
     @fadeIn @el
@@ -38,6 +39,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
     if @$("#address_verification").is(":hidden")
       @data.term = @data.address
 
+      @showSpinner()
       url = '/api/communities/' + CommonPlace.community.id + '/address_approximate'
       $.get url, @data, _.bind((response) ->
         div = @$("#address_verification")
@@ -50,6 +52,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
           if response[1].length < 1 || weight < 0.84
             @showError @$("input[name=address]"), @$(".error.address"), "Please enter a valid address"
             @$("#bypass").show()
+            @hideSpinner()
             return
           else if weight < 0.94
             @data.suggest = response[1]
@@ -61,6 +64,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
             radio.show()
             span.show()
             addr.show()
+            @hideSpinner()
             return
           else
             @data.address = response[1]
@@ -88,6 +92,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
         else unless _.isEmpty(response.password)
           @$(".error").text response.password[0]
           @$(".error").show()
+          @hideSpinner()
     , this)
 
   referrers: ->

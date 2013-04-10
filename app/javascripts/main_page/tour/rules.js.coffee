@@ -4,6 +4,7 @@ CommonPlace.main.RulesView = CommonPlace.main.TourModalPage.extend(
     "click .next-button": "submit"
 
   afterRender: ->
+    @hideSpinner()
     unless @current
       @fadeIn @el
       @current = true
