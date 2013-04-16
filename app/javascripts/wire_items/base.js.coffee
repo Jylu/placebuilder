@@ -3,7 +3,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   initialize: (options) ->
     self = this
-    @attr_accessible [ "first_name", "last_name", "name", "avatar_url", "published_at", "images", "title", "author", "body" ]
+    @attr_accessible [ "first_name", "last_name", "name", "avatar_url", "published_at", "images", "title", "body" ]
     @model.on "destroy", ->
       self.remove()
 
@@ -135,6 +135,12 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   appendRepliesArea: (el) ->
     @$(".replies-area").append(el)
+
+  author: ->
+    if @isGuest()
+      "Your Neighbor"
+    else
+      @model.get("author")
 
   messageUser: (e) ->
     e.preventDefault() if e
