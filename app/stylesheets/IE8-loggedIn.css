@@ -83,10 +83,12 @@ textarea { overflow: auto; }
 #sidebar {
   border-right: 1px solid #fff;
 }
-#header .community-name {
+#header .community-name,
+#header.app #nav_wrapper .header_left {
    position: relative;
 }
-#header .button-wrapper {
+#header .button-wrapper,
+#header.app #nav_wrapper .header_left .button-wrapper {
   position: absolute;
   top: 0px;
   right: 0px;
