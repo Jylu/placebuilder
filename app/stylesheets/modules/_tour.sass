@@ -832,6 +832,9 @@ div#RealFindNeighbors div#find_bottom
       text-decoration: underline
 #create_page_registration textarea
   height: 60px
+#create_page_registration .dk_options
+  width: 398px !important
+  
 #civicProfile div.civic_right ul.chzn-choices
   width: 394px
   margin-bottom: 15px
@@ -871,7 +874,9 @@ div#RealFindNeighbors div#find_bottom
     color: #555 !important
 
 /************* END OF IMPORTED STYLES ***********/  
-
+#register
+  h2
+    background: url("shared/redesign/stars.png") no-repeat center
 #civicProfile, #norms, #register, #findNeighbors
   overflow: none
   background-color: #eeecdf
@@ -897,9 +902,9 @@ div#RealFindNeighbors div#find_bottom
     font-size: 44px
     text-align: center
     font-family: $Yellowtail
-    text-shadow: 0px 2px 0px #fff
+    text-shadow: 1px 1px 0px #fff
     color: $red
-    margin: 0px auto 20px auto
+    margin: -5px auto 20px auto
     padding-bottom: 0px
   img.profile_pic
     margin-bottom: 18px
@@ -1145,21 +1150,12 @@ div#RealFindNeighbors div#find_bottom
   .register_email
     //background: $red url("shared/redesign/red-bg.png")
     //width: 465px
-    p
+    //p
       color: $black
       line-height: 21px
       font-size: 17px
-    h2
-      font-size: 44px
+    //h2
       background: url("shared/redesign/stars.png") no-repeat center
-      text-align: center
-      font-family: $Yellowtail
-      text-shadow: 0px 2px 0px white
-      font-weight: normal
-      color: $red
-      padding-bottom: 10px
-      margin-bottom: 10px
-      margin-top: -10px
     .registration_border
       float: none
       width: auto
