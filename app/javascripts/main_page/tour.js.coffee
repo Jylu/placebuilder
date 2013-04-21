@@ -164,12 +164,6 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
     @complete = options.complete
     @exitWhenDone = options.exitWhenDone
 
-  showSpinner: ->
-    @$(".spinner").show()
-
-  hideSpinner: ->
-    @$(".spinner").hide()
-
   showError: ($el, $error, message) ->
     $el.addClass "input_error"
     $error.text message

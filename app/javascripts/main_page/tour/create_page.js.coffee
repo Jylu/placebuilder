@@ -42,24 +42,28 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         $error = @$(".error")
         $error.html "Error creating feed"
         $error.show()
+      , this)
 
   submit: (e) ->
     self = this
     e.preventDefault()  if e
     @$(".error").hide()
     name = @$("input[name=name]").val()
+    kind = @$("select[name=page_kind]").val()
     if name is ""
       @showError @$("input[name=name]"), @$(".error.name"), "Please enter a page name"
+    else if kind is ""
+      @showError @$("select[name=page_kind]"), @$(".error.kind"), "Please select what type of organization you are creating"
     else
       @showSpinner()
       @model.save
-        name: @$("input[name=name]").val()
+        name: name
         about: @$("textarea[name=about]").val()
         address: @$("input[name=address]").val()
         website: @$("input[name=website]").val()
         phone: @$("input[name=phone]").val()
         tags: @$("input[name=tags]").val()
-        kind: @$("select[name=page_kind]").val()
+        kind: kind
         rss: @$("input[name=rss]").val()
       ,
         success: ->
@@ -163,4 +167,5 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
       @model.link "avatar_edit"
     else
       ""
+
 )

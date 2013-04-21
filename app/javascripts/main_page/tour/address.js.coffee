@@ -96,7 +96,7 @@ CommonPlace.main.AddressView = CommonPlace.main.TourModalPage.extend(
     , this)
 
   referrers: ->
-    CommonPlace.community.get "referral_sources"
+    CommonPlace.community.get("referral_sources")
 
   initReferralQuestions: ->
     @$("#referral_metadata").hide()
