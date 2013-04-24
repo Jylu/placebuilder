@@ -156,6 +156,14 @@ CommonPlace.View = Backbone.View.extend({
     }
   },
 
+  isHarvardNeighbors: function() {
+    if (CommonPlace.community.get('slug').toLowerCase() == "harvardneighbors") {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
   showRegistration: function(e) {
     if (e) {
       e.preventDefault();
