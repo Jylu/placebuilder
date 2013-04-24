@@ -14,7 +14,8 @@
       <br />
       <input type="text" name="organizations" placeholder="What organizations are you part of?" class="civic_orgs">
       <br />
-      
+
+      {{^isHarvardNeighbors}}
       <div class="org">
         <p>Would you like to promote your business, organization, or service on CommonPlace?</p>
         <input type="radio" name="org" id="yes">
@@ -22,6 +23,7 @@
         <input type="radio" name="org" id="no">
         <label class="org_no" for="no">No</label>
       </div>
+      {{/isHarvardNeighbors}}
     </div>
     <div class="controls">
        <div class="spinner">

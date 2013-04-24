@@ -35,7 +35,10 @@ CommonPlace.main.SubscribeView = CommonPlace.main.TourModalPage.extend(
     @fadeIn @el
 
   categories: ->
-    @feed_categories
+    if @isHarvardNeighbors
+      [ {name: "Community Group", id: "communitygroup"} ]
+    else
+      @feed_categories
 
   submit: (e) ->
     e.preventDefault()  if e
