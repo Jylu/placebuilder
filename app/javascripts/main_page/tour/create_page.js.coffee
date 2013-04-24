@@ -49,7 +49,10 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
     e.preventDefault()  if e
     @$(".error").hide()
     name = @$("input[name=name]").val()
-    kind = @$("select[name=page_kind]").val()
+    if @isHarvardNeighbors()
+      kind = 1
+    else
+      kind = @$("select[name=page_kind]").val()
     if name is ""
       @showError @$("input[name=name]"), @$(".error.name"), "Please enter a page name"
     else if kind is ""
