@@ -6,7 +6,13 @@
       <div class="new-announcement">
        <ul>
          <li>
-           Promote Your Work
+          {{#isHarvardNeighbors}} 
+            Post an Announcement
+          {{/isHarvardNeighbors}}    
+
+          {{^isHarvardNeighbors}} 
+            Share Community Thoughts
+          {{/isHarvardNeighbors}}    
          </li>
        </ul>
        <span class="divider">
@@ -30,8 +36,16 @@
     <div class="posting-header promote">
       <i class="icon"></i>
       <div class="left">
-      <h1>Promote Your Work</h1>
-      <span>Advertise your organization or business</span>
+
+      {{#isHarvardNeighbors}} 
+        <h1>Promote Your Work</h1>
+        <span>Advertise your organization or business</span>
+      {{/isHarvardNeighbors}}    
+
+      {{^isHarvardNeighbors}} 
+        <h1>Post an Announcement</h1>
+        <span>Publicize interest group updates</span>
+      {{/isHarvardNeighbors}}    
       </div>
     </div>
     <span class="divider">
