@@ -101,7 +101,7 @@
     width: 104px
     right: -145px
     top: 0px
-  .subscribe, .unsubscribe, .meet, .just-met, .unmeet, .contact
+  .subscribe, .unsubscribe, .meet, .just-met, .unmeet, .contact, .editlink, .edit
     float: left
     font-family: $body
     font-weight: bold
@@ -116,13 +116,19 @@
     text-indent: -1px
     &:hover
       color: #aaa
+  .edit
+    border-top: 1px solid #d5d1c8
+    padding-top: 6px
+    margin-top: 6px
+    border-bottom: 0px none
+    box-shadow: inset 0px 1px 0px white
   .contact
     padding-bottom: 6px
     margin-bottom: 6px
   .meet, .just-met, .unmeet
     border: 0px transparent
     box-shadow: none
-  .subscribe, .unsubscribe
+  .subscribe, .unsubscribe, .editlink
     border: 0px transparent
     box-shadow: none
     padding: 0px
@@ -184,6 +190,14 @@
             border-left: none
           &:last-child 
             border-right: none
+          &.subscribers
+            cursor: pointer
+            &:hover
+              .big, .little
+                color: #888
+            //&:active
+              .big, .little
+                color: $red
           span.big
             color: $red
             font-size: 20px
@@ -215,6 +229,16 @@
     //&:last-child
       margin-top: 5px
       margin-bottom: 5px
+    .editlink
+      margin-left: 2px
+      a
+        font-family: $body
+        font-weight: bold
+        text-transform: uppercase
+        color: $red
+        font-size: 12px
+        &:hover
+          color: #aaa
   p.bio
     //margin-bottom: 5px
   .bold

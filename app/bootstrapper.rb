@@ -88,9 +88,10 @@ class Bootstrapper < Sinatra::Base
     haml :learn_more
   end
 
-  get ":community/art_project" do
+  get ":community/civicart" do
     @community = Community.find_by_slug(params[:community])
-    erb :art_project
+    @login_redirect = @community.links.base + "/pages/" + @community.slug + "civicart"
+    erb :civic_art
   end
 
   get %r{([\w]+)/register.*} do
@@ -151,7 +152,7 @@ class Bootstrapper < Sinatra::Base
 
     return 404 unless @community
 
-    erb @account ? :application : :application
+    erb :application
   end
 
   get "pages/:id" do
@@ -212,7 +213,7 @@ class Bootstrapper < Sinatra::Base
 
     @login_error = "Welcome to OurCommonPlace #{@community.name}! Before you can view this content you must login or reigster to verify that you are a member of the community."
     @login_redirect = request.url
-    erb @account ? :application : :register
+    erb :application
   end
 
 

@@ -7,10 +7,11 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     "click .next-button": "submit"
 
   afterRender: ->
+    @hideSpinner()
     @$("input[placeholder]").placeholder()
     @$("input:visible:first").focus() if @browserSupportsPlaceholders() and $.browser.webkit #only focus the first input if the browser supports placeholders and is webkit based (others clear the placeholder on focus)
     @fadeIn @el
-    if @data.isFacebook
+    if @data and @data.isFacebook
       @$("input[name=full_name]").val @data.full_name
       @$("input[name=email]").val @data.email  if @isRealEmail()
     domains = [ "hotmail.com", "gmail.com", "aol.com", "yahoo.com" ]
@@ -34,7 +35,7 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     facebook_connect_registration success: _.bind((data) ->
       @data = data
       @data.isFacebook = true
-      @nextPage "welcome", @data
+      @nextPage "profile", @data
     , this)
 
   submit: (e) ->
@@ -47,6 +48,7 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
     if @data.password is ""
       @showError @$("input[name=password]"), @$(".error.password"), "Password can't be empty"
     else
+      @showSpinner()
       params = [ "full_name", "email" ]
       @validate_registration params, _.bind(->
         @nextPage "address", @data

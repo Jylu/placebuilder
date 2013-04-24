@@ -156,14 +156,20 @@ CommonPlace.View = Backbone.View.extend({
     }
   },
 
+  isHarvardNeighbors: function() {
+    if (CommonPlace.community.get('slug').toLowerCase() == "harvardneighbors") {
+      return true;
+    } else {
+      return false;
+    }
+  },
+
   showRegistration: function(e) {
     if (e) {
       e.preventDefault();
     }
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
-      account: CommonPlace.account,
-      community: CommonPlace.community,
       template: "main_page.tour.modal"
     });
     tour.render();

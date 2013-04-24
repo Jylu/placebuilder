@@ -9,9 +9,9 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     "click #profile-box, #community-resources, #post-box": "end"
 
   initialize: (options) ->
-    @account = options.account
-    @community = options.community
     @firstSlide = true
+    if options.exitWhenDone
+      @exitWhenDone = true
 
   render: ->
     @$("#tour").html(@renderTemplate("main_page.tour.wire", this)).attr "class", "wire"
@@ -19,14 +19,6 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
     $(@el).append(@renderTemplate("main_page.tour.modal", this))
     $("body").css(overflow: "hidden") #prevents the main page from scrolling during the tour
     $("#current-registration-page").css(overflow: "auto")
-
-  first_name: ->
-    @account.get "short_name"
-
-  showError: ($el, $error, message) ->
-    $el.addClass "input_error"
-    $error.text message
-    $error.show()
 
   showPage: (page, data) ->
     self = this
@@ -81,6 +73,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           fadeIn: fadeIn
           community: self.community
           account: self.account
+          exitWhenDone: self.exitWhenDone
         )
 
       subscribe: ->
@@ -113,7 +106,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
           nextPage: nextPage
         )
     }[page]()
-    _kmq.push(['record', 'Tour: ' + page + ' page'], {'community': self.community.get("name")}) if _kmq?
+    _kmq.push(['record', 'Tour: ' + page + ' page'], {'community': CommonPlace.community.get("name")}) if _kmq?
     view.render()
 
   welcome: ->
@@ -122,6 +115,7 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
   end: ->
     $("#tour-shadow").remove()
     $("#tour").remove()
+    $("body").css(overflow: "auto") #enable the main page scrolling
 
   centerEl: ($el) ->
     $el.css @dimensions($el)
@@ -164,21 +158,40 @@ CommonPlace.main.TourModal = CommonPlace.View.extend(
 
 CommonPlace.main.TourModalPage = CommonPlace.View.extend(
   initialize: (options) ->
-    @data = options.data or isFacebook: false
-    @community = options.community
-    @account = options.account
+    @data = options.data || {}
     @fadeIn = options.fadeIn
     @nextPage = options.nextPage
     @complete = options.complete
-    @template = @facebookTemplate  if options.data and options.data.isFacebook and @facebookTemplate
+    @exitWhenDone = options.exitWhenDone
+
+  showError: ($el, $error, message) ->
+    $el.addClass "input_error"
+    $error.text message
+    $error.show()
+
+  end: ->
+    $("#tour-shadow").remove()
+    $("#tour").remove()
+    $("body").css(overflow: "auto") #enable the main page scrolling
+  first_name: ->
+    CommonPlace.account.get "short_name"
+
+  avatar_url: ->
+    CommonPlace.account.get("avatar_url")
+
+  showSpinner: ->
+    @$(".spinner").show()
+
+  hideSpinner: ->
+    @$(".spinner").hide()
 
   validate_registration: (params, callback) ->
-    validate_api = "/api" + @community.get("links").registration.validate
+    validate_api = "/api" + CommonPlace.community.get("links").registration.validate
     $.getJSON validate_api, @data, _.bind((response) ->
       @$(".error").hide()
       valid = true
       unless _.isEmpty(response.facebook)
-        window.location.pathname = @communityExterior.links.facebook_login
+        window.location.pathname = CommonPlace.community.links.facebook_login
       else
         _.each params, _.bind((field) ->
           unless _.isEmpty(response[field])
@@ -192,6 +205,7 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
             error.show()
             valid = false
         , this)
+        @hideSpinner() if not valid
         callback()  if valid and callback
     , this)
 )

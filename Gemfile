@@ -1,6 +1,8 @@
 source "http://rubygems.org"
 source "http://gems.github.com"
 
+ruby '1.9.3'
+
 gem 'rails', "= 3.2.11"
 gem 'sass-rails', '= 3.2.4'
 
@@ -71,9 +73,7 @@ gem 'rest-client', '= 1.6.7'
 gem 'leftronic', :git => 'https://github.com/Jberlinsky/leftronic-gem.git', :ref => "a090bf1d49004f501c9164d5dcd51761b48803e4"
 
 # Tech admin
-group :only_production do
-  gem 'newrelic_rpm', '= 3.5.0.1'
-end
+gem 'newrelic_rpm', '= 3.5.0.1'
 
 # Monitoring
 gem 'airbrake', '= 3.1.2'
@@ -91,7 +91,7 @@ gem 'require_all', '= 1.2.1' # require all ruby files in a directory
 
 # Analytics
 gem 'km', '= 1.1.2'
-gem 'km-db', :git => "https://github.com/Jberlinsky/km-db.git", :ref => "1d6ecc6eb3007cb7b78f8352479f4f698660b270"
+gem 'km-db', :git => "https://github.com/Jberlinsky/km-db.git", :ref => "65bf2c5ffc203a773c9cc2d491306924a6c78cd2"
 gem 'mysql2', '= 0.3.11'
 
 group :assets do

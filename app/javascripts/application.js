@@ -168,6 +168,11 @@ var Application = Backbone.Router.extend({
     this.pages.community.lists.showFeedPage(id);
   },
 
+  showFeedSubscribers: function(c, id) {
+    this.showPage("community");
+    this.pages.community.lists.showFeedSubscribers(id);
+  },
+
   showGroupPage: function(c, id) {
     this.showPage("community");
     this.pages.community.lists.showGroupPage(id);
@@ -221,8 +226,6 @@ var Application = Backbone.Router.extend({
     this.community();
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
-      account: CommonPlace.account,
-      community: CommonPlace.community,
       template: "main_page.tour.modal"
     });
     tour.render();
@@ -233,8 +236,6 @@ var Application = Backbone.Router.extend({
     this.community();
     var tour = new CommonPlace.main.TourModal({
       el: $("#main"),
-      account: CommonPlace.account,
-      community: CommonPlace.community,
       template: "main_page.tour.modal"
     });
     tour.render();

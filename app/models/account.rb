@@ -6,7 +6,7 @@ class Account
   attr_accessor :user
 
   def feed_subscriptions
-    @user.subscriptions.map &:feed_id    
+    @user.subscriptions.map &:feed_id
   end
 
   def mets
@@ -67,8 +67,10 @@ class Account
 
   def feeds
     @user.managable_feeds.map do |feed|
-      {"name" => feed.name, 
-        "id" => feed.id, 
+      {"name" => feed.name,
+        "id" => feed.id,
+        "community" => feed.try(:community).try(:name),
+        "kind" => feed.kind,
         "slug" => feed.slug.blank? ? feed.id : feed.slug
       }
     end

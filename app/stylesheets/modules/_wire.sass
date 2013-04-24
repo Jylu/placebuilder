@@ -12,12 +12,53 @@
           background-color: #fff 
           padding: 20px
           text-align: center 
+        .wire-item
+          &.group-member
+            padding: 10px
+            //background-image: url(shared/redesign/tan-bg.png)
+            background-color: #fafafa
+            border: 1px solid #fff
+            color: #333
+            border-radius: 4px
+            //box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
+            font-family: $heading
+            //-webkit-filter: none !important
+            &:after, &:before
+              display: none
+            .avatar
+              border-radius: 4px
+              box-shadow: 1px 1px 0px white
+            h3, h3 a
+              font-size: 22px
+              font-family: $heading
+              color: $blue
+              text-shadow: 1px 1px 0px white
+              line-height: 19px
+              display: block
+              //overflow: hidden
+              //text-overflow: ellipsis
+              //white-space: nowrap
+              &:hover
+                cursor: pointer
+                //color: #131313
+                //text-decoration: underline
+            a.message-user
+              float: left
+              font-family: $body
+              font-weight: bold
+              text-transform: uppercase
+              color: $red
+              font-size: 11px
+              text-shadow: 1px 1px 0px white
+              &:hover
+                color: #aaa
         .wire-item 
           background: white
-          //box-shadow: 0px 1px 3px rgba(0,0,0,0.65)
-          -moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.4)
-          -webkit-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.4))
-          filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.4))
+          //box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5)
+          box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
+          //-moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.4)
+          //-webkit-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.4))
+          //filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.4))
           padding: 5px
           position: relative
           &:after, &:before
@@ -68,11 +109,19 @@
           .post-content
             padding: 15px
               bottom: 10px
+            .photo-container
+              //border-top: 1px dotted #ddd
+              padding: 10px 0px 15px 0px
             .image_container
-              text-align: left
-              position: relative
-              &:hover
-                &:after
+              //text-align: left
+              //border-top: 1px dotted #ddd
+              //position: relative
+              padding: 0px 7px 0px 0px
+              &:last-child
+                padding-right: 0px
+              //&:hover
+                cursor: pointer
+                //&:after
                   content: url("shared/redesign/enlarge-icon.png")
                   position: absolute
                   top: 10px
@@ -156,6 +205,8 @@
               background-position: center center
               border: 4px solid white
               background-color: #f6f4ed
+              //box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5)
+              box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.5)
             p.venue, p.address
               margin-bottom: 5px
               span.bold
@@ -213,7 +264,7 @@
                 //border-right: 1px dotted
                 border-color: #ddd
                 font: bold 12px $body
-                padding: 9px 10px
+                padding: 9px 15px 9px 0px
                 cursor: pointer
                 &:first-child
                   padding-left: 0px
@@ -285,7 +336,6 @@
                     background-position: -44px 0px
                     
               li.edit-link
-                padding-left: 10px
                 .icon
                   background-position: -87px -28px
                 &:hover, &:focus, &:active
@@ -340,14 +390,16 @@
               background-position: 5px 5px
               padding: 11px
 
-      .wire-empty-message
+      .wire-empty-message, div.loading
         color: #fff
         text-align: center
-        padding: 8px
+        padding: 8px 0px
+        width: 575px
         border-radius: 5px
         background-color: rgba(0,0,0,0.25)
         text-shadow: 1px 1px 1px rgba(0,0,0,0.85)
         font-size: 20px
+        margin-bottom: 15px
 
       .highlight
         //background-color: #fffa6c
@@ -368,12 +420,14 @@
 /* Public Sign Up Box */
 
 .sign-up
-  background-image: url("shared/redesign/tan-bg.png")
-  border-radius: 5px
+  //background-image: url("shared/redesign/tan-bg.png")
+  //border-radius: 4px
+  background-color: #FFF8C0
   padding: 13px
   width: 515px
   display: inline-block
-  border: 1px solid #d5d1c9
+  border: 1px solid #F3EAA9
+  //border: 1px solid #d5d1c9
   box-shadow: inset 0px 1px 0px white
   margin: 5px 10px 8px 11px
   z-index: 999
@@ -383,13 +437,14 @@
     font-family: $heading
     color: $black
     line-height: 18px
-    font-size: 16px
+    font-size: 17px
     text-shadow: 1px 1px 0px white
   a.red-button
     float: right
-    padding: 8px 18px
-    font-size: 16px
+    padding:  9px 18px 8px 18px
+    font-size: 18px
     cursor: pointer
+    height: 18px
 //.reply-item p, .reply-item a, .reply-item .controls
   //-webkit-filter: blur(1.5px)
   color: #eee !important

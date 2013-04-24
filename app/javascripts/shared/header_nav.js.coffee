@@ -3,16 +3,32 @@ CommonPlace.shared.HeaderNav = CommonPlace.View.extend(
   className: "nav"
   unreadMessageCount: 0
 
+  events:
+    "click .feed-link": "goToFeed"
+    "click .create-feed-link": "createFeed"
+
   initialize: ->
     @updateUnreadMessages()
-
-  afterRender: ->
-    @updateUnreadMessagesBadge()
-    @$("input[placeholder], textarea[placeholder]").placeholder()
     self = this
     CommonPlace.account.on "sync", ->
       self.updateUnreadMessages()
       self.updateUnreadMessagesBadge()
+      self.render()
+
+  goToFeed: (e) ->
+    e.preventDefault() if e
+    slug = CommonPlace.community.get("slug")
+    id = e.currentTarget.id
+    app.showFeedPage(slug, id)
+
+  createFeed: (e) ->
+    e.preventDefault() if e
+    tour = new CommonPlace.main.TourModal
+      el: $("#main")
+      template: "main_page.tour.modal"
+      exitWhenDone: true
+    tour.render()
+    tour.showPage("create_page")
 
   slug: ->
     if CommonPlace.account.isAuth()

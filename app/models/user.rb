@@ -30,12 +30,19 @@ class User < ActiveRecord::Base
   end
 
   def self.new_from_facebook(params, facebook_data)
-    User.new(params).tap do |user|
-      user.email = facebook_data["info"]["email"]
-      user.full_name = facebook_data["info"]["name"]
-      user.facebook_uid = facebook_data["uid"]
-      user.neighborhood_id = Neighborhood.where(community_id: params[:community_id]).first.id
+    u = User.find_by_email(facebook_data["info"]["email"])
+    if !u.nil?
+      u.facebook_uid = facebook_data["uid"]
+    else
+      u = User.new(params).tap do |user|
+        user.email = facebook_data["info"]["email"]
+        user.full_name = facebook_data["info"]["name"]
+        user.facebook_uid = facebook_data["uid"]
+        user.neighborhood_id = Neighborhood.where(community_id: params[:community_id]).first.id
+      end
     end
+
+    return u
   end
 
   geocoded_by :normalized_address
@@ -49,7 +56,7 @@ class User < ActiveRecord::Base
   has_many :swipes
   has_many :swiped_feeds, :through => :swipes, :class_name => "Feed", :source => :feed
 
-  has_many :sell_transactions, :class_name => 'Transaction', :foreign_key => 'user_id'
+  has_many :sell_transactions, :class_name => 'Transaction', :as => :owner, :foreign_key => 'owner_id', :dependent => :destroy
   has_many :buy_transactions, :class_name => 'Transaction', :foreign_key => 'buyer_id'
 
   def organizer_data_points
@@ -207,6 +214,7 @@ class User < ActiveRecord::Base
 
   api_accessible :default do |t|
     t.add :id
+    t.add lambda {|u| u.id}, :as => :user_id
     t.add lambda {|u| "users"}, :as => :schema
     t.add lambda {|u| u.avatar_url(:normal)}, :as => :avatar_url
     t.add lambda {|u| "/users/#{u.id}"}, :as => :url
@@ -233,8 +241,8 @@ class User < ActiveRecord::Base
 
   def pages
     self.managable_feeds.map do |feed|
-      {"name" => feed.name, 
-        "id" => feed.id, 
+      {"name" => feed.name,
+        "id" => feed.id,
         "slug" => feed.slug.blank? ? feed.id : feed.slug
       }
     end
@@ -242,6 +250,7 @@ class User < ActiveRecord::Base
 
   def links
     {
+      "author" => "/users/#{id}",
       "messages" => "/users/#{id}/messages",
       "self" => "/users/#{id}",
       "postlikes" => "/users/#{id}/postlikes",

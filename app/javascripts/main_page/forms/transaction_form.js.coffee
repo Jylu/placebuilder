@@ -2,42 +2,51 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
   template: "main_page.forms.transaction-form"
   className: "create-transaction transaction"
 
+  initialize: (options) ->
+    CommonPlace.main.BaseForm.prototype.initialize options
+    @feeds = CommonPlace.account.get("feeds")
+    @user = CommonPlace.account.get("name")
+    @hasFeeds = false
+    if @feeds.length > 0
+      @hasFeeds = true
+
   afterRender: ->
     @data = {}
+    @data.image_id = []
     @$("input[placeholder], textarea[placeholder]").placeholder()
-    if @imageUploadSupported() and not @isPostEdit()
-      @initImageUploader @$(".image_file_browser")
+    if not @isPostEdit()
+      @initImageUploader(@$(".one"), 1)
+      @initImageUploader(@$(".two"), 2)
+      @initImageUploader(@$(".three"), 3)
     else
-      @$(".image_file_browser").hide()
+      @$(".item_pic").hide()
     @hideSpinner()
     self = this
     @populateFormData()
 
-  imageUploadSupported: ->
-    return (not @isIE8orBelow())
-
-  initImageUploader: ($el) ->
+  initImageUploader: ($el, num) ->
     self = this
     @imageUploader = new AjaxUpload($el,
       action: "/api/transactions/image"
       name: "image"
       data: @data
-      responseType: "json"
+      responseType: "text/html"
       autoSubmit: true
       onChange: ->
-        @hasImageFile = true
+        self.hasImageFile = true
 
       onSubmit: _.bind((file, extension) ->
-          $upload_pic = $(".item_pic")
+          $upload_pic = $(".item_pic#" + num)
           $upload_pic.attr("src", "/assets/loading.gif")
           $upload_pic.parent().addClass("loading")
         , this)
 
       onComplete: _.bind((file, response) ->
-          $upload_pic = $(".item_pic")
-          $upload_pic.attr("src", response.image_url)
+          response = $.parseJSON(response)
+          $upload_pic = $(".item_pic#" + num)
+          $upload_pic.attr("src", response.image_normal)
           $upload_pic.parent().removeClass("loading")
-          @data.image_id = response.id
+          @data.image_id[num-1] = response.id
         , this)
     )
 
@@ -54,7 +63,18 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     @data.price = price
     @data.body = @$("[name=body]").val()
 
-    @sendPost CommonPlace.community.transactions, @data
+    feed_id = @$("[name=feed_selector]").val()
+    if feed_id is ""
+      @showError "Please choose who to post as"
+      @hideSpinner()
+      @enableSubmitButton()
+      return
+
+    if feed_id isnt undefined and feed_id isnt "self"
+      feed = new Feed({links: {self: "/feeds/" + feed_id, transactions: "/feeds/" + feed_id + "/transactions"}})
+      @sendPost feed.transactions, @data
+    else
+      @sendPost CommonPlace.community.transactions, @data
 
   sendPost: (transactionCollection, data) ->
     self = this
@@ -66,9 +86,8 @@ CommonPlace.main.TransactionForm = CommonPlace.main.BaseForm.extend(
     else
       transactionCollection.create data,
         success: _.bind((post) ->
-          if self.imageUploadSupported()
-            if self.imageUploader.hasImageFile
-              self.addImageToPost(post)
+          if self.hasImageFile
+            self.addImageToPost(post)
           self.render()
           CommonPlace.community.transactions.trigger "sync"
           @showShareModal(post, "Thanks for posting!", "You've just shared this post with #{@getUserCount()} neighbors in #{@community_name()}. Share with some more people!")

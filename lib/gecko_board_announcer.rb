@@ -14,6 +14,21 @@ class GeckoBoardAnnouncer
     Springfield
   ]
 
+  WATCHED_COMMUNITIES = %w[
+    FallsChurch
+    Harrisonburg
+    Vienna
+    Marquette
+    Warwick
+    OwossoCorunna
+    Chelmsford
+    Belmont
+    Watertown
+    Sudbury
+    Westwood
+    Hudson
+  ]
+
   def self.average_size(communities)
     (communities.map { |c| c.users.count }.inject{ |sum, el| sum + el }.to_f / communities.size).round(2)
   end
@@ -23,13 +38,17 @@ class GeckoBoardAnnouncer
     (100 * (penetrations.inject{ |sum, el| sum + el }.to_f / communities.size)).round(2)
   end
 
+  def self.full_run
+    run(false)
+  end
+
   def self.perform(quick = true)
     run(quick)
   end
 
   def self.run(quick = true)
     if quick == true
-      ENV['SKIP_POST_DISTRIBUTION'] = 'true'
+      # ENV['SKIP_POST_DISTRIBUTION'] = 'true'
       ENV['SKIP_REPLY'] = 'true'
       ENV['SKIP_REPEATED_ENGAGEMENT'] = 'true'
     end
@@ -45,6 +64,62 @@ class GeckoBoardAnnouncer
     network_size_headers = ["Age", "#", "Avg Size", "Avg Pen"]
     action_frequencies = [["Action", "Daily %", "Weekly %", "Monthly %", "Weekly #"]]
     network_sizes << network_size_headers
+
+    unless ENV['SKIP_MEMOIZED_DATA']
+      # Handle memoized data
+      csvs = {
+        "post_counts" => :posts,
+        "user_counts" => :users
+      }
+
+      csvs.each do |type, method|
+        post_count_str = Resque.redis.get("statistics:#{type}")
+        unless post_count_str.present?
+          post_count_str =  ",#{WATCHED_COMMUNITIES.join(",")}"
+        end
+
+        lines = post_count_str.split("\n")
+        if lines.count > 1
+          last_date = Date.parse(lines.last.split(",").first)
+          if last_date != Date.today
+            # Check the first line for all communities...
+            split_post_count_lines = post_count_str.split("\n")
+            if post_count_str.split("\n").shift.split(",").count != WATCHED_COMMUNITIES.count
+              # HOLD INVARIANT: Communities will not be deleted from WATCHED_COMMUNITIES, nor reordered
+              # New communities will be appended to the end of the list
+              # This allows us to make the following optimization:
+              first_line = true
+              missing_communities = WATCHED_COMMUNITIES.map(&:to_s) - split_post_count_lines.first.split(",")
+              split_post_count_lines.each do |line|
+                if first_line
+                  line << ","
+                  line << missing_communities.join(",")
+                else
+                  missing_communities.count.times do
+                    line << ",0"
+                  end
+                end
+                first_line = false
+              end
+            end
+
+            new_post_counts = []
+            WATCHED_COMMUNITIES.each do |slug|
+              new_post_counts << Community.find_by_slug(slug).send(method).try(:count).try(:to_s)
+            end
+            new_post_line = "#{Date.today.to_s(:mdy)},#{new_post_counts.join(",")}"
+            post_count_str << "\n"
+            post_count_str << new_post_line
+            Resque.redis.set("statistics:#{type}", post_count_str)
+          end
+        end
+      end
+    end
+
+    all_transaction_prices = Transaction.where("price_in_cents < 100000000").map(&:price_in_cents)
+    average_transaction_price = all_transaction_prices.sum / all_transaction_prices.count
+    dashboard.number("Listing Amount", average_transaction_price.to_f / 100)
+
     unless ENV['ONLY_AU'] == 'true'
       Community.find_each do |community|
         next if EXCLUDED_COMMUNITIES.include? community.slug
@@ -61,8 +136,8 @@ class GeckoBoardAnnouncer
           community.name => community.users.count
         }
       end
-      growths = growths.sort do |g|
-        g[1].to_i
+      growths = growths.sort do |x, y|
+        x[1].to_i <=> y[1].to_i
       end
       growths << growth_headers
       growths.reverse!
@@ -134,7 +209,7 @@ class GeckoBoardAnnouncer
         post_distribution = [["", "#", "Replies", "Reply %"]]
         posts_map = {
           "Questions" => Post.where(category: "help"),
-          "Marketplaces" => Post.where(category: "offers"),
+          "Marketplaces" => Transaction.scoped,
           "Events" => Event.scoped,
           "Town Discussions" => Post.where(category: "neighborhood"),
           "Announcements" => Announcement.scoped,
@@ -234,10 +309,10 @@ class GeckoBoardAnnouncer
       "PM" => "posted  message",
       "Post" => "posted  post",
       "Add Data" => "posted content",
-      "Concatenation" => "platform activity"
+      "Platform Activity" => "platform activity"
     }
     puts "Pulling and coallating data from Mailgun..."
-    mailgun_campaign_list = JSON.parse(mailgun['campaigns'].get)['items'].map { |i| i['name'] }
+    mailgun_campaign_list = JSON.parse(mailgun['campaigns?limit=1000'].get)['items'].map { |i| i['name'] }
     mailgun_daily_bulletin_campaigns = mailgun_campaign_list.select { |name| name.include? "_daily" }
     mailgun_single_post_campaigns = mailgun_campaign_list.select { |name| name.include? "_post" }
     # Coallate
@@ -274,19 +349,19 @@ class GeckoBoardAnnouncer
       open_stats.each do |daily_dump|
         opened_at = DateTime.parse(daily_dump['day'])
         unique_recipients = daily_dump['unique']['recipient'].to_i
-        if opened_at > 1.day.ago
+        if opened_at > 2.days.ago
           daily_bulletin_opens[:daily][:total] += unique_recipients
           daily_bulletin_opens[:weekly][:total] += unique_recipients
           daily_bulletin_opens[:monthly][:total] += unique_recipients
           daily_bulletin_opens[:daily][community_slug] += unique_recipients
           daily_bulletin_opens[:weekly][community_slug] += unique_recipients
           daily_bulletin_opens[:monthly][community_slug] += unique_recipients
-        elsif opened_at > 7.days.ago
+        elsif opened_at > 8.days.ago
           daily_bulletin_opens[:weekly][:total] += unique_recipients
           daily_bulletin_opens[:monthly][:total] += unique_recipients
           daily_bulletin_opens[:weekly][community_slug] += unique_recipients
           daily_bulletin_opens[:monthly][community_slug] += unique_recipients
-        elsif opened_at > 30.days.ago
+        elsif opened_at > 31.days.ago
           daily_bulletin_opens[:monthly][:total] += unique_recipients
           daily_bulletin_opens[:monthly][community_slug] += unique_recipients
         end
@@ -301,19 +376,19 @@ class GeckoBoardAnnouncer
       open_stats.each do |daily_dump|
         opened_at = DateTime.parse(daily_dump['day'])
         unique_recipients = daily_dump['unique']['recipient'].to_i
-        if opened_at > 1.day.ago
+        if opened_at > 2.days.ago
           single_post_opens[:daily][:total] += unique_recipients
           single_post_opens[:weekly][:total] += unique_recipients
           single_post_opens[:monthly][:total] += unique_recipients
           single_post_opens[:daily][community_slug] += unique_recipients
           single_post_opens[:weekly][community_slug] += unique_recipients
           single_post_opens[:monthly][community_slug] += unique_recipients
-        elsif opened_at > 7.days.ago
+        elsif opened_at > 8.days.ago
           single_post_opens[:weekly][:total] += unique_recipients
           single_post_opens[:monthly][:total] += unique_recipients
           single_post_opens[:weekly][community_slug] += unique_recipients
           single_post_opens[:monthly][community_slug] += unique_recipients
-        elsif opened_at > 30.days.ago
+        elsif opened_at > 31.days.ago
           single_post_opens[:monthly][:total] += unique_recipients
           single_post_opens[:monthly][community_slug] += unique_recipients
         end
@@ -333,7 +408,7 @@ class GeckoBoardAnnouncer
     ]
     # Break it down by community
     (1..(growths.count-1)).each do |i|
-      community_name = growths[i][0].to_sym
+      community_name = growths[i][0].downcase.to_sym
       if daily_bulletin_opens[:weekly][community_name].nil?
         growths[i] << "N/A"
       else

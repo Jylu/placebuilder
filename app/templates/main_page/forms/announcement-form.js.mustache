@@ -19,6 +19,14 @@
     </div>
     {{/hasFeeds}}
     {{#hasFeeds}}
+    {{#hasBusinessFeeds}}
+      <p>In order to publicize your business, please post a deal in the marketplace</p>
+      <div class="controls wide">
+        <button class="red-button transaction">Post to Marketplace</button>
+        <a class="back" href="#">Back</a>
+      </div>
+    {{/hasBusinessFeeds}}
+    {{^hasBusinessFeeds}}
     <div class="posting-header promote">
       <i class="icon"></i>
       <div class="left">
@@ -37,8 +45,8 @@
           {{/feeds}}
         </select>
 
-        <input type="text" placeholder="Post Title" name="title" class="rounded_corners">
-        <textarea placeholder="Write your post here!" name="body" rows="15" cols="55" class="rounded_corners"></textarea>
+        <input type="text" placeholder="Title" name="title" class="rounded_corners">
+        <textarea placeholder="Message" name="body" rows="15" cols="55" class="rounded_corners"></textarea>
 
         <div class="controls">
           {{^isPostEdit}}
@@ -53,6 +61,7 @@
         </div>
       </form>
     </div>
+    {{/hasBusinessFeeds}}
     {{/hasFeeds}}
   </div>
 </div>

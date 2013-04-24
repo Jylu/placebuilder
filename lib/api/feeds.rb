@@ -99,6 +99,25 @@ class API
       serialize(paginate(scope.upcoming.includes(:replies).reorder("date ASC")))
     end
 
+    # Creates a feed transaction
+    #
+    # Requires feed ownership
+    post "/:id/transactions" do
+      control_access :owner, find_feed
+
+      transaction = Transaction.new(:owner_type => "Feed",
+                                    :owner_id => find_feed.id,
+                                    :title => request_body['title'],
+                                    :description => request_body['body'],
+                                    :community => current_user.community,
+                                    :price_in_cents => request_body['price'])
+      if transaction.save
+        serialize(transaction)
+      else
+        [400, "errors"]
+      end
+    end
+
     # Gets the feed subscribers
     get "/:id/subscribers" do
       control_access :public
@@ -173,6 +192,13 @@ class API
 
       owner = FeedOwner.find(params[:owner_id])
       owner.destroy
+    end
+
+    # Remove a feed
+    delete "/:id" do
+      control_access :owner, find_feed
+
+      find_feed.destroy
     end
 
     # Create the feed avatar

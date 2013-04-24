@@ -3,10 +3,37 @@ CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend
   tagName: "li"
   className: "profile-card"
 
+  initialize: ->
+    @modal = new ModalView({form: this.el})
+
   events:
+    "click .edit": "edit"
     "click .message-link": "messageUser"
     "click .subscribe": "subscribe"
     "click .unsubscribe": "unsubscribe"
+    "click .subscribers": "showSubscribers"
+    "click .announcements": "showAnnouncements"
+    "click .transaction": "openTransactionForm"
+
+  showAnnouncements: ->
+    slug = CommonPlace.community.get("slug")
+    id = @model.get("id")
+    app.showFeedPage(slug, id)
+
+  showSubscribers: ->
+    slug = CommonPlace.community.get("slug")
+    id = @model.get("id")
+    app.showFeedSubscribers(slug, id)
+
+  canEdit: ->
+    CommonPlace.account.canEditFeed @model
+
+  edit: (e) ->
+    e.preventDefault() if e
+    formview = new FeedEditFormView({
+      model: @model
+    })
+    formview.render()
 
   site_url: ->
     @model.get "website"
@@ -17,7 +44,7 @@ CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend
   event_count: ->
     @model.get "event_count"
 
-  subscribers: ->
+  subscribers_count: ->
     @model.get "subscriber_count"
 
   isSubscribed: ->
@@ -38,4 +65,12 @@ CommonPlace.wire_item.FeedProfileCard = CommonPlace.wire_item.ProfileCard.extend
     CommonPlace.account.unsubscribeFromFeed @model, _.bind(->
       @render()
     , this)
+
+  openTransactionForm: (e)->
+    e.preventDefault()
+    postbox = new CommonPlace.main.PostBox
+      account: CommonPlace.account
+      community: CommonPlace.community
+    postbox.render()
+    postbox.showTab("transaction")
 )

@@ -3,13 +3,13 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   initialize: (options) ->
     self = this
+    @attr_accessible [ "first_name", "last_name", "name", "avatar_url", "published_at", "images", "title", "body" ]
     @model.on "destroy", ->
       self.remove()
 
   afterRender: ->
     @model.on "change", @render, this
-    replies = @model.get("replies")
-    @reply() if replies and replies.length > 0
+    @reply()
     @checkThanked()
     @checkFlagged()
 
@@ -128,16 +128,19 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       , this)
       @repliesView.render()
       @appendRepliesArea @repliesView.el
-      @$(".reply-text-entry").focus() if @browserSupportsPlaceholders() and $.browser.webkit #only focus the first input if the browser supports placeholders and is webkit based (others clear the placeholder on focus)
-    else
-      @state = "none"
-      @emptyRepliesArea()
+    @$(".reply-text-entry").focus() if @browserSupportsPlaceholders() and $.browser.webkit #only focus the first input if the browser supports placeholders and is webkit based (others clear the placeholder on focus)
 
   emptyRepliesArea: ->
     @$(".replies-area").empty()
 
   appendRepliesArea: (el) ->
     @$(".replies-area").append(el)
+
+  author: ->
+    if @isGuest()
+      "Your Neighbor"
+    else
+      @model.get("author")
 
   messageUser: (e) ->
     e.preventDefault() if e
@@ -200,14 +203,8 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
   removeCurrentClass: ->
     @$(".current").removeClass "current"
 
-  publishedAt: ->
-    timeAgoInWords @model.get("published_at")
-
-  publishedAtISO: ->
-    @model.get "published_at"
-
-  avatarUrl: ->
-    @model.get "avatar_url"
+  published_at_in_words: ->
+    timeAgoInWords @model.get "published_at"
 
   author_url: ->
     '/' + CommonPlace.community.get("slug") + '/show' + @model.get("links").author
@@ -220,21 +217,6 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
       return true
     else
       return false
-
-  images: ->
-    @model.get "images"
-
-  title: ->
-    @model.get "title"
-
-  author: ->
-    @model.get "author"
-
-  first_name: ->
-    @model.get "first_name"
-
-  body: ->
-    @model.get "body"
 
   numThanks: ->
     @directThanks().length
@@ -291,6 +273,7 @@ CommonPlace.wire_item.WireItem = CommonPlace.View.extend(
 
   loadWire: (e) ->
     e.preventDefault() if e
+    return @showRegistration() if @isGuest()
     page = @model.get("schema")
     category = @model.get("category")
     if category is "offers"
