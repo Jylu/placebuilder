@@ -189,23 +189,27 @@ CommonPlace.main.TourModalPage = CommonPlace.View.extend(
     validate_api = "/api" + CommonPlace.community.get("links").registration.validate
     $.getJSON validate_api, @data, _.bind((response) ->
       @$(".error").hide()
-      valid = true
-      unless _.isEmpty(response.facebook)
-        window.location.pathname = CommonPlace.community.links.facebook_login
+      if response.id
+        CommonPlace.account = new Account(response)
+        window.location = window.location.protocol + "//" + window.location.host + "/" + CommonPlace.community.get("slug") #performing the redirect this way ensures it works with IE and the hash routing
       else
-        _.each params, _.bind((field) ->
-          unless _.isEmpty(response[field])
-            error = @$(".error." + field)
-            input = @$("input[name=" + field + "]")
-            errorText = _.reduce(response[field], (a, b) ->
-              a + " and " + b
-            )
-            input.addClass "input_error"
-            error.text errorText
-            error.show()
-            valid = false
-        , this)
-        @hideSpinner() if not valid
-        callback()  if valid and callback
+        valid = true
+        unless _.isEmpty(response.facebook)
+          window.location.pathname = CommonPlace.community.links.facebook_login
+        else
+          _.each params, _.bind((field) ->
+            unless _.isEmpty(response[field])
+              error = @$(".error." + field)
+              input = @$("input[name=" + field + "]")
+              errorText = _.reduce(response[field], (a, b) ->
+                a + " and " + b
+              )
+              input.addClass "input_error"
+              error.text errorText
+              error.show()
+              valid = false
+          , this)
+          @hideSpinner() if not valid
+          callback()  if valid and callback
     , this)
 )
