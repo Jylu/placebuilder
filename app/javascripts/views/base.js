@@ -177,6 +177,20 @@ CommonPlace.View = Backbone.View.extend({
     return false;
   },
 
+  showFeedCreationForm: function(e) {
+    var tour;
+    if (e) {
+      e.preventDefault();
+    }
+    tour = new CommonPlace.main.TourModal({
+      el: $("#main"),
+      template: "main_page.tour.modal",
+      exitWhenDone: true
+    });
+    tour.render();
+    return tour.showPage("create_page");
+  },
+
 });
 
 var FormView = CommonPlace.View.extend({
