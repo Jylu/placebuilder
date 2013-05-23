@@ -17,7 +17,6 @@ class API
       else
         user = User.new(:full_name => params["full_name"],
                         :email => params["email"],
-                        :address => params["address"],
                         :facebook_uid => params["fb_uid"],
                         :community_id => community_id)
 
@@ -46,17 +45,14 @@ class API
       params.merge!(request_body) rescue
       user = User.new(:full_name => params["full_name"],
                       :email => params["email"],
-                      :address => params["address"],
                       :community_id => community_id,
-                      :password => params["password"],
-                      :referral_source => params["referral_source"])
+                      :password => params["password"])
 
       if user.valid?
         user.about = params["about"]
         user.interest_list = params["interests"]
         user.skill_list = params["skills"]
         user.good_list = params["goods"]
-        user.referral_metadata = params["referral_metadata"]
         user.calculated_cp_credits = 0
         user.organizations = params["organizations"]
 

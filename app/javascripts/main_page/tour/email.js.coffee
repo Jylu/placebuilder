@@ -51,7 +51,21 @@ CommonPlace.main.EmailView = CommonPlace.main.TourModalPage.extend(
       @showSpinner()
       params = [ "full_name", "email" ]
       @validate_registration params, _.bind(->
-        @nextPage "address", @data
+        @verified()
       , this)
 
+  verified: ->
+    new_api = "/api" + CommonPlace.community.get("links").registration[(if (@data.isFacebook) then "facebook" else "new")]
+    $.post new_api, @data, _.bind((response) ->
+      if response.success is "true" or response.id
+        CommonPlace.account = new Account(response)
+        @nextPage "profile", @data
+      else
+        unless _.isEmpty(response.facebook)
+          window.location.pathname = CommonPlace.community.links.facebook_login
+        else unless _.isEmpty(response.password)
+          @$(".error").text response.password[0]
+          @$(".error").show()
+          @hideSpinner()
+    , this)
 )

@@ -5,6 +5,8 @@ end
 class User < ActiveRecord::Base
   require 'amatch'
   include Amatch
+  include Geokit::Geocoders
+  include Trackable
 
   before_save :ensure_authentication_token
 
@@ -15,35 +17,8 @@ class User < ActiveRecord::Base
   acts_as_taggable
 
   acts_as_taggable_on :skills, :interests, :goods
-  include Geokit::Geocoders
-
-  def self.post_receive_options
-    ["Live", "Three", "Daily", "Never"]
-  end
-
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, allow_blank: true
 
   devise :trackable, :database_authenticatable, :encryptable, :token_authenticatable, :recoverable, :omniauthable, :omniauth_providers => [:facebook]
-
-  def self.find_for_facebook_oauth(access_token)
-    User.find_by_facebook_uid(access_token["uid"])
-  end
-
-  def self.new_from_facebook(params, facebook_data)
-    u = User.find_by_email(facebook_data["info"]["email"])
-    if !u.nil?
-      u.facebook_uid = facebook_data["uid"]
-    else
-      u = User.new(params).tap do |user|
-        user.email = facebook_data["info"]["email"]
-        user.full_name = facebook_data["info"]["name"]
-        user.facebook_uid = facebook_data["uid"]
-        user.neighborhood_id = Neighborhood.where(community_id: params[:community_id]).first.id
-      end
-    end
-
-    return u
-  end
 
   geocoded_by :normalized_address
 
@@ -59,29 +34,62 @@ class User < ActiveRecord::Base
   has_many :sell_transactions, :class_name => 'Transaction', :as => :owner, :foreign_key => 'owner_id', :dependent => :destroy
   has_many :buy_transactions, :class_name => 'Transaction', :foreign_key => 'buyer_id'
 
-  def organizer_data_points
-    OrganizerDataPoint.find_all_by_organizer_id(self.id)
-  end
+  has_many :attendances, :dependent => :destroy
 
-  include Trackable
+  has_many :events, :through => :attendances
+  has_many :posts, :dependent => :destroy
+  has_many :group_posts, :dependent => :destroy
+  has_many :announcements, :dependent => :destroy, :as => :owner, :include => :replies
+  has_many :images, :as => :imageable, :dependent => :destroy
+
+  has_many :replies, :dependent => :destroy
+
+  has_many :subscriptions, :dependent => :destroy
+  accepts_nested_attributes_for :subscriptions
+  has_many :feeds, :through => :subscriptions, :uniq => true
+
+  has_many :memberships, :dependent => :destroy
+  accepts_nested_attributes_for :memberships
+  has_many :groups, :through => :memberships, :uniq => true
+
+  has_many :feed_owners
+  has_many :managable_feeds, :through => :feed_owners, :class_name => "Feed", :source => :feed
+  has_many :direct_events, :class_name => "Event", :as => :owner, :include => :replies, :dependent => :destroy
+
+  has_many :referrals, :foreign_key => "referee_id"
+  has_many :sent_messages, :dependent => :destroy, :class_name => "Message"
+
+  has_many :received_messages, :as => :messagable, :class_name => "Message", :dependent => :destroy
+
+  has_many :messages
+
+  has_many :mets, :foreign_key => "requester_id"
+
+  has_many :people, :through => :mets, :source => "requestee"
+
   after_create :track_on_creation
   after_destroy :track_on_deletion
 
-  after_create :correlate
-
   before_validation :geocode, :if => :address_changed?
-  before_validation :place_in_neighborhood, :if => :address_changed?
+  before_validation :place_in_neighborhood
 
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, allow_blank: true
   validates_presence_of :community
-  validates_presence_of :address, :on => :create, :unless => :is_transitional_user, :message => "Please provide a street address so CommonPlace can verify that you live in our community."
-  validates_presence_of :address, :on => :update
-
 
   validates_presence_of :first_name, :unless => :is_transitional_user
   validate :validate_first_and_last_names, :unless => :is_transitional_user
+  validates_presence_of :first_name, :last_name
 
   validates_presence_of :neighborhood, :unless => :is_transitional_user
   validates_uniqueness_of :facebook_uid, :allow_blank => true
+
+  validates_presence_of :encrypted_password, :if => :validate_password?
+
+  validates_presence_of :email
+  validates_uniqueness_of :email
+
+  # HACK HACK HACK TODO: This should be in the database schema, or slugs for college towns should ALWAYS be the domain suffix
+  validates_format_of :email, :with => /^([^\s]+)umw\.edu/, :if => :college?
 
   scope :between, lambda { |start_date, end_date|
     { :conditions =>
@@ -107,84 +115,15 @@ class User < ActiveRecord::Base
 
   scope :have_sent_messages, lambda {|user| joins(:received_messages).where(messages: { user_id: user.id }) }
 
-  def facebook_user?
-    self.facebook_uid? || self.private_metadata.has_key?("fb_access_token")
-  end
+  scope :receives_weekly_bulletin, :conditions => {:receive_weekly_digest => true}
 
-  def validate_password?
-    if facebook_user?
-      return false
-    end
-    return true
-  end
+  scope :receives_daily_bulletin, :conditions => {:post_receive_method => ["Live", "Three", "Daily"]}
 
-  validates_presence_of :encrypted_password, :if => :validate_password?
+  scope :receives_posts_live, :conditions => {:post_receive_method => ["Live", "Three"]}
 
-  validates_presence_of :email
-  validates_uniqueness_of :email
-  validates_presence_of :referral_source, on: :create
+  scope :receives_posts_live_unlimited, :conditions => {:post_receive_method => "Live"}
 
-  # HACK HACK HACK TODO: This should be in the database schema, or slugs for college towns should ALWAYS be the domain suffix
-  validates_format_of :email, :with => /^([^\s]+)umw\.edu/, :if => :college?
-
-  def college?
-    self.community and self.community.is_college
-  end
-
-  validates_presence_of :first_name, :last_name
-
-  def self.find_by_email(email)
-    where("LOWER(users.email) = ?", email.try(:downcase)).first
-  end
-
-  def self.find_by_full_name(full_name)
-    name = full_name.split(" ")
-    u = where("LOWER(users.last_name) ILIKE ? AND LOWER(users.first_name) ILIKE ?", name.last, name.first)
-
-    return u if !u.empty?
-
-    nil
-  end
-
-  def reset_password(new_password = "cp123")
-    self.password = new_password
-    self.password_confirmation = new_password
-    self.save
-  end
-
-  has_many :attendances, :dependent => :destroy
-
-  has_many :events, :through => :attendances
-  has_many :posts, :dependent => :destroy
-  has_many :group_posts, :dependent => :destroy
-  has_many :announcements, :dependent => :destroy, :as => :owner, :include => :replies
-  has_many :images, :as => :imageable, :dependent => :destroy
-
-  has_many :replies, :dependent => :destroy
-
-
-  has_many :subscriptions, :dependent => :destroy
-  accepts_nested_attributes_for :subscriptions
-  has_many :feeds, :through => :subscriptions, :uniq => true
-
-  has_many :memberships, :dependent => :destroy
-  accepts_nested_attributes_for :memberships
-  has_many :groups, :through => :memberships, :uniq => true
-
-  has_many :feed_owners
-  has_many :managable_feeds, :through => :feed_owners, :class_name => "Feed", :source => :feed
-  has_many :direct_events, :class_name => "Event", :as => :owner, :include => :replies, :dependent => :destroy
-
-  has_many :referrals, :foreign_key => "referee_id"
-  has_many :sent_messages, :dependent => :destroy, :class_name => "Message"
-
-  has_many :received_messages, :as => :messagable, :class_name => "Message", :dependent => :destroy
-
-  has_many :messages
-
-  has_many :mets, :foreign_key => "requester_id"
-
-  has_many :people, :through => :mets, :source => "requestee"
+  scope :receives_posts_live_limited, :conditions => {:post_receive_method => "Three"}
 
   include CroppableAvatar
   has_attached_file(:avatar,
@@ -239,6 +178,68 @@ class User < ActiveRecord::Base
     t.add lambda {|u| u.action_tags}, :as => :actionstags
   end
 
+  def self.find_for_facebook_oauth(access_token)
+    User.find_by_facebook_uid(access_token["uid"])
+  end
+
+  def self.new_from_facebook(params, facebook_data)
+    u = User.find_by_email(facebook_data["info"]["email"])
+    if !u.nil?
+      u.facebook_uid = facebook_data["uid"]
+    else
+      u = User.new(params).tap do |user|
+        user.email = facebook_data["info"]["email"]
+        user.full_name = facebook_data["info"]["name"]
+        user.facebook_uid = facebook_data["uid"]
+        user.neighborhood_id = Neighborhood.where(community_id: params[:community_id]).first.id
+      end
+    end
+
+    return u
+  end
+
+  def self.post_receive_options
+    ["Live", "Three", "Daily", "Never"]
+  end
+
+  def organizer_data_points
+    OrganizerDataPoint.find_all_by_organizer_id(self.id)
+  end
+
+  def facebook_user?
+    self.facebook_uid? || self.private_metadata.has_key?("fb_access_token")
+  end
+
+  def validate_password?
+    if facebook_user?
+      return false
+    end
+    return true
+  end
+
+  def college?
+    self.community and self.community.is_college
+  end
+
+  def self.find_by_email(email)
+    where("LOWER(users.email) = ?", email.try(:downcase)).first
+  end
+
+  def self.find_by_full_name(full_name)
+    name = full_name.split(" ")
+    u = where("LOWER(users.last_name) ILIKE ? AND LOWER(users.first_name) ILIKE ?", name.last, name.first)
+
+    return u if !u.empty?
+
+    nil
+  end
+
+  def reset_password(new_password = "cp123")
+    self.password = new_password
+    self.password_confirmation = new_password
+    self.save
+  end
+
   def pages
     self.managable_feeds.map do |feed|
       {"name" => feed.name,
@@ -263,16 +264,6 @@ class User < ActiveRecord::Base
     path = (avatar.options[:storage]==:s3) ? avatar.url(style) : avatar.path(style)
     @geometry[style] ||= Paperclip::Geometry.from_file(path)
   end
-
-  scope :receives_weekly_bulletin, :conditions => {:receive_weekly_digest => true}
-
-  scope :receives_daily_bulletin, :conditions => {:post_receive_method => ["Live", "Three", "Daily"]}
-
-  scope :receives_posts_live, :conditions => {:post_receive_method => ["Live", "Three"]}
-
-  scope :receives_posts_live_unlimited, :conditions => {:post_receive_method => "Live"}
-
-  scope :receives_posts_live_limited, :conditions => {:post_receive_method => "Three"}
 
   def messages
     self.sent_messages.select {|m| m.replies.count > 0 }
@@ -338,15 +329,7 @@ class User < ActiveRecord::Base
   end
 
   def place_in_neighborhood
-    if self.community.is_college
-      self.neighborhood = self.community.neighborhoods.select { |n| n.name == self.address }.first
-    else
-      self.neighborhood = self.community.neighborhoods.near(self.to_coordinates, 15).first || self.community.neighborhoods.first
-    end
-    unless self.neighborhood
-      errors.add :address, I18n.t('activerecord.errors.models.user.address',
-                                  :community => self.community.name)
-    end
+    self.neighborhood = self.community.neighborhoods.first
   end
 
   def is_facebook_user
@@ -438,46 +421,7 @@ WHERE
     integer :community_id
     time :created_at
   end
-=begin
-  def skill_list
-    (self.skills || "").split(", ")
-  end
 
-  def interest_list
-    (self.interests || "").split(", ")
-  end
-
-  def good_list
-    (self.goods || "").split(", ")
-  end
-
-  def skill_list=(skill_list)
-    case skill_list
-    when Array
-      self.skills = skill_list.join(", ")
-    else
-      self.skills = skill_list
-    end
-  end
-
-  def good_list=(good_list)
-    case good_list
-    when Array
-      self.goods = good_list.join(", ")
-    else
-      self.goods = good_list
-    end
-  end
-
-  def interest_list=(interest_list)
-    case interest_list
-    when Array
-      self.interests = interest_list.join(", ")
-    else
-      self.interests = interest_list
-    end
-  end
-=end
   def send_reset_password_instructions
     generate_reset_password_token! if should_generate_reset_token?
     kickoff.deliver_password_reset(self)
@@ -588,169 +532,6 @@ WHERE
       self.save
     end
     KickOff.new.send_spam_report_received_notification(self)
-  end
-
-  # Finds StreetAddress with "same" address
-  #
-  # This is like find_st_address except a little bit more lax in matching
-  # addresses. This *still* might not find a match if a user decides to
-  # forgo both the auto-complete and address suggestion, but it can't be
-  # helped if a user decides to be pathological
-  def address_correlate
-    return nil unless (self.community.respond_to?(:launch_date) && Community.find_by_name("Lexington").respond_to?(:launch_date))
-    return nil if self.community.launch_date.to_date < Community.find_by_name("Lexington").launch_date.to_date
-    likeness = 0.94
-    addr = []
-    street = self.community.street_addresses
-    street.each do |street_address|
-      st_addr = street_address.address
-      test = st_addr.jarowinkler_similar(address.split(",").first)
-      if test > likeness
-        likeness = test
-        addr.clear
-        addr << street_address
-      elsif test == likeness
-        addr << street_address
-      end
-    end
-
-    if addr.empty?
-      addr << create_st_address
-    end
-
-    addr.first
-  end
-
-  # Finds StreetAddress with same address
-  #
-  # Note: This should find an exact match because of address verification
-  # upon User registration unless the user forgoes both the auto-complete
-  # and the suggested address
-  # ...Unless one is in the dev-environment where there's no real data
-  # Deprecated?
-  def find_st_address
-    matched = StreetAddress.where("address ILIKE ?", "%#{self.address}%")
-
-    return matched.first if matched.count == 1
-
-    # This should not happen when verify_address is written
-    if matched.count == 0
-      # matched = create_st_address
-      return nil
-    else
-      return nil
-      # We somehow...have the same street address more than once D=
-      # This should never happen
-    end
-
-    return matched
-  end
-
-  def find_resident
-    address_components = self.address.split(" ")
-    matched = self.community.residents.where("address ILIKE ? AND last_name ILIKE ?", "%" + address_components.take(2).join(" ") + "%", self.last_name)
-
-    # Don't want to match with Resident files that already have a User
-    matched_street = matched.select { |resident| !resident.on_commonplace? }
-
-    # Match by e-mail address
-    # E-mail addresses should be unique in that no two Resident files should
-    # have the same e-mail address
-    matched_email = self.community.residents.where("email ILIKE ? AND last_name ILIKE ?", self.email, self.last_name)
-
-    resident = merge(matched_street, matched_email)
-    return resident
-  end
-
-  # Merge "duplicate" Resident files of this user, if there are any
-  def merge(streets, emails)
-
-    # No street address match. Return e-mail match [if any]
-    if streets.count == 0
-      return emails.first
-    end
-
-    # Multiple street address match. Search by name
-    #
-    # The odds of two people with the same exact first AND last name
-    # living at the same address is low enough to be negligible.
-    if street = streets.select { |resident| resident.first_name == self.first_name }
-      if street.count > 1
-        # Well, what are the odds? =(
-      end
-
-      street = street.first
-      if emails.count == 0
-        return street
-      end
-
-      # Check to see if they're the same file
-      email = emails.first
-      if street == email
-        return street
-      end
-
-      # Merge them if they're not the same file
-      if street.present? and email.present?
-        street.email = email.email
-        email.address = street.address
-        email.add_tags(street.tags)
-        street.destroy
-      end
-
-      return email
-    end
-
-    # None of the names matched
-    return emails.first
-  end
-
-  def create_st_address
-    return StreetAddress.create(
-      :community => self.community,
-      :community_id => self.community_id,
-      :address => self.address,
-      :unreliable_name => "#{self.first_name} #{self.last_name}")
-  end
-
-  # Correlates the User and the corresponding StreetAddress file with
-  # the "REAL AMERICAN PERSON" file [aka the Resident file]
-  def correlate
-    return unless self.address.present?
-    #addr = find_st_address
-    self.address.squeeze!(" ")
-    self.address.strip!
-    addr = self.address_correlate
-    if r = find_resident
-      if !r.address?
-        r.address = self.address
-      end
-
-      if !r.street_address?
-        r.street_address = addr
-      end
-
-      if !r.email?
-        r.email = self.email
-      end
-
-      r.user = self
-      r.add_tags(Array("Status: Joined CP"))
-      r.save
-    else
-      r = Resident.create(
-        :community => self.community,
-        :first_name => self.first_name,
-        :last_name => self.last_name,
-        :address => self.address,
-        :email => self.email,
-        :street_address => addr,
-        :user => self,
-        :community_id => self.community_id)
-
-      r.add_tags(Array("Status: Joined CP"))
-      r.save
-    end
   end
 
   private
