@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
-    <title>OurCommonPlace</title>
-    <meta name="description" content="OurCommonPlace helps you share and connect with your neighbors.">
+    <title>ParentsList</title>
+    <meta name="description" content="ParentsList helps you share and connect with your neighbors.">
     <% if ENV['TINFOIL_VERIFICATION'].present? %>
       <meta name="tinfoil-site-verification" content="<%= ENV['TINFOIL_VERIFICATION'] %>">
     <% end %>
@@ -21,7 +21,8 @@
              -webkit-background-size: cover !important;
              -webkit-font-smoothing: antialiased;
              text-rendering: optimizeLegibility;
-             background: url('/assets/shared/redesign/backgrounds/<%= @community.slug.titleize %>.jpg') no-repeat center center fixed #e9e5de;
+             /*background-color: #d4eaef;*/
+             /*background: url('/assets/shared/redesign/backgrounds/<%= @community.slug.titleize %>.jpg') no-repeat center center fixed #e9e5de;*/
            }
      </style>
      <!--[if IE 9]>

@@ -1,20 +1,19 @@
-<div class="directory_nav">
-  <h3 title="pages" class="directory_tab pages-filter">
-    {{^isHarvardNeighbors}}Town {{/isHarvardNeighbors}}Pages   
-  </h3>
-  <h3 title="users" class="directory_tab users-filter">Neighbors</h3>
-</div>
-
 <div id="directory_lists">
 
   <div id="directory_results" class="scroll">
+   
     <div id="directory_failed_search">
       Sorry, we couldn't find anything
     </div>
     <ul></ul>
     <div class="loading-list"></div>
   </div>
-
+  <div class="directory_nav">
+    <h3 title="pages" class="directory_tab pages-filter">
+      {{^isHarvardNeighbors}}Town {{/isHarvardNeighbors}}Pages   
+    </h3>
+    <h3 title="users" class="directory_tab users-filter">Neighbors</h3>
+  </div>
   <div id="directory_search">
     <input type="text" class="search" placeholder="Search&hellip;">
     <div class="remove_search">X</div>

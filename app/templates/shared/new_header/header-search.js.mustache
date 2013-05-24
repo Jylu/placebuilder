@@ -1,1 +1,6 @@
+{{#isAuth}}
 <input type="text" id="search-header" class="pie-element" placeholder="Search {{community_name}}..." >
+{{/isAuth}}
+{{^isAuth}}
+<h1 style="font-size: 22px; text-shadow: none;margin-top: 20px;letter-spacing:0px;font-weight: normal;">Warwick's bulletin board for local parents.</h1>
+{{/isAuth}}

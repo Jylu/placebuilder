@@ -1,62 +1,91 @@
 #sidebar
-  background-image: url("shared/redesign/tan-bg.png")
-  background-color: #e9e5de
-  border-left: 1px solid white
-  box-shadow: inset -1px 0px 0px white
+  //background-image: url("shared/redesign/tan-bg.png")
+  //background-color: rgba(0,0,0,0.5)
+  background-color: #335f7e
+  //border-left: 1px solid white
+  //box-shadow: inset -1px 0px 0px white
   #your-town
     h3
       font-family: $heading
-      font-size: 15px
+      font-size: 13px
       color: $black
-      text-shadow: 1px 1px 1px white
-      border-bottom: 1px solid #c5c2b5
+      //text-shadow: 1px 1px 1px white
+      //border-bottom: 1px solid #c5c2b5
       padding-bottom: 5px
     .your-town-links 
       list-style-type: none
       padding: 0px
       li
-        padding: 4px 8px 4px
-        &:hover, &:active
-          background-color: #f6f4ed
-          border-radius: 5px
+        //padding: 8px 8px 8px 15px
+        &:first-child
+          padding-top: 17px
+        &:hover, &:active, &.current
+          //background-color: rgba(0,0,0,0.65)
+          //border-radius: 20px
         a
           text-decoration: none
           font-family: $heading
-          color: $black
+          color: white
           text-shadow: none
-          font-size: 19px
+          font-size: 15px
           font-weight: normal
           background: no-repeat left
           line-height: 18px
-          text-shadow: 1px 1px 0px white
-          background-position: 0px 0px     
+          //text-shadow: 1px 1px 0px white
+          background-position: 0px 0px   
+          padding: 8px 8px 8px 15px          
+          &:hover, &:active
+            //background-color: rgba(0,0,0,0.65)
+            background-color: #2c5069
+            color: $red !important
+          &.current
+            background-color: $red
+            color: white !important
           span  
             padding-top: 4px 
         .icon
           line-height: 25px
           vertical-align: text-top
-          background-position: 0px 0px
+          //background-position: 0px 0px
           background-repeat: no-repeat
           background-image: url("shared/redesign/your-town-links-25.png") 
-          box-shadow: 1px 1px 0px #f6f4ed
-          border-radius: 5px
+          //box-shadow: 1px 1px 0px #f6f4ed
+          border-radius: 20px
 
         a#questions
           .icon
-            background-position: 0px 0px
-        a#questions.current
+            background-position: -75px 0px
+          &.current
+            .icon
+              background-position: -75px 0px
+            &:hover
+              .icon
+                background-position: -75px 0px
+        a#questions:hover
           .icon
-            background-position: 0px -25px
+            background-position: -75px -25px
         a#transactions
-          .icon 
+          .icon
             background-position: -100px 0px
-        a#transactions.current
+          &.current
+            .icon 
+              background-position: -100px 0px
+            &:hover
+              .icon
+                background-position: -100px 0px
+        a#transactions:hover
           .icon 
             background-position: -100px -25px
         a#events
           .icon
             background-position: -50px 0px
-        a#events.current
+          &.current
+            .icon
+              background-position: -50px 0px
+            &:hover
+              .icon
+                background-position: -50px 0px
+        a#events:hover
           .icon
             background-position: -50px -25px
         a#discussions
@@ -67,15 +96,21 @@
             background-position: -75px -25px
         a#announcements
           .icon
-            background-position: -25px 0px 
-        a#announcements.current
+            background-position: -25px 0px
+          &.current
+            .icon
+              background-position: -25px 0px
+              &:hover
+                .icon
+                  background-position: -25px 0px
+        a#announcements:hover
           .icon
             background-position: -25px -25px
         a.current
-          color: $red !important
+          color: white
           .icon 
-            background-color: #fff
-            border-radius: 5px
+            //background-color: #fff
+            border-radius: 20px
 
   #directory
     font-family: $heading
@@ -87,44 +122,44 @@
         font-family: Verdana, sans-serif
         color: #999
         font-weight: bold
-        text-shadow: 1px 1px 0px white
+        //text-shadow: 1px 1px 0px white
         &:hover
           color: $red
     h3
       font-family: $heading
-      font-size: 16px
-      padding: 8px 4px 5px
-      background-color: #ece7de
+      font-size: 13px
+      padding: 8px 4px 8px
+      //background-color: #ece7de
       color: $black
-      border-radius: 5px 5px 0px 0px
+      //border-radius: 5px 5px 0px 0px
       cursor: pointer
       text-align: center
       text-shadow: none
-      border: 1px solid #d5d1c8      
-      box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
-      text-shadow: 1px 1px 0px white
+      //border: 1px solid #d5d1c8
+      //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
+      //text-shadow: 1px 1px 0px white
       &:hover
         color: $red
-        background-color: #fff
+        //background-color: #fff
         cursor: pointer
     h3.current_tab
-      background-color: #fff
-      color: $black
-      border-bottom: 1px solid #fff
+      //background-color: #fff
+      color: $red
+      //border-bottom: 1px solid #fff
 
     #directory_nav 
       cursor: pointer
 
     #directory_results
-      background-color: #fff
+      //background-color: #fff
       padding: 0px
       border-radius: 0px
-      border: 1px solid #d5d1c8
+      //border: 1px solid #d5d1c8
         top: 0
       #directory_failed_search
         color: #777
         font-weight: normal
-        font-size: 17px
+        font-size: 15px
         text-align: center
       .loading-list
         background-image: url("loading-post.gif")
@@ -132,12 +167,12 @@
         background-repeat: no-repeat
 
       li
-        box-shadow: 0px 1px 0px rgba(255, 255, 255, 1.0)
+        //box-shadow: 0px 1px 0px rgba(255, 255, 255, 1.0)
         cursor: pointer
         padding: 0
         &:first-child
           a
-            padding-top: 13px
+            //padding-top: 13px
         &:last-child
           border-bottom: none
           box-shadow: none
@@ -145,17 +180,21 @@
           h4
             color: $red
         a
-          padding: 6px 0px 6px 9px
+          padding: 8px 0px 8px 15px
+          &:hover, &:active, &.current
+            //background-color: rgba(0,0,0,0.65)
+            background-color: #2c5069
+            color: $red
         h4
           font-family: $heading
-          color: $black
+          color: white
           font-weight: normal
-          font-size: 17px
-          line-height: 17px
-          padding-top: 1px
+          font-size: 15px
+          line-height: 16px
+          //padding-top: 1px
           text-transform: capitalize
           vertical-align: middle
-          text-shadow: 1px 1px 0px white
+          //text-shadow: 1px 1px 0px white
         p
           font-family: $body
           font-size: 13px
@@ -163,7 +202,8 @@
           text-overflow: ellipsis
           line-height: 15px
         .avatar-container
-          border-radius: 5px
+          border-radius: 20px
+          background-color: white
       .directory_item.current
         h4
           color: $red
