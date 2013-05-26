@@ -85,7 +85,7 @@ CommonPlace.main.CreatePageView = CommonPlace.main.TourModalPage.extend(
         @end()
       , this))
     else
-      @nextPage "subscribe", @data
+      window.location = window.location.protocol + "//" + window.location.host + "/" + CommonPlace.community.get("slug") #performing the redirect this way ensures it works with IE and the hash routing
 
   initAvatarUploader: ($el) ->
     self = this

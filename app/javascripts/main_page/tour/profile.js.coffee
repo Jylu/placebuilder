@@ -1,6 +1,6 @@
 CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
   template: "main_page.tour.profile"
-  upcoming_page: "subscribe"
+  upcoming_page: "finish"
   events:
     "click input.continue": "submit"
     "submit form": "submit"
@@ -36,7 +36,10 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     @showSpinner()
     CommonPlace.account.save(data,
       success: (response) ->
-        self.nextPage self.upcoming_page, undefined
+        if self.upcoming_page is "create_page"
+          self.nextPage self.upcoming_page, undefined
+        else
+          window.location = window.location.protocol + "//" + window.location.host + "/" + CommonPlace.community.get("slug") #performing the redirect this way ensures it works with IE and the hash routing
     )
 
   initAvatarUploader: ($el) ->
