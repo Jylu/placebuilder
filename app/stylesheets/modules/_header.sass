@@ -30,6 +30,18 @@
         a
           text-decoration: none
           color: white
+      .home-logo
+        width: 26px
+        height: 26px
+        overflow: hidden
+        float: left
+        margin: 21px 0px 0px 15px
+        cursor: pointer
+        background-image: url("shared/redesign/flag-logo.png")
+        background-position: 0px 0px
+        background-repeat: no-repeat
+        &:hover
+          background-position: 0px -26px
     #user_sign_in, .choose_town_container
       h3
         color: white
@@ -192,10 +204,10 @@
             //text-shadow: 0px 1px 0px #64100D
             behavior: url("assets/PIE.htc")
         .red-button
-          font-size: 15px
+          font-size: 17px
           text-align: center
-          padding: 9px
-          font-weight: normal
+          padding: 7px 9px 8px 9px
+          font-weight: bold
           background-color: $red
           border-left: 0px none
           box-shadow: inset 0px 1px 0px #f18680, 0px 1px 0px rgba(0,0,0,0.15)
