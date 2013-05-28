@@ -1,7 +1,8 @@
 #header
-  background: $cp-blue
-  box-shadow: 0px 3px 5px rgba(0,0,0,0.25)
-  border-bottom: 1px solid #588257
+  //background: $cp-blue
+  box-shadow: 0px 2px 3px rgba(0,0,0,0.10), inset 0px -1px 0px #fbfbfb
+  border-bottom: 1px solid #d5d5d5
+  +linear-gradient(color-stops(#fbfbfb, #f2f2f2))
   a
     text-decoration: none
 
@@ -20,9 +21,9 @@
   &.about, &.app
     .header_left
       h1
-        color: white
-        text-shadow: $black-shadow
-        font-size: 26px
+        //color: white
+        //text-shadow: $black-shadow
+        //font-size: 26px
         font-family: $heading
         text-align: left
         font-weight: bold
@@ -163,13 +164,13 @@
 
   &.app 
     #nav_wrapper
-      border-left: 1px solid #98c897
-      border-right: 1px solid #588257
-      box-shadow: inset -1px 0px 0 0 #98c897
+      //border-left: 1px solid #98c897
+      //border-right: 1px solid #588257
+      //box-shadow: inset -1px 0px 0 0 #98c897
       .header_left
-        border-left: 1px solid #588257
-        border-right: 1px solid #588257
-        box-shadow: inset -1px 0px 0 0 #98c897
+        //border-left: 1px solid #588257
+        //border-right: 1px solid #ccc
+        //box-shadow: inset -1px 0px 0 0 #fff
       .button-wrapper
         background-image: url("shared/redesign/button-tail.png")
         background-color: transparent
@@ -177,30 +178,38 @@
         background-position: 0px -2px
         &:hover
           background-position: 0px -42px
+          cursor: pointer
           .red-button           
-            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.35)
-            +linear-gradient(color-stops(#ee5a56, #b53633), top)
+            box-shadow: inset 0px 1px 0px #f18680, 0px 1px 0px rgba(0,0,0,0.30)
+            background-color: #f26b65
+            //+linear-gradient(color-stops(#ee5a56, #b53633), top)
             behavior: url("assets/PIE.htc")
         &:active
           background-position: 0px -82px
           .red-button
-            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.20)
-            +linear-gradient(color-stops(#d64541, #ac322f), bottom)
-            text-shadow: 0px 1px 0px #64100D
+            box-shadow: inset 0px -1px 0px #f18680 !important
+            //+linear-gradient(color-stops(#d64541, #ac322f), bottom)
+            //text-shadow: 0px 1px 0px #64100D
             behavior: url("assets/PIE.htc")
         .red-button
-          font-size: 17px
+          font-size: 15px
           text-align: center
-          padding: 10px 9px 7px
+          padding: 9px
           font-weight: normal
-          border: 0px
-          border-bottom: 2px solid rgba(0,0,0,0.75)
-          box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3)
+          background-color: $red
+          border-left: 0px none
+          box-shadow: inset 0px 1px 0px #f18680, 0px 1px 0px rgba(0,0,0,0.15)
+          //border-bottom: 2px solid rgba(0,0,0,0.75)
+          //box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3)
           behavior: url("assets/PIE.htc")
           &:hover, &:focus
-            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.35)
+            box-shadow: inset 0px 1px 0px #f18680, 0px 1px 0px rgba(0,0,0,0.30)
+            background-color: #f26b65
+            //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.6), 0px 1px 0px rgba(0,0,0,0.20)
           &:active
-            box-shadow: inset 0px -1px 0px rgba(255,255,255,0.20)
+            box-shadow: inset 0px -1px 0px #f18680 !important
+            //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 1px 0px rgba(0,0,0,0.20)
+            //box-shadow: inset 0px -1px 0px rgba(255,255,255,0.20)
           //&:after
             border-top: 8px transparent #8a2a23
             border-left: 8px transparent
@@ -241,63 +250,67 @@
           font-size: 15px
           padding: 7px 10px 5px
           border-radius: 4px
-          background-color: rgba(0,0,0,0.10)
-          color: #FCFAF4
-          font-weight: bold
-          text-shadow: 1px 1px 0px rgba(0,0,0,0.65)
+          //background-color: rgba(0,0,0,0.10)
+          background-color: #f5f5f5
+          color: #888
+          font-weight: normal
+          //text-shadow: 1px 1px 0px rgba(0,0,0,0.65)
+          text-shadow: 1px 1px 0px white
           -webkit-font-smoothing: antialiased
-          border: 1px solid #588257
-          box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 3px rgba(0,0,0,0.20)
+          border: 1px solid #ccc
+          box-shadow: 0px 1px 0px white, inset 1px 1px 3px rgba(0,0,0,0.20)
           behavior: url("assets/PIE.htc")
           &:active, &:focus
             outline: none
-            //background-color: #FCFAF4
-            background-color: rgba(0,0,0,0.04)
-            color: white
+            background-color: white
+            //background-color: rgba(0,0,0,0.04)
+            color: $black
             text-shadow: none
             box-shadow: inset 2px 2px 4px rgba(0, 0, 0, 0.20), 0px 1px 0px rgba(255, 255, 255, 0.15)
             behavior: url("assets/PIE.htc")
         li
           padding-top: 12px
 
-        .avatar-container 
+        .avatar-container
           border-radius: 2px
           background-size: cover
           background-position: center center
         li.account
           -webkit-font-smoothing: antialiased
-          background: $blue
           padding: 10px 8px 6px 8px
           font-family: $heading
-          font-size: 14px
+          font-size: 13px
           font-weight: normal
-          border: 1px solid #588257 !important
-          color: rgba(255,255,255,0.65)
+          border: 1px solid #ccc !important
+          color: #666
           text-transform: capitalize
           border-radius: 5px
-          +linear-gradient(color-stops(#2e5274, #1b334a), top)
-          box-shadow: 0px 1px 3px rgba(0,0,0,0.25), inset 0px 1px 0px rgba(255,255,255,0.2) 
-          text-shadow: 1px 1px 0px rgba(0,0,0,0.75)
+          +linear-gradient(color-stops(#f2f2f2, #eee))
+          //+linear-gradient(color-stops(#2e5274, #1b334a), top)
+          box-shadow: 0px 1px 3px rgba(0,0,0,0.15), inset 0px 1px 0px white 
+          text-shadow: 1px 1px 0px white
           cursor: pointer
           span.arrow
             font-size: 17px
-            color: rgba(0,0,0, 0.80)
+            color: #888
             font-weight: bold
-            text-shadow: 1px 1px 0px rgba(255,255,255, 0.25)
+            text-shadow: 1px 1px 0px white
             -webkit-font-smoothing: antialiased          
           a
-            color: rgba(255,255,255,0.65)
-            color: white
-            text-shadow: none
+            color: #666
+            text-shadow: 1px 1px 0px white
+            &:hover
+              color: $black
           &:hover, &:focus
-            box-shadow: 0px 1px 2px rgba(0,0,0,.15), inset 0px 1px 0px rgba(255,255,255,0.2)
+            box-shadow: 0px 1px 3px rgba(0,0,0,.15), inset 0px 1px 0px white
             +border-bottom-right-radius(0px)
             +border-bottom-left-radius(0px)
             behavior: url("assets/PIE.htc")
+            a
+              color: $black
             span.arrow
-              color: #497ba7
-              color: rgba(255,255,255,0.65)
-              text-shadow: -1px -1px 0px rgba(0,0,0, 0.85)
+              color: $red
+              //text-shadow: -1px -1px 0px rgba(0,0,0, 0.35)
           //&:active
             color: #fff
             +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
@@ -305,12 +318,12 @@
             box-shadow: 1px 1px 1px rgba(0,0,0,.25)
 
           ul.account-sub
-            background-color: #1b334a
-            box-shadow: 0px 2px 2px rgba(0,0,0,0.40), inset 0px -1px 0px rgba(255,255,255,0.15) 
+            +linear-gradient(color-stops(#f2f2f2, #eee))
+            box-shadow: 0px 3px 3px rgba(0,0,0,0.15), inset 0px -1px 0px white
             font-family: $heading
-            text-shadow: 1px 1px 1px #000
+            text-shadow: 1px 1px 0px white
             border-top: 0px !important
-            border: 1px solid #588257
+            border: 1px solid #ccc
             +border-top-right-radius(0px)
             +border-bottom-right-radius(5px)
             +border-top-left-radius(5px)
@@ -319,24 +332,25 @@
             behavior: url("assets/PIE.htc")
             li
               padding: 0
-              border-bottom: 1px solid rgba(0,0,0,0.40)
-              border-top: 1px solid rgba(255,255,255,0.10)
+              border-bottom: 1px solid #ddd
+              border-top: 1px solid white
               &:first-child
-                border-top: 0px none
+                border-top: 1px solid #ccc
                 +border-top-left-radius(5px)
-                box-shadow: inset 0px 1px 0px rgba(255,255,255,0.10)
+                box-shadow: inset 0px 1px 0px white
                 padding-top: 2px 
               &:last-child
                 border-bottom: 0px none
               &:hover
-                background-color: rgba(92,143,189,0.30)
-                color: rgba(255,255,255,0.65)
+                background-color: white
+                color: $black
               a
                 padding: 10px 10px 9px 10px
                 font-family: $heading
-                font-size: 16px
+                font-size: 13px
+                line-height: 15px
                 font-weight: normal
-                color: rgba(255,255,255,0.65)
+                color: #666
                 span.inbox_number
                   background-color: $red
                   color: rgba(255,255,255,0.65)              
@@ -350,7 +364,7 @@
                   font-family: $body
                   behavior: url("assets/PIE.htc")
                 &:hover
-                  color: #fff
+                  color: $black
                   span.inbox_number
                     color: #fff
                     text-shadow: 1px 1px 0px #000

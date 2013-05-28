@@ -60,7 +60,7 @@
 .welcome p 
   font-family: $heading
   color: $black
-  font-size: 20px
+  font-size: 15px
   font-weight: bold
   text-shadow: 0px 1px 0px #fff
 
@@ -93,7 +93,10 @@ p.welcome-divider
   
 .registration_border
   padding: 22px
-  border: 2px solid #d5d1c8
+  //border: 2px solid #d5d1c8
+  //border-radius: 5px
+  //box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
+  border: 2px solid #dbdbdb
   border-radius: 5px
   box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
 
@@ -115,8 +118,10 @@ p.welcome-divider
 
 #civicProfile, #create_page_registration, #findNeighbors
   overflow: none
-  background-color: #eeecdf
-  background: url(shared/redesign/tan-bg.png) center center
+  //background-color: #eeecdf
+  //background: url(shared/redesign/tan-bg.png) center center
+  +linear-gradient(color-stops(#f2f2f2, #e9e9e9))
+  border: 1px solid #aaa
   z-index: 1000
   margin-top: 0px
   margin-right: auto
@@ -124,13 +129,14 @@ p.welcome-divider
   float: left
   position: relative
   border-radius: 5px
-  border: 1px solid #fff
+  //border: 1px solid #fff
   padding: 8px
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
   text-shadow: 1px 1px 0px white
   color: #333
   width: 448px
   span.divider
+    display: none
     margin-bottom: 15px
     float: left
     width: 100%
@@ -163,12 +169,12 @@ p.welcome-divider
     margin-top: 0px
     margin-bottom: 15px
     -webkit-font-smoothing: antialiased
-    font-size: 18px
+    font-size: 16px
     padding: 8px
     clear: both
     height: auto
     font-family: $heading
-    border: 1px solid #ccc9bd
+    border: 1px solid #ccc
     box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
     color: #131313
@@ -197,11 +203,11 @@ p.welcome-divider
     margin-bottom: 15px
     clear: both
     -webkit-font-smoothing: antialiased
-    font-size: 18px
+    font-size: 16px
     line-height: 21px
     padding: 8px
     font-family: $heading
-    border: 1px solid #ccc9bd
+    border: 1px solid #ccc
     border-radius: 4px
     box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
@@ -840,7 +846,7 @@ div#RealFindNeighbors div#find_bottom
   width: 394px
   margin-bottom: 15px
   margin-top: -5px
-  border: 1px solid #ccc9bd
+  border: 1px solid #ccc
   box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
   li.search-field input
     box-shadow: none
@@ -850,7 +856,7 @@ div#RealFindNeighbors div#find_bottom
 
 #civicProfile div.chzn-drop
   width: 394px !important
-  border: 1px solid #ccc9bd
+  border: 1px solid #ccc
   box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
   margin-top: -15px
   ul.chzn-results li
@@ -877,19 +883,21 @@ div#RealFindNeighbors div#find_bottom
 /************* END OF IMPORTED STYLES ***********/  
 #register
   h2
-    background: url("shared/redesign/stars.png") no-repeat center
+    //background: url("shared/redesign/stars.png") no-repeat center
 #civicProfile, #norms, #register, #findNeighbors
   overflow: none
-  background-color: #eeecdf
-  background: url(shared/redesign/tan-bg.png) center center
+  //background-color: #eeecdf
+  //background: url(shared/redesign/tan-bg.png) center center
   z-index: 1000
+  +linear-gradient(color-stops(#f2f2f2, #e9e9e9))
+  border: 1px solid #aaa
   margin-top: 0px
   margin-right: auto
   margin-left: auto
   float: left
   position: relative
   border-radius: 5px
-  border: 1px solid #fff
+  //border: 1px solid #fff
   color: #333
   padding: 8px
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
@@ -899,12 +907,13 @@ div#RealFindNeighbors div#find_bottom
   span.divider
     background-color: #D5D1C8
     border-bottom: 1px solid #fff
+    display: none
   h2
-    font-size: 44px
+    font-size: 36px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 1px 1px 0px #fff
-    color: $red
+    color: #335f7e
     margin: -5px auto 20px auto
     padding-bottom: 0px
   img.profile_pic
@@ -923,12 +932,12 @@ div#RealFindNeighbors div#find_bottom
     margin-top: 0px
     margin-bottom: 15px
     -webkit-font-smoothing: antialiased
-    font-size: 18px
+    font-size: 16px
     padding: 8px
     clear: both
     height: auto
     font-family: $heading
-    border: 1px solid #ccc9bd
+    border: 1px solid #ccc
     box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
     color: #131313
@@ -960,11 +969,11 @@ div#RealFindNeighbors div#find_bottom
     margin-bottom: 15px
     clear: both
     -webkit-font-smoothing: antialiased
-    font-size: 18px
+    font-size: 16px
     line-height: 21px
     padding: 8px
     font-family: $heading
-    border: 1px solid #ccc9bd
+    border: 1px solid #ccc
     border-radius: 4px
     box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
