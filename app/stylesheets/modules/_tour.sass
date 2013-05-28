@@ -96,8 +96,8 @@ p.welcome-divider
   //border: 2px solid #d5d1c8
   //border-radius: 5px
   //box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
-  border: 2px solid #dbdbdb
-  border-radius: 5px
+  border: 2px solid #e5e5e5
+  border-radius: 4px
   box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
 
 //#findNeighbors 
@@ -118,17 +118,17 @@ p.welcome-divider
 
 #civicProfile, #create_page_registration, #findNeighbors
   overflow: none
-  //background-color: #eeecdf
+  background-color: #f6f4ed
   //background: url(shared/redesign/tan-bg.png) center center
-  +linear-gradient(color-stops(#f2f2f2, #e9e9e9))
-  border: 1px solid #aaa
+  //+linear-gradient(color-stops(#f2f2f2, #e9e9e9))
+  border: 1px solid #fff
   z-index: 1000
   margin-top: 0px
   margin-right: auto
   margin-left: auto
   float: left
   position: relative
-  border-radius: 5px
+  border-radius: 4px
   //border: 1px solid #fff
   padding: 8px
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
@@ -141,7 +141,7 @@ p.welcome-divider
     float: left
     width: 100%
     height: 2px
-    background-color: #dbd8cf
+    background-color: #ddd
     border-bottom: 1px solid #fff
   img.find_title 
     margin: 15px auto 0px 30px
@@ -886,17 +886,17 @@ div#RealFindNeighbors div#find_bottom
     //background: url("shared/redesign/stars.png") no-repeat center
 #civicProfile, #norms, #register, #findNeighbors
   overflow: none
-  //background-color: #eeecdf
+  background-color: #f6f4ed
   //background: url(shared/redesign/tan-bg.png) center center
   z-index: 1000
-  +linear-gradient(color-stops(#f2f2f2, #e9e9e9))
-  border: 1px solid #aaa
+  //+linear-gradient(color-stops(#f2f2f2, #e9e9e9))
+  border: 1px solid #fff
   margin-top: 0px
   margin-right: auto
   margin-left: auto
   float: left
   position: relative
-  border-radius: 5px
+  border-radius: 4px
   //border: 1px solid #fff
   color: #333
   padding: 8px
@@ -905,16 +905,15 @@ div#RealFindNeighbors div#find_bottom
   color: #333
   width: 448px
   span.divider
-    background-color: #D5D1C8
+    background-color: #e5e5e5
     border-bottom: 1px solid #fff
-    display: none
   h2
     font-size: 36px
     text-align: center
     font-family: $Yellowtail
     text-shadow: 1px 1px 0px #fff
-    color: #335f7e
-    margin: -5px auto 20px auto
+    color: $red
+    margin: -5px auto 10px auto
     padding-bottom: 0px
   img.profile_pic
     margin-bottom: 18px
@@ -932,13 +931,14 @@ div#RealFindNeighbors div#find_bottom
     margin-top: 0px
     margin-bottom: 15px
     -webkit-font-smoothing: antialiased
-    font-size: 16px
+    font-size: 15px
+    line-height: 21px
     padding: 8px
     clear: both
     height: auto
     font-family: $heading
     border: 1px solid #ccc
-    box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
+    box-shadow: inset #eee 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
     color: #131313
     input::-webkit-input-placeholder, input:-moz-placeholder, input::-moz-placeholder
@@ -969,13 +969,13 @@ div#RealFindNeighbors div#find_bottom
     margin-bottom: 15px
     clear: both
     -webkit-font-smoothing: antialiased
-    font-size: 16px
+    font-size: 15px
     line-height: 21px
     padding: 8px
     font-family: $heading
     border: 1px solid #ccc
     border-radius: 4px
-    box-shadow: inset #DDD 0px 0px 3px 2px, white 0px 1px 0px
+    box-shadow: inset #eee 0px 0px 3px 2px, white 0px 1px 0px
     background-color: #fff
     color: #131313
     textarea::-webkit-input-placeholder, textarea:-moz-placeholder, textarea::-moz-placeholder
@@ -996,13 +996,13 @@ div#RealFindNeighbors div#find_bottom
       .chzn-single 
         width: 322px  
         background-color: #fefffe
-        border: 1px solid $dark-tan  
+        border: 1px solid #ccc
         padding: 0 8px
         height: 36px 
         line-height: 38px
         font-family: $Rokkitt
         color: $black
-        font-size: 18px
+        font-size: 16px
         background: #fff
         float: left
         box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
@@ -1018,8 +1018,8 @@ div#RealFindNeighbors div#find_bottom
       
       .chzn-results
         width: 338px
-        border-top: 1px solid $dark-tan
-        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        border-top: 1px solid #ccc
+        box-shadow: inset #eee 0px 0px 3px 2px, #fff 0px 1px 0px
         margin: 0px
         padding: 0px
         max-height: 202px
@@ -1030,7 +1030,7 @@ div#RealFindNeighbors div#find_bottom
           border-bottom: 1px dotted #ccc
           padding: 12px 8px
           color: #333
-          font-size: 18px
+          font-size: 15px
           font-family: $heading
           &:hover
             color: $red

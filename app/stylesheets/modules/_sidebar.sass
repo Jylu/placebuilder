@@ -1,8 +1,8 @@
 #sidebar
   //background-image: url("shared/redesign/tan-bg.png")
   //background-color: rgba(0,0,0,0.5)
-  background-color: #f1f1f1
-  border-right: 1px solid white
+  background-color: #f8f7f2
+  border-right: 1px solid #ccc
   //box-shadow: inset -1px 0px 0px white
   #your-town
     h3
@@ -17,18 +17,18 @@
       padding: 0px
       li
         //padding: 8px 8px 8px 15px
-        &:first-child
+        //&:first-child
           padding-top: 17px
         &:hover, &:active, &.current
           //background-color: rgba(0,0,0,0.65)
           //border-radius: 20px
         a
           text-decoration: none
-          font-family: $heading
-          color: #666
+          font-family: $body
+          color: #444
           text-shadow: none
-          font-size: 14px
-          font-weight: normal
+          font-size: 13px
+          font-weight: bold
           background: no-repeat left
           line-height: 18px
           text-shadow: 1px 1px 0px white
@@ -43,7 +43,7 @@
               left: 0px none
               right: 0px none
             //+linear-gradient(color-stops(#fbfbfb, #f2f2f2))
-            background-color: #fbfbfb
+            background-color: #fff
           &.current
             //background-color: #333
             //color: white !important
@@ -52,8 +52,10 @@
               left: 0px none
               right: 0px none
             //+linear-gradient(color-stops(#fbfbfb, #f2f2f2))
+            //font-weight: bold
             background-color: white
             color: $black !important
+            padding-left: 10px
             //min-height: 25px
             //margin-top: -1px
           span  
@@ -71,6 +73,7 @@
           .icon
             background-position: -75px 0px
           &.current
+            border-left: 5px solid #335f7e
             .icon
               background-position: -75px -25px
             &:hover
@@ -83,6 +86,7 @@
           .icon
             background-position: -100px 0px
           &.current
+            border-left: 5px solid #5bb17b
             .icon 
               background-position: -100px -25px
             &:hover
@@ -95,6 +99,7 @@
           .icon
             background-position: -50px 0px
           &.current
+            border-left: 5px solid #ec5d56
             .icon
               background-position: -50px -25px
             &:hover
@@ -107,29 +112,30 @@
           .icon
             background-position: -75px 0px
         a#discussions.current
+          border-left: 5px solid #5bb17b
           .icon
             background-position: -75px -25px
         a#announcements
           .icon
             background-position: -25px 0px
           &.current
+            border-left: 5px solid #ec8056
             .icon
               background-position: -25px -25px
               &:hover
                 .icon
                   background-position: -25px -25px
-        a#announcements:hover
-          .icon
-            background-position: -25px 0px
-        a.current
-          color: white
+        //a.current
+          //color: white
+          padding-left: 10px
           .icon 
             //background-color: #fff
             border-radius: 20px
 
   #directory
-    font-family: $heading
+    font-family: $body
     color: $black
+    border-top: 1px solid #ddd
     #directory_search
       .remove_search 
         font-size: 11px
@@ -140,19 +146,22 @@
         //text-shadow: 1px 1px 0px white
         &:hover
           color: $red
+    .directory_nav
+      border-top: 1px solid #ddd
     h3
-      font-family: $heading
-      font-size: 13px
-      padding: 8px 4px 8px
+      font-family: $body
+      font-size: 12px
+      font-weight: bold
+      //padding: 8px 4px 8px
       //background-color: #ece7de
-      color: $black
+      color: #444
       //border-radius: 5px 5px 0px 0px
       cursor: pointer
-      text-align: center
-      text-shadow: none
+      text-align: left
+      //text-shadow: none
       //border: 1px solid #d5d1c8
       //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
-      //text-shadow: 1px 1px 0px white
+      text-shadow: 1px 1px 0px white
       &:hover
         color: $red
         //background-color: #fff
@@ -161,9 +170,6 @@
       //background-color: #fff
       color: $red
       //border-bottom: 1px solid #fff
-
-    #directory_nav 
-      cursor: pointer
 
     #directory_results
       //background-color: #fff
@@ -187,17 +193,17 @@
         padding: 0
         &:first-child
           a
-            //padding-top: 13px
+            padding-top: 10px
         &:last-child
           border-bottom: none
           box-shadow: none
         &:hover
           h4
-            color: #666
+            color: #444
         a
           padding: 8px 0px 8px 15px
           &:hover, &:active
-            background-color: #fbfbfb
+            background-color: #fff
           &.current
             background-color: white
             color: $black !important
@@ -206,10 +212,10 @@
             background-color: rgba(0,0,0,0.35)
             color: $red
         h4
-          font-family: $heading
-          color: #666
+          font-family: $body
+          color: #444
           font-weight: normal
-          font-size: 14px
+          font-size: 13px
           line-height: 16px
           //padding-top: 1px
           text-transform: capitalize

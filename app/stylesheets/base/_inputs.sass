@@ -27,27 +27,29 @@ input:-moz-placeholder
     
 #directory_search
   input 
-    width: 186px
-    border-radius: 20px
-    box-shadow: 0px none
+    width: 180px
+    border-radius: 4px
+    box-shadow: 0px 1px 0px white, inset 1px 1px 3px rgba(0,0,0,0.20)
     //margin-top: -1px
     //border-top: none
-    border: 1px solid rgba(0,0,0,0.25)
-    padding: 4px 4px 4px 42px
-    margin: 15px 10px 20px 10px
-    font-size: 15px
+    border: 1px solid #ccc
+    padding: 4px 4px 4px 36px
+    margin: 13px 15px 15px 15px
+    font-size: 13px
     text-shadow: 1px 1px 0px white
-    background-color: #fff
+    background-color: #f9f8f6
     background-image: url("shared/redesign/search-icon.png")
     background-position: 8px 6px
     background-repeat: no-repeat
+    font-family: $body
+    -webkit-input-placeholder: #444
     &:hover, &:focus
       outline: none
-      border: 1px solid rgba(0,0,0,0.45)
+      border: 1px solid #bbb
       color: #131313
       background-color: white
       box-shadow: inset #EAEAEA 0px 0px 3px 2px
-      -webkit-input-placeholder: #ccc !important
+      -webkit-input-placeholder: #131313
 
 .wire 
   input.placeholder, textarea.placeholder

@@ -226,11 +226,11 @@ a
       margin: -2px 0px 2px 0px 
       text-align: left
       float: right
-      color: $blue
+      color: #444
       padding: 0
       text-shadow: white 1px 1px 0px
-      font-size: 16px
-      font-weight: bold
+      font-size: 15px
+      font-weight: normal
       line-height: 19px
       width: 298px
       strong
@@ -242,12 +242,12 @@ a
     span 
       display: block 
       margin: 0 
-      color: #555
+      color: #777
       font-weight: normal
       text-shadow: white 1px 1px 0px
       padding: 0
       float: left
-      font-size: 14px 
+      font-size: 13px 
     .icon
       display: inline-block
       width: 32px
@@ -365,9 +365,9 @@ a
         margin-top: 10px  
         margin-bottom: 10px  
         text-shadow: white 1px 1px 0px
-        font-weight: bold
-        font-size: 14px
-        color: #555
+        font-weight: normal
+        font-size: 15px
+        color: #333
         line-height: 17px
         width: 335px
         height: 32px
@@ -394,7 +394,7 @@ a
           display: block
           font-size: 13px
           line-height: 14px
-          color: #555
+          color: #777
           font-weight: normal
           text-shadow: white 1px 1px 0px
           &:first-child
@@ -407,7 +407,7 @@ a
         overflow: hidden
         text-overflow: ellipsis
         width: 285px
-        font-weight: bold
+        //font-weight: bold
 
       li.request
         .icon
@@ -440,11 +440,11 @@ a
           .icon
             background-position: -32px -32px     
     ul li:hover
-      color: $black
+      //color: $black
       clear: both
       background-position: 0px -32px
       span 
-        color: #333
+        //color: #333
       //.icon 
         background-position-y: -32px !important
 
@@ -488,16 +488,16 @@ a
       .chzn-single 
         width: 322px  
         background-color: #fefffe
-        border: 1px solid $dark-tan  
-        padding: 0 8px
+        border: 1px solid #ccc
+        padding: 0px 8px 2px
         height: 36px 
         line-height: 38px
         font-family: $Rokkitt
         color: $black
-        font-size: 18px
-        background: #fff
+        font-size: 15px
+        background: #fefffe
         float: left
-        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        box-shadow: inset #eee 0px 0px 3px 2px, #fff 0px 1px 0px
         span
           color: #555
         div 
@@ -509,33 +509,37 @@ a
             margin-left: -8px 
       
       .chzn-results
-        width: 338px
-        border-top: 1px solid $dark-tan
-        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        width: 337px
+        border-top: 0px none
+        border: 1px solid #ccc
+        box-shadow: inset #eee 0px 0px 3px 2px, #fff 0px 1px 0px
         margin: 0px
         padding: 0px
-        max-height: 202px
+        max-height: 210px
         -webkit-border-radius: 0 0 4px 4px
         -moz-border-radius: 0 0 4px 4px
         border-radius: 0 0 4px 4px
         li
           border-bottom: 1px dotted #ccc
           padding: 12px 8px
+          line-height: 20px
           color: #333
-          font-size: 18px
+          font-size: 15px
           font-family: $heading
           &:hover
-            color: $red
-            background-color: #eee 
+            color: white
+            background-color: $red 
+          &:last-child
+            border-bottom: 0px none
 
       ul.chzn-choices 
-        border: 1px solid $dark-tan
+        border: 1px solid #ccc
         font-family: $Rokkitt
         border-radius: 4px
         color: #333
-        font-size: 18px
+        font-size: 15px
         width: 362px !important
-        box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
+        box-shadow: inset #eee 0px 0px 3px 2px, #fff 0px 1px 0px
         .chzn-drop 
           width: 322px
           border: 0px none
@@ -605,15 +609,15 @@ input, textarea
   width: 322px
   background-color: #fefffe
   margin-bottom: 15px  
-  border: 1px solid $dark-tan  
+  border: 1px solid #ccc 
   padding: 8px
   font-family: $heading
-  font-size: 18px
+  font-size: 15px
   line-height: 21px
   float: left
   border-radius: 4px
   resize: none
-  box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 0px
+  box-shadow: inset #eee 0px 0px 3px 2px, 0px 1px 0px white
   font-weight: normal
   -webkit-font-smoothing: antialiased
 
@@ -644,10 +648,11 @@ textarea.description
   .upload-section 
     float: right
     width: 106px
+    margin-top: 2px
     .box 
       background-color: #fff
       box-shadow: #C8C8C8 0px 0px 4px 1px inset, 0px 1px 0px white
-      border: 1px solid $dark-tan  
+      border: 1px solid #ccc
       border-radius: 4px
       text-align: center
       vertical-align: middle
@@ -682,11 +687,11 @@ textarea.description
     background-color: #fefffe  
     height: 110px  
     margin-bottom: 15px  
-    border: 1px solid $dark-tan  
+    border: 1px solid #ccc  
     padding: 10px 8px
     line-height: 21px  
     font-family: $Rokkitt
-    font-size: 18px
+    font-size: 15px
     overflow: auto
     font-weight: normal !important
     //box-shadow: inset 2px 2px 4px 0px #dddddd  
@@ -733,11 +738,10 @@ textarea
   background-color: #fefffe  
   height: 110px  
   margin-bottom: 15px  
-  border: 1px solid $dark-tan  
+  border: 1px solid #ccc
   padding: 10px 8px
-  line-height: 18px  
   font-family: $Rokkitt
-  font-size: 18px
+  font-size: 15px
   overflow: auto
   font-weight: normal !important
 
@@ -1101,10 +1105,10 @@ form.create-announcement
       padding: 3px 8px
       text-decoration: none
       font-family: $heading
-      color: $blue
+      color: #444
       text-shadow: none
-      font-size: 18px!important
-      font-weight: bold
+      font-size: 16px!important
+      font-weight: normal
       padding-top: 7px
       padding-bottom: 7px
       padding-left: 42px
@@ -1119,7 +1123,7 @@ form.create-announcement
       overflow:hidden
       //margin-bottom: 15px
       &:hover
-        color: $blue !important
+        color: #444 !important
         background-position: top left !important 
   p
     font-family: $heading

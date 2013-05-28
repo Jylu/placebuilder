@@ -1,14 +1,14 @@
 .modal-container, .container
   position: absolute
   //background-image: url(shared/redesign/tan-bg.png)
-  +border-radius(5px)
+  +border-radius(4px)
   z-index: 2000
   width: auto
   overflow: none
-  //background-color: #eeecdf
+  background-color: #f6f4ed
   float: left
-  +linear-gradient(color-stops(#f2f2f2, #e9e9e9))
-  border: 1px solid #aaa
+  //+linear-gradient(color-stops(#f2f2f2, #e9e9e9))
+  border: 1px solid #fff
   color: #333
   padding: 8px
   box-shadow: 0px 2px 1px #000, inset 0px 1px 0px #fff
@@ -18,14 +18,14 @@
     float: left
     width: 100%
     height: 2px
-    background-color: #d5d1c8
+    background-color: #e5e5e5
     border-bottom: 1px solid #fff
     
   .modal-border
     float: left
     padding: 20px
-    border: 2px solid #dbdbdb
-    border-radius: 5px
+    border: 2px solid #e5e5e5
+    border-radius: 4px
     box-shadow: 1px 1px 0px white, inset 1px 1px 0px white
     width: auto
     h1
@@ -203,9 +203,9 @@ div.form-container.share ul li
   background: url(shared/redesign/check-off.png) no-repeat left top
   cursor: pointer
   clear: both
-  font-size: 18px
+  font-size: 15px
   text-shadow: 1px 1px 0px white
-  color: $blue
+  color: #333
   margin-bottom: 6px  
   &:hover, &:focus, &:active
     //background-color: rgba(255, 255, 255, 0.4)
@@ -244,7 +244,12 @@ div.form-container.share
   width: 340px
   text-decoration: none
   h1
-    margin-bottom: 15px
+    margin-bottom: 5px
+    font-family: $Yellowtail
+    font-size: 36px
+    font-weight: normal
+    color: $red
+    margin-top: -20px
   span.divider
     margin-bottom: 15px
   h3
@@ -258,7 +263,7 @@ div.form-container.share
     font-size: 20px
     padding: 10px 5px
     width: 100%
-    height: 40px
+    //height: 40px
     margin: -10px 0px 0px 0px
     text-decoration: none
     cursor: pointer
@@ -291,7 +296,7 @@ div.form-container.share
       width: 100%
       margin: 10px 0px 25px
       text-shadow: 1px 1px 0px white
-      font-size: 14px
+      font-size: 12px
 
 h1
   font: 32px 'Rokkitt', RockwellSTD, Rockwell, sans-serif
@@ -370,9 +375,9 @@ a.share
     +red-button
     margin-left: 15px
     margin-right: 0px
-    font-size: 18px
+    font-size: 16px
     font-weight: bold
-    padding: 10px 15px
+    padding: 8px 15px 10px 15px
     -webkit-font-smoothing: antialiased
     margin-top: 0px
     behavior: url("assets/PIE.htc")
@@ -381,7 +386,7 @@ a.share
     display: block !important 
     float: right !important 
     color: $red
-    font-size: 15px
+    font-size: 13px
     font-family: $heading
     text-decoration: none
     &:hover
