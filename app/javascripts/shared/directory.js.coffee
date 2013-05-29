@@ -5,6 +5,7 @@ CommonPlace.shared.Directory = CommonPlace.View.extend(
   results_div: "directory_results"
 
   events:
+    "click .wire_filter": "loadWire"
     "click .directory_tab": "switchTab"
     "click .remove_search": "removeSearch"
     "keyup input.search"  : "search"
@@ -32,6 +33,11 @@ CommonPlace.shared.Directory = CommonPlace.View.extend(
     @showTab schema
 
   showTab: (schema) ->
+    if schema is "users"
+      @$(".your-town-links").hide()
+    else
+      @$(".your-town-links").show()
+
     @lists.showList schema, {}
     @switchTabClass schema
 
@@ -59,6 +65,12 @@ CommonPlace.shared.Directory = CommonPlace.View.extend(
 
   removeSearchSpinner: ->
     @$(".search").removeClass "loading"
+
+  loadWire: (e) ->
+    e.preventDefault() if e
+    return @showRegistration() if @isGuest()
+    page = @$(e.currentTarget).attr("id")
+    app.communityWire(CommonPlace.community.get("slug"), page)
 
   resizeDirectory: ->
     height = 0

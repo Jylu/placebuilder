@@ -9,8 +9,6 @@ CommonPlace.shared.Sidebar = CommonPlace.View.extend
 
   afterRender: ->
     self = this
-    @nav.render()
-    @$("#your-town").replaceWith(@nav.el)
 
     @directory.render()
     @$("#directory").replaceWith(@directory.el)
