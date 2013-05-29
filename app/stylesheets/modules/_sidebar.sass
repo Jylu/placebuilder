@@ -1,6 +1,6 @@
 #sidebar
   //background-image: url("shared/redesign/tan-bg.png")
-  background-color: #f8f7f2
+  background-color: #FAF8F0
   //border-right: 1px solid #ccc
   //box-shadow: inset -1px 0px 0px white
   #your-town
@@ -16,11 +16,12 @@
       padding: 0px
       li
         //padding: 8px 8px 8px 15px
-        //&:first-child
-          padding-top: 17px
         &:hover, &:active, &.current
           //background-color: rgba(0,0,0,0.65)
           //border-radius: 20px
+        &:first-child
+          a
+            padding-top: 14px
         a
           text-decoration: none
           font-family: $body
@@ -98,7 +99,7 @@
           .icon
             background-position: -50px 0px
           &.current
-            border-left: 5px solid #ec5d56
+            border-left: 5px solid #ec8056
             .icon
               background-position: -50px -25px
             &:hover
@@ -200,7 +201,7 @@
           h4
             color: #444
         a
-          padding: 9px 0px 9px 15px
+          padding: 9px 20px 9px 15px
           &:hover, &:active
             background-color: #fff
           &.current

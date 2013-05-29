@@ -1,9 +1,9 @@
 #header
-  //background: #efbf94
-  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15), inset 0px -1px 0px #f49671
+  background: $red
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.15)
   //box-shadow: 0px 2px 3px rgba(0,0,0,0.10), inset 0px -1px 0px #fbfbfb
-  border-bottom: 1px solid #da6f45
-  background-color: #ec8056
+  border-bottom: 1px solid #D34F49
+  //background-color: #ec8056
   //linear-gradient(color-stops(#fbfbfb, #f2f2f2))
   a
     text-decoration: none
@@ -47,7 +47,7 @@
     #user_sign_in, .choose_town_container
       h3
         color: white
-        font-size: 14px
+        font-size: 13px
         text-shadow: 1px 1px 0px black
         font-family: $heading
       .button
@@ -56,7 +56,7 @@
         box-shadow: inset 0 1px 0px rgba(255,255,255,0.4)
         cursor: pointer
         font-family: $heading
-        font-size: 15px
+        font-size: 13px
         font-weight: normal
         color: white
         border: 1px solid rgba(0,0,0,0.25)
@@ -84,22 +84,22 @@
           color: #fff
           //+linear-gradient(color-stops(#cc4441, #ac322f), bottom)
       .dropdown
-        background: #EEECDF
-        background-image: url("shared/redesign/tan-bg.png")
+        background: #FAF8F0
+        //background-image: url("shared/redesign/tan-bg.png")
         text-align: center
         +border-radius(4px)
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5)
-        border: 1px solid white
+        //border: 1px solid white
         .arrow
           background: url("shared/redesign/arrow.png") no-repeat
           background-position: 100px 12px
         input
           -webkit-appearance: none
-          font-size: 16px
+          font-size: 15px
           padding: 8px
-          border: 1px solid #BCBBAE
+          border: 1px solid #ccc
           font-family: $heading
-          color: #131313
+          color: #666
           background-color: #FEFFFE
           box-shadow: inset #ddd 0px 0px 3px 2px, rgba(255,255,255,1.0) 0px 1px 0px
           -webkit-font-smoothing: antialiased
@@ -111,19 +111,20 @@
           color: #555
         button.signin
           text-align: center
-          +linear-gradient(color-stops(#2e5274, #1b334a))
-          font-weight: bold
+          +red-button
+          //+linear-gradient(color-stops(#2e5274, #1b334a))
+          //font-weight: bold
           font-size: 16px
-          padding-top: 10px
-          padding-bottom: 8px
+          //padding-top: 10px
+          //padding-bottom: 8px
           -webkit-font-smoothing: antialiased
-          background-color: #1b334a
-          text-shadow: -1px -1px 0px #333
-          &:hover, &:focus
+          //background-color: #1b334a
+          //text-shadow: -1px -1px 0px #333
+          //&:hover, &:focus
             color: #fff
             +linear-gradient(color-stops(#3e6b96, #1b334a), top)
             box-shadow: inset 0 1px 0px rgba(255,255,255,0.5)
-          &:active
+          //&:active
             color: #fff
             +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
         button.signin.facebook
@@ -132,7 +133,9 @@
           +linear-gradient(color-stops(#4e6fb6, #3b5998))
           -webkit-font-smoothing: antialiased
           background-color: #3b5998
-          text-shadow: -1px -1px 0px #333
+          //text-shadow: -1px -1px 0px #333
+          border-color: #333
+          box-shadow: inset 0 1px 0px rgba(255,255,255,.5)
           &:hover, &:focus
             color: #fff
             +linear-gradient(color-stops(#5c83d7, #3b5998), top)
@@ -145,7 +148,8 @@
           text-align: left
           font-family: $heading
           cursor: pointer
-          color: #555
+          color: #666
+          font-size: 13px
           font-weight: normal
           text-shadow: 1px 1px 0px white
           -webkit-font-smoothing: antialiased
@@ -178,13 +182,13 @@
 
   &.app 
     #nav_wrapper
-      border-left: 1px solid #da6f45
+      border-left: 1px solid #D34F49
       //border-right: 1px solid #588257
-      box-shadow: inset 1px 0px 0 0 #f49671
+      box-shadow: inset 1px 0px 0 0 #ee6963
       .header_left
         //border-left: 1px solid #588257
-        border-right: 1px solid #da6f45
-        box-shadow: inset -1px 0px 0 0 #f49671
+        border-right: 1px solid #D34F49
+        box-shadow: inset -1px 0px 0 0 #ee6963
       .button-wrapper
         background-image: url("shared/redesign/button-tail.png")
         background-color: transparent
@@ -194,37 +198,41 @@
           background-position: 0px -42px
           cursor: pointer
           .red-button           
-            box-shadow: inset 0px 1px 0px #f18680, 0px 1px 0px rgba(0,0,0,0.30)
-            background-color: #f7ae6d
+            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
+            background-color: #ffe9ba
             //+linear-gradient(color-stops(#ee5a56, #b53633), top)
             behavior: url("assets/PIE.htc")
         &:active
           background-position: 0px -82px
           .red-button
-            box-shadow: inset 0px -1px 0px #ffc088 !important
+            box-shadow: inset 0px -1px 0px rgba(255,255,255,0.25) !important
+            background-color: #fbd687
             //+linear-gradient(color-stops(#d64541, #ac322f), bottom)
             //text-shadow: 0px 1px 0px #64100D
             behavior: url("assets/PIE.htc")
         .red-button
-          font-size: 17px
+          font-size: 15px
           text-align: center
-          padding: 7px 9px 8px 9px
-          font-weight: bold
-          border-color: #e9a05e
+          padding: 10px 6px 10px 6px
+          font-weight: normal
+          //border-color: #e9a05e
+          color: rgba(0,0,0,0.65)
+          border: 0px none
           //background-color: $red
-          background-color: #f7ae6d
-          border-left: 0px none
-          text-shadow: 0px -1px 0px #d98b46
-          box-shadow: inset 0px 1px 0px #ffc088, 0px 1px 0px rgba(0,0,0,0.15)
+          background-color: #fbd687
+          //border-left: 0px none
+          text-shadow: 1px 1px 0px rgba(255,255,255,0.25)
+          box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
           //border-bottom: 2px solid rgba(0,0,0,0.75)
           //box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3)
           behavior: url("assets/PIE.htc")
           &:hover, &:focus
-            box-shadow: inset 0px 1px 0px #ffc088, 0px 1px 0px rgba(0,0,0,0.30)
-            background-color: #f26b65
+            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
+            background-color: #ffe9ba
             //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.6), 0px 1px 0px rgba(0,0,0,0.20)
           &:active
-            box-shadow: inset 0px -1px 0px #ffc088 !important
+            box-shadow: inset 0px -1px 0px rgba(255,255,255,0.25) !important
+            background-color: #fbd687
             //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 1px 0px rgba(0,0,0,0.20)
             //box-shadow: inset 0px -1px 0px rgba(255,255,255,0.20)
           //&:after
@@ -265,27 +273,29 @@
       .nav, .header_search
         #search-header
           font-size: 15px
-          padding: 7px 10px 5px
+          padding: 6px 10px
           border-radius: 4px
-          //background-color: rgba(0,0,0,0.10)
-          background-color: #f49671
+          background-color: rgba(0,0,0,0.08)
+          //background-color: #f49671
           color: #fff
           font-weight: normal
           //text-shadow: 1px 1px 0px rgba(0,0,0,0.65)
-          text-shadow: 1px 1px 0px #f7bca6
+          //text-shadow: 1px 1px 0px #f7bca6
           -webkit-font-smoothing: antialiased
-          border: 1px solid #da6f45
-          box-shadow: 0px 1px 0px #f49671, inset 1px 1px 3px rgba(0,0,0,0.20)
+          border: 1px solid #D34F49
+          box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.1)
           -webkit-input-placeholder: #9d6651 !important
           behavior: url("assets/PIE.htc")
           &:active, &:focus, &:hover
             outline: none
-            text-shadow: 1px 1px 0px white
-            border: 1px solid #da6f45
-            color: #131313 !important
-            background-color: #f9ece6
-            box-shadow: 0px 1px 0px #f49671, inset 1px 1px 3px rgba(0,0,0,0.20)
-            -webkit-input-placeholder: #131313 !important
+            //text-shadow: 1px 1px 0px white
+            border: 1px solid #d04f49
+            //color: #131313 !important
+            color: white
+            //background-color: #f9ece6
+            background-color: rgba(255,255,255,0.15)
+            box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.1)
+            -webkit-input-placeholder: #fff !important
           //&:active, &:focus
             outline: none
             background-color: white
@@ -298,7 +308,8 @@
           padding-top: 12px
 
         .avatar-container
-          border-radius: 2px
+          border-radius: 25px
+          background-color: white
           background-size: cover
           background-position: center center
         li.account
@@ -307,19 +318,19 @@
           font-family: $heading
           font-size: 13px
           font-weight: normal
-          border: 1px solid #ccc !important
-          color: #444
+          //border: 1px solid #ccc !important
+          color: #666
           text-transform: capitalize
           border-radius: 4px
-          background-color: #f8f7f2
+          background-color: #FAF8F0
           //+linear-gradient(color-stops(#f2f2f2, #eee))
           //+linear-gradient(color-stops(#2e5274, #1b334a), top)
-          box-shadow: 0px 1px 3px rgba(0,0,0,0.15), inset 0px 1px 0px white 
+          box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15), inset 0px 1px 0px white
           text-shadow: 1px 1px 0px white
           cursor: pointer
           span.arrow
             font-size: 17px
-            color: #888
+            color: $red
             font-weight: bold
             text-shadow: 1px 1px 0px white
             -webkit-font-smoothing: antialiased          
@@ -336,7 +347,7 @@
             //a
               color: #444
             span.arrow
-              color: #444
+              color: #666
               //text-shadow: -1px -1px 0px rgba(0,0,0, 0.35)
           //&:active
             color: #fff
@@ -350,8 +361,8 @@
             box-shadow: 0px 3px 3px rgba(0,0,0,0.15), inset 0px -1px 0px white
             font-family: $heading
             text-shadow: 1px 1px 0px white
-            border-top: 0px !important
-            border: 1px solid #ccc
+            //border-top: 0px !important
+            //border: 1px solid #ccc
             +border-top-right-radius(0px)
             +border-bottom-right-radius(4px)
             +border-top-left-radius(4px)
