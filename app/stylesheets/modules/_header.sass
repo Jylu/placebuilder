@@ -1,8 +1,9 @@
 #header
-  background: $red
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.15)
+  //background: url("shared/redesign/tan-bg.gif") repeat #FAF8F0
+  background: #FAF8F0
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.10)
   //box-shadow: 0px 2px 3px rgba(0,0,0,0.10), inset 0px -1px 0px #fbfbfb
-  border-bottom: 1px solid #D34F49
+  border-bottom: 1px solid #ddd9d1
   //background-color: #ec8056
   //linear-gradient(color-stops(#fbfbfb, #f2f2f2))
   a
@@ -51,15 +52,15 @@
         text-shadow: 1px 1px 0px black
         font-family: $heading
       .button
-        padding: 8px 4px
+        padding: 8px 4px !important
         border-radius: 4px 
         box-shadow: inset 0 1px 0px rgba(255,255,255,0.4)
         cursor: pointer
         font-family: $heading
-        font-size: 13px
-        font-weight: normal
+        font-size: 16px !important
+        font-weight: bold
         color: white
-        border: 1px solid rgba(0,0,0,0.25)
+        //border: 1px solid rgba(0,0,0,0.25)
         text-align: center
         text-shadow: 0px -1px 0px rgba(0,0,0,0.5)
       .blue
@@ -72,23 +73,25 @@
           color: #fff
           +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
       .red
-        background: $red
+        +red-button
+        //background: $red
         //+linear-gradient(color-stops(#cc4441, #ac322f))
-        &:hover, &:focus
+        //&:hover, &:focus
           background: lighten($red, 3%)
           box-shadow: inset 0 1px 0px rgba(255,255,255,0.4), 0px 1px 1px rgba(0,0,0,0.25)
           color: #fff
           //+linear-gradient(color-stops(#ea4e4a, #ac322f), top)
           +
-        &:active
+        //&:active
           color: #fff
           //+linear-gradient(color-stops(#cc4441, #ac322f), bottom)
       .dropdown
-        background: #FAF8F0
+        //background: #FAF8F0
+        background: url("shared/redesign/tan-bg.gif") repeat #FAF8F0
         //background-image: url("shared/redesign/tan-bg.png")
         text-align: center
         +border-radius(4px)
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5)
+        box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.35)
         //border: 1px solid white
         .arrow
           background: url("shared/redesign/arrow.png") no-repeat
@@ -97,7 +100,7 @@
           -webkit-appearance: none
           font-size: 15px
           padding: 8px
-          border: 1px solid #ccc
+          border: 1px solid #e4ded1
           font-family: $heading
           color: #666
           background-color: #FEFFFE
@@ -133,9 +136,9 @@
           +linear-gradient(color-stops(#4e6fb6, #3b5998))
           -webkit-font-smoothing: antialiased
           background-color: #3b5998
-          //text-shadow: -1px -1px 0px #333
+          text-shadow: -1px -1px 0px #3b5998
           border-color: #333
-          box-shadow: inset 0 1px 0px rgba(255,255,255,.5)
+          box-shadow: inset 0 1px 0px rgba(255,255,255,.35)
           &:hover, &:focus
             color: #fff
             +linear-gradient(color-stops(#5c83d7, #3b5998), top)
@@ -182,13 +185,13 @@
 
   &.app 
     #nav_wrapper
-      border-left: 1px solid #D34F49
+      border-left: 1px solid #ded9cd
       //border-right: 1px solid #588257
-      box-shadow: inset 1px 0px 0 0 #ee6963
+      box-shadow: inset 1px 0px 0 0 rgba(255,255,255,0.5)
       .header_left
         //border-left: 1px solid #588257
-        border-right: 1px solid #D34F49
-        box-shadow: inset -1px 0px 0 0 #ee6963
+        border-right: 1px solid #ded9cd
+        box-shadow: inset -1px 0px 0 0 rgba(255,255,255,0.5)
       .button-wrapper
         background-image: url("shared/redesign/button-tail.png")
         background-color: transparent
@@ -198,15 +201,15 @@
           background-position: 0px -42px
           cursor: pointer
           .red-button           
-            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
-            background-color: #ffe9ba
+            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.07)
+            background-color: $red
             //+linear-gradient(color-stops(#ee5a56, #b53633), top)
             behavior: url("assets/PIE.htc")
         &:active
           background-position: 0px -82px
           .red-button
             box-shadow: inset 0px -1px 0px rgba(255,255,255,0.25) !important
-            background-color: #fbd687
+            background-color: $red
             //+linear-gradient(color-stops(#d64541, #ac322f), bottom)
             //text-shadow: 0px 1px 0px #64100D
             behavior: url("assets/PIE.htc")
@@ -216,23 +219,23 @@
           padding: 10px 6px 10px 6px
           font-weight: normal
           //border-color: #e9a05e
-          color: rgba(0,0,0,0.65)
+          color: white
           border: 0px none
-          //background-color: $red
-          background-color: #fbd687
+          background-color: $red
+          //background-color: #fbd687
           //border-left: 0px none
-          text-shadow: 1px 1px 0px rgba(255,255,255,0.25)
-          box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
+          //text-shadow: 0px -1px 0px rgba(0,0,0,0.35)
+          box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.07)
           //border-bottom: 2px solid rgba(0,0,0,0.75)
           //box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3)
           behavior: url("assets/PIE.htc")
           &:hover, &:focus
-            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
-            background-color: #ffe9ba
+            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.07)
+            background-color: $red
             //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.6), 0px 1px 0px rgba(0,0,0,0.20)
           &:active
             box-shadow: inset 0px -1px 0px rgba(255,255,255,0.25) !important
-            background-color: #fbd687
+            background-color: $red
             //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 1px 0px rgba(0,0,0,0.20)
             //box-shadow: inset 0px -1px 0px rgba(255,255,255,0.20)
           //&:after
@@ -275,27 +278,27 @@
           font-size: 15px
           padding: 6px 10px
           border-radius: 4px
-          background-color: rgba(0,0,0,0.08)
-          //background-color: #f49671
+          //background-color: rgba(0,0,0,0.08)
+          background-color: #faf8f0
           color: #fff
           font-weight: normal
           //text-shadow: 1px 1px 0px rgba(0,0,0,0.65)
           //text-shadow: 1px 1px 0px #f7bca6
           -webkit-font-smoothing: antialiased
-          border: 1px solid #D34F49
-          box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.1)
-          -webkit-input-placeholder: #9d6651 !important
+          border: 1px solid #ded9cd
+          box-shadow: 0px 1px 0px rgba(255,255,255,0.5), inset 1px 1px 3px rgba(0, 0, 0, 0.1)
+          -webkit-input-placeholder: #333 !important
           behavior: url("assets/PIE.htc")
           &:active, &:focus, &:hover
             outline: none
             //text-shadow: 1px 1px 0px white
-            border: 1px solid #d04f49
+            border: 1px solid #ded9cd
             //color: #131313 !important
-            color: white
-            //background-color: #f9ece6
-            background-color: rgba(255,255,255,0.15)
+            color: $black
+            background-color: #faf9f6
+            //background-color: rgba(255,255,255,0.25)
             box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.1)
-            -webkit-input-placeholder: #fff !important
+            -webkit-input-placeholder: #333 !important
           //&:active, &:focus
             outline: none
             background-color: white
@@ -318,14 +321,15 @@
           font-family: $heading
           font-size: 13px
           font-weight: normal
-          //border: 1px solid #ccc !important
+          border: 1px solid #ded9cd !important
           color: #666
           text-transform: capitalize
           border-radius: 4px
-          background-color: #FAF8F0
+          background: url("shared/redesign/tan-bg.gif") repeat #FAF8F0
+          //background-color: #FAF8F0
           //+linear-gradient(color-stops(#f2f2f2, #eee))
           //+linear-gradient(color-stops(#2e5274, #1b334a), top)
-          box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15), inset 0px 1px 0px white
+          box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.05), inset 0px 1px 0px white
           text-shadow: 1px 1px 0px white
           cursor: pointer
           span.arrow
@@ -357,12 +361,13 @@
 
           ul.account-sub
             //+linear-gradient(color-stops(#f2f2f2, #eee))
-            background-color: #f8f7f2
+            //background-color: #f8f7f2
+            background: url("shared/redesign/tan-bg.gif") repeat #FAF8F0
             box-shadow: 0px 3px 3px rgba(0,0,0,0.15), inset 0px -1px 0px white
             font-family: $heading
             text-shadow: 1px 1px 0px white
             //border-top: 0px !important
-            //border: 1px solid #ccc
+            border: 1px solid #ded9cd
             +border-top-right-radius(0px)
             +border-bottom-right-radius(4px)
             +border-top-left-radius(4px)
@@ -371,10 +376,10 @@
             behavior: url("assets/PIE.htc")
             li
               padding: 0
-              border-bottom: 1px solid #ddd
+              border-bottom: 1px solid #ded9cd
               border-top: 1px solid white
               &:first-child
-                border-top: 1px solid #ccc
+                border-top: 0px none
                 +border-top-left-radius(4px)
                 box-shadow: inset 0px 1px 0px white
                 padding-top: 2px 
