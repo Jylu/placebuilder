@@ -1,6 +1,6 @@
 #sidebar
-  //background-image: url("shared/redesign/tan-bg.png")
-  background-color: #FAF8F0
+  background-image: url("shared/redesign/brown-bg.gif")
+  background-color: #ea9a76
   //border-right: 1px solid #ccc
   //box-shadow: inset -1px 0px 0px white
   #your-town
@@ -24,10 +24,10 @@
             padding-top: 14px
         a
           text-decoration: none
-          font-family: $body
-          color: #444
+          font-family: $heading
+          color: white
           text-shadow: none
-          font-size: 13px
+          font-size: 15px
           font-weight: normal
           background: no-repeat left
           line-height: 18px
@@ -43,7 +43,7 @@
               left: 0px none
               right: 0px none
             //+linear-gradient(color-stops(#fbfbfb, #f2f2f2))
-            background-color: #fff
+            background-color: rgba(255,255,255,0.25)
           &.current
             //background-color: #333
             //color: white !important
@@ -54,8 +54,8 @@
             //+linear-gradient(color-stops(#fbfbfb, #f2f2f2))
             //font-weight: bold
             background-color: white
-            color: $black !important
-            padding-left: 10px
+            color: $blue !important
+            //padding-left: 10px
             //min-height: 25px
             //margin-top: -1px
           span  
@@ -73,7 +73,7 @@
           .icon
             background-position: -75px 0px
           &.current
-            border-left: 5px solid #3d7fac
+            //border-left: 5px solid #3d7fac
             .icon
               background-position: -75px -25px
             &:hover
@@ -86,7 +86,7 @@
           .icon
             background-position: -100px 0px
           &.current
-            border-left: 5px solid #5bb17b
+            //border-left: 5px solid #5bb17b
             .icon 
               background-position: -100px -25px
             &:hover
@@ -99,7 +99,7 @@
           .icon
             background-position: -50px 0px
           &.current
-            border-left: 5px solid #ec8056
+            //border-left: 5px solid #ec8056
             .icon
               background-position: -50px -25px
             &:hover
@@ -112,14 +112,14 @@
           .icon
             background-position: -75px 0px
         a#discussions.current
-          border-left: 5px solid #5bb17b
+          //border-left: 5px solid #5bb17b
           .icon
             background-position: -75px -25px
         a#announcements
           .icon
             background-position: -25px 0px
           &.current
-            border-left: 5px solid #b07bd9
+            //border-left: 5px solid #b07bd9
             .icon
               background-position: -25px -25px
               &:hover
@@ -147,14 +147,15 @@
         &:hover
           color: $red
     .directory_nav
-      border-top: 1px solid #ebe9e3
+      border-top: 1px solid #875a4f
+      box-shadow: inset 0px 1px 0px rgba(255,255,255,0.15)
     h3
       font-family: $body
       font-size: 12px
       font-weight: bold
       //padding: 8px 4px 8px
       //background-color: #ece7de
-      color: #444
+      color: white
       //border-radius: 5px 5px 0px 0px
       cursor: pointer
       text-align: left
@@ -199,24 +200,24 @@
           box-shadow: none
         &:hover
           h4
-            color: #444
+            color: $red
         a
           padding: 9px 20px 9px 15px
           &:hover, &:active
             background-color: #fff
           &.current
             background-color: white
-            color: $black !important
+            color: $red !important
           //&:hover, &:active, &.current
             //background-color: rgba(0,0,0,0.65)
             background-color: rgba(0,0,0,0.35)
             color: $red
         h4
-          font-family: $body
-          color: #444
+          font-family: $heading
+          color: white
           font-weight: normal
-          font-size: 13px
-          line-height: 16px
+          font-size: 15px
+          line-height: 17px
           //padding-top: 1px
           text-transform: capitalize
           vertical-align: middle
@@ -233,4 +234,4 @@
       .directory_item.current
         background-color: white
         h4
-          color: $black
+          color: $red

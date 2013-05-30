@@ -2,7 +2,7 @@
   background: $red
   box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.15)
   //box-shadow: 0px 2px 3px rgba(0,0,0,0.10), inset 0px -1px 0px #fbfbfb
-  border-bottom: 1px solid #D34F49
+  border-bottom: 1px solid #d86d50
   //background-color: #ec8056
   //linear-gradient(color-stops(#fbfbfb, #f2f2f2))
   a
@@ -182,13 +182,13 @@
 
   &.app 
     #nav_wrapper
-      border-left: 1px solid #D34F49
+      border-left: 1px solid #e77353
       //border-right: 1px solid #588257
-      box-shadow: inset 1px 0px 0 0 #ee6963
+      box-shadow: inset 1px 0px 0 0 #fa9377
       .header_left
         //border-left: 1px solid #588257
-        border-right: 1px solid #D34F49
-        box-shadow: inset -1px 0px 0 0 #ee6963
+        border-right: 1px solid #e77353
+        box-shadow: inset -1px 0px 0 0 #fa9377
       .button-wrapper
         background-image: url("shared/redesign/button-tail.png")
         background-color: transparent
@@ -198,15 +198,16 @@
           background-position: 0px -42px
           cursor: pointer
           .red-button           
-            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
-            background-color: #ffe9ba
+            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.15)
+            background-color: #faf8f0
+            color: $red
             //+linear-gradient(color-stops(#ee5a56, #b53633), top)
             behavior: url("assets/PIE.htc")
         &:active
           background-position: 0px -82px
           .red-button
-            box-shadow: inset 0px -1px 0px rgba(255,255,255,0.25) !important
-            background-color: #fbd687
+            box-shadow: inset 0px -1px 0px rgba(255,255,255,0.5) !important
+            background-color: #faf8f0
             //+linear-gradient(color-stops(#d64541, #ac322f), bottom)
             //text-shadow: 0px 1px 0px #64100D
             behavior: url("assets/PIE.htc")
@@ -216,23 +217,24 @@
           padding: 10px 6px 10px 6px
           font-weight: normal
           //border-color: #e9a05e
-          color: rgba(0,0,0,0.65)
+          color: $blue
           border: 0px none
           //background-color: $red
-          background-color: #fbd687
+          background-color: #faf8f0
           //border-left: 0px none
           text-shadow: 1px 1px 0px rgba(255,255,255,0.25)
-          box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
+          box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.15)
           //border-bottom: 2px solid rgba(0,0,0,0.75)
           //box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3)
           behavior: url("assets/PIE.htc")
           &:hover, &:focus
-            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.25), 0px 2px 0px rgba(0, 0, 0, 0.15)
-            background-color: #ffe9ba
+            box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.15)
+            background-color: #faf8f0
+            color: $red
             //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.6), 0px 1px 0px rgba(0,0,0,0.20)
           &:active
-            box-shadow: inset 0px -1px 0px rgba(255,255,255,0.25) !important
-            background-color: #fbd687
+            box-shadow: inset 0px -1px 0px rgba(255,255,255,0.5) !important
+            background-color: #faf8f0
             //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.3), 0px 1px 0px rgba(0,0,0,0.20)
             //box-shadow: inset 0px -1px 0px rgba(255,255,255,0.20)
           //&:after
@@ -282,8 +284,8 @@
           //text-shadow: 1px 1px 0px rgba(0,0,0,0.65)
           //text-shadow: 1px 1px 0px #f7bca6
           -webkit-font-smoothing: antialiased
-          border: 1px solid #D34F49
-          box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 3px rgba(0, 0, 0, 0.1)
+          border: 1px solid #da6e50
+          box-shadow: 0px 1px 0px #fa9377, inset 1px 1px 3px rgba(0, 0, 0, 0.1)
           -webkit-input-placeholder: #9d6651 !important
           behavior: url("assets/PIE.htc")
           &:active, &:focus, &:hover
