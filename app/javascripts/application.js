@@ -136,7 +136,7 @@ var Application = Backbone.Router.extend({
 
   communityWire: function(c, tab) {
     this.showPage("community");
-    this.pages.community.lists.switchTab(tab);
+    this.pages.community.lists.switchTab(tab, false, tab);
   },
 
   communityPostBox: function(c, tab) {

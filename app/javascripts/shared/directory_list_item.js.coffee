@@ -11,6 +11,13 @@ CommonPlace.shared.DirectoryListItem = CommonPlace.View.extend(
   name: ->
     @model.get "name"
 
+  name_id: ->
+    name = @model.get "name"
+
+    id = name.replace /\ /g, "_"
+
+    return id
+
   clicked_item: (e) ->
     e.preventDefault() if e
     if @isGuest()

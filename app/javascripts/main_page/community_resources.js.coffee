@@ -32,11 +32,11 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       #set the value of the search input to the placeholder text
       search.attr("value", search_text)
 
-  switchTab: (tab, single) ->
+  switchTab: (tab, single, id) ->
     self = this
     @view = @tabs[tab](this)
-    $(".wire_filter").removeClass "current"
-    $("#"+tab).addClass "current"
+    $(".directory_item").removeClass "current"
+    $("#"+id).addClass "current"
     category = $("#"+tab).text()
     @changeSearchText category
     @$(".search-switch").removeClass "active"
@@ -44,7 +44,7 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       @$(".directory-search").addClass "active"
     else
       @$(".post-search").addClass "active"
-    @view.singleWire single  if single
+    @view.singleWire single if single
     if (self.currentQuery)
       self.search()
     else
@@ -208,6 +208,8 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       wire.searchPage feed
       @changeSearchText feed.get("name")
       @view = @makeTab wire
+      id = @underscore(feed.attributes.name)
+      @switchTab "posts", wire, id
       @showTab()
     , @))
 
@@ -238,6 +240,8 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
       wire.searchPage group
       @changeSearchText group.get("name")
       @view = @makeTab wire
+      id = @underscore(group.attributes.name)
+      @switchTab "posts", wire, id
       @showTab()
     , @))
 
@@ -301,9 +305,12 @@ CommonPlace.main.CommunityResources = CommonPlace.View.extend(
         emptyMessage: "No posts here yet."
       )
       wire.searchUser user
-      self.switchTab "posts", wire
+      id = self.underscore(user.attributes.name)
+      self.switchTab "posts", wire, id
       $(window).scrollTo 0
 
+  underscore: (string) ->
+    return string.replace /\ /g, "_"
 
   debounceSearch: _.debounce(->
     @search()
