@@ -1,6 +1,6 @@
 .replies-area
   padding: 3px 0px 0 0px
-  font-family: Helvetica, sans-serif
+  font-family: $body
   .replies
     .comment
       .avatar-container
@@ -70,8 +70,8 @@
         //border-top: 1px dotted #ddd
 
       .author, .body
-        line-height: 18px
-        font-size: 13px
+        line-height: 19px
+        font-size: 14px
 
       .author
         font-weight: bold
@@ -96,14 +96,14 @@
         white-space: nowrap   
         .time
           color: #aaa
-          font-size: 12px
+          font-size: 13px
           white-space: nowrap
         .thank-divider
           color: #aaa
-          font-size: 11px
+          font-size: 13px
         .thanks-count
           color: #aaa
-          font-size: 12px
+          font-size: 13px
           //&:hover
             color: #888
             //text-decoration: underline
@@ -111,7 +111,7 @@
         
 
       a.delete-reply, a.thank-reply, .thanked-reply, a.reply-message-link
-        font-size: 10px
+        font-size: 11px
         text-decoration: none
         font-weight: bold
         text-transform: uppercase
@@ -134,13 +134,13 @@
   .reply-text
     textarea 
       font-family: Helvetica, Arial, sans-serif
-      font-size: 13px
+      font-size: 14px
       color: #555
       background: white
       box-shadow: none
       border: 1px dotted #d9d9d9
       padding: 8px 10px
-      line-height: 14px
+      line-height: 19px
       font-weight: normal
       -webkit-font-smoothing: antialiased
       input::-webkit-input-placeholder
@@ -155,28 +155,30 @@
       
 
 .submit-c
-  background: $red
+  +red-button
   border-radius: 4px
   color: #fff
-  text-shadow: 0px -1px 0px #64100D
+  //text-shadow: 0px -1px 0px #64100D
+  display: none
   font-weight: bold
   letter-spacing: 1px
   font-family: $body
-  +linear-gradient(color-stops(#d0413d, #ac322f), top)
-  font-size: 11px
+  //+linear-gradient(color-stops(#d0413d, #ac322f), top)
+  font-size: 12px
   text-decoration: none
-  border: 1px solid
-  border-color: #ac322f
-  box-shadow: inset 0px 1px 0.5px #e28986
-  padding: 6px
+  //border: 1px solid
+  //border-color: #ac322f
+  //box-shadow: inset 0px 1px 0.5px #e28986
+  padding: 8px
   text-align: center
   text-transform: uppercase
-  &:hover, &:focus
+  cursor: pointer
+  //&:hover, &:focus
     color: #fff
     +linear-gradient(color-stops(#ee5a56, #b53633), top)
     box-shadow: 0px 2px 4px #adab9f
     cursor: pointer
-  &:active
+  //&:active
     color: #fff
     +linear-gradient(color-stops(#d64541, #ac322f), bottom)
     text-shadow: 0px 1px 0px #64100D

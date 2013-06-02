@@ -3,11 +3,10 @@
 <div class="post-content">
    <a href="{{author_url}}"><img class="avatar-container" src="{{avatar_url}}" /></a>
   <h3><a class="title" href="{{share_url}}">{{title}}</a></h3>
-  
+  <p class="post-info"><a class="author" href="{{author_url}}">{{author}}</a> posted <a href="{{share_url}}">{{published_at_in_words}}</a> in <a class="wire_filter" href="/{{community_slug}}/list/discussions">{{wireCategoryName}}</a></p>
   {{#markdown}}
    {{body}}
   {{/markdown}}
-  <p class="post-info"><a class="author" href="{{author_url}}">{{author}}</a> posted <a href="{{share_url}}">{{published_at_in_words}}</a> in <a class="wire_filter" href="/{{community_slug}}/list/discussions">{{wireCategoryName}}</a></p>
 </div>
 <div class="post-action clear">
   <ul class="actions">
