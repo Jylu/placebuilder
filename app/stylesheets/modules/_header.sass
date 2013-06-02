@@ -5,6 +5,8 @@
   border-bottom: 1px solid #D34F49
   //background-color: #ec8056
   //linear-gradient(color-stops(#fbfbfb, #f2f2f2))
+  padding-top: 15px
+  padding-bottom: 15px
   a
     text-decoration: none
 
@@ -37,7 +39,7 @@
         height: 26px
         overflow: hidden
         float: left
-        margin: 21px 0px 0px 15px
+        margin: 6px 0px 0px 15px
         cursor: pointer
         background-image: url("shared/redesign/flag-logo.png")
         background-position: 0px 0px
@@ -182,9 +184,9 @@
 
   &.app 
     #nav_wrapper
-      border-left: 1px solid #D34F49
+      //border-left: 1px solid #D34F49
       //border-right: 1px solid #588257
-      box-shadow: inset 1px 0px 0 0 #ee6963
+      //box-shadow: inset 1px 0px 0 0 #ee6963
       .header_left
         //border-left: 1px solid #588257
         border-right: 1px solid #D34F49
@@ -200,7 +202,7 @@
           .red-button           
             box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.15)
             background-color: #faf8f0
-            color: $red
+            color: $black
             //+linear-gradient(color-stops(#ee5a56, #b53633), top)
             behavior: url("assets/PIE.htc")
         &:active
@@ -217,10 +219,11 @@
           padding: 10px 6px 10px 6px
           font-weight: normal
           //border-color: #e9a05e
-          color: #444
+          color: #333
           border: 0px none
           //background-color: $red
-          background-color: #faf8f0
+          //background-color: #faf8f0
+          background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
           //border-left: 0px none
           text-shadow: 1px 1px 0px rgba(255,255,255,0.25)
           box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.15)
@@ -230,7 +233,7 @@
           &:hover, &:focus
             box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.15)
             background-color: #faf8f0
-            color: $red
+            color: #333
             //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.6), 0px 1px 0px rgba(0,0,0,0.20)
           &:active
             box-shadow: inset 0px -1px 0px rgba(255,255,255,0.5) !important
@@ -275,7 +278,7 @@
       .nav, .header_search
         #search-header
           font-size: 15px
-          padding: 6px 10px
+          padding: 6px 10px 5px
           border-radius: 4px
           background-color: rgba(0,0,0,0.08)
           //background-color: #f49671
@@ -316,9 +319,9 @@
           background-position: center center
         li.account
           -webkit-font-smoothing: antialiased
-          padding: 10px 8px 6px 8px
+          padding: 10px 7px 6px 7px
           font-family: $heading
-          font-size: 13px
+          font-size: 14px
           font-weight: normal
           //border: 1px solid #ccc !important
           color: #666
@@ -338,7 +341,7 @@
             text-shadow: 1px 1px 0px white
             -webkit-font-smoothing: antialiased          
           a
-            color: #444
+            color: #666
             text-shadow: 1px 1px 0px white
             &:hover
               color: $red

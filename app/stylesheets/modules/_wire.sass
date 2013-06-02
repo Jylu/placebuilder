@@ -20,7 +20,7 @@
             //border: 1px solid #fff
             color: #444
             border-radius: 4px
-            box-shadow: 0px 2px 0px rgba(0,0,0,0.15)
+            box-shadow: 0px 2px 1px rgba(0,0,0,0.20)
             font-family: $heading
             //-webkit-filter: none !important
             &:after, &:before
@@ -54,12 +54,12 @@
                 color: #aaa
         .wire-item 
           background: white
-          box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15)
+          box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.20)
           //box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.65)
           //-moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.4)
           //-webkit-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.4))
           //filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.4))
-          border-radius: 4px
+          //border-radius: 4px
           padding: 5px
           position: relative
           &:after, &:before
@@ -84,7 +84,7 @@
             margin-top: -8px
           .wire-top
             h3
-              font: 16px $body
+              font: 18px $body
               color: $blue
               text-shadow: 1px 1px 0px #fff
               &:hover
@@ -109,10 +109,10 @@
 
           .post-content
             padding: 15px
-              bottom: 10px
+              bottom: 0px
             .photo-container
               //border-top: 1px dotted #ddd
-              padding: 7px 0px 2px 0px
+              padding: 15px 0px 0px 0px
             .image_container
               //text-align: left
               //border-top: 1px dotted #ddd
@@ -134,17 +134,17 @@
               color: white 
               height: auto
               font-weight: normal
-              font-size: 13px
+              font-size: 14px
               padding: 7px 10px
               font-family: $body
             .markdown
               font-family: $body
               color: $black
-              font: 13px/17px $body
+              font: 14px/19px $body
               br
                 display: none
             table.event-location 
-              font: 12px/20px "Helvetica Neue", Helvetica, sans-serif
+              font: 14px/19px $body
               color: $black
               th
                 font-weight: bold
@@ -153,18 +153,22 @@
             h3, p, pre, code, ol, ul
               font-family: $body
               color: $black
-              font: 13px/17px $body
+              font: 14px/19px $body
               white-space: normal
             h3 
-              font-size: 20px
+              font-size: 24px
               font-weight: normal
               text-shadow: none
-              line-height: 22px
+              line-height: 26px
+              //border-bottom: 1px dotted #ddd
+              //border-bottom: 1px solid $red
+              //padding-bottom: 10px
               a 
                 color: $black
                 cursor: pointer
                 &:hover
                   text-decoration: none
+                  color: $red
             p
               a, a.author, a.wire_filter
                 color: $black
@@ -175,10 +179,12 @@
                   color: $red
                   text-decoration: none
             p.post-info
-              color: $dark-grey !important
+              color: #888 !important
               font-weight: normal
+              //border-bottom: 1px dotted #ddd
+              //padding-bottom: 10px
               a.author
-                color: $dark-grey
+                color: #888
                 font-weight: normal
                 text-decoration: none
                 &:hover
@@ -186,7 +192,7 @@
                   color: $black
               a
                 font-weight: normal
-                color: $dark-grey
+                color: #888
                 text-decoration: none
                 &:hover
                   text-decoration: none
@@ -205,8 +211,11 @@
               background-repeat: no-repeat
               background-position: center center
               //border: 5px solid #fff
-              background-color: #fff
+              background-color: #faf8f0
               border-radius: 60px
+              padding: 5px
+              background-image: url("shared/redesign/tan-bg.gif")
+              box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.20), inset 1px 1px 0px white
               //box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5)
               //box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.65)
             p.venue, p.address
@@ -245,7 +254,7 @@
                 
           .post-action
             font-family: $body
-            font-size: 10px
+            font-size: 13px
             font-weight: bold
             color: $dark-grey
             span.thank
@@ -256,8 +265,7 @@
               text-transform: none
               font-size: 11px
             .actions
-              border-top: 1px dotted
-              border-color: #ddd
+              //border-top: 1px dotted #ddd
               a
                 color: $dark-grey
               a:hover
@@ -265,9 +273,8 @@
               a:active
                 color: $red
               li
-                //border-right: 1px dotted
-                border-color: #ddd
-                font: bold 12px $body
+                //border-right: 1px dotted #ddd
+                font: bold 13px $body
                 padding: 9px 15px 9px 0px
                 cursor: pointer
                 &:first-child

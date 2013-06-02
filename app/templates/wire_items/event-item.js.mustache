@@ -7,6 +7,7 @@
   </div>
 
   <h3><a class="title" href="{{share_url}}">{{title}}</a></h3>
+  <p class="post-info"><a class="author" {{#isFeed}} href="{{feedUrl}}" {{/isFeed}}{{^isFeed}} href="{{author_url}}" {{/isFeed}}>{{author}}</a> posted in <a class="wire_filter" href="{{wireCategoryUrl}}">{{wireCategoryName}}</a></p>
   {{#markdown}}
   {{body}}
   <!--{{#start_time}}
@@ -24,7 +25,6 @@
   {{#venue}}<p class="venue"><span class="bold">Venue:</span> {{venue}}</p>{{/venue}}
   {{#address}}<p class="address"><span class="bold">Address:</span> {{address}}</p>{{/address}}
   {{/markdown}}
-  <p class="post-info"><a class="author" {{#isFeed}} href="{{feedUrl}}" {{/isFeed}}{{^isFeed}} href="{{author_url}}" {{/isFeed}}>{{author}}</a> posted in <a class="wire_filter" href="{{wireCategoryUrl}}">{{wireCategoryName}}</a></p>
 </div>
 <div class="post-action clear">
   <ul class="actions">
