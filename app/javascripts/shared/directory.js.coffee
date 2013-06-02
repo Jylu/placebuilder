@@ -84,9 +84,9 @@ CommonPlace.shared.Directory = CommonPlace.View.extend(
 
     offset = @$("#"+@results_div).offset()
     if offset.top is 0
-      directory_height = height - 330
+      directory_height = height - 155
     else
-      directory_height = height - offset.top - 15
+      directory_height = height - offset.top - 85
     @$("#"+@results_div).height(directory_height+"px")
 
 )
