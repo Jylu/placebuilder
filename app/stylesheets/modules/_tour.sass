@@ -136,7 +136,6 @@ p.welcome-divider
   color: #333
   width: 448px
   span.divider
-    display: none
     margin-bottom: 15px
     float: left
     width: 100%
@@ -151,16 +150,18 @@ p.welcome-divider
     font-family: $Yellowtail
     text-shadow: 0px 2px 0px #fff
     color: $red
-    margin: -5px auto 20px auto
+    margin: 0px auto 20px auto
     padding-bottom: 0px
   img.profile_pic
-    margin-bottom: 18px
-    width: 85px
-    float: left
-    margin-right: 18px
-    border-radius: 4px
-    box-shadow: white 0px 1px 0px
-  .not-facebook
+    width: 100px
+    padding: 5px
+    display: block
+    background-color: white
+    margin: 0px auto
+      bottom: 15px
+    border-radius: 60px
+    box-shadow: 0px none !important
+  //.not-facebook
     height: 45px
     line-height: 11px
   input
@@ -231,13 +232,13 @@ p.welcome-divider
       margin-left: 25px
     label 
       float: left
-      margin: 10px 0 0 3px
+      margin: 9px 0 0 3px
       cursor: pointer
-      font-size: 18px  
+      font-size: 15px  
     p 
       margin-bottom: 0px
-      font-size: 18px
-      line-height: 21px
+      font-size: 15px
+      line-height: 18px
   .create_page
     float: left
     .chzn-container
@@ -341,9 +342,12 @@ p.welcome-divider
     font-size: 12px
     font-weight: bold
     float: left
-    padding: 7px 10px !important
+    padding: 7px 10px 6px !important
     margin-right: 15px
     font-family: $body
+    width: 97px
+    top: -70px
+    position: absolute
     &:hover, &:active
       cursor: pointer
   img.facebook
@@ -353,6 +357,9 @@ p.welcome-divider
     margin: 0px
       bottom: 18px
     border-radius: 4px
+    position: absolute
+    top: -70px
+    right: 1px
   #create_button
     float: right
     margin: 15px 0px
@@ -827,12 +834,18 @@ div#RealFindNeighbors div#find_bottom
   
 #civicProfile, #create_page_registration
   input.name
-    width: 279px
+    //width: 279px
     clear: none
     margin-bottom: 19px
     margin-top: 2px
     
 #create_page_registration
+  .create_page
+    position: relative
+  h2.civic_title
+    font-size: 32px !important
+  .avatar_file_browse
+    top: 40px !important
   .cancel
     margin: 15px 15px 0px 0px !important
     &:hover
@@ -916,15 +929,17 @@ div#RealFindNeighbors div#find_bottom
     margin: -5px auto 10px auto
     padding-bottom: 0px
   img.profile_pic
-    margin-bottom: 18px
-    width: 85px
-    float: left
-    margin-right: 18px
-    border-radius: 4px
-    box-shadow: white 0px 1px 0px
+    width: 100px
+    padding: 5px
+    display: block
+    background-color: white
+    margin: 0px auto
+      bottom: 15px
+    border-radius: 60px
+    box-shadow: 0px none !important
   .not-facebook
-    height: 45px
-    line-height: 11px
+    height: 15px
+    position: relative
   input
     width: 382px
     border-radius: 4px
@@ -1101,38 +1116,43 @@ div#RealFindNeighbors div#find_bottom
     font-weight: normal
     text-indent: 0px
     padding: 8px
-    border: 1px solid #C9C4B4
-    box-shadow: inset #DDD 0px 0px 3px 2px, rgba(255, 255, 255, 1.0) 0px 1px 1px
+    border: 1px solid #dedbcd
+    box-shadow: inset #dddddd 0px 0px 3px 2px, white 0px 1px 0px
     width: 382px !important
     color: $black
-    border-radius: 4px 0px 0px 4px
-    span.dk_arrow.button.blue 
-      border-radius: 0px 4px 4px 0px
-      border: 1px solid #0F1E2C
-      height: 13px
-      padding: 12px 13px 9px 9px !important
-      margin: 0px !important
-      box-shadow: inset 0 1px 0px rgba(255,255,255,.25)
+    border-radius: 4px
+    span.dk_arrow.button.blue
+      background: url(shared/redesign/down.png) no-repeat 10px 15px
+      //border-radius: 0px 4px 4px 0px
+      //border: 1px solid #dedbcd
+      border: 0px none
+      height: 15px
+      width: 15px
+      float: right
+      overflow: hidden
+      text-indent: 50px
+      padding: 11px 
+      margin: 0px
+      box-shadow: none
       right: -1px
       top: -1px
       position: absolute
-      &:hover
+      //&:hover
         +linear-gradient(color-stops(#3e6b96, #1b334a), top)
         box-shadow: inset 0 1px 0px rgba(255,255,255,.25)
-      &:active
+      //&:active
         color: rgba(255,255,255,0.4) !important
     span.dk_label 
       width: 350px
       color: #555
-      font-size: 18px
+      font-size: 16px
       font-weight: normal
       font-family: $heading
       white-space: nowrap
       overflow: hidden
       text-overflow: ellipsis
-      display: inline-block
   .dk_options
-    border-radius: 0px !important
+    border-radius: 0px 0px 4px 4px !important
     left: 1px
     margin-top: -2px
     width: 393px
@@ -1143,8 +1163,8 @@ div#RealFindNeighbors div#find_bottom
       a
         font-family: $heading !important
         border-bottom: 1px dotted #ccc !important
-        line-height: 24px !important
-        font-size: 18px !important
+        line-height: 20px !important
+        font-size: 16px !important
         display: block
         font-weight: normal
         padding: 8px !important

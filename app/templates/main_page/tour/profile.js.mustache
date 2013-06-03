@@ -4,15 +4,12 @@
     <span class="divider"></span>
     <div class="civic">
       <img class="profile_pic" src="{{avatar_url}}" alt="This is your profile photo" />
-      <input type="text" class="name" name="name" placeholder="Full Name">
       <div class="not-facebook">
         <a href="#" class="avatar_file_browse">Upload a Photo</a>
         <a href="#"><img class="facebook" src="/assets/shared/redesign/use_facebook.png" alt="Connect with Facebook" /></a>
       </div>
-
+      <!--<input type="text" class="name" name="name" placeholder="Full Name">-->
       <textarea rows="2" cols="20" name="about" placeholder="Tell your neighbors something about yourself..." class="civic_profile"></textarea>
-      <br />
-      <input type="text" name="organizations" placeholder="What organizations are you part of?" class="civic_orgs">
       <br />
 
       {{^isHarvardNeighbors}}
@@ -30,7 +27,7 @@
           <img src='/assets/loading-post.gif' />
        </div>
        <div id="civic_button">
-          <a href="#" class="blue-button next-button">Continue</a>
+          <a href="#" class="next-button red-button">Finished!</a>
        </div>
      </div>
   </div>

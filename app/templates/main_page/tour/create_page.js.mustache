@@ -9,12 +9,12 @@
     {{/isHarvardNeighbors}}  
     <span class="divider"></span>
     <div class="create_page">
+      <a hre="#" class="avatar_file_browse">Upload a Photo</a>
       <img class="profile_pic" src="{{avatarUrl}}" alt="This is your profile photo" />
       <div id="name">
         <input type="text" class="name" name="name" placeholder="Business or Organization Name" value="{{pageName}}">
         <span class="error name"></span>
       </div>
-      <a hre="#" class="avatar_file_browse">Upload a Photo</a>
       
       {{#isHarvardNeighbors}} 
       <textarea rows="2" cols="20" name="about" placeholder="Describe your organization" class="create_page">{{about}}</textarea>
@@ -34,7 +34,7 @@
              <option value="0">A non-profit</option>
              <option value="1">A community group</option>
              <option value="2">A business</option>
-             <option value="3">A muncipal entity</option>
+             <option value="3">A municipal entity</option>
              <option value="4">A newspaper, news service, or news blog</option>
              <option value="5">Other</option>
            </select>
@@ -48,9 +48,9 @@
           <img src='/assets/loading-post.gif' />
        </div>
        <div id="civic_button">
-         <a href="#" class="blue-button next-button">Continue</a>
+         <a href="#" class="red-button next-button">Continue</a>
        </div>
-       <a href="#" class="cancel cancel-button">Cancel</a>
+       <a href="#" class="cancel cancel-button" style="text-align:center!important;float:none!important;margin: 15px auto!important;">Cancel</a>
      </div>
   </div>
 </div>

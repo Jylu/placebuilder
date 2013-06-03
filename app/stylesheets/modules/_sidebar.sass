@@ -20,7 +20,7 @@
       li
         //padding: 8px 8px 8px 15px
         &:hover, &:active, &.current
-          //background-color: rgba(0,0,0,0.65)
+          background-color: white
           //border-radius: 20px
         &:first-child
           a
@@ -46,7 +46,7 @@
               left: 0px none
               right: 0px none
             //+linear-gradient(color-stops(#fbfbfb, #f2f2f2))
-            background-color: #fff
+            //background-color: #fff
           &.current
             //background-color: #333
             //color: white !important
@@ -205,16 +205,17 @@
         &:last-child
           border-bottom: none
           box-shadow: none
+        &:hover, &:active
+          background-color: #fff
+        &.current
+          background-color: white
+          a
+            color: $black !important
         &:hover
           h4
             color: #666
         a
           padding: 9px 20px 9px 15px
-          &:hover, &:active
-            background-color: #fff
-          &.current
-            background-color: white
-            color: $black !important
           //&:hover, &:active, &.current
             //background-color: rgba(0,0,0,0.65)
             background-color: rgba(0,0,0,0.35)
