@@ -386,7 +386,7 @@
               border-bottom: 1px solid #ddd
               border-top: 1px solid white
               &:first-child
-                border-top: 1px solid #ccc
+                border-top: 1px solid #ddd
                 +border-top-left-radius(4px)
                 box-shadow: inset 0px 1px 0px white
                 padding-top: 2px 
@@ -401,27 +401,31 @@
               a
                 padding: 10px 10px 9px 10px
                 font-family: $heading
-                font-size: 13px
-                line-height: 15px
+                font-size: 14px
+                line-height: 17px
                 font-weight: normal
                 color: #666
                 span.inbox_number
                   background-color: $red
-                  color: rgba(255,255,255,0.65)              
-                  border-radius: 30px
-                  padding: 3px 4px 4px 4px
+                  //color: rgba(255,255,255,0.65)  
+                  color: white            
+                  border-radius: 40px
+                  padding: 2px 3px
                   text-align: center
-                  background-color: rgba(0,0,0,0.25)
-                  box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 1px rgba(0,0,0,0.45)
-                  font-size: 11px
+                  text-shadow: none
+                  box-shadow: 0px 1px 0px white
+                  //box-shadow: 0px 1px 0px rgba(255,255,255,0.15), inset 1px 1px 1px rgba(0,0,0,0.45)
+                  font-size: 12px
                   font-weight: bold
                   font-family: $body
                   behavior: url("assets/PIE.htc")
                 &:hover
                   color: $red
-                  span.inbox_number
-                    color: #fff
-                    text-shadow: 1px 1px 0px #000
+                  //span.inbox_number
+                    background-color: #999
+                    color: white
+                    box-shadow: 0px 1px 0px white
+                    //text-shadow: 1px 1px 0px #000
 
 .badger-outter
   min-width: 20px
