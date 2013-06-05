@@ -1,5 +1,5 @@
-$break-small: 320px
-$break-large: 1024px
+$break-small: 320px;
+$break-large: 1024px;
 
 @mixin respond-to($media) {
   @if $media == handhelds {
@@ -14,8 +14,8 @@ $break-large: 1024px
 }
 
 .profile-pic {
-  float: left
-  width: 250px
+  float: left;
+  width: 250px;
   @include respond-to(handhelds) { width: 100% ;}
   @include respond-to(medium-screens) { width: 125px; }
   @include respond-to(wide-screens) { float: none; }

@@ -140,11 +140,11 @@
             .markdown
               font-family: $body
               color: $black
-              font: 14px/19px $body
+              font: 14px/20px $body
               br
                 display: none
             table.event-location 
-              font: 14px/19px $body
+              font: 14px/20px $body
               color: $black
               th
                 font-weight: bold
@@ -153,7 +153,7 @@
             h3, p, pre, code, ol, ul
               font-family: $body
               color: $black
-              font: 14px/19px $body
+              font: 14px/20px $body
               white-space: normal
             h3 
               font-size: 24px
@@ -179,24 +179,24 @@
                   color: $red
                   text-decoration: none
             p.post-info
-              color: #888 !important
+              color: $light-grey !important
               font-weight: normal
               //border-bottom: 1px dotted #ddd
               //padding-bottom: 10px
               a.author
-                color: #888
+                color: $light-grey
                 font-weight: normal
                 text-decoration: none
                 &:hover
                   text-decoration: none
-                  color: $black
+                  color: $red
               a
                 font-weight: normal
-                color: #888
+                color: $light-grey
                 text-decoration: none
                 &:hover
                   text-decoration: none
-                  color: $black
+                  color: $red
             .body p, pre, code, ol, ul
               &:last-child
               a, .markdown a
@@ -213,8 +213,8 @@
               //border: 5px solid #fff
               background-color: #faf8f0
               border-radius: 60px
-              //padding: 5px
-              border: 5px solid #faf8f0
+              padding: 1px
+              border: 4px solid #faf8f0
               //border-image: url("shared/redesign/tan-bg.gif")
               //background-image: url("shared/redesign/tan-bg.gif")
               box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.20)
@@ -256,27 +256,27 @@
                 
           .post-action
             font-family: $body
-            font-size: 13px
-            font-weight: bold
-            color: $dark-grey
+            font-size: 14px
+            font-weight: normal
+            color: $light-grey
             span.thank
-              color: $dark-grey
+              color: $light-grey
             p.how-many
-              color: $dark-grey
+              color: $light-grey
               text-shadow: 1px 1px 1px white
               text-transform: none
               font-size: 11px
             .actions
               //border-top: 1px dotted #ddd
               a
-                color: $dark-grey
+                color: $light-grey
               a:hover
                 color: $red
               a:active
                 color: $red
               li
                 //border-right: 1px dotted #ddd
-                font: bold 13px $body
+                font: normal 14px $body
                 padding: 9px 15px 9px 0px
                 cursor: pointer
                 &:first-child
@@ -290,7 +290,7 @@
                   background-image: image-url("shared/redesign/post-action-icons.png")
 
               li.reply-link
-                color: $dark-grey
+                color: $light-grey
                 .icon
                   background-position: -15px -27px
                 &:hover, &:focus, &:active
@@ -302,7 +302,7 @@
                 .icon
                   background-position: -15px 0px
                 &:hover, &:focus, &:active
-                  color: $dark-grey
+                  color: $light-grey
                   .icon 
                     background-position: -15px -27px
               li.buy-link
@@ -310,7 +310,7 @@
                 .icon
                   background-position: -73px 0px
                 &:hover, &:focus, &:active
-                  color: $dark-grey
+                  color: $light-grey
                   .icon 
                     background-position: -73px -28px
               li.message-link
@@ -329,7 +329,7 @@
                   .icon 
                     background-position: -29px -1px
 
-              li.thank-link
+              li.thank-link, li.thanked-post
                 .icon
                   background-position: -58px -27px
                 &:hover, &:focus, &:active
@@ -337,8 +337,8 @@
                   .icon 
                     background-position: -58px 0px
                     
-              //li.thanked-post
-                color: #ccc
+              li.thanked-post
+                color: $light-grey
 
               li.flag-link
                 .icon

@@ -50,12 +50,14 @@
       &:last-child
         padding-bottom: 10px
       &:hover
-        a.delete-reply, a.thank-reply, .thanked-reply, a.reply-message-link
-          color: $dark-grey !important
+        a.delete-reply, a.thank-reply, a.reply-message-link
+          color: $light-grey !important
           &:hover
             color: $red !important
         .thanked-reply
-          color: #bebebe
+          color: $light-grey !important
+          &:hover
+            color: $light-grey !important
           
       .avatar 
         +border-radius(5px)
@@ -72,12 +74,12 @@
         //border-top: 1px dotted #ddd
 
       .author, .body
-        line-height: 19px
+        line-height: 20px
         font-size: 14px
 
       .author
         font-weight: bold
-        color: #333
+        color: $dark-grey
         float: left
         &:hover
           color: $red
@@ -97,19 +99,20 @@
       .controls
         white-space: nowrap   
         .time
-          color: #aaa
+          color: $light-grey
           font-size: 13px
           white-space: nowrap
         .thank-divider
           color: #aaa
           font-size: 13px
         .thanks-count
-          color: #aaa
+          color: $light-grey
           font-size: 13px
           //&:hover
             color: #888
             //text-decoration: underline
             cursor: pointer
+
         
 
       a.delete-reply, a.thank-reply, .thanked-reply, a.reply-message-link
@@ -118,14 +121,11 @@
         font-weight: bold
         text-transform: uppercase
           
-      a.delete-reply, a.thank-reply, a.reply-message-link
+      a.delete-reply, a.thank-reply, .thanked-reply, a.reply-message-link
         color: white
         &:hover
           color: $red
           //text-decoration: underline
-        
-      .thanked-reply
-        color: white
 
 
 .replies form.new-reply
@@ -140,20 +140,21 @@
       color: #555
       background: white
       box-shadow: none
-      border: 1px dotted #d9d9d9
+      border: 1px dotted #ddd
       padding: 8px 10px
       line-height: 19px
       font-weight: normal
       -webkit-font-smoothing: antialiased
       input::-webkit-input-placeholder
-        color: #888
+        color: #aaa
       &:hover
         border-color: #c0c0c0
       &:focus
         color: #131313 !important
+        border-color: #c0c0c0
     .enter-hint
       font-size: 12px
-      color: #aaa
+      color: #131313
       
 
 .submit-c
