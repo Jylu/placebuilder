@@ -68,6 +68,10 @@ class Group < ActiveRecord::Base
     Group.where(slug: slug).first || Group.find_by_id(slug)
   end
 
+  def total_posts
+    self.group_posts.count + self.events.count + self.announcements.count
+  end
+
   private
 
   def generate_slug
@@ -89,6 +93,7 @@ class Group < ActiveRecord::Base
     text :name
     text :about
     integer :community_id
+    integer :total_posts
   end
 
 end

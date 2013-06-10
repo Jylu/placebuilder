@@ -75,6 +75,10 @@ class Feed < ActiveRecord::Base
     t.add lambda {|f| f.owner}, :as => :owner
   end
 
+  def total_posts
+    self.announcements.count + self.events.count
+  end
+
   def owner
     if self.user.present?
       self.user.name
@@ -196,6 +200,7 @@ class Feed < ActiveRecord::Base
     text :name
     text :about
     integer :community_id
+    integer :total_posts
   end
 
   def get_feed_owner(user)

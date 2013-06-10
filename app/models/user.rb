@@ -282,6 +282,10 @@ class User < ActiveRecord::Base
     []
   end
 
+  def total_posts
+    self.posts.count + self.events.count + self.announcements.count
+  end
+
   def full_name
     [first_name,middle_name,last_name].select(&:present?).join(" ")
   end
@@ -419,6 +423,7 @@ WHERE
     text :goods
     text :interests
     integer :community_id
+    integer :total_posts
     time :created_at
   end
 

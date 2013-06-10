@@ -9,6 +9,7 @@ CommonPlace.shared.DirectoryLists = CommonPlace.View.extend(
     @lists =
       pages: CommonPlace.community.grouplikes
       users: CommonPlace.community.featuredUsers
+      actives: CommonPlace.community.actives
 
     self = this
     @nextPageTrigger()

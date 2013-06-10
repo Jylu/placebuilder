@@ -68,6 +68,19 @@ class API
       # Performs a Sunspot search with no keywords
       #
       # Returns a JSON string of the results
+      def most_active(klass, params, community_id)
+        search = Sunspot.search(klass) do
+          paginate(:page => params["page"].to_i + 1)
+          with(:community_id, community_id)
+          order_by(:total_posts, :desc)
+          yield(self) if block_given?
+        end
+        serialize(search)
+      end
+
+      # Performs a Sunspot search with no keywords
+      #
+      # Returns a JSON string of the results
       def list_all(klass, params, community_id)
         search = Sunspot.search(klass) do
           paginate(:page => params["page"].to_i + 1)
@@ -1171,6 +1184,19 @@ CONDITION
       serialize(find_community.users.count)
     end
 
+    # Returns all [Feed, Group]s
+    #
+    # Query params:
+    #   query = the query to search with
+    get "/:id/actives" do
+      control_access :public
+
+      if params['query'].present?
+        search([Feed, Group, User], params, find_community.id)
+      else
+        most_active([Feed, Group, User], params, find_community.id)
+      end
+    end
     # Returns all [Feed, Group]s
     #
     # Query params:

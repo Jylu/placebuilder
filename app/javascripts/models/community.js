@@ -1,4 +1,4 @@
- 
+
 var Community = Model.extend({
   initialize: function() {
     this.posts = this.setup(Posts, "posts");
@@ -15,6 +15,7 @@ var Community = Model.extend({
     this.featuredFeeds = this.setup(Feeds, "featured_feeds");
     this.groups = this.setup(Groups, "groups");
     this.grouplikes = this.setup(GroupLikes, "group_likes");
+    this.actives = this.setup(GroupLikes, "actives");
     this.search = {
       users: this.setup(Users, "users"),
       feeds: this.setup(Feeds, "feeds"),
@@ -33,7 +34,7 @@ var Community = Model.extend({
       meetups: this.setup(Posts, "posts_meetups")
     }
   },
-  
+
   setup: function(collectionClass, url) {
     return new collectionClass([], { uri: this.link(url) });
   }
