@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="https://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml">
   <head>
-    <title>ParentsList</title>
-    <meta name="description" content="ParentsList helps you share and connect with your neighbors.">
+    <title>Placebuilder - Communication Infrastructure for Civil Society</title>
+    <meta name="description" content="Placebuilder is communication infrastructure for civil society.">
     <% if ENV['TINFOIL_VERIFICATION'].present? %>
       <meta name="tinfoil-site-verification" content="<%= ENV['TINFOIL_VERIFICATION'] %>">
     <% end %>
@@ -18,8 +18,6 @@
              overflow-y: scroll !important;
              -webkit-font-smoothing: antialiased;
              text-rendering: optimizeLegibility;
-             /*background-color: #d4eaef;*/
-             /*background: url('/assets/shared/redesign/backgrounds/<%= @community.slug.titleize %>.jpg') no-repeat center center fixed #e9e5de;*/
            }
      </style>
      <!--[if IE 9]>
@@ -31,7 +29,6 @@
   </head>
 
   <body class="application">
-     <img src="/assets/shared/redesign/stars.png" style="display:none;">
     <div id="sticky-wrapper">
       <div id="fb-root"></div>
 
