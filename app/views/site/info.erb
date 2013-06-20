@@ -5,6 +5,57 @@
     <meta name="description" content="Placebuilder is communication infrastructure for civil society.">
     <link href="/assets/application.css" rel="stylesheet" type="text/css">
     <link href="/assets/favicon.png" rel="icon" type="image/png">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        function filterPath(string) {
+        return string
+          .replace(/^\//,'')
+          .replace(/(index|default).[a-zA-Z]{3,4}$/,'')
+          .replace(/\/$/,'');
+        }
+        var locationPath = filterPath(location.pathname);
+        var scrollElem = scrollableElement('html', 'body');
+
+        $('a[href*=#]').each(function() {
+          var thisPath = filterPath(this.pathname) || locationPath;
+          if (  locationPath == thisPath
+          && (location.hostname == this.hostname || !this.hostname)
+          && this.hash.replace(/#/,'') ) {
+            var $target = $(this.hash), target = this.hash;
+            if (target) {
+              var targetOffset = $target.offset().top;
+              $(this).click(function(event) {
+                event.preventDefault();
+                $(scrollElem).animate({scrollTop: targetOffset}, 1200, function() {
+                  location.hash = target;
+                });
+              });
+            }
+          }
+        });
+
+        // use the first element that is "scrollable"
+        function scrollableElement(els) {
+          for (var i = 0, argLength = arguments.length; i <argLength; i++) {
+            var el = arguments[i],
+                $scrollElement = $(el);
+            if ($scrollElement.scrollTop()> 0) {
+              return el;
+            } else {
+              $scrollElement.scrollTop(1);
+              var isScrollable = $scrollElement.scrollTop()> 0;
+              $scrollElement.scrollTop(0);
+              if (isScrollable) {
+                return el;
+              }
+            }
+          }
+          return [];
+        }
+
+      });
+    </script>
     <style type="text/css" media="screen">
        html {
             -webkit-font-smoothing: antialiased;
@@ -15,6 +66,7 @@
              overflow-y: scroll !important;
              -webkit-font-smoothing: antialiased;
              text-rendering: optimizeLegibility;
+             background-position-y: 50px;
            }
      </style>
      <!--[if IE 9]>
@@ -32,7 +84,7 @@
            <div class="header_left">
              <a href="/info">
                <h1 class="community">
-                 <img src="/assets/shared/redesign/parentslist-logo.png" alt="ParentsList">
+                 <img src="/assets/shared/redesign/parentslist-logo.png" alt="Placebuilder">
                </h1>
              </a>
            </div>
@@ -77,15 +129,15 @@
             <div class="build-container">
                <div class="for-neighbors">
                   <h3><a href="#neighbors">For Neighbors</a></h3>
-                  <a href="#neighbors"><img src="" alt="For Neighbors" /></a>
+                  <a href="#neighbors"><img src="" title="For Neighbors" /></a>
                </div>
                <div class="for-students">
                   <h3><a href="#students">For Students</a></h3>
-                  <a href="#students"><img src="" alt="For Students" /></a>
+                  <a href="#students"><img src="" title="For Students" /></a>
                </div>
                <div class="for-parents">
                   <h3><a href="#parents">For Parents</a></h3>
-                  <a href="#parents"><img src="" alt="For Parents" /></a>
+                  <a href="#parents"><img src="" title="For Parents" /></a>
                </div>
             </div>
          </div>
@@ -96,7 +148,7 @@
       </div>
       <p class="learn-more"><a href="#neighbors">Learn More</a></p>
       <div class="more-info">
-         <div id="neighbors">
+         <div id="neighbors" name="neighbors">
             <img src="/assets/shared/redesign/building.png">
             <h2>For Neighbors</h2>
             
@@ -156,14 +208,18 @@
             <h3>Technology</h3>
             <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-            <p class="build-one"><a href="#">Preview the site!</a></p>
+            <p class="build-one"><a href="/marquette">Preview the site!</a></p>
+         </div>
+         <div class="info-footer">
+            <p style="float:left;">Copyright 2013 Placebuilder. </p>
+            <p style="float:right;"><a href="#">Contact Us</a></p>
          </div>
       </div>
 
  
     <script type="text/javascript" src="/assets/application.js"></script>
 
-    <script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.5/zenbox.js"></script>
+    <!--<script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.5/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
       @import url(//assets.zendesk.com/external/zenbox/v2.5/zenbox.css);
     </style>
@@ -177,7 +233,7 @@
           tabPosition: "Right"
         });
       }
-    </script>
+    </script>-->
 
   </body>
 

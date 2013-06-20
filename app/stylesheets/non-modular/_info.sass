@@ -5,6 +5,7 @@
     .header_left
       border: 0px none
       box-shadow: none
+      padding-left: 1px
     .header_right
       #user_sign_in
         right: 0px
@@ -77,6 +78,7 @@
           border: 5px solid white
           margin: 0px auto
           text-align: center
+          color: transparent
       .for-neighbors
         img
           background-color: #519872
@@ -102,6 +104,7 @@ p.learn-more
   bottom: 0px
   background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
   clear: both
+  border-top: 1px solid white
   a
     color: $red
     &:hover
@@ -115,11 +118,11 @@ p.learn-more
   color: #444
   position: absolute
   top: 900px
-  #neighbors, #students, #parents, #about
-    width: 970px
+  #neighbors, #students, #parents, #about, .info-footer
+    width: 955px
     //background-color: #519872
     padding-top: 100px
-    padding-left: 25px
+    padding-left: 15px
     margin: 0px auto
     min-height: 700px
     clear: both
@@ -157,6 +160,15 @@ p.learn-more
     img
       float: right
       margin-left: 40px
+  .info-footer
+    padding-top: 20px
+    min-height: 20px
+    padding-bottom: 20px
+    color: #888
+    a
+      color: #888
+      &:hover
+        color: $red
       
 #about
   .header
