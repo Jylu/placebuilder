@@ -1,4 +1,5 @@
 #header.info
+  //position: absolute
   #nav_wrapper
     border: 0px none
     box-shadow: none
@@ -10,87 +11,100 @@
       #user_sign_in
         right: 0px
 #main.info
-  margin-top: 110px
+  margin: 0px auto
   color: white
   padding-left: 25px
-  .headline
-    margin-bottom: 40px
-    h1
-      font-family: $heading
-      font-size: 42px
-      color: white
-  h2
-    font-size: 22px
-    font-weight: bold
-    margin-bottom: 10px
-  p
-    font: 15px/22px $heading
-  .left-column
-    float: left
-    width: 70%
-    .build-container
-      margin-top: 50px
-      margin-left: -28px
-      .for-neighbors, .for-students, .for-parents
-        float: left
-        width: 33%
-        text-align: center
-        h3
-          font-size: 15px
-          font-weight: bold
-          margin: 0px auto
+  .info-top
+    position: fixed
+    top: 18%
+    .headline
+      margin-bottom: 40px
+      h1
+        font-family: $heading
+        font-size: 42px
+        color: white
+        text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
+    h2
+      font-size: 22px
+      font-weight: bold
+      margin-bottom: 10px
+      text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
+    p
+      font: 15px/22px $heading
+      text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
+    .left-column
+      .for-neighbors:hover
+        .for-students, .for-parents
+          display: none
+    .left-column
+      float: left
+      width: 70%
+      .build-container
+        margin-top: 50px
+        margin-left: -28px
+        .for-neighbors, .for-students, .for-parents
+          float: left
+          width: 33%
           text-align: center
-          margin-bottom: 30px
-          width: 145px
-          color: white
-          position: relative
-          &:after
-            left: 44%
-            border: solid transparent
-            content: " "
-            height: 0
-            width: 0
-            position: absolute
-            pointer-events: none
-            border-color: rgba(255, 255, 15, 0)
-            border-top-color: $red
-            border-width: 9px
-            &:hover
-              border-top-color: white
-          &:hover
-            &:after
-              border-top-color: white
-          a
-            border-radius: 4px
+          h3
+            font-size: 15px
+            font-weight: bold
+            margin: 0px auto
+            text-align: center
+            margin-bottom: 30px
+            width: 145px
             color: white
-            padding: 8px
-              bottom: 10px
-            display: block
-            background-color: $red
+            position: relative
+            border-radius: 4px
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25)
+            &:after
+              left: 44%
+              border: solid transparent
+              content: " "
+              height: 0
+              width: 0
+              position: absolute
+              pointer-events: none
+              border-color: rgba(255, 255, 15, 0)
+              border-top-color: $red
+              border-width: 9px
+              &:hover
+                border-top-color: white
             &:hover
-              background-color: white
-              color: $red
-                //color: lighten($red, 25%)
-        img
-          width: 140px
-          height: 140px
-          border-radius: 100px
-          border: 5px solid white
-          margin: 0px auto
-          text-align: center
-          color: transparent
-      .for-neighbors
-        img
-          background-color: #519872
-      .for-students
-        img
-          background-color: #4ea6cb
-      .for-parents
-        img
-          background-color: #ffce79
-  .right-column
-    float: right
-    width: 30%
+              &:after
+                border-top-color: white
+            a
+              border-radius: 4px
+              color: white
+              padding: 8px
+                bottom: 10px
+              display: block
+              background-color: $red
+              &:hover
+                background-color: white
+                color: $red
+                  //color: lighten($red, 25%)
+          img
+            width: 140px
+            height: 140px
+            border-radius: 100px
+            border: 5px solid white
+            margin: 0px auto
+            text-align: center
+            color: transparent
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25)
+        .for-neighbors
+          img
+            background-color: #519872
+        .for-students
+          img
+            background-color: #4ea6cb
+        .for-parents
+          img
+            background-color: #ffce79
+    .right-column
+      float: right
+      width: 30%
 
 p.learn-more
   padding: 15px
@@ -110,22 +124,27 @@ p.learn-more
     &:hover
       color: $cp-blue
     
-.more-info
+.info-bottom
   background: url('shared/redesign/tan-bg.gif') repeat fixed #FAF8F0
   width: 100%
   clear: both
   //height: 100%
   color: #444
   position: absolute
-  top: 900px
-  #neighbors, #students, #parents, #about, .info-footer
-    width: 955px
-    //background-color: #519872
-    padding-top: 100px
+  top: 690px
+  .section-container
+    display: table
     padding-left: 15px
     margin: 0px auto
-    min-height: 700px
+    min-height: 675px
+    //height: inherit
     clear: both
+    width: 955px    
+  #neighbors, #students, #parents, #about-us
+    //background-color: #519872
+    //padding-top: 90px    
+    display: table-cell
+    vertical-align: middle
     h2
       font-size: 42px
       font-weight: bold
@@ -156,17 +175,22 @@ p.learn-more
     img
       float: left
       margin-right: 40px
-  #students, #about
+  #students, #about-us
     img
       float: right
       margin-left: 40px
   .info-footer
-    padding-top: 20px
+    width: 955px
+    font-size: 13px
+    padding-left: 15px
     min-height: 20px
     padding-bottom: 20px
+    margin: 0px auto
+      top: -50px
     color: #888
     a
       color: #888
+      padding-left: 15px
       &:hover
         color: $red
       
