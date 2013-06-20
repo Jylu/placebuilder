@@ -53,17 +53,17 @@
         text-shadow: 1px 1px 0px black
         font-family: $heading
       .button
-        padding: 8px 4px
+        padding: 7px 8px 9px
         border-radius: 4px 
-        box-shadow: inset 0 1px 0px rgba(255,255,255,0.4)
+        box-shadow: inset 0 1px 0px rgba(255,255,255,0.3)
         cursor: pointer
         font-family: $heading
-        font-size: 13px
-        font-weight: normal
+        font-size: 15px
+        font-weight: bold
         color: white
-        border: 1px solid rgba(0,0,0,0.25)
+        //border: 1px solid rgba(0,0,0,0.25)
         text-align: center
-        text-shadow: 0px -1px 0px rgba(0,0,0,0.5)
+        text-shadow: 0px -1px 0px rgba(0,0,0,0.25)
       .blue
         +linear-gradient(color-stops(#2e5274, #1b334a))
         &:hover, &:focus
@@ -74,7 +74,8 @@
           color: #fff
           +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
       .red
-        background: $red
+        background: lighten($red, 1%)
+        border: 1px solid #d7453e
         //+linear-gradient(color-stops(#cc4441, #ac322f))
         &:hover, &:focus
           background: lighten($red, 3%)
@@ -185,13 +186,13 @@
 
   &.app 
     #nav_wrapper
-      border-left: 1px solid #D34F49
+      border-left: 1px solid #d9463f
       //border-right: 1px solid #588257
-      box-shadow: inset 1px 0px 0 0 #ee6963
+      box-shadow: inset 1px 0px 0 0 #f65951
       .header_left
         //border-left: 1px solid #588257
-        border-right: 1px solid #D34F49
-        box-shadow: inset -1px 0px 0 0 #ee6963
+        border-right: 1px solid #f65951
+        box-shadow: inset -1px 0px 0 0 #d9463f
       .button-wrapper
         background-image: url("shared/redesign/button-tail.png")
         background-color: transparent

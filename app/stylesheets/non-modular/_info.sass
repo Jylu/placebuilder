@@ -1,12 +1,163 @@
+#header.info
+  #nav_wrapper
+    border: 0px none
+    box-shadow: none
+    .header_left
+      border: 0px none
+      box-shadow: none
+    .header_right
+      #user_sign_in
+        right: 0px
 #main.info
-  margin-top: 120px
+  margin-top: 110px
+  color: white
+  padding-left: 25px
   .headline
-    padding-left: 15px
+    margin-bottom: 40px
     h1
       font-family: $heading
-      font-size: 40.5px
+      font-size: 42px
       color: white
+  h2
+    font-size: 22px
+    font-weight: bold
+    margin-bottom: 10px
+  p
+    font: 15px/22px $heading
+  .left-column
+    float: left
+    width: 70%
+    .build-container
+      margin-top: 50px
+      margin-left: -28px
+      .for-neighbors, .for-students, .for-parents
+        float: left
+        width: 33%
+        text-align: center
+        h3
+          font-size: 15px
+          font-weight: bold
+          margin: 0px auto
+          text-align: center
+          margin-bottom: 30px
+          width: 145px
+          color: white
+          position: relative
+          &:after
+            left: 44%
+            border: solid transparent
+            content: " "
+            height: 0
+            width: 0
+            position: absolute
+            pointer-events: none
+            border-color: rgba(255, 255, 15, 0)
+            border-top-color: $red
+            border-width: 9px
+            &:hover
+              border-top-color: white
+          &:hover
+            &:after
+              border-top-color: white
+          a
+            border-radius: 4px
+            color: white
+            padding: 8px
+              bottom: 10px
+            display: block
+            background-color: $red
+            &:hover
+              background-color: white
+              color: $red
+                //color: lighten($red, 25%)
+        img
+          width: 140px
+          height: 140px
+          border-radius: 100px
+          border: 5px solid white
+          margin: 0px auto
+          text-align: center
+      .for-neighbors
+        img
+          background-color: #519872
+      .for-students
+        img
+          background-color: #4ea6cb
+      .for-parents
+        img
+          background-color: #ffce79
+  .right-column
+    float: right
+    width: 30%
 
+p.learn-more
+  padding: 15px
+  margin: 0px auto
+  text-align: center
+  font-size: 15px
+  font-weight: bold
+  width: 100%
+  text-transform: uppercase
+  position: fixed
+  bottom: 0px
+  background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
+  clear: both
+  a
+    color: $red
+    &:hover
+      color: $cp-blue
+    
+.more-info
+  background: url('shared/redesign/tan-bg.gif') repeat fixed #FAF8F0
+  width: 100%
+  clear: both
+  //height: 100%
+  color: #444
+  position: absolute
+  top: 900px
+  #neighbors, #students, #parents, #about
+    width: 970px
+    //background-color: #519872
+    padding-top: 100px
+    padding-left: 25px
+    margin: 0px auto
+    min-height: 700px
+    clear: both
+    h2
+      font-size: 42px
+      font-weight: bold
+      //text-transform: uppercase
+      color: $red
+      //margin-bottom: 25px
+      margin-top: 20px
+    h3
+      font-size: 22px
+      font-weight: normal
+      color: $cp-blue
+      margin-bottom: 10px
+      margin-top: 40px
+    p
+      font: 15px/22px $heading
+    p.build-one
+      margin-top: 40px
+      a
+        color: $red
+        text-transform: uppercase
+        font-size: 15px
+        font-weight: bold
+        //letter-spacing: 1px
+        &:hover
+          color: $cp-blue
+        
+  #neighbors, #parents
+    img
+      float: left
+      margin-right: 40px
+  #students, #about
+    img
+      float: right
+      margin-left: 40px
+      
 #about
   .header
     background: url("shared/redesign/red-bg.png")
