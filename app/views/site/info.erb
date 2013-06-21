@@ -68,6 +68,36 @@
              text-rendering: optimizeLegibility;
              background-position-y: 50px;
            }
+           p.learn-more a {
+              animation:learn .85s infinite;
+               -webkit-animation:learn .85s infinite; /*Safari and Chrome*/
+               position: relative;
+           }
+           p.build-one a {
+              animation:build .85s infinite;
+              -webkit-animation:build .85s infinite; /*Safari and Chrome*/
+              position: relative;
+           }
+            @keyframes learn {
+              from {top:0px;}
+              to {top:3px;}
+              }
+
+              @-webkit-keyframes learn /*Safari and Chrome*/
+              {
+              from {top:0px;}
+              to {top:3px;}
+              }
+           @keyframes build {
+            from {right:0px;}
+            to {right:-4px;}
+            }
+
+            @-webkit-keyframes build /*Safari and Chrome*/
+            {
+            from {right:0px;}
+            to {right:-4px;}
+            }
      </style>
      <!--[if IE 9]>
          <link rel="stylesheet" type="text/css" href="/assets/IE8-loggedIn.css" />
@@ -148,10 +178,10 @@
             </div>
          </div>
       </div>
-      <p class="learn-more"><a href="#neighbors">Learn More</a></p>
+      <p class="learn-more"><a href="#neighbors">Learn More &#11015;</a></p>
       <div class="info-bottom">
-         <div class="section-container">
-            <div id="neighbors" name="neighbors">
+         <div id="neighbors" class="section-container">
+            <div class="neighbors">
                <img src="/assets/shared/redesign/building.png">
                <h2>For Neighbors</h2>
             
@@ -164,13 +194,13 @@
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one"><a href="#">Build One!</a></p>
+               <p class="build-one"><a href="#">Build One &#10140;</a></p>
             </div>
 
             
          </div>
-         <div class="section-container">
-            <div id="students">
+         <div id="students" class="section-container">
+            <div class="students">
                <img src="/assets/shared/redesign/building.png">
                <h2>For Students</h2>
             
@@ -183,11 +213,11 @@
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one"><a href="#">Build One!</a></p>
+               <p class="build-one"><a href="#">Build One &#10140;</a></p>
             </div>
          </div>
-         <div class="section-container">
-            <div id="parents">
+         <div id="parents" class="section-container">
+            <div class="parents">
                <img src="/assets/shared/redesign/building.png">
                <h2>For Parents</h2>
             
@@ -200,11 +230,11 @@
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one"><a href="#">Build One!</a></p>
+               <p class="build-one"><a href="#">Build One &#10140;</a></p>
             </div>
          </div>
-         <div class="section-container">
-            <div id="about-us">
+         <div id="about-us" class="section-container">
+            <div class="about-us">
                <img src="/assets/shared/redesign/building.png">
                <h2>Who We Are</h2>
             
@@ -217,12 +247,12 @@
                <h3>Technology</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one"><a href="/marquette">Preview the site!</a></p>
+               <p class="build-one"><a href="/marquette">Preview the site &#10140;</a></p>
             </div>
          </div>
          <div class="info-footer">
             <p style="float:left;">Copyright 2013 Placebuilder. </p>
-            <p style="float:right;"><a href="#main">Join</a> <a href="#neighbors">For Neighbors</a> <a href="#students">For Students</a> <a href="#parents">For Parents</a> <a href="#">Contact Us</a></p>
+            <p style="float:right;"><a href="#header">Join</a> <a href="#neighbors">For Neighbors</a> <a href="#students">For Students</a> <a href="#parents">For Parents</a> <a href="#">Contact Us</a></p>
          </div>
       </div>
 
