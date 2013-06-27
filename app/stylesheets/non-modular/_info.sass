@@ -1,5 +1,8 @@
 #header.info
   position: absolute
+  background: transparent
+  box-shadow: none
+  border: 0px none
   #nav_wrapper
     border: 0px none
     box-shadow: none
@@ -33,8 +36,9 @@
       h1
         font-family: $heading
         font-size: 42px
-        color: $cp-blue
-        font-weight: bold
+        line-height: 48px
+        color: #444
+        font-weight: normal
         //text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
     h2
       font-size: 22px
@@ -51,9 +55,9 @@
           display: none
     .left-column
       float: left
-      width: 63%
+      width: 64%
       .build-container
-        margin-top: 50px
+        //margin-top: 50px
         position: relative
         .for-parents
           position: absolute
@@ -65,7 +69,7 @@
           float: none !important
         .for-neighbors, .for-students, .for-parents
           float: left
-          width: 150px
+          width: 175px
           text-align: center
           h3
             font-size: 15px
@@ -73,7 +77,7 @@
             margin: 0px auto
             text-align: center
             margin-bottom: 30px
-            width: 145px
+            width: 175px
             color: white
             position: relative
             border-radius: 4px
@@ -87,46 +91,50 @@
               position: absolute
               pointer-events: none
               border-color: rgba(255, 255, 15, 0)
-              border-top-color: $red
+              border-top-color: $cp-blue
               border-width: 9px
               &:hover
-                border-top-color: $cp-blue
+                border-top-color: $red
             &:hover
               &:after
-                border-top-color: $cp-blue
+                border-top-color: $red
             a
               border-radius: 4px
               color: white
               padding: 8px
                 bottom: 10px
               display: block
-              background-color: $red
+              background-color: $cp-blue
               &:hover
-                background-color: $cp-blue
+                background-color: $red
                 color: white
                   //color: lighten($red, 25%)
           img
-            width: 140px
-            height: 140px
-            border-radius: 100px
-            border: 5px solid white
+            width: 175px
+            height: 300px
+            //border-radius: 100px
+            //border: 5px solid white
             margin: 0px auto
             text-align: center
             color: transparent
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
+            background-color: #ccc
+            //box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
             &:hover
               box-shadow: none
               //background-color: $red
               //margin-top: -3px
         .for-neighbors
           img
-            background-color: #519872
+            //background-color: #519872
+            background-color: transparent
+            width: auto
+            //background-image: url(/shared/redesign/building.png)
         .for-students
           img
-            background-color: #4ea6cb
+            //background-color: #4ea6cb
         .for-parents
           img
-            background-color: #ffce79
+            //background-color: #ffce79
     .right-column
       float: right
       width: 32%
@@ -136,22 +144,22 @@
         border-radius: 4px
         background-color: rgba(255,255,255,0.35)
         box-shadow: inset 0px 0px 6px rgba(0,0,0,0.25), 0px 1px 0px rgba(255, 255, 255, 0.65)
-        margin-bottom: 20px
+        margin-bottom: 23px
         width: 100%
         float: left
       .state
         height: 40px
-        margin-top: 20px
+        //margin-top: 20px
       .town
         //height: 320px
-        height: 64%
+        height: 229px
         //position: absolute
         //bottom: 25px
       .red-button
         cursor: pointer
         font-weight: normal
         width: 100%
-        font-size: 22px
+        font-size: 20px
 
 p.learn-more
   padding: 25px 0px
