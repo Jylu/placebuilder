@@ -1,8 +1,8 @@
 #header.info
   position: absolute
-  background: transparent
-  box-shadow: none
-  border: 0px none
+  //background: transparent
+  //box-shadow: none
+  //border: 0px none
   #nav_wrapper
     border: 0px none
     box-shadow: none
@@ -19,6 +19,7 @@
   padding-left: 15px
   height: 100%
   position: static
+  width: 955px
   .info-top
     //position: fixed
     //top: 16%
@@ -26,7 +27,7 @@
     width: 955px
     margin: 0px auto
     .top-container
-      height: 510px
+      height: 465px
       position: absolute
       top: 50%
       margin: -250px auto 0px auto
@@ -39,6 +40,7 @@
         line-height: 48px
         color: #444
         font-weight: normal
+        text-align: center
         //text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
     h2
       font-size: 22px
@@ -50,35 +52,82 @@
       font: 15px/22px $heading
       //text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
     .left-column
-      .for-neighbors:hover
-        .for-students, .for-parents
-          display: none
-    .left-column
       float: left
-      width: 64%
+      width: 640px
       .build-container
         //margin-top: 50px
         position: relative
+        //box-shadow: inset 0px -8px 0px #afa6a3
+        height: 421px
+        background: url("shared/redesign/glow-bg.png") no-repeat bottom center
         .for-parents
           position: absolute
           top: 0px
           right: 0px
           float: none
+          h3
+            margin-bottom: 31px !important
+            top: 0px !important
+            a
+              background-color: #b07bd9
+            &:after
+              border-top-color: #b07bd9 !important
+          img
+            width: 165px
+            height: 350px
         .for-students
+          h3
+            margin-bottom: 31px !important
+            top: 40px !important
+            a
+              background-color: #2d87b5
+            &:after
+              border-top-color: #2d87b5 !important
           margin: 0px auto
           float: none !important
+          img
+            height: 310px
+            width: 185px
+        .for-neighbors 
+          h3
+            margin-bottom: 30px !important
+            top: 10px !important
+            a
+              background-color: #5bb17b
+            &:after
+              border-top-color: #5bb17b !important
+          img
+            //height:
+            width: 175px
         .for-neighbors, .for-students, .for-parents
           float: left
-          width: 175px
+          width: 220px
           text-align: center
+          &:hover
+            background: url("shared/redesign/glow.png") no-repeat bottom center
+            background-size: 100% 87%
+            h3
+              a
+                background-color: $red
+                color: white
+              &:after
+                border-top-color: $red !important
+            img
+              -webkit-filter: brightness(105%)
+              -mozs-filter: brightness(105%)
+          a.building
+            vertical-align: bottom
+            display: table-cell
+            margin: 0px auto
+            height: 360px
+            width: 220px
           h3
             font-size: 15px
             font-weight: bold
-            text-transform: uppercase
+            //text-transform: uppercase
             margin: 0px auto
             text-align: center
-            margin-bottom: 30px
-            width: 175px
+            width: 150px
             color: white
             position: relative
             border-radius: 4px
@@ -92,55 +141,51 @@
               position: absolute
               pointer-events: none
               border-color: rgba(255, 255, 15, 0)
-              border-top-color: $cp-blue
+              //border-top-color: white
+              //border-top-color: lighten($cp-blue,15%)
               border-width: 9px
               &:hover
                 border-top-color: $red
             &:hover
               &:after
-                border-top-color: $red
+                border-top-color: $red !important
             a
               border-radius: 4px
+              //color: #666
               color: white
               padding: 8px
-                bottom: 10px
+                bottom: 9px
               display: block
-              background-color: $cp-blue
+              height: auto
+              //background-color: white
+              //background-color: lighten($cp-blue,15%)
               &:hover
                 background-color: $red
                 color: white
                   //color: lighten($red, 25%)
           img
-            width: 175px
-            height: 300px
+            //width: 175px
+            //height: 100%
             //border-radius: 100px
             //border: 5px solid white
             margin: 0px auto
             text-align: center
             color: transparent
-            background-color: #ccc
+            //opacity: 0.85
+            //background-color: #ccc
             //box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
             &:hover
               //box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8)
               //background-color: $red
               //margin-top: -5px
-              opacity: 0.5
-        .for-neighbors
-          img
-            //background-color: #519872
-            background-color: transparent
-            width: auto
-            //background-image: url(/shared/redesign/building.png)
-        .for-students
-          img
-            //background-color: #4ea6cb
-        .for-parents
-          img
-            //background-color: #ffce79
+              //opacity: 0.85
+              //filter: url(filters.svg#grayscale)
+              //filter: gray
+              //-webkit-filter: grayscale(1)
+
     .right-column
       float: right
-      width: 32%
-      height: 66%
+      width: 300px
       //position: relative
       .state, .town
         border-radius: 4px
@@ -156,7 +201,7 @@
         //margin-top: 20px
       .town
         //height: 320px
-        height: 229px
+        height: 289px
         //position: absolute
         //bottom: 25px
       .red-button
@@ -179,9 +224,10 @@ p.learn-more
   //background: url('shared/redesign/tan-bg.gif') repeat fixed #FAF8F0
   clear: both
   a
-    color: $cp-blue
+    color: $red
     &:hover
-      color: $red
+      //color: $cp-blue
+      color: #444
 
 .divider
   border-bottom: 1px solid rgba(255,255,255,0.65)
@@ -211,31 +257,37 @@ p.learn-more
     //padding-top: 90px    
     display: table-cell
     vertical-align: middle
+    //border-bottom: 5px solid #aaa
     h2
       font-size: 36px
-      font-weight: bold
+      font-weight: normal
       //text-transform: uppercase
-      color: $red
+      //color: $red
       //margin-bottom: 25px
-      margin-top: 35px
+      margin-top: 15px
     h3
       font-size: 20px
       font-weight: normal
-      color: $cp-blue
+      color: $red
       margin-bottom: 10px
       margin-top: 40px
     p
       font: 15px/20px $heading
+      //text-shadow: 1px 1px 0px white
     p.build-one
       margin-top: 40px
-      text-align: right
+      //text-align: right
+      //width: 250px
+      //height: 25px
+      float: left
       a
-        color: $red
+        color: white
         text-transform: uppercase
         font-size: 16px
         font-weight: bold
+        
         //letter-spacing: 1px
-        &:hover
+        //&:hover
           color: $cp-blue
         
   .neighbors, .parents
@@ -248,13 +300,26 @@ p.learn-more
     img
       float: right
       margin-left: 40px
+    p.build-one
+      float: right
+  //.neighbors
+    h3
+      color: #5bb17b
+  //.students
+    h3
+      color: #2d87b5
+  //.parents
+    h3
+      color: #b07bd9
   .info-footer
     width: 955px
     font-size: 13px
     padding-left: 15px
     min-height: 20px
+    padding-top: 50px
     padding-bottom: 20px
     margin: 0px auto
+    text-shadow: 1px 1px 0px white
       top: 30px
     color: #888
     a
