@@ -1,22 +1,20 @@
 <div id="nav_wrapper" class="pie-element">
   <div class="header_left">
-    {{#isAuth}}
     {{#isGuest}}
     <a href="{{community_url}}">
       <h1 class="community">
-        <img src="/assets/shared/redesign/parentslist-logo.png" alt="ParentsList">
+        <img src="/assets/shared/redesign/parentslist-logo.png" alt="Placebuilder">
       </h1>
     </a>
     {{/isGuest}}
     {{^isGuest}}
     <a href="{{community_url}}" class="home-logo">
-      <!--<img src="/assets/shared/redesign/flag-logo.png" alt="ParentsList">-->
+      <!--<img src="/assets/shared/redesign/parentslist-logo.png" alt="Placebuilder">-->
      </a>
     <div class="button-wrapper pie-element">
       <a href="" class="red-button post pie-element">Create A New Post!</a>
     </div>
     {{/isGuest}}
-    {{/isAuth}}
   </div>
     <div class="header_center"></div>
     <div class="header_right"></div>

@@ -114,41 +114,7 @@
 
   <body class="application">
 
-      <div id="header" class="app info">
-         <div id="nav_wrapper" class="pie-element">
-           <div class="header_left">
-             <a href="/info">
-               <h1 class="community">
-                 <img src="/assets/shared/redesign/parentslist-logo.png" alt="Placebuilder">
-               </h1>
-             </a>
-           </div>
-             <div class="header_center"></div>
-             <div class="header_right">
-               <ul id="user_sign_in">
-                <div id="login" class="button red drop">
-                  Login
-                </div>
-                <div id="sign_in" class="dropdown">
-                  <div class="arrow"></div>
-                  <form id="sign_in_form">
-                    <input type="email" name="email" class="email" placeholder="Email Address" />
-                    <input type="password" name="password" placeholder="Password" />
-                    <button id="signin_button" name="signin" class="button signin">Sign In</button>
-                    <input type="submit" style="display: none"/>
-                  </form>
-                  <a href="/users/auth/facebook">
-                    <button name="facebooksignin" class="button signin facebook">Facebook Login</button>
-                  </a>
-                  <a href="/users/password/new">
-                    <p class="forgot">Forgot Password?</p>
-                  </a>
-                </div>
-               </div>
-             </div>
-         </div>
-         
-      </div>
+      <div id="header" class="app info"></div>
 
       <div id="notification" class="important-notification"></div>
 
@@ -201,7 +167,7 @@
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one red-button"><a href="#">Build One &#10140;</a></p>
+               <p class="build-one red-button"><a href="#">Build One</a></p>
             </div>
 
             
@@ -220,7 +186,7 @@
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one red-button"><a href="#">Build One &#10140;</a></p>
+               <p class="build-one red-button"><a href="#">Build One</a></p>
             </div>
          </div>
          <div id="parents" class="section-container">
@@ -237,7 +203,7 @@
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one red-button"><a href="#">Build One &#10140;</a></p>
+               <p class="build-one red-button"><a href="#">Build One</a></p>
             </div>
          </div>
          <div id="about-us" class="section-container">
@@ -254,7 +220,7 @@
                <h3>Technology</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
             
-               <p class="build-one red-button"><a href="/marquette">Preview the site &#10140;</a></p>
+               <p class="build-one red-button"><a href="/marquette">Preview the site &nbsp; &#10140;</a></p>
             </div>
          </div>
          <div class="info-footer">
@@ -263,8 +229,13 @@
          </div>
       </div>
 
- 
     <script type="text/javascript" src="/assets/application.js"></script>
+    <script type="text/javascript">
+      CommonPlace.account = new Account({});
+      var header = new CommonPlace.shared.HeaderView({el: $("#header")});
+      header.render();
+      var communitySlug = window.location.pathname.split("/")[1];
+    </script>
 
     <!--<script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.5/zenbox.js"></script>
     <style type="text/css" media="screen, projection">
