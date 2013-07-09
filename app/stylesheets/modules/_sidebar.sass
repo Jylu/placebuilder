@@ -9,7 +9,7 @@
   //box-shadow: inset -1px 0px 0px white
   #your-town
     h3
-      font-family: $heading
+      font-family: $body
       font-size: 13px
       color: $black
       //text-shadow: 1px 1px 1px white
@@ -29,8 +29,8 @@
             padding-top: 14px
         a
           text-decoration: none
-          font-family: $heading
-          color: #444
+          font-family: $body
+          color: #888
           text-shadow: none
           font-size: 14px
           font-weight: normal
@@ -75,7 +75,7 @@
           //box-shadow: 1px 1px 0px #f6f4ed
           border-radius: 20px
 
-        a#questions
+        a#discussions
           .icon
             background-position: -75px 0px
           &.current
@@ -86,7 +86,7 @@
             &:hover
               .icon
                 background-position: -75px -25px
-        a#questions:hover
+        a#discussions:hover
           .icon
             background-position: -75px 0px
         a#transactions
@@ -117,10 +117,10 @@
         a#events:hover
           .icon
             background-position: -50px 0px
-        a#discussions
+        //a#discussions
           .icon
             background-position: -75px 0px
-        a#discussions.current
+        //a#discussions.current
           //border-left: 5px solid #5bb17b
           .icon
             background-position: -75px -25px
@@ -217,7 +217,7 @@
             color: $black !important
         &:hover
           h4
-            color: #666
+            color: #888
         a
           padding: 9px 20px 9px 15px
           //&:hover, &:active, &.current
@@ -225,8 +225,8 @@
             background-color: rgba(0,0,0,0.35)
             color: $red
         h4
-          font-family: $heading
-          color: #444
+          font-family: $body
+          color: #888
           font-weight: normal
           font-size: 14px
           line-height: 16px
