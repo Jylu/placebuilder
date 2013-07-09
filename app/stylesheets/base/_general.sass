@@ -33,26 +33,29 @@ a
   color: $black
   
 #main
-  width: 970px
+  width: 935px
   //width: 100% !important
   position: relative
   margin: 0px auto
   
 #zenbox_tab
   z-index: 800 !important
+  &:hover
+    background-color: $red !important
 #zenbox_tab #feedback_tab_text
   color: $red !important
   &:hover
     color: white
 #zenbox_tab.ZenboxTabRight
-  background-color: #fffdfa !important
+  background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
+  background-color: #faf7f2 !important
   border: 0px none !important
-  //&:hover
-    background-color: $red !important
-    #zenbox_tab #feedback_tab_text
+  &:hover
+    background-color: #fffdfa !important
+    //#zenbox_tab #feedback_tab_text
       color: white !important
-  //&:active
-    background-color: $red !important
+  &:active
+    background-color: #fffdfa !important
   
 ::-webkit-scrollbar
   width: 10px

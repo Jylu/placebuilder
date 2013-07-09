@@ -1,5 +1,8 @@
 body.inbox, body.feed_inbox, body.outbox
   background-color: #eee
+  padding: 0px !important
+  textarea
+    width: 540px !important
   .end
     .loading
       color: #333
@@ -10,24 +13,26 @@ body.inbox, body.feed_inbox, body.outbox
   a.more
 
   #inbox-nav
-    font-family: Rokkitt, Rockwell, Helvetica, sans-serif
-    font-size: 18px
-    padding-left: 30px
-    padding-right: 30px
+    font-family: $Yellowtail
+    font-size: 15px
+    padding-left: 15px
+    padding-right: 15px
+    width: 215px
     
     a 
-      +border-radius(3px)
-      padding: 5px 20px
+      +border-radius(4px)
+      padding: 8px 15px
       color: #1b334a
       text-decoration: none
+      width: 170px
     
     .current
-      background-color: #ac322f
+      background-color: $red
       color: white
 
   #inbox
-    border: #bbb
-    +border-radius(5px)
+    border: #eee
+    +border-radius(4px)
     border: 1px solid #bbb
     background-color: white
     
@@ -44,14 +49,14 @@ body.inbox, body.feed_inbox, body.outbox
       padding: 6px
       border-bottom: 1px solid #d5d6d6
       +border-top-radius(5px)
-      font-family: Helvetica, Arial, sans-serif
+      font-family: $body
       font-size: 14px
     
     ul.list
       +border-bottom-radius(4px)
     
       .message-item
-        border-bottom: 1px solid #bbb
+        border-bottom: 1px solid #eee
         padding: 15px
         
         .replies-area
@@ -66,28 +71,33 @@ body.inbox, body.feed_inbox, body.outbox
 
         .main-message
           img.avatar
-            border-radius: 5px
+            //border-radius: 5px
+            float: left
+            margin-right: 15px
     
           .corner
             color: #bab9bf
             font-size: 18px
     
           h3
-            color: #af473e
-            font-size: 24px
-            font-weight: bold
-            font-family: Rokkitt, Rockwell, Helvetica, Arial, Verdana, sans-serif
+            color: #444
+            font-size: 20px
+            font-weight: normal
+            font-family: $body
+            margin-bottom: 5px
     
           .messagable
-            color: #ad312f
+            color: $red
             text-decoration: none
     
           .date
+            font-family: $body
             color: #888
-            font-size: 16px
+            font-size: 14px
+            margin-bottom: 15px
     
           .body
             color: #333
             line-height: 22px
-            font-family: Helvetica, Arial, sans-serif
-            font-size: 15px
+            font-family: $body
+            font-size: 14px
