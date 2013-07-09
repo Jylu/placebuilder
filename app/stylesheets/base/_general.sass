@@ -9,16 +9,16 @@ em
   
 body
   font-family: $heading
-  background-size: cover !important
-  -webkit-background-size: cover !important
+  //background-size: cover !important
+  //-webkit-background-size: cover !important
   //@include background(linear-gradient(top, #efebd9, #f5eabf))
   //background-attachment: fixed
   //background-color: #ec8056
-  background-color: #FAF8F0
-  //background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
+  //background-color: #f0ede8
+  background: url('shared/redesign/grey-bg.gif') repeat fixed #f0ede8
   //background: url('https://cache.nebula.phx3.secureserver.net/obj/MTc0ODc3NEQyRTEwMzBENUY4NTU6YjQ2ZTRiZjg3NzYwMjljNzYzZjkzMWUzYWZhNTU5ZTI=')
   //background: url('http://resources.newhomesource.com/uploadedImages/NewHomeSource/Resource_Center/Articles/Settling_In/shutterstock_112588013.jpg') no-repeat top right fixed #dfdcd5
-  background: url("shared/redesign/backgrounds/backyard.jpg") no-repeat top center fixed #FAF8F0
+  //background: url("shared/redesign/backgrounds/backyard.jpg") no-repeat top center fixed #FAF8F0
   //background-position: 252px 60px
   
 h1, h2, h3, h4, h5
@@ -40,6 +40,19 @@ a
   
 #zenbox_tab
   z-index: 800 !important
+#zenbox_tab #feedback_tab_text
+  color: $red !important
+  &:hover
+    color: white
+#zenbox_tab.ZenboxTabRight
+  background-color: #fffdfa !important
+  border: 0px none !important
+  //&:hover
+    background-color: $red !important
+    #zenbox_tab #feedback_tab_text
+      color: white !important
+  //&:active
+    background-color: $red !important
   
 ::-webkit-scrollbar
   width: 10px
