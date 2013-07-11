@@ -16,17 +16,17 @@
           &.group-member
             padding: 10px
             //background-image: url(shared/redesign/tan-bg.png)
-            background-color: #fafafa
+            background-color: #fff
             //border: 1px solid #fff
             color: #444
             border-radius: 4px
-            box-shadow: 0px 2px 1px rgba(0,0,0,0.20)
+            box-shadow: 0px 2px 2px rgba(0,0,0,0.10)
             font-family: $heading
             //-webkit-filter: none !important
             &:after, &:before
               display: none
             .avatar
-              border-radius: 50px
+              border-radius: 120px
               //box-shadow: 1px 1px 0px white
             h3, h3 a
               font-size: 18px
@@ -54,7 +54,7 @@
                 color: #aaa
         .wire-item 
           background: white
-          box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.20)
+          box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10)
           //box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.65)
           //-moz-box-shadow: 1px 1px 4px rgba(0,0,0,0.4)
           //-webkit-filter: drop-shadow(1px 1px 4px rgba(0,0,0,0.4))
@@ -211,13 +211,13 @@
               background-repeat: no-repeat
               background-position: center center
               //border: 5px solid #fff
-              background-color: #faf7f2
-              border-radius: 60px
+              background-color: #fff
+              border-radius: 120px
               padding: 1px
-              border: 4px solid #faf7f2
+              border: 4px solid #fff
               //border-image: url("shared/redesign/tan-bg.gif")
               //background-image: url("shared/redesign/tan-bg.gif")
-              box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.20)
+              box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.10)
               //box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.5)
               //box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.65)
             p.venue, p.address
@@ -235,8 +235,8 @@
                 text-transform: uppercase
                 font-size: 18px
                 font-family: Helvetica Neue, Helvetica, Verdana, sans-serif
-                text-shadow: 0px -1px 0px #64100D
-                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.65)
+                text-shadow: 0px -1px 0px #b94040
+                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.10)
               .day-of-month
                 //background-color: #F6F4ED
                 background-image: url("shared/redesign/tan-bg.gif")
@@ -246,7 +246,7 @@
                 text-shadow: 1px 1px 0px white
                 font-family: Helvetica Neue, Helvetica, Verdana, sans-serif
                 font-size: 40px
-                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2)
+                box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.10)
               .event-time 
                 text-align: center
                 font-size: 12px
@@ -421,10 +421,11 @@
       .highlight
         //background-color: #fffa6c
         //background-image: url("shared/redesign/tan-bg.png")
-        background-color: $red
-        color: white
+        //background-color: $red
+        //color: white
         //text-shadow: 1px 1px 0px white
-        padding: 1px 4px
+        border-bottom: 1px dotted $red
+        //padding: 1px 4px
 
 /* Public Sign Up Box */
 
