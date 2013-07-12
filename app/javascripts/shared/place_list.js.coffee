@@ -1,8 +1,8 @@
 CommonPlace.shared.PlaceList = CommonPlace.View.extend(
   template: "shared.place-list"
 
-  event:
-    "click .townList": "changeList"
+  events:
+    "click .places": "changeList"
     "click .red-button": "goToList"
 
   initialize: ->
@@ -11,15 +11,17 @@ CommonPlace.shared.PlaceList = CommonPlace.View.extend(
       $lists = @$(".lists")
 
       response.map((comm) ->
-        html = '<li class="townList" id="' + comm.slug + '">' + comm.name + '</li>'
+        html = '<li class="network" id="' + comm.slug + '">' + comm.name + '</li>'
         $lists.append(html)
       )
     ))
 
-  changeList: ->
-    return null
+  changeList: (e) ->
+    @current = e.currentTarget.id
+    $(".network").removeClass "current"
+    $("#"+@current).addClass "current"
 
   goToList: ->
-    unless @current = null
+    unless @current is null
       window.location.pathname = "/"+ @current
 )
