@@ -1,10 +1,10 @@
 #header
-  //background: $red
-  background-color: white
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.05)
+  background: $red
+  //background-color: white
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.10)
   //box-shadow: 0px 2px 3px rgba(0,0,0,0.10), inset 0px -1px 0px #fbfbfb
-  //border-bottom: 1px solid #D34F49
-  border-bottom: 1px solid #ddd
+  border-bottom: 1px solid #D34F49
+  //border-bottom: 1px solid #ddd
   //background-color: #ec8056
   //linear-gradient(color-stops(#fbfbfb, #f2f2f2))
   padding-top: 15px
@@ -43,11 +43,11 @@
         float: left
         margin: 0px 0px 0px 15px
         cursor: pointer
-        background-image: url('shared/redesign/parentslist-logo-red.png')
+        background-image: url('shared/redesign/parentslist-logo.png')
         //background-image: url("shared/redesign/flag-logo.png")
         background-position: 0px 0px
         background-repeat: no-repeat
-        &:hover
+        //&:hover
           background-image: url('shared/redesign/parentslist-logo-red2.png')
           //background-position: 0px -26px
     #user_sign_in, .choose_town_container
@@ -79,14 +79,15 @@
           +linear-gradient(color-stops(#2e5274, #1b334a), bottom)
       .red
         +red-button
-        //background: lighten($red, 2%)
-        //background: $red
+        //background: lighten($red, 3%)
+        background: #f74444
+        border-color: #da3636
         //border: 1px solid rgba(0,0,0,0.15)
         //+linear-gradient(color-stops(#cc4441, #ac322f))
-        //&:hover, &:focus
-          background: lighten($red, 6%)
-          box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.20)
-          color: #fff
+        &:hover, &:focus
+          background: lighten(#f74444, 3%)
+          //box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.20)
+          //color: #fff
           //+linear-gradient(color-stops(#ea4e4a, #ac322f), top)
         //&:active
           color: #fff
@@ -96,7 +97,7 @@
         //background-image: url("shared/redesign/tan-bg.png")
         text-align: center
         +border-radius(4px)
-        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25)
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.20)
         //border: 1px solid white
         .arrow
           background: url("shared/redesign/arrow.png") no-repeat
@@ -194,33 +195,33 @@
 
   &.app 
     #nav_wrapper
-      border-left: 1px solid #eee
-      //border-right: 1px solid #588257
-      box-shadow: inset 1px 0px 0 0 #fff
+      //border-left: 1px solid #eee
+      border-left: 1px solid rgba(0,0,0,0.05)
+      box-shadow: inset 1px 0px 0 0 rgba(255,255,255,0.15)
       .header_left
-        //border-left: 1px solid #588257
-        border-right: 1px solid #fff
-        box-shadow: inset -1px 0px 0 0 #eee
+        border-right: 1px solid rgba(0,0,0,0.05)
+        //border-right: 1px solid #fff
+        box-shadow: inset -1px 0px 0 0 rgba(255,255,255,0.15)
       .button-wrapper
         background-image: url("shared/redesign/button-tail.png")
         background-color: transparent
         background-repeat: no-repeat
-        background-position: 0px -2px
-        &:hover
+        background-position: 0px -42px
+        //&:hover
           background-position: 0px -42px
           cursor: pointer
           .red-button
             color: white
-            background: #e64c4c
-            box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.20)
+            background: $red
+            box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.0)
             //box-shadow: inset 0px -1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.10)
             //background: url('shared/redesign/button-bg.png') no-repeat 0px 0px #FAF8F0
             //color: $dark-grey
             //+linear-gradient(color-stops(#ee5a56, #b53633), top)
             behavior: url("assets/PIE.htc")
         &:active
-          background-position: 0px -82px
-          .red-button
+          background-position: 0px -2px
+          //.red-button
             color: white
             text-shadow: 0px 1px 0px #ac322f
             //box-shadow: inset 0px -1px 0px rgba(255,255,255,0.5) !important
@@ -235,7 +236,9 @@
           text-align: center
           padding: 9px 6px 9px 6px
           font-weight: normal
-          //border-color: #e9a05e
+          background: #f74444
+          box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.15)
+          border-color: #da3636
           //color: $dark-grey
           //border: 0px none
           //background-color: $red
@@ -248,8 +251,10 @@
           //box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3)
           behavior: url("assets/PIE.htc")
           &:hover
-            background: lighten($red, 5%)
-            box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.20)
+            background: #f74444
+          &:active
+            background: #ec3939
+            box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.0)
           //&:hover, &:focus
             box-shadow: inset 0px -1px 0px rgba(255,255,255,0.5), 0px 2px 0px rgba(0, 0, 0, 0.10)
             //background: url('shared/redesign/button-bg.png') no-repeat 0px 0px #FAF8F0
@@ -310,14 +315,14 @@
           //text-shadow: 1px 1px 0px rgba(0,0,0,0.65)
           //text-shadow: 1px 1px 0px #f7bca6
           -webkit-font-smoothing: antialiased
-          border: 1px solid #eee
-          box-shadow: 0px 1px 0px white, inset 1px 1px 3px rgba(0, 0, 0, 0.1)
+          border: 1px solid #cf3232
+          box-shadow: 0px 1px 0px rgba(255,255,255,0.25), inset 1px 1px 3px rgba(0, 0, 0, 0.25)
           -webkit-input-placeholder: #9d6651 !important
           behavior: url("assets/PIE.htc")
           &:active, &:focus, &:hover
             outline: none
             //text-shadow: 1px 1px 0px white
-            border: 1px solid #ddd
+            border: 1px solid #b62c2c
             //color: #131313 !important
             //color: #131313
             background-color: white
@@ -355,7 +360,7 @@
           background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
           //+linear-gradient(color-stops(#f2f2f2, #eee))
           //+linear-gradient(color-stops(#2e5274, #1b334a), top)
-          box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.20), inset 0px 1px 0px white
+          box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.15), inset 0px 1px 0px white
           text-shadow: 1px 1px 0px white
           cursor: pointer
           span.arrow
