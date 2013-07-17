@@ -849,6 +849,11 @@ CONDITION
       t.add_buyer(params[:buyer])
     end
 
+    # Returns the list of all communities
+    get "/:id/community_list" do
+      return Community.all.to_json
+    end
+
     # Returns a list of completed versions of community names
     #
     # Note: This should not be bound to a community, but when

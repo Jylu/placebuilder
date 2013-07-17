@@ -146,7 +146,6 @@
                <div class="right-column">
                   <div class="state"></div>
                   <div class="town"></div>
-                  <button class="red-button">Go To Your Place!</button>
                </div>
             </div>
          </div>
@@ -158,13 +157,13 @@
             <div class="neighbors">
                <img src="/assets/shared/redesign/building-neighbors.png">
                <h2>For Neighbors</h2>
-            
+
                <h3>Connect</h3>
                <p>Proin ut sodales dui vestibulum ut pretium felis pharetra erat. Cras tincidunt lectus at sem convallis ornare felis tincidunt.</p>
-            
+
                <h3>Buy, Sell, Share</h3>
                <p>Quisque posuere justo ac leo pulvinar, in eleifend neque porttitor. Etiam sit amet nisi rutrum, egestas dolor vitae, adipiscing elit.</p>
-            
+
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
                <p class="build-one"><a class="red-button" href="#">Build One</a></p>
@@ -200,7 +199,6 @@
 
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
-            
                <p class="build-one"><a class="red-button" href="#">Build One</a></p>
             </div>
          </div>
@@ -232,6 +230,8 @@
       var header = new CommonPlace.shared.HeaderView({el: $("#header")});
       header.render();
       var communitySlug = window.location.pathname.split("/")[1];
+      var list = new CommonPlace.shared.PlaceList({el: $(".town")});
+      list.render();
     </script>
 
     <!--<script type="text/javascript" src="//assets.zendesk.com/external/zenbox/v2.5/zenbox.js"></script>
