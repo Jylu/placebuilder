@@ -1,63 +1,162 @@
 #header.info
   //position: absolute
+  //background: #fffaf6
+  //box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.025)
+  //border: 1px solid #ece6df 
   #nav_wrapper
     border: 0px none
     box-shadow: none
     .header_left
       border: 0px none
       box-shadow: none
-      padding-left: 1px
+      //padding-left: 1px
     .header_right
       #user_sign_in
-        right: 0px
+        right: -1px
+        .dropdown
+          //background: #f7f1eb !important
+          box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.35) !important
 #main.info
   margin: 0px auto
-  color: white
-  padding-left: 25px
+  color: #444
+  //padding-left: 15px
+  height: 100%
+  position: static
+  //width: 935px
   .info-top
-    position: fixed
-    top: 16%
+    //position: fixed
+    //top: 16%
+    height: 100%
+    width: 935px
+    margin: 0px auto
+    .top-container
+      height: 465px
+      position: absolute
+      top: 50%
+      margin: -250px auto 0px auto
+      width: 935px
     .headline
-      margin-bottom: 40px
+      margin-bottom: 50px
       h1
         font-family: $heading
-        font-size: 42px
-        color: white
-        font-weight: bold
-        text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
+        font-size: 38px
+        line-height: 48px
+        color: #444
+        font-weight: normal
+        text-align: center
+        //text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
     h2
       font-size: 22px
       font-weight: bold
       margin-bottom: 10px
-      text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
+      color: $red
+      //text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
     p
       font: 15px/22px $heading
-      text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
-    .left-column
-      .for-neighbors:hover
-        .for-students, .for-parents
-          display: none
+      //text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
     .left-column
       float: left
-      width: 70%
+      width: 609px
+      overflow: hidden
       .build-container
-        margin-top: 50px
-        margin-left: -28px
+        //margin-top: 50px
+        position: relative
+        //box-shadow: inset 0px -8px 0px #afa6a3
+        height: 385px
+        //background: url("shared/redesign/glow-bg.png") no-repeat 0px 112px
+        .for-parents
+          position: absolute
+          top: 0px
+          right: 0px
+          float: none
+          h3
+            //margin-bottom: 31px !important
+            top: 65px !important
+            right: -15px !important
+          background: url("shared/redesign/building-right.png") no-repeat 0px 0px
+          overflow: hidden
+          &:hover
+            background: url("shared/redesign/building-right.png") no-repeat 0px -385px
+            //a
+              background-color: #b07bd9
+            //&:after
+              border-top-color: #b07bd9 !important
+          //img
+            width: 165px
+            height: 350px
+        .for-students
+          h3
+            //margin-bottom: 31px !important
+            top: 100px !important
+            //a
+              background-color: #2d87b5
+            //&:after
+              border-top-color: #2d87b5 !important
+          background: url("shared/redesign/building-center.png") no-repeat 0px 0px
+          overflow: hidden
+          &:hover
+            background: url("shared/redesign/building-center.png") no-repeat 0px -385px
+          //img
+            height: 310px
+            width: 185px
+        .for-neighbors 
+          h3
+            //margin-bottom: 31px !important
+            top: 0px !important
+            left: -15px !important
+            //a
+              background-color: #5bb17b
+            //&:after
+              border-top-color: #5bb17b !important
+          background: url("shared/redesign/building-left.png") no-repeat 0px 0px
+          overflow: hidden
+          &:hover
+            background: url("shared/redesign/building-left.png") no-repeat 0px -385px
         .for-neighbors, .for-students, .for-parents
           float: left
-          width: 33%
+          width: 203px
+          height: 385px
+          overflow: hidden
           text-align: center
+          //&:hover
+            background: url("shared/redesign/glow.png") no-repeat bottom center
+            background-size: 100% 87%
+            h3
+              a
+                background-color: $red
+                color: white
+              &:after
+                border-top-color: $red !important
+            img
+              -webkit-filter: brightness(105%)
+              -mozs-filter: brightness(105%)
+          //a.building
+            vertical-align: bottom
+            display: table-cell
+            margin: 0px auto
+            height: 340px
+            width: 203px
           h3
             font-size: 15px
             font-weight: bold
+            //text-transform: uppercase
             margin: 0px auto
+              bottom: 8px
             text-align: center
-            margin-bottom: 30px
-            width: 145px
+            width: 130px
             color: white
             position: relative
             border-radius: 4px
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25)
+            //box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.10)
+            //color: #666
+            padding: 8px
+              bottom: 9px
+            background-color: $red
+            //background-color: lighten($cp-blue,15%)
+            //&:hover
+              background-color: $red
+              color: white
+                //color: lighten($red, 25%)
             &:after
               left: 44%
               border: solid transparent
@@ -65,130 +164,186 @@
               height: 0
               width: 0
               position: absolute
+              bottom: -18px
               pointer-events: none
               border-color: rgba(255, 255, 15, 0)
               border-top-color: $red
+              //border-top-color: lighten($cp-blue,15%)
               border-width: 9px
-              &:hover
-                border-top-color: white
-            &:hover
+              //&:hover
+                border-top-color: $red
+            //&:hover
               &:after
-                border-top-color: white
-            a
-              border-radius: 4px
-              color: white
-              padding: 8px
-                bottom: 10px
-              display: block
-              background-color: $red
-              &:hover
-                background-color: white
-                color: $red
-                  //color: lighten($red, 25%)
-          img
-            width: 140px
-            height: 140px
-            border-radius: 100px
-            border: 5px solid white
+                border-top-color: $red !important
+          //img
+            //width: 175px
+            //height: 100%
+            //border-radius: 100px
+            //border: 5px solid white
             margin: 0px auto
             text-align: center
             color: transparent
-            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.25)
-        .for-neighbors
-          img
-            background-color: #519872
-        .for-students
-          img
-            background-color: #4ea6cb
-        .for-parents
-          img
-            background-color: #ffce79
+            //opacity: 0.85
+            //background-color: #ccc
+            //box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1)
+            &:hover
+              //box-shadow: 0px 0px 15px rgba(255, 255, 255, 0.8)
+              //background-color: $red
+              //margin-top: -5px
+              //opacity: 0.85
+              //filter: url(filters.svg#grayscale)
+              //filter: gray
+              //-webkit-filter: grayscale(1)
+
     .right-column
       float: right
-      width: 30%
+      width: 300px
+      //position: relative
+      .state, .town
+        border-radius: 4px
+        background-color: #fefffe
+        border: 1px solid #dedbcd
+        //background-color: rgba(255,255,255,0.35)
+        box-shadow: inset #eeeeee 0px 0px 3px 2px, 0px 1px 0px white
+        //box-shadow: inset 0px 0px 6px rgba(0,0,0,0.25), 0px 1px 0px rgba(255, 255, 255, 0.65)
+        margin-bottom: 23px
+        width: 100%
+        float: left
+        &:hover
+          cursor: pointer
+      .state
+        height: 40px
+        //margin-top: 20px
+      .town
+        //height: 320px
+        height: 245px
+        //position: absolute
+        //bottom: 25px
+      .red-button
+        cursor: pointer
+        font-weight: normal
+        width: 100%
+        font-size: 20px
 
 p.learn-more
-  padding: 15px
+  padding: 25px 0px
   margin: 0px auto
   text-align: center
   font-size: 16px
   font-weight: bold
-  width: 100%
+  width: 920px
+  margin-left: 10px
   text-transform: uppercase
-  position: fixed
+  position: absolute
   bottom: 0px
-  background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
+  //background: url('shared/redesign/tan-bg.gif') repeat fixed #FAF8F0
   clear: both
-  border-top: 1px solid white
   a
     color: $red
     &:hover
-      color: $cp-blue
-.info-bottom
-  background: url('shared/redesign/tan-bg.gif') repeat fixed #FAF8F0
+      //color: $cp-blue
+      color: #444
+
+.divider
+  border-bottom: 1px solid rgba(255,255,255,0.65)
+  height: 1px
+  background-color: #E7E4D7
   width: 100%
-  clear: both
-  //height: 100%
+
+.info-bottom
+  //background: url('shared/redesign/tan-bg.gif') repeat fixed #FAF8F0
+  width: 100%
+  height: 100%
+  //clear: both
   color: #444
-  position: absolute
-  top: 690px
+  //position: absolute
+  //top: 690px
   .section-container
     display: table
     padding-left: 15px
     margin: 0px auto
-    min-height: 575px
+    min-height: 535px
     //height: inherit
     clear: both
-    width: 955px   
-    padding-top: 55px 
+    width: 920px   
+    padding-top: 100px 
   .neighbors, .students, .parents, .about-us
     //background-color: #519872
     //padding-top: 90px    
     display: table-cell
     vertical-align: middle
+    //border-bottom: 5px solid #aaa
     h2
-      font-size: 36px
-      font-weight: bold
+      font-size: 38px
+      font-weight: normal
       //text-transform: uppercase
-      color: $red
+      color: #444
       //margin-bottom: 25px
-      margin-top: 35px
+      margin-top: 20px
     h3
       font-size: 20px
-      font-weight: normal
-      color: $cp-blue
+      font-weight: bold
+      color: $red
       margin-bottom: 10px
       margin-top: 40px
     p
       font: 15px/20px $heading
+      //text-shadow: 1px 1px 0px white
     p.build-one
-      margin-top: 40px
-      text-align: right
-      a
-        color: $red
+      margin-top: 30px
+      //text-align: right
+      //width: 250px
+      //height: 25px
+      float: left
+      padding: 0px
+      a.red-button
+        color: white
         text-transform: uppercase
         font-size: 16px
         font-weight: bold
+        padding: 10px 15px
+        display: block
         //letter-spacing: 1px
-        &:hover
+        //&:hover
           color: $cp-blue
         
   .neighbors, .parents
     img
       float: left
       margin-right: 40px
+    h2
+      margin-top: 40px
+  .parents
+    h2
+      margin-top: 50px
   .students, .about-us
+    h2
+      margin-top: -5px
     img
       float: right
       margin-left: 40px
+    p.build-one
+      float: right
+      margin-top: 30px
+  //.neighbors
+    h3
+      color: #5bb17b
+  //.students
+    h3
+      color: #2d87b5
+  //.parents
+    h3
+      color: #b07bd9
   .info-footer
-    width: 955px
+    width: 920px
     font-size: 13px
     padding-left: 15px
     min-height: 20px
+    padding-top: 30px
     padding-bottom: 20px
     margin: 0px auto
-      //top: -10px
+    text-shadow: 1px 1px 0px white
+      top: 30px
     color: #888
     a
       color: #888

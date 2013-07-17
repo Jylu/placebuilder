@@ -1,16 +1,17 @@
 body.account, body.faq, body.inbox
-  background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
+  background: url("shared/redesign/grey-bg.gif") repeat fixed #F0EDE8
   background-size: auto !important
   #main
     //background-image: url(shared/redesign/tan-bg.png)
     //background-color: #eeecdf
     padding: 40px 20px 20px 20px
+
   #delete-account-form
     
     p 
       padding: 0px
       color: $black
-      font-size: 17px
+      font-size: 15px
       line-height: 20px
       text-shadow: 1px 1px 0px white
     .controls
@@ -20,49 +21,63 @@ body.account, body.faq, body.inbox
   #account-edit
     font-family: $heading
     h1
-      color: $blue
+      color: $red
       line-height: 1.2
-      font-size: 24px
-      padding: 0 20px
-      text-align: center
+      font-size: 28px
+      //padding: 0 20px
+      margin-bottom: 30px
+      text-align: left
       text-shadow: 1px 1px 0px white
     
     .settings
-      background-color: $red
-      color: white
-      +border-radius(5px)
-      
+      //background-color: $red
+      color: #444
+      background-image: url('shared/redesign/tan-bg.gif')
+      +border-radius(4px)
+      padding: 20px
+      margin-top: 60px
       a
         text-decoration: none
         text-align: center
         color: white
         cursor: pointer
         &:hover
-          text-decoration: underline
+          color: $red
+          cursor: pointer !important
       
       li
         //padding: 5px
         //&:hover
           background-color: #8f2927
+        //a.delete-account
+          +red-button
+          font-size: 20px
+          margin-top: 25px
+          text-transform: uppercase
         a.delete-account
           font-size: 20px
           border-radius: 4px
           padding: 8px 15px
-          background-color: #8A2A23
+          background-color: #eae5dc
+          color: #999
           font-weight: bold
-          text-transform: uppercase
-          margin: 10px auto 20px
+          text-transform: capitalize
+          margin: 30px auto 15px
           display: block
-          width: 230px
+          width: 350px
           text-align: center
           &:hover
-            background-color: $blue
+            background-color: #999
             text-decoration: none
+            color: #eae5dc
       .get-posts
         li
-          font-size: 16px
-          &:hover
-            text-decoration: underline
+          label
+            font-size: 16px
+            &:hover
+              //text-decoration: underline
+              color: $red
+              cursor: pointer !important
           input 
             padding: 0 
 
@@ -70,6 +85,7 @@ body.account, body.faq, body.inbox
         text-align: center
         font-family: Helvetica, sans-serif
         font-size: 14px
+        margin-bottom: 25px
     
         img
           +border-radius(2px)
@@ -94,7 +110,7 @@ body.account, body.faq, body.inbox
       .chzn-container
         font-family: $Rokkitt
         color: $black
-        font-size: 18px
+        font-size: 15px
         width: 100%
         margin: 10px 0px
         a
@@ -113,7 +129,7 @@ body.account, body.faq, body.inbox
           line-height: 38px
           font-family: $Rokkitt
           color: $black
-          font-size: 18px
+          font-size: 15px
           background: #fff
           float: left
           box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
@@ -141,7 +157,7 @@ body.account, body.faq, body.inbox
             border-bottom: 1px dotted #ccc
             padding: 12px 8px
             color: #333
-            font-size: 18px
+            font-size: 15px
             font-family: $heading
             &:hover
               color: $red
@@ -152,7 +168,7 @@ body.account, body.faq, body.inbox
           font-family: $Rokkitt
           border-radius: 4px
           color: #333
-          font-size: 18px
+          font-size: 15px
           width: 460px !important
           box-shadow: inset #ddd 0px 0px 3px 2px, #fff 0px 1px 0px
           .search-field 
@@ -176,7 +192,7 @@ body.account, body.faq, body.inbox
       label, input.normal, textarea
         color: #333
         padding: 0px 3px
-        font-size: 18px
+        font-size: 15px
         line-height: 18px
         text-shadow: 1px 1px 0px white
         +border-radius(4px)

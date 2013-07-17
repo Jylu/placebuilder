@@ -16,14 +16,14 @@ input:-moz-placeholder
 
 
 #search-header::-webkit-input-placeholder
-  color: #fff
+  color: #777
   //text-shadow: 0px -1px 0px rgba(0,0,0,0.25)
-  //text-shadow: 1px 1px 0px white
+  text-shadow: 1px 1px 0px white
 
-#search-header
-  &:focus::-webkit-input-placeholder, &:hover::-webkit-input-placeholder
-    color: #fff
-    text-shadow: 0px -1px 0px rgba(0,0,0,0.25)
+//#search-header
+  &:focus::-webkit-input-placeholder
+    color: #131313
+    //text-shadow: 0px -1px 0px rgba(0,0,0,0.25)
     
 #directory_search
   input 
@@ -31,10 +31,10 @@ input:-moz-placeholder
     border-radius: 4px
     background-color: #FEFFFE
     border: 1px solid #dedbcd
-    box-shadow: inset #eee 0px 0px 3px 2px, 0px 1px 0px #fff
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.05), 0px 1px 0px #fff
     //margin-top: -1px
     //border-top: none
-    padding: 4px 4px 4px 36px
+    padding: 6px 6px 6px 36px
     margin: 13px 15px 10px 15px
     font-size: 13px
     text-shadow: 1px 1px 0px white
@@ -48,7 +48,7 @@ input:-moz-placeholder
       border: 1px solid #ccc
       color: #131313
       background-color: white
-      box-shadow: none
+      //box-shadow: none
       -webkit-input-placeholder: #131313
 
 .wire 

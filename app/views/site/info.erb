@@ -60,24 +60,29 @@
        html {
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
+            width: 100%;
+            height: 100%;
            }
 
            body {
              overflow-y: scroll !important;
              -webkit-font-smoothing: antialiased;
              text-rendering: optimizeLegibility;
-             background-position-y: 50px;
+             background: url("assets/shared/redesign/grey-bg.gif") repeat fixed #f0ede8 !important;
+             background-size: auto !important;
+             height: 100%;
+             width: 100%;
            }
            p.learn-more a {
               animation:learn .85s infinite;
                -webkit-animation:learn .85s infinite; /*Safari and Chrome*/
                position: relative;
            }
-           p.build-one a {
+           /*p.build-one a {
               animation:build .85s infinite;
-              -webkit-animation:build .85s infinite; /*Safari and Chrome*/
+              -webkit-animation:build .85s infinite;
               position: relative;
-           }
+           }*/
             @keyframes learn {
               from {top:0px;}
               to {top:3px;}
@@ -108,61 +113,67 @@
   </head>
 
   <body class="application">
+      <img src="/assets/shared/redesign/building.png" style="display:none;">
+      <img src="/assets/shared/redesign/building2.png" style="display:none;">
+      <img src="/assets/shared/redesign/parentslist-logo-red.png" style="display:none;">
+      <img src="/assets/shared/redesign/parentslist-logo-red2.png" style="display:none;">
+      
+      <div id="header" class="app info"></div>
 
-    <div id="header" class="app info"></div>
-    <div id="notification" class="important-notification"></div>
-    <div id="feature-switching"></div>
-    <div id="main" class="app info">
-      <div class="info-top">
-        <div class="headline">
-          <h1>Communication infrastructure for civil society.</h1>
-        </div>
-        <div class="left-column">
-          <h2>Build</h2>
-          <p>Start a high tech community bulletin board for your neighborhood, for your campus, or for parents at your child’s school. Choose one:</p>
-          <div class="build-container">
-            <div class="for-neighbors">
-              <h3><a href="#neighbors">For Neighbors</a></h3>
-              <a href="#neighbors"><img src="" title="For Neighbors" /></a>
+      <div id="notification" class="important-notification"></div>
+
+      <div id="feature-switching"></div>
+
+      <div id="main" class="app info">
+         <div class="info-top">
+            <div class="top-container">
+               <div class="headline">
+                  <h1>Build or join donec ligula tortor dui venenatis.</h1>
+               </div>
+               <div class="left-column">
+                  <div class="build-container">
+                     <a class="for-neighbors" href="#neighbors">
+                        <h3>For Neighbors</h3>
+                     </a>
+                     <a class="for-students" href="#students">
+                        <h3>For Students</h3>
+                     </a>
+                     <a class="for-parents" href="#parents">
+                        <h3>For Parents</h3>
+                     </a>
+                  </div>
+               </div>
+               <div class="right-column">
+                  <div class="state"></div>
+                  <div class="town"></div>
+                  <button class="red-button">Go To Your Place!</button>
+               </div>
             </div>
-            <div class="for-students">
-              <h3><a href="#students">For Students</a></h3>
-              <a href="#students"><img src="" title="For Students" /></a>
-            </div>
-            <div class="for-parents">
-              <h3><a href="#parents">For Parents</a></h3>
-              <a href="#parents"><img src="" title="For Parents" /></a>
-            </div>
-          </div>
-        </div>
-        <div class="right-column">
-          <h2>Join</h2>
-          <p>Find your place:</p>
-        </div>
+         </div>
+         <p class="learn-more"><a href="#bottom">Learn More &#11015;</a></p>
       </div>
-    </div>
-    <p class="learn-more"><a href="#neighbors">Learn More &#11015;</a></p>
-    <div class="info-bottom">
-      <div id="neighbors" class="section-container">
-        <div class="neighbors">
-          <img src="/assets/shared/redesign/building.png">
-          <h2>For Neighbors</h2>
-
-          <h3>Connect</h3>
-          <p>Proin ut sodales dui vestibulum ut pretium felis pharetra erat. Cras tincidunt lectus at sem convallis ornare felis tincidunt.</p>
-
-          <h3>Buy, Sell, Share</h3>
-          <p>Quisque posuere justo ac leo pulvinar, in eleifend neque porttitor. Etiam sit amet nisi rutrum, egestas dolor vitae, adipiscing elit.</p>
-
-          <h3>Local Events &amp; Announcements</h3>
-          <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
-
-          <p class="build-one"><a href="#">Build One &#10140;</a></p>
+      <div class="divider"></div>
+      <div id="bottom" class="info-bottom">
+         <div id="neighbors" class="section-container">
+            <div class="neighbors">
+               <img src="/assets/shared/redesign/building-neighbors.png">
+               <h2>For Neighbors</h2>
+            
+               <h3>Connect</h3>
+               <p>Proin ut sodales dui vestibulum ut pretium felis pharetra erat. Cras tincidunt lectus at sem convallis ornare felis tincidunt.</p>
+            
+               <h3>Buy, Sell, Share</h3>
+               <p>Quisque posuere justo ac leo pulvinar, in eleifend neque porttitor. Etiam sit amet nisi rutrum, egestas dolor vitae, adipiscing elit.</p>
+            
+               <h3>Local Events &amp; Announcements</h3>
+               <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
+               <p class="build-one"><a class="red-button" href="#">Build One</a></p>
+            </div>
         </div>
       </div>
       <div id="students" class="section-container">
             <div class="students">
-               <img src="/assets/shared/redesign/building.png">
+               <img src="/assets/shared/redesign/building-students.png">
                <h2>For Students</h2>
 
                <h3>Connect</h3>
@@ -173,13 +184,12 @@
 
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
-
-               <p class="build-one"><a href="#">Build One &#10140;</a></p>
+               <p class="build-one"><a class="red-button" href="#">Build One</a></p>
             </div>
          </div>
          <div id="parents" class="section-container">
             <div class="parents">
-               <img src="/assets/shared/redesign/building.png">
+               <img src="/assets/shared/redesign/building-parents.png">
                <h2>For Parents</h2>
 
                <h3>Connect</h3>
@@ -190,13 +200,13 @@
 
                <h3>Local Events &amp; Announcements</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
-
-               <p class="build-one"><a href="#">Build One &#10140;</a></p>
+            
+               <p class="build-one"><a class="red-button" href="#">Build One</a></p>
             </div>
          </div>
          <div id="about-us" class="section-container">
             <div class="about-us">
-               <img src="/assets/shared/redesign/building.png">
+               <img src="" style="width:400px;height: 475px;">
                <h2>Who We Are</h2>
 
                <h3>Our Mission</h3>
@@ -207,8 +217,7 @@
 
                <h3>Technology</h3>
                <p>Cras aliquet velit pretium, tincidunt dolor quis, viverra nulla. Curabitur quis congue nunc. Duis vitae porta metus pellentesque cursus ante pretium.</p>
-
-               <p class="build-one"><a href="/marquette">Preview the site &#10140;</a></p>
+               <p class="build-one"><a class="red-button" href="/marquette">Preview the site &nbsp; &#10140;</a></p>
             </div>
          </div>
          <div class="info-footer">

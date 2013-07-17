@@ -1,14 +1,15 @@
 #sidebar
   //background-image: url("shared/redesign/tan-bg.png")
-  //background-color: #FAF8F0
-  background: url('shared/redesign/tan-bg.gif') repeat #FAF8F0
+  //background-color: #fff
+  //background-color: rgba(255,255,255,0.4)
+  background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
   //border-left: 1px solid white
   //border-right: 1px solid white
   //border-right: 1px solid #ccc
   //box-shadow: inset -1px 0px 0px white
   #your-town
     h3
-      font-family: $heading
+      font-family: $body
       font-size: 13px
       color: $black
       //text-shadow: 1px 1px 1px white
@@ -28,8 +29,8 @@
             padding-top: 14px
         a
           text-decoration: none
-          font-family: $heading
-          color: #666
+          font-family: $body
+          color: $black
           text-shadow: none
           font-size: 14px
           font-weight: normal
@@ -72,27 +73,27 @@
           background-repeat: no-repeat
           background-image: url("shared/redesign/your-town-links-25.png") 
           //box-shadow: 1px 1px 0px #f6f4ed
-          border-radius: 20px
+          border-radius: 60px
 
-        a#questions
+        a#discussions
           .icon
             background-position: -75px 0px
           &.current
-            color: #3d7fac
+            //color: #3d7fac
             //border-left: 5px solid #3d7fac
             .icon
               background-position: -75px -25px
             &:hover
               .icon
                 background-position: -75px -25px
-        a#questions:hover
+        a#discussions:hover
           .icon
             background-position: -75px 0px
         a#transactions
           .icon
             background-position: -100px 0px
           &.current
-            color: #5bb17b
+            //color: #5bb17b
             //border-left: 5px solid #5bb17b
             .icon 
               background-position: -100px -25px
@@ -106,7 +107,7 @@
           .icon
             background-position: -50px 0px
           &.current
-            color: #ec8056
+            //color: #ec8056
             //border-left: 5px solid #ec8056
             .icon
               background-position: -50px -25px
@@ -116,10 +117,10 @@
         a#events:hover
           .icon
             background-position: -50px 0px
-        a#discussions
+        //a#discussions
           .icon
             background-position: -75px 0px
-        a#discussions.current
+        //a#discussions.current
           //border-left: 5px solid #5bb17b
           .icon
             background-position: -75px -25px
@@ -127,7 +128,7 @@
           .icon
             background-position: -25px 0px
           &.current
-            color: #b07bd9
+            //color: #b07bd9
             //border-left: 5px solid #b07bd9
             .icon
               background-position: -25px -25px
@@ -164,7 +165,7 @@
       font-weight: bold
       //padding: 8px 4px 8px
       //background-color: #ece7de
-      color: #666
+      color: $light-grey
       //border-radius: 5px 5px 0px 0px
       cursor: pointer
       text-align: left
@@ -210,13 +211,13 @@
         &:hover, &:active
           background-color: #fff
         &.current
-          background-color: white
+          background-color: #fff
           width: 125% !important
           a
             color: $black !important
         &:hover
           h4
-            color: #666
+            color: $black
         a
           padding: 9px 20px 9px 15px
           //&:hover, &:active, &.current
@@ -224,8 +225,8 @@
             background-color: rgba(0,0,0,0.35)
             color: $red
         h4
-          font-family: $heading
-          color: #666
+          font-family: $body
+          color: $black
           font-weight: normal
           font-size: 14px
           line-height: 16px
@@ -240,10 +241,10 @@
           text-overflow: ellipsis
           line-height: 15px
         .avatar-container
-          border-radius: 20px
+          border-radius: 60px
           background-color: white
       .directory_item.current
-        background-color: white
+        background-color: #fff
         width: 125% !important
         h4
           color: $black
