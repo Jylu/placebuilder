@@ -1,7 +1,7 @@
 #sidebar
   //background-image: url("shared/redesign/tan-bg.png")
-  //background-color: #fff
-  //background-color: rgba(255,255,255,0.4)
+  //background-color: #435b72
+  //background-color: rgba(0,0,0,0.04)
   background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
   //border-left: 1px solid white
   //border-right: 1px solid white
@@ -21,8 +21,10 @@
       li
         //padding: 8px 8px 8px 15px
         &:hover, &:active, &.current
-          background-color: white
+          background-color: #fff
+          color: $blue
           width: 125% !important
+          //background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
           //border-radius: 20px
         &:first-child
           a
@@ -30,19 +32,19 @@
         a
           text-decoration: none
           font-family: $body
-          color: $black
+          color: $blue
           text-shadow: none
           font-size: 14px
           font-weight: normal
           background: no-repeat left
           line-height: 18px
-          text-shadow: 1px 1px 0px white
+          //text-shadow: 1px 1px 0px white
           background-position: 0px 0px   
           padding: 8px 8px 8px 15px
-          &:hover, &:active
+          //&:hover, &:active
             //background-color: rgba(0,0,0,0.65)
             //background-color: rgba(0,0,0,0.35)
-            //color: $red !important
+            color: $blue !important
             //box-shadow: inset 0px 1px 0px white
             //border: 1px solid #ccc
               left: 0px none
@@ -51,14 +53,16 @@
             //background-color: #fff
           &.current
             //background-color: #333
-            //color: white !important
+            color: $red !important
             //box-shadow: inset 0px 1px 0px #ccc, 0px 1px 0px #ccc
             //border: 1px solid #ccc
               left: 0px none
               right: 0px none
             //+linear-gradient(color-stops(#fbfbfb, #f2f2f2))
             //font-weight: bold
-            background-color: white
+            //background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
+            background-color: rgba(255,255,255,0.25)
+            color: $blue
             width: 125% !important
             //color: $black !important
             //padding-left: 10px
@@ -144,7 +148,7 @@
 
   #directory
     font-family: $body
-    color: $black
+    color: $blue
     //border-top: 1px solid #ebe9e3
     #directory_search
       .remove_search 
@@ -157,8 +161,8 @@
         &:hover
           color: $red
     .directory_nav
-      border-top: 1px solid #ebe9e3
-      box-shadow: inset 0px 1px 0px white
+      border-top: 1px solid rgba(0,0,0,0.05)
+      box-shadow: inset 0px 1px 0px rgba(255,255,255,0.5)
     h3
       font-family: $body
       font-size: 12px
@@ -172,14 +176,14 @@
       //text-shadow: none
       //border: 1px solid #d5d1c8
       //box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1.0)
-      text-shadow: 1px 1px 0px white
+      //text-shadow: 1px 1px 0px white
       &:hover
-        color: $red
+        color: $blue
         //background-color: #fff
         cursor: pointer
     h3.current_tab
       //background-color: #fff
-      color: $red
+      color: $blue
       //border-bottom: 1px solid #fff
 
     #directory_results
@@ -210,14 +214,18 @@
           box-shadow: none
         &:hover, &:active
           background-color: #fff
+          //background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
+          //background-color: rgba(255,255,255,0.25)
         &.current
           background-color: #fff
+          //background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
+          //background-color: rgba(255,255,255,0.25)
           width: 125% !important
           a
-            color: $black !important
+            color: $red !important
         &:hover
           h4
-            color: $black
+            color: $blue
         a
           padding: 9px 20px 9px 15px
           //&:hover, &:active, &.current
@@ -226,14 +234,14 @@
             color: $red
         h4
           font-family: $body
-          color: $black
+          color: $blue
           font-weight: normal
           font-size: 14px
           line-height: 16px
           //padding-top: 1px
           text-transform: capitalize
           vertical-align: middle
-          text-shadow: 1px 1px 0px white
+          //text-shadow: 1px 1px 0px white
         p
           font-family: $body
           font-size: 13px
@@ -245,6 +253,8 @@
           background-color: white
       .directory_item.current
         background-color: #fff
+        //background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
+        //background-color: rgba(255,255,255,0.25)
         width: 125% !important
         h4
-          color: $black
+          color: $red
