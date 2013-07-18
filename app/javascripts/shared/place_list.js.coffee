@@ -2,7 +2,7 @@ CommonPlace.shared.PlaceList = CommonPlace.View.extend(
   template: "shared.place-list"
 
   events:
-    "click .places": "changeList"
+    "click .network": "changeList"
     "click .red-button": "goToList"
 
   initialize: ->
