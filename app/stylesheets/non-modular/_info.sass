@@ -71,7 +71,7 @@
           float: none
           h3
             //margin-bottom: 31px !important
-            top: 65px !important
+            top: 75px !important
             right: -15px !important
           background: url("shared/redesign/building-right.png") no-repeat 0px 0px
           overflow: hidden
@@ -213,14 +213,25 @@
           cursor: pointer
       .state
         height: 40px
+        display: none
         //margin-top: 20px
       .town, .lists
         //height: 320px
-        height: 245px
+        height: 310px
         //position: absolute
         //bottom: 25px
       .lists
-      
+        li
+          line-height: 24px
+          font-size: 18px
+          color: #555
+          border-bottom: 1px dotted #ddd
+          padding: 8px
+          &:hover
+            background-color: #eee
+        li.current
+          background-color: $blue
+          color: white
       .red-button
         margin-top: 25px
         cursor: pointer
