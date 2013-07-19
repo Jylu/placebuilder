@@ -306,10 +306,20 @@ p.learn-more
         font-size: 16px
         font-weight: bold
         padding: 10px 15px
-        display: block
+        float: left
         //letter-spacing: 1px
         //&:hover
           color: $cp-blue
+      a.view-demo
+        //text-transform: uppercase
+        font-size: 18px
+        font-weight: bold
+        margin-left: 20px
+        float: left
+        margin-top: 12px
+        color: $light-grey
+        &:hover
+          color: $red
         
   .neighbors, .parents
     img
@@ -327,8 +337,16 @@ p.learn-more
       float: right
       margin-left: 40px
     p.build-one
-      float: right
+      //float: right
       margin-top: 30px
+  .about-us
+    img
+      border: 10px solid white
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.125)
+    p
+      margin-bottom: 15px
+    p:last-child
+      margin-top: 15px
   //.neighbors
     h3
       color: #5bb17b
