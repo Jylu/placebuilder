@@ -1,9 +1,9 @@
 #header
-  background: $red
-  //background-color: white
-  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.10)
+  //background: #364B5F
+  background-color: $blue
+  box-shadow: 0px 2px 1px rgba(0, 0, 0, 0.20)
   //box-shadow: 0px 2px 3px rgba(0,0,0,0.10), inset 0px -1px 0px #fbfbfb
-  border-bottom: 1px solid #D34F49
+  border-bottom: 1px solid #2C3E50
   //border-bottom: 1px solid #ddd
   //background-color: #ec8056
   //linear-gradient(color-stops(#fbfbfb, #f2f2f2))
@@ -80,12 +80,12 @@
       .red
         +red-button
         //background: lighten($red, 3%)
-        background: #f74444
-        border-color: #da3636
+        //background: #f74444
+        //border-color: #da3636
         //border: 1px solid rgba(0,0,0,0.15)
         //+linear-gradient(color-stops(#cc4441, #ac322f))
         &:hover, &:focus
-          background: lighten(#f74444, 3%)
+          background: lighten($red, 3%)
           //box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.20)
           //color: #fff
           //+linear-gradient(color-stops(#ea4e4a, #ac322f), top)
@@ -93,12 +93,12 @@
           color: #fff
           //+linear-gradient(color-stops(#cc4441, #ac322f), bottom)
       .dropdown
-        background: url("shared/redesign/tan-bg.gif") repeat #faf8f0
+        background: url("shared/redesign/grey-bg.gif") repeat #faf8f0
         //background-image: url("shared/redesign/tan-bg.png")
         text-align: center
         +border-radius(4px)
         box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.20)
-        //border: 1px solid white
+        border: 1px solid white
         .arrow
           background: url("shared/redesign/arrow.png") no-repeat
           background-position: 100px 12px
@@ -195,13 +195,16 @@
 
   &.app 
     #nav_wrapper
-      //border-left: 1px solid #eee
-      border-left: 1px solid rgba(0,0,0,0.05)
-      box-shadow: inset 1px 0px 0 0 rgba(255,255,255,0.15)
+      border-left: 1px solid rgba(0, 0, 0, 0.15)
+      box-shadow: inset 1px 0px 0 0 rgba(255, 255, 255, 0.08)
+      //border-left: 1px solid rgba(0,0,0,0.05)
+      //box-shadow: inset 1px 0px 0 0 rgba(255,255,255,0.15)
       .header_left
-        border-right: 1px solid rgba(0,0,0,0.05)
+        border-right: 1px solid rgba(0, 0, 0, 0.15)
+        box-shadow: inset -1px 0px 0 0 rgba(255, 255, 255, 0.08)
+        //border-right: 1px solid rgba(0,0,0,0.05)
         //border-right: 1px solid #fff
-        box-shadow: inset -1px 0px 0 0 rgba(255,255,255,0.15)
+        //box-shadow: inset -1px 0px 0 0 rgba(255,255,255,0.15)
       .button-wrapper
         background-image: url("shared/redesign/button-tail.png")
         background-color: transparent
@@ -236,7 +239,7 @@
           text-align: center
           padding: 9px 6px 9px 6px
           font-weight: normal
-          background: #f74444
+          background: $red
           box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.15)
           border-color: #da3636
           //color: $dark-grey
@@ -250,9 +253,9 @@
           //border-bottom: 2px solid rgba(0,0,0,0.75)
           //box-shadow: inset 0px 1px 0px rgba(255,255,255,0.3)
           behavior: url("assets/PIE.htc")
-          &:hover
+          //&:hover
             background: #f74444
-          &:active
+          //&:active
             background: #ec3939
             box-shadow: inset 0 1px 0px rgba(255,255,255,0.25), 0px 1px 0px rgba(0,0,0,0.0)
           //&:hover, &:focus
@@ -315,7 +318,7 @@
           //text-shadow: 1px 1px 0px rgba(0,0,0,0.65)
           //text-shadow: 1px 1px 0px #f7bca6
           -webkit-font-smoothing: antialiased
-          border: 1px solid #cf3232
+          border: 1px solid #33475A
           box-shadow: 0px 1px 0px rgba(255,255,255,0.25), inset 1px 1px 3px rgba(0, 0, 0, 0.25)
           -webkit-input-placeholder: #9d6651 !important
           behavior: url("assets/PIE.htc")
@@ -365,7 +368,7 @@
           cursor: pointer
           span.arrow
             font-size: 17px
-            color: $red
+            color: $blue
             font-weight: bold
             text-shadow: 1px 1px 0px white
             -webkit-font-smoothing: antialiased          
@@ -383,7 +386,7 @@
             //a
               color: $dark-grey
             span.arrow
-              color: #777
+              color: $red
               //text-shadow: -1px -1px 0px rgba(0,0,0, 0.35)
           //&:active
             color: #fff

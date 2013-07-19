@@ -14,7 +14,7 @@ body
   //@include background(linear-gradient(top, #efebd9, #f5eabf))
   //background-attachment: fixed
   //background-color: #ec8056
-  //background-color: #f0ede8
+  //background-color: #D0E8F0
   background: url('shared/redesign/grey-bg.gif') repeat fixed #f0ede8
   //background: url('https://cache.nebula.phx3.secureserver.net/obj/MTc0ODc3NEQyRTEwMzBENUY4NTU6YjQ2ZTRiZjg3NzYwMjljNzYzZjkzMWUzYWZhNTU5ZTI=')
   //background: url('http://resources.newhomesource.com/uploadedImages/NewHomeSource/Resource_Center/Articles/Settling_In/shutterstock_112588013.jpg') no-repeat top right fixed #dfdcd5
@@ -42,20 +42,21 @@ a
   z-index: 800 !important
   &:hover
     background-color: $red !important
-#zenbox_tab #feedback_tab_text
-  color: $red !important
+//#zenbox_tab #feedback_tab_text
+  color: $blue !important
   &:hover
     color: white
 #zenbox_tab.ZenboxTabRight
-  background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
-  background-color: #faf7f2 !important
+  //background: url('shared/redesign/tan-bg.gif') repeat #faf7f2
+  background-color: $blue !important
   border: 0px none !important
+  border-radius: 4px
   &:hover
-    background-color: #fffdfa !important
+    background-color: $red !important
     //#zenbox_tab #feedback_tab_text
       color: white !important
   &:active
-    background-color: #fffdfa !important
+    background-color: $red !important
   
 ::-webkit-scrollbar
   width: 10px

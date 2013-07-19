@@ -39,9 +39,9 @@
       margin-bottom: 50px
       h1
         font-family: $heading
-        font-size: 38px
+        font-size: 36px
         line-height: 48px
-        color: #444
+        color: $red
         font-weight: normal
         text-align: center
         //text-shadow: 0px 0px 15px rgba(0,0,0,0.75)
@@ -151,7 +151,7 @@
             //color: #666
             padding: 8px
               bottom: 9px
-            background-color: $red
+            background-color: $blue
             //background-color: lighten($cp-blue,15%)
             //&:hover
               background-color: $red
@@ -167,7 +167,7 @@
               bottom: -18px
               pointer-events: none
               border-color: rgba(255, 255, 15, 0)
-              border-top-color: $red
+              border-top-color: $blue
               //border-top-color: lighten($cp-blue,15%)
               border-width: 9px
               //&:hover
@@ -243,15 +243,15 @@ p.learn-more
   //background: url('shared/redesign/tan-bg.gif') repeat fixed #FAF8F0
   clear: both
   a
-    color: $red
+    color: $blue
     &:hover
       //color: $cp-blue
-      color: #444
+      color: $red
 
 .divider
-  border-bottom: 1px solid rgba(255,255,255,0.65)
+  border-bottom: 1px solid rgba(255,255,255,1.00)
   height: 1px
-  background-color: #E7E4D7
+  background-color: rgba(0,0,0,0.15)
   width: 100%
 
 .info-bottom
@@ -281,13 +281,13 @@ p.learn-more
       font-size: 38px
       font-weight: normal
       //text-transform: uppercase
-      color: #444
+      color: $red
       //margin-bottom: 25px
       margin-top: 20px
     h3
       font-size: 20px
       font-weight: bold
-      color: $red
+      color: $blue
       margin-bottom: 10px
       margin-top: 40px
     p
@@ -306,10 +306,20 @@ p.learn-more
         font-size: 16px
         font-weight: bold
         padding: 10px 15px
-        display: block
+        float: left
         //letter-spacing: 1px
         //&:hover
           color: $cp-blue
+      a.view-demo
+        //text-transform: uppercase
+        font-size: 18px
+        font-weight: bold
+        margin-left: 20px
+        float: left
+        margin-top: 12px
+        color: $light-grey
+        &:hover
+          color: $red
         
   .neighbors, .parents
     img
@@ -327,8 +337,16 @@ p.learn-more
       float: right
       margin-left: 40px
     p.build-one
-      float: right
+      //float: right
       margin-top: 30px
+  .about-us
+    img
+      border: 10px solid white
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.125)
+    p
+      margin-bottom: 15px
+    p:last-child
+      margin-top: 15px
   //.neighbors
     h3
       color: #5bb17b
