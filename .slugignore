@@ -3,3 +3,14 @@ autotest
 spec
 test/fixture
 db/validation_seed.db
+vendor/cache/*.gem
+certificates
+tmp
+*.pdf
+*.psd
+/spec
+/log
+log
+features
+/features
+db/validation_seed.db
