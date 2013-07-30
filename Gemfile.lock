@@ -240,6 +240,8 @@ GEM
       excon (~> 0.15.4)
     highline (1.6.15)
     hike (1.2.1)
+    honeybadger (1.6.2)
+      json
     hpricot (0.8.6)
     htmlentities (4.3.1)
     httparty (0.10.2)
@@ -527,6 +529,7 @@ DEPENDENCIES
   haml (= 3.1.4)
   heroku (= 2.28.7)
   heroku_san!
+  honeybadger
   hpricot (= 0.8.6)
   i18n (= 0.6.0)
   jasmine (= 1.2.1)

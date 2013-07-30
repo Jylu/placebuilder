@@ -1,4 +1,5 @@
 require 'rack/contrib/jsonp'
+require 'honeybadger'
 require_all Rails.root.join("lib", "api", "*.rb")
 
 class API
@@ -11,6 +12,11 @@ class API
       use Rack::Session::Cookie, # share session w/ rails. replaces enable :sessions
         :key => Commonplace::Application.config.session_options[:key],
         :secret => Commonplace::Application.config.secret_token
+
+      Honeybadger.configure do |config|
+        config.api_key = '75278367'
+      end
+      use Honeybadger::Rack
 
       map("/account") { run Accounts }
       map("/announcements") { run Announcements }
