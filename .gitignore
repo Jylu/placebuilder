@@ -41,3 +41,4 @@ coverage
 chromedriver.log
 km_dump
 km_dump/
+vendor/cache/*.gem
