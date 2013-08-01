@@ -27,7 +27,7 @@ CommonPlace.main.ProfileView = CommonPlace.main.TourModalPage.extend(
     self = this
     e.preventDefault()  if e
     data =
-      name: @form_name().val()
+      name: @data.full_name
       about: @form_about().val()
       organizations: @form_orgs().val()
     if @$("input:checked").attr("id") is "yes"
