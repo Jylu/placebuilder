@@ -62,7 +62,7 @@ gem 'mustache', '= 0.99.4' # used for mail
 gem 'premailer', '= 1.7.3' # we use this to inline css in our emails
 
 # ActionView
-gem 'sanitize', '= 2.0.3' # used in app/controllers/posts_controller.rb (which is dead code) ! remove
+# gem 'sanitize', '= 2.0.3' # used in app/controllers/posts_controller.rb (which is dead code) ! remove
 gem 'haml', '= 3.1.4' # used for view templates
 gem 'formtastic', '= 2.0.2' # used for view templates
 gem 'sass', '= 3.1.15' # used for stylesheets
@@ -73,7 +73,7 @@ gem 'rest-client', '= 1.6.7'
 gem 'leftronic', :git => 'https://github.com/Jberlinsky/leftronic-gem.git', :ref => "a090bf1d49004f501c9164d5dcd51761b48803e4"
 
 # Tech admin
-gem 'newrelic_rpm', '= 3.5.0.1'
+# gem 'newrelic_rpm', '= 3.5.0.1'
 
 # Monitoring
 gem 'airbrake', '= 3.1.2'
@@ -92,7 +92,7 @@ gem 'require_all', '= 1.2.1' # require all ruby files in a directory
 # Analytics
 gem 'km', '= 1.1.2'
 gem 'km-db', :git => "https://github.com/Jberlinsky/km-db.git", :ref => "65bf2c5ffc203a773c9cc2d491306924a6c78cd2"
-gem 'mysql2', '= 0.3.11'
+# gem 'mysql2', '= 0.3.11'
 
 group :assets do
   gem 'uglifier', '= 1.2.3'
@@ -100,7 +100,6 @@ group :assets do
 end
 
 group :development do
-  gem 'taps', :git => 'https://github.com/dabio/taps.git', :ref => "a56d8e8"
   gem 'heroku_san', :git => "https://github.com/Jberlinsky/heroku_san.git", :ref => "3ad7d89" # some nice additions to the Heroku gem
 end
 
@@ -149,3 +148,4 @@ gem 'sprockets', '= 2.2.1'
 gem 'treetop', '= 1.4.10'
 gem 'tzinfo', '= 0.3.32'
 gem 'area', '= 0.9.0', :require => false
+gem 'honeybadger'
