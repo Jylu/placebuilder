@@ -15,7 +15,7 @@ CommonPlace.shared.Directory = CommonPlace.View.extend(
       el: @$("#"+@lists_div)
       removeSearchSpinner: _.bind(@removeSearchSpinner, this)
     )
-    @showTab "pages"
+    @showTab "actives"
     @$("[placeholder]").placeholder()
     $(window).resize(_.bind(@resizeDirectory, this))
     @resizeDirectory()
