@@ -36,7 +36,7 @@ class Community < ActiveRecord::Base
   after_create :create_email_tracking_campaigns
   before_destroy :ensure_marked_for_deletion
 
-  validates_presence_of :name, :slug
+  validates_presence_of :name, :slug, :network_type
   validates_uniqueness_of :slug
 
   accepts_nested_attributes_for :neighborhoods
@@ -74,13 +74,12 @@ class Community < ActiveRecord::Base
     t.add :resident_tags
     t.add :referral_sources
     t.add :manual_tags
-    t.add :resident_todos
     t.add :zip_code
     t.add :organize_start_date
     t.add :scripts
     t.add :user_count
     t.add :feed_count
-    #t.add lambda {|u| u.user_statistics}, :as => :user_statistics
+    t.add :network_type
   end
 
   def links

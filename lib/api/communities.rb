@@ -850,7 +850,7 @@ CONDITION
     end
 
     # Returns the list of all communities
-    get "/:id/community_list" do
+    get "/:id/network_list" do
       return Community.all.to_json
     end
 

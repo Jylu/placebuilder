@@ -7,11 +7,14 @@ CommonPlace.shared.PlaceList = CommonPlace.View.extend(
 
   initialize: ->
     @current = null
-    $.getJSON("/api/communities/Springfield/community_list", _.bind((response) ->
+    $.getJSON("/api/communities/0/network_list", _.bind((response) ->
       $lists = @$(".lists")
 
       response.map((comm) ->
-        html = '<li class="network" id="' + comm.slug + '">' + comm.name + '</li>'
+        if comm.network_type is "town"
+          html = '<li class="network" id="' + comm.slug + '">' + comm.name + ', ' + comm.state + '</li>'
+        else
+          html = '<li class="network" id="' + comm.slug + '">' + comm.name + '</li>'
         $lists.append(html)
       )
     ))
