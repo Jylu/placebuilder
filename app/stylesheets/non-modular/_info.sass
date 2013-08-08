@@ -71,14 +71,17 @@
           float: none
           h3
             //margin-bottom: 31px !important
-            top: 65px !important
-            right: -16px !important
+            top: 25px !important
+            right: -17px !important
           background: url("shared/redesign/building-right.png") no-repeat 0px 0px
           overflow: hidden
           &:hover
             background: url("shared/redesign/building-right.png") no-repeat 0px -385px
             h3
-              top: 63px !important
+              top: 23px !important
+              background-color: $red
+              &:after
+                border-top-color: $red
             //a
               background-color: #b07bd9
             //&:after
@@ -89,7 +92,8 @@
         .for-students
           h3
             //margin-bottom: 31px !important
-            top: 105px !important
+            left: 2px !important
+            top: 110px !important
             //a
               background-color: #2d87b5
             //&:after
@@ -99,7 +103,10 @@
           &:hover
             background: url("shared/redesign/building-center.png") no-repeat 0px -385px
             h3
-              top: 103px !important
+              top: 108px !important
+              background-color: $red
+              &:after
+                border-top-color: $red
           //img
             height: 310px
             width: 185px
@@ -118,6 +125,9 @@
             background: url("shared/redesign/building-left.png") no-repeat 0px -385px
             h3
               top: 0px !important
+              background-color: $red
+              &:after
+                border-top-color: $red
         .for-neighbors, .for-students, .for-parents
           float: left
           width: 203px
@@ -348,7 +358,7 @@ p.learn-more
       margin-top: 40px
   .parents
     h2
-      margin-top: 50px
+      margin-top: 35px
   .students, .about-us
     h2
       margin-top: -5px
