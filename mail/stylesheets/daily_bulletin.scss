@@ -1,15 +1,17 @@
 /* NEW STYLES */
 
 html {
-   background-color: #F5F4E8;
+   background-color: #f5f1ea;
    -webkit-font-smoothing: antialiased;
 }
-                            
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     text-align: left;
-    background-color: #F5F4E8;
+    background-color: #f5f1ea;
     margin: 0px;
+    color: #444;
+    font-size: 14px;
 }
 
 table {
@@ -21,11 +23,11 @@ table {
 }
 
 td {
-    padding: 0;
+    padding: 0px;
     margin: 0px;
 }
 
-a { color: #1b334a ; text-decoration: none; }
+a { color: #364B5F ; text-decoration: none; }
 a span { color: #AD312F ; text-decoration: none;}
 
 div.p {
@@ -39,13 +41,13 @@ img { border: 0; }
 
 #page-wrapper {
     text-align: center;
-    background-color: #F5F4E8;
+    background-color: #f5f1ea;
 }
 
 #email-wrapper {
     text-align: left;
-    width: 650px;
-    background-color: #F5F4E8;
+    width: 90%;
+    background-color: #f5f1ea;
     margin: 0px;
 }
 
@@ -59,7 +61,7 @@ img { border: 0; }
     font-family: Rockwell, Helvetica, Arial, sans-serif;
     font-size: 22px;
     color: #fff;
-    background-color: #1b334a;
+    background-color: #364B5F;
     height: 65px;
     width: 530px;
     padding: 2px 0px 0px 20px;
@@ -69,7 +71,7 @@ img { border: 0; }
     font-family: Rockwell, Helvetica, Arial, sans-serif;
     font-size: 22px;
     color: #fff;
-    background-color: #1b334a;
+    background-color: #364B5F;
     height: 65px;
     width: 20px;
     margin: 0px;
@@ -84,7 +86,7 @@ img { border: 0; }
 }
 
 #header-wrapper .shadow {
-   background-color: #f5f4e8;
+   background-color: #f5f1ea;
    height: 5px;
    border-top: 4px solid #D1D1C6;
 }
@@ -99,26 +101,30 @@ img { border: 0; }
 
 #introduction p {
   font: 14px/20px Helvetica, Arial, sans-serif;
-  color: #333;
+  color: #444;
   margin: 0px 0px 15px 0px;
 }
 
 .section_container {
-   padding: 0px 20px;
+   padding: 0px;
    margin: 0px;
-   border-bottom: 10px solid #F5F4E8;
+   border-bottom: 10px solid #f5f1ea;
 }
-
+.section_header {
+  color: #A9211D;
+  font: 16px Helvetica, Arial, sans-serif;
+  font-weight: bold !important;
+}
 .section_icon {
    vertical-align: bottom;
    color: #fff;
-   background-color: #1b334a;
+   background-color: #364B5F;
    font-size: 14px;
    text-align: center;
 }
 
 .posts {
-   padding: 0px 20px;
+   padding: 0px;
 }
 
 .links {
@@ -164,7 +170,7 @@ h3 {
 
 .contentblock p {
    font: 14px/18px Helvetica, Arial, sans-serif;
-   color: #333;
+   color: #444;
 }
 .month {
   width: 90px;
@@ -185,7 +191,7 @@ h3 {
   width: 90px;
   height: 50px;
   text-align: center;
-  color: #333333;
+  color: #444444;
   text-transform: uppercase;
   background-color: #fff;
   font-family: Helvetica, Arial, sans-serif;
@@ -211,10 +217,10 @@ h3 {
   font: 12px Helvetica, sans-serif;
   text-decoration: none;
   text-align: center;
-  color: #333;
+  color: #444;
 }
 .email_settings {
-  color: #1b334a;
+  color: #364B5F;
   text-align: center;
 }
 .email_settings a {
@@ -231,7 +237,7 @@ h3 {
 }
 .website {
    font: 13px Helvetica, Arial, sans-serif;
-   color: #333;
+   color: #444;
    text-align: center;
 }
 .website a {
@@ -248,11 +254,6 @@ h3 {
    vertical-align: bottom;
    margin-left: 5px;
 }
-.section_header {
-  color: #A9211D;
-  font: 16px Helvetica, Arial, sans-serif;
-  font-weight: bold !important;
-}
 .viewall {
   font: 13px Helvetica, Arial, sans-serif;
   color: #A9211D;
@@ -262,27 +263,29 @@ h3 {
 .post {
     .avatar {
         padding: 6px 20px 0px 0px;
-        width: 50px ;
-        height: 50px ;
+        width: 32px ;
+        height: 32px ;
     }
     .author { 
       font: 14px/18px Helvetica, Arial, sans-serif;
-      font-weight: bold !important;
-      color: #1b334a !important;
-      margin: 0px 0px 5px 0px;
+      font-weight: normal;
+      color: #444 !important;
+      margin: 0px 0px 15px 0px;
+      vertical-align: middle;
+      padding-top: 5px;
     }
 
     .title { 
-      font: 18px/26px Helvetica, Arial, sans-serif;
-      font-weight: bold !important;
-      color: #333;
+      font: 22px/26px Helvetica, Arial, sans-serif;
+      font-weight: normal;
+      color: #444;
       margin: 0px;	
     }
     
     .body {
         font: 14px/18px Helvetica, Arial, sans-serif;
-        color: #333;
-        margin: 0px 0px 8px 0px;
+        color: #444;
+        margin: 7px 0px 10px 0px;
     }
     
     .body p { margin-top: 0px; }
@@ -309,7 +312,7 @@ h3 {
                 .day { border: 1px solid #cfcfcf ; border-top-width: 0px ; 
                        background-color: #f7f7f7 ;
                        font-size: 22px; 
-                       line-height: 24px ; color: #333 ; 
+                       line-height: 24px ; color: #444 ; 
                        font-family: Helvetica, Arial, sans-serif;
                        font-weight: normal;
                        width: 48px;
@@ -321,7 +324,7 @@ h3 {
             
             .time { font-size: 12px ; 
                     font-family: Helvetica, Arial, sans-serif; 
-                    color: #1b334a ; padding-top: 5px ; 
+                    color: #364B5F ; padding-top: 5px ; 
                     text-align: center ; 
                   }
         }
@@ -350,6 +353,6 @@ h3 {
     width: 100%;
     margin: 10px 0px 0px 0px;
     .avatar { width: 35px ; height: auto ; padding: 2px 0px 0px 0px ; margin: 0px ; vertical-align: top ; }
-    .author { font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: #1b334a; line-height: 15px ; vertical-align: top; margin: 0px; }
-    p { font: 14px/18px Helvetica, Arial, sans-serif ; color: #333 ; margin: 2px 0px 8px 0px; vertical-align: top; }
+    .author { font-family: Helvetica, Arial, sans-serif; font-size: 13px; color: #444; line-height: 15px ; vertical-align: top; margin: 0px; }
+    p { font: 14px/18px Helvetica, Arial, sans-serif ; color: #444 ; margin: 4px 0px 8px 0px; vertical-align: top; }
 }
