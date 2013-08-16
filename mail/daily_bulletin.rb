@@ -19,6 +19,18 @@ class DailyBulletin < MailBase
     user.community
   end
 
+  def ad_present
+    user.community.ad.exist?
+  end
+
+  def ad_link
+    user.community.ad.link
+  end
+
+  def ad_text
+    user.community.ad.body
+  end
+
   def logo_url
     asset_url("logo2.png")
   end

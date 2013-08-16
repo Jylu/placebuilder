@@ -7,7 +7,7 @@ module MailUrls
       if Rails.env.development?
         "http://localhost:5000" + path
       else
-        "https://www.ourcommonplace.com" + path
+        "https://www.placebuilder.org" + path
       end
     end
   end

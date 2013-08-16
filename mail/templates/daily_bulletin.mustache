@@ -69,6 +69,10 @@
                               <table id="introduction" width="100%" cellpadding="0" cellspacing="0" border="0">
                                 <tr>
                                   <td>
+                                    {{#ad_present}}
+                                    <a href="{{ad_link}}">{{ad_link}}</a>
+                                    <h1>{{ad_text}}</h1>
+                                    {{/ad_present}}
                                     <h1><strong>Happy {{day_of_week}}!</strong></h1>
                                     <p>{{message_text}}</p>
                                   </td>
