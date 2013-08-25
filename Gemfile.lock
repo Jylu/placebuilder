@@ -278,6 +278,8 @@ GEM
     km (1.1.2)
     launchy (2.1.0)
       addressable (~> 2.2.6)
+    letter_opener (1.0.0)
+      launchy (>= 2.0.4)
     libv8 (3.3.10.4)
     loofah (1.2.1)
       nokogiri (>= 1.4.4)
@@ -539,6 +541,7 @@ DEPENDENCIES
   km-db!
   launchy (= 2.1.0)
   leftronic!
+  letter_opener
   mail (= 2.4.4)
   mcbean (= 0.4.0)
   mock_redis!
