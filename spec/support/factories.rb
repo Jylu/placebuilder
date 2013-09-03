@@ -3,6 +3,8 @@ FactoryGirl.define do
     f.name { Forgery(:address).city }
     f.time_zone { "Eastern Time (US & Canada)" }
     f.zip_code { "02132" }
+    f.slug { Forgery(:address).city }
+    f.network_type { "type" }
   end
 
   factory :neighborhood do |f|
@@ -53,5 +55,10 @@ FactoryGirl.define do
     f.association :event
     f.association :referee, :factory => :user
     f.association :referrer, :factory => :user
+  end
+
+  factory :transaction do |f|
+    f.association :community
+    f.association :owner, factory: :user
   end
 end
