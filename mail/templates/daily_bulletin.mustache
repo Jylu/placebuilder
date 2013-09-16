@@ -6,7 +6,7 @@
       <title>
          The {{community_name}} Daily Bulletin
       </title>
-      <link rel="stylesheet" type="text/css" href="bulletin.css"> 
+      <link rel="stylesheet" type="text/css" href="bulletin.css">
       <style type="text/css">
 {{styles}}
       </style>
@@ -31,7 +31,10 @@
                                                    <img src="" alt="">
                                                 </td>
                                                 <td colspan="2" align="left" valign="top" class="sponsored_text">
-                                                   Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Pellentesque ultricies, sapien sed blandit porttitor, purus quam ante id tincidunt neque tortor at sed.
+                                                  {{#ad_present}}{{ad_text}}{{/ad_present}}
+                                                  {{^ad_present}}
+                                                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia. Pellentesque ultricies, sapien sed blandit porttitor, purus quam ante id tincidunt neque tortor at sed.
+                                                  {{/ad_present}}
                                                 </td>
                                              </tr>
                                              <tr>

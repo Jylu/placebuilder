@@ -15,6 +15,18 @@ class DailyBulletin < MailBase
     @user
   end
 
+  def ad
+    community.ad
+  end
+
+  def ad_present
+    ad.present?
+  end
+
+  def ad_text
+    ad.body
+  end
+
   def community
     user.community
   end
@@ -134,7 +146,7 @@ class DailyBulletin < MailBase
   end
 
   def deliver?
-    posts_present || announcements_present || events_present
+    group_posts_present || announcements_present || events_present
   end
 
   def deliver
