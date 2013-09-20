@@ -1,8 +1,15 @@
 /* NEW STYLES */
 
+@media only screen and (max-device-width: 480px) { 
+  .hide { display: none !important; }
+  .table, .cell { width: 300px !important; }
+  .divider { height: 1px !important; }
+}
+
 html {
   background-color: #f5f1ea;
   -webkit-font-smoothing: antialiased;
+  font-family: Helvetica, Arial, sans-serif;
 }
 
 body {
@@ -16,10 +23,11 @@ body {
 
 table {
   width: 100%;
+  max-width: 900px;
   border: 0;
   border-spacing: 0;
   padding: 0;
-  margin: 0px;
+  margin: 0px auto;
 }
 
 td {
@@ -159,7 +167,7 @@ img { border: 0; }
 }
 
 .calendar_month {
-  min-width:120px;
+  min-width: 120px;
   margin: 0px;
   padding: 0;
   color: #fff;
@@ -370,7 +378,7 @@ h3 {
 
 .post {
   .avatar {
-    padding: 6px 20px 0px 0px;
+    padding: 4px 20px 0px 0px;
     width: 32px ;
     height: 32px ;
   }
