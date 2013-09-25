@@ -141,7 +141,8 @@ class CommunityDailyBulletinJob
     begin
       barometer = Barometer.new(community.zip_code)
       weather = barometer.measure
-    rescue
+    rescue => ex
+      binding.pry
       raise "Problem with barometer for #{community.name}"
     end
 
