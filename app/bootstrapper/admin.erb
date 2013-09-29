@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<html>
+  <div id="main"></div>
+
+  <script type="text/javascript" src="/assets/admin.js"></script>
+  <script type="text/javascript">
+    CommonPlace.community = new Community(<%= Serializer::serialize(@community).to_json.html_safe %>);
+    var adzone = new CommonPlace.shared.AdZone({ el: $("#main") });
+    adzone.render();
+  </script>
+</html>

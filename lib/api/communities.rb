@@ -821,6 +821,29 @@ CONDITION
       end
     end
 
+    post "/:id/ads" do
+      control_access :admin
+
+      c_id = request_body['community']
+      community = Community.find(c_id)
+      old_ad = community.ad
+
+      if !old_ad.nil?
+        old_ad.destroy
+      end
+
+      ad = Ad.new(
+        :community_id => c_id,
+        :body => request_body['body']
+      )
+
+      if ad.save
+        serialize(ad)
+      else
+        [400, "errors"]
+      end
+    end
+
     # Requires community membership
     #
     # Creates a new Transaction model
@@ -1032,6 +1055,12 @@ CONDITION
         serialize(paginate(find_community.events.upcoming.
                              includes(:replies).reorder("date ASC")))
       end
+    end
+
+    get "/:id/ads" do
+      control_access :admin
+
+      serialize(paginate(Ad.all).reorder("created_at DESC"))
     end
 
     # Returns the community's transactions, possibly a search result

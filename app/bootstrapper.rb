@@ -167,6 +167,13 @@ class Bootstrapper < Sinatra::Base
     erb :feed
   end
 
+  get ":community/admin" do
+    set_account
+
+    @community = Community.find_by_slug(params[:community])
+    erb :admin
+  end
+
   get "organizer_app/:id" do
     set_account
     erb :organizer_app

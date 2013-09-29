@@ -146,6 +146,27 @@ class API
       end
     end
 
+
+    post "/:id/ad_image" do
+      control_access :admin
+
+      params[:image_id].each do |i|
+        image = Image.find_by_id(i)
+        image.update_attributes(
+          imageable: Ad.find(params[:id]),
+          ad_id: params[:id]
+        )
+
+        if image.save
+          serialize image
+        else
+          [400, "errors"]
+        end
+      end
+
+
+    end
+
     # Uploads an image
     #
     # Requires authentication

@@ -92,6 +92,7 @@ class Community < ActiveRecord::Base
       "information_sheet" => community_asset_url + "infosheet.pdf",
       "neighborhood_flyer" => community_asset_url + "neighborflyer.pdf",
       "all_flyers" => community_asset_url + "archives.zip",
+      "ads" => "/communities/#{id}/ads",
       "groups" => "/communities/#{id}/groups",
       "feeds" => "/communities/#{id}/feeds",
       "posts" => "/communities/#{id}/posts",

@@ -1,5 +1,5 @@
 class API
-  class Transactions < Postlikes
+  class Ads < Postlikes
 
     # This api inherits from the Postlikes api, where most of it's methods
     # are defined. It overrides some of Postlikes's helpers in order
@@ -9,22 +9,18 @@ class API
 
       # Returns the Postlike klass
       def klass
-        Transaction
+        Ad
       end
 
       # Set the transaction's attributes using the given request_body
       #
       # Request params:
-      #  title -
       #  body -
-      #  price -
       #
       # Returns true on success, false otherwise
       def update_attributes
         find_postlike.update_attributes(
-          title:  request_body["title"],
-          description:  request_body["body"],
-          price_in_cents:  request_body["price"]
+          body:  request_body["body"]
         )
       end
 

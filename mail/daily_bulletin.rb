@@ -27,6 +27,14 @@ class DailyBulletin < MailBase
     ad.body
   end
 
+  def image_present
+    ad.image.present?
+  end
+
+  def image
+    ad.image.image_url
+  end
+
   def community
     user.community
   end

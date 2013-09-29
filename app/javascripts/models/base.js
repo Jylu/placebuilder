@@ -6,7 +6,7 @@ Model = Backbone.Model.extend({
       return Backbone.Model.prototype.url.call(this); // super
     }
   },
-  
+
   link: function(name) {
     return this.get("links")[name];
   }
@@ -15,7 +15,7 @@ Model = Backbone.Model.extend({
 Collection = Backbone.Collection.extend({
   initialize: function(models,options) { this.uri = options.uri; },
   url: function() { return "/api" + this.uri; }
-}); 
+});
 
 Repliable = Model.extend({
   replies: function() {

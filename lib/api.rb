@@ -36,6 +36,7 @@ class API
       map("/swipe") { run Swipes }
       map("/sessions") { run Sessions }
       map("/transactions") { run Transactions }
+      map("/ads") { run Ads }
 
       map("/integration") { run Integration }
 

@@ -1,7 +1,7 @@
 class Image < ActiveRecord::Base
 
-  belongs_to :ad
   belongs_to :user
+  belongs_to :ad, :dependent => :destroy
   belongs_to :imageable, :polymorphic => true
 
   acts_as_api
