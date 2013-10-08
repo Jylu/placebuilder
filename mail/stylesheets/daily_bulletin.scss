@@ -12,12 +12,13 @@ body {
   background-color: #f5f1ea;
   margin: 0px;
   color: #444;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 table {
   width: 100%;
   max-width: 900px;
+  min-width: 500px;
   border: 0;
   border-spacing: 0;
   padding: 0;
@@ -35,7 +36,7 @@ a span { color: #C82D28 ; text-decoration: none;}
 div p {
   margin: 0 0 8px 0;
   line-height: 20px;
-  font-size: 14px;
+  font-size: 15px;
   font-family: Helvetica, Arial, sans-serif;
 }
 
@@ -44,61 +45,26 @@ img { border: 0; }
 #page-wrapper {
   text-align: center;
   background-color: #f5f1ea;
+  width: 100%;
+  max-width: 800px;
+  min-width: 500px;
 }
 
 #email-wrapper {
   text-align: left;
   width: 100%;
+  max-width: 800px;
+  min-width: 500px;
   background-color: #f5f1ea;
   margin: 0px;
   padding: 0px 30px;
 }
 
-#header-wrapper {
-  width: 100%;
-  height: 82px;
-}
-
-#header-wrapper .header {
-  vertical-align: middle;
-  font-family: Rockwell, Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  color: #fff;
-  background-color: #364B5F;
-  height: 65px;
-  width: 530px;
-  padding: 2px 0px 0px 20px;
-}
-#header-wrapper .header-side {
-  vertical-align: top;
-  font-family: Rockwell, Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  color: #fff;
-  background-color: #364B5F;
-  height: 65px;
-  width: 20px;
-  margin: 0px;
-  padding: 0px;
-}
-
-#header-wrapper .header img.logo {
-  vertical-align: bottom;
-  font-family: Rockwell, Helvetica, Arial, sans-serif;
-  font-size: 22px;
-  color: #fff;
-}
-
-#header-wrapper .shadow {
-  background-color: #f5f1ea;
-  height: 5px;
-  border-top: 4px solid #D1D1C6;
-}
-
 .sponsored {
-  margin: 30px auto 0px;
-  padding-bottom: 30px;
+  margin: 20px auto 0px;
+  padding-bottom: 20px;
   border-bottom: 1px solid #dfd9d1;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .sponsored_image {
@@ -110,6 +76,9 @@ img { border: 0; }
 .sponsored_text {
   padding-left: 20px;
   line-height: 18px;
+  font-size: 15px;
+  font-family: Helvetica, Arial, sans-serif;
+  max-height: 100px;
 }
 
 .sponsored_link {
@@ -119,7 +88,7 @@ img { border: 0; }
   font-variant: normal;
   font-weight: bold;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 15px;
   line-height: normal;
   font-family: Helvetica, Arial, sans-serif;
 }
@@ -130,13 +99,14 @@ img { border: 0; }
   font-style: normal;
   font-variant: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 15px;
   line-height: normal;
   font-family: Helvetica, Arial, sans-serif;
 }
 
 #introduction {
   width: 100%;
+  max-width: 800px;
   border-spacing: 0;
   margin: 0px;
   padding: 40px 0px 20px;
@@ -155,13 +125,16 @@ img { border: 0; }
 }
 
 #introduction p {
-  font: 14px/20px Helvetica, Arial, sans-serif;
+  font: 15px/21px Helvetica, Arial, sans-serif;
   color: #444;
   margin: 0px 0px 15px 0px;
 }
 
 .calendar_month {
   width: 120px;
+  min-width: 120px;
+  letter-spacing: 1px;
+  height: 40px;
   margin: 0px;
   padding: 0;
   color: #fff;
@@ -173,6 +146,8 @@ img { border: 0; }
 
 .calendar_date {
   width: 120px;
+  min-width: 120px;
+  height: 75px;
   margin: 0px;
   padding: 2px 0px 0px 0px;
   color: #444;
@@ -196,25 +171,30 @@ img { border: 0; }
 }
 .weather_text {
   margin: 0px;
-  padding: 0px 0px 0px 30px;
-  vertical-align: middle;
-  width: 35px;
+  padding: 0px 0px 0px 20px;
+  width: 50px;
   font-size: 15px;
+  line-height: 18px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 .members_text {
   margin: 0px;
-  padding: 0px 0px 0px 30px;
-  width: 65px;
+  padding: 0px 0px 0px 20px;
+  width: 50px;
   font-size: 15px;
+  line-height: 18px;
+  font-family: Helvetica, Arial, sans-serif;
 }
 .posts_text {
   margin: 0px;
-  padding: 0px 0px 0px 30px;
-  width: 75px;
+  padding: 0px 0px 0px 20px;
+  width: 50px;
   font-size: 15px;
+  line-height: 18px;
+  font-family: Helvetica, Arial, sans-serif;
 }
-.weather_text, .members_text, .posts_text strong {
-   font-size: 16px !important;
+.weather_text strong, .members_text strong, .posts_text strong {
+   font-size: 20px !important;
 }
 .section_container {
   padding: 0px;
@@ -329,7 +309,7 @@ h3 {
   border-radius: 5px;
 }
 .avatar {
-  padding-right: 10px;
+  padding-right: 15px;
   width: 50px;
   height: 50px;
 }
@@ -383,19 +363,24 @@ h3 {
 
 .post {
   .avatar {
-    padding: 4px 20px 0px 0px;
+    padding: 0px 13px 0px 0px;
     width: 32px;
     height: 32px;
       img {
          background-color: #364B5F;
       }
   }
-  .author, a .author {
-    font: 14px/18px Helvetica, Arial, sans-serif;
+  .author {
+    font: 16px/20px Helvetica, Arial, sans-serif;
     font-weight: normal;
-    color: #888;
-    margin: 15px 0px 12px 0px;
+    color: #444 !important;
+    margin: 15px 0px 15px 0px;
     vertical-align: middle;
+  }
+  .author a {
+    font: 16px/20px Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    color: #444 !important;
   }
   .author img {
     margin-right: 10px;
@@ -405,33 +390,43 @@ h3 {
     background-color: #364B5F;
   }
   .title, a .title {
-    font: 22px/26px Helvetica, Arial, sans-serif;
+    font: 24px/26px Helvetica, Arial, sans-serif;
     font-weight: normal;
     color: #444;
     margin: 0px;
   }
 
   .body {
-    font: 14px/18px Helvetica, Arial, sans-serif;
+    font: 16px/20px Helvetica, Arial, sans-serif;
     color: #444;
     margin: 10px 0px 10px 0px;
   }
 
-  .body p { margin-top: 0px; }
+  .body p { 
+    margin-top: 0px;
+    color: #444;
+    font: 16px/20px Helvetica, Arial, sans-serif;
+   }
   .price {
     color: #C82D28 !important;
     font-weight: bold;
-  font-size: 14px;}
-  .venue { color: #C82D28 ;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
+    font: 16px/20px Helvetica, Arial, sans-serif;
+   }
+  .venue { 
+    color: #C82D28 ;
+    font: 16px/20px Helvetica, Arial, sans-serif;
+    font-weight: bold !important;
     display: inline-block;
   }
-  .address { color: #C82D28 ;
-    font-family: Helvetica, Arial, sans-serif;
-    font-weight: bold;
+  .address { 
+    color: #C82D28 ;
+    font: 16px/20px Helvetica, Arial, sans-serif;
+    font-weight: bold !important;
     margin: 10px 0px 5px;
     display: inline-block;
+  }
+  p {
+    font: 16px/20px Helvetica, Arial, sans-serif;
   }
 
   &.event {
@@ -500,29 +495,38 @@ h3 {
 
 .reply {
   width: 100%;
-  margin: 10px 0px 0px 0px;
+  margin: 15px 0px 0px 0px;
   .avatar {
-    width: 35px ;
+    width: 32px ;
     height: auto ;
-    padding: 2px 10px 0px 0px ;
+    padding: 0px 12px 0px 0px ;
     margin: 0px ;
     vertical-align: top;
       img {
          background-color: #364B5F;
       }
   }
-  .author, a .author {
+  .author {
     font-family: Helvetica, Arial, sans-serif;
-    font-size: 14px;
+    font-size: 16px;
     color: #444;
-    line-height: 15px ;
+    line-height: 17px;
     vertical-align: top;
     margin: 0px;
   }
+  .author a {
+   font-family: Helvetica, Arial, sans-serif;
+   font-size: 16px;
+   color: #444;
+   font-weight: bold !important;
+   line-height: 17px;
+   vertical-align: top;
+   margin: 0px;
+  }
   p {
-    font: 14px/18px Helvetica, Arial, sans-serif ;
+    font: 16px/20px Helvetica, Arial, sans-serif ;
     color: #444 ;
-    margin: 4px 0px 8px 0px !important;
+    margin: 4px 0px 12px 0px !important;
     vertical-align: top;
   }
 }

@@ -21,7 +21,7 @@
                         <tbody>
                            <tr>
                               <td>
-                                 <table width="650" cellpadding="0" cellspacing="0" border="0" align="center">
+                                 <table width="100%" cellpadding="0" cellspacing="0" border="0" align="center">
                                     <tr>
                                        <td width="100%">
                                           <!--SPONSORED AD-->
@@ -60,7 +60,7 @@
                                                 <td width="120" height="40" align="center" bgcolor="#C82D28" class="calendar_month">
                                                    {{month_short}}
                                                 </td>
-                                                <td height="40" colspan="6" style="margin: 0px; padding: 0;">
+                                                <td width="375" height="40" colspan="6" style="margin: 0px; padding: 0;">
                                                    <h1>
                                                       <strong style="font-weight: bold !important;">{{community_name}} Daily Bulletin</strong>
                                                    </h1>
@@ -73,25 +73,26 @@
                                                 <td width="120" height="75" align="center" bgcolor="#fff" class="calendar_date">
                                                    {{day_of_month}}
                                                 </td>
-                                                <td width="50" height="50" valign="middle" class="intro_icon">
-                                                   <img src="http://markmalazarte.com/commonplace/weather.png" width="100%" height="auto" alt="★" />
+                                                <td width="60" height="60" valign="middle" class="intro_icon">
+                                                   <img src="http://markmalazarte.com/commonplace/weather.png" width="60" height="60" alt="★" />
                                                 </td>
                                                 <td valign="middle" class="weather_text">
-                                                   <strong>89℉</strong>
+                                                   <strong>57℉</strong><br/>
+                                                   Cloudy
                                                 </td>
-                                                <td width="50" height="50" valign="middle" class="intro_icon">
-                                                   <img src="http://markmalazarte.com/commonplace/members.png" width="100%" height="auto" alt="★" />
+                                                <td width="60" height="60" valign="middle" class="intro_icon">
+                                                   <img src="http://markmalazarte.com/commonplace/members.png" width="60" height="60" alt="★" />
                                                 </td>
                                                 <td valign="middle" class="members_text">
-                                                   <strong>442</strong><br>
-                                                   members
+                                                   <strong>442</strong><br/>
+                                                   People
                                                 </td>
-                                                <td width="50" height="50" valign="middle" style="intro_icon">
-                                                   <img src="http://markmalazarte.com/commonplace/posts.png" width="100%" height="auto" alt="★" />
+                                                <td width="60" height="60" valign="middle" class="intro_icon">
+                                                   <img src="http://markmalazarte.com/commonplace/posts.png" width="60" height="60" alt="★" />
                                                 </td>
                                                 <td valign="middle" class="posts_text">
-                                                   <strong>22</strong><br>
-                                                   new posts
+                                                   <strong>22</strong><br/>
+                                                   Posts
                                                 </td>
                                              </tr>
                                           </table>
@@ -103,7 +104,8 @@
                                                    <a href="{{list_posts_url}}"><img src="{{post_icon_url}}" width="25" height="25" alt="★" class="section_icon"> &nbsp; <span class="section_header"><strong>{{#t}}posts-section-title{{/t}}</strong></span></a>
                                                 </td>
                                              </tr>
-                                          </table>{{#posts}}
+                                          </table>
+                                          {{#posts}}
                                           <table width="100%" cellpadding="0" cellspacing="0" border="0" class="posts">
                                              <tr>
                                                 <td width="100%" bgcolor="#FFFFFF">
@@ -122,7 +124,7 @@
                                                                         {{body}}
                                                                      </p>
                                                                      <p class="author">
-                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" style="color:#888!important;">{{author}}</a> posted this
+                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" ><strong>{{author}}</strong></a> posted this
                                                                      </p>{{#replies}}
                                                                      <div class="reply-separator"></div>
                                                                      <table class="reply">
@@ -165,14 +167,18 @@
                                                    <div class="post-separator"></div>
                                                 </td>
                                              </tr>
-                                          </table>{{/posts}} {{/posts_present}} {{#transactions_present}}
+                                          </table>
+                                          {{/posts}}
+                                          {{/posts_present}}
+                                          {{#group_posts_present}}
                                           <table width="650" cellpadding="25" cellspacing="0" border="0" class="section_container">
                                              <tr>
                                                 <td width="100%" height="60">
-                                                   <a href="{{list_transactions_url}}"><img src="{{transaction_icon_url}}" width="25" height="25" alt="★" class="section_icon"> &nbsp; <span class="section_header"><strong>{{#t}}transactions-section-title{{/t}}</strong></span></a>
+                                                   <a href="{{list_group_posts_url}}"><img src="{{group_post_icon_url}}" width="25" height="25" alt="★" class="section_icon"> &nbsp; <span class="section_header"><strong>{{#t}}group-posts-section-title{{/t}}</strong></span></a>
                                                 </td>
                                              </tr>
-                                          </table>{{#transactions}}
+                                          </table>
+                                          {{#group_posts}}
                                           <table width="100%" cellpadding="0" cellspacing="0" border="0" class="posts">
                                              <tr>
                                                 <td width="100%" bgcolor="#FFFFFF">
@@ -180,7 +186,7 @@
                                                       <tr>
                                                          <td bgcolor="#FFFFFF" class="contentblock">
                                                             <table>
-                                                               <tr class="post transaction">
+                                                               <tr class="post">
                                                                   <!--A Post-->
                                                                   <td class="post_content">
                                                                      <a href="{{url}}"></a>
@@ -190,11 +196,8 @@
                                                                      <p class="body">
                                                                         {{body}}
                                                                      </p>
-                                                                     <p class="price">
-                                                                        Price: {{price}}
-                                                                     </p>
                                                                      <p class="author">
-                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" style="color:#888!important;">{{author}}</a> posted this
+                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" ><strong>{{author}}</strong></a> posted this
                                                                      </p>{{#replies}}
                                                                      <div class="reply-separator"></div>
                                                                      <table class="reply">
@@ -237,7 +240,10 @@
                                                    <div class="post-separator"></div>
                                                 </td>
                                              </tr>
-                                          </table>{{/transactions}} {{/transactions_present}} {{#events_present}}
+                                          </table>
+                                          {{/group_posts}}
+                                          {{/group_posts_present}}
+                                          {{#events_present}}
                                           <table width="100%" cellpadding="25" cellspacing="0" border="0" class="section_container">
                                              <tr>
                                                 <td>
@@ -247,7 +253,8 @@
                                                    <a href="{{list_events_url}}"><img src="{{event_icon_url}}" width="25" height="25" alt="★" class="section_icon"> &nbsp; <span class="section_header"><strong>{{#t}}events-section-title{{/t}}</strong></span></a>
                                                 </td>
                                              </tr>
-                                          </table>{{#events}}
+                                          </table>
+                                          {{#events}}
                                           <table width="100%" cellpadding="0" cellspacing="0" border="0" class="posts">
                                              <tr>
                                                 <td width="100%" bgcolor="#FFFFFF">
@@ -279,11 +286,11 @@
                                                                         {{body}}
                                                                      </p>
                                                                      <p>
-                                                                        {{#venue}}<span class="venue">Venue:</span> {{venue}}<br>
-                                                                        {{/venue}} {{#address}}<span class="address">Address:</span> {{address}}{{/address}}
+                                                                        {{#venue}}<span class="venue"><strong>Venue:</strong></span> {{venue}}<br/>
+                                                                        {{/venue}} {{#address}}<span class="address"><strong>Address:</strong></span> {{address}}{{/address}}
                                                                      </p>
                                                                      <p class="author">
-                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" style="color:#888!important;">{{author}}</a> posted this
+                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" ><strong>{{author}}</strong></a> posted this
                                                                      </p>{{#replies}}
                                                                      <div class="reply-separator"></div>
                                                                      <table class="reply">
@@ -326,76 +333,10 @@
                                                    <div class="post-separator"></div>
                                                 </td>
                                              </tr>
-                                          </table>{{/events}} {{/events_present}} {{#group_posts_present}}
-                                          <table width="650" cellpadding="25" cellspacing="0" border="0" class="section_container">
-                                             <tr>
-                                                <td width="100%" height="60">
-                                                   <a href="{{list_group_posts_url}}"><img src="{{group_post_icon_url}}" width="25" height="25" alt="★" class="section_icon"> &nbsp; <span class="section_header"><strong>{{#t}}group-posts-section-title{{/t}}</strong></span></a>
-                                                </td>
-                                             </tr>
-                                          </table>{{#group_posts}}
-                                          <table width="100%" cellpadding="0" cellspacing="0" border="0" class="posts">
-                                             <tr>
-                                                <td width="100%" bgcolor="#FFFFFF">
-                                                   <table width="100%" cellpadding="20" cellspacing="0" border="0">
-                                                      <tr>
-                                                         <td bgcolor="#FFFFFF" class="contentblock">
-                                                            <table>
-                                                               <tr class="post">
-                                                                  <!--A Post-->
-                                                                  <td class="post_content">
-                                                                     <a href="{{url}}"></a>
-                                                                     <p class="title">
-                                                                        {{title}}
-                                                                     </p>
-                                                                     <p class="body">
-                                                                        {{body}}
-                                                                     </p>
-                                                                     <p class="author">
-                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" style="color:#888!important;">{{author}}</a> posted this
-                                                                     </p>{{#replies}}
-                                                                     <div class="reply-separator"></div>
-                                                                     <table class="reply">
-                                                                        <tr>
-                                                                           <td class="avatar" rowspan="2">
-                                                                              <img src="{{avatar_url}}" width="32" height="32">
-                                                                           </td>
-                                                                           <td class="author" style="font-weight: bold;">
-                                                                              <a href="{{author_url}}" style="color:#444!important;"><strong>{{author}}</strong></a>
-                                                                           </td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                           <td class="body">
-                                                                              <p>
-                                                                                 {{body}}
-                                                                              </p>
-                                                                           </td>
-                                                                        </tr>
-                                                                     </table>{{/replies}}
-                                                                     <table width="100%" class="links">
-                                                                        <tr>
-                                                                           <td class="new_message">
-                                                                              <a href="{{new_message_url}}"><span class="viewall">Send a Private Message</span></a>
-                                                                           </td>
-                                                                           <td class="view_post_td">
-                                                                              <a href="{{url}}" class="reply-now"><img src="{{view_post_button_url}}" width="103" height="32" alt="View Post"></a>
-                                                                           </td>
-                                                                        </tr>
-                                                                     </table>
-                                                                  </td>
-                                                               </tr>
-                                                            </table>
-                                                         </td>
-                                                      </tr>
-                                                   </table>
-                                                </td>
-                                             </tr>
-                                             <tr>
-                                                <td>
-                                                   <div class="post-separator"></div>
-                                                </td>
-                                             </tr>
-                                          </table>{{/group_posts}} {{/group_posts_present}} {{#announcements_present}}
+                                          </table>
+                                          {{/events}}
+                                          {{/events_present}}
+                                          {{#announcements_present}}
                                           <table width="100%" cellpadding="25" cellspacing="0" border="0" class="section_container">
                                              <tr>
                                                 <td>
@@ -405,7 +346,8 @@
                                                    <a href="{{list_announcements_url}}"><img src="{{announcement_icon_url}}" width="25" height="25" alt="★" class="section_icon"> &nbsp; <span class="section_header"><strong>{{#t}}announcements-section-title{{/t}}</strong></span></a>
                                                 </td>
                                              </tr>
-                                          </table>{{#announcements}}
+                                          </table>
+                                          {{#announcements}}
                                           <table width="100%" cellpadding="0" cellspacing="0" border="0" class="posts">
                                              <tr>
                                                 <td width="100%" bgcolor="#FFFFFF">
@@ -424,7 +366,7 @@
                                                                         {{body}}
                                                                      </p>
                                                                      <p class="author">
-                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" style="color:#888!important;">{{author}}</a> posted this
+                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" ><strong>{{author}}</strong></a> posted this
                                                                      </p>{{#replies}}
                                                                      <div class="reply-separator"></div>
                                                                      <table class="reply">
@@ -467,7 +409,84 @@
                                                    <div class="post-separator"></div>
                                                 </td>
                                              </tr>
-                                          </table>{{/announcements}} {{/announcements_present}}
+                                          </table>
+                                          {{/announcements}}
+                                          {{/announcements_present}}
+                                          {{#transactions_present}}
+                                          <table width="100%" cellpadding="25" cellspacing="0" border="0" class="section_container">
+                                             <tr>
+                                                <td width="100%" height="60">
+                                                   <a href="{{list_transactions_url}}"><img src="{{transaction_icon_url}}" width="25" height="25" alt="★" class="section_icon"> &nbsp; <span class="section_header"><strong>{{#t}}transactions-section-title{{/t}}</strong></span></a>
+                                                </td>
+                                             </tr>
+                                          </table>{{#transactions}}
+                                          <table width="100%" cellpadding="0" cellspacing="0" border="0" class="posts">
+                                             <tr>
+                                                <td width="100%" bgcolor="#FFFFFF">
+                                                   <table width="100%" cellpadding="20" cellspacing="0" border="0">
+                                                      <tr>
+                                                         <td bgcolor="#FFFFFF" class="contentblock">
+                                                            <table>
+                                                               <tr class="post transaction">
+                                                                  <!--A Post-->
+                                                                  <td class="post_content">
+                                                                     <a href="{{url}}"></a>
+                                                                     <p class="title">
+                                                                        {{title}}
+                                                                     </p>
+                                                                     <p class="body">
+                                                                        {{body}}
+                                                                     </p>
+                                                                     <p class="price">
+                                                                        <strong>Price: {{price}}</strong>
+                                                                     </p>
+                                                                     <p class="author">
+                                                                        <img src="{{avatar_url}}" alt="User Avatar" width="32" height="32"><a href="{{author_url}}" ><strong>{{author}}</strong></a> posted this
+                                                                     </p>{{#replies}}
+                                                                     <div class="reply-separator"></div>
+                                                                     <table class="reply">
+                                                                        <tr>
+                                                                           <td class="avatar" rowspan="2">
+                                                                              <img src="{{avatar_url}}" width="32" height="32">
+                                                                           </td>
+                                                                           <td class="author" style="font-weight: bold;">
+                                                                              <a href="{{author_url}}" style="color:#444!important;"><strong>{{author}}</strong></a>
+                                                                           </td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                           <td class="body">
+                                                                              <p>
+                                                                                 {{body}}
+                                                                              </p>
+                                                                           </td>
+                                                                        </tr>
+                                                                     </table>{{/replies}}
+                                                                     <table width="100%" class="links">
+                                                                        <tr>
+                                                                           <td class="new_message">
+                                                                              <a href="{{new_message_url}}"><span class="viewall">Send a Private Message</span></a>
+                                                                           </td>
+                                                                           <td class="view_post_td">
+                                                                              <a href="{{url}}" class="reply-now"><img src="{{view_post_button_url}}" width="103" height="32" alt="View Post"></a>
+                                                                           </td>
+                                                                        </tr>
+                                                                     </table>
+                                                                  </td>
+                                                               </tr>
+                                                            </table>
+                                                         </td>
+                                                      </tr>
+                                                   </table>
+                                                </td>
+                                             </tr>
+                                             <tr>
+                                                <td>
+                                                   <div class="post-separator"></div>
+                                                </td>
+                                             </tr>
+                                          </table>
+                                          {{/transactions}}
+                                          {{/transactions_present}}
                                        </td>
                                     </tr>
                                  </table>
