@@ -828,13 +828,11 @@ CONDITION
       community = Community.find(c_id)
       old_ad = community.ad
 
-      if !old_ad.nil?
-        old_ad.destroy
-      end
-
       ad = Ad.new(
         :community_id => c_id,
-        :body => request_body['body']
+        :body => request_body['body'],
+        :start_date => request_body['start_date'],
+        :end_date => request_body['end_date']
       )
 
       if ad.save

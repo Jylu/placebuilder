@@ -14,6 +14,8 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
       )
     ))
 
+    @$("input#start").datepicker dateFormat: "yy-mm-dd"
+    @$("input#end").datepicker dateFormat: "yy-mm-dd"
     @data = {}
     @data.image_id = []
     @initImageUploader(@$(".one"), 1)
@@ -48,6 +50,8 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
     e.preventDefault()
     @data.community = @$("#networks").val()
     @data.body = @$("#body").val()
+    @data.start_date= @$("input#start").val()
+    @data.end_date = @$("input#end").val()
 
     adCollection = CommonPlace.community.ads
 

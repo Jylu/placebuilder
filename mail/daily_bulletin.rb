@@ -16,7 +16,7 @@ class DailyBulletin < MailBase
   end
 
   def ad
-    community.ad
+    community.ads.first
   end
 
   def ad_present
@@ -66,7 +66,7 @@ class DailyBulletin < MailBase
   end
 
   def post_count
-    @posts.count
+    @posts.count + @group_posts.count
   end
 
   def announcement_count
