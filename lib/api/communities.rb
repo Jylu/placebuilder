@@ -1058,7 +1058,7 @@ CONDITION
     get "/:id/ads" do
       control_access :admin
 
-      serialize(paginate(Ad.all).reorder("created_at DESC"))
+      serialize(paginate(Ad.reorder("created_at ASC")))
     end
 
     # Returns the community's transactions, possibly a search result

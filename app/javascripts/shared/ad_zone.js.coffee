@@ -3,6 +3,7 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
 
   events:
     "click .submit": "createAd"
+    "click .show": "showAds"
 
   afterRender: ->
     $.getJSON("/api/communities/0/network_list", _.bind((response) ->
@@ -14,11 +15,30 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
       )
     ))
 
+    _render = _.bind(->
+      @ads.map((item) ->
+      )
+    , this)
+    @ads = CommonPlace.community.ads
+    @ads.fetch success: _render
     @$("input#start").datepicker dateFormat: "yy-mm-dd"
     @$("input#end").datepicker dateFormat: "yy-mm-dd"
     @data = {}
     @data.image_id = []
     @initImageUploader(@$(".one"), 1)
+
+  showAds: (e)->
+    e.preventDefault() if e
+
+    c_id = parseInt(@$("#networks").val())
+    views = @ads.map((item) ->
+      new CommonPlace.shared.AdItem(model: item)
+    )
+
+    _.invoke views, "render"
+    $results = @$("#ad-viewer")
+    $results.empty()
+    $results.append _.pluck(views, "el")
 
   initImageUploader: ($el, num) ->
     self = this
