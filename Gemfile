@@ -60,7 +60,7 @@ gem 'resque-cleaner', '= 0.2.7'
 gem 'mail', '= 2.4.4' # Used for mail
 gem 'mustache', '= 0.99.4' # used for mail
 gem 'premailer', '= 1.7.3' # we use this to inline css in our emails
-gem 'letter_opener', group: :development
+gem 'letter_opener'
 
 # ActionView
 # gem 'sanitize', '= 2.0.3' # used in app/controllers/posts_controller.rb (which is dead code) ! remove
