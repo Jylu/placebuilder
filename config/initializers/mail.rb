@@ -3,7 +3,7 @@ require "letter_opener"
 $MailDeliveryMethod = ENV['mail_delivery_method'].try(:intern) || LetterOpener::DeliveryMethod
 
 $MailDeliveryOptions =
-  if $MailDeliveryMethod == LetterOpener::DeliveryMethod
+  if $MailDeliveryMethod == LetterOpener::DeliveryMethod && !Rails.env.production?
     # {:location => Rails.root.join('tmp','inboxes')}
     puts "E-mails are being delivered to tmp/inboxes!"
     {:location => Rails.root.join('tmp','inboxes')}
