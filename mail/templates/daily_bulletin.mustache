@@ -32,16 +32,6 @@
                                                    <img src="" alt="">
                                                 </td>
                                                 <td colspan="2" align="left" valign="top" class="sponsored_text">
-                                                  {{#ad_present}}
-                                                  {{#image_present}}
-                                                  <li class="image_container">
-                                                    <img src="{{image}}" />
-                                                  </li>
-                                                  {{/image_present}}
-                                                  <li>{{ad_text}}</li>
-                                                  {{/ad_present}}
-                                                  {{^ad_present}}
-                                                  {{/ad_present}}
                                                 </td>
                                              </tr>
                                              <tr>
@@ -76,8 +66,7 @@
                                                    <img src="http://markmalazarte.com/commonplace/weather.png" width="50" height="50" alt="★" />
                                                 </td>
                                                 <td valign="middle" class="weather_text">
-                                                  <strong>{{current_temp}}&#8457;</strong><br/>
-                                                   Cloudy
+                                                  <strong>{{current_temp}}&#8457;</strong>
                                                 </td>
                                                 <td width="50" height="50" valign="middle" class="intro_icon">
                                                    <img src="http://markmalazarte.com/commonplace/members.png" width="50" height="50" alt="★" />
@@ -129,8 +118,8 @@
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author" style="font-weight: bold;">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a> posted this
+                                                                           <td class="author">
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
@@ -141,8 +130,8 @@
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author" style="font-weight: bold;">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a>
+                                                                           <td class="author">
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
@@ -209,7 +198,7 @@
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
                                                                            <td class="author">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a> posted this
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
@@ -220,8 +209,8 @@
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author" style="font-weight: bold;">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a>
+                                                                           <td class="author">
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
@@ -305,7 +294,7 @@
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
                                                                            <td class="author">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a> posted this
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
@@ -316,8 +305,8 @@
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author" style="font-weight: bold;">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a>
+                                                                           <td class="author">
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
@@ -384,7 +373,7 @@
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
                                                                            <td class="author">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a> posted this
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
@@ -395,8 +384,8 @@
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author" style="font-weight: bold;">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a>
+                                                                           <td class="author">
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
@@ -465,7 +454,7 @@
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
                                                                            <td class="author">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a> posted this
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
@@ -476,8 +465,8 @@
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author" style="font-weight: bold;">
-                                                                              <a href="{{author_url}}" style="color:#444444!important;"><strong><font color="#444444">{{author}}</font></strong></a>
+                                                                           <td class="author">
+                                                                              <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>

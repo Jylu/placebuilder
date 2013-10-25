@@ -370,7 +370,6 @@ h1 {
      font-family: Helvetica, Arial, sans-serif;
      font-size: 16px;
      color: #444444;
-     font-weight: bold !important;
      line-height: 17px;
      margin: 0px;
      padding: 0px;
@@ -379,14 +378,13 @@ h1 {
   .author {
     font: 16px/20px Helvetica, Arial, sans-serif;
     font-weight: normal;
-    color: #444 !important;
+    color: #444444 !important;
     margin: 15px 0px 15px 0px;
     vertical-align: middle;
   }
   .author strong {
     font: 16px/20px Helvetica, Arial, sans-serif;
-    font-weight: bold;
-    color: #444 !important;
+    color: #444444 !important;
     padding-left: 12px;
   }
   .author img {
@@ -409,7 +407,7 @@ h1 {
     margin-top: 10px;
     padding: 0px;
   }
-  .price strong, .price {
+  p .price, .price strong, .price {
     color: #C82D28 !important;
     font-weight: bold;
     font: 16px/20px Helvetica, Arial, sans-serif;
@@ -537,7 +535,6 @@ h1 {
    font-family: Helvetica, Arial, sans-serif;
    font-size: 16px;
    color: #444444;
-   font-weight: bold !important;
    line-height: 17px;
    vertical-align: top;
    margin: 0px;
