@@ -25,25 +25,32 @@
                                     <tr>
                                        <td width="100%">
                                           <!--SPONSORED AD-->
+                                          {{#ad_present}}
                                           <span class="post-separator">&nbsp;</span>
                                           <table width="100%" height="100" border="0" cellspacing="0" cellpadding="0" class="sponsored">
                                              <tr>
+                                                {{#image_present}}
                                                 <td rowspan="2" width="120" height="100" class="sponsored_image">
-                                                   <img src="" alt="">
+                                                   <img src="{{image}}" alt="">
                                                 </td>
+                                                {{/image_present}}
                                                 <td colspan="2" align="left" valign="top" class="sponsored_text">
+                                                   {{ad_text}}
                                                 </td>
                                              </tr>
                                              <tr>
                                                 <td align="left" valign="bottom" style="padding-left:20px;">
-                                                   <a href="#" style="text-decoration: none;"><span class="sponsored_link">VIEW DEAL</span></a>
+                                                   <a href="" style="text-decoration: none;"><span class="sponsored_link">VIEW DEAL</span></a>
                                                 </td>
                                                 <td align="right" valign="bottom">
-                                                   <a href="#" style="text-decoration: none;"><span class="sponsored_disclaimer">Sponsored Post. <strong>Want an ad?</strong></span></a>
+                                                   <a href="" style="text-decoration: none;"><span class="sponsored_disclaimer">Sponsored Post. <strong>Want an ad?</strong></span></a>
                                                 </td>
                                              </tr>
                                           </table>
                                           <span class="post-separator" style="border-bottom: 1px solid #dfd9d1;">&nbsp;</span>
+                                          {{/ad_present}}
+                                          {{^ad_present}}
+                                          {{/ad_present}}
                                           <!--END SPONSORED AD-->
                                           <!--INTRODUCTION-->
                                           <span class="post-separator">&nbsp;</span>
