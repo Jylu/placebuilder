@@ -826,7 +826,6 @@ CONDITION
 
       c_id = request_body['community']
       community = Community.find(c_id)
-      old_ad = community.ad
 
       ad = Ad.new(
         :community_id => c_id,
