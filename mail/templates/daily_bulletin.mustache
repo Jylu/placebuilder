@@ -6,10 +6,24 @@
       <title>
          The {{community_name}} Daily Bulletin
       </title>
-      <link rel="stylesheet" type="text/css" href="bulletin.css">
       <style type="text/css">
       {{styles}}
       </style>
+       <!--[if gte mso 12]>
+        <style type="text/css">
+           .contentblock {padding-top: 0px !important; vertical-align: top;}
+           .calendar {margin-top: 25px !important; width: 50px !important;}
+           h2, .title {margin-top: 5px !important;}
+           .section_header {margin-bottom: 20px !important;}
+           .post_author {padding-bottom: 10px !important; vertical-align: middle !important;}
+           .reply .avatar, .reply .author {vertical-align: top !important;padding-top: 20px !important;}
+        </style>
+        <![endif]-->
+        <!--[if lte mso 12]>
+         <style type="text/css">
+           .post_author {height: 57px !important;}
+         </style>
+         <![endif]-->
    </head>
    <body marginheight="0" topmargin="0" marginwidth="0" leftmargin="0" bgcolor="#F5F4E8">
       <table id="page-wrapper" cellspacing="20" border="0">
@@ -25,35 +39,29 @@
                                     <tr>
                                        <td width="100%">
                                           <!--SPONSORED AD-->
-                                          {{#ad_present}}
-                                          <span class="post-separator">&nbsp;</span>
+                                          <div class="post-separator">&nbsp;</div>
                                           <table width="100%" height="100" border="0" cellspacing="0" cellpadding="0" class="sponsored">
                                              <tr>
-                                                {{#image_present}}
                                                 <td rowspan="2" width="120" height="100" class="sponsored_image">
-                                                   <img src="{{image}}" alt="">
+                                                   <img src="" alt="" width="120" height="100">
                                                 </td>
-                                                {{/image_present}}
                                                 <td colspan="2" align="left" valign="top" class="sponsored_text">
-                                                   {{ad_text}}
+                                                   This is an advertisement
                                                 </td>
                                              </tr>
                                              <tr>
                                                 <td align="left" valign="bottom" style="padding-left:20px;">
-                                                   <a href="" style="text-decoration: none;"><span class="sponsored_link">VIEW DEAL</span></a>
+                                                   <a href="" style="text-decoration: none;"><span class="sponsored_link">Name of Organization</span></a>
                                                 </td>
                                                 <td align="right" valign="bottom">
                                                    <a href="" style="text-decoration: none;"><span class="sponsored_disclaimer">Sponsored Post. <strong>Want an ad?</strong></span></a>
                                                 </td>
                                              </tr>
                                           </table>
-                                          <span class="post-separator" style="border-bottom: 1px solid #dfd9d1;">&nbsp;</span>
-                                          {{/ad_present}}
-                                          {{^ad_present}}
-                                          {{/ad_present}}
+                                          <div class="post-separator" style="border-bottom: 1px solid #dfd9d1;">&nbsp;</div>
                                           <!--END SPONSORED AD-->
                                           <!--INTRODUCTION-->
-                                          <span class="post-separator">&nbsp;</span>
+                                          <div class="post-separator">&nbsp;</div>
                                           <table id="introduction" width="100%" cellpadding="0" cellspacing="0" border="0">
                                              <tr>
                                                 <td align="center" bgcolor="#C82D28" class="calendar_month">
@@ -94,7 +102,7 @@
                                                 </td>
                                              </tr>
                                           </table>
-                                          <span class="post-separator">&nbsp;</span>
+                                          <div class="post-separator">&nbsp;</div>
                                           <!--END INTRO-->
                                           {{#posts_present}}
                                           <table width="100%" cellpadding="25" cellspacing="0" border="0" class="section_container">
@@ -114,38 +122,37 @@
                                                             <table>
                                                                <tr class="post">
                                                                   <!--A Post-->
-                                                                  <td class="post_content">
-                                                                     <a href="{{url}}"></a>
+                                                                  <td class="post_content" valign="top">
+                                                                     <a href="{{url}}">
                                                                      <h2>
                                                                         <span class="title">{{title}}</span>
                                                                      </h2>
+                                                                     </a>
                                                                      <p class="body">{{body}}</p>
-                                                                     <table width="100%" height="32" class="post_author">
+                                                                     <table width="100%" height="32" class="post_author" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="middle">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
                                                                      {{#replies}}
-                                                                     <span class="reply-separator"></span>
-                                                                     <table class="reply">
+                                                                     <div class="reply-separator"></div>
+                                                                     <table class="reply" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="top">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <td class="body">
-                                                                              <p>
-                                                                                 {{body}}
-                                                                              </p>
+                                                                           <td class="body" valign="top" rowspan="2">
+                                                                              <p>{{body}}</p>
                                                                            </td>
                                                                         </tr>
                                                                      </table>{{/replies}}
@@ -193,38 +200,37 @@
                                                             <table>
                                                                <tr class="post">
                                                                   <!--A Post-->
-                                                                  <td class="post_content">
-                                                                     <a href="{{url}}"></a>
+                                                                  <td class="post_content" valign="top">
+                                                                     <a href="{{url}}">
                                                                      <h2>
                                                                         <span class="title">{{title}}</span>
                                                                      </h2>
+                                                                     </a>
                                                                      <p class="body">{{body}}</p>
-                                                                     <table class="post_author">
+                                                                     <table class="post_author" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="middle">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
                                                                      {{#replies}}
-                                                                     <span class="reply-separator"></span>
-                                                                     <table class="reply">
+                                                                     <div class="reply-separator"></div>
+                                                                     <table class="reply" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="top">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <td class="body">
-                                                                              <p>
-                                                                                 {{body}}
-                                                                              </p>
+                                                                           <td class="body" valign="top" rowspan="2">
+                                                                              <p>{{body}}</p>
                                                                            </td>
                                                                         </tr>
                                                                      </table>{{/replies}}
@@ -248,7 +254,7 @@
                                              </tr>
                                              <tr>
                                                 <td>
-                                                   <span class="post-separator">&nbsp;</span>
+                                                   <div class="post-separator">&nbsp;</div>
                                                 </td>
                                              </tr>
                                           </table>
@@ -272,7 +278,7 @@
                                                             <table>
                                                                <tr class="post event">
                                                                   <!--A Post-->
-                                                                  <td class="avatar" height="110" valign="top">
+                                                                  <td class="event_avatar" height="115" width="50" valign="top">
                                                                      <div class="calendar">
                                                                         <div class="short-month">
                                                                            {{short_month}}
@@ -285,42 +291,48 @@
                                                                         <span class="start-time">{{starts_at}}</span> &#8213; <span class="end-time">{{ends_at}}</span>
                                                                      </div>
                                                                   </td>
-                                                                  <td class="post_content">
-                                                                     <a href="{{url}}"></a>
+                                                                  <td class="post_content" valign="top">
+                                                                     <a href="{{url}}">
                                                                      <h2>
                                                                         <span class="title">{{title}}</span>
                                                                      </h2>
-                                                                     <p class="body">{{body}}</p>
-                                                                     <p>
-                                                                        {{#venue}}<span class="venue"><strong>Venue:</strong></span> {{venue}}<br/>
-                                                                        {{/venue}} {{#address}}<span class="address"><strong>Address:</strong></span> {{address}}{{/address}}
+                                                                     </a>
+                                                                     <p class="body" style="margin-bottom: 10px;">{{body}}</p>
+                                                                     {{#venue}}
+                                                                     <p class="venue">
+                                                                        <strong>Venue: </strong>{{venue}}
                                                                      </p>
-                                                                     <table class="post_author">
+                                                                     {{/venue}}
+                                                                     {{#address}}
+                                                                     <p class="address">
+                                                                        <strong>Address: </strong>{{address}}
+                                                                     </p>
+                                                                     {{/address}}
+                                                                     <br/>
+                                                                     <table class="post_author" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="middle">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
                                                                      {{#replies}}
-                                                                     <span class="reply-separator"></span>
-                                                                     <table class="reply">
+                                                                     <div class="reply-separator"></div>
+                                                                     <table class="reply" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="top">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <td class="body">
-                                                                              <p>
-                                                                                 {{body}}
-                                                                              </p>
+                                                                           <td class="body" valign="top">
+                                                                              <p>{{body}}</p>
                                                                            </td>
                                                                         </tr>
                                                                      </table>{{/replies}}
@@ -344,7 +356,7 @@
                                              </tr>
                                              <tr>
                                                 <td>
-                                                   <span class="post-separator">&nbsp;</span>
+                                                   <div class="post-separator">&nbsp;</div>
                                                 </td>
                                              </tr>
                                           </table>
@@ -368,38 +380,37 @@
                                                             <table>
                                                                <tr class="post">
                                                                   <!--A Post-->
-                                                                  <td class="post_content">
-                                                                     <a href="{{url}}"></a>
+                                                                  <td class="post_content" valign="top">
+                                                                     <a href="{{url}}">
                                                                      <h2>
                                                                         <span class="title">{{title}}</span>
                                                                      </h2>
+                                                                     </a>
                                                                      <p class="body">{{body}}</p>
-                                                                     <table class="post_author">
+                                                                     <table class="post_author" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="middle">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
                                                                      {{#replies}}
-                                                                     <span class="reply-separator"></span>
-                                                                     <table class="reply">
+                                                                     <div class="reply-separator"></div>
+                                                                     <table class="reply" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="top">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <td class="body">
-                                                                              <p>
-                                                                                 {{body}}
-                                                                              </p>
+                                                                           <td class="body" valign="top">
+                                                                              <p>{{body}}</p>
                                                                            </td>
                                                                         </tr>
                                                                      </table>{{/replies}}
@@ -423,7 +434,7 @@
                                              </tr>
                                              <tr>
                                                 <td>
-                                                   <span class="post-separator">&nbsp;</span>
+                                                   <div class="post-separator">&nbsp;</div>
                                                 </td>
                                              </tr>
                                           </table>
@@ -446,41 +457,40 @@
                                                             <table>
                                                                <tr class="post transaction">
                                                                   <!--A Post-->
-                                                                  <td class="post_content">
-                                                                     <a href="{{url}}"></a>
+                                                                  <td class="post_content" valign="top">
+                                                                     <a href="{{url}}">
                                                                      <h2>
                                                                         <span class="title">{{title}}</span>
                                                                      </h2>
+                                                                     </a>
                                                                      <p class="body">{{body}}</p>
                                                                      <p>
-                                                                        <span class="price"><strong>Price: {{price}}</strong></span>
+                                                                        <span class="price"><strong><font color="#C82D28">Price: {{price}}</font></strong></span>
                                                                      </p>
-                                                                     <table class="post_author">
+                                                                     <table class="post_author" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="middle">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a> posted this
                                                                            </td>
                                                                         </tr>
                                                                      </table>
                                                                      {{#replies}}
-                                                                     <span class="reply-separator"></span>
-                                                                     <table class="reply">
+                                                                     <div class="reply-separator"></div>
+                                                                     <table class="reply" cellpadding="0" cellspacing="0">
                                                                         <tr>
                                                                            <td class="avatar" rowspan="2">
                                                                               <img src="{{avatar_url}}" width="32" height="32">
                                                                            </td>
-                                                                           <td class="author">
+                                                                           <td class="author" valign="top">
                                                                               <a href="{{author_url}}" style="color:#444444!important;"><font color="#444444">{{author}}</font></a>
                                                                            </td>
                                                                         </tr>
                                                                         <tr>
-                                                                           <td class="body">
-                                                                              <p>
-                                                                                 {{body}}
-                                                                              </p>
+                                                                           <td class="body" valign="top">
+                                                                              <p>{{body}}</p>
                                                                            </td>
                                                                         </tr>
                                                                      </table>{{/replies}}
@@ -504,7 +514,7 @@
                                              </tr>
                                              <tr>
                                                 <td>
-                                                   <span class="post-separator">&nbsp;</span>
+                                                   <div class="post-separator">&nbsp;</div>
                                                 </td>
                                              </tr>
                                           </table>
@@ -520,14 +530,14 @@
                                           <table width="100%" cellpadding="0" cellspacing="0" border="0" class="footer">
                                              <tr>
                                                 <td valign="top" class="footershow">
-                                                   <span class="post-separator">&nbsp;</span>
+                                                   <div class="post-separator">&nbsp;</div>
                                                    <p>
                                                       <span class="logo" style="margin: 0px auto;text-align:center;padding-bottom: 5px;"><a href="http://placebuilder.org" target="_blank"><img src="http://www.placebuilder.org/assets/shared/redesign/parentslist-logo-lrg.png" alt="Placebuilder" width="150"></a></span>
                                                    </p>
                                                    <p align="center">
                                                       <span class="website" ><a href="{{settings_url}}"><span>Change my email settings</span></a> | <a href="{{root_url}}"><span>{{community_slug}}.Placebuilder.org</span></a></span>
                                                    </p>
-                                                   <span class="post-separator">&nbsp;</span>
+                                                   <div class="post-separator">&nbsp;</div>
                                                 </td>
                                              </tr>
                                           </table>

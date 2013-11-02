@@ -4,6 +4,7 @@ html {
   background-color: #f5f1ea;
   -webkit-font-smoothing: antialiased;
   font-family: Helvetica, Arial, sans-serif;
+  color: #444444;
 }
 
 body {
@@ -21,6 +22,7 @@ table {
   border-spacing: 0;
   padding: 0;
   margin: 0px auto;
+  color: #444444;
 }
 
 td {
@@ -28,15 +30,17 @@ td {
   margin: 0px;
 }
 
-a { color: #364B5F ; text-decoration: none; }
-a span { color: #C82D28 ; text-decoration: none;}
+a { color: #364B5F; text-decoration: none; }
+a span { color: #C82D28; text-decoration: none;}
 h1, h2, h3 {
    margin: 0px;
    padding: 0px;
+   vertical-align: top;
 }
 div p {
   font-size: 15px;
   font-family: Helvetica, Arial, sans-serif;
+  border-collapse: collapse;
 }
 
 img { border: 0; }
@@ -45,15 +49,15 @@ img { border: 0; }
   text-align: center;
   background-color: #f5f1ea;
   width: 100%;
-  max-width: 800px;
+  max-width: 770px;
   min-width: 400px;
-  padding: 0px 20px;
+  padding: 0px 20px !important;
 }
 
 #email-wrapper {
   text-align: left;
   width: 100%;
-  max-width: 800px;
+  max-width: 770px;
   min-width: 400px;
   background-color: #f5f1ea;
   margin: 0px;
@@ -66,8 +70,7 @@ img { border: 0; }
   font-size: 15px;
 }
 
-.sponsored_image {
-  background-color: #DFD9D1;
+.sponsored_image, .sponsored_image img {
   width: 120px;
   height: 100px;
 }
@@ -81,19 +84,19 @@ img { border: 0; }
 }
 
 .sponsored_link {
-  color: #c82d28;
+  color: #444444;
   text-decoration: none;
   font-style: normal;
   font-variant: normal;
   font-weight: bold;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-size: 15px;
   line-height: normal;
   font-family: Helvetica, Arial, sans-serif;
 }
 
 .sponsored_disclaimer {
-  color: #999;
+  color: #999999;
   text-decoration: none;
   font-style: normal;
   font-variant: normal;
@@ -105,7 +108,7 @@ img { border: 0; }
 
 #introduction {
   width: 100%;
-  max-width: 800px;
+  max-width: 770px;
   border-spacing: 0;
   margin: 0px;
   padding: 0px;
@@ -172,28 +175,25 @@ img { border: 0; }
   margin: 0px;
   padding: 0px 1px 0px 15px;
   width: 50px;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 18px;
   font-family: Helvetica, Arial, sans-serif;
 }
 .members_text {
   margin: 0px;
   padding: 0px 1px 0px 15px;
   width: 50px;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 18px;
   font-family: Helvetica, Arial, sans-serif;
 }
 .posts_text {
   margin: 0px;
   padding: 0px 1px 0px 15px;
   width: 50px;
-  font-size: 15px;
-  line-height: 18px;
+  font-size: 18px;
   font-family: Helvetica, Arial, sans-serif;
 }
 .weather_text strong, .members_text strong, .posts_text strong {
-   font-size: 20px !important;
+   font-size: 22px !important;
 }
 .section_container {
   padding: 0px;
@@ -263,7 +263,7 @@ h1 {
   color: #A9211D;
 }
 .contentblock {
-  padding: 20px 25px 25px 25px;
+  padding: 25px;
   border-bottom: 1px solid #d0d0c5;
 }
 
@@ -334,7 +334,8 @@ h1 {
 
 .post {
   .avatar {
-    padding: 0px 13px 15px 0px;
+    padding: 0px 13px 0px 0px;
+    vertical-align: middle;
     width: 32px;
     height: 32px;
       img {
@@ -343,26 +344,30 @@ h1 {
   }
   .post_author {
     width: 100%;
-    height: 32px;
-    vertical-align: middle;
+    display: block;
+    vertical-align: middle !important;
     padding: 0px;
+    margin: 0px;
+    height: 47px;
+    color: #444444 !important;
+    border-collapse: collapse;
     .avatar {
-      width: 32px ;
-      height: 32px ;
-      padding: 0px 12px 15px 0px ;
-      margin: 0px ;
-      vertical-align: middle;
+      width: 32px;
+      height: 32px;
+      padding: 0px 12px 0px 0px;
+      margin: 0px;
+      vertical-align: middle !important;
         img {
            background-color: #364B5F;
+           vertical-align: middle;
         }
      }
     .author {
       font-family: Helvetica, Arial, sans-serif;
       font-size: 16px;
       color: #444444;
-      line-height: 17px;
-      padding: 9px 0px 0px 0px;
-      vertical-align: top;
+      padding: 0px;
+      vertical-align: middle !important;
       margin: 0px;
       height: 32px;
     }
@@ -370,35 +375,17 @@ h1 {
      font-family: Helvetica, Arial, sans-serif;
      font-size: 16px;
      color: #444444;
-     line-height: 17px;
      margin: 0px;
      padding: 0px;
     }
 }
-  .author {
-    font: 16px/20px Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    color: #444444 !important;
-    margin: 15px 0px 15px 0px;
-    vertical-align: middle;
-  }
-  .author strong {
-    font: 16px/20px Helvetica, Arial, sans-serif;
-    color: #444444 !important;
-    padding-left: 12px;
-  }
-  .author img {
-    vertical-align: middle;
-    height: 32px;
-    width: 32px;
-    background-color: #364B5F;
-  }
   .title, a .title {
     font: 24px/26px Helvetica, Arial, sans-serif;
     font-weight: normal;
     color: #444444;
     margin: 0px;
     padding: 0px;
+    vertical-align: top;
   }
 
   p.body {
@@ -406,6 +393,8 @@ h1 {
     color: #444444;
     margin-top: 10px;
     padding: 0px;
+    border-collapse: collapse;
+    vertical-align: top;
   }
   p .price, .price strong, .price {
     color: #C82D28 !important;
@@ -413,32 +402,51 @@ h1 {
     font: 16px/20px Helvetica, Arial, sans-serif;
    }
   .venue { 
-    color: #C82D28;
-    font: 16px/20px Helvetica, Arial, sans-serif;
-    font-weight: bold !important;
-    display: inline-block;
+    font: 16px/25px Helvetica, Arial, sans-serif;
+    vertical-align: bottom;
+    margin: 5px 0px !important;
+    strong {
+      color: #C82D28;
+      font-weight: bold !important;
+      }
   }
   .address { 
-    color: #C82D28;
-    font: 16px/20px Helvetica, Arial, sans-serif;
-    font-weight: bold !important;
-    margin: 10px 0px 5px;
-    display: inline-block;
+    font: 16px/25px Helvetica, Arial, sans-serif;
+    vertical-align: bottom;
+    margin: 5px 0px !important;
+    strong {
+       color: #C82D28;
+       font-weight: bold !important;
+       }
   }
   p {
     font: 16px/20px Helvetica, Arial, sans-serif;
+    margin-top: 10px;
+    padding: 0px;
+    border-collapse: collapse;
+    vertical-align: top;
   }
 
   &.event {
-    .avatar {
+    .post_author {
+      margin-top: -5px !important;
+    }
+    .event_avatar {
+      text-align: center;
+      vertical-align: top;
+      padding-right: 20px;
       .calendar {
-        width: 50px; 
+        width: 50px !important; 
         text-align: center;
+        margin: 0px;
+        padding: 0px;
         .short-month {
-          padding: 2px 6px;
           letter-spacing: 1px;
           vertical-align: middle;
           font-size: 13px;
+          height: 20px;
+          line-height: 20px;
+          width: 48px;
           text-transform: uppercase;
           font-weight: bold;
           border: 1px solid #C82D28;
@@ -447,22 +455,27 @@ h1 {
           background-color: #C82D28;
           color: #ffffff;
           display: block;
+          padding: 0px;
         }
         .day {
-          border: 1px solid #eee ; border-top-width: 0px;
+          border: 1px solid #eeeeee;
+          padding: 0px;
+          border-top-width: 0px;
           background-color: #f7f7f7;
           font-size: 24px;
-          line-height: 24px; color: #444444;
+          line-height: 34px;
+          height: 34px;
+          width: 48px;
+          color: #444444;
           font-family: Helvetica, Arial, sans-serif;
           font-weight: normal;
-          padding: 5px 10px;
           margin-bottom: 10px;
           display: block;
         }
       }
 
       .time {
-        font-size: 12px ;
+        font-size: 12px;
         font-family: Helvetica, Arial, sans-serif;
         color: #444444;
         padding-top: 5px;
@@ -505,48 +518,65 @@ h1 {
 
 .reply {
   width: 100%;
+  margin: 15px 0px 0px 0px;
   padding: 0px;
-  margin: 0px;
+  display: block;
   .body {
     vertical-align: top;
-    display: block;
     width: 100%;
+    margin: 0px;
+    padding: 0px;
   }
   .avatar {
-    width: 32px ;
-    height: auto ;
-    padding: 15px 12px 15px 0px ;
-    margin: 0px ;
-    vertical-align: top;
+    width: 32px;
+    height: 32px;
+    padding: 0px 12px 0px 0px;
+    margin: 0px;
+    vertical-align: top !important;
       img {
          background-color: #364B5F;
+         vertical-align: top !important;
       }
   }
   .author {
     font-family: Helvetica, Arial, sans-serif;
     font-size: 16px;
     color: #444444;
-    line-height: 17px;
     vertical-align: top;
     margin: 0px;
-    padding-top: 15px;
+    height: 16px;
     }
   .author a, .author strong {
    font-family: Helvetica, Arial, sans-serif;
    font-size: 16px;
    color: #444444;
-   line-height: 17px;
    vertical-align: top;
    margin: 0px;
    padding: 0px !important;
    }
   p {
-    font: 16px/20px Helvetica, Arial, sans-serif ;
+    font: 16px/20px Helvetica, Arial, sans-serif;
     color: #444444;
-    padding: 0px;
+    padding: 0px !important;
     display: block;
     width: 100%;
     margin: 4px 0px 12px 0px !important;
     vertical-align: top;
     }
 }
+
+/* RESET STYLES */
+
+/* Client-specific Styles */
+#outlook a {padding:0;} /* Force Outlook to provide a "view in browser" menu link. */
+body{width:100% !important; -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; margin:0; padding:0;} 
+/* Prevent Webkit and Windows Mobile platforms from changing default font sizes.*/ 
+.ExternalClass {width:100%;} /* Force Hotmail to display emails at full width */  
+.ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {line-height: 100%;}
+/* Forces Hotmail to display normal line spacing.  More on that: http://www.emailonacid.com/forum/viewthread/43/ */ 
+#backgroundTable {margin:0; padding:0; width:100% !important; line-height: 100% !important;}
+/* End reset */
+
+/* Remove spacing around Outlook 07, 10 tables
+Bring inline: Yes */
+table td {border-collapse:collapse; mso-table-lspace: 0pt; mso-table-rspace: 0pt;}
