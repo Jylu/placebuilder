@@ -1,20 +1,20 @@
 <h1>Daily Bulletin Ads</h1>
 <div id="left-column">
   <form>
+    <h2>Create Ads</h2>
     <h3>Network</h3>
     <select id="networks" data-placeholder="Communities"></select>
-    <button class="show">Show Ads</button>
     <h3>Body</h3>
     <textarea placeholder="Insert text here" id="body" rows="5" cols="50"></textarea>
-    <div id="date">
-      <h3>Time Limit</h3>
-      <input class="date" id="start" type="text" placeholder="Start Date">
-      <input class="date" id="end" type="text" placeholder="End Date">
-    </div>
     <div class="upload-section">
       <div class="box">
         <img class="item_pic one" id="1" src="/assets/shared/redesign/upload-default.png"/>
       </div>
+    </div>
+    <div id="date">
+      <h3>Time Limit</h3>
+      <input class="date" id="start" type="text" placeholder="Start Date">
+      <input class="date" id="end" type="text" placeholder="End Date">
     </div>
     <div>
       <button class="submit">Add Ad</button>
@@ -23,5 +23,8 @@
 </div>
 
 <div id="right-column">
+  <h2>Current Ads</h1>
+  <select id="c_networks" data-placeholder="Communities"></select>
+  <button class="show">Show Ads</button>
   <ul id="ad-viewer"></ul>
 </div>

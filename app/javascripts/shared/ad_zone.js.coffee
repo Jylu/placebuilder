@@ -8,10 +8,12 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
   afterRender: ->
     $.getJSON("/api/communities/0/network_list", _.bind((response) ->
       $networks = @$("#networks")
+      $c_networks = @$("#c_networks")
 
       response.map((comm) ->
         html = '<option value="' + comm.id + '">' + comm.name + '</option>'
         $networks.append(html)
+        $c_networks.append(html)
       )
     ))
 
@@ -30,10 +32,13 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
   showAds: (e)->
     e.preventDefault() if e
 
-    c_id = parseInt(@$("#networks").val())
+    c_id = parseInt(@$("#c_networks").val())
     views = @ads.map((item) ->
-      new CommonPlace.shared.AdItem(model: item)
+      if item.get("community_id") is c_id
+        new CommonPlace.shared.AdItem(model: item)
     )
+
+    views = views.filter((n) -> return n)
 
     _.invoke views, "render"
     $results = @$("#ad-viewer")
