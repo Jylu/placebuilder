@@ -138,6 +138,8 @@ class CommunityDailyBulletinJob
       end
     end
 
+    ad = community.ads.where("? between ads.start_date and ads.end_date", date).first
+
     begin
       barometer = Barometer.new(community.zip_code)
       weather = barometer.measure
@@ -156,9 +158,10 @@ class CommunityDailyBulletinJob
           transactions: transactions,
           announcements: announcements,
           events: events,
-          weather: weather.default
+          weather: weather.default,
+          ad: ad
         }
-        kickoff.deliver_daily_bulletin(parameters[:user_id], parameters[:date], parameters[:posts], parameters[:group_posts], parameters[:transactions], parameters[:announcements], parameters[:events], parameters[:weather])
+        kickoff.deliver_daily_bulletin(parameters[:user_id], parameters[:date], parameters[:posts], parameters[:group_posts], parameters[:transactions], parameters[:announcements], parameters[:events], parameters[:weather], parameters[:ad])
       rescue => ex
         Airbrake.notify_or_ignore(
           :error_class   => "Error Sending Daily Bulletin",
