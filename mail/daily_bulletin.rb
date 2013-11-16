@@ -1,6 +1,6 @@
 class DailyBulletin < MailBase
 
-  def initialize(user_id, date, posts, group_posts, transactions, announcements, events, weather, ad)
+  def initialize(user_id, date, posts, group_posts, transactions, announcements, events, weather, ad, image)
     @user = User.find(user_id)
     @date = DateTime.parse(date)
     @posts = posts
@@ -10,6 +10,7 @@ class DailyBulletin < MailBase
     @events = events
     @weather = weather
     @ad = ad
+    @image = image
   end
 
   def user
@@ -25,11 +26,11 @@ class DailyBulletin < MailBase
   end
 
   def image_present
-    @ad.image.present?
+    @image.present?
   end
 
   def image
-    @ad.image.image_url
+    @image
   end
 
   def community
