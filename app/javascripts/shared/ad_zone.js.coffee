@@ -18,8 +18,11 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
     ))
 
     _render = _.bind(->
-      @ads.map((item) ->
+      views = @ads.map((item) ->
+        new CommonPlace.shared.AdItem(model: item)
       )
+
+      @viewAds(views)
     , this)
     @ads = CommonPlace.community.ads
     @ads.fetch success: _render
@@ -29,7 +32,7 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
     @data.image_id = []
     @initImageUploader(@$(".one"), 1)
 
-  showAds: (e)->
+  showAds: (e) ->
     e.preventDefault() if e
 
     c_id = parseInt(@$("#c_networks").val())
@@ -38,6 +41,9 @@ CommonPlace.shared.AdZone = CommonPlace.View.extend(
         new CommonPlace.shared.AdItem(model: item)
     )
 
+    @viewAds(views)
+
+  viewAds: (views) ->
     views = views.filter((n) -> return n)
 
     _.invoke views, "render"
