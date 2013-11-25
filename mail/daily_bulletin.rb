@@ -22,7 +22,7 @@ class DailyBulletin < MailBase
   end
 
   def ad_text
-    @ad.body
+    @ad.body.gsub(/\n/, "<br>")
   end
 
   def image_present
