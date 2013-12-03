@@ -93,6 +93,8 @@ module Serializer
         }
       }
 
+      when Ad
+        o.as_api_response(:default)
       when Transaction
         {
           "id" => o.id,
