@@ -11,7 +11,7 @@ class Group < ActiveRecord::Base
 
   belongs_to :community
 
-  has_many :group_posts
+  has_and_belongs_to_many :group_posts
 
   has_many :memberships
   has_many :subscribers, :through => :memberships, :source => :user, :uniq => true

@@ -11,19 +11,20 @@ CommonPlace.main.PostForm = CommonPlace.main.BaseForm.extend(
     @cleanUpPlaceholders()
     @showSpinner()
     @disableSubmitButton()
-    
+
     collection = CommonPlace.community.posts
     callback = false
 
     group_id = @$("[name=group_selector]").val()
     if group_id isnt undefined and group_id isnt ""
-      group = new Group({links: {self: "/groups/" + group_id, posts: "/groups/" + group_id + "/posts"}})
+      group = new Group({links: {self: "/groups/" + group_id[0], posts: "/groups/" + group_id[0] + "/posts"}})
       collection = group.posts
       callback = @groupPostSuccess
 
     data =
       title: @$("[name=title]").val()
       body: @$("[name=body]").val()
+      groups: group_id
 
     if @category isnt undefined
       data['category'] = @category

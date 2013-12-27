@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008201622) do
+ActiveRecord::Schema.define(:version => 20131218202011) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -270,6 +270,11 @@ ActiveRecord::Schema.define(:version => 20131008201622) do
     t.datetime "updated_at"
     t.datetime "deleted_at"
     t.datetime "replied_at"
+  end
+
+  create_table "group_posts_groups", :force => true do |t|
+    t.integer "group_id"
+    t.integer "group_post_id"
   end
 
   create_table "groups", :force => true do |t|

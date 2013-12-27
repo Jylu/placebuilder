@@ -199,7 +199,6 @@ module Serializer
         "first_name" => o.user.try(:first_name),
         "avatar_url" => o.user.avatar_url(:thumb),
         "author_url" => "/users/#{o.user_id}",
-        "group" => o.group.try(:name),
         "group_url" => "/groups/#{o.group_id}",
         "user_id" => o.user_id,
         "group_id" => o.group_id,

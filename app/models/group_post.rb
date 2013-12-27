@@ -3,7 +3,7 @@ class GroupPost < ActiveRecord::Base
   after_create :track_posted_content
 
   belongs_to :user
-  belongs_to :group
+  has_and_belongs_to_many :groups
 
   has_many :replies, :as => :repliable, :order => :created_at, :dependent => :destroy
   has_many :repliers, :through => :replies, :uniq => true, :source => :user
@@ -58,7 +58,6 @@ class GroupPost < ActiveRecord::Base
     t.add :id
     t.add ->(m) { "group_posts" }, :as => :schema
     t.add :subject, :as => :title
-    t.add ->(m) { m.group.name }, :as => :group_name
   end
 
   searchable do
