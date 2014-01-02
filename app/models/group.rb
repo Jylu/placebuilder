@@ -1,7 +1,7 @@
 class Group < ActiveRecord::Base
   #track_on_creation
 
-  validates_presence_of :name, :slug, :about, :community
+  validates_presence_of :name, :slug, :community
 
   before_validation(:on => :create) do
     generate_slug unless self.slug?

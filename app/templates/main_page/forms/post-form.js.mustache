@@ -19,14 +19,13 @@
     <span class="divider">
     </span>
     <form>
-        <select name="group_selector" class="chzn-select" multiple="true" tabindex="1">
-          <option value="">What topic are you posting to?&nbsp;&nbsp;&nbsp;&nbsp;</option>
+        <input type="text" placeholder="Title" name="title" class="rounded_corners"></input>
+        <textarea placeholder="Message" name="body" rows="15" cols="55" class="rounded_corners"></textarea>
+        <select placeholder="What topic are you posting to?" name="group_selector" class="chzn-select" multiple="true" tabindex="1">
           {{#groups}}
           <option value="{{id}}">{{name}}</option>
           {{/groups}}
         </select>
-        <input type="text" placeholder="Title" name="title" class="rounded_corners"></input>
-        <textarea placeholder="Message" name="body" rows="15" cols="55" class="rounded_corners"></textarea>
       <div class="controls pie-element">
           {{^isPostEdit}}
            <button class="red-button submit">POST NOW</button>
